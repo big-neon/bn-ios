@@ -12,7 +12,7 @@ final class TabBarController: UITabBarController {
     
     private let exploreController  = UINavigationController(rootViewController: ExploreViewController())
     private let ticketsController   = UINavigationController(rootViewController: TicketsViewController())
-    private let profileController  = UINavigationController(rootViewController: ExploreViewController())
+    private let profileController  = UINavigationController(rootViewController: ProfileViewController())
     
     override func viewDidLoad() {
         super.viewDidLoad()

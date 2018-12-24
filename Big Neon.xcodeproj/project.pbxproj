@@ -30,6 +30,10 @@
 		C64B0AD321D1209A00386000 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78A21CCC3FB00830A5F /* Assets.xcassets */; };
 		C64B0AD821D123F400386000 /* TicketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AD721D123F400386000 /* TicketsViewController.swift */; };
 		C64B0ADA21D1240700386000 /* TicketsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AD921D1240700386000 /* TicketsViewModel.swift */; };
+		C64B0ADC21D1276100386000 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ADB21D1276100386000 /* ProfileViewController.swift */; };
+		C64B0ADF21D128F200386000 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ADE21D128F200386000 /* ProfileHeaderView.swift */; };
+		C64B0AE121D1294600386000 /* ProfileViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */; };
+		C64B0AE321D1299200386000 /* ProfileTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AE221D1299200386000 /* ProfileTableCell.swift */; };
 		C694D22021D0BBFF00B2AE07 /* BigNeonCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C694D21721D0BBFE00B2AE07 /* BigNeonCore.framework */; };
 		C694D22721D0BBFF00B2AE07 /* BigNeonCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694D22621D0BBFF00B2AE07 /* BigNeonCoreTests.swift */; };
 		C694D22921D0BBFF00B2AE07 /* BigNeonCore.h in Headers */ = {isa = PBXBuildFile; fileRef = C694D21921D0BBFE00B2AE07 /* BigNeonCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -151,6 +155,10 @@
 		C64B0AD121D11EF100386000 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		C64B0AD721D123F400386000 /* TicketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsViewController.swift; sourceTree = "<group>"; };
 		C64B0AD921D1240700386000 /* TicketsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsViewModel.swift; sourceTree = "<group>"; };
+		C64B0ADB21D1276100386000 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C64B0ADE21D128F200386000 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.TableView.swift; sourceTree = "<group>"; };
+		C64B0AE221D1299200386000 /* ProfileTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableCell.swift; sourceTree = "<group>"; };
 		C694D21721D0BBFE00B2AE07 /* BigNeonCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BigNeonCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C694D21921D0BBFE00B2AE07 /* BigNeonCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BigNeonCore.h; sourceTree = "<group>"; };
 		C694D21A21D0BBFE00B2AE07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -319,6 +327,7 @@
 		C64B0AB321D0DC5D00386000 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				C64B0ADD21D127BF00386000 /* Profile */,
 				C64B0ACB21D1009F00386000 /* Explore */,
 			);
 			path = Cells;
@@ -418,6 +427,17 @@
 		C64B0AD621D123D700386000 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				C64B0ADB21D1276100386000 /* ProfileViewController.swift */,
+				C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		C64B0ADD21D127BF00386000 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C64B0ADE21D128F200386000 /* ProfileHeaderView.swift */,
+				C64B0AE221D1299200386000 /* ProfileTableCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -879,7 +899,9 @@
 			files = (
 				C64B0ADA21D1240700386000 /* TicketsViewModel.swift in Sources */,
 				C64B0ABB21D0DCC900386000 /* ExploreViewController.CollectionView.swift in Sources */,
+				C64B0ADC21D1276100386000 /* ProfileViewController.swift in Sources */,
 				C64B0ABD21D0DCDB00386000 /* ExploreViewModel.swift in Sources */,
+				C64B0AE121D1294600386000 /* ProfileViewController.TableView.swift in Sources */,
 				C694D25A21D0BFE600B2AE07 /* ApplicationRouting.swift in Sources */,
 				C62BC78621CCC3F700830A5F /* ExploreViewController.swift in Sources */,
 				C64B0AD821D123F400386000 /* TicketsViewController.swift in Sources */,
@@ -931,6 +953,8 @@
 				C64B0AC621D0E89C00386000 /* ExploreUpcomingCell.swift in Sources */,
 				C64B0AD021D1016600386000 /* HotWeekCell.swift in Sources */,
 				C64B0AD221D11EF100386000 /* RoundedCorner.swift in Sources */,
+				C64B0ADF21D128F200386000 /* ProfileHeaderView.swift in Sources */,
+				C64B0AE321D1299200386000 /* ProfileTableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
