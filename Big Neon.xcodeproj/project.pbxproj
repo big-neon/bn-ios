@@ -11,11 +11,29 @@
 		75B753A8531A78F8D6ABC9CC /* Pods_BigNeonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E79034B835677C6F76F5533 /* Pods_BigNeonUI.framework */; };
 		77B009DAFA503468E64EF4C2 /* Pods_BigNeonCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD7091C5F5E53BFE54F25FD /* Pods_BigNeonCore.framework */; };
 		C62BC78421CCC3F700830A5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC78321CCC3F700830A5F /* AppDelegate.swift */; };
-		C62BC78621CCC3F700830A5F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC78521CCC3F700830A5F /* ViewController.swift */; };
+		C62BC78621CCC3F700830A5F /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC78521CCC3F700830A5F /* ExploreViewController.swift */; };
 		C62BC78B21CCC3FB00830A5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78A21CCC3FB00830A5F /* Assets.xcassets */; };
 		C62BC78E21CCC3FB00830A5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78C21CCC3FB00830A5F /* LaunchScreen.storyboard */; };
 		C62BC79921CCC3FB00830A5F /* Big_NeonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */; };
 		C62BC7A421CCC3FB00830A5F /* Big_NeonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC7A321CCC3FB00830A5F /* Big_NeonUITests.swift */; };
+		C64B0ABB21D0DCC900386000 /* ExploreViewController.CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABA21D0DCC900386000 /* ExploreViewController.CollectionView.swift */; };
+		C64B0ABD21D0DCDB00386000 /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABC21D0DCDB00386000 /* ExploreViewModel.swift */; };
+		C64B0AC021D0DD1E00386000 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABF21D0DD1E00386000 /* Utils.swift */; };
+		C64B0AC221D0DD5E00386000 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AC121D0DD5E00386000 /* TabBarController.swift */; };
+		C64B0AC421D0DDE400386000 /* Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AC321D0DDE400386000 /* Colours.swift */; };
+		C64B0AC621D0E89C00386000 /* ExploreUpcomingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AC521D0E89C00386000 /* ExploreUpcomingCell.swift */; };
+		C64B0AC821D0EF3C00386000 /* SectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AC721D0EF3C00386000 /* SectionHeaderCell.swift */; };
+		C64B0ACA21D0FA9100386000 /* NavBarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AC921D0FA9100386000 /* NavBarConfig.swift */; };
+		C64B0ACE21D100B600386000 /* HotThisWeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ACD21D100B600386000 /* HotThisWeekCell.swift */; };
+		C64B0AD021D1016600386000 /* HotWeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ACF21D1016600386000 /* HotWeekCell.swift */; };
+		C64B0AD221D11EF100386000 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AD121D11EF100386000 /* RoundedCorner.swift */; };
+		C64B0AD321D1209A00386000 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78A21CCC3FB00830A5F /* Assets.xcassets */; };
+		C64B0AD821D123F400386000 /* TicketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AD721D123F400386000 /* TicketsViewController.swift */; };
+		C64B0ADA21D1240700386000 /* TicketsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AD921D1240700386000 /* TicketsViewModel.swift */; };
+		C64B0ADC21D1276100386000 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ADB21D1276100386000 /* ProfileViewController.swift */; };
+		C64B0ADF21D128F200386000 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ADE21D128F200386000 /* ProfileHeaderView.swift */; };
+		C64B0AE121D1294600386000 /* ProfileViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */; };
+		C64B0AE321D1299200386000 /* ProfileTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AE221D1299200386000 /* ProfileTableCell.swift */; };
 		C694D22021D0BBFF00B2AE07 /* BigNeonCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C694D21721D0BBFE00B2AE07 /* BigNeonCore.framework */; };
 		C694D22721D0BBFF00B2AE07 /* BigNeonCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694D22621D0BBFF00B2AE07 /* BigNeonCoreTests.swift */; };
 		C694D22921D0BBFF00B2AE07 /* BigNeonCore.h in Headers */ = {isa = PBXBuildFile; fileRef = C694D21921D0BBFE00B2AE07 /* BigNeonCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -114,7 +132,7 @@
 		C5C35E86CF6274D746DC2A17 /* Pods-BigNeonCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigNeonCore.release.xcconfig"; path = "Pods/Target Support Files/Pods-BigNeonCore/Pods-BigNeonCore.release.xcconfig"; sourceTree = "<group>"; };
 		C62BC78021CCC3F700830A5F /* Big Neon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Big Neon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C62BC78321CCC3F700830A5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C62BC78521CCC3F700830A5F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C62BC78521CCC3F700830A5F /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		C62BC78A21CCC3FB00830A5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C62BC78D21CCC3FB00830A5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C62BC78F21CCC3FB00830A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -124,6 +142,23 @@
 		C62BC79F21CCC3FB00830A5F /* Big NeonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Big NeonUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C62BC7A321CCC3FB00830A5F /* Big_NeonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Big_NeonUITests.swift; sourceTree = "<group>"; };
 		C62BC7A521CCC3FB00830A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C64B0ABA21D0DCC900386000 /* ExploreViewController.CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.CollectionView.swift; sourceTree = "<group>"; };
+		C64B0ABC21D0DCDB00386000 /* ExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
+		C64B0ABF21D0DD1E00386000 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		C64B0AC121D0DD5E00386000 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		C64B0AC321D0DDE400386000 /* Colours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colours.swift; sourceTree = "<group>"; };
+		C64B0AC521D0E89C00386000 /* ExploreUpcomingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreUpcomingCell.swift; sourceTree = "<group>"; };
+		C64B0AC721D0EF3C00386000 /* SectionHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderCell.swift; sourceTree = "<group>"; };
+		C64B0AC921D0FA9100386000 /* NavBarConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarConfig.swift; sourceTree = "<group>"; };
+		C64B0ACD21D100B600386000 /* HotThisWeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotThisWeekCell.swift; sourceTree = "<group>"; };
+		C64B0ACF21D1016600386000 /* HotWeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotWeekCell.swift; sourceTree = "<group>"; };
+		C64B0AD121D11EF100386000 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		C64B0AD721D123F400386000 /* TicketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsViewController.swift; sourceTree = "<group>"; };
+		C64B0AD921D1240700386000 /* TicketsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsViewModel.swift; sourceTree = "<group>"; };
+		C64B0ADB21D1276100386000 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C64B0ADE21D128F200386000 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.TableView.swift; sourceTree = "<group>"; };
+		C64B0AE221D1299200386000 /* ProfileTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableCell.swift; sourceTree = "<group>"; };
 		C694D21721D0BBFE00B2AE07 /* BigNeonCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BigNeonCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C694D21921D0BBFE00B2AE07 /* BigNeonCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BigNeonCore.h; sourceTree = "<group>"; };
 		C694D21A21D0BBFE00B2AE07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -243,12 +278,12 @@
 		C62BC78221CCC3F700830A5F /* Big Neon */ = {
 			isa = PBXGroup;
 			children = (
-				C694D25721D0BFB300B2AE07 /* Config */,
 				C62BC78321CCC3F700830A5F /* AppDelegate.swift */,
-				C62BC78521CCC3F700830A5F /* ViewController.swift */,
 				C62BC78A21CCC3FB00830A5F /* Assets.xcassets */,
 				C62BC78C21CCC3FB00830A5F /* LaunchScreen.storyboard */,
 				C62BC78F21CCC3FB00830A5F /* Info.plist */,
+				C694D25721D0BFB300B2AE07 /* Config */,
+				C64B0AB221D0DC3E00386000 /* Screens */,
 			);
 			path = "Big Neon";
 			sourceTree = "<group>";
@@ -269,6 +304,142 @@
 				C62BC7A521CCC3FB00830A5F /* Info.plist */,
 			);
 			path = "Big NeonUITests";
+			sourceTree = "<group>";
+		};
+		C64B0AB021D0DBAE00386000 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				C64B0AC121D0DD5E00386000 /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		C64B0AB221D0DC3E00386000 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				C64B0AD421D123C300386000 /* Explore */,
+				C64B0AD521D123D100386000 /* Tickets */,
+				C64B0AD621D123D700386000 /* Profile */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		C64B0AB321D0DC5D00386000 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C64B0ADD21D127BF00386000 /* Profile */,
+				C64B0ACB21D1009F00386000 /* Explore */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		C64B0AB421D0DC6200386000 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		C64B0AB521D0DC6800386000 /* UIUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				C64B0AC921D0FA9100386000 /* NavBarConfig.swift */,
+				C64B0AD121D11EF100386000 /* RoundedCorner.swift */,
+			);
+			path = UIUtilities;
+			sourceTree = "<group>";
+		};
+		C64B0AB621D0DC7A00386000 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		C64B0AB721D0DC8000386000 /* Colours */ = {
+			isa = PBXGroup;
+			children = (
+				C64B0AC321D0DDE400386000 /* Colours.swift */,
+			);
+			path = Colours;
+			sourceTree = "<group>";
+		};
+		C64B0AB821D0DC8700386000 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C64B0AB921D0DC9300386000 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C64B0ABE21D0DD1500386000 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C64B0ABF21D0DD1E00386000 /* Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C64B0ACB21D1009F00386000 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				C64B0ACC21D100AA00386000 /* HotThisWeekCells */,
+				C64B0AC721D0EF3C00386000 /* SectionHeaderCell.swift */,
+				C64B0AC521D0E89C00386000 /* ExploreUpcomingCell.swift */,
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		C64B0ACC21D100AA00386000 /* HotThisWeekCells */ = {
+			isa = PBXGroup;
+			children = (
+				C64B0ACD21D100B600386000 /* HotThisWeekCell.swift */,
+				C64B0ACF21D1016600386000 /* HotWeekCell.swift */,
+			);
+			path = HotThisWeekCells;
+			sourceTree = "<group>";
+		};
+		C64B0AD421D123C300386000 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				C64B0ABC21D0DCDB00386000 /* ExploreViewModel.swift */,
+				C62BC78521CCC3F700830A5F /* ExploreViewController.swift */,
+				C64B0ABA21D0DCC900386000 /* ExploreViewController.CollectionView.swift */,
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		C64B0AD521D123D100386000 /* Tickets */ = {
+			isa = PBXGroup;
+			children = (
+				C64B0AD921D1240700386000 /* TicketsViewModel.swift */,
+				C64B0AD721D123F400386000 /* TicketsViewController.swift */,
+			);
+			path = Tickets;
+			sourceTree = "<group>";
+		};
+		C64B0AD621D123D700386000 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C64B0ADB21D1276100386000 /* ProfileViewController.swift */,
+				C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		C64B0ADD21D127BF00386000 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C64B0ADE21D128F200386000 /* ProfileHeaderView.swift */,
+				C64B0AE221D1299200386000 /* ProfileTableCell.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		C694D21821D0BBFE00B2AE07 /* BigNeonCore */ = {
@@ -292,6 +463,13 @@
 		C694D23B21D0BC1D00B2AE07 /* BigNeonUI */ = {
 			isa = PBXGroup;
 			children = (
+				C64B0AB921D0DC9300386000 /* Views */,
+				C64B0AB321D0DC5D00386000 /* Cells */,
+				C64B0AB421D0DC6200386000 /* Controls */,
+				C64B0AB521D0DC6800386000 /* UIUtilities */,
+				C64B0AB821D0DC8700386000 /* Resources */,
+				C64B0AB721D0DC8000386000 /* Colours */,
+				C64B0AB621D0DC7A00386000 /* Fonts */,
 				C694D23C21D0BC1D00B2AE07 /* BigNeonUI.h */,
 				C694D23D21D0BC1D00B2AE07 /* Info.plist */,
 			);
@@ -310,6 +488,8 @@
 		C694D25721D0BFB300B2AE07 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				C64B0ABE21D0DD1500386000 /* Utils */,
+				C64B0AB021D0DBAE00386000 /* TabBar */,
 				C694D25821D0BFD700B2AE07 /* Routing */,
 			);
 			path = Config;
@@ -522,6 +702,7 @@
 					};
 					C694D23921D0BC1D00B2AE07 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					C694D24121D0BC1D00B2AE07 = {
 						CreatedOnToolsVersion = 10.1;
@@ -595,6 +776,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C64B0AD321D1209A00386000 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,9 +897,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C64B0ADA21D1240700386000 /* TicketsViewModel.swift in Sources */,
+				C64B0ABB21D0DCC900386000 /* ExploreViewController.CollectionView.swift in Sources */,
+				C64B0ADC21D1276100386000 /* ProfileViewController.swift in Sources */,
+				C64B0ABD21D0DCDB00386000 /* ExploreViewModel.swift in Sources */,
+				C64B0AE121D1294600386000 /* ProfileViewController.TableView.swift in Sources */,
 				C694D25A21D0BFE600B2AE07 /* ApplicationRouting.swift in Sources */,
-				C62BC78621CCC3F700830A5F /* ViewController.swift in Sources */,
+				C62BC78621CCC3F700830A5F /* ExploreViewController.swift in Sources */,
+				C64B0AD821D123F400386000 /* TicketsViewController.swift in Sources */,
+				C64B0AC221D0DD5E00386000 /* TabBarController.swift in Sources */,
 				C62BC78421CCC3F700830A5F /* AppDelegate.swift in Sources */,
+				C64B0AC021D0DD1E00386000 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,6 +946,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C64B0AC821D0EF3C00386000 /* SectionHeaderCell.swift in Sources */,
+				C64B0ACA21D0FA9100386000 /* NavBarConfig.swift in Sources */,
+				C64B0AC421D0DDE400386000 /* Colours.swift in Sources */,
+				C64B0ACE21D100B600386000 /* HotThisWeekCell.swift in Sources */,
+				C64B0AC621D0E89C00386000 /* ExploreUpcomingCell.swift in Sources */,
+				C64B0AD021D1016600386000 /* HotWeekCell.swift in Sources */,
+				C64B0AD221D11EF100386000 /* RoundedCorner.swift in Sources */,
+				C64B0ADF21D128F200386000 /* ProfileHeaderView.swift in Sources */,
+				C64B0AE321D1299200386000 /* ProfileTableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -944,6 +1143,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CF1FA333925A46724CB83E09 /* Pods-Big Neon.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YVK784K26W;
@@ -964,6 +1164,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6CC758E69ED3F7507F39BB91 /* Pods-Big Neon.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YVK784K26W;
@@ -1166,6 +1367,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2C6EEF4B027329FAE820B874 /* Pods-BigNeonUI.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1185,6 +1387,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.BigNeonUI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1196,6 +1399,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 68F6ECD566A631F3FF5C699A /* Pods-BigNeonUI.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

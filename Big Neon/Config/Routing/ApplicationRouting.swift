@@ -9,11 +9,11 @@ final class ApplicationRouter {
         window.tintColor = UIColor.red
         window.makeKeyAndVisible()
         if userIsLoggedIn() == false {
-            let navController = UINavigationController(rootViewController: ViewController())
+            let navController = TabBarController()
             window.rootViewController = navController
             return window
         }
-        let navVC = UINavigationController(rootViewController: ViewController())
+        let navVC = TabBarController()  //  UINavigationController(rootViewController: ViewController())
         window.rootViewController = navVC
         return window
     }
