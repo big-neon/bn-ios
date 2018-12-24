@@ -6,15 +6,14 @@ final class ExploreViewController: UIViewController, UICollectionViewDelegate, U
     
     internal lazy var exploreCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.minimumLineSpacing = 32.0
+        flowLayout.minimumLineSpacing = 15.0
         flowLayout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.backgroundColor = UIColor.brandBackground
-        collectionView.contentInset = UIEdgeInsets(top: 32.0, left: 0.0, bottom: 32.0, right: 0.0)
+        collectionView.contentInset = UIEdgeInsets(top: 20.0, left: 0.0, bottom: 15.0, right: 0.0)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.alwaysBounceVertical = true
-        collectionView.alwaysBounceHorizontal = false
         collectionView.allowsSelection = true
         collectionView.showsVerticalScrollIndicator = true
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -25,11 +24,12 @@ final class ExploreViewController: UIViewController, UICollectionViewDelegate, U
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         self.configureCollectionView()
+        self.navigationNoLineBar()
     }
     
     private func configureCollectionView() {
         view.addSubview(exploreCollectionView)
-//        hometripsCollectionView.register(HeadingCell.self, forCellWithReuseIdentifier: HeadingCell.cellID)
+        (exploreCollectionView).register(UpcomingEventCell.self, forCellWithReuseIdentifier: UpcomingEventCell.cellID)
         
         exploreCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         exploreCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
