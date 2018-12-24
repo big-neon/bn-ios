@@ -1,8 +1,5 @@
 PODS:
   - Alamofire (4.7.3)
-  - Crashlytics (3.11.1):
-    - Fabric (~> 1.8.1)
-  - Fabric (1.8.2)
   - Mixpanel (3.3.7)
   - pop (1.0.12)
   - PresenterKit (5.1.0)
@@ -12,8 +9,6 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
-  - Crashlytics
-  - Fabric
   - Mixpanel
   - pop
   - PresenterKit
@@ -24,8 +19,6 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
-    - Crashlytics
-    - Fabric
     - Mixpanel
     - pop
     - PresenterKit
@@ -35,8 +28,6 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
-  Crashlytics: ca7ab4bc304aa216bdc2e4c1a96389ee77252203
-  Fabric: d2b22f443ba195d8a7cc204da230977c72733b40
   Mixpanel: 1e94d1d29dfc3d3c66f734d10e29ad86420889fe
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   PresenterKit: ebb82bda6b161c720db9b5346cb593b9b00e0ed5
@@ -44,6 +35,6 @@ SPEC CHECKSUMS:
   Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
-PODFILE CHECKSUM: 284c947896f72a65902ed9af184484a0f54b02f4
+PODFILE CHECKSUM: 4dc3ec6ba153691fb42d67df107259c9bad49477
 
 COCOAPODS: 1.5.3

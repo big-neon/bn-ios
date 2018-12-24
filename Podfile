@@ -1,21 +1,19 @@
-platform :ios, '10.0'
+platform :ios, '11.0'
 use_frameworks!
 
 target 'BigNeonCore' do
 
 	pod 'Stripe'
-    	pod 'Alamofire', '~> 4.4'
-    	pod 'Mixpanel'
-    	pod 'Crashlytics'
+    pod 'Alamofire', '~> 4.4'
+    pod 'Mixpanel'
 
   	# Pods for Big Neon
 	target 'Big Neon' do
 		inherit! :search_paths
-        	pod 'PresenterKit'
-        	pod 'pop'
-		pod 'PWSwitch'
-        	pod 'UITextField+Shake'
-        	pod 'Fabric'
+        pod 'PresenterKit'
+        pod 'pop'
+        pod 'PWSwitch'
+        pod 'UITextField+Shake'
 	end
 end
 
