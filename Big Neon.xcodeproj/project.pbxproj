@@ -7,13 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3AD04FED44A9DBAF9C541482 /* Pods_Big_Neon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78310A7CD778655F8A9FC77B /* Pods_Big_Neon.framework */; };
+		75B753A8531A78F8D6ABC9CC /* Pods_BigNeonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E79034B835677C6F76F5533 /* Pods_BigNeonUI.framework */; };
+		77B009DAFA503468E64EF4C2 /* Pods_BigNeonCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD7091C5F5E53BFE54F25FD /* Pods_BigNeonCore.framework */; };
 		C62BC78421CCC3F700830A5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC78321CCC3F700830A5F /* AppDelegate.swift */; };
 		C62BC78621CCC3F700830A5F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC78521CCC3F700830A5F /* ViewController.swift */; };
-		C62BC78921CCC3F700830A5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78721CCC3F700830A5F /* Main.storyboard */; };
 		C62BC78B21CCC3FB00830A5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78A21CCC3FB00830A5F /* Assets.xcassets */; };
 		C62BC78E21CCC3FB00830A5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78C21CCC3FB00830A5F /* LaunchScreen.storyboard */; };
 		C62BC79921CCC3FB00830A5F /* Big_NeonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */; };
 		C62BC7A421CCC3FB00830A5F /* Big_NeonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC7A321CCC3FB00830A5F /* Big_NeonUITests.swift */; };
+		C694D22021D0BBFF00B2AE07 /* BigNeonCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C694D21721D0BBFE00B2AE07 /* BigNeonCore.framework */; };
+		C694D22721D0BBFF00B2AE07 /* BigNeonCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694D22621D0BBFF00B2AE07 /* BigNeonCoreTests.swift */; };
+		C694D22921D0BBFF00B2AE07 /* BigNeonCore.h in Headers */ = {isa = PBXBuildFile; fileRef = C694D21921D0BBFE00B2AE07 /* BigNeonCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C694D22C21D0BBFF00B2AE07 /* BigNeonCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C694D21721D0BBFE00B2AE07 /* BigNeonCore.framework */; };
+		C694D22D21D0BBFF00B2AE07 /* BigNeonCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C694D21721D0BBFE00B2AE07 /* BigNeonCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C694D24321D0BC1D00B2AE07 /* BigNeonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C694D23A21D0BC1D00B2AE07 /* BigNeonUI.framework */; };
+		C694D24A21D0BC1D00B2AE07 /* BigNeonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694D24921D0BC1D00B2AE07 /* BigNeonUITests.swift */; };
+		C694D24C21D0BC1D00B2AE07 /* BigNeonUI.h in Headers */ = {isa = PBXBuildFile; fileRef = C694D23C21D0BC1D00B2AE07 /* BigNeonUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C694D24F21D0BC1D00B2AE07 /* BigNeonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C694D23A21D0BC1D00B2AE07 /* BigNeonUI.framework */; };
+		C694D25021D0BC1D00B2AE07 /* BigNeonUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C694D23A21D0BC1D00B2AE07 /* BigNeonUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +43,77 @@
 			remoteGlobalIDString = C62BC77F21CCC3F700830A5F;
 			remoteInfo = "Big Neon";
 		};
+		C694D22121D0BBFF00B2AE07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C62BC77821CCC3F700830A5F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C694D21621D0BBFE00B2AE07;
+			remoteInfo = BigNeonCore;
+		};
+		C694D22321D0BBFF00B2AE07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C62BC77821CCC3F700830A5F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C62BC77F21CCC3F700830A5F;
+			remoteInfo = "Big Neon";
+		};
+		C694D22A21D0BBFF00B2AE07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C62BC77821CCC3F700830A5F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C694D21621D0BBFE00B2AE07;
+			remoteInfo = BigNeonCore;
+		};
+		C694D24421D0BC1D00B2AE07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C62BC77821CCC3F700830A5F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C694D23921D0BC1D00B2AE07;
+			remoteInfo = BigNeonUI;
+		};
+		C694D24621D0BC1D00B2AE07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C62BC77821CCC3F700830A5F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C62BC77F21CCC3F700830A5F;
+			remoteInfo = "Big Neon";
+		};
+		C694D24D21D0BC1D00B2AE07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C62BC77821CCC3F700830A5F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C694D23921D0BC1D00B2AE07;
+			remoteInfo = BigNeonUI;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		C694D23321D0BBFF00B2AE07 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C694D22D21D0BBFF00B2AE07 /* BigNeonCore.framework in Embed Frameworks */,
+				C694D25021D0BC1D00B2AE07 /* BigNeonUI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2C6EEF4B027329FAE820B874 /* Pods-BigNeonUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigNeonUI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BigNeonUI/Pods-BigNeonUI.debug.xcconfig"; sourceTree = "<group>"; };
+		3E79034B835677C6F76F5533 /* Pods_BigNeonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BigNeonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CD7091C5F5E53BFE54F25FD /* Pods_BigNeonCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BigNeonCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		68F6ECD566A631F3FF5C699A /* Pods-BigNeonUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigNeonUI.release.xcconfig"; path = "Pods/Target Support Files/Pods-BigNeonUI/Pods-BigNeonUI.release.xcconfig"; sourceTree = "<group>"; };
+		6CC758E69ED3F7507F39BB91 /* Pods-Big Neon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Big Neon/Pods-Big Neon.release.xcconfig"; sourceTree = "<group>"; };
+		78310A7CD778655F8A9FC77B /* Pods_Big_Neon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big_Neon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB883EFDAE7FEF2892885C4C /* Pods-BigNeonCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigNeonCore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BigNeonCore/Pods-BigNeonCore.debug.xcconfig"; sourceTree = "<group>"; };
+		C5C35E86CF6274D746DC2A17 /* Pods-BigNeonCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigNeonCore.release.xcconfig"; path = "Pods/Target Support Files/Pods-BigNeonCore/Pods-BigNeonCore.release.xcconfig"; sourceTree = "<group>"; };
 		C62BC78021CCC3F700830A5F /* Big Neon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Big Neon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C62BC78321CCC3F700830A5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C62BC78521CCC3F700830A5F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C62BC78821CCC3F700830A5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C62BC78A21CCC3FB00830A5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C62BC78D21CCC3FB00830A5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C62BC78F21CCC3FB00830A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +123,19 @@
 		C62BC79F21CCC3FB00830A5F /* Big NeonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Big NeonUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C62BC7A321CCC3FB00830A5F /* Big_NeonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Big_NeonUITests.swift; sourceTree = "<group>"; };
 		C62BC7A521CCC3FB00830A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C694D21721D0BBFE00B2AE07 /* BigNeonCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BigNeonCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C694D21921D0BBFE00B2AE07 /* BigNeonCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BigNeonCore.h; sourceTree = "<group>"; };
+		C694D21A21D0BBFE00B2AE07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C694D21F21D0BBFF00B2AE07 /* BigNeonCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BigNeonCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C694D22621D0BBFF00B2AE07 /* BigNeonCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigNeonCoreTests.swift; sourceTree = "<group>"; };
+		C694D22821D0BBFF00B2AE07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C694D23A21D0BC1D00B2AE07 /* BigNeonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BigNeonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C694D23C21D0BC1D00B2AE07 /* BigNeonUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BigNeonUI.h; sourceTree = "<group>"; };
+		C694D23D21D0BC1D00B2AE07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C694D24221D0BC1D00B2AE07 /* BigNeonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BigNeonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C694D24921D0BC1D00B2AE07 /* BigNeonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigNeonUITests.swift; sourceTree = "<group>"; };
+		C694D24B21D0BC1D00B2AE07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF1FA333925A46724CB83E09 /* Pods-Big Neon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Big Neon/Pods-Big Neon.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +143,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C694D22C21D0BBFF00B2AE07 /* BigNeonCore.framework in Frameworks */,
+				C694D24F21D0BC1D00B2AE07 /* BigNeonUI.framework in Frameworks */,
+				3AD04FED44A9DBAF9C541482 /* Pods_Big_Neon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,16 +163,64 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C694D21421D0BBFE00B2AE07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77B009DAFA503468E64EF4C2 /* Pods_BigNeonCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C694D21C21D0BBFF00B2AE07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C694D22021D0BBFF00B2AE07 /* BigNeonCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C694D23721D0BC1D00B2AE07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75B753A8531A78F8D6ABC9CC /* Pods_BigNeonUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C694D23F21D0BC1D00B2AE07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C694D24321D0BC1D00B2AE07 /* BigNeonUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		923E270B89A42E8117A7D434 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				78310A7CD778655F8A9FC77B /* Pods_Big_Neon.framework */,
+				4CD7091C5F5E53BFE54F25FD /* Pods_BigNeonCore.framework */,
+				3E79034B835677C6F76F5533 /* Pods_BigNeonUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C62BC77721CCC3F700830A5F = {
 			isa = PBXGroup;
 			children = (
 				C62BC78221CCC3F700830A5F /* Big Neon */,
+				C694D23B21D0BC1D00B2AE07 /* BigNeonUI */,
+				C694D21821D0BBFE00B2AE07 /* BigNeonCore */,
 				C62BC79721CCC3FB00830A5F /* Big NeonTests */,
 				C62BC7A221CCC3FB00830A5F /* Big NeonUITests */,
+				C694D22521D0BBFF00B2AE07 /* BigNeonCoreTests */,
+				C694D24821D0BC1D00B2AE07 /* BigNeonUITests */,
 				C62BC78121CCC3F700830A5F /* Products */,
+				F65EEC9195B9C5AA4DD674D2 /* Pods */,
+				923E270B89A42E8117A7D434 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +230,10 @@
 				C62BC78021CCC3F700830A5F /* Big Neon.app */,
 				C62BC79421CCC3FB00830A5F /* Big NeonTests.xctest */,
 				C62BC79F21CCC3FB00830A5F /* Big NeonUITests.xctest */,
+				C694D21721D0BBFE00B2AE07 /* BigNeonCore.framework */,
+				C694D21F21D0BBFF00B2AE07 /* BigNeonCoreTests.xctest */,
+				C694D23A21D0BC1D00B2AE07 /* BigNeonUI.framework */,
+				C694D24221D0BC1D00B2AE07 /* BigNeonUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,7 +243,6 @@
 			children = (
 				C62BC78321CCC3F700830A5F /* AppDelegate.swift */,
 				C62BC78521CCC3F700830A5F /* ViewController.swift */,
-				C62BC78721CCC3F700830A5F /* Main.storyboard */,
 				C62BC78A21CCC3FB00830A5F /* Assets.xcassets */,
 				C62BC78C21CCC3FB00830A5F /* LaunchScreen.storyboard */,
 				C62BC78F21CCC3FB00830A5F /* Info.plist */,
@@ -125,20 +268,93 @@
 			path = "Big NeonUITests";
 			sourceTree = "<group>";
 		};
+		C694D21821D0BBFE00B2AE07 /* BigNeonCore */ = {
+			isa = PBXGroup;
+			children = (
+				C694D21921D0BBFE00B2AE07 /* BigNeonCore.h */,
+				C694D21A21D0BBFE00B2AE07 /* Info.plist */,
+			);
+			path = BigNeonCore;
+			sourceTree = "<group>";
+		};
+		C694D22521D0BBFF00B2AE07 /* BigNeonCoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				C694D22621D0BBFF00B2AE07 /* BigNeonCoreTests.swift */,
+				C694D22821D0BBFF00B2AE07 /* Info.plist */,
+			);
+			path = BigNeonCoreTests;
+			sourceTree = "<group>";
+		};
+		C694D23B21D0BC1D00B2AE07 /* BigNeonUI */ = {
+			isa = PBXGroup;
+			children = (
+				C694D23C21D0BC1D00B2AE07 /* BigNeonUI.h */,
+				C694D23D21D0BC1D00B2AE07 /* Info.plist */,
+			);
+			path = BigNeonUI;
+			sourceTree = "<group>";
+		};
+		C694D24821D0BC1D00B2AE07 /* BigNeonUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C694D24921D0BC1D00B2AE07 /* BigNeonUITests.swift */,
+				C694D24B21D0BC1D00B2AE07 /* Info.plist */,
+			);
+			path = BigNeonUITests;
+			sourceTree = "<group>";
+		};
+		F65EEC9195B9C5AA4DD674D2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CF1FA333925A46724CB83E09 /* Pods-Big Neon.debug.xcconfig */,
+				6CC758E69ED3F7507F39BB91 /* Pods-Big Neon.release.xcconfig */,
+				AB883EFDAE7FEF2892885C4C /* Pods-BigNeonCore.debug.xcconfig */,
+				C5C35E86CF6274D746DC2A17 /* Pods-BigNeonCore.release.xcconfig */,
+				2C6EEF4B027329FAE820B874 /* Pods-BigNeonUI.debug.xcconfig */,
+				68F6ECD566A631F3FF5C699A /* Pods-BigNeonUI.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		C694D21221D0BBFE00B2AE07 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C694D22921D0BBFF00B2AE07 /* BigNeonCore.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C694D23521D0BC1D00B2AE07 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C694D24C21D0BC1D00B2AE07 /* BigNeonUI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		C62BC77F21CCC3F700830A5F /* Big Neon */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C62BC7A821CCC3FB00830A5F /* Build configuration list for PBXNativeTarget "Big Neon" */;
 			buildPhases = (
+				2E74AE6097BD3B7E726A3E2E /* [CP] Check Pods Manifest.lock */,
 				C62BC77C21CCC3F700830A5F /* Sources */,
 				C62BC77D21CCC3F700830A5F /* Frameworks */,
 				C62BC77E21CCC3F700830A5F /* Resources */,
+				C694D23321D0BBFF00B2AE07 /* Embed Frameworks */,
+				38CC1584353202938BF8C806 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C694D22B21D0BBFF00B2AE07 /* PBXTargetDependency */,
+				C694D24E21D0BC1D00B2AE07 /* PBXTargetDependency */,
 			);
 			name = "Big Neon";
 			productName = "Big Neon";
@@ -181,6 +397,82 @@
 			productReference = C62BC79F21CCC3FB00830A5F /* Big NeonUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		C694D21621D0BBFE00B2AE07 /* BigNeonCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C694D23221D0BBFF00B2AE07 /* Build configuration list for PBXNativeTarget "BigNeonCore" */;
+			buildPhases = (
+				2A82D1DFF3BD0908001C618D /* [CP] Check Pods Manifest.lock */,
+				C694D21221D0BBFE00B2AE07 /* Headers */,
+				C694D21321D0BBFE00B2AE07 /* Sources */,
+				C694D21421D0BBFE00B2AE07 /* Frameworks */,
+				C694D21521D0BBFE00B2AE07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BigNeonCore;
+			productName = BigNeonCore;
+			productReference = C694D21721D0BBFE00B2AE07 /* BigNeonCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C694D21E21D0BBFF00B2AE07 /* BigNeonCoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C694D23421D0BBFF00B2AE07 /* Build configuration list for PBXNativeTarget "BigNeonCoreTests" */;
+			buildPhases = (
+				C694D21B21D0BBFF00B2AE07 /* Sources */,
+				C694D21C21D0BBFF00B2AE07 /* Frameworks */,
+				C694D21D21D0BBFF00B2AE07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C694D22221D0BBFF00B2AE07 /* PBXTargetDependency */,
+				C694D22421D0BBFF00B2AE07 /* PBXTargetDependency */,
+			);
+			name = BigNeonCoreTests;
+			productName = BigNeonCoreTests;
+			productReference = C694D21F21D0BBFF00B2AE07 /* BigNeonCoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C694D23921D0BC1D00B2AE07 /* BigNeonUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C694D25121D0BC1D00B2AE07 /* Build configuration list for PBXNativeTarget "BigNeonUI" */;
+			buildPhases = (
+				46C684B3A8DD5D0EA7148865 /* [CP] Check Pods Manifest.lock */,
+				C694D23521D0BC1D00B2AE07 /* Headers */,
+				C694D23621D0BC1D00B2AE07 /* Sources */,
+				C694D23721D0BC1D00B2AE07 /* Frameworks */,
+				C694D23821D0BC1D00B2AE07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BigNeonUI;
+			productName = BigNeonUI;
+			productReference = C694D23A21D0BC1D00B2AE07 /* BigNeonUI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C694D24121D0BC1D00B2AE07 /* BigNeonUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C694D25421D0BC1D00B2AE07 /* Build configuration list for PBXNativeTarget "BigNeonUITests" */;
+			buildPhases = (
+				C694D23E21D0BC1D00B2AE07 /* Sources */,
+				C694D23F21D0BC1D00B2AE07 /* Frameworks */,
+				C694D24021D0BC1D00B2AE07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C694D24521D0BC1D00B2AE07 /* PBXTargetDependency */,
+				C694D24721D0BC1D00B2AE07 /* PBXTargetDependency */,
+			);
+			name = BigNeonUITests;
+			productName = BigNeonUITests;
+			productReference = C694D24221D0BC1D00B2AE07 /* BigNeonUITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -202,6 +494,20 @@
 						CreatedOnToolsVersion = 10.1;
 						TestTargetID = C62BC77F21CCC3F700830A5F;
 					};
+					C694D21621D0BBFE00B2AE07 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					C694D21E21D0BBFF00B2AE07 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = C62BC77F21CCC3F700830A5F;
+					};
+					C694D23921D0BC1D00B2AE07 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					C694D24121D0BC1D00B2AE07 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = C62BC77F21CCC3F700830A5F;
+					};
 				};
 			};
 			buildConfigurationList = C62BC77B21CCC3F700830A5F /* Build configuration list for PBXProject "Big Neon" */;
@@ -220,6 +526,10 @@
 				C62BC77F21CCC3F700830A5F /* Big Neon */,
 				C62BC79321CCC3FB00830A5F /* Big NeonTests */,
 				C62BC79E21CCC3FB00830A5F /* Big NeonUITests */,
+				C694D21621D0BBFE00B2AE07 /* BigNeonCore */,
+				C694D21E21D0BBFF00B2AE07 /* BigNeonCoreTests */,
+				C694D23921D0BC1D00B2AE07 /* BigNeonUI */,
+				C694D24121D0BC1D00B2AE07 /* BigNeonUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -231,7 +541,6 @@
 			files = (
 				C62BC78E21CCC3FB00830A5F /* LaunchScreen.storyboard in Resources */,
 				C62BC78B21CCC3FB00830A5F /* Assets.xcassets in Resources */,
-				C62BC78921CCC3F700830A5F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +558,138 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C694D21521D0BBFE00B2AE07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C694D21D21D0BBFF00B2AE07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C694D23821D0BC1D00B2AE07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C694D24021D0BC1D00B2AE07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2A82D1DFF3BD0908001C618D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BigNeonCore-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2E74AE6097BD3B7E726A3E2E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Big Neon-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		38CC1584353202938BF8C806 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Big Neon/Pods-Big Neon-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
+				"${BUILT_PRODUCTS_DIR}/PWSwitch/PWSwitch.framework",
+				"${BUILT_PRODUCTS_DIR}/PresenterKit/PresenterKit.framework",
+				"${BUILT_PRODUCTS_DIR}/UITextField+Shake/UITextField_Shake.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Mixpanel/Mixpanel.framework",
+				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PWSwitch.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PresenterKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextField_Shake.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mixpanel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Big Neon/Pods-Big Neon-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		46C684B3A8DD5D0EA7148865 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BigNeonUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C62BC77C21CCC3F700830A5F /* Sources */ = {
@@ -277,6 +717,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C694D21321D0BBFE00B2AE07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C694D21B21D0BBFF00B2AE07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C694D22721D0BBFF00B2AE07 /* BigNeonCoreTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C694D23621D0BC1D00B2AE07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C694D23E21D0BC1D00B2AE07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C694D24A21D0BC1D00B2AE07 /* BigNeonUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -290,17 +760,39 @@
 			target = C62BC77F21CCC3F700830A5F /* Big Neon */;
 			targetProxy = C62BC7A021CCC3FB00830A5F /* PBXContainerItemProxy */;
 		};
+		C694D22221D0BBFF00B2AE07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C694D21621D0BBFE00B2AE07 /* BigNeonCore */;
+			targetProxy = C694D22121D0BBFF00B2AE07 /* PBXContainerItemProxy */;
+		};
+		C694D22421D0BBFF00B2AE07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C62BC77F21CCC3F700830A5F /* Big Neon */;
+			targetProxy = C694D22321D0BBFF00B2AE07 /* PBXContainerItemProxy */;
+		};
+		C694D22B21D0BBFF00B2AE07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C694D21621D0BBFE00B2AE07 /* BigNeonCore */;
+			targetProxy = C694D22A21D0BBFF00B2AE07 /* PBXContainerItemProxy */;
+		};
+		C694D24521D0BC1D00B2AE07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C694D23921D0BC1D00B2AE07 /* BigNeonUI */;
+			targetProxy = C694D24421D0BC1D00B2AE07 /* PBXContainerItemProxy */;
+		};
+		C694D24721D0BC1D00B2AE07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C62BC77F21CCC3F700830A5F /* Big Neon */;
+			targetProxy = C694D24621D0BC1D00B2AE07 /* PBXContainerItemProxy */;
+		};
+		C694D24E21D0BC1D00B2AE07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C694D23921D0BC1D00B2AE07 /* BigNeonUI */;
+			targetProxy = C694D24D21D0BC1D00B2AE07 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C62BC78721CCC3F700830A5F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C62BC78821CCC3F700830A5F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C62BC78C21CCC3FB00830A5F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -430,37 +922,41 @@
 		};
 		C62BC7A921CCC3FB00830A5F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF1FA333925A46724CB83E09 /* Pods-Big Neon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YVK784K26W;
 				INFOPLIST_FILE = "Big Neon/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bigneon.Big-Neon";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bigneon.Big-Neon.stagin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		C62BC7AA21CCC3FB00830A5F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6CC758E69ED3F7507F39BB91 /* Pods-Big Neon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YVK784K26W;
 				INFOPLIST_FILE = "Big Neon/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bigneon.Big-Neon";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bigneon.Big-Neon.stagin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -546,6 +1042,202 @@
 			};
 			name = Release;
 		};
+		C694D22E21D0BBFF00B2AE07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB883EFDAE7FEF2892885C4C /* Pods-BigNeonCore.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = YVK784K26W;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = BigNeonCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.BigNeonCore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C694D22F21D0BBFF00B2AE07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5C35E86CF6274D746DC2A17 /* Pods-BigNeonCore.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = YVK784K26W;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = BigNeonCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.BigNeonCore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C694D23021D0BBFF00B2AE07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YVK784K26W;
+				INFOPLIST_FILE = BigNeonCoreTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.BigNeonCoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Big Neon.app/Big Neon";
+			};
+			name = Debug;
+		};
+		C694D23121D0BBFF00B2AE07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YVK784K26W;
+				INFOPLIST_FILE = BigNeonCoreTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.BigNeonCoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Big Neon.app/Big Neon";
+			};
+			name = Release;
+		};
+		C694D25221D0BC1D00B2AE07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C6EEF4B027329FAE820B874 /* Pods-BigNeonUI.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = YVK784K26W;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = BigNeonUI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.BigNeonUI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C694D25321D0BC1D00B2AE07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68F6ECD566A631F3FF5C699A /* Pods-BigNeonUI.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = YVK784K26W;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = BigNeonUI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.BigNeonUI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C694D25521D0BC1D00B2AE07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YVK784K26W;
+				INFOPLIST_FILE = BigNeonUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.BigNeonUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Big Neon.app/Big Neon";
+			};
+			name = Debug;
+		};
+		C694D25621D0BC1D00B2AE07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YVK784K26W;
+				INFOPLIST_FILE = BigNeonUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.BigNeonUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Big Neon.app/Big Neon";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -581,6 +1273,42 @@
 			buildConfigurations = (
 				C62BC7AF21CCC3FB00830A5F /* Debug */,
 				C62BC7B021CCC3FB00830A5F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C694D23221D0BBFF00B2AE07 /* Build configuration list for PBXNativeTarget "BigNeonCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C694D22E21D0BBFF00B2AE07 /* Debug */,
+				C694D22F21D0BBFF00B2AE07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C694D23421D0BBFF00B2AE07 /* Build configuration list for PBXNativeTarget "BigNeonCoreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C694D23021D0BBFF00B2AE07 /* Debug */,
+				C694D23121D0BBFF00B2AE07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C694D25121D0BC1D00B2AE07 /* Build configuration list for PBXNativeTarget "BigNeonUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C694D25221D0BC1D00B2AE07 /* Debug */,
+				C694D25321D0BC1D00B2AE07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C694D25421D0BC1D00B2AE07 /* Build configuration list for PBXNativeTarget "BigNeonUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C694D25521D0BC1D00B2AE07 /* Debug */,
+				C694D25621D0BC1D00B2AE07 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

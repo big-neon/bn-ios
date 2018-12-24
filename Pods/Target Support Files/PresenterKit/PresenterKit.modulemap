@@ -1,0 +1,6 @@
+framework module PresenterKit {
+  umbrella header "PresenterKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
