@@ -11,7 +11,7 @@ final class TabBarController: UITabBarController {
     fileprivate var currentNavigationIndex: Int = 0
     
     private let exploreController  = UINavigationController(rootViewController: ExploreViewController())
-    private let ticketsController   = UINavigationController(rootViewController: ExploreViewController())
+    private let ticketsController   = UINavigationController(rootViewController: TicketsViewController())
     private let profileController  = UINavigationController(rootViewController: ExploreViewController())
     
     override func viewDidLoad() {

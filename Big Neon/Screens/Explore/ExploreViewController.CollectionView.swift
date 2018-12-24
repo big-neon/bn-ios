@@ -29,15 +29,14 @@ extension ExploreViewController {
             sectionLabelCell.sectionHeaderLabel.text = "Hot This Week"
             return sectionLabelCell
         case 1:
-            let upComingEvent: UpcomingEventCell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingEventCell.cellID, for: indexPath) as! UpcomingEventCell
-            return upComingEvent
+            let hotThisWeek: HotThisWeekCell = collectionView.dequeueReusableCell(withReuseIdentifier: HotThisWeekCell.cellID, for: indexPath) as! HotThisWeekCell
+            return hotThisWeek
         case 2:
             let sectionLabelCell: SectionHeaderCell = collectionView.dequeueReusableCell(withReuseIdentifier: SectionHeaderCell.cellID, for: indexPath) as! SectionHeaderCell
             sectionLabelCell.sectionHeaderLabel.text = "Upcoming"
             return sectionLabelCell
         default:
             let upComingEvent: UpcomingEventCell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingEventCell.cellID, for: indexPath) as! UpcomingEventCell
-            upComingEvent.favouriteButton.setImage(UIImage(named: "ic_favourite_inactive")!, for: UIControl.State.normal)
             upComingEvent.eventImageView.image = UIImage(named: "drake")
             return upComingEvent
         }

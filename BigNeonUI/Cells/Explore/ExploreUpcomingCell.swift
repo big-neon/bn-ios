@@ -18,6 +18,7 @@ public class UpcomingEventCell: UICollectionViewCell {
     
     public lazy var favouriteButton: UIButton = {
         let button = UIButton()
+        button.setImage(UIImage(named: "ic_favourite_inactive"), for: UIControl.State.normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -47,6 +48,11 @@ public class UpcomingEventCell: UICollectionViewCell {
         return view
     }()
     
+    public override func layoutSubviews() {
+        self.priceView.roundCorners([.topLeft, .topRight, .bottomRight], radius: 5.0)
+        self.priceView.layer.masksToBounds = true
+    }
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.clear
@@ -58,6 +64,7 @@ public class UpcomingEventCell: UICollectionViewCell {
         self.addSubview(eventNameLabel)
         self.addSubview(eventDateLabel)
         self.addSubview(favouriteButton)
+        self.addSubview(priceView)
         
         eventImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         eventImageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
@@ -78,6 +85,11 @@ public class UpcomingEventCell: UICollectionViewCell {
         eventDateLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         eventDateLabel.topAnchor.constraint(equalTo: eventNameLabel.bottomAnchor, constant: 8).isActive = true
         eventDateLabel.heightAnchor.constraint(equalToConstant: 14.0).isActive = true
+        
+        priceView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15.0).isActive = true
+        priceView.bottomAnchor.constraint(equalTo: eventImageView.bottomAnchor, constant: -15.0).isActive = true
+        priceView.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
+        priceView.widthAnchor.constraint(equalToConstant: 38.0).isActive = true
     }
     
     required public init?(coder aDecoder: NSCoder) {

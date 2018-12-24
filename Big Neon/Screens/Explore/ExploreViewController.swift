@@ -30,6 +30,7 @@ final class ExploreViewController: UIViewController, UICollectionViewDelegate, U
     private func configureCollectionView() {
         view.addSubview(exploreCollectionView)
         exploreCollectionView.register(SectionHeaderCell.self, forCellWithReuseIdentifier: SectionHeaderCell.cellID)
+        exploreCollectionView.register(HotThisWeekCell.self, forCellWithReuseIdentifier: HotThisWeekCell.cellID)
         exploreCollectionView.register(UpcomingEventCell.self, forCellWithReuseIdentifier: UpcomingEventCell.cellID)
         
         exploreCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true

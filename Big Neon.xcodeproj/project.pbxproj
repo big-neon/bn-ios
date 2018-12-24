@@ -24,6 +24,12 @@
 		C64B0AC621D0E89C00386000 /* ExploreUpcomingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AC521D0E89C00386000 /* ExploreUpcomingCell.swift */; };
 		C64B0AC821D0EF3C00386000 /* SectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AC721D0EF3C00386000 /* SectionHeaderCell.swift */; };
 		C64B0ACA21D0FA9100386000 /* NavBarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AC921D0FA9100386000 /* NavBarConfig.swift */; };
+		C64B0ACE21D100B600386000 /* HotThisWeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ACD21D100B600386000 /* HotThisWeekCell.swift */; };
+		C64B0AD021D1016600386000 /* HotWeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ACF21D1016600386000 /* HotWeekCell.swift */; };
+		C64B0AD221D11EF100386000 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AD121D11EF100386000 /* RoundedCorner.swift */; };
+		C64B0AD321D1209A00386000 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78A21CCC3FB00830A5F /* Assets.xcassets */; };
+		C64B0AD821D123F400386000 /* TicketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AD721D123F400386000 /* TicketsViewController.swift */; };
+		C64B0ADA21D1240700386000 /* TicketsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AD921D1240700386000 /* TicketsViewModel.swift */; };
 		C694D22021D0BBFF00B2AE07 /* BigNeonCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C694D21721D0BBFE00B2AE07 /* BigNeonCore.framework */; };
 		C694D22721D0BBFF00B2AE07 /* BigNeonCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694D22621D0BBFF00B2AE07 /* BigNeonCoreTests.swift */; };
 		C694D22921D0BBFF00B2AE07 /* BigNeonCore.h in Headers */ = {isa = PBXBuildFile; fileRef = C694D21921D0BBFE00B2AE07 /* BigNeonCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -140,6 +146,11 @@
 		C64B0AC521D0E89C00386000 /* ExploreUpcomingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreUpcomingCell.swift; sourceTree = "<group>"; };
 		C64B0AC721D0EF3C00386000 /* SectionHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderCell.swift; sourceTree = "<group>"; };
 		C64B0AC921D0FA9100386000 /* NavBarConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarConfig.swift; sourceTree = "<group>"; };
+		C64B0ACD21D100B600386000 /* HotThisWeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotThisWeekCell.swift; sourceTree = "<group>"; };
+		C64B0ACF21D1016600386000 /* HotWeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotWeekCell.swift; sourceTree = "<group>"; };
+		C64B0AD121D11EF100386000 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		C64B0AD721D123F400386000 /* TicketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsViewController.swift; sourceTree = "<group>"; };
+		C64B0AD921D1240700386000 /* TicketsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsViewModel.swift; sourceTree = "<group>"; };
 		C694D21721D0BBFE00B2AE07 /* BigNeonCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BigNeonCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C694D21921D0BBFE00B2AE07 /* BigNeonCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BigNeonCore.h; sourceTree = "<group>"; };
 		C694D21A21D0BBFE00B2AE07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -298,9 +309,9 @@
 		C64B0AB221D0DC3E00386000 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				C64B0ABC21D0DCDB00386000 /* ExploreViewModel.swift */,
-				C62BC78521CCC3F700830A5F /* ExploreViewController.swift */,
-				C64B0ABA21D0DCC900386000 /* ExploreViewController.CollectionView.swift */,
+				C64B0AD421D123C300386000 /* Explore */,
+				C64B0AD521D123D100386000 /* Tickets */,
+				C64B0AD621D123D700386000 /* Profile */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -308,8 +319,7 @@
 		C64B0AB321D0DC5D00386000 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				C64B0AC721D0EF3C00386000 /* SectionHeaderCell.swift */,
-				C64B0AC521D0E89C00386000 /* ExploreUpcomingCell.swift */,
+				C64B0ACB21D1009F00386000 /* Explore */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -325,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				C64B0AC921D0FA9100386000 /* NavBarConfig.swift */,
+				C64B0AD121D11EF100386000 /* RoundedCorner.swift */,
 			);
 			path = UIUtilities;
 			sourceTree = "<group>";
@@ -364,6 +375,51 @@
 				C64B0ABF21D0DD1E00386000 /* Utils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		C64B0ACB21D1009F00386000 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				C64B0ACC21D100AA00386000 /* HotThisWeekCells */,
+				C64B0AC721D0EF3C00386000 /* SectionHeaderCell.swift */,
+				C64B0AC521D0E89C00386000 /* ExploreUpcomingCell.swift */,
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		C64B0ACC21D100AA00386000 /* HotThisWeekCells */ = {
+			isa = PBXGroup;
+			children = (
+				C64B0ACD21D100B600386000 /* HotThisWeekCell.swift */,
+				C64B0ACF21D1016600386000 /* HotWeekCell.swift */,
+			);
+			path = HotThisWeekCells;
+			sourceTree = "<group>";
+		};
+		C64B0AD421D123C300386000 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				C64B0ABC21D0DCDB00386000 /* ExploreViewModel.swift */,
+				C62BC78521CCC3F700830A5F /* ExploreViewController.swift */,
+				C64B0ABA21D0DCC900386000 /* ExploreViewController.CollectionView.swift */,
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		C64B0AD521D123D100386000 /* Tickets */ = {
+			isa = PBXGroup;
+			children = (
+				C64B0AD921D1240700386000 /* TicketsViewModel.swift */,
+				C64B0AD721D123F400386000 /* TicketsViewController.swift */,
+			);
+			path = Tickets;
+			sourceTree = "<group>";
+		};
+		C64B0AD621D123D700386000 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		C694D21821D0BBFE00B2AE07 /* BigNeonCore */ = {
@@ -700,6 +756,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C64B0AD321D1209A00386000 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -820,10 +877,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C64B0ADA21D1240700386000 /* TicketsViewModel.swift in Sources */,
 				C64B0ABB21D0DCC900386000 /* ExploreViewController.CollectionView.swift in Sources */,
 				C64B0ABD21D0DCDB00386000 /* ExploreViewModel.swift in Sources */,
 				C694D25A21D0BFE600B2AE07 /* ApplicationRouting.swift in Sources */,
 				C62BC78621CCC3F700830A5F /* ExploreViewController.swift in Sources */,
+				C64B0AD821D123F400386000 /* TicketsViewController.swift in Sources */,
 				C64B0AC221D0DD5E00386000 /* TabBarController.swift in Sources */,
 				C62BC78421CCC3F700830A5F /* AppDelegate.swift in Sources */,
 				C64B0AC021D0DD1E00386000 /* Utils.swift in Sources */,
@@ -868,7 +927,10 @@
 				C64B0AC821D0EF3C00386000 /* SectionHeaderCell.swift in Sources */,
 				C64B0ACA21D0FA9100386000 /* NavBarConfig.swift in Sources */,
 				C64B0AC421D0DDE400386000 /* Colours.swift in Sources */,
+				C64B0ACE21D100B600386000 /* HotThisWeekCell.swift in Sources */,
 				C64B0AC621D0E89C00386000 /* ExploreUpcomingCell.swift in Sources */,
+				C64B0AD021D1016600386000 /* HotWeekCell.swift in Sources */,
+				C64B0AD221D11EF100386000 /* RoundedCorner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
