@@ -8,7 +8,7 @@ public class UpcomingEventCell: UICollectionViewCell {
     
     public let eventImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.brandGrey
+        imageView.backgroundColor = UIColor.brandBackground
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 2.0
@@ -16,29 +16,36 @@ public class UpcomingEventCell: UICollectionViewCell {
         return imageView
     }()
     
-//    public let rideDirectionLabel: BrandHeaderLabel = {
-//        let label = BrandHeaderLabel()
-//        label.textColor = UIColor.brandBlack
-//        label.text = "Ride Home"
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        return label
-//    }()
-//
-//    public let rideDetailsLabel: BrandHeaderLabel = {
-//        let label = BrandHeaderLabel()
-//        label.font = UIFont.header.withSize(16)
-//        label.textColor = UIColor.brandMediumGrey
-//        label.text = "Tuesday, 24 July"
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        return label
-//    }()
-//
-//    public let rideTimeLabel: BrandSubHeaderLabel = {
-//        let label = BrandSubHeaderLabel()
-//        label.textColor = UIColor.brandMediumGrey
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        return label
-//    }()
+    public lazy var favouriteButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    public let eventNameLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor.brandBlack
+        label.text = "The Weeknd"
+        label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.bold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    public let eventDateLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor.brandBlack
+        label.text = "Fri, July 20"
+        label.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.regular)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let priceView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,10 +55,29 @@ public class UpcomingEventCell: UICollectionViewCell {
     
     private func configureView() {
         self.addSubview(eventImageView)
+        self.addSubview(eventNameLabel)
+        self.addSubview(eventDateLabel)
+        self.addSubview(favouriteButton)
+        
         eventImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         eventImageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         eventImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         eventImageView.heightAnchor.constraint(equalToConstant: 162.0).isActive = true
+        
+        favouriteButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15.0).isActive = true
+        favouriteButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 15.0).isActive = true
+        favouriteButton.heightAnchor.constraint(equalToConstant: 35.0).isActive = true
+        favouriteButton.widthAnchor.constraint(equalToConstant: 35.0).isActive = true
+        
+        eventNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        eventNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        eventNameLabel.topAnchor.constraint(equalTo: eventImageView.bottomAnchor, constant: 12).isActive = true
+        eventNameLabel.heightAnchor.constraint(equalToConstant: 16.0).isActive = true
+        
+        eventDateLabel.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        eventDateLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        eventDateLabel.topAnchor.constraint(equalTo: eventNameLabel.bottomAnchor, constant: 8).isActive = true
+        eventDateLabel.heightAnchor.constraint(equalToConstant: 14.0).isActive = true
     }
     
     required public init?(coder aDecoder: NSCoder) {

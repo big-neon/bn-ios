@@ -6,10 +6,10 @@ final class ExploreViewController: UIViewController, UICollectionViewDelegate, U
     
     internal lazy var exploreCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.minimumLineSpacing = 15.0
+        flowLayout.minimumLineSpacing = 18.0
         flowLayout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.backgroundColor = UIColor.brandBackground
+        collectionView.backgroundColor = UIColor.white
         collectionView.contentInset = UIEdgeInsets(top: 20.0, left: 0.0, bottom: 15.0, right: 0.0)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -29,7 +29,8 @@ final class ExploreViewController: UIViewController, UICollectionViewDelegate, U
     
     private func configureCollectionView() {
         view.addSubview(exploreCollectionView)
-        (exploreCollectionView).register(UpcomingEventCell.self, forCellWithReuseIdentifier: UpcomingEventCell.cellID)
+        exploreCollectionView.register(SectionHeaderCell.self, forCellWithReuseIdentifier: SectionHeaderCell.cellID)
+        exploreCollectionView.register(UpcomingEventCell.self, forCellWithReuseIdentifier: UpcomingEventCell.cellID)
         
         exploreCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         exploreCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
