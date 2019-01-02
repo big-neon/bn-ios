@@ -14,6 +14,7 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
         tableView.backgroundColor = UIColor.brandBackground
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.contentInsetAdjustmentBehavior = .never
         tableView.separatorColor = UIColor.brandGrey.withAlphaComponent(0.5)
         tableView.showsVerticalScrollIndicator = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -29,7 +30,7 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     private func configureNavBar() {
-        self.navigationNoLineBar()
+        self.navigationClearBar()
         self.navigationController?.navigationBar.tintColor = UIColor.brandPrimary
         self.navigationController?.navigationBar.barTintColor = UIColor.white
     }
