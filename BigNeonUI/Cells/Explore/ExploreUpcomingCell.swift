@@ -11,7 +11,7 @@ public class UpcomingEventCell: UICollectionViewCell {
         imageView.backgroundColor = UIColor.brandBackground
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
-        imageView.layer.cornerRadius = 2.0
+        imageView.layer.cornerRadius = 4.0
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -41,17 +41,17 @@ public class UpcomingEventCell: UICollectionViewCell {
         return label
     }()
     
-    private let priceView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.white
+    private let priceView: EventPriceView = {
+        let view = EventPriceView()
+        view.priceLabel.text = "$30"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    public override func layoutSubviews() {
-        self.priceView.roundCorners([.topLeft, .topRight, .bottomRight], radius: 5.0)
-        self.priceView.layer.masksToBounds = true
-    }
+//    public override func layoutSubviews() {
+//        self.priceView.roundCorners([.topLeft, .topRight, .bottomRight], radius: 5.0)
+//        self.priceView.layer.masksToBounds = true
+//    }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)

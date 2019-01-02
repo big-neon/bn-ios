@@ -51,17 +51,12 @@ public class HotWeekCell: UICollectionViewCell {
         return label
     }()
     
-    private let priceView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.white
+    private let priceView: EventPriceView = {
+        let view = EventPriceView()
+        view.priceLabel.text = "$40"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
-    public override func layoutSubviews() {
-        self.priceView.roundCorners([.topLeft, .topRight, .bottomRight], radius: 5.0)
-        self.priceView.layer.masksToBounds = true
-    }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
