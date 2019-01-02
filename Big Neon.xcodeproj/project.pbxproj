@@ -46,6 +46,7 @@
 		C694D25021D0BC1D00B2AE07 /* BigNeonUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C694D23A21D0BC1D00B2AE07 /* BigNeonUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C694D25A21D0BFE600B2AE07 /* ApplicationRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */; };
 		C6AFB78921DD4F5B00670AC3 /* EventPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB78821DD4F5B00670AC3 /* EventPriceView.swift */; };
+		C6AFB78B21DD579600670AC3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB78A21DD579600670AC3 /* ProfileViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +175,7 @@
 		C694D24B21D0BC1D00B2AE07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouting.swift; sourceTree = "<group>"; };
 		C6AFB78821DD4F5B00670AC3 /* EventPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPriceView.swift; sourceTree = "<group>"; };
+		C6AFB78A21DD579600670AC3 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		CF1FA333925A46724CB83E09 /* Pods-Big Neon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Big Neon/Pods-Big Neon.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -430,6 +432,7 @@
 		C64B0AD621D123D700386000 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				C6AFB78A21DD579600670AC3 /* ProfileViewModel.swift */,
 				C64B0ADB21D1276100386000 /* ProfileViewController.swift */,
 				C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */,
 			);
@@ -906,6 +909,7 @@
 				C64B0ABD21D0DCDB00386000 /* ExploreViewModel.swift in Sources */,
 				C64B0AE121D1294600386000 /* ProfileViewController.TableView.swift in Sources */,
 				C694D25A21D0BFE600B2AE07 /* ApplicationRouting.swift in Sources */,
+				C6AFB78B21DD579600670AC3 /* ProfileViewModel.swift in Sources */,
 				C62BC78621CCC3F700830A5F /* ExploreViewController.swift in Sources */,
 				C64B0AD821D123F400386000 /* TicketsViewController.swift in Sources */,
 				C64B0AC221D0DD5E00386000 /* TabBarController.swift in Sources */,

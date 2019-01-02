@@ -5,7 +5,8 @@ import BigNeonUI
 
 internal class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     
-    internal var profileHeaderView                  = ProfileHeaderView()
+    internal var profileHeaderView: ProfileHeaderView = ProfileHeaderView()
+    internal var profileViewModel: ProfileViewModel = ProfileViewModel()
     internal let picker                             = UIImagePickerController()
     
     internal lazy var profileTableView: UITableView = {

@@ -17,7 +17,7 @@ public class HotThisWeekCell: UICollectionViewCell, UICollectionViewDelegate, UI
         collectionView.dataSource = self
         collectionView.alwaysBounceHorizontal = true
         collectionView.allowsSelection = true
-        collectionView.showsVerticalScrollIndicator = true
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()

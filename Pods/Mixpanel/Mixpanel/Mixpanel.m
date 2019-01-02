@@ -644,8 +644,7 @@ static NSString *defaultProjectToken;
             SEL selector = NSSelectorFromString(@"userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:");
             if (selector) {
                 [MPSwizzler swizzleSelector:selector
-                                    onClass:cls
-                                  withBlock:^(id view, SEL command, UIApplication *application, UNNotificationResponse *response) {
+                                    onClass:cls                                  withBlock:^(id view, SEL command, UIApplication *application, UNNotificationResponse *response) {
                                       [self trackPushNotification:response.notification.request.content.userInfo];
                                   }
                                       named:@"notification opened"];
