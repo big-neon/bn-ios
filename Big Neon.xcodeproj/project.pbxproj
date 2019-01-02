@@ -47,6 +47,12 @@
 		C694D25A21D0BFE600B2AE07 /* ApplicationRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */; };
 		C6AFB78921DD4F5B00670AC3 /* EventPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB78821DD4F5B00670AC3 /* EventPriceView.swift */; };
 		C6AFB78B21DD579600670AC3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB78A21DD579600670AC3 /* ProfileViewModel.swift */; };
+		C6AFB78F21DD658800670AC3 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB78E21DD658800670AC3 /* EventDetailViewController.swift */; };
+		C6AFB79121DD65D200670AC3 /* EventDetailViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB79021DD65D200670AC3 /* EventDetailViewController.TableView.swift */; };
+		C6AFB79421DD684300670AC3 /* EventHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB79321DD684300670AC3 /* EventHeaderView.swift */; };
+		C6AFB79621DD697700670AC3 /* EventTitleHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB79521DD697700670AC3 /* EventTitleHeaderCell.swift */; };
+		C6AFB79821DD69AB00670AC3 /* EventDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB79721DD69AB00670AC3 /* EventDateView.swift */; };
+		C6AFB79A21DD72FC00670AC3 /* InterestedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB79921DD72FC00670AC3 /* InterestedButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,6 +182,12 @@
 		C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouting.swift; sourceTree = "<group>"; };
 		C6AFB78821DD4F5B00670AC3 /* EventPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPriceView.swift; sourceTree = "<group>"; };
 		C6AFB78A21DD579600670AC3 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		C6AFB78E21DD658800670AC3 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		C6AFB79021DD65D200670AC3 /* EventDetailViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.TableView.swift; sourceTree = "<group>"; };
+		C6AFB79321DD684300670AC3 /* EventHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHeaderView.swift; sourceTree = "<group>"; };
+		C6AFB79521DD697700670AC3 /* EventTitleHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTitleHeaderCell.swift; sourceTree = "<group>"; };
+		C6AFB79721DD69AB00670AC3 /* EventDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDateView.swift; sourceTree = "<group>"; };
+		C6AFB79921DD72FC00670AC3 /* InterestedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestedButtonView.swift; sourceTree = "<group>"; };
 		CF1FA333925A46724CB83E09 /* Pods-Big Neon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Big Neon/Pods-Big Neon.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -331,6 +343,7 @@
 		C64B0AB321D0DC5D00386000 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				C6AFB79221DD682300670AC3 /* Event Detail */,
 				C64B0ADD21D127BF00386000 /* Profile */,
 				C64B0ACB21D1009F00386000 /* Explore */,
 			);
@@ -340,6 +353,9 @@
 		C64B0AB421D0DC6200386000 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				C6AFB78821DD4F5B00670AC3 /* EventPriceView.swift */,
+				C6AFB79721DD69AB00670AC3 /* EventDateView.swift */,
+				C6AFB79921DD72FC00670AC3 /* InterestedButtonView.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -349,7 +365,6 @@
 			children = (
 				C64B0AC921D0FA9100386000 /* NavBarConfig.swift */,
 				C64B0AD121D11EF100386000 /* RoundedCorner.swift */,
-				C6AFB78821DD4F5B00670AC3 /* EventPriceView.swift */,
 			);
 			path = UIUtilities;
 			sourceTree = "<group>";
@@ -413,9 +428,8 @@
 		C64B0AD421D123C300386000 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				C64B0ABC21D0DCDB00386000 /* ExploreViewModel.swift */,
-				C62BC78521CCC3F700830A5F /* ExploreViewController.swift */,
-				C64B0ABA21D0DCC900386000 /* ExploreViewController.CollectionView.swift */,
+				C6AFB78C21DD655900670AC3 /* ExploreViewController */,
+				C6AFB78D21DD656500670AC3 /* EventDetailViewController */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -507,6 +521,34 @@
 				C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */,
 			);
 			path = Routing;
+			sourceTree = "<group>";
+		};
+		C6AFB78C21DD655900670AC3 /* ExploreViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C64B0ABC21D0DCDB00386000 /* ExploreViewModel.swift */,
+				C62BC78521CCC3F700830A5F /* ExploreViewController.swift */,
+				C64B0ABA21D0DCC900386000 /* ExploreViewController.CollectionView.swift */,
+			);
+			path = ExploreViewController;
+			sourceTree = "<group>";
+		};
+		C6AFB78D21DD656500670AC3 /* EventDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C6AFB78E21DD658800670AC3 /* EventDetailViewController.swift */,
+				C6AFB79021DD65D200670AC3 /* EventDetailViewController.TableView.swift */,
+			);
+			path = EventDetailViewController;
+			sourceTree = "<group>";
+		};
+		C6AFB79221DD682300670AC3 /* Event Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C6AFB79321DD684300670AC3 /* EventHeaderView.swift */,
+				C6AFB79521DD697700670AC3 /* EventTitleHeaderCell.swift */,
+			);
+			path = "Event Detail";
 			sourceTree = "<group>";
 		};
 		F65EEC9195B9C5AA4DD674D2 /* Pods */ = {
@@ -906,6 +948,7 @@
 				C64B0ADA21D1240700386000 /* TicketsViewModel.swift in Sources */,
 				C64B0ABB21D0DCC900386000 /* ExploreViewController.CollectionView.swift in Sources */,
 				C64B0ADC21D1276100386000 /* ProfileViewController.swift in Sources */,
+				C6AFB78F21DD658800670AC3 /* EventDetailViewController.swift in Sources */,
 				C64B0ABD21D0DCDB00386000 /* ExploreViewModel.swift in Sources */,
 				C64B0AE121D1294600386000 /* ProfileViewController.TableView.swift in Sources */,
 				C694D25A21D0BFE600B2AE07 /* ApplicationRouting.swift in Sources */,
@@ -913,6 +956,7 @@
 				C62BC78621CCC3F700830A5F /* ExploreViewController.swift in Sources */,
 				C64B0AD821D123F400386000 /* TicketsViewController.swift in Sources */,
 				C64B0AC221D0DD5E00386000 /* TabBarController.swift in Sources */,
+				C6AFB79121DD65D200670AC3 /* EventDetailViewController.TableView.swift in Sources */,
 				C62BC78421CCC3F700830A5F /* AppDelegate.swift in Sources */,
 				C64B0AC021D0DD1E00386000 /* Utils.swift in Sources */,
 			);
@@ -956,12 +1000,16 @@
 				C64B0AC821D0EF3C00386000 /* SectionHeaderCell.swift in Sources */,
 				C64B0ACA21D0FA9100386000 /* NavBarConfig.swift in Sources */,
 				C64B0AC421D0DDE400386000 /* Colours.swift in Sources */,
+				C6AFB79821DD69AB00670AC3 /* EventDateView.swift in Sources */,
 				C64B0ACE21D100B600386000 /* HotThisWeekCell.swift in Sources */,
 				C64B0AC621D0E89C00386000 /* ExploreUpcomingCell.swift in Sources */,
 				C64B0AD021D1016600386000 /* HotWeekCell.swift in Sources */,
 				C64B0AD221D11EF100386000 /* RoundedCorner.swift in Sources */,
 				C64B0ADF21D128F200386000 /* ProfileHeaderView.swift in Sources */,
+				C6AFB79A21DD72FC00670AC3 /* InterestedButtonView.swift in Sources */,
 				C64B0AE321D1299200386000 /* ProfileTableCell.swift in Sources */,
+				C6AFB79421DD684300670AC3 /* EventHeaderView.swift in Sources */,
+				C6AFB79621DD697700670AC3 /* EventTitleHeaderCell.swift in Sources */,
 				C6AFB78921DD4F5B00670AC3 /* EventPriceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

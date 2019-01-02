@@ -38,5 +38,11 @@ final class ExploreViewController: UIViewController, UICollectionViewDelegate, U
         exploreCollectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         exploreCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
+    
+    internal func showEvent() {
+        let eventDetailVC = EventDetailViewController()
+        eventDetailVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(eventDetailVC, animated: true)
+    }
 }
 

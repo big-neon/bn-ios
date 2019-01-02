@@ -3,13 +3,13 @@
 import UIKit
 import BigNeonUI
 
-internal class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+internal class EventDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     
-    internal var profileHeaderView: ProfileHeaderView = ProfileHeaderView()
+    internal var eventHeaderView: EventHeaderView = EventHeaderView()
     internal var profileViewModel: ProfileViewModel = ProfileViewModel()
     internal let picker                             = UIImagePickerController()
     
-    internal lazy var profileTableView: UITableView = {
+    internal lazy var eventTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: UITableView.Style.grouped)
         tableView.backgroundColor = UIColor.brandBackground
         tableView.delegate = self
@@ -31,7 +31,7 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
     
     private func configureNavBar() {
         self.navigationClearBar()
-        self.navigationController?.navigationBar.tintColor = UIColor.brandPrimary
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.barTintColor = UIColor.white
     }
     
@@ -41,26 +41,26 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     private func sizeHeaderToFit() {
-        profileHeaderView.setNeedsLayout()
-        profileHeaderView.layoutIfNeeded()
-        var frame = profileHeaderView.frame
-        frame.size.height = CGFloat(280.0)
-        profileHeaderView.frame = frame
+        eventHeaderView.setNeedsLayout()
+        eventHeaderView.layoutIfNeeded()
+        var frame = eventHeaderView.frame
+        frame.size.height = CGFloat(470.0)
+        eventHeaderView.frame = frame
     }
     
     private func configureHeaderView() {
-        profileHeaderView  = ProfileHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 280.0))
-        profileTableView.tableHeaderView = profileHeaderView
+        eventHeaderView  = EventHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 470.0))
+        eventTableView.tableHeaderView = eventHeaderView
     }
     
     private func configureTableView() {
-        self.view.addSubview(profileTableView)
+        self.view.addSubview(eventTableView)
         
-        profileTableView.register(ProfileTableCell.self, forCellReuseIdentifier: ProfileTableCell.cellID)
+        eventTableView.register(ProfileTableCell.self, forCellReuseIdentifier: ProfileTableCell.cellID)
         
-        self.profileTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        self.profileTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        self.profileTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        self.profileTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        self.eventTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        self.eventTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        self.eventTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        self.eventTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 }
