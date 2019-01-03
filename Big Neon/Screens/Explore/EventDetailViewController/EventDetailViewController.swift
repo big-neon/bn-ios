@@ -89,6 +89,11 @@ internal class EventDetailViewController: UIViewController, UITableViewDelegate,
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+ 
+        if scrollView.contentOffset.y >= 0 {
+            self.eventHeaderView.eventImageTopAnchor?.constant = -scrollView.contentOffset.y * -0.5
+        }
+        
         let distanceToScroll: CGFloat = 350.0
         var offSet = scrollView.contentOffset.y / distanceToScroll
         if offSet > 1 {

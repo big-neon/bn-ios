@@ -44,5 +44,6 @@ final class ExploreViewController: UIViewController, UICollectionViewDelegate, U
         eventDetailVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(eventDetailVC, animated: true)
     }
+    
 }
 

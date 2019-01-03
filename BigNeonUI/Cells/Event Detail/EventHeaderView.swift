@@ -4,6 +4,8 @@ import UIKit
 
 final public class EventHeaderView: UIView {
     
+    public var eventImageTopAnchor: NSLayoutConstraint?
+    
     public let eventImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "drake")
@@ -75,7 +77,8 @@ final public class EventHeaderView: UIView {
         self.addSubview(eventImageView)
         self.eventImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         self.eventImageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        self.eventImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        self.eventImageTopAnchor = self.eventImageView.topAnchor.constraint(equalTo: self.topAnchor)
+        self.eventImageTopAnchor?.isActive = true
         self.eventImageView.heightAnchor.constraint(equalToConstant: 260).isActive = true
     }
     
@@ -90,11 +93,11 @@ final public class EventHeaderView: UIView {
         self.eventHeader.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         self.eventHeader.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         self.eventHeader.topAnchor.constraint(equalTo: self.topAnchor, constant: 240).isActive = true
-        self.eventHeader.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        self.eventHeader.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 40).isActive = true
         
         self.presentLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
         self.presentLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        self.presentLabel.topAnchor.constraint(equalTo: eventHeader.bottomAnchor, constant: 10).isActive = true
+        self.presentLabel.topAnchor.constraint(equalTo: eventHeader.topAnchor, constant: 50).isActive = true
         self.presentLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
         
         self.eventDateView.topAnchor.constraint(equalTo: presentLabel.bottomAnchor, constant: 5).isActive = true

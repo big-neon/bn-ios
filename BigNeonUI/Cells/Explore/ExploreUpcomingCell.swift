@@ -6,6 +6,8 @@ public class UpcomingEventCell: UICollectionViewCell {
     
     public static let cellID = "UpcomingEventCellID"
     
+    public var eventImageTopAnchor: NSLayoutConstraint?
+    
     public let eventImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.brandBackground
@@ -48,11 +50,6 @@ public class UpcomingEventCell: UICollectionViewCell {
         return view
     }()
     
-//    public override func layoutSubviews() {
-//        self.priceView.roundCorners([.topLeft, .topRight, .bottomRight], radius: 5.0)
-//        self.priceView.layer.masksToBounds = true
-//    }
-    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.clear
@@ -68,7 +65,8 @@ public class UpcomingEventCell: UICollectionViewCell {
         
         eventImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         eventImageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        eventImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        self.eventImageTopAnchor = eventImageView.topAnchor.constraint(equalTo: self.topAnchor)
+        self.eventImageTopAnchor?.isActive = true
         eventImageView.heightAnchor.constraint(equalToConstant: 162.0).isActive = true
         
         favouriteButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15.0).isActive = true
