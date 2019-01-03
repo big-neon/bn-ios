@@ -6,12 +6,14 @@ public class UpcomingEventCell: UICollectionViewCell {
     
     public static let cellID = "UpcomingEventCellID"
     
+    public var eventImageTopAnchor: NSLayoutConstraint?
+    
     public let eventImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.brandBackground
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
-        imageView.layer.cornerRadius = 2.0
+        imageView.layer.cornerRadius = 4.0
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -41,17 +43,12 @@ public class UpcomingEventCell: UICollectionViewCell {
         return label
     }()
     
-    private let priceView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.white
+    private let priceView: EventPriceView = {
+        let view = EventPriceView()
+        view.priceLabel.text = "$30"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
-    public override func layoutSubviews() {
-        self.priceView.roundCorners([.topLeft, .topRight, .bottomRight], radius: 5.0)
-        self.priceView.layer.masksToBounds = true
-    }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -68,7 +65,8 @@ public class UpcomingEventCell: UICollectionViewCell {
         
         eventImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         eventImageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        eventImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        self.eventImageTopAnchor = eventImageView.topAnchor.constraint(equalTo: self.topAnchor)
+        self.eventImageTopAnchor?.isActive = true
         eventImageView.heightAnchor.constraint(equalToConstant: 162.0).isActive = true
         
         favouriteButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15.0).isActive = true

@@ -59,6 +59,10 @@ extension ExploreViewController {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        if indexPath.section == 3 {
+            self.showEvent()
+        }
+        
     }
     
 }

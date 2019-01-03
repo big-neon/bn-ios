@@ -5,7 +5,8 @@ import BigNeonUI
 
 internal class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     
-    internal var profileHeaderView                  = ProfileHeaderView()
+    internal var profileHeaderView: ProfileHeaderView = ProfileHeaderView()
+    internal var profileViewModel: ProfileViewModel = ProfileViewModel()
     internal let picker                             = UIImagePickerController()
     
     internal lazy var profileTableView: UITableView = {
@@ -13,7 +14,8 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
         tableView.backgroundColor = UIColor.brandBackground
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorColor = UIColor.brandGrey.withAlphaComponent(0.5)
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.separatorColor = UIColor.brandGrey.withAlphaComponent(0.3)
         tableView.showsVerticalScrollIndicator = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -28,7 +30,7 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     private func configureNavBar() {
-        self.navigationNoLineBar()
+        self.navigationClearBar()
         self.navigationController?.navigationBar.tintColor = UIColor.brandPrimary
         self.navigationController?.navigationBar.barTintColor = UIColor.white
     }

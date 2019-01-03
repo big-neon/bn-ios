@@ -11,7 +11,7 @@ public class HotWeekCell: UICollectionViewCell {
         imageView.backgroundColor = UIColor.brandBackground
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
-        imageView.layer.cornerRadius = 4.0
+        imageView.layer.cornerRadius = 6.0
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -34,7 +34,7 @@ public class HotWeekCell: UICollectionViewCell {
     
     public let eventLocationLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.brandLightGrey
+        label.textColor = UIColor.white
         label.text = "Fox Theater  •  Oakland, CA"
         label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -44,24 +44,19 @@ public class HotWeekCell: UICollectionViewCell {
     public let eventDateLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
-        label.textColor = UIColor.brandLightGrey
+        label.textColor = UIColor.white
         label.text = "July 15 2018"
         label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private let priceView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.white
+    private let priceView: EventPriceView = {
+        let view = EventPriceView()
+        view.priceLabel.text = "$40"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
-    public override func layoutSubviews() {
-        self.priceView.roundCorners([.topLeft, .topRight, .bottomRight], radius: 5.0)
-        self.priceView.layer.masksToBounds = true
-    }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
