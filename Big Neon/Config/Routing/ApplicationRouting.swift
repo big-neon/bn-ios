@@ -13,7 +13,7 @@ final class ApplicationRouter {
             window.rootViewController = navController
             return window
         }
-        let navVC = TabBarController()  //  UINavigationController(rootViewController: ViewController())
+        let navVC = UINavigationController(rootViewController: SplashViewController())
         window.rootViewController = navVC
         return window
     }
