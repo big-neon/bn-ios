@@ -29,7 +29,7 @@ final class SplashViewController: UIViewController {
         playerLayer.frame = self.view.bounds
         self.view.layer.addSublayer(playerLayer)
         player.play()
-        player.volume = 0.0
+        player.isMuted = true
         
     }
     

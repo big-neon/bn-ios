@@ -1,7 +1,13 @@
 
 import UIKit
 
+public protocol ProfileHeaderDelegate {
+    func handleShowQRCodeView()
+}
+
 final public class ProfileHeaderView: UIView {
+    
+    public var delegate: ProfileHeaderDelegate?
     
     public let profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -15,8 +21,10 @@ final public class ProfileHeaderView: UIView {
         return imageView
     }()
     
-    public let qrCodeImageView: UIImageView = {
+    public lazy var qrCodeImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showQRCode)))
         imageView.image = UIImage(named: "ic_QRCode")
         imageView.contentMode = .scaleAspectFit
         imageView.layer.shadowColor = UIColor.black.cgColor
@@ -97,6 +105,10 @@ final public class ProfileHeaderView: UIView {
         self.userEmailLabel.rightAnchor.constraint(equalTo: userNameLabel.rightAnchor).isActive = true
         self.userEmailLabel.centerYAnchor.constraint(equalTo: emailIconImageView.centerYAnchor).isActive = true
         self.userEmailLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+    }
+    
+    @objc private func showQRCode() {
+        self.delegate?.handleShowQRCodeView()
     }
     
     required public init?(coder aDecoder: NSCoder) {
