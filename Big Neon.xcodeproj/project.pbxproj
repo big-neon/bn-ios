@@ -59,6 +59,16 @@
 		C6AFB79A21DD72FC00670AC3 /* InterestedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB79921DD72FC00670AC3 /* InterestedButtonView.swift */; };
 		C6AFB79C21DD76AE00670AC3 /* ExploreDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB79B21DD76AE00670AC3 /* ExploreDetailViewModel.swift */; };
 		C6AFB79E21DD835200670AC3 /* StatusBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB79D21DD835200670AC3 /* StatusBarView.swift */; };
+		C6B2AC4721E4CC5700F996AA /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC4621E4CC5700F996AA /* Event.swift */; };
+		C6B2AC4921E4CCF900F996AA /* LocalizedTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC4821E4CCF900F996AA /* LocalizedTimes.swift */; };
+		C6B2AC4B21E4CD2E00F996AA /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC4A21E4CD2E00F996AA /* Venue.swift */; };
+		C6B2AC4D21E4CD4500F996AA /* Paging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC4C21E4CD4500F996AA /* Paging.swift */; };
+		C6B2AC5321E4D51B00F996AA /* BusinessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5221E4D51B00F996AA /* BusinessService.swift */; };
+		C6B2AC5521E4D52E00F996AA /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5421E4D52E00F996AA /* DatabaseService.swift */; };
+		C6B2AC5721E4D57900F996AA /* DatabaseService.Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5621E4D57900F996AA /* DatabaseService.Events.swift */; };
+		C6B2AC5A21E4D6B100F996AA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5921E4D6B100F996AA /* API.swift */; };
+		C6B2AC5C21E4D94700F996AA /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5B21E4D94700F996AA /* Events.swift */; };
+		C6B2AC5E21E4DD3100F996AA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,6 +210,16 @@
 		C6AFB79921DD72FC00670AC3 /* InterestedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestedButtonView.swift; sourceTree = "<group>"; };
 		C6AFB79B21DD76AE00670AC3 /* ExploreDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreDetailViewModel.swift; sourceTree = "<group>"; };
 		C6AFB79D21DD835200670AC3 /* StatusBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarView.swift; sourceTree = "<group>"; };
+		C6B2AC4621E4CC5700F996AA /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		C6B2AC4821E4CCF900F996AA /* LocalizedTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedTimes.swift; sourceTree = "<group>"; };
+		C6B2AC4A21E4CD2E00F996AA /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
+		C6B2AC4C21E4CD4500F996AA /* Paging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paging.swift; sourceTree = "<group>"; };
+		C6B2AC5221E4D51B00F996AA /* BusinessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessService.swift; sourceTree = "<group>"; };
+		C6B2AC5421E4D52E00F996AA /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		C6B2AC5621E4D57900F996AA /* DatabaseService.Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Events.swift; sourceTree = "<group>"; };
+		C6B2AC5921E4D6B100F996AA /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		C6B2AC5B21E4D94700F996AA /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
+		C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CF1FA333925A46724CB83E09 /* Pods-Big Neon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Big Neon/Pods-Big Neon.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -346,6 +366,7 @@
 		C64B0AB221D0DC3E00386000 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */,
 				C64B0AD421D123C300386000 /* Explore */,
 				C64B0AD521D123D100386000 /* Tickets */,
 				C64B0AD621D123D700386000 /* Profile */,
@@ -481,6 +502,9 @@
 		C694D21821D0BBFE00B2AE07 /* BigNeonCore */ = {
 			isa = PBXGroup;
 			children = (
+				C6B2AC5821E4D69E00F996AA /* API */,
+				C6B2AC4421E4CA6100F996AA /* Services */,
+				C6B2AC4321E4CA5900F996AA /* Models */,
 				C694D21921D0BBFE00B2AE07 /* BigNeonCore.h */,
 				C694D21A21D0BBFE00B2AE07 /* Info.plist */,
 			);
@@ -567,6 +591,52 @@
 				C6AFB79521DD697700670AC3 /* EventDetailCell.swift */,
 			);
 			path = "Event Detail";
+			sourceTree = "<group>";
+		};
+		C6B2AC4321E4CA5900F996AA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C6B2AC5B21E4D94700F996AA /* Events.swift */,
+				C6B2AC4621E4CC5700F996AA /* Event.swift */,
+				C6B2AC4821E4CCF900F996AA /* LocalizedTimes.swift */,
+				C6B2AC4A21E4CD2E00F996AA /* Venue.swift */,
+				C6B2AC4C21E4CD4500F996AA /* Paging.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C6B2AC4421E4CA6100F996AA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C6B2AC5021E4D4FB00F996AA /* BusinessService */,
+				C6B2AC5121E4D50500F996AA /* DatabaseService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C6B2AC5021E4D4FB00F996AA /* BusinessService */ = {
+			isa = PBXGroup;
+			children = (
+				C6B2AC5221E4D51B00F996AA /* BusinessService.swift */,
+			);
+			path = BusinessService;
+			sourceTree = "<group>";
+		};
+		C6B2AC5121E4D50500F996AA /* DatabaseService */ = {
+			isa = PBXGroup;
+			children = (
+				C6B2AC5421E4D52E00F996AA /* DatabaseService.swift */,
+				C6B2AC5621E4D57900F996AA /* DatabaseService.Events.swift */,
+			);
+			path = DatabaseService;
+			sourceTree = "<group>";
+		};
+		C6B2AC5821E4D69E00F996AA /* API */ = {
+			isa = PBXGroup;
+			children = (
+				C6B2AC5921E4D6B100F996AA /* API.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		F65EEC9195B9C5AA4DD674D2 /* Pods */ = {
@@ -761,6 +831,7 @@
 					};
 					C694D21621D0BBFE00B2AE07 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					C694D21E21D0BBFF00B2AE07 = {
 						CreatedOnToolsVersion = 10.1;
@@ -971,6 +1042,7 @@
 				C64B0ABD21D0DCDB00386000 /* ExploreViewModel.swift in Sources */,
 				C64B0AE121D1294600386000 /* ProfileViewController.TableView.swift in Sources */,
 				C694D25A21D0BFE600B2AE07 /* ApplicationRouting.swift in Sources */,
+				C6B2AC5E21E4DD3100F996AA /* BaseViewController.swift in Sources */,
 				C6AFB78B21DD579600670AC3 /* ProfileViewModel.swift in Sources */,
 				C62BC78621CCC3F700830A5F /* ExploreViewController.swift in Sources */,
 				C6AFB79C21DD76AE00670AC3 /* ExploreDetailViewModel.swift in Sources */,
@@ -1003,6 +1075,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6B2AC5521E4D52E00F996AA /* DatabaseService.swift in Sources */,
+				C6B2AC4921E4CCF900F996AA /* LocalizedTimes.swift in Sources */,
+				C6B2AC4D21E4CD4500F996AA /* Paging.swift in Sources */,
+				C6B2AC4B21E4CD2E00F996AA /* Venue.swift in Sources */,
+				C6B2AC4721E4CC5700F996AA /* Event.swift in Sources */,
+				C6B2AC5321E4D51B00F996AA /* BusinessService.swift in Sources */,
+				C6B2AC5C21E4D94700F996AA /* Events.swift in Sources */,
+				C6B2AC5A21E4D6B100F996AA /* API.swift in Sources */,
+				C6B2AC5721E4D57900F996AA /* DatabaseService.Events.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1347,6 +1428,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AB883EFDAE7FEF2892885C4C /* Pods-BigNeonCore.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1366,6 +1448,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.BigNeonCore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1377,6 +1460,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C5C35E86CF6274D746DC2A17 /* Pods-BigNeonCore.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

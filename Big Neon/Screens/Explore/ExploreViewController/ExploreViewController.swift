@@ -2,7 +2,7 @@
 import UIKit
 import BigNeonUI
 
-final class ExploreViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+final class ExploreViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     internal lazy var exploreCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -22,9 +22,20 @@ final class ExploreViewController: UIViewController, UICollectionViewDelegate, U
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
-        self.configureCollectionView()
-        self.navigationNoLineBar()
+        self.fetchEvents()
+    }
+    
+    private func fetchEvents() {
+        self.loadingView.startAnimating()
+        self.exploreViewModel.fetchEvents { (completed) in
+            self.loadingView.stopAnimating()
+            if completed == false {
+                print(completed)
+                return
+            }
+            self.configureCollectionView()
+            print(completed)
+        }
     }
     
     private func configureCollectionView() {
