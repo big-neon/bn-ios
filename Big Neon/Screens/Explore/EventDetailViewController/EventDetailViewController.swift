@@ -8,7 +8,7 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
     internal var eventHeaderView: EventHeaderView = EventHeaderView()
     
     internal lazy var eventTableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: UITableView.Style.grouped)
+        let tableView = UITableView(frame: .zero, style: UITableView.Style.plain)
         tableView.backgroundColor = UIColor.white
         tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 60.0, right: 0.0)
         tableView.delegate = self
@@ -40,12 +40,12 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
     }
     
     private func fetchEvent() {
-        self.exploreViewModel.fetchEvents { (completed) in
+        self.eventDetailViewModel.fetchEvent { (completed) in
             DispatchQueue.main.async {
                 if completed == false {
-                    print(completed)
                     return
                 }
+                print(self.eventDetailViewModel.eventDetail?.ageLimit)
                 self.eventTableView.reloadData()
                 self.configureButtonView()
             }
@@ -87,6 +87,7 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
         self.view.addSubview(eventTableView)
         
         eventTableView.register(EventDetailCell.self, forCellReuseIdentifier: EventDetailCell.cellID)
+        eventTableView.register(EventTimeAndLocationCell.self, forCellReuseIdentifier: EventTimeAndLocationCell.cellID)
         
         self.eventTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         self.eventTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true

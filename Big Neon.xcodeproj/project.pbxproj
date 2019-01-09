@@ -41,6 +41,7 @@
 		C65B493721E5F82A00756C3E /* Organisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B493621E5F82A00756C3E /* Organisation.swift */; };
 		C65B493921E5F84E00756C3E /* TicketType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B493821E5F84E00756C3E /* TicketType.swift */; };
 		C65B493B21E5F86800756C3E /* TicketPricing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B493A21E5F86800756C3E /* TicketPricing.swift */; };
+		C65B493D21E6009900756C3E /* EventTimeAndLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B493C21E6009900756C3E /* EventTimeAndLocationCell.swift */; };
 		C66C0BA521E337D40066CD0F /* splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C66C0BA421E337D40066CD0F /* splash.mp4 */; };
 		C66C0BA721E339CA0066CD0F /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C0BA621E339CA0066CD0F /* SplashViewController.swift */; };
 		C66C0BA921E33F920066CD0F /* TicketQRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C0BA821E33F920066CD0F /* TicketQRCodeView.swift */; };
@@ -197,6 +198,7 @@
 		C65B493621E5F82A00756C3E /* Organisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organisation.swift; sourceTree = "<group>"; };
 		C65B493821E5F84E00756C3E /* TicketType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketType.swift; sourceTree = "<group>"; };
 		C65B493A21E5F86800756C3E /* TicketPricing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketPricing.swift; sourceTree = "<group>"; };
+		C65B493C21E6009900756C3E /* EventTimeAndLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTimeAndLocationCell.swift; sourceTree = "<group>"; };
 		C66C0BA421E337D40066CD0F /* splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.mp4; sourceTree = "<group>"; };
 		C66C0BA621E339CA0066CD0F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		C66C0BA821E33F920066CD0F /* TicketQRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketQRCodeView.swift; sourceTree = "<group>"; };
@@ -637,6 +639,7 @@
 			children = (
 				C6AFB79321DD684300670AC3 /* EventHeaderView.swift */,
 				C6AFB79521DD697700670AC3 /* EventDetailCell.swift */,
+				C65B493C21E6009900756C3E /* EventTimeAndLocationCell.swift */,
 			);
 			path = "Event Detail";
 			sourceTree = "<group>";
@@ -1173,6 +1176,7 @@
 				C6AFB79A21DD72FC00670AC3 /* InterestedButtonView.swift in Sources */,
 				C64B0AE321D1299200386000 /* ProfileTableCell.swift in Sources */,
 				C6AFB79421DD684300670AC3 /* EventHeaderView.swift in Sources */,
+				C65B493D21E6009900756C3E /* EventTimeAndLocationCell.swift in Sources */,
 				C6AFB79621DD697700670AC3 /* EventDetailCell.swift in Sources */,
 				C66C0BA921E33F920066CD0F /* TicketQRCodeView.swift in Sources */,
 				C6AFB78921DD4F5B00670AC3 /* EventPriceView.swift in Sources */,

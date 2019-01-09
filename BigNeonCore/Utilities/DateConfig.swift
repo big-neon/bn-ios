@@ -18,6 +18,12 @@ final public class DateConfig {
         return dateFormatter.string(from: date)
     }
     
+    public class func eventFullDate(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, dd MMMM YYYY"
+        return dateFormatter.string(from: date)
+    }
+    
     public class func eventDateMonth(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM"
@@ -40,6 +46,13 @@ final public class DateConfig {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.current
         dateFormatter.dateFormat = "EE, MMM dd"
+        return dateFormatter.string(from: date)
+    }
+    
+    public class  func localFullDate(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.dateFormat = "EEEE, dd MMMM YYYY"
         return dateFormatter.string(from: date)
     }
     
