@@ -2,18 +2,19 @@
 
 import Foundation
 
-struct Venue: Codable {
-    let id, regionID: String
-    let organizationID: String?
-    let isPrivate: Bool
-    let name, address, city, state: String
-    let country, postalCode: String
-    let phone: String?
-    let promoImageURL: String?
-    let createdAt, updatedAt: String
-    let googlePlaceID: String?
-    let latitude, longitude: Double?
-    let timezone: String?
+public struct Venue: Codable {
+    public let id: String
+    public let regionID: String
+    public let organizationID: String?
+    public let isPrivate: Bool
+    public let name, address, city, state: String
+    public let country, postalCode: String
+    public let phone: String?
+    public let promoImageURL: String?
+    public let createdAt, updatedAt: String
+    public let googlePlaceID: String?
+    public let latitude, longitude: Double?
+    public let timezone: String?
     
     enum CodingKeys: String, CodingKey {
         case id

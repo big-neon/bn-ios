@@ -3,11 +3,9 @@
 import UIKit
 import BigNeonUI
 
-internal class EventDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+internal class EventDetailViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource  {
     
     internal var eventHeaderView: EventHeaderView = EventHeaderView()
-    internal var eventDetailViewModel: ExploreDetailViewModel = ExploreDetailViewModel()
-    internal let picker                             = UIImagePickerController()
     
     internal lazy var eventTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: UITableView.Style.grouped)
@@ -35,11 +33,23 @@ internal class EventDetailViewController: UIViewController, UITableViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
         self.configureNavBar()
         self.configureTableView()
         self.configureHeaderView()
-        self.configureButtonView()
+        self.fetchEvent()
+    }
+    
+    private func fetchEvent() {
+        self.exploreViewModel.fetchEvents { (completed) in
+            DispatchQueue.main.async {
+                if completed == false {
+                    print(completed)
+                    return
+                }
+                self.eventTableView.reloadData()
+                self.configureButtonView()
+            }
+        }
     }
     
     private func configureNavBar() {
@@ -65,6 +75,11 @@ internal class EventDetailViewController: UIViewController, UITableViewDelegate,
     
     private func configureHeaderView() {
         eventHeaderView  = EventHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 470.0))
+        guard let event = self.eventDetailViewModel.event else {
+            eventTableView.tableHeaderView = eventHeaderView
+            return
+        }
+        eventHeaderView.event = event
         eventTableView.tableHeaderView = eventHeaderView
     }
     

@@ -2,10 +2,10 @@
 
 import Foundation
 
-struct LocalizedTimes: Codable {
-    let eventStart: String?
-    let eventEnd: String?
-    let doorTime: String?
+public struct LocalizedTimes: Codable {
+    public let eventStart: String?
+    public let eventEnd: String?
+    public let doorTime: String?
     
     enum CodingKeys: String, CodingKey {
         case eventStart = "event_start"

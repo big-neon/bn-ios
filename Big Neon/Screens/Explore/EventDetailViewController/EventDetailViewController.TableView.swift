@@ -7,7 +7,7 @@ import BigNeonUI
 extension EventDetailViewController {
     
     internal func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 3
     }
     
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

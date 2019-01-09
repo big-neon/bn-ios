@@ -21,7 +21,6 @@ final class ExploreViewModel {
             }
             
             self.events = events
-            print(self.events)
             completion(true)
             return
         }
