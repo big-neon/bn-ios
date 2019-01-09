@@ -7,24 +7,83 @@ import BigNeonUI
 extension EventDetailViewController {
     
     internal func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 4
     }
     
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.eventDetailViewModel.sectionLabels.count
+        return 1
     }
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let eventDetailCell: EventDetailCell = tableView.dequeueReusableCell(withIdentifier: EventDetailCell.cellID, for: indexPath) as! EventDetailCell
-        eventDetailCell.headerLabel.text = self.eventDetailViewModel.sectionLabels[indexPath.row].uppercased()
-        eventDetailCell.headerIconImageView.image = UIImage(named: self.eventDetailViewModel.sectionImages[indexPath.row])
-        eventDetailCell.descriptionTextView.text = self.eventDetailViewModel.sectionDescriptions[indexPath.row]
-        return eventDetailCell
+        switch indexPath.section {
+        case 0:
+            let timeLocationCell: EventTimeAndLocationCell = tableView.dequeueReusableCell(withIdentifier: EventTimeAndLocationCell.cellID, for: indexPath) as! EventTimeAndLocationCell
+            guard let eventDetail = self.eventDetailViewModel.eventDetail else {
+                return timeLocationCell
+            }
+            timeLocationCell.eventDetail = eventDetail
+            return timeLocationCell
+        case 1:
+            let eventDetailCell: EventDetailCell = tableView.dequeueReusableCell(withIdentifier: EventDetailCell.cellID, for: indexPath) as! EventDetailCell
+            eventDetailCell.headerLabel.text = self.eventDetailViewModel.sectionLabels[0].uppercased()
+            eventDetailCell.headerIconImageView.image = UIImage(named: self.eventDetailViewModel.sectionImages[0])
+            guard let eventDetail = self.eventDetailViewModel.eventDetail else {
+                return eventDetailCell
+            }
+            for artist in eventDetail.artists {
+                eventDetailCell.descriptionTextView.text += artist.artist.name + " "
+            }
+            return eventDetailCell
+        case 2:
+            let eventDetailCell: EventDetailCell = tableView.dequeueReusableCell(withIdentifier: EventDetailCell.cellID, for: indexPath) as! EventDetailCell
+            eventDetailCell.headerLabel.text = self.eventDetailViewModel.sectionLabels[1].uppercased()
+            eventDetailCell.headerIconImageView.image = UIImage(named: self.eventDetailViewModel.sectionImages[1])
+            guard let eventDetail = self.eventDetailViewModel.eventDetail else {
+                return eventDetailCell
+            }
+            print(eventDetail.ageLimit)
+            eventDetailCell.descriptionTextView.text = "You must be \(eventDetail.ageLimit) to enter this event"
+            return eventDetailCell
+        default:
+            let eventDetailCell: EventDetailCell = tableView.dequeueReusableCell(withIdentifier: EventDetailCell.cellID, for: indexPath) as! EventDetailCell
+            eventDetailCell.headerLabel.text = self.eventDetailViewModel.sectionLabels[2].uppercased()
+            eventDetailCell.headerIconImageView.image = UIImage(named: self.eventDetailViewModel.sectionImages[2])
+            guard let eventDetail = self.eventDetailViewModel.eventDetail else {
+                return eventDetailCell
+            }
+            eventDetailCell.descriptionTextView.text = eventDetail.additionalInfo
+            return eventDetailCell
+        }
+        
+        
     }
     
     internal func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let height = estimateFrameForText(self.eventDetailViewModel.sectionDescriptions[indexPath.row]).height
-        return 50.0 + height
+        switch indexPath.section {
+        case 0:
+            return 176.0
+        case 1:
+            guard let eventDetail = self.eventDetailViewModel.eventDetail else {
+                return 50.0
+            }
+            var artists = ""
+            for artist in eventDetail.artists {
+                artists += artist.artist.name + ", "
+            }
+            return 50.0 + estimateFrameForText(artists).height
+        case 2:
+            guard let eventDetail = self.eventDetailViewModel.eventDetail else {
+                return 50.0
+            }
+            let ageLimitText = "You must be \(eventDetail.ageLimit) to enter this event"
+            return 50.0 + estimateFrameForText(ageLimitText).height
+        default:
+            guard let eventDetail = self.eventDetailViewModel.eventDetail else {
+                return 50.0
+            }
+            return 50.0 + estimateFrameForText(eventDetail.additionalInfo).height
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

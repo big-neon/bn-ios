@@ -1,14 +1,84 @@
 
-
+import BigNeonCore
 import UIKit
 
 final public class EventHeaderView: UIView {
     
     public var eventImageTopAnchor: NSLayoutConstraint?
     
+    public var eventDetail: EventDetail? {
+        didSet {
+            guard let event = self.eventDetail else {
+                return
+            }
+            
+            self.eventNameLabel.text = event.name
+            let eventImageURL: URL = URL(string: event.promoImageURL)!
+            self.eventImageView.pin_setImage(from: eventImageURL, placeholderImage: nil)
+            
+            if event.venue.timezone != nil {
+                guard let eventStart = event.localizedTimes.eventStart else {
+                    return
+                }
+
+                guard let eventDate = DateConfig.dateFromString(stringDate: eventStart) else {
+                    self.eventDateView.monthLabel.text = "-"
+                    self.eventDateView.dateLabel.text = "-"
+                    return
+                }
+                self.eventDateView.monthLabel.text = DateConfig.eventDateMonth(date: eventDate)
+                self.eventDateView.dateLabel.text = DateConfig.eventDateValue(date: eventDate)
+            } else {
+                let eventStart = event.eventStart
+                guard let eventDate = DateConfig.dateFromUTCString(stringDate: eventStart) else {
+                    self.eventDateView.monthLabel.text = "-"
+                    self.eventDateView.dateLabel.text = "-"
+                    return
+                }
+                self.eventDateView.monthLabel.text = DateConfig.eventDateMonth(date: eventDate)
+                self.eventDateView.dateLabel.text = DateConfig.eventDateValue(date: eventDate)
+            }
+        }
+    }
+    
+    public var event: Event? {
+        didSet {
+            guard let event = self.event else {
+                return
+            }
+            
+            self.eventNameLabel.text = event.name
+            let eventImageURL: URL = URL(string: event.promoImageURL)!
+            self.eventImageView.pin_setImage(from: eventImageURL, placeholderImage: nil)
+            
+            if event.venue.timezone != nil {
+                guard let eventStart = event.localizedTimes.eventStart else {
+                    return
+                }
+                
+                guard let eventDate = DateConfig.dateFromString(stringDate: eventStart) else {
+                    self.eventDateView.monthLabel.text = "-"
+                    self.eventDateView.dateLabel.text = "-"
+                    return
+                }
+                self.eventDateView.monthLabel.text = DateConfig.eventDateMonth(date: eventDate)
+                self.eventDateView.dateLabel.text = DateConfig.eventDateValue(date: eventDate)
+            } else {
+                let eventStart = event.eventStart
+                guard let eventDate = DateConfig.dateFromUTCString(stringDate: eventStart) else {
+                    self.eventDateView.monthLabel.text = "-"
+                    self.eventDateView.dateLabel.text = "-"
+                    return
+                }
+                self.eventDateView.monthLabel.text = DateConfig.eventDateMonth(date: eventDate)
+                self.eventDateView.dateLabel.text = DateConfig.eventDateValue(date: eventDate)
+            }
+        }
+    }
+    
     public let eventImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "drake")
+        imageView.backgroundColor = UIColor.brandBackground
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -25,7 +95,7 @@ final public class EventHeaderView: UIView {
     
     public let presentLabel: UILabel = {
         let label = UILabel()
-        label.text = "All star promoter events presents"
+        label.text = "-"
         label.textColor = UIColor.brandMediumGrey
         label.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -40,7 +110,7 @@ final public class EventHeaderView: UIView {
 
     public let eventNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "The Taylor Swift Reputation Tour Concert"
+        label.text = "-"
         label.numberOfLines = 0
         label.textColor = UIColor.brandBlack
         label.font = UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)

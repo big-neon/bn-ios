@@ -18,6 +18,8 @@ target 'BigNeonCore' do
 end
 
 target 'BigNeonUI' do
-    	inherit! :search_paths
+    inherit! :search_paths
 	pod 'pop'
+    pod 'PINCache', '3.0.1-beta.6'
+    pod 'PINRemoteImage', '3.0.0-beta.13'
 end

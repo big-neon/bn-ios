@@ -3,11 +3,26 @@
 import UIKit
 import BigNeonUI
 
-internal class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+internal class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, TicketQRCodeDelegate, ProfileHeaderDelegate  {
     
     internal var profileHeaderView: ProfileHeaderView = ProfileHeaderView()
     internal var profileViewModel: ProfileViewModel = ProfileViewModel()
-    internal let picker                             = UIImagePickerController()
+    internal let picker = UIImagePickerController()
+    internal var qrCodeViewTopConstraint: NSLayoutConstraint?
+    
+    internal lazy var profileQRCodeView: TicketQRCodeView = {
+        let view = TicketQRCodeView()
+        view.qrCodeImage.image = UIImage(named: "ic_qrcode_large")
+        view.delegate = self
+        return view
+    }()
+    
+    internal let profileQRCodeBackgroundView: UIView = {
+        let view = UIView()
+        view.layer.opacity = 0.0
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.35)
+        return view
+    }()
     
     internal lazy var profileTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: UITableView.Style.grouped)
@@ -27,6 +42,7 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
         self.configureNavBar()
         self.configureTableView()
         self.configureHeaderView()
+        self.configureQRCodeView()
     }
     
     private func configureNavBar() {
@@ -50,6 +66,7 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
     
     private func configureHeaderView() {
         profileHeaderView  = ProfileHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 280.0))
+        profileHeaderView.delegate = self
         profileTableView.tableHeaderView = profileHeaderView
     }
     
@@ -62,5 +79,61 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
         self.profileTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         self.profileTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         self.profileTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+    
+    private func configureQRCodeView() {
+        
+        if let window = UIApplication.shared.keyWindow {
+            window.addSubview(profileQRCodeBackgroundView)
+            window.addSubview(profileQRCodeView)
+            self.profileQRCodeView.isHidden = true
+            self.profileQRCodeBackgroundView.isHidden = true
+            profileQRCodeBackgroundView.frame = CGRect(x: 0, y: window.frame.height + 100, width: window.frame.width, height: window.frame.height)
+            profileQRCodeView.frame = CGRect(x: (window.frame.width * 0.5) - 160, y: window.frame.height + 100, width: 320.0, height: 500)
+            
+        }
+    }
+}
+
+extension  ProfileViewController {
+    
+    func handleShowQRCodeView() {
+        self.presentQRCode()
+    }
+    
+    func handleDismissQRCodeView() {
+        self.hideQRCode()
+    }
+    
+    private func presentQRCode() {
+        
+        self.profileQRCodeView.isHidden = false
+        self.profileQRCodeBackgroundView.isHidden = false
+        
+        if let window = UIApplication.shared.keyWindow {
+            self.profileQRCodeBackgroundView.frame = CGRect(x: 0, y: 0, width: window.frame.width, height: window.frame.height)
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                self.profileQRCodeBackgroundView.layer.opacity = 1.0
+                self.profileQRCodeView.frame = CGRect(x: (window.frame.width * 0.5) - 160, y: (window.frame.height * 0.5) - 250, width: 320.0, height: 500)
+            }, completion: nil)
+            
+        }
+    }
+    
+    
+    private func hideQRCode() {
+        
+        if let window = UIApplication.shared.keyWindow {
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 1.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+                self.profileQRCodeBackgroundView.layer.opacity = 0.0
+                self.profileQRCodeView.frame = CGRect(x: (window.frame.width * 0.5) - 160, y: window.frame.height + 100, width: 320.0, height: 500)
+            }) { (_) in
+                self.profileQRCodeView.isHidden = true
+                self.profileQRCodeBackgroundView.isHidden = true
+                self.profileQRCodeBackgroundView.frame = CGRect(x: 0, y: window.frame.height + 100, width: window.frame.width, height: window.frame.height)
+            }
+            
+        }
     }
 }

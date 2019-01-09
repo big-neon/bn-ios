@@ -1,8 +1,9 @@
 
 import UIKit
 import BigNeonUI
+import BigNeonCore
 
-final class ExploreViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+final class ExploreViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     internal lazy var exploreCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -22,8 +23,25 @@ final class ExploreViewController: UIViewController, UICollectionViewDelegate, U
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
-        self.configureCollectionView()
+        self.configureNavBar()
+        self.fetchEvents()
+    }
+    
+    private func fetchEvents() {
+        self.loadingView.startAnimating()
+        self.exploreViewModel.fetchEvents { (completed) in
+            DispatchQueue.main.async {
+                self.loadingView.stopAnimating()
+                if completed == false {
+                    print(completed)
+                    return
+                }
+                self.configureCollectionView()
+            }
+        }
+    }
+    
+    private func configureNavBar() {
         self.navigationNoLineBar()
     }
     
@@ -39,8 +57,9 @@ final class ExploreViewController: UIViewController, UICollectionViewDelegate, U
         exploreCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
-    internal func showEvent() {
+    internal func showEvent(event: Event) {
         let eventDetailVC = EventDetailViewController()
+        eventDetailVC.eventDetailViewModel.event = event
         eventDetailVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(eventDetailVC, animated: true)
     }

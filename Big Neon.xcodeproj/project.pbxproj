@@ -34,6 +34,18 @@
 		C64B0ADF21D128F200386000 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ADE21D128F200386000 /* ProfileHeaderView.swift */; };
 		C64B0AE121D1294600386000 /* ProfileViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */; };
 		C64B0AE321D1299200386000 /* ProfileTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AE221D1299200386000 /* ProfileTableCell.swift */; };
+		C65B492D21E5E71F00756C3E /* DateConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B492C21E5E71F00756C3E /* DateConfig.swift */; };
+		C65B492F21E5F5E400756C3E /* EventDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B492E21E5F5E400756C3E /* EventDetail.swift */; };
+		C65B493321E5F7F600756C3E /* PerformingArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B493221E5F7F600756C3E /* PerformingArtist.swift */; };
+		C65B493521E5F81000756C3E /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B493421E5F81000756C3E /* Artist.swift */; };
+		C65B493721E5F82A00756C3E /* Organisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B493621E5F82A00756C3E /* Organisation.swift */; };
+		C65B493921E5F84E00756C3E /* TicketType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B493821E5F84E00756C3E /* TicketType.swift */; };
+		C65B493B21E5F86800756C3E /* TicketPricing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B493A21E5F86800756C3E /* TicketPricing.swift */; };
+		C65B493D21E6009900756C3E /* EventTimeAndLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B493C21E6009900756C3E /* EventTimeAndLocationCell.swift */; };
+		C66C0BA521E337D40066CD0F /* splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C66C0BA421E337D40066CD0F /* splash.mp4 */; };
+		C66C0BA721E339CA0066CD0F /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C0BA621E339CA0066CD0F /* SplashViewController.swift */; };
+		C66C0BA921E33F920066CD0F /* TicketQRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C0BA821E33F920066CD0F /* TicketQRCodeView.swift */; };
+		C66C0BAB21E340250066CD0F /* PurpleBrandButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C0BAA21E340250066CD0F /* PurpleBrandButton.swift */; };
 		C694D22021D0BBFF00B2AE07 /* BigNeonCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C694D21721D0BBFE00B2AE07 /* BigNeonCore.framework */; };
 		C694D22721D0BBFF00B2AE07 /* BigNeonCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694D22621D0BBFF00B2AE07 /* BigNeonCoreTests.swift */; };
 		C694D22921D0BBFF00B2AE07 /* BigNeonCore.h in Headers */ = {isa = PBXBuildFile; fileRef = C694D21921D0BBFE00B2AE07 /* BigNeonCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -55,6 +67,16 @@
 		C6AFB79A21DD72FC00670AC3 /* InterestedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB79921DD72FC00670AC3 /* InterestedButtonView.swift */; };
 		C6AFB79C21DD76AE00670AC3 /* ExploreDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB79B21DD76AE00670AC3 /* ExploreDetailViewModel.swift */; };
 		C6AFB79E21DD835200670AC3 /* StatusBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB79D21DD835200670AC3 /* StatusBarView.swift */; };
+		C6B2AC4721E4CC5700F996AA /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC4621E4CC5700F996AA /* Event.swift */; };
+		C6B2AC4921E4CCF900F996AA /* LocalizedTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC4821E4CCF900F996AA /* LocalizedTimes.swift */; };
+		C6B2AC4B21E4CD2E00F996AA /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC4A21E4CD2E00F996AA /* Venue.swift */; };
+		C6B2AC4D21E4CD4500F996AA /* Paging.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC4C21E4CD4500F996AA /* Paging.swift */; };
+		C6B2AC5321E4D51B00F996AA /* BusinessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5221E4D51B00F996AA /* BusinessService.swift */; };
+		C6B2AC5521E4D52E00F996AA /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5421E4D52E00F996AA /* DatabaseService.swift */; };
+		C6B2AC5721E4D57900F996AA /* DatabaseService.Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5621E4D57900F996AA /* DatabaseService.Events.swift */; };
+		C6B2AC5A21E4D6B100F996AA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5921E4D6B100F996AA /* API.swift */; };
+		C6B2AC5C21E4D94700F996AA /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5B21E4D94700F996AA /* Events.swift */; };
+		C6B2AC5E21E4DD3100F996AA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +191,18 @@
 		C64B0ADE21D128F200386000 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.TableView.swift; sourceTree = "<group>"; };
 		C64B0AE221D1299200386000 /* ProfileTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableCell.swift; sourceTree = "<group>"; };
+		C65B492C21E5E71F00756C3E /* DateConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConfig.swift; sourceTree = "<group>"; };
+		C65B492E21E5F5E400756C3E /* EventDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetail.swift; sourceTree = "<group>"; };
+		C65B493221E5F7F600756C3E /* PerformingArtist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformingArtist.swift; sourceTree = "<group>"; };
+		C65B493421E5F81000756C3E /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
+		C65B493621E5F82A00756C3E /* Organisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organisation.swift; sourceTree = "<group>"; };
+		C65B493821E5F84E00756C3E /* TicketType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketType.swift; sourceTree = "<group>"; };
+		C65B493A21E5F86800756C3E /* TicketPricing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketPricing.swift; sourceTree = "<group>"; };
+		C65B493C21E6009900756C3E /* EventTimeAndLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTimeAndLocationCell.swift; sourceTree = "<group>"; };
+		C66C0BA421E337D40066CD0F /* splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.mp4; sourceTree = "<group>"; };
+		C66C0BA621E339CA0066CD0F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		C66C0BA821E33F920066CD0F /* TicketQRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketQRCodeView.swift; sourceTree = "<group>"; };
+		C66C0BAA21E340250066CD0F /* PurpleBrandButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurpleBrandButton.swift; sourceTree = "<group>"; };
 		C694D21721D0BBFE00B2AE07 /* BigNeonCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BigNeonCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C694D21921D0BBFE00B2AE07 /* BigNeonCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BigNeonCore.h; sourceTree = "<group>"; };
 		C694D21A21D0BBFE00B2AE07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -192,6 +226,16 @@
 		C6AFB79921DD72FC00670AC3 /* InterestedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestedButtonView.swift; sourceTree = "<group>"; };
 		C6AFB79B21DD76AE00670AC3 /* ExploreDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreDetailViewModel.swift; sourceTree = "<group>"; };
 		C6AFB79D21DD835200670AC3 /* StatusBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarView.swift; sourceTree = "<group>"; };
+		C6B2AC4621E4CC5700F996AA /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		C6B2AC4821E4CCF900F996AA /* LocalizedTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedTimes.swift; sourceTree = "<group>"; };
+		C6B2AC4A21E4CD2E00F996AA /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
+		C6B2AC4C21E4CD4500F996AA /* Paging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paging.swift; sourceTree = "<group>"; };
+		C6B2AC5221E4D51B00F996AA /* BusinessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessService.swift; sourceTree = "<group>"; };
+		C6B2AC5421E4D52E00F996AA /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		C6B2AC5621E4D57900F996AA /* DatabaseService.Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Events.swift; sourceTree = "<group>"; };
+		C6B2AC5921E4D6B100F996AA /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		C6B2AC5B21E4D94700F996AA /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
+		C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CF1FA333925A46724CB83E09 /* Pods-Big Neon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Big Neon/Pods-Big Neon.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -300,6 +344,7 @@
 			children = (
 				C62BC78321CCC3F700830A5F /* AppDelegate.swift */,
 				C62BC78A21CCC3FB00830A5F /* Assets.xcassets */,
+				C66C0BA421E337D40066CD0F /* splash.mp4 */,
 				C62BC78C21CCC3FB00830A5F /* LaunchScreen.storyboard */,
 				C62BC78F21CCC3FB00830A5F /* Info.plist */,
 				C694D25721D0BFB300B2AE07 /* Config */,
@@ -337,6 +382,7 @@
 		C64B0AB221D0DC3E00386000 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */,
 				C64B0AD421D123C300386000 /* Explore */,
 				C64B0AD521D123D100386000 /* Tickets */,
 				C64B0AD621D123D700386000 /* Profile */,
@@ -360,6 +406,7 @@
 				C6AFB78821DD4F5B00670AC3 /* EventPriceView.swift */,
 				C6AFB79721DD69AB00670AC3 /* EventDateView.swift */,
 				C6AFB79921DD72FC00670AC3 /* InterestedButtonView.swift */,
+				C66C0BAA21E340250066CD0F /* PurpleBrandButton.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -399,6 +446,7 @@
 		C64B0AB921D0DC9300386000 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C66C0BA821E33F920066CD0F /* TicketQRCodeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -467,9 +515,46 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		C65B492B21E5E71200756C3E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C65B492C21E5E71F00756C3E /* DateConfig.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C65B493021E5F7CE00756C3E /* EventDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C65B492E21E5F5E400756C3E /* EventDetail.swift */,
+				C65B493221E5F7F600756C3E /* PerformingArtist.swift */,
+				C65B493421E5F81000756C3E /* Artist.swift */,
+				C65B493621E5F82A00756C3E /* Organisation.swift */,
+				C65B493821E5F84E00756C3E /* TicketType.swift */,
+				C65B493A21E5F86800756C3E /* TicketPricing.swift */,
+			);
+			path = EventDetail;
+			sourceTree = "<group>";
+		};
+		C65B493121E5F7D900756C3E /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				C6B2AC5B21E4D94700F996AA /* Events.swift */,
+				C6B2AC4621E4CC5700F996AA /* Event.swift */,
+				C6B2AC4821E4CCF900F996AA /* LocalizedTimes.swift */,
+				C6B2AC4A21E4CD2E00F996AA /* Venue.swift */,
+				C6B2AC4C21E4CD4500F996AA /* Paging.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
 		C694D21821D0BBFE00B2AE07 /* BigNeonCore */ = {
 			isa = PBXGroup;
 			children = (
+				C65B492B21E5E71200756C3E /* Utilities */,
+				C6B2AC5821E4D69E00F996AA /* API */,
+				C6B2AC4421E4CA6100F996AA /* Services */,
+				C6B2AC4321E4CA5900F996AA /* Models */,
 				C694D21921D0BBFE00B2AE07 /* BigNeonCore.h */,
 				C694D21A21D0BBFE00B2AE07 /* Info.plist */,
 			);
@@ -524,6 +609,7 @@
 			isa = PBXGroup;
 			children = (
 				C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */,
+				C66C0BA621E339CA0066CD0F /* SplashViewController.swift */,
 			);
 			path = Routing;
 			sourceTree = "<group>";
@@ -553,8 +639,52 @@
 			children = (
 				C6AFB79321DD684300670AC3 /* EventHeaderView.swift */,
 				C6AFB79521DD697700670AC3 /* EventDetailCell.swift */,
+				C65B493C21E6009900756C3E /* EventTimeAndLocationCell.swift */,
 			);
 			path = "Event Detail";
+			sourceTree = "<group>";
+		};
+		C6B2AC4321E4CA5900F996AA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C65B493121E5F7D900756C3E /* Events */,
+				C65B493021E5F7CE00756C3E /* EventDetail */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C6B2AC4421E4CA6100F996AA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C6B2AC5021E4D4FB00F996AA /* BusinessService */,
+				C6B2AC5121E4D50500F996AA /* DatabaseService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C6B2AC5021E4D4FB00F996AA /* BusinessService */ = {
+			isa = PBXGroup;
+			children = (
+				C6B2AC5221E4D51B00F996AA /* BusinessService.swift */,
+			);
+			path = BusinessService;
+			sourceTree = "<group>";
+		};
+		C6B2AC5121E4D50500F996AA /* DatabaseService */ = {
+			isa = PBXGroup;
+			children = (
+				C6B2AC5421E4D52E00F996AA /* DatabaseService.swift */,
+				C6B2AC5621E4D57900F996AA /* DatabaseService.Events.swift */,
+			);
+			path = DatabaseService;
+			sourceTree = "<group>";
+		};
+		C6B2AC5821E4D69E00F996AA /* API */ = {
+			isa = PBXGroup;
+			children = (
+				C6B2AC5921E4D6B100F996AA /* API.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		F65EEC9195B9C5AA4DD674D2 /* Pods */ = {
@@ -749,6 +879,7 @@
 					};
 					C694D21621D0BBFE00B2AE07 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					C694D21E21D0BBFF00B2AE07 = {
 						CreatedOnToolsVersion = 10.1;
@@ -793,6 +924,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C66C0BA521E337D40066CD0F /* splash.mp4 in Resources */,
 				C62BC78E21CCC3FB00830A5F /* LaunchScreen.storyboard in Resources */,
 				C62BC78B21CCC3FB00830A5F /* Assets.xcassets in Resources */,
 			);
@@ -904,6 +1036,10 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Mixpanel/Mixpanel.framework",
 				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
+				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
+				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
+				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
+				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -916,6 +1052,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mixpanel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -958,6 +1098,7 @@
 				C64B0ABD21D0DCDB00386000 /* ExploreViewModel.swift in Sources */,
 				C64B0AE121D1294600386000 /* ProfileViewController.TableView.swift in Sources */,
 				C694D25A21D0BFE600B2AE07 /* ApplicationRouting.swift in Sources */,
+				C6B2AC5E21E4DD3100F996AA /* BaseViewController.swift in Sources */,
 				C6AFB78B21DD579600670AC3 /* ProfileViewModel.swift in Sources */,
 				C62BC78621CCC3F700830A5F /* ExploreViewController.swift in Sources */,
 				C6AFB79C21DD76AE00670AC3 /* ExploreDetailViewModel.swift in Sources */,
@@ -966,6 +1107,7 @@
 				C6AFB79121DD65D200670AC3 /* EventDetailViewController.TableView.swift in Sources */,
 				C62BC78421CCC3F700830A5F /* AppDelegate.swift in Sources */,
 				C64B0AC021D0DD1E00386000 /* Utils.swift in Sources */,
+				C66C0BA721E339CA0066CD0F /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -989,6 +1131,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6B2AC5521E4D52E00F996AA /* DatabaseService.swift in Sources */,
+				C6B2AC4921E4CCF900F996AA /* LocalizedTimes.swift in Sources */,
+				C6B2AC4D21E4CD4500F996AA /* Paging.swift in Sources */,
+				C6B2AC4B21E4CD2E00F996AA /* Venue.swift in Sources */,
+				C65B493B21E5F86800756C3E /* TicketPricing.swift in Sources */,
+				C65B492F21E5F5E400756C3E /* EventDetail.swift in Sources */,
+				C6B2AC4721E4CC5700F996AA /* Event.swift in Sources */,
+				C6B2AC5321E4D51B00F996AA /* BusinessService.swift in Sources */,
+				C6B2AC5C21E4D94700F996AA /* Events.swift in Sources */,
+				C65B492D21E5E71F00756C3E /* DateConfig.swift in Sources */,
+				C65B493521E5F81000756C3E /* Artist.swift in Sources */,
+				C65B493321E5F7F600756C3E /* PerformingArtist.swift in Sources */,
+				C65B493721E5F82A00756C3E /* Organisation.swift in Sources */,
+				C6B2AC5A21E4D6B100F996AA /* API.swift in Sources */,
+				C6B2AC5721E4D57900F996AA /* DatabaseService.Events.swift in Sources */,
+				C65B493921E5F84E00756C3E /* TicketType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1010,6 +1168,7 @@
 				C6AFB79821DD69AB00670AC3 /* EventDateView.swift in Sources */,
 				C64B0ACE21D100B600386000 /* HotThisWeekCell.swift in Sources */,
 				C64B0AC621D0E89C00386000 /* ExploreUpcomingCell.swift in Sources */,
+				C66C0BAB21E340250066CD0F /* PurpleBrandButton.swift in Sources */,
 				C6AFB79E21DD835200670AC3 /* StatusBarView.swift in Sources */,
 				C64B0AD021D1016600386000 /* HotWeekCell.swift in Sources */,
 				C64B0AD221D11EF100386000 /* RoundedCorner.swift in Sources */,
@@ -1017,7 +1176,9 @@
 				C6AFB79A21DD72FC00670AC3 /* InterestedButtonView.swift in Sources */,
 				C64B0AE321D1299200386000 /* ProfileTableCell.swift in Sources */,
 				C6AFB79421DD684300670AC3 /* EventHeaderView.swift in Sources */,
+				C65B493D21E6009900756C3E /* EventTimeAndLocationCell.swift in Sources */,
 				C6AFB79621DD697700670AC3 /* EventDetailCell.swift in Sources */,
+				C66C0BA921E33F920066CD0F /* TicketQRCodeView.swift in Sources */,
 				C6AFB78921DD4F5B00670AC3 /* EventPriceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1207,7 +1368,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CF1FA333925A46724CB83E09 /* Pods-Big Neon.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YVK784K26W;
@@ -1228,7 +1389,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6CC758E69ED3F7507F39BB91 /* Pods-Big Neon.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YVK784K26W;
@@ -1331,6 +1492,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AB883EFDAE7FEF2892885C4C /* Pods-BigNeonCore.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1350,6 +1513,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.BigNeonCore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1361,6 +1525,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C5C35E86CF6274D746DC2A17 /* Pods-BigNeonCore.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1431,6 +1597,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2C6EEF4B027329FAE820B874 /* Pods-BigNeonUI.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -1463,6 +1630,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 68F6ECD566A631F3FF5C699A /* Pods-BigNeonUI.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;

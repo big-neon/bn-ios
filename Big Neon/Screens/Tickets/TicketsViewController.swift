@@ -2,7 +2,7 @@
 import UIKit
 import BigNeonUI
 
-final class TicketsViewController: UIViewController {
+final class TicketsViewController: BaseViewController {
     
     internal lazy var noTicketImageView: UIImageView = {
         let imageView = UIImageView()
