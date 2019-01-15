@@ -58,6 +58,9 @@
 		C694D24F21D0BC1D00B2AE07 /* BigNeonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C694D23A21D0BC1D00B2AE07 /* BigNeonUI.framework */; };
 		C694D25021D0BC1D00B2AE07 /* BigNeonUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C694D23A21D0BC1D00B2AE07 /* BigNeonUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C694D25A21D0BFE600B2AE07 /* ApplicationRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */; };
+		C698AB1021EDE9BC0073F1FB /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB0F21EDE9BC0073F1FB /* CreateAccountViewController.swift */; };
+		C698AB1221EDEC2A0073F1FB /* BrandTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB1121EDEC2A0073F1FB /* BrandTextField.swift */; };
+		C698AB1421EE05130073F1FB /* BrandTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB1321EE05130073F1FB /* BrandTitle.swift */; };
 		C6AFB78921DD4F5B00670AC3 /* EventPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB78821DD4F5B00670AC3 /* EventPriceView.swift */; };
 		C6AFB78B21DD579600670AC3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB78A21DD579600670AC3 /* ProfileViewModel.swift */; };
 		C6AFB78F21DD658800670AC3 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB78E21DD658800670AC3 /* EventDetailViewController.swift */; };
@@ -78,6 +81,7 @@
 		C6B2AC5A21E4D6B100F996AA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5921E4D6B100F996AA /* API.swift */; };
 		C6B2AC5C21E4D94700F996AA /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5B21E4D94700F996AA /* Events.swift */; };
 		C6B2AC5E21E4DD3100F996AA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */; };
+		C6EFD37E21EDE48D00EB8838 /* GradientBrandButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EFD37D21EDE48D00EB8838 /* GradientBrandButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,6 +222,9 @@
 		C694D24921D0BC1D00B2AE07 /* BigNeonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigNeonUITests.swift; sourceTree = "<group>"; };
 		C694D24B21D0BC1D00B2AE07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouting.swift; sourceTree = "<group>"; };
+		C698AB0F21EDE9BC0073F1FB /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		C698AB1121EDEC2A0073F1FB /* BrandTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandTextField.swift; sourceTree = "<group>"; };
+		C698AB1321EE05130073F1FB /* BrandTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandTitle.swift; sourceTree = "<group>"; };
 		C6AFB78821DD4F5B00670AC3 /* EventPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPriceView.swift; sourceTree = "<group>"; };
 		C6AFB78A21DD579600670AC3 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		C6AFB78E21DD658800670AC3 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +245,7 @@
 		C6B2AC5921E4D6B100F996AA /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C6B2AC5B21E4D94700F996AA /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		C6EFD37D21EDE48D00EB8838 /* GradientBrandButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBrandButton.swift; sourceTree = "<group>"; };
 		CF1FA333925A46724CB83E09 /* Pods-Big Neon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Big Neon/Pods-Big Neon.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -410,6 +418,9 @@
 				C6AFB79721DD69AB00670AC3 /* EventDateView.swift */,
 				C6AFB79921DD72FC00670AC3 /* InterestedButtonView.swift */,
 				C66C0BAA21E340250066CD0F /* PurpleBrandButton.swift */,
+				C6EFD37D21EDE48D00EB8838 /* GradientBrandButton.swift */,
+				C698AB1121EDEC2A0073F1FB /* BrandTextField.swift */,
+				C698AB1321EE05130073F1FB /* BrandTitle.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -555,6 +566,7 @@
 			isa = PBXGroup;
 			children = (
 				C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */,
+				C698AB0F21EDE9BC0073F1FB /* CreateAccountViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -1113,6 +1125,7 @@
 				C6AFB78B21DD579600670AC3 /* ProfileViewModel.swift in Sources */,
 				C665DFE521E87CB800DFB955 /* WelcomeViewController.swift in Sources */,
 				C62BC78621CCC3F700830A5F /* ExploreViewController.swift in Sources */,
+				C698AB1021EDE9BC0073F1FB /* CreateAccountViewController.swift in Sources */,
 				C6AFB79C21DD76AE00670AC3 /* ExploreDetailViewModel.swift in Sources */,
 				C64B0AD821D123F400386000 /* TicketsViewController.swift in Sources */,
 				C64B0AC221D0DD5E00386000 /* TabBarController.swift in Sources */,
@@ -1178,8 +1191,10 @@
 				C64B0ACA21D0FA9100386000 /* NavBarConfig.swift in Sources */,
 				C64B0AC421D0DDE400386000 /* Colours.swift in Sources */,
 				C6AFB79821DD69AB00670AC3 /* EventDateView.swift in Sources */,
+				C6EFD37E21EDE48D00EB8838 /* GradientBrandButton.swift in Sources */,
 				C64B0ACE21D100B600386000 /* HotThisWeekCell.swift in Sources */,
 				C64B0AC621D0E89C00386000 /* ExploreUpcomingCell.swift in Sources */,
+				C698AB1221EDEC2A0073F1FB /* BrandTextField.swift in Sources */,
 				C66C0BAB21E340250066CD0F /* PurpleBrandButton.swift in Sources */,
 				C6AFB79E21DD835200670AC3 /* StatusBarView.swift in Sources */,
 				C64B0AD021D1016600386000 /* HotWeekCell.swift in Sources */,
@@ -1190,6 +1205,7 @@
 				C6AFB79421DD684300670AC3 /* EventHeaderView.swift in Sources */,
 				C65B493D21E6009900756C3E /* EventTimeAndLocationCell.swift in Sources */,
 				C6AFB79621DD697700670AC3 /* EventDetailCell.swift in Sources */,
+				C698AB1421EE05130073F1FB /* BrandTitle.swift in Sources */,
 				C66C0BA921E33F920066CD0F /* TicketQRCodeView.swift in Sources */,
 				C6AFB78921DD4F5B00670AC3 /* EventPriceView.swift in Sources */,
 			);

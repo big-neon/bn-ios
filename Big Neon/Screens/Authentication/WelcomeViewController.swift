@@ -1,13 +1,14 @@
 
 
 import UIKit
+import BigNeonUI
 import SafariServices
 
 final class WelcomeViewController: UIViewController {
     
     internal var backgroundImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.brandBackground
+        imageView.image = UIImage(named: "onboarding_Background")
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -16,49 +17,32 @@ final class WelcomeViewController: UIViewController {
     
     internal var logoImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.brandBackground
-        imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(named: "ic_logoImage")
+        imageView.contentMode = .scaleAspectFit
         imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
-//    internal let headingLabel: BrandTitleLabel = {
-//        let label = BrandTitleLabel()
-//        label.textAlignment = .center
-//        label.text = "City One"
-//        label.font = UIFont.titleStyle.withSize(30)
-//        label.textColor = UIColor.brandPrimary
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        return label
-//    }()
-//
-//    internal let subHeadingLabel: BrandLargeLabel = {
-//        let label = BrandLargeLabel()
-//        label.textColor = UIColor.brandMediumGrey
-//        label.numberOfLines = 2
-//        label.text = "Ready to save time and money on your Commute?"
-//        label.textAlignment = .center
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        return label
-//    }()
-//
-//    private lazy var getStartedButton: BrandButton = {
-//        let button = BrandButton()
-//        button.setTitle("Login with Phone Number", for: UIControlState.normal)
-//        button.addTarget(self, action: #selector(handleRegister), for: UIControlEvents.touchUpInside)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        return button
-//    }()
-//
-//    private lazy var facebookButton: BrandButton = {
-//        let button = BrandButton()
-//        button.backgroundColor = UIColor(red: 60/255, green: 90/255, blue: 153/255, alpha: 1.0)
-//        button.setTitle("Continue with Facebook", for: UIControlState.normal)
-//        button.addTarget(self, action: #selector(handleFacebookRegistration), for: UIControlEvents.touchUpInside)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        return button
-//    }()
+
+    private lazy var getStartedButton: GradientBrandButton = {
+        let button = GradientBrandButton()
+        button.setTitle("Get Started", for: UIControl.State.normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    private lazy var loginButton: GradientBrandButton = {
+        let button = GradientBrandButton()
+        button.backgroundColor = UIColor.clear
+        button.layer.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
+        button.layer.borderWidth = 2.0
+        button.layer.cornerRadius = 3.0
+        button.setTitle("Login To Your Account", for: UIControl.State.normal)
+        button.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: UIControl.State.normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.regular)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,43 +56,36 @@ final class WelcomeViewController: UIViewController {
     }
     
     private func configureNavBar() {
-        self.navigationNoLineBar()
+        self.navigationClearBar()
         self.navigationController?.navigationBar.tintColor = UIColor.brandPrimary
-        UIApplication.shared.statusBarView?.backgroundColor = UIColor.white
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.clear
     }
     
     private func configureView() {
         self.view.addSubview(backgroundImage)
-        //        self.view.addSubview(facebookButton)
-//        self.view.addSubview(termsButton)
-//        self.view.addSubview(backgroundImage)
-//        self.view.addSubview(headingLabel)
-//        self.view.addSubview(subHeadingLabel)
+        self.view.addSubview(logoImage)
+        self.view.addSubview(loginButton)
+        self.view.addSubview(getStartedButton)
         
         self.backgroundImage.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         self.backgroundImage.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         self.backgroundImage.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         self.backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
-//        self.headingLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
-//        self.headingLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
-//        self.headingLabel.bottomAnchor.constraint(equalTo: subHeadingLabel.topAnchor, constant: -24).isActive = true
-//        self.headingLabel.heightAnchor.constraint(equalToConstant: 36.0).isActive = true
-//
-//        self.backgroundImage.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-//        self.logoImage.bottomAnchor.constraint(equalTo: headingLabel.topAnchor, constant: -42).isActive = true
-//        self.backgroundImage.heightAnchor.constraint(equalToConstant: 104).isActive = true
-//        self.backgroundImage.widthAnchor.constraint(equalToConstant: 104).isActive = true
-//
-//        self.termsButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
-//        self.termsButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
-//        self.termsButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18).isActive = true
-//        self.termsButton.heightAnchor.constraint(equalToConstant: 18.0).isActive = true
-//
-//        self.getStartedButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 24).isActive = true
-//        self.getStartedButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -24).isActive = true
-//        self.getStartedButton.bottomAnchor.constraint(equalTo: termsButton.topAnchor, constant: -60).isActive = true
-//        self.getStartedButton.heightAnchor.constraint(equalToConstant: 54.0).isActive = true
+        self.logoImage.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        self.logoImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 140).isActive = true
+        self.logoImage.heightAnchor.constraint(equalToConstant: 160).isActive = true
+        self.logoImage.widthAnchor.constraint(equalToConstant: 120).isActive = true
+
+        self.loginButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+        self.loginButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
+        self.loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70).isActive = true
+        self.loginButton.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
+        
+        self.getStartedButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+        self.getStartedButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
+        self.getStartedButton.bottomAnchor.constraint(equalTo: loginButton.topAnchor, constant: -18).isActive = true
+        self.getStartedButton.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
         
     }
     
