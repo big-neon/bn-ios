@@ -42,6 +42,7 @@
 		C65B493921E5F84E00756C3E /* TicketType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B493821E5F84E00756C3E /* TicketType.swift */; };
 		C65B493B21E5F86800756C3E /* TicketPricing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B493A21E5F86800756C3E /* TicketPricing.swift */; };
 		C65B493D21E6009900756C3E /* EventTimeAndLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B493C21E6009900756C3E /* EventTimeAndLocationCell.swift */; };
+		C665DFE521E87CB800DFB955 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */; };
 		C66C0BA521E337D40066CD0F /* splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C66C0BA421E337D40066CD0F /* splash.mp4 */; };
 		C66C0BA721E339CA0066CD0F /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C0BA621E339CA0066CD0F /* SplashViewController.swift */; };
 		C66C0BA921E33F920066CD0F /* TicketQRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C0BA821E33F920066CD0F /* TicketQRCodeView.swift */; };
@@ -199,6 +200,7 @@
 		C65B493821E5F84E00756C3E /* TicketType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketType.swift; sourceTree = "<group>"; };
 		C65B493A21E5F86800756C3E /* TicketPricing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketPricing.swift; sourceTree = "<group>"; };
 		C65B493C21E6009900756C3E /* EventTimeAndLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTimeAndLocationCell.swift; sourceTree = "<group>"; };
+		C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C66C0BA421E337D40066CD0F /* splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.mp4; sourceTree = "<group>"; };
 		C66C0BA621E339CA0066CD0F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		C66C0BA821E33F920066CD0F /* TicketQRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketQRCodeView.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 		C64B0AB221D0DC3E00386000 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				C665DFE321E87CAC00DFB955 /* Authentication */,
 				C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */,
 				C64B0AD421D123C300386000 /* Explore */,
 				C64B0AD521D123D100386000 /* Tickets */,
@@ -546,6 +549,14 @@
 				C6B2AC4C21E4CD4500F996AA /* Paging.swift */,
 			);
 			path = Events;
+			sourceTree = "<group>";
+		};
+		C665DFE321E87CAC00DFB955 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		C694D21821D0BBFE00B2AE07 /* BigNeonCore */ = {
@@ -1100,6 +1111,7 @@
 				C694D25A21D0BFE600B2AE07 /* ApplicationRouting.swift in Sources */,
 				C6B2AC5E21E4DD3100F996AA /* BaseViewController.swift in Sources */,
 				C6AFB78B21DD579600670AC3 /* ProfileViewModel.swift in Sources */,
+				C665DFE521E87CB800DFB955 /* WelcomeViewController.swift in Sources */,
 				C62BC78621CCC3F700830A5F /* ExploreViewController.swift in Sources */,
 				C6AFB79C21DD76AE00670AC3 /* ExploreDetailViewModel.swift in Sources */,
 				C64B0AD821D123F400386000 /* TicketsViewController.swift in Sources */,

@@ -10,9 +10,9 @@ public struct Artist: Codable {
     public let websiteURL: String?
     public let youtubeVideoUrls: [String]
     public let facebookUsername: String?
-    public let  instagramUsername: String?
-    public let  snapchatUsername: String?
-    public let  soundcloudUsername: String?
+    public let instagramUsername: String?
+    public let snapchatUsername: String?
+    public let soundcloudUsername: String?
     public let bandcampUsername: String?
     public let spotifyID: String
     public let createdAt: String
