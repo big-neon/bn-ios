@@ -176,7 +176,7 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
                     return
                 }
                 self.enableView()
-                self.handleShowHome()
+                self.navigationController?.pushViewController(NamesAccountViewController(), animated: true)
             }
         }
     }
