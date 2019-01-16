@@ -85,6 +85,7 @@
 		C6B2AC5C21E4D94700F996AA /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5B21E4D94700F996AA /* Events.swift */; };
 		C6B2AC5E21E4DD3100F996AA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */; };
 		C6D2413221EF4A4E00FC3E41 /* ValieEmailAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2413121EF4A4E00FC3E41 /* ValieEmailAddress.swift */; };
+		C6D2413421EF53B000FC3E41 /* NamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2413321EF53B000FC3E41 /* NamesViewController.swift */; };
 		C6EFD37E21EDE48D00EB8838 /* GradientBrandButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EFD37D21EDE48D00EB8838 /* GradientBrandButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -253,6 +254,7 @@
 		C6B2AC5B21E4D94700F996AA /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C6D2413121EF4A4E00FC3E41 /* ValieEmailAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValieEmailAddress.swift; sourceTree = "<group>"; };
+		C6D2413321EF53B000FC3E41 /* NamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesViewController.swift; sourceTree = "<group>"; };
 		C6EFD37D21EDE48D00EB8838 /* GradientBrandButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBrandButton.swift; sourceTree = "<group>"; };
 		CF1FA333925A46724CB83E09 /* Pods-Big Neon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Big Neon/Pods-Big Neon.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -577,6 +579,7 @@
 				C698AB1521EF1FE00073F1FB /* CreateAccountViewModel.swift */,
 				C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */,
 				C698AB0F21EDE9BC0073F1FB /* CreateAccountViewController.swift */,
+				C6D2413321EF53B000FC3E41 /* NamesViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -1150,6 +1153,7 @@
 				C64B0AD821D123F400386000 /* TicketsViewController.swift in Sources */,
 				C64B0AC221D0DD5E00386000 /* TabBarController.swift in Sources */,
 				C6AFB79121DD65D200670AC3 /* EventDetailViewController.TableView.swift in Sources */,
+				C6D2413421EF53B000FC3E41 /* NamesViewController.swift in Sources */,
 				C698AB1621EF1FE00073F1FB /* CreateAccountViewModel.swift in Sources */,
 				C62BC78421CCC3F700830A5F /* AppDelegate.swift in Sources */,
 				C64B0AC021D0DD1E00386000 /* Utils.swift in Sources */,
