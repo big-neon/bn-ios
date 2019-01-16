@@ -61,6 +61,9 @@
 		C698AB1021EDE9BC0073F1FB /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB0F21EDE9BC0073F1FB /* CreateAccountViewController.swift */; };
 		C698AB1221EDEC2A0073F1FB /* BrandTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB1121EDEC2A0073F1FB /* BrandTextField.swift */; };
 		C698AB1421EE05130073F1FB /* BrandTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB1321EE05130073F1FB /* BrandTitle.swift */; };
+		C698AB1621EF1FE00073F1FB /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB1521EF1FE00073F1FB /* CreateAccountViewModel.swift */; };
+		C698AB1821EF2C780073F1FB /* DatabaseService.Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB1721EF2C780073F1FB /* DatabaseService.Users.swift */; };
+		C698AB1A21EF2DC20073F1FB /* Tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB1921EF2DC20073F1FB /* Tokens.swift */; };
 		C6AFB78921DD4F5B00670AC3 /* EventPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB78821DD4F5B00670AC3 /* EventPriceView.swift */; };
 		C6AFB78B21DD579600670AC3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB78A21DD579600670AC3 /* ProfileViewModel.swift */; };
 		C6AFB78F21DD658800670AC3 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB78E21DD658800670AC3 /* EventDetailViewController.swift */; };
@@ -225,6 +228,9 @@
 		C698AB0F21EDE9BC0073F1FB /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		C698AB1121EDEC2A0073F1FB /* BrandTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandTextField.swift; sourceTree = "<group>"; };
 		C698AB1321EE05130073F1FB /* BrandTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandTitle.swift; sourceTree = "<group>"; };
+		C698AB1521EF1FE00073F1FB /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
+		C698AB1721EF2C780073F1FB /* DatabaseService.Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Users.swift; sourceTree = "<group>"; };
+		C698AB1921EF2DC20073F1FB /* Tokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokens.swift; sourceTree = "<group>"; };
 		C6AFB78821DD4F5B00670AC3 /* EventPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPriceView.swift; sourceTree = "<group>"; };
 		C6AFB78A21DD579600670AC3 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		C6AFB78E21DD658800670AC3 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
@@ -565,6 +571,7 @@
 		C665DFE321E87CAC00DFB955 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				C698AB1521EF1FE00073F1FB /* CreateAccountViewModel.swift */,
 				C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */,
 				C698AB0F21EDE9BC0073F1FB /* CreateAccountViewController.swift */,
 			);
@@ -637,6 +644,14 @@
 			path = Routing;
 			sourceTree = "<group>";
 		};
+		C698AB1B21EF2DCC0073F1FB /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				C698AB1921EF2DC20073F1FB /* Tokens.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
 		C6AFB78C21DD655900670AC3 /* ExploreViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -672,6 +687,7 @@
 			children = (
 				C65B493121E5F7D900756C3E /* Events */,
 				C65B493021E5F7CE00756C3E /* EventDetail */,
+				C698AB1B21EF2DCC0073F1FB /* Users */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -698,6 +714,7 @@
 			children = (
 				C6B2AC5421E4D52E00F996AA /* DatabaseService.swift */,
 				C6B2AC5621E4D57900F996AA /* DatabaseService.Events.swift */,
+				C698AB1721EF2C780073F1FB /* DatabaseService.Users.swift */,
 			);
 			path = DatabaseService;
 			sourceTree = "<group>";
@@ -1130,6 +1147,7 @@
 				C64B0AD821D123F400386000 /* TicketsViewController.swift in Sources */,
 				C64B0AC221D0DD5E00386000 /* TabBarController.swift in Sources */,
 				C6AFB79121DD65D200670AC3 /* EventDetailViewController.TableView.swift in Sources */,
+				C698AB1621EF1FE00073F1FB /* CreateAccountViewModel.swift in Sources */,
 				C62BC78421CCC3F700830A5F /* AppDelegate.swift in Sources */,
 				C64B0AC021D0DD1E00386000 /* Utils.swift in Sources */,
 				C66C0BA721E339CA0066CD0F /* SplashViewController.swift in Sources */,
@@ -1166,8 +1184,10 @@
 				C6B2AC5321E4D51B00F996AA /* BusinessService.swift in Sources */,
 				C6B2AC5C21E4D94700F996AA /* Events.swift in Sources */,
 				C65B492D21E5E71F00756C3E /* DateConfig.swift in Sources */,
+				C698AB1A21EF2DC20073F1FB /* Tokens.swift in Sources */,
 				C65B493521E5F81000756C3E /* Artist.swift in Sources */,
 				C65B493321E5F7F600756C3E /* PerformingArtist.swift in Sources */,
+				C698AB1821EF2C780073F1FB /* DatabaseService.Users.swift in Sources */,
 				C65B493721E5F82A00756C3E /* Organisation.swift in Sources */,
 				C6B2AC5A21E4D6B100F996AA /* API.swift in Sources */,
 				C6B2AC5721E4D57900F996AA /* DatabaseService.Events.swift in Sources */,

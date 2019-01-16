@@ -14,6 +14,8 @@ public enum APIService {
     
     // Staging
     public static let getEvents =  stagingBaseURL + "/events"
+    public static let register =  stagingBaseURL + "/users"
+    public static let login =  stagingBaseURL + "/auth/token"
     
     //  Production
 }

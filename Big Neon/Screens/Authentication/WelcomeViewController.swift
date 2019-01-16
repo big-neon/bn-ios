@@ -26,6 +26,7 @@ final class WelcomeViewController: UIViewController {
 
     private lazy var getStartedButton: GradientBrandButton = {
         let button = GradientBrandButton()
+        button.addTarget(self, action: #selector(handleCreateAccount), for: UIControl.Event.touchUpInside)
         button.setTitle("Get Started", for: UIControl.State.normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -59,6 +60,7 @@ final class WelcomeViewController: UIViewController {
         self.navigationClearBar()
         self.navigationController?.navigationBar.tintColor = UIColor.brandPrimary
         UIApplication.shared.statusBarView?.backgroundColor = UIColor.clear
+        UIApplication.shared.statusBarView?.tintColor = UIColor.white
     }
     
     private func configureView() {
@@ -87,6 +89,10 @@ final class WelcomeViewController: UIViewController {
         self.getStartedButton.bottomAnchor.constraint(equalTo: loginButton.topAnchor, constant: -18).isActive = true
         self.getStartedButton.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
         
+    }
+    
+    @objc private func handleCreateAccount() {
+        self.navigationController?.pushViewController(CreateAccountViewController(), animated: true)
     }
     
 }

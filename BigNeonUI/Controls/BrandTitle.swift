@@ -25,7 +25,7 @@ import UIKit
     
     public func setupLayout() {
         self.textColor = UIColor.brandBlack
-        self.font = UIFont.titleStyle
+        self.font = UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)
         self.configureLineSpacing()
     }
     
@@ -36,7 +36,7 @@ import UIKit
         let attributedString = NSMutableAttributedString(string: text)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 24.0
-        attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
         self.attributedText = attributedString
     }
 }
