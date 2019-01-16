@@ -27,7 +27,9 @@ final class TabBarController: UITabBarController {
     
     private func configureTabTintColour() {
         UITabBar.appearance().tintColor = UIColor.brandPrimary
-        UITabBar.appearance().selectionIndicatorImage = UIImage().makeImageWithColorAndSize(UIColor.brandPrimary, size: CGSize(width: tabBar.frame.width/3, height: tabBar.frame.height))
+        UITabBar.appearance().selectionIndicatorImage = UIImage().makeImageWithColorAndSize(UIColor.brandPrimary,
+                                                                                            size: CGSize(width: tabBar.frame.width/3,
+                                                                                                         height: tabBar.frame.height))
         
         self.tabBar.isTranslucent = false
         self.tabBar.shadowImage = UIImage()

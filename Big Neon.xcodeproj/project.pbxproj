@@ -84,6 +84,7 @@
 		C6B2AC5A21E4D6B100F996AA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5921E4D6B100F996AA /* API.swift */; };
 		C6B2AC5C21E4D94700F996AA /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5B21E4D94700F996AA /* Events.swift */; };
 		C6B2AC5E21E4DD3100F996AA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */; };
+		C6D2413221EF4A4E00FC3E41 /* ValieEmailAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2413121EF4A4E00FC3E41 /* ValieEmailAddress.swift */; };
 		C6EFD37E21EDE48D00EB8838 /* GradientBrandButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EFD37D21EDE48D00EB8838 /* GradientBrandButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -251,6 +252,7 @@
 		C6B2AC5921E4D6B100F996AA /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C6B2AC5B21E4D94700F996AA /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		C6D2413121EF4A4E00FC3E41 /* ValieEmailAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValieEmailAddress.swift; sourceTree = "<group>"; };
 		C6EFD37D21EDE48D00EB8838 /* GradientBrandButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBrandButton.swift; sourceTree = "<group>"; };
 		CF1FA333925A46724CB83E09 /* Pods-Big Neon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Big Neon/Pods-Big Neon.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -437,6 +439,7 @@
 				C64B0AC921D0FA9100386000 /* NavBarConfig.swift */,
 				C64B0AD121D11EF100386000 /* RoundedCorner.swift */,
 				C6AFB79D21DD835200670AC3 /* StatusBarView.swift */,
+				C6D2413121EF4A4E00FC3E41 /* ValieEmailAddress.swift */,
 			);
 			path = UIUtilities;
 			sourceTree = "<group>";
@@ -1224,6 +1227,7 @@
 				C64B0AE321D1299200386000 /* ProfileTableCell.swift in Sources */,
 				C6AFB79421DD684300670AC3 /* EventHeaderView.swift in Sources */,
 				C65B493D21E6009900756C3E /* EventTimeAndLocationCell.swift in Sources */,
+				C6D2413221EF4A4E00FC3E41 /* ValieEmailAddress.swift in Sources */,
 				C6AFB79621DD697700670AC3 /* EventDetailCell.swift in Sources */,
 				C698AB1421EE05130073F1FB /* BrandTitle.swift in Sources */,
 				C66C0BA921E33F920066CD0F /* TicketQRCodeView.swift in Sources */,

@@ -31,9 +31,7 @@ extension DatabaseService {
                 completion(nil, nil)
                 return
             }
-            
-            print(response)
-            
+        
             do {
                 
                 let decoder = JSONDecoder()

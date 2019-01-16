@@ -162,16 +162,22 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         }
         
         //  Check Validity of email
+        if email.isValidEmailAddress == false {
+            self.textFieldShake(self.emailTextField)
+            return
+        }
         
         self.resignTextFields()
         self.disableView()
         self.createAccountViewModel.createAccount(email: email, password: password) { (success) in
-            if success == false {
+            DispatchQueue.main.async {
+                if success == false {
+                    self.enableView()
+                    return
+                }
                 self.enableView()
-                return
+                self.handleShowHome()
             }
-            self.enableView()
-            self.handleShowHome()
         }
     }
     

@@ -33,7 +33,7 @@ import UIKit
     
     public func setupLayout() {
         self.borderStyle = .none
-        self.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.medium)
+        self.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.medium)
         self.textColor = UIColor.brandBlack
         self.backgroundColor = UIColor.brandBackground
         guard let placeholderText: String = self.placeholder else {
