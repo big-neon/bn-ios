@@ -22,24 +22,23 @@ internal class NamesAccountViewController: UIViewController, UITextFieldDelegate
         let textField = BrandTextField()
         textField.layer.cornerRadius = 4.0
         textField.autocapitalizationType = .none
-        textField.placeholder = "Email Address"
+        textField.placeholder = "First Name"
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
     fileprivate lazy var surnameTextField: BrandTextField = {
         let textField = BrandTextField()
-        textField.isSecureTextEntry = true
         textField.layer.cornerRadius = 4.0
         textField.autocapitalizationType = .none
-        textField.placeholder = "password (atleast 6 characters)"
+        textField.placeholder = "Last Name"
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
     fileprivate lazy var nextButton: GradientBrandButton = {
         let button = GradientBrandButton()
-        button.setTitle("Let's do this", for: UIControl.State.normal)
+        button.setTitle("All Done", for: UIControl.State.normal)
 //        button.addTarget(self, action: #selector(handleDone), for: UIControl.Event.touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -73,11 +72,10 @@ internal class NamesAccountViewController: UIViewController, UITextFieldDelegate
         self.navigationController?.navigationBar.barTintColor = UIColor.white
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_back"), style: UIBarButtonItem.Style.done, target: self, action: #selector(handleBack))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.done, target: self, action: #selector(handleNothing))
     }
     
-    @objc private func handleBack() {
-        self.navigationController?.popViewController(animated: true)
+    @objc private func handleNothing() {
     }
     
     private func configureView() {
