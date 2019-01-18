@@ -5,7 +5,8 @@ import UITextField_Shake
 
 public enum TextFieldType {
     case email
-    case password
+    case signUpPassword
+    case loginPassword
     case firstName
     case lastName
 }
@@ -31,10 +32,12 @@ public class AuthenticationTextView: UIView {
             switch textType {
             case .email:
                 self.authTextField.placeholder = "Email Address"
-            case .password:
-                self.authTextField.placeholder = "Email Address"
+            case .signUpPassword:
                 self.authTextField.isSecureTextEntry = true
-                self.authTextField.placeholder = "password"
+                self.authTextField.placeholder = "Create Password (atleast 6 characters)"
+            case .loginPassword:
+                self.authTextField.isSecureTextEntry = true
+                self.authTextField.placeholder = "Enter Password)"
             case .firstName:
                 self.authTextField.placeholder = "First Name"
             case .lastName:

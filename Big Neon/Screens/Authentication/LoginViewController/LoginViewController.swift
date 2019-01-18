@@ -18,21 +18,16 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
         return label
     }()
     
-    private lazy var emailTextField: BrandTextField = {
-        let textField = BrandTextField()
-        textField.layer.cornerRadius = 4.0
-        textField.autocapitalizationType = .none
-        textField.placeholder = "Email Address"
+    private lazy var emailTextView: AuthenticationTextView = {
+        let textField = AuthenticationTextView()
+        textField.textFieldType = .email
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
-    fileprivate lazy var passwordTextField: BrandTextField = {
-        let textField = BrandTextField()
-        textField.isSecureTextEntry = true
-        textField.layer.cornerRadius = 4.0
-        textField.autocapitalizationType = .none
-        textField.placeholder = "password"
+    fileprivate lazy var passwordTextView: AuthenticationTextView = {
+        let textField = AuthenticationTextView()
+        textField.textFieldType = .loginPassword
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -82,8 +77,8 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     
     private func configureView() {
         view.addSubview(headerLabel)
-        view.addSubview(emailTextField)
-        view.addSubview(passwordTextField)
+        view.addSubview(emailTextView)
+        view.addSubview(passwordTextView)
         view.addSubview(loginButton)
         loginButton.addSubview(loadingIndicatorView)
         
@@ -92,19 +87,19 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
         headerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 36).isActive = true
         headerLabel.heightAnchor.constraint(equalToConstant: 26).isActive = true
         
-        emailTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 26).isActive = true
-        emailTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -26).isActive = true
-        emailTextField.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 48).isActive = true
-        emailTextField.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        emailTextView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        emailTextView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        emailTextView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 48).isActive = true
+        emailTextView.heightAnchor.constraint(equalToConstant: 75).isActive = true
         
-        passwordTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 26).isActive = true
-        passwordTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -26).isActive = true
-        passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 25).isActive = true
-        passwordTextField.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        passwordTextView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        passwordTextView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        passwordTextView.topAnchor.constraint(equalTo: emailTextView.bottomAnchor, constant: 12).isActive = true
+        passwordTextView.heightAnchor.constraint(equalToConstant: 75).isActive = true
         
         loginButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 26).isActive = true
         loginButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -26).isActive = true
-        loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 35).isActive = true
+        loginButton.topAnchor.constraint(equalTo: passwordTextView.bottomAnchor, constant: 35).isActive = true
         loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         loadingIndicatorView.centerXAnchor.constraint(equalTo: loginButton.centerXAnchor).isActive = true
@@ -114,8 +109,8 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     fileprivate func setupDelegates() {
-        self.emailTextField.delegate = self
-        self.passwordTextField.delegate = self
+        self.emailTextView.authTextField.delegate = self
+        self.passwordTextView.authTextField.delegate = self
     }
     
     internal func textFieldShake(_ textField: UITextField) {
@@ -124,8 +119,8 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     
     private func disableView() {
         self.loadingIndicatorView.startAnimating()
-        self.emailTextField.isEnabled = false
-        self.passwordTextField.isEnabled = false
+        self.emailTextView.authTextField.isEnabled = false
+        self.passwordTextView.authTextField.isEnabled = false
         self.loginButton.isEnabled = false
         self.loginButton.setTitle("", for: UIControl.State.normal)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
@@ -133,8 +128,8 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     
     private func enableView() {
         self.loadingIndicatorView.stopAnimating()
-        self.emailTextField.isEnabled = false
-        self.passwordTextField.isEnabled = false
+        self.emailTextView.authTextField.isEnabled = false
+        self.passwordTextView.authTextField.isEnabled = false
         self.loginButton.isEnabled = true
         self.loginButton.setTitle("Login to your account", for: UIControl.State.normal)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
@@ -142,29 +137,28 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @objc internal func handleLogin() {
         
-        guard let email = self.emailTextField.text else {
-            self.textFieldShake(self.emailTextField)
-            return
-        }
-        
-        guard let password = self.passwordTextField.text else {
-            self.textFieldShake(self.passwordTextField)
+        guard let email = self.emailTextView.authTextField.text else {
+            self.emailTextView.textFieldError = .invalidEmail
             return
         }
         
         if email.isEmpty == true {
-            self.textFieldShake(self.emailTextField)
+            self.emailTextView.textFieldError = .emptyEmail
+            return
+        }
+        
+        if email.isValidEmailAddress == false {
+            self.emailTextView.textFieldError = .invalidEmail
+            return
+        }
+        
+        guard let password = self.passwordTextView.authTextField.text else {
+            self.passwordTextView.textFieldError = .invalidPassword
             return
         }
         
         if password.isEmpty == true {
-            self.textFieldShake(self.passwordTextField)
-            return
-        }
-        
-        //  Check Validity of email
-        if email.isValidEmailAddress == false {
-            self.textFieldShake(self.emailTextField)
+            self.passwordTextView.textFieldError = .invalidPassword
             return
         }
         
@@ -193,8 +187,8 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     fileprivate func resignTextFields() {
-        self.emailTextField.resignFirstResponder()
-        self.passwordTextField.resignFirstResponder()
+        self.emailTextView.authTextField.resignFirstResponder()
+        self.passwordTextView.authTextField.resignFirstResponder()
     }
     
 }

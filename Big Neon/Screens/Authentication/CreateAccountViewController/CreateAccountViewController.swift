@@ -26,7 +26,7 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     
     fileprivate lazy var passwordTextView: AuthenticationTextView = {
         let textField = AuthenticationTextView()
-        textField.textFieldType = .password
+        textField.textFieldType = .signUpPassword
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -141,13 +141,18 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
             return
         }
         
-        guard let password = self.passwordTextView.authTextField.text else {
-            self.passwordTextView.textFieldError = .invalidPassword
+        if email.isEmpty == true {
+            self.emailTextView.textFieldError = .emptyEmail
             return
         }
         
-        if email.isEmpty == true {
-            self.emailTextView.textFieldError = .emptyEmail
+        if email.isValidEmailAddress == false {
+            self.emailTextView.textFieldError = .invalidEmail
+            return
+        }
+        
+        guard let password = self.passwordTextView.authTextField.text else {
+            self.passwordTextView.textFieldError = .invalidPassword
             return
         }
         
@@ -158,12 +163,6 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         
         if password.characters.count < 7 {
             self.passwordTextView.textFieldError = .lessCharacters
-            return
-        }
-        
-        //  Check Validity of email
-        if email.isValidEmailAddress == false {
-            self.emailTextView.textFieldError = .invalidEmail
             return
         }
         
