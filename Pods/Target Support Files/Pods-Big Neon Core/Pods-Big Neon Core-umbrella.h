@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_BigNeonCoreVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_BigNeonCoreVersionString[];
+FOUNDATION_EXPORT double Pods_Big_Neon_CoreVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_Big_Neon_CoreVersionString[];
 

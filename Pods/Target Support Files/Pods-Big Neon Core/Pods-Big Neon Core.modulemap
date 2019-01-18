@@ -1,0 +1,6 @@
+framework module Pods_Big_Neon_Core {
+  umbrella header "Pods-Big Neon Core-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,6 +1,6 @@
 
 import UIKit
-import BigNeonCore
+import Big_Neon_Core
 
 final class ExploreDetailViewModel {
     

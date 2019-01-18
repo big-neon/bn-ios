@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "454F69BBC1043DAD77B5C158D3C6EEB5"
+               BlueprintIdentifier = "A9ACD9FD8FBAC7A1968F5FBFE167F8EB"
                BuildableName = "PWSwitch.framework"
                BlueprintName = "PWSwitch"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "454F69BBC1043DAD77B5C158D3C6EEB5"
+            BlueprintIdentifier = "A9ACD9FD8FBAC7A1968F5FBFE167F8EB"
             BuildableName = "PWSwitch.framework"
             BlueprintName = "PWSwitch"
             ReferencedContainer = "container:Pods.xcodeproj">

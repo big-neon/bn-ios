@@ -1,7 +1,7 @@
 
 
 import UIKit
-import BigNeonUI
+import Big_Neon_UI
 
 internal class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, TicketQRCodeDelegate, ProfileHeaderDelegate  {
     

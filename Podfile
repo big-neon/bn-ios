@@ -1,7 +1,7 @@
 platform :ios, '11.0'
 use_frameworks!
 
-target 'BigNeonCore' do
+target 'Big Neon Core' do
 
 	pod 'Stripe'
     pod 'Alamofire', '~> 4.4'
@@ -17,7 +17,7 @@ target 'BigNeonCore' do
 	end
 end
 
-target 'BigNeonUI' do
+target 'Big Neon UI' do
     inherit! :search_paths
 	pod 'pop'
     pod 'PINCache', '3.0.1-beta.6'

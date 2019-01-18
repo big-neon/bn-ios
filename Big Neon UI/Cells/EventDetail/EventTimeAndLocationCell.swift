@@ -2,7 +2,7 @@
 
 import Foundation
 import UIKit
-import BigNeonCore
+import Big_Neon_Core
 
 final public class EventTimeAndLocationCell: UITableViewCell {
     
@@ -13,18 +13,18 @@ final public class EventTimeAndLocationCell: UITableViewCell {
             guard let eventDetail = self.eventDetail else {
                 return
             }
-            
+
             self.venueLabel.text = eventDetail.venue.name
             self.venueLabel.text = eventDetail.venue.address
             self.addressLabel.text = eventDetail.venue.name
-            
-            
+
+
             //Event Date
             if eventDetail.venue.timezone != nil {
                 guard let eventStart = eventDetail.localizedTimes.eventStart else {
                     return
                 }
-                
+
                 guard let eventDate = DateConfig.dateFromString(stringDate: eventStart) else {
                     self.dateLabel.text = "-"
                     return
@@ -38,7 +38,7 @@ final public class EventTimeAndLocationCell: UITableViewCell {
                 }
                 self.dateLabel.text = DateConfig.localFullDate(date: eventDate)
             }
-            
+
             //  Doors Label
             // Doors 7:00 PM PDT  -  Show 8:00 PM PDT"
         }

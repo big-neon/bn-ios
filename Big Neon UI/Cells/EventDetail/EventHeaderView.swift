@@ -1,6 +1,7 @@
 
-import Big_Neon_UI
+
 import UIKit
+import Big_Neon_Core
 
 final public class EventHeaderView: UIView {
     
@@ -15,7 +16,7 @@ final public class EventHeaderView: UIView {
             self.eventNameLabel.text = event.name
             let eventImageURL: URL = URL(string: event.promoImageURL)!
             self.eventImageView.pin_setImage(from: eventImageURL, placeholderImage: nil)
-            
+
             if event.venue.timezone != nil {
                 guard let eventStart = event.localizedTimes.eventStart else {
                     return
@@ -40,22 +41,22 @@ final public class EventHeaderView: UIView {
             }
         }
     }
-    
+
     public var event: Event? {
         didSet {
             guard let event = self.event else {
                 return
             }
-            
+
             self.eventNameLabel.text = event.name
             let eventImageURL: URL = URL(string: event.promoImageURL)!
             self.eventImageView.pin_setImage(from: eventImageURL, placeholderImage: nil)
-            
+
             if event.venue.timezone != nil {
                 guard let eventStart = event.localizedTimes.eventStart else {
                     return
                 }
-                
+
                 guard let eventDate = DateConfig.dateFromString(stringDate: eventStart) else {
                     self.eventDateView.monthLabel.text = "-"
                     self.eventDateView.dateLabel.text = "-"

@@ -1,6 +1,5 @@
 
 import Foundation
-import Big-Neon-Core
 
 final class TicketsViewModel {
     

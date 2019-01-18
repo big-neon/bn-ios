@@ -1,0 +1,6 @@
+framework module Pods_Big_Neon_UI {
+  umbrella header "Pods-Big Neon UI-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -2,7 +2,7 @@
 
 import Foundation
 import UIKit
-import BigNeonCore
+//import BigNeonCore
 
 final public class EventDetailCell: UITableViewCell {
     
