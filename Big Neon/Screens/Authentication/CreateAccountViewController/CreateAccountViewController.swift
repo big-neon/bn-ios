@@ -24,12 +24,9 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         return textField
     }()
     
-    fileprivate lazy var passwordTextField: BrandTextField = {
-        let textField = BrandTextField()
-        textField.isSecureTextEntry = true
-        textField.layer.cornerRadius = 4.0
-        textField.autocapitalizationType = .none
-        textField.placeholder = "password (atleast 6 characters)"
+    fileprivate lazy var passwordTextView: AuthenticationTextView = {
+        let textField = AuthenticationTextView()
+        textField.textFieldType = .password
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -80,7 +77,7 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     private func configureView() {
         view.addSubview(headerLabel)
         view.addSubview(emailTextView)
-        view.addSubview(passwordTextField)
+        view.addSubview(passwordTextView)
         view.addSubview(nextButton)
         nextButton.addSubview(loadingIndicatorView)
         
@@ -94,14 +91,14 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         emailTextView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 48).isActive = true
         emailTextView.heightAnchor.constraint(equalToConstant: 75).isActive = true
         
-        passwordTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 26).isActive = true
-        passwordTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -26).isActive = true
-        passwordTextField.topAnchor.constraint(equalTo: emailTextView.bottomAnchor, constant: 12).isActive = true
-        passwordTextField.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        passwordTextView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        passwordTextView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        passwordTextView.topAnchor.constraint(equalTo: emailTextView.bottomAnchor, constant: 12).isActive = true
+        passwordTextView.heightAnchor.constraint(equalToConstant: 75).isActive = true
         
         nextButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 26).isActive = true
         nextButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -26).isActive = true
-        nextButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 35).isActive = true
+        nextButton.topAnchor.constraint(equalTo: passwordTextView.bottomAnchor, constant: 35).isActive = true
         nextButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         loadingIndicatorView.centerXAnchor.constraint(equalTo: nextButton.centerXAnchor).isActive = true
@@ -112,7 +109,7 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     
     fileprivate func setupDelegates() {
         self.emailTextView.authTextField.delegate = self
-        self.passwordTextField.delegate = self
+        self.passwordTextView.authTextField.delegate = self
     }
     
     internal func textFieldShake(_ textField: UITextField) {
@@ -122,7 +119,7 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     private func disableView() {
         self.loadingIndicatorView.startAnimating()
         self.emailTextView.authTextField.isEnabled = false
-        self.passwordTextField.isEnabled = false
+        self.passwordTextView.authTextField.isEnabled = false
         self.nextButton.isEnabled = false
         self.nextButton.setTitle("", for: UIControl.State.normal)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
@@ -131,7 +128,7 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     private func enableView() {
         self.loadingIndicatorView.stopAnimating()
         self.emailTextView.authTextField.isEnabled = false
-        self.passwordTextField.isEnabled = false
+        self.passwordTextView.authTextField.isEnabled = false
         self.nextButton.isEnabled = true
         self.nextButton.setTitle("Let's do this", for: UIControl.State.normal)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
@@ -144,8 +141,8 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
             return
         }
         
-        guard let password = self.passwordTextField.text else {
-            self.textFieldShake(self.passwordTextField)
+        guard let password = self.passwordTextView.authTextField.text else {
+            self.passwordTextView.textFieldError = .invalidPassword
             return
         }
         
@@ -155,13 +152,12 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         }
         
         if password.isEmpty == true {
-            self.textFieldShake(self.passwordTextField)
+            self.passwordTextView.textFieldError = .emptySignUpPassword
             return
         }
         
         if password.characters.count < 7 {
-            print("Password should be more than 6 characters")
-            self.textFieldShake(self.passwordTextField)
+            self.passwordTextView.textFieldError = .lessCharacters
             return
         }
         
@@ -197,7 +193,7 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     
     fileprivate func resignTextFields() {
         self.emailTextView.authTextField.resignFirstResponder()
-        self.passwordTextField.resignFirstResponder()
+        self.passwordTextView.resignFirstResponder()
     }
     
 }

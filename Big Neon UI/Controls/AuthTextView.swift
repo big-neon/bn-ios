@@ -13,6 +13,9 @@ public enum TextFieldType {
 public enum TextFieldError: String {
     case invalidEmail = "Please enter a valid email address"
     case emptyEmail = "Please enter your email address"
+    case invalidPassword = "Please enter a valid password"
+    case emptySignUpPassword = "Please enter a password"
+    case lessCharacters = "Your password needs to have atleast 6 characters"
     case defaultError = "Incorrect Text Entered"
 }
 
@@ -50,7 +53,17 @@ public class AuthenticationTextView: UIView {
             self.authTextField.layer.borderWidth = 1.0
             self.textFieldShake(authTextField)
             self.errorLabel.text = errorType.rawValue
+            self.perform(#selector(restoreView), with: self, afterDelay: 2.4)
         }
+    }
+    
+    @objc private func restoreView() {
+        UIView.animate(withDuration: 0.4) {
+            self.authTextField.layer.borderColor = UIColor.clear.cgColor
+            self.authTextField.layer.borderWidth = 0.0
+            self.errorLabel.text = ""
+        }
+        
     }
     
     private func textFieldShake(_ textField: UITextField) {
@@ -90,7 +103,7 @@ public class AuthenticationTextView: UIView {
         authTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 26).isActive = true
         authTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -26).isActive = true
         authTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 4).isActive = true
-        authTextField.heightAnchor.constraint(equalToConstant: 50.0)
+        authTextField.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
         
         errorLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 26).isActive = true
         errorLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -26).isActive = true
