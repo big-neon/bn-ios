@@ -127,8 +127,8 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     
     private func enableView() {
         self.loadingIndicatorView.stopAnimating()
-        self.emailTextView.authTextField.isEnabled = false
-        self.passwordTextView.authTextField.isEnabled = false
+        self.emailTextView.authTextField.isEnabled = true
+        self.passwordTextView.authTextField.isEnabled = true
         self.nextButton.isEnabled = true
         self.nextButton.setTitle("Let's do this", for: UIControl.State.normal)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true

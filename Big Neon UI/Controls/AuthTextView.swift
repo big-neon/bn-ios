@@ -12,12 +12,15 @@ public enum TextFieldType {
 }
 
 public enum TextFieldError: String {
-    case invalidEmail = "Please enter a valid email address"
-    case emptyEmail = "Please enter your email address"
-    case invalidPassword = "Please enter a valid password"
-    case emptySignUpPassword = "Please enter a password"
-    case lessCharacters = "Your password needs to have atleast 6 characters"
-    case defaultError = "Incorrect Text Entered"
+    case invalidEmail           = "Please enter a valid email address"
+    case emptyEmail             = "Please enter your email address"
+    case invalidPassword        = "Please enter a valid password"
+    case emptySignUpPassword    = "Please enter a password"
+    case lessCharacters         = "Your password needs to have atleast 6 characters"
+    case invalidName            = "Please enter a valid name"
+    case invalidSurname         = "Please enter a valid surname"
+    case emptyName              = "Please enter your name"
+    case emptySurname           = "Please enter your surname"
 }
 
 public class AuthenticationTextView: UIView {

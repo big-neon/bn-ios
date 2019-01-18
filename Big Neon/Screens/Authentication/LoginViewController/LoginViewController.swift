@@ -128,8 +128,8 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     
     private func enableView() {
         self.loadingIndicatorView.stopAnimating()
-        self.emailTextView.authTextField.isEnabled = false
-        self.passwordTextView.authTextField.isEnabled = false
+        self.emailTextView.authTextField.isEnabled = true
+        self.passwordTextView.authTextField.isEnabled = true
         self.loginButton.isEnabled = true
         self.loginButton.setTitle("Login to your account", for: UIControl.State.normal)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true

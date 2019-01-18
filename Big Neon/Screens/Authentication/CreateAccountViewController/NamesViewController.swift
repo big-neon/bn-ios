@@ -18,20 +18,17 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
         return label
     }()
     
-    private lazy var firstNameTextField: BrandTextField = {
-        let textField = BrandTextField()
-        textField.layer.cornerRadius = 4.0
-        textField.autocapitalizationType = .none
-        textField.placeholder = "First Name"
+    
+    private lazy var firstNameTextView: AuthenticationTextView = {
+        let textField = AuthenticationTextView()
+        textField.textFieldType = .firstName
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
-    fileprivate lazy var surnameTextField: BrandTextField = {
-        let textField = BrandTextField()
-        textField.layer.cornerRadius = 4.0
-        textField.autocapitalizationType = .none
-        textField.placeholder = "Last Name"
+    fileprivate lazy var lastNameTextView: AuthenticationTextView = {
+        let textField = AuthenticationTextView()
+        textField.textFieldType = .lastName
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -39,7 +36,7 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
     fileprivate lazy var nextButton: GradientBrandButton = {
         let button = GradientBrandButton()
         button.setTitle("All Done", for: UIControl.State.normal)
-//        button.addTarget(self, action: #selector(handleDone), for: UIControl.Event.touchUpInside)
+        button.addTarget(self, action: #selector(handleDone), for: UIControl.Event.touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -80,8 +77,8 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
     
     private func configureView() {
         view.addSubview(headerLabel)
-        view.addSubview(firstNameTextField)
-        view.addSubview(surnameTextField)
+        view.addSubview(firstNameTextView)
+        view.addSubview(lastNameTextView)
         view.addSubview(nextButton)
         nextButton.addSubview(loadingIndicatorView)
         
@@ -90,19 +87,19 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
         headerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 36).isActive = true
         headerLabel.heightAnchor.constraint(equalToConstant: 26).isActive = true
         
-        firstNameTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 26).isActive = true
-        firstNameTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -26).isActive = true
-        firstNameTextField.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 48).isActive = true
-        firstNameTextField.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        firstNameTextView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        firstNameTextView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        firstNameTextView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 48).isActive = true
+        firstNameTextView.heightAnchor.constraint(equalToConstant: 75).isActive = true
         
-        surnameTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 26).isActive = true
-        surnameTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -26).isActive = true
-        surnameTextField.topAnchor.constraint(equalTo: firstNameTextField.bottomAnchor, constant: 25).isActive = true
-        surnameTextField.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        lastNameTextView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        lastNameTextView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        lastNameTextView.topAnchor.constraint(equalTo: firstNameTextView.bottomAnchor, constant: 12).isActive = true
+        lastNameTextView.heightAnchor.constraint(equalToConstant: 75).isActive = true
         
         nextButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 26).isActive = true
         nextButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -26).isActive = true
-        nextButton.topAnchor.constraint(equalTo: surnameTextField.bottomAnchor, constant: 35).isActive = true
+        nextButton.topAnchor.constraint(equalTo: lastNameTextView.bottomAnchor, constant: 35).isActive = true
         nextButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         loadingIndicatorView.centerXAnchor.constraint(equalTo: nextButton.centerXAnchor).isActive = true
@@ -112,14 +109,14 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
     }
     
     fileprivate func setupDelegates() {
-        self.firstNameTextField.delegate = self
-        self.surnameTextField.delegate = self
+        self.firstNameTextView.authTextField.delegate = self
+        self.lastNameTextView.authTextField.delegate = self
     }
     
     private func disableView() {
         self.loadingIndicatorView.startAnimating()
-        self.firstNameTextField.isEnabled = false
-        self.surnameTextField.isEnabled = false
+        self.firstNameTextView.authTextField.isEnabled = false
+        self.lastNameTextView.authTextField.isEnabled = false
         self.nextButton.isEnabled = false
         self.nextButton.setTitle("", for: UIControl.State.normal)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
@@ -127,8 +124,8 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
     
     private func enableView() {
         self.loadingIndicatorView.stopAnimating()
-        self.firstNameTextField.isEnabled = false
-        self.surnameTextField.isEnabled = false
+        self.firstNameTextView.authTextField.isEnabled = true
+        self.lastNameTextView.authTextField.isEnabled = true
         self.nextButton.isEnabled = true
         self.nextButton.setTitle("Let's do this", for: UIControl.State.normal)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
@@ -136,44 +133,39 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
     
     @objc internal func handleDone() {
         
-        guard let email = self.firstNameTextField.text else {
-//            self.textFieldShake(self.firstNameTextField)
+        guard let name = self.firstNameTextView.authTextField.text else {
+            self.firstNameTextView.textFieldError = TextFieldError.invalidName
             return
         }
         
-        guard let password = self.surnameTextField.text else {
-//            self.textFieldShake(self.surnameTextField)
+        guard let lastName = self.lastNameTextView.authTextField.text else {
+            self.lastNameTextView.textFieldError = TextFieldError.invalidSurname
             return
         }
         
-        if email.isEmpty == true {
-//            self.textFieldShake(self.firstNameTextField)
+        if name.isEmpty == true {
+            self.firstNameTextView.textFieldError = TextFieldError.emptyName
             return
         }
         
-        if password.isEmpty == true {
-//            self.textFieldShake(self.surnameTextField)
-            return
-        }
-        
-        //  Check Validity of email
-        if email.isValidEmailAddress == false {
-//            self.textFieldShake(self.firstNameTextField)
+        if lastName.isEmpty == true {
+            self.lastNameTextView.textFieldError = TextFieldError.emptySurname
             return
         }
         
         self.resignTextFields()
-        self.disableView()
-        self.createAccountViewModel.createAccount(email: email, password: password) { (success) in
-            DispatchQueue.main.async {
-                if success == false {
-                    self.enableView()
-                    return
-                }
-                self.enableView()
-                self.handleShowHome()
-            }
-        }
+//        self.disableView()
+//        self.createAccountViewModel.createAccount(email: name, password: lastName) { (success) in
+//            DispatchQueue.main.async {
+//                if success == false {
+//                    self.enableView()
+//                    return
+//                }
+//                self.enableView()
+//                self.handleShowHome()
+//            }
+//        }
+        self.handleShowHome()
     }
     
     @objc private func handleShowHome() {
@@ -187,8 +179,8 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
     }
     
     fileprivate func resignTextFields() {
-        self.firstNameTextField.resignFirstResponder()
-        self.surnameTextField.resignFirstResponder()
+        self.firstNameTextView.authTextField.resignFirstResponder()
+        self.lastNameTextView.authTextField.resignFirstResponder()
     }
     
 }
