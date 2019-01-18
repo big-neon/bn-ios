@@ -1,6 +1,6 @@
 
 import Foundation
-import BigNeonCore
+//import BigNeonCore
 
 final class ExploreViewModel {
     
@@ -8,22 +8,23 @@ final class ExploreViewModel {
     
     internal func fetchEvents(completion: @escaping(Bool) -> Void) {
         
-        BusinessService.shared.database.fetchEvents { (error, eventsFetched) in
-            if error != nil {
-                print(error?.localizedDescription)
-                completion(false)
-                return
-            }
-            
-            guard let events = eventsFetched else {
-                completion(false)
-                return
-            }
-            
-            self.events = events
-            completion(true)
-            return
-        }
+        completion(true)
+//        BusinessService.shared.database.fetchEvents { (error, eventsFetched) in
+//            if error != nil {
+//                print(error?.localizedDescription)
+//                completion(false)
+//                return
+//            }
+//
+//            guard let events = eventsFetched else {
+//                completion(false)
+//                return
+//            }
+//
+//            self.events = events
+//            completion(true)
+//            return
+//        }
         
     }
     

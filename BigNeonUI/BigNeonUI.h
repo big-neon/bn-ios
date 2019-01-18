@@ -2,8 +2,8 @@
 //  BigNeonUI.h
 //  BigNeonUI
 //
-//  Created by Gugulethu on 2018/12/24.
-//  Copyright © 2018 Big Neon Inc. All rights reserved.
+//  Created by Gugulethu on 2019/01/18.
+//  Copyright © 2019 Big Neon Inc. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

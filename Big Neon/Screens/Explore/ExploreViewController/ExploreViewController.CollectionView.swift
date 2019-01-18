@@ -38,10 +38,10 @@ extension ExploreViewController {
             return sectionLabelCell
         default:
             let eventCell: UpcomingEventCell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingEventCell.cellID, for: indexPath) as! UpcomingEventCell
-            guard let events = self.exploreViewModel.events?.data else {
-               return eventCell
-            }
-            eventCell.event = events[indexPath.item]
+//            guard let events = self.exploreViewModel.events?.data else {
+//               return eventCell
+//            }
+//            eventCell.event = events[indexPath.item]
             return eventCell
         }
         

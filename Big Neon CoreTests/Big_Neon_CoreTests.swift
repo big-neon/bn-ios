@@ -1,15 +1,15 @@
 //
-//  BigNeonUITests.swift
-//  BigNeonUITests
+//  Big_Neon_CoreTests.swift
+//  Big Neon CoreTests
 //
-//  Created by Gugulethu on 2018/12/24.
-//  Copyright © 2018 Big Neon Inc. All rights reserved.
+//  Created by Gugulethu on 2019/01/18.
+//  Copyright © 2019 Big Neon Inc. All rights reserved.
 //
 
 import XCTest
-@testable import BigNeonUI
+@testable import Big_Neon_Core
 
-class BigNeonUITests: XCTestCase {
+class Big_Neon_CoreTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
