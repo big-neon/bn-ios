@@ -7,7 +7,7 @@ import Big_Neon_UI
 internal class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     fileprivate var buttonBottomAnchorConstraint: NSLayoutConstraint?
-    internal let createAccountViewModel: CreateAccountViewModel = CreateAccountViewModel()
+    internal let createAccountViewModel: AccountViewModel = AccountViewModel()
     
     private var headerLabel: BrandTitleLabel = {
         let label = BrandTitleLabel()
@@ -157,6 +157,12 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         }
         
         if password.isEmpty == true {
+            self.textFieldShake(self.passwordTextField)
+            return
+        }
+        
+        if password.characters.count < 7 {
+            print("Password should be more than 6 characters")
             self.textFieldShake(self.passwordTextField)
             return
         }
