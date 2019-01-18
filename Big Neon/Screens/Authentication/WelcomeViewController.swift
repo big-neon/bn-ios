@@ -34,6 +34,7 @@ final class WelcomeViewController: UIViewController {
 
     private lazy var loginButton: GradientBrandButton = {
         let button = GradientBrandButton()
+        button.addTarget(self, action: #selector(handleLogin), for: UIControl.Event.touchUpInside)
         button.backgroundColor = UIColor.clear
         button.layer.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
         button.layer.borderWidth = 2.0
@@ -93,6 +94,10 @@ final class WelcomeViewController: UIViewController {
     
     @objc private func handleCreateAccount() {
         self.navigationController?.pushViewController(CreateAccountViewController(), animated: true)
+    }
+    
+    @objc private func handleLogin() {
+        self.navigationController?.pushViewController(LoginViewController(), animated: true)
     }
     
 }

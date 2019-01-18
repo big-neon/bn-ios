@@ -5,7 +5,7 @@ import Foundation
 import UITextField_Shake
 import Big_Neon_UI
 
-internal class NamesAccountViewController: UIViewController, UITextFieldDelegate {
+internal class NamesViewController: UIViewController, UITextFieldDelegate {
     
     fileprivate var buttonBottomAnchorConstraint: NSLayoutConstraint?
     internal let createAccountViewModel: AccountViewModel = AccountViewModel()
@@ -196,5 +196,4 @@ internal class NamesAccountViewController: UIViewController, UITextFieldDelegate
     }
     
 }
-
 
