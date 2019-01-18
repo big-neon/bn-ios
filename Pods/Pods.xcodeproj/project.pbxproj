@@ -22,7 +22,6 @@
 		03EDEFAF72CCAA234F80EF0FE99F36BB /* MPNetworkPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 41D52563D1BE6D768BEC11105F719BC3 /* MPNetworkPrivate.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		042741E063D1298BC51BF986B0B3F0F2 /* MPABTestDesignerTweakResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D5E4B140276880CBE4BD53D9F776A9 /* MPABTestDesignerTweakResponseMessage.m */; };
 		045B921C195B47F302EE8AC949E8B5BD /* STPCardValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C5094AAE299E84537A57E97B20FBDE8 /* STPCardValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04CDD31B0E273B9F63AF3011E33DB438 /* Pods-Big Neon UI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6731FCF17D4F668EE81B8303129C6469 /* Pods-Big Neon UI-dummy.m */; };
 		05BCED7B50D27B04B7D58E9F6A85FEB5 /* MPEventBinding.h in Headers */ = {isa = PBXBuildFile; fileRef = 407C07E8791CB7CFBD68D3344E45644D /* MPEventBinding.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		0645F3490177CB356BBFF7A65D845A72 /* STPCoreViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 81566AA7F360E7B00E76FFB254014527 /* STPCoreViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		067463810D4272888805C041D3EF4EC8 /* STPAPIClient+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 93B8D8D9FE65A45D023B80C26FA155AB /* STPAPIClient+Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -195,12 +194,12 @@
 		434A11A6E52C6F205BA7D9F489398190 /* MPABTestDesignerChangeRequestMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = B0C75B1ECF29266426B5FE83BBBE5C12 /* MPABTestDesignerChangeRequestMessage.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4375DC2C26CFAF644500B4E2CE259FA2 /* MPPassThroughValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = C27FB1B07E27D37485055FC6C2937C95 /* MPPassThroughValueTransformer.m */; };
 		445A17CB3937F83502689D39F56C3EE2 /* MPTweakStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 812F2DCB7C10D1C17DA5DCB3D7F12912 /* MPTweakStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4494B47A4DB412157CA9D9CA868341FC /* Pods-Big Neon UI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D06AED920C9F52F4B640C972710FBEB8 /* Pods-Big Neon UI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		450903FD67C906F08B2A951C3F43DCD2 /* POPBasicAnimationInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 4027C71280DA9284D7E59A5F0E6E7AD9 /* POPBasicAnimationInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		4516B42084FA27B5773329485A99CE7A /* STPCoreTableViewController+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 435602FA49C7CF7F82C6EE5D198FBB09 /* STPCoreTableViewController+Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		453BD2F036EE4A787B66E8730C8DC1F9 /* STPCardParams.h in Headers */ = {isa = PBXBuildFile; fileRef = CEE80942AF50FFA67BA5A99E203BAE1C /* STPCardParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4544D69815E1308BF357FA3C1BC25B32 /* stp_card_error_amex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28903C0FDE1BD7BE19D4A85E3871A41A /* stp_card_error_amex@2x.png */; };
 		4558DA559E7F004223785B22AFAE2785 /* STPAddCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC9039A640A4BE7B17ADE94A9CF7AF9 /* STPAddCardViewController.m */; };
+		4633C3027EC2A8D394565EF188DF4778 /* Pods-Big Neon UI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D06AED920C9F52F4B640C972710FBEB8 /* Pods-Big Neon UI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		46431116FCA5ED1B1B5C7EAF0C03901F /* STPPaymentIntentParams.h in Headers */ = {isa = PBXBuildFile; fileRef = A4138CE67864457FD65EE85C293E852D /* STPPaymentIntentParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		464B6BC6EE5CF25FC8D8C7C5A74F1D6D /* MPConnectIntegrations.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8D73369E69AEEB3A4F0C0503C0CE3B /* MPConnectIntegrations.m */; };
 		46887EFA0A07B6C05742A4B2962D7EF8 /* POPAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 7698F652AD0C1712288352D1244AD4FE /* POPAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -515,7 +514,6 @@
 		AE2E59390C4196C3E1AB2479E89BE32A /* STPCustomer+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = FCCD813521F4932A44E9B8C0BEEB6E6F /* STPCustomer+Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		AF45FD55ABBF4161BAEE5E9BF0823D80 /* MPABTestDesignerTweakRequestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5929106E29174482F05367E3378E71E7 /* MPABTestDesignerTweakRequestMessage.m */; };
 		AF8980B4D4F61D514A50DC33D8916F29 /* TransformationMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = FA24A341D077754E5C779834618C2111 /* TransformationMatrix.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		AFA8F075CB4E31E55388CC7DD275F3CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8065C456844ED9CE1E67FC8014A9C39E /* Foundation.framework */; };
 		B00CAF364F67382A01B1F611B1EF3F12 /* STPSourcePoller.h in Headers */ = {isa = PBXBuildFile; fileRef = 18F42A95B233B44CB11C8137FD29019E /* STPSourcePoller.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B0FB6E541FB01F1CCEA2BDB384B517F1 /* POPAnimatorPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 735F3F9725DCA0F20A5E4F468D00F442 /* POPAnimatorPrivate.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B115F5F9014EE0803F5AA422E2C13A2C /* MPNotificationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 262356371E87AD28BC26B6A52E2990D6 /* MPNotificationViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -527,6 +525,7 @@
 		B2FC29FB494660F66A030574654A9990 /* NSBundle+Stripe_AppName.h in Headers */ = {isa = PBXBuildFile; fileRef = 86F2E64ADAAFAA1BFEC46E86E616C0DC /* NSBundle+Stripe_AppName.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B3B4F14EE97B804520D8F1DE896733E2 /* STPEphemeralKey.h in Headers */ = {isa = PBXBuildFile; fileRef = A52060AF1EA760C7E0A252A465AB613F /* STPEphemeralKey.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B3CC72426315A20E9FB962B10D31F894 /* Mixpanel+AutomaticTracks.h in Headers */ = {isa = PBXBuildFile; fileRef = 1304BF88497FC02D80E7CE1570697F41 /* Mixpanel+AutomaticTracks.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		B3DDA719B1E3608120B47608D7809356 /* Pods-Big Neon UI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6731FCF17D4F668EE81B8303129C6469 /* Pods-Big Neon UI-dummy.m */; };
 		B424F524BBBE34E685129945993809A8 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CA45100B2AA8B662A1ADA5B5E749F5 /* Timeline.swift */; };
 		B43272D84D40BA82C0E79C95BFB87DE7 /* UIImage+Stripe.h in Headers */ = {isa = PBXBuildFile; fileRef = 99E9AB7E28CE4611BBB1BE1C5D901070 /* UIImage+Stripe.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B4862A69A4E92C74681AC6DEC28E7A82 /* PINImage+DecodedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5142A0E5A3F77FDC04F3026B614F82FA /* PINImage+DecodedImage.m */; };
@@ -583,6 +582,7 @@
 		C4D2FFD9FC5AC2661892A32CA33772E5 /* MPSequenceGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 4053856565115EBFC69E98090D1B42AF /* MPSequenceGenerator.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C507CE9ACE34EEBA5450E9140A90F85B /* stp_card_unionpay_zh.png in Resources */ = {isa = PBXBuildFile; fileRef = A7382D8872CC498A7090232559DB36A7 /* stp_card_unionpay_zh.png */; };
 		C516E3D68D1F83978E2C2636A9C37369 /* NSDictionary+Stripe.h in Headers */ = {isa = PBXBuildFile; fileRef = 580BB9561AEED2F2714F013C14567BDB /* NSDictionary+Stripe.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C51A1500ED1DA3AC8BC9728D216F0332 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8065C456844ED9CE1E67FC8014A9C39E /* Foundation.framework */; };
 		C529DCE69600F50CE8B460BCBF0A2DCF /* UnitBezier.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B6AB3E3E9B697232823FCEFEB0701E /* UnitBezier.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C550B9FFBE17464C0C62F290C9C1827C /* UIViewController+Stripe_KeyboardAvoiding.m in Sources */ = {isa = PBXBuildFile; fileRef = 962D7FD1D3033AFA4C8203319833E2BD /* UIViewController+Stripe_KeyboardAvoiding.m */; };
 		C5873C3D6D04CDF85AE64A4BE3A60FF5 /* MPLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C691C8F585A7D213CF495F96F57356AB /* MPLogo@2x.png */; };
@@ -739,6 +739,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		006A7E4E440EB0EF5A6EFF8C10521371 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A84A93639C2EDFDC5C979E596877137C;
+			remoteInfo = "UITextField+Shake";
+		};
+		06431F6FB37F0A1D94F4F574B5BA7DEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E2F93DC689DAFDEE65C2E42449B16EC6;
+			remoteInfo = PINCache;
+		};
 		0D7F6C9A691BAEA923C44E4EDBCAEA6F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -816,28 +830,14 @@
 			remoteGlobalIDString = E76458C58C9140B6A16D60547E68E80C;
 			remoteInfo = Alamofire;
 		};
-		61548A74B051074F79242F278173BDD0 /* PBXContainerItemProxy */ = {
+		78181E48C3E70C71257402371EB8CB55 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6F292934E9BE32938041E74CD3F766D9;
-			remoteInfo = PINOperation;
-		};
-		6EB8022D407DD8E8B1F24F4A5B4E2299 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E2F93DC689DAFDEE65C2E42449B16EC6;
-			remoteInfo = PINCache;
+			remoteGlobalIDString = 4460B48BFC5E36A6946E7FDAA6684A32;
+			remoteInfo = PINRemoteImage;
 		};
 		8AACE50AA14027AEC1CCFC996A1B07D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4D7B7D274050D6277CAECA96F3CF6722;
-			remoteInfo = FLAnimatedImage;
-		};
-		8B90FE324D3DA48F318F91B12392A949 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -851,19 +851,26 @@
 			remoteGlobalIDString = E76458C58C9140B6A16D60547E68E80C;
 			remoteInfo = Alamofire;
 		};
-		A58E3CAFA147DD76A900DFF6561415F6 /* PBXContainerItemProxy */ = {
+		C231C4B41813E61409FBBE33B0DE1C47 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D7B7D274050D6277CAECA96F3CF6722;
+			remoteInfo = FLAnimatedImage;
+		};
+		C37F5E8A7D83BDB725A22D730E4E5AAC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 29B1C940D8FF33698530CD9C6C8F8C2E;
 			remoteInfo = pop;
 		};
-		A6200040E73DEEB350126A33B86D08FD /* PBXContainerItemProxy */ = {
+		CD70EFD10440BA28D93951B62C6D5681 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4460B48BFC5E36A6946E7FDAA6684A32;
-			remoteInfo = PINRemoteImage;
+			remoteGlobalIDString = 6F292934E9BE32938041E74CD3F766D9;
+			remoteInfo = PINOperation;
 		};
 		CDF592337180B2670ECCAAB75E23E329 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1807,11 +1814,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C62C386BEC9ABB7B4510FA2F8AB236F0 /* Frameworks */ = {
+		C18D8DF844C7FBA10CFE169F2FCF7E43 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFA8F075CB4E31E55388CC7DD275F3CF /* Foundation.framework in Frameworks */,
+				C51A1500ED1DA3AC8BC9728D216F0332 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3356,11 +3363,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E1ECEB44CB431862FF303FA4A47CE1D0 /* Headers */ = {
+		D6AE57B9D0172FB609F6C34EF43DB074 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4494B47A4DB412157CA9D9CA868341FC /* Pods-Big Neon UI-umbrella.h in Headers */,
+				4633C3027EC2A8D394565EF188DF4778 /* Pods-Big Neon UI-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3394,6 +3401,30 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		20204903FB91A3C2572D09EB40B1F841 /* Pods-Big Neon UI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EEA74A75F9D75326D9F4BCCD5254B218 /* Build configuration list for PBXNativeTarget "Pods-Big Neon UI" */;
+			buildPhases = (
+				D6AE57B9D0172FB609F6C34EF43DB074 /* Headers */,
+				10BD998DAFBD6B4D676365E40AB34F0E /* Sources */,
+				C18D8DF844C7FBA10CFE169F2FCF7E43 /* Frameworks */,
+				C7A371911175B027B7D021C07D0607C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F715CA99ABA8D72CC59C506E2050CF98 /* PBXTargetDependency */,
+				7D27FD74D292C10A829DA040C30CB147 /* PBXTargetDependency */,
+				9C1606B0BCD52B2612DDB56AACA3EBD2 /* PBXTargetDependency */,
+				3BDA0F5430DBDD2782233DE37121049A /* PBXTargetDependency */,
+				CFF0136B3CBD53B00D28A6E7E02B209B /* PBXTargetDependency */,
+				F207B750773F8744A46105D33112A837 /* PBXTargetDependency */,
+			);
+			name = "Pods-Big Neon UI";
+			productName = "Pods-Big Neon UI";
+			productReference = F6317474CE7D39D2F12E9264D7734A84 /* Pods_Big_Neon_UI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		29B1C940D8FF33698530CD9C6C8F8C2E /* pop */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DCAF744976310DCAA823C1C7C4F52F7D /* Build configuration list for PBXNativeTarget "pop" */;
@@ -3486,29 +3517,6 @@
 			name = PresenterKit;
 			productName = PresenterKit;
 			productReference = DE08F7BB0C6268282CEE6C1336F54BDF /* PresenterKit.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		6E5DF739932CBFD49849F57214164CF2 /* Pods-Big Neon UI */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 57434564CFCC1A5BE30D917F47941755 /* Build configuration list for PBXNativeTarget "Pods-Big Neon UI" */;
-			buildPhases = (
-				E1ECEB44CB431862FF303FA4A47CE1D0 /* Headers */,
-				E0711DA56FCCAFCADA15A2E61EC468A9 /* Sources */,
-				C62C386BEC9ABB7B4510FA2F8AB236F0 /* Frameworks */,
-				815009A4ED62F7BC99767C38169C1D4C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6BA64AC37B46C7A7F48B0B3516CC3161 /* PBXTargetDependency */,
-				09A33314FA2189D25F6E286EAFE2B13F /* PBXTargetDependency */,
-				5F3E65254228DA0D0F2DED7DA84735D5 /* PBXTargetDependency */,
-				F5456DE95A28EA8898FB3B7EFBAF9130 /* PBXTargetDependency */,
-				A3779155BB87A57BFCA4C74FBC8021FD /* PBXTargetDependency */,
-			);
-			name = "Pods-Big Neon UI";
-			productName = "Pods-Big Neon UI";
-			productReference = F6317474CE7D39D2F12E9264D7734A84 /* Pods_Big_Neon_UI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		6F292934E9BE32938041E74CD3F766D9 /* PINOperation */ = {
@@ -3717,7 +3725,7 @@
 				4460B48BFC5E36A6946E7FDAA6684A32 /* PINRemoteImage */,
 				F9D824BE8EB84E2C84D46FE162118A7D /* Pods-Big Neon */,
 				84E2C98863CA857B3A2602101A4C07DD /* Pods-Big Neon Core */,
-				6E5DF739932CBFD49849F57214164CF2 /* Pods-Big Neon UI */,
+				20204903FB91A3C2572D09EB40B1F841 /* Pods-Big Neon UI */,
 				29B1C940D8FF33698530CD9C6C8F8C2E /* pop */,
 				696ABE44E730F75CBBA03A6F77C544C4 /* PresenterKit */,
 				A9ACD9FD8FBAC7A1968F5FBFE167F8EB /* PWSwitch */,
@@ -3902,13 +3910,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		815009A4ED62F7BC99767C38169C1D4C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		83192590C22D6F86D62DB7E00D6473B4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3930,6 +3931,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C7A371911175B027B7D021C07D0607C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F6803D01253BCA242209CD5B590A5DF7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3940,6 +3948,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		10BD998DAFBD6B4D676365E40AB34F0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3DDA719B1E3608120B47608D7809356 /* Pods-Big Neon UI-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2189470F2CB80BC7083C3C305E2CD419 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4292,14 +4308,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E0711DA56FCCAFCADA15A2E61EC468A9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				04CDD31B0E273B9F63AF3011E33DB438 /* Pods-Big Neon UI-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F44849A753C3B89C5E82054482EEA6DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4323,12 +4331,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		09A33314FA2189D25F6E286EAFE2B13F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PINCache;
-			target = E2F93DC689DAFDEE65C2E42449B16EC6 /* PINCache */;
-			targetProxy = 6EB8022D407DD8E8B1F24F4A5B4E2299 /* PBXContainerItemProxy */;
-		};
 		12212B729686156811A27A81E24B7F6C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PINOperation;
@@ -4347,29 +4349,23 @@
 			target = 4D7B7D274050D6277CAECA96F3CF6722 /* FLAnimatedImage */;
 			targetProxy = 8AACE50AA14027AEC1CCFC996A1B07D4 /* PBXContainerItemProxy */;
 		};
+		3BDA0F5430DBDD2782233DE37121049A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PINRemoteImage;
+			target = 4460B48BFC5E36A6946E7FDAA6684A32 /* PINRemoteImage */;
+			targetProxy = 78181E48C3E70C71257402371EB8CB55 /* PBXContainerItemProxy */;
+		};
 		487CD75033B337AAC35F44B2A26833BE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Stripe-Stripe";
 			target = F224C99D98860DD108856C79B7711AFE /* Stripe-Stripe */;
 			targetProxy = 31B325973734B3B1B4F6A6A9FE10776C /* PBXContainerItemProxy */;
 		};
-		5F3E65254228DA0D0F2DED7DA84735D5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PINOperation;
-			target = 6F292934E9BE32938041E74CD3F766D9 /* PINOperation */;
-			targetProxy = 61548A74B051074F79242F278173BDD0 /* PBXContainerItemProxy */;
-		};
 		6684D65994B91868B5337223FB4E2D4A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PINRemoteImage;
 			target = 4460B48BFC5E36A6946E7FDAA6684A32 /* PINRemoteImage */;
 			targetProxy = 1D9FCBB7B703835E4E2FD736AB6ED68A /* PBXContainerItemProxy */;
-		};
-		6BA64AC37B46C7A7F48B0B3516CC3161 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FLAnimatedImage;
-			target = 4D7B7D274050D6277CAECA96F3CF6722 /* FLAnimatedImage */;
-			targetProxy = 8B90FE324D3DA48F318F91B12392A949 /* PBXContainerItemProxy */;
 		};
 		6D9A48572D4A06844558B245336122C3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4389,6 +4385,12 @@
 			target = 84E2C98863CA857B3A2602101A4C07DD /* Pods-Big Neon Core */;
 			targetProxy = EFFC9CAA015D6CFC8F3E9177F4BA9EBA /* PBXContainerItemProxy */;
 		};
+		7D27FD74D292C10A829DA040C30CB147 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PINCache;
+			target = E2F93DC689DAFDEE65C2E42449B16EC6 /* PINCache */;
+			targetProxy = 06431F6FB37F0A1D94F4F574B5BA7DEE /* PBXContainerItemProxy */;
+		};
 		8ADB8EFF4BE6AC28C6108135DB21661E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Mixpanel;
@@ -4407,11 +4409,11 @@
 			target = 6F292934E9BE32938041E74CD3F766D9 /* PINOperation */;
 			targetProxy = DE460B10459952C5D22AE62B1BF9EC7E /* PBXContainerItemProxy */;
 		};
-		A3779155BB87A57BFCA4C74FBC8021FD /* PBXTargetDependency */ = {
+		9C1606B0BCD52B2612DDB56AACA3EBD2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = pop;
-			target = 29B1C940D8FF33698530CD9C6C8F8C2E /* pop */;
-			targetProxy = A58E3CAFA147DD76A900DFF6561415F6 /* PBXContainerItemProxy */;
+			name = PINOperation;
+			target = 6F292934E9BE32938041E74CD3F766D9 /* PINOperation */;
+			targetProxy = CD70EFD10440BA28D93951B62C6D5681 /* PBXContainerItemProxy */;
 		};
 		A99C62E7C53AF72A7BC026D05C49F34E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4443,11 +4445,23 @@
 			target = E76458C58C9140B6A16D60547E68E80C /* Alamofire */;
 			targetProxy = 57F33F0644B1BE627E42F686748CCDDC /* PBXContainerItemProxy */;
 		};
+		CFF0136B3CBD53B00D28A6E7E02B209B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "UITextField+Shake";
+			target = A84A93639C2EDFDC5C979E596877137C /* UITextField+Shake */;
+			targetProxy = 006A7E4E440EB0EF5A6EFF8C10521371 /* PBXContainerItemProxy */;
+		};
 		DE35BBF3B1ACBE9EE7D1746434A82063 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Mixpanel;
 			target = F8D21842E5814FA4C3A3DD2FC8DA93F5 /* Mixpanel */;
 			targetProxy = 1B17347DBAB88986A77C01D700BFCDAD /* PBXContainerItemProxy */;
+		};
+		F207B750773F8744A46105D33112A837 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = pop;
+			target = 29B1C940D8FF33698530CD9C6C8F8C2E /* pop */;
+			targetProxy = C37F5E8A7D83BDB725A22D730E4E5AAC /* PBXContainerItemProxy */;
 		};
 		F54143E3F319280CF265364AA9AA6689 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4455,17 +4469,17 @@
 			target = 4D7B7D274050D6277CAECA96F3CF6722 /* FLAnimatedImage */;
 			targetProxy = 2C3EAE20E5B329D65A60415745358969 /* PBXContainerItemProxy */;
 		};
-		F5456DE95A28EA8898FB3B7EFBAF9130 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PINRemoteImage;
-			target = 4460B48BFC5E36A6946E7FDAA6684A32 /* PINRemoteImage */;
-			targetProxy = A6200040E73DEEB350126A33B86D08FD /* PBXContainerItemProxy */;
-		};
 		F5A4B0BE2FA2CDF5800EAB97CCBD4F6D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PWSwitch;
 			target = A9ACD9FD8FBAC7A1968F5FBFE167F8EB /* PWSwitch */;
 			targetProxy = 406B0C9E8A9E3BE2078E1A7936E583C3 /* PBXContainerItemProxy */;
+		};
+		F715CA99ABA8D72CC59C506E2050CF98 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FLAnimatedImage;
+			target = 4D7B7D274050D6277CAECA96F3CF6722 /* FLAnimatedImage */;
+			targetProxy = C231C4B41813E61409FBBE33B0DE1C47 /* PBXContainerItemProxy */;
 		};
 		F8957A1EFDD1DDFAB8D68B79C4A6A68D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4497,9 +4511,9 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		0E882FBFF58C53FB52C68408B4436A4F /* Release */ = {
+		1BD69A6169E5107F5518FE2CE1C9A1D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3F74F294FA19AF94EBDF95D92D8F828D /* Pods-Big Neon UI.release.xcconfig */;
+			baseConfigurationReference = BACE4E9586B2315B40579BBA8B5C7475 /* Pods-Big Neon UI.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -4526,11 +4540,10 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		1EAFDB7DE59A16060DF36FC40DC2E750 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -4597,6 +4610,41 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		28B69C053D0497D975D436729FD21811 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F74F294FA19AF94EBDF95D92D8F828D /* Pods-Big Neon UI.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Big Neon UI/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		32DF60F38AB904EAD1908C3282973875 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -4932,40 +4980,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		88EF02DF34C626729F753911A8CB2B62 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BACE4E9586B2315B40579BBA8B5C7475 /* Pods-Big Neon UI.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Big Neon UI/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		8C67B2E8F4FA6F771F5B24CBEBDD006B /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -5599,15 +5613,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		57434564CFCC1A5BE30D917F47941755 /* Build configuration list for PBXNativeTarget "Pods-Big Neon UI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				88EF02DF34C626729F753911A8CB2B62 /* Debug */,
-				0E882FBFF58C53FB52C68408B4436A4F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		57B95E7F1EE12AEFFA2AE602F8BC8531 /* Build configuration list for PBXNativeTarget "PINOperation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -5694,6 +5699,15 @@
 			buildConfigurations = (
 				BA3498B312952F6ADB3DE6DD1C4526DC /* Debug */,
 				63E8FB2957DF26DD5FC5C6ADF5C257CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EEA74A75F9D75326D9F4BCCD5254B218 /* Build configuration list for PBXNativeTarget "Pods-Big Neon UI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BD69A6169E5107F5518FE2CE1C9A1D7 /* Debug */,
+				28B69C053D0497D975D436729FD21811 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

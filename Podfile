@@ -13,7 +13,6 @@ target 'Big Neon Core' do
         pod 'PresenterKit'
         pod 'pop'
         pod 'PWSwitch'
-        pod 'UITextField+Shake'
 	end
 end
 
@@ -22,4 +21,5 @@ target 'Big Neon UI' do
 	pod 'pop'
     pod 'PINCache', '3.0.1-beta.6'
     pod 'PINRemoteImage', '3.0.0-beta.13'
+    pod 'UITextField+Shake'
 end

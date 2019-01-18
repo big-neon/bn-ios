@@ -116,10 +116,6 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
         self.surnameTextField.delegate = self
     }
     
-    internal func textFieldShake(_ textField: UITextField) {
-        textField.shake(3, withDelta: 6, speed: 0.08)
-    }
-    
     private func disableView() {
         self.loadingIndicatorView.startAnimating()
         self.firstNameTextField.isEnabled = false
@@ -141,28 +137,28 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
     @objc internal func handleDone() {
         
         guard let email = self.firstNameTextField.text else {
-            self.textFieldShake(self.firstNameTextField)
+//            self.textFieldShake(self.firstNameTextField)
             return
         }
         
         guard let password = self.surnameTextField.text else {
-            self.textFieldShake(self.surnameTextField)
+//            self.textFieldShake(self.surnameTextField)
             return
         }
         
         if email.isEmpty == true {
-            self.textFieldShake(self.firstNameTextField)
+//            self.textFieldShake(self.firstNameTextField)
             return
         }
         
         if password.isEmpty == true {
-            self.textFieldShake(self.surnameTextField)
+//            self.textFieldShake(self.surnameTextField)
             return
         }
         
         //  Check Validity of email
         if email.isValidEmailAddress == false {
-            self.textFieldShake(self.firstNameTextField)
+//            self.textFieldShake(self.firstNameTextField)
             return
         }
         

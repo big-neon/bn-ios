@@ -17,11 +17,9 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         return label
     }()
 
-    private lazy var emailTextField: BrandTextField = {
-        let textField = BrandTextField()
-        textField.layer.cornerRadius = 4.0
-        textField.autocapitalizationType = .none
-        textField.placeholder = "Email Address"
+    private lazy var emailTextView: AuthenticationTextView = {
+        let textField = AuthenticationTextView()
+        textField.textFieldType = .email
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -81,7 +79,7 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     
     private func configureView() {
         view.addSubview(headerLabel)
-        view.addSubview(emailTextField)
+        view.addSubview(emailTextView)
         view.addSubview(passwordTextField)
         view.addSubview(nextButton)
         nextButton.addSubview(loadingIndicatorView)
@@ -91,14 +89,14 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         headerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 36).isActive = true
         headerLabel.heightAnchor.constraint(equalToConstant: 26).isActive = true
         
-        emailTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 26).isActive = true
-        emailTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -26).isActive = true
-        emailTextField.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 48).isActive = true
-        emailTextField.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        emailTextView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        emailTextView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        emailTextView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 48).isActive = true
+        emailTextView.heightAnchor.constraint(equalToConstant: 75).isActive = true
         
         passwordTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 26).isActive = true
         passwordTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -26).isActive = true
-        passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 25).isActive = true
+        passwordTextField.topAnchor.constraint(equalTo: emailTextView.bottomAnchor, constant: 12).isActive = true
         passwordTextField.heightAnchor.constraint(equalToConstant: 56).isActive = true
         
         nextButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 26).isActive = true
@@ -113,7 +111,7 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     }
     
     fileprivate func setupDelegates() {
-        self.emailTextField.delegate = self
+        self.emailTextView.authTextField.delegate = self
         self.passwordTextField.delegate = self
     }
     
@@ -123,7 +121,7 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     
     private func disableView() {
         self.loadingIndicatorView.startAnimating()
-        self.emailTextField.isEnabled = false
+        self.emailTextView.authTextField.isEnabled = false
         self.passwordTextField.isEnabled = false
         self.nextButton.isEnabled = false
         self.nextButton.setTitle("", for: UIControl.State.normal)
@@ -132,7 +130,7 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     
     private func enableView() {
         self.loadingIndicatorView.stopAnimating()
-        self.emailTextField.isEnabled = false
+        self.emailTextView.authTextField.isEnabled = false
         self.passwordTextField.isEnabled = false
         self.nextButton.isEnabled = true
         self.nextButton.setTitle("Let's do this", for: UIControl.State.normal)
@@ -141,8 +139,8 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     
     @objc internal func handleDone() {
         
-        guard let email = self.emailTextField.text else {
-            self.textFieldShake(self.emailTextField)
+        guard let email = self.emailTextView.authTextField.text else {
+            self.emailTextView.textFieldError = .invalidEmail
             return
         }
         
@@ -152,7 +150,7 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         }
         
         if email.isEmpty == true {
-            self.textFieldShake(self.emailTextField)
+            self.emailTextView.textFieldError = .emptyEmail
             return
         }
         
@@ -169,7 +167,7 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         
         //  Check Validity of email
         if email.isValidEmailAddress == false {
-            self.textFieldShake(self.emailTextField)
+            self.emailTextView.textFieldError = .invalidEmail
             return
         }
         
@@ -198,7 +196,7 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     }
     
     fileprivate func resignTextFields() {
-        self.emailTextField.resignFirstResponder()
+        self.emailTextView.authTextField.resignFirstResponder()
         self.passwordTextField.resignFirstResponder()
     }
     

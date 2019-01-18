@@ -15,6 +15,7 @@
 		C62BC78E21CCC3FB00830A5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78C21CCC3FB00830A5F /* LaunchScreen.storyboard */; };
 		C62BC79921CCC3FB00830A5F /* Big_NeonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */; };
 		C64124C621F266B100233797 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64124C521F266B100233797 /* LoginViewController.swift */; };
+		C64124CA21F26D1800233797 /* AuthTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64124C921F26D1800233797 /* AuthTextView.swift */; };
 		C64B0ABB21D0DCC900386000 /* ExploreViewController.CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABA21D0DCC900386000 /* ExploreViewController.CollectionView.swift */; };
 		C64B0ABD21D0DCDB00386000 /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABC21D0DCDB00386000 /* ExploreViewModel.swift */; };
 		C64B0AC021D0DD1E00386000 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABF21D0DD1E00386000 /* Utils.swift */; };
@@ -163,6 +164,7 @@
 		C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Big_NeonTests.swift; sourceTree = "<group>"; };
 		C62BC79A21CCC3FB00830A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C64124C521F266B100233797 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C64124C921F26D1800233797 /* AuthTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextView.swift; sourceTree = "<group>"; };
 		C64B0ABA21D0DCC900386000 /* ExploreViewController.CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.CollectionView.swift; sourceTree = "<group>"; };
 		C64B0ABC21D0DCDB00386000 /* ExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
 		C64B0ABF21D0DD1E00386000 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -530,6 +532,7 @@
 				C6B88D4821F1C323006394F8 /* GradientBrandButton.swift */,
 				C6B88D4B21F1C323006394F8 /* InterestedButtonView.swift */,
 				C6B88D4E21F1C323006394F8 /* PurpleBrandButton.swift */,
+				C64124C921F26D1800233797 /* AuthTextView.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -957,7 +960,6 @@
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 				"${BUILT_PRODUCTS_DIR}/PWSwitch/PWSwitch.framework",
 				"${BUILT_PRODUCTS_DIR}/PresenterKit/PresenterKit.framework",
-				"${BUILT_PRODUCTS_DIR}/UITextField+Shake/UITextField_Shake.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Mixpanel/Mixpanel.framework",
 				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
@@ -965,6 +967,7 @@
 				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
 				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
 				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
+				"${BUILT_PRODUCTS_DIR}/UITextField+Shake/UITextField_Shake.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -973,7 +976,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PWSwitch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PresenterKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextField_Shake.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mixpanel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
@@ -981,6 +983,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextField_Shake.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1126,6 +1129,7 @@
 				C6B88D4621F1C217006394F8 /* EventTimeAndLocationCell.swift in Sources */,
 				C6B88D6221F1C372006394F8 /* TicketQRCodeView.swift in Sources */,
 				C6B88D4521F1C217006394F8 /* EventDetailCell.swift in Sources */,
+				C64124CA21F26D1800233797 /* AuthTextView.swift in Sources */,
 				C6B88D5E21F1C359006394F8 /* StatusBarView.swift in Sources */,
 				C6B88D3521F1BC75006394F8 /* ProfileHeaderView.swift in Sources */,
 				C6B88D4021F1C07C006394F8 /* HotThisWeekCell.swift in Sources */,
