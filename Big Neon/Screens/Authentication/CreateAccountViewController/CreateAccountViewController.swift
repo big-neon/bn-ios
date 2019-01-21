@@ -9,6 +9,11 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     fileprivate var welcomeLabelTopConstraint: NSLayoutConstraint?
     internal let createAccountViewModel: AccountViewModel = AccountViewModel()
     
+    internal lazy var errorFeedback: FeedbackSystem = {
+        let feedback = FeedbackSystem()
+        return feedback
+    }()
+    
     private var headerLabel: BrandTitleLabel = {
         let label = BrandTitleLabel()
         label.text = "Create your account"
@@ -63,7 +68,7 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     
     private func configureNavBar() {
         self.navigationNoLineBar()
-        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.navigationBar.tintColor = UIColor.black
         self.navigationController?.navigationBar.barTintColor = UIColor.white
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
@@ -168,10 +173,18 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
             return
         }
         
+        buttonBounceAnimation(buttonPressed: self.nextButton)
         self.resignTextFields()
         self.disableView()
-        self.createAccountViewModel.createAccount(email: email, password: password) { (success) in
+        self.createAccountViewModel.createAccount(email: email, password: password) { (success, errorString) in
             DispatchQueue.main.async {
+                
+                if errorString != nil {
+                    self.showFeedback(message: errorString!)
+                    self.enableView()
+                    return
+                }
+                
                 if success == false {
                     self.enableView()
                     return
@@ -179,6 +192,18 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
                 self.enableView()
                 self.navigationController?.pushViewController(NamesViewController(), animated: true)
             }
+        }
+    }
+    
+    private func showFeedback(message: String) {
+        if let window = UIApplication.shared.keyWindow {
+            self.errorFeedback.showFeedback(backgroundColor: UIColor.brandBlack,
+                                            feedbackLabel: message,
+                                            feedbackLabelColor: UIColor.white,
+                                            durationOnScreen: 3.0,
+                                            currentView: window,
+                                            showsBackgroundGradient: true,
+                                            isAboveTabBar: false)
         }
     }
     

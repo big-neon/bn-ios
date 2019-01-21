@@ -7,7 +7,7 @@ import Big_Neon_UI
 
 internal class NamesViewController: UIViewController, UITextFieldDelegate {
     
-    fileprivate var buttonBottomAnchorConstraint: NSLayoutConstraint?
+    fileprivate var headerLabelTopConstraint: NSLayoutConstraint?
     internal let createAccountViewModel: AccountViewModel = AccountViewModel()
     
     private var headerLabel: BrandTitleLabel = {
@@ -65,7 +65,7 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
     
     private func configureNavBar() {
         self.navigationNoLineBar()
-        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.navigationBar.tintColor = UIColor.black
         self.navigationController?.navigationBar.barTintColor = UIColor.white
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
@@ -85,7 +85,8 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
         
         headerLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         headerLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
-        headerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 36).isActive = true
+        self.headerLabelTopConstraint = headerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 36)
+        self.headerLabelTopConstraint?.isActive = true
         headerLabel.heightAnchor.constraint(equalToConstant: 26).isActive = true
         
         firstNameTextView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -175,15 +176,6 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
         self.present(tabBarVC, animated: false, completion: nil)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.resignTextFields()
-    }
-    
-    fileprivate func resignTextFields() {
-        self.firstNameTextView.authTextField.resignFirstResponder()
-        self.lastNameTextView.authTextField.resignFirstResponder()
-    }
-    
 }
 
 
@@ -204,10 +196,10 @@ extension NamesViewController {
                 }
                 let keyboardHeight = keyboardSize.height
                 self.headerLabel.layer.opacity = 0.0
-                self.welcomeLabelTopConstraint?.constant = -20.0
+                self.headerLabelTopConstraint?.constant = -20.0
             } else {
                 self.headerLabel.layer.opacity = 1.0
-                self.welcomeLabelTopConstraint?.constant = 36.0
+                self.headerLabelTopConstraint?.constant = 36.0
             }
             self.view.layoutIfNeeded()
         }, completion: nil)
@@ -218,8 +210,8 @@ extension NamesViewController {
     }
     
     fileprivate func resignTextFields() {
-        self.emailTextView.authTextField.resignFirstResponder()
-        self.passwordTextView.resignFirstResponder()
+        self.firstNameTextView.authTextField.resignFirstResponder()
+        self.lastNameTextView.resignFirstResponder()
     }
     
 }

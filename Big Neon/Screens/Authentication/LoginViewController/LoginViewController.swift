@@ -63,7 +63,7 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     
     private func configureNavBar() {
         self.navigationNoLineBar()
-        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.navigationBar.tintColor = UIColor.black
         self.navigationController?.navigationBar.barTintColor = UIColor.white
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
@@ -164,16 +164,23 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
         
         self.resignTextFields()
         self.disableView()
-        self.createAccountViewModel.createAccount(email: email, password: password) { (success) in
-            DispatchQueue.main.async {
-                if success == false {
-                    self.enableView()
-                    return
-                }
-                self.enableView()
-                self.handleShowHome()
-            }
-        }
+//        self.createAccountViewModel.createAccount(email: email, password: password) { (success, errorString) in
+//            DispatchQueue.main.async {
+//                
+//                if errorString != nil {
+//                    
+//                    self.enableView()
+//                    return
+//                }
+//                
+//                if success == false {
+//                    self.enableView()
+//                    return
+//                }
+//                self.enableView()
+//                self.handleShowHome()
+//            }
+//        }
     }
     
     @objc private func handleShowHome() {

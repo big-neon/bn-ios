@@ -22,7 +22,7 @@ extension DatabaseService {
         URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
             if error != nil{
                 print("Error Fetching Data: \(error)")
-                completion(nil, nil)
+                completion(error, nil)
                 return
             }
             
@@ -33,7 +33,6 @@ extension DatabaseService {
             }
         
             do {
-                
                 let decoder = JSONDecoder()
                 let tokens = try decoder.decode(Tokens.self, from: data)
                 completion(nil, tokens)

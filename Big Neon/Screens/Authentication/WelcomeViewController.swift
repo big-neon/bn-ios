@@ -59,6 +59,7 @@ final class WelcomeViewController: UIViewController {
     
     private func configureNavBar() {
         self.navigationClearBar()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.navigationController?.navigationBar.tintColor = UIColor.brandPrimary
         UIApplication.shared.statusBarView?.backgroundColor = UIColor.clear
         UIApplication.shared.statusBarView?.tintColor = UIColor.white
@@ -93,10 +94,12 @@ final class WelcomeViewController: UIViewController {
     }
     
     @objc private func handleCreateAccount() {
+        buttonBounceAnimation(buttonPressed: self.getStartedButton)
         self.navigationController?.pushViewController(CreateAccountViewController(), animated: true)
     }
     
     @objc private func handleLogin() {
+        buttonBounceAnimation(buttonPressed: self.loginButton)
         self.navigationController?.pushViewController(LoginViewController(), animated: true)
     }
     
