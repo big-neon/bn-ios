@@ -6,7 +6,7 @@ import Big_Neon_UI
 
 internal class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
-    fileprivate var buttonBottomAnchorConstraint: NSLayoutConstraint?
+    fileprivate var welcomeLabelTopConstraint: NSLayoutConstraint?
     internal let createAccountViewModel: AccountViewModel = AccountViewModel()
     
     private var headerLabel: BrandTitleLabel = {
@@ -53,6 +53,7 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         self.configureNavBar()
         self.setupDelegates()
         self.configureView()
+        self.setupKeyboardObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,7 +84,8 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         
         headerLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         headerLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
-        headerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 36).isActive = true
+        welcomeLabelTopConstraint = headerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 36)
+        welcomeLabelTopConstraint?.isActive = true
         headerLabel.heightAnchor.constraint(equalToConstant: 26).isActive = true
         
         emailTextView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -186,6 +188,34 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         self.present(tabBarVC, animated: false, completion: nil)
     }
     
+}
+
+extension CreateAccountViewController {
+    
+    fileprivate func setupKeyboardObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func handleKeyboardNotification(notification: NSNotification) {
+        let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
+        
+        UIView.animate(withDuration: 0.32, animations: {
+            if isKeyboardShowing == true {
+                guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else {
+                    return
+                }
+                let keyboardHeight = keyboardSize.height
+                self.headerLabel.layer.opacity = 0.0
+                self.welcomeLabelTopConstraint?.constant = -20.0
+            } else {
+                self.headerLabel.layer.opacity = 1.0
+                self.welcomeLabelTopConstraint?.constant = 36.0
+            }
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.resignTextFields()
     }
@@ -194,7 +224,5 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         self.emailTextView.authTextField.resignFirstResponder()
         self.passwordTextView.resignFirstResponder()
     }
-    
+
 }
-
-

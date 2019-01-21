@@ -372,8 +372,8 @@
 		C64B0AB221D0DC3E00386000 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				C665DFE321E87CAC00DFB955 /* Authentication */,
 				C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */,
+				C665DFE321E87CAC00DFB955 /* Authentication */,
 				C64B0AD421D123C300386000 /* Explore */,
 				C64B0AD521D123D100386000 /* Tickets */,
 				C64B0AD621D123D700386000 /* Profile */,

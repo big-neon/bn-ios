@@ -29,7 +29,6 @@ final class AccountViewModel {
     internal func login(email: String, password: String, completion: @escaping(Bool) -> Void) {
         completion(true)
         
-        /*
         BusinessService.shared.database.loginToAccount(withEmail: email, password: password) { (error, tokens) in
             guard let tokens = tokens else {
                 completion(false)
@@ -46,6 +45,5 @@ final class AccountViewModel {
             completion(true)
             return
         }
-        */
     }
 }

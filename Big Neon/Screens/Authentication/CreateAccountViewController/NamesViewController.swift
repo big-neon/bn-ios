@@ -55,6 +55,7 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
         self.configureNavBar()
         self.setupDelegates()
         self.configureView()
+        self.setupKeyboardObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -185,3 +186,40 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
     
 }
 
+
+extension NamesViewController {
+    
+    fileprivate func setupKeyboardObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func handleKeyboardNotification(notification: NSNotification) {
+        let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
+        
+        UIView.animate(withDuration: 0.32, animations: {
+            if isKeyboardShowing == true {
+                guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else {
+                    return
+                }
+                let keyboardHeight = keyboardSize.height
+                self.headerLabel.layer.opacity = 0.0
+                self.welcomeLabelTopConstraint?.constant = -20.0
+            } else {
+                self.headerLabel.layer.opacity = 1.0
+                self.welcomeLabelTopConstraint?.constant = 36.0
+            }
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.resignTextFields()
+    }
+    
+    fileprivate func resignTextFields() {
+        self.emailTextView.authTextField.resignFirstResponder()
+        self.passwordTextView.resignFirstResponder()
+    }
+    
+}
