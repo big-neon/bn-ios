@@ -2,6 +2,7 @@
 
 import UIKit
 import Big_Neon_Core
+import Big_Neon_Core
 
 final public class EventHeaderView: UIView {
     
