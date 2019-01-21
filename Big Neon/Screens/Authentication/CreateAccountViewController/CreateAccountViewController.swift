@@ -179,6 +179,8 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         self.createAccountViewModel.createAccount(email: email, password: password) { (success, errorString) in
             DispatchQueue.main.async {
                 
+                print(errorString!)
+                
                 if errorString != nil {
                     self.showFeedback(message: errorString!)
                     self.enableView()

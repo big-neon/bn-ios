@@ -10,6 +10,11 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     fileprivate var buttonBottomAnchorConstraint: NSLayoutConstraint?
     internal let createAccountViewModel: AccountViewModel = AccountViewModel()
     
+    internal lazy var errorFeedback: FeedbackSystem = {
+        let feedback = FeedbackSystem()
+        return feedback
+    }()
+    
     private var headerLabel: BrandTitleLabel = {
         let label = BrandTitleLabel()
         label.text = "Welcome Back!"
@@ -164,23 +169,34 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
         
         self.resignTextFields()
         self.disableView()
-//        self.createAccountViewModel.createAccount(email: email, password: password) { (success, errorString) in
-//            DispatchQueue.main.async {
-//                
-//                if errorString != nil {
-//                    
-//                    self.enableView()
-//                    return
-//                }
-//                
-//                if success == false {
-//                    self.enableView()
-//                    return
-//                }
-//                self.enableView()
-//                self.handleShowHome()
-//            }
-//        }
+        self.createAccountViewModel.login(email: email, password: password) { (success, errorString) in
+            DispatchQueue.main.async {
+                if errorString != nil {
+                    self.showFeedback(message: errorString!)
+                    self.enableView()
+                    return
+                }
+                
+                if success == false {
+                    self.enableView()
+                    return
+                }
+                self.enableView()
+                self.handleShowHome()
+            }
+        }
+    }
+    
+    private func showFeedback(message: String) {
+        if let window = UIApplication.shared.keyWindow {
+            self.errorFeedback.showFeedback(backgroundColor: UIColor.brandBlack,
+                                            feedbackLabel: message,
+                                            feedbackLabelColor: UIColor.white,
+                                            durationOnScreen: 3.0,
+                                            currentView: window,
+                                            showsBackgroundGradient: true,
+                                            isAboveTabBar: false)
+        }
     }
     
     @objc private func handleShowHome() {

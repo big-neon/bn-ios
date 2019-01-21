@@ -4,7 +4,7 @@ use_frameworks!
 target 'Big Neon Core' do
 
 	pod 'Stripe'
-    pod 'Alamofire', '~> 4.4'
+    pod 'Alamofire', '~> 5.0.0.beta.1'
     pod 'Mixpanel'
 
   	# Pods for Big Neon
