@@ -1,56 +1,75 @@
 
+
 import Foundation
+import Alamofire
 
 extension DatabaseService {
     
-    public func fetchEvents(completion: @escaping (Error?, Events?) -> Void) {
+    public func createUser(withEmail email: String, password: String, completion: @escaping (Error?, Tokens?) -> Void) {
         
-        let APIURL = APIService.getEvents
+        let authParameters = ["email": email,
+                              "password": password]
+        
+        let APIURL = APIService.register
+        let jsonData = try? JSONSerialization.data(withJSONObject: authParameters, options: .prettyPrinted)
+
+
         let request = NSMutableURLRequest(url: NSURL(string: APIURL)! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
-        request.httpMethod = APIParameterKeys.GET
+
         request.setValue(APIParameterKeys.requestSetValue, forHTTPHeaderField: APIParameterKeys.headerField)
-        
+        request.httpBody = jsonData
+
         URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
             if error != nil{
                 print("Error Fetching Data: \(error)")
-                completion(nil, nil)
+                completion(error, nil)
                 return
             }
-            
+
             guard let data = data else {
                 print("Error Fetching Data")
                 completion(nil, nil)
                 return
             }
             
+            
+
             do {
                 let decoder = JSONDecoder()
-                let events = try decoder.decode(Events.self, from: data)
-                completion(nil, events)
+                let tokens = try decoder.decode(Tokens.self, from: data)
+                completion(nil, tokens)
                 return
-            } catch {
-                completion(nil, nil)
+            } catch let error as NSError {
+                completion(error, nil)
             }
-            
+
             }.resume()
     }
     
     
-    public func fetchEvent(withID eventID: String, completion: @escaping (Error?, EventDetail?) -> Void) {
+    public func loginToAccount(withEmail email: String, password: String, completion: @escaping (Error?, Tokens?) -> Void) {
         
-        let APIURL = APIService.getEvents + "/" + eventID
+        let authValues = ["email": email,
+                          "password": password]
+        
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: authValues, options: .prettyPrinted)
+        
+        let APIURL = APIService.login
         let request = NSMutableURLRequest(url: NSURL(string: APIURL)! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
-        request.httpMethod = APIParameterKeys.GET
+        request.httpMethod = APIParameterKeys.POST
         request.setValue(APIParameterKeys.requestSetValue, forHTTPHeaderField: APIParameterKeys.headerField)
+        request.httpBody = jsonData
         
         URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
+            
+            
             if error != nil{
-                print("Error Fetching Data: \(error)")
-                completion(nil, nil)
+                completion(error, nil)
                 return
             }
             
@@ -59,12 +78,14 @@ extension DatabaseService {
                 completion(nil, nil)
                 return
             }
+            
+            
             
             do {
                 
                 let decoder = JSONDecoder()
-                let event = try decoder.decode(EventDetail.self, from: data)
-                completion(nil, event)
+                let tokens = try decoder.decode(Tokens.self, from: data)
+                completion(nil, tokens)
                 return
             } catch {
                 completion(nil, nil)
@@ -72,5 +93,4 @@ extension DatabaseService {
             
             }.resume()
     }
-
 }

@@ -17,6 +17,7 @@
 		C64124C621F266B100233797 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64124C521F266B100233797 /* LoginViewController.swift */; };
 		C64124CA21F26D1800233797 /* AuthTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64124C921F26D1800233797 /* AuthTextView.swift */; };
 		C644BA2F21F7069D003C188B /* BasicError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C644BA2E21F7069D003C188B /* BasicError.swift */; };
+		C644BA3421F70C19003C188B /* DatabaseService.Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = C644BA3321F70C19003C188B /* DatabaseService.Users.swift */; };
 		C64B0ABB21D0DCC900386000 /* ExploreViewController.CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABA21D0DCC900386000 /* ExploreViewController.CollectionView.swift */; };
 		C64B0ABD21D0DCDB00386000 /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABC21D0DCDB00386000 /* ExploreViewModel.swift */; };
 		C64B0AC021D0DD1E00386000 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABF21D0DD1E00386000 /* Utils.swift */; };
@@ -68,7 +69,7 @@
 		C6B88D6221F1C372006394F8 /* TicketQRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D6121F1C372006394F8 /* TicketQRCodeView.swift */; };
 		C6B88D6721F1C862006394F8 /* DateConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D6621F1C862006394F8 /* DateConfig.swift */; };
 		C6B88D6E21F1C88A006394F8 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D6B21F1C889006394F8 /* DatabaseService.swift */; };
-		C6B88D6F21F1C88A006394F8 /* DatabaseService.Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D6C21F1C88A006394F8 /* DatabaseService.Users.swift */; };
+		C6B88D6F21F1C88A006394F8 /* DatabaseService.Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D6C21F1C88A006394F8 /* DatabaseService.Authentication.swift */; };
 		C6B88D7021F1C88A006394F8 /* DatabaseService.Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D6D21F1C88A006394F8 /* DatabaseService.Events.swift */; };
 		C6B88D7221F1C890006394F8 /* BusinessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D7121F1C890006394F8 /* BusinessService.swift */; };
 		C6B88D7921F1C932006394F8 /* Tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D7821F1C932006394F8 /* Tokens.swift */; };
@@ -169,6 +170,7 @@
 		C64124C521F266B100233797 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C64124C921F26D1800233797 /* AuthTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextView.swift; sourceTree = "<group>"; };
 		C644BA2E21F7069D003C188B /* BasicError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicError.swift; sourceTree = "<group>"; };
+		C644BA3321F70C19003C188B /* DatabaseService.Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Users.swift; sourceTree = "<group>"; };
 		C64B0ABA21D0DCC900386000 /* ExploreViewController.CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.CollectionView.swift; sourceTree = "<group>"; };
 		C64B0ABC21D0DCDB00386000 /* ExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
 		C64B0ABF21D0DD1E00386000 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -221,7 +223,7 @@
 		C6B88D6121F1C372006394F8 /* TicketQRCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketQRCodeView.swift; sourceTree = "<group>"; };
 		C6B88D6621F1C862006394F8 /* DateConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateConfig.swift; sourceTree = "<group>"; };
 		C6B88D6B21F1C889006394F8 /* DatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
-		C6B88D6C21F1C88A006394F8 /* DatabaseService.Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseService.Users.swift; sourceTree = "<group>"; };
+		C6B88D6C21F1C88A006394F8 /* DatabaseService.Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseService.Authentication.swift; sourceTree = "<group>"; };
 		C6B88D6D21F1C88A006394F8 /* DatabaseService.Events.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseService.Events.swift; sourceTree = "<group>"; };
 		C6B88D7121F1C890006394F8 /* BusinessService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessService.swift; sourceTree = "<group>"; };
 		C6B88D7821F1C932006394F8 /* Tokens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tokens.swift; sourceTree = "<group>"; };
@@ -648,8 +650,8 @@
 		C6B88D6821F1C86B006394F8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				C6B88D6A21F1C87B006394F8 /* DatabaseService */,
 				C6B88D6921F1C872006394F8 /* BusinessService */,
+				C6B88D6A21F1C87B006394F8 /* DatabaseService */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -665,9 +667,10 @@
 		C6B88D6A21F1C87B006394F8 /* DatabaseService */ = {
 			isa = PBXGroup;
 			children = (
-				C6B88D6D21F1C88A006394F8 /* DatabaseService.Events.swift */,
 				C6B88D6B21F1C889006394F8 /* DatabaseService.swift */,
-				C6B88D6C21F1C88A006394F8 /* DatabaseService.Users.swift */,
+				C6B88D6C21F1C88A006394F8 /* DatabaseService.Authentication.swift */,
+				C644BA3321F70C19003C188B /* DatabaseService.Users.swift */,
+				C6B88D6D21F1C88A006394F8 /* DatabaseService.Events.swift */,
 			);
 			path = DatabaseService;
 			sourceTree = "<group>";
@@ -1095,6 +1098,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C644BA3421F70C19003C188B /* DatabaseService.Users.swift in Sources */,
 				C6B88D8F21F1C94E006394F8 /* Organisation.swift in Sources */,
 				C6B88D8121F1C93A006394F8 /* LocalizedTimes.swift in Sources */,
 				C6B88D8E21F1C94E006394F8 /* TicketType.swift in Sources */,
@@ -1104,7 +1108,7 @@
 				C6B88D7021F1C88A006394F8 /* DatabaseService.Events.swift in Sources */,
 				C6B88D8C21F1C94E006394F8 /* TicketPricing.swift in Sources */,
 				C6B88D8021F1C93A006394F8 /* Venue.swift in Sources */,
-				C6B88D6F21F1C88A006394F8 /* DatabaseService.Users.swift in Sources */,
+				C6B88D6F21F1C88A006394F8 /* DatabaseService.Authentication.swift in Sources */,
 				C6B88D8221F1C93A006394F8 /* Events.swift in Sources */,
 				C6B88D6E21F1C88A006394F8 /* DatabaseService.swift in Sources */,
 				C6B88D6721F1C862006394F8 /* DateConfig.swift in Sources */,
