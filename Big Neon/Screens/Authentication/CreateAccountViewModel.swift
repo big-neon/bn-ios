@@ -43,6 +43,19 @@ final class AccountViewModel {
         }
     }
     
+    internal func insert(name: String, surname: String, completion: @escaping(Error?) -> Void) {
+        
+        BusinessService.shared.database.insert(name: name, surname: surname) { (error) in
+            if error != nil {
+                completion(error)
+                return
+            }
+            
+            completion(nil)
+            return
+        }
+        
+    }
     
     private func saveTokensInKeychain(token: Tokens) {
         KeychainWrapper.standard.set(token.accessToken, forKey: "accessToken")
