@@ -34,7 +34,15 @@ extension DatabaseService {
                 return
             }
             
-            
+            do {
+                let decoder = JSONDecoder()
+                let error = try decoder.decode(BasicError.self, from: data)
+                print("Error logging in: \(error.error)")
+                completion(BasicErrorImpl( title: "Error", description: error.error), nil)
+                return
+            }catch {
+                
+            }
 
             do {
                 let decoder = JSONDecoder()
@@ -79,7 +87,15 @@ extension DatabaseService {
                 return
             }
             
-            
+            do {
+                let decoder = JSONDecoder()
+                let error = try decoder.decode(BasicError.self, from: data)
+                print("Error logging in: \(error.error)")
+                completion(BasicErrorImpl( title: "Error", description: error.error), nil)
+                return
+            }catch {
+                
+            }
             
             do {
                 
