@@ -14,4 +14,9 @@ public class DatabaseService {
     public init() {
     }
     
+    internal func fetchAuthorizationKey() {
+        let retrievedPassword: String? = KeychainWrapper.standard.string(forKey: "userPassword")
+        print("Retrieved passwork is: \(retrievedPassword!)")
+    }
+    
 }

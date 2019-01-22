@@ -10,7 +10,7 @@ extension DatabaseService {
         let authParameters = ["email": email,
                               "password": password]
         
-        let APIURL = APIService.register
+        let APIURL = APIService.users
         let jsonData = try? JSONSerialization.data(withJSONObject: authParameters, options: .prettyPrinted)
 
 
