@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.7.3)
+  - Alamofire (5.0.0.beta.1)
   - FLAnimatedImage (1.0.12)
   - Mixpanel (3.3.7)
   - PINCache (3.0.1-beta.6):
@@ -28,7 +28,7 @@ PODS:
   - "UITextField+Shake (1.2.1)"
 
 DEPENDENCIES:
-  - Alamofire (~> 4.4)
+  - Alamofire (~> 5.0.0.beta.1)
   - Mixpanel
   - PINCache (= 3.0.1-beta.6)
   - PINRemoteImage (= 3.0.0-beta.13)
@@ -53,7 +53,7 @@ SPEC REPOS:
     - "UITextField+Shake"
 
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Alamofire: 2ef6d6c984c5d21c366e9b41a9ae7dfee2b67a44
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   Mixpanel: 1e94d1d29dfc3d3c66f734d10e29ad86420889fe
   PINCache: d195fdba255283f7e9900a55e3cced377f431f9b
@@ -65,6 +65,6 @@ SPEC CHECKSUMS:
   Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
-PODFILE CHECKSUM: 90df7e8e63fae8a71326f30c58a764392e332942
+PODFILE CHECKSUM: 95657acc8f7422673875e484747c30b5987fbe4f
 
 COCOAPODS: 1.5.3

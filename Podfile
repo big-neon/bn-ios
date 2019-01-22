@@ -1,10 +1,10 @@
 platform :ios, '11.0'
 use_frameworks!
 
-target 'BigNeonCore' do
+target 'Big Neon Core' do
 
 	pod 'Stripe'
-    pod 'Alamofire', '~> 4.4'
+    pod 'Alamofire', '~> 5.0.0.beta.1'
     pod 'Mixpanel'
 
   	# Pods for Big Neon
@@ -13,13 +13,13 @@ target 'BigNeonCore' do
         pod 'PresenterKit'
         pod 'pop'
         pod 'PWSwitch'
-        pod 'UITextField+Shake'
 	end
 end
 
-target 'BigNeonUI' do
+target 'Big Neon UI' do
     inherit! :search_paths
 	pod 'pop'
     pod 'PINCache', '3.0.1-beta.6'
     pod 'PINRemoteImage', '3.0.0-beta.13'
+    pod 'UITextField+Shake'
 end

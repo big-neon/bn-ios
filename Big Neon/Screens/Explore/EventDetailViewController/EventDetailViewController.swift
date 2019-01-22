@@ -1,7 +1,7 @@
 
 
 import UIKit
-import BigNeonUI
+import Big_Neon_UI
 
 internal class EventDetailViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource  {
     
@@ -45,7 +45,7 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
                 if completed == false {
                     return
                 }
-                print(self.eventDetailViewModel.eventDetail?.ageLimit)
+                print(self.eventDetailViewModel.eventDetail?.id)
                 self.eventTableView.reloadData()
                 self.configureButtonView()
             }

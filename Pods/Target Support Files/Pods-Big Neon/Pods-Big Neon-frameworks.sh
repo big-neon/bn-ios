@@ -146,7 +146,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/pop/pop.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PWSwitch/PWSwitch.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PresenterKit/PresenterKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/UITextField+Shake/UITextField_Shake.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Mixpanel/Mixpanel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework"
@@ -154,12 +153,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/UITextField+Shake/UITextField_Shake.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/pop/pop.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PWSwitch/PWSwitch.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PresenterKit/PresenterKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/UITextField+Shake/UITextField_Shake.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Mixpanel/Mixpanel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework"
@@ -167,6 +166,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/UITextField+Shake/UITextField_Shake.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

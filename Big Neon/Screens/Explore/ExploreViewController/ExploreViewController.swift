@@ -1,7 +1,7 @@
 
 import UIKit
-import BigNeonUI
-import BigNeonCore
+import Big_Neon_UI
+import Big_Neon_Core
 
 final class ExploreViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     

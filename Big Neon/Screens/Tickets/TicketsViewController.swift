@@ -1,6 +1,6 @@
 
 import UIKit
-import BigNeonUI
+import Big_Neon_UI
 
 final class TicketsViewController: BaseViewController {
     

@@ -2,7 +2,7 @@
 
 import Foundation
 import UIKit
-import BigNeonUI
+import Big_Neon_UI
 
 extension ProfileViewController {
     
