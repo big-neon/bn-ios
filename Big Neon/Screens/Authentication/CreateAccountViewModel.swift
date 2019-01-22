@@ -2,6 +2,7 @@
 
 import Foundation
 import Big_Neon_Core
+import SwiftKeychainWrapper
 
 final class AccountViewModel {
     
@@ -44,7 +45,8 @@ final class AccountViewModel {
     
     
     private func saveTokensInKeychain(token: Tokens) {
-        print("Save tokens to Keychain")
+        KeychainWrapper.standard.set(token.accessToken, forKey: "accessToken")
+        KeychainWrapper.standard.set(token.refreshToken, forKey: "refreshToken")
         return
     }
 }

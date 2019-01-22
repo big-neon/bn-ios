@@ -95,12 +95,19 @@
 			<key>orderHint</key>
 			<integer>12</integer>
 		</dict>
-		<key>UITextField+Shake.xcscheme</key>
+		<key>SwiftKeychainWrapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>14</integer>
+		</dict>
+		<key>UITextField+Shake.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>15</integer>
 		</dict>
 		<key>pop.xcscheme</key>
 		<dict>

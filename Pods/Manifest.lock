@@ -25,6 +25,7 @@ PODS:
   - PresenterKit (5.1.0)
   - PWSwitch (1.1.2)
   - Stripe (14.0.0)
+  - SwiftKeychainWrapper (3.2.0)
   - "UITextField+Shake (1.2.1)"
 
 DEPENDENCIES:
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - PresenterKit
   - PWSwitch
   - Stripe
+  - SwiftKeychainWrapper
   - "UITextField+Shake"
 
 SPEC REPOS:
@@ -50,6 +52,7 @@ SPEC REPOS:
     - PresenterKit
     - PWSwitch
     - Stripe
+    - SwiftKeychainWrapper
     - "UITextField+Shake"
 
 SPEC CHECKSUMS:
@@ -63,8 +66,9 @@ SPEC CHECKSUMS:
   PresenterKit: ebb82bda6b161c720db9b5346cb593b9b00e0ed5
   PWSwitch: 399db6ef5dd8417f9a1e9f82cb70602f10a6c38f
   Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
+  SwiftKeychainWrapper: 82c4c02cdc36f9a24f7edfcaab3e336401caa1a1
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
-PODFILE CHECKSUM: 95657acc8f7422673875e484747c30b5987fbe4f
+PODFILE CHECKSUM: 03179b1d6bc0c95968a327f15ffbd8446f6bdb1a
 
 COCOAPODS: 1.5.3

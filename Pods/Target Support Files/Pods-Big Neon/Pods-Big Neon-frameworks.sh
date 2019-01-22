@@ -143,6 +143,7 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/pop/pop.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PWSwitch/PWSwitch.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PresenterKit/PresenterKit.framework"
@@ -156,6 +157,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/UITextField+Shake/UITextField_Shake.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/pop/pop.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PWSwitch/PWSwitch.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PresenterKit/PresenterKit.framework"
