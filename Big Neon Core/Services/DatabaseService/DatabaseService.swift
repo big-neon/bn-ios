@@ -1,6 +1,7 @@
 
 
 import Foundation
+import SwiftKeychainWrapper
 
 public class DatabaseService {
     
@@ -14,9 +15,8 @@ public class DatabaseService {
     public init() {
     }
     
-    internal func fetchAuthorizationKey() {
-        let retrievedPassword: String? = KeychainWrapper.standard.string(forKey: "userPassword")
-        print("Retrieved passwork is: \(retrievedPassword!)")
+    internal func fetchAcessToken() -> String? {
+        return KeychainWrapper.standard.string(forKey: Constants.keychainAccessToken)
     }
     
 }
