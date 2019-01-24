@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1010"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A84A93639C2EDFDC5C979E596877137C"
+               BlueprintIdentifier = "213B666F26C189D61B9480213A27696F"
                BuildableName = "UITextField_Shake.framework"
                BlueprintName = "UITextField+Shake"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A84A93639C2EDFDC5C979E596877137C"
+            BlueprintIdentifier = "213B666F26C189D61B9480213A27696F"
             BuildableName = "UITextField_Shake.framework"
             BlueprintName = "UITextField+Shake"
             ReferencedContainer = "container:Pods.xcodeproj">

@@ -47,7 +47,6 @@ extension DatabaseService {
             }.resume()
     }
     
-    
     public func fetchEvent(withID eventID: String, completion: @escaping (Error?, EventDetail?) -> Void) {
         
         let APIURL = APIService.getEvents + "/" + eventID

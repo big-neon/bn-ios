@@ -2,6 +2,7 @@
 
 import Foundation
 import Big_Neon_Core
+import SwiftKeychainWrapper
 
 final class AccountViewModel {
     
@@ -35,6 +36,7 @@ final class AccountViewModel {
             guard let tokens = tokens else {
                 return
             }
+            
             self.saveTokensInKeychain(token: tokens)
             
             completion(true, nil)
@@ -42,9 +44,23 @@ final class AccountViewModel {
         }
     }
     
+    internal func insert(name: String, surname: String, completion: @escaping(Error?) -> Void) {
+        
+        BusinessService.shared.database.insert(name: name, surname: surname) { (error) in
+            if error != nil {
+                completion(error)
+                return
+            }
+            
+            completion(nil)
+            return
+        }
+        
+    }
     
     private func saveTokensInKeychain(token: Tokens) {
-        print("Save tokens to Keychain")
+        KeychainWrapper.standard.set(token.accessToken, forKey: "accessToken")
+        KeychainWrapper.standard.set(token.refreshToken, forKey: "refreshToken")
         return
     }
 }

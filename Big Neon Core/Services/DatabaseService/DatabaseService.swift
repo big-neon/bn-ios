@@ -1,6 +1,7 @@
 
 
 import Foundation
+import SwiftKeychainWrapper
 
 public class DatabaseService {
     
@@ -12,6 +13,14 @@ public class DatabaseService {
     }
     
     public init() {
+    }
+    
+    public func fetchAcessToken() -> String? {
+        return KeychainWrapper.standard.string(forKey: Constants.keychainAccessToken)
+    }
+    
+    public func fetchRefreshToken() -> String? {
+        return KeychainWrapper.standard.string(forKey: Constants.keychainRefreshToken)
     }
     
 }

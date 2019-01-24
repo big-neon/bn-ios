@@ -10,9 +10,8 @@ extension DatabaseService {
         let authParameters = ["email": email,
                               "password": password]
         
-        let APIURL = APIService.register
+        let APIURL = APIService.users
         let jsonData = try? JSONSerialization.data(withJSONObject: authParameters, options: .prettyPrinted)
-
 
         let request = NSMutableURLRequest(url: NSURL(string: APIURL)! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
@@ -23,7 +22,6 @@ extension DatabaseService {
 
         URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
             if error != nil{
-                print("Error Fetching Data: \(error)")
                 completion(error, nil)
                 return
             }
@@ -33,16 +31,15 @@ extension DatabaseService {
                 completion(nil, nil)
                 return
             }
-            
-            do {
-                let decoder = JSONDecoder()
-                let error = try decoder.decode(BasicError.self, from: data)
-                print("Error logging in: \(error.error)")
-                completion(BasicErrorImpl( title: "Error", description: error.error), nil)
-                return
-            }catch {
-                
-            }
+
+//            do {
+//                let decoder = JSONDecoder()
+//                let error = try decoder.decode(BasicError.self, from: data)
+//                completion(BasicErrorImpl( title: "Error", description: error.error), nil)
+//                return
+//            }catch {
+//                
+//            }
 
             do {
                 let decoder = JSONDecoder()

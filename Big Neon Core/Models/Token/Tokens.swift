@@ -2,7 +2,7 @@
 import Foundation
 
 public struct Tokens: Codable {
-    let accessToken, refreshToken: String
+    public let accessToken, refreshToken: String
     
     enum CodingKeys: String, CodingKey {
         case accessToken = "access_token"
