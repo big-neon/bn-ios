@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (5.0.0.beta.1)
   - FLAnimatedImage (1.0.12)
+  - JWTDecode (2.2.0)
   - Mixpanel (3.3.7)
   - PINCache (3.0.1-beta.6):
     - PINCache/Arc-exception-safe (= 3.0.1-beta.6)
@@ -30,6 +31,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0.beta.1)
+  - JWTDecode (~> 2.2)
   - Mixpanel
   - PINCache (= 3.0.1-beta.6)
   - PINRemoteImage (= 3.0.0-beta.13)
@@ -44,6 +46,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - FLAnimatedImage
+    - JWTDecode
     - Mixpanel
     - PINCache
     - PINOperation
@@ -58,6 +61,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 2ef6d6c984c5d21c366e9b41a9ae7dfee2b67a44
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
+  JWTDecode: 85a405ab16d5473e99bd89ded1d535090ebd6a0e
   Mixpanel: 1e94d1d29dfc3d3c66f734d10e29ad86420889fe
   PINCache: d195fdba255283f7e9900a55e3cced377f431f9b
   PINOperation: a6219e6fc9db9c269eb7a7b871ac193bcf400aac
@@ -69,6 +73,6 @@ SPEC CHECKSUMS:
   SwiftKeychainWrapper: 82c4c02cdc36f9a24f7edfcaab3e336401caa1a1
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
-PODFILE CHECKSUM: 03179b1d6bc0c95968a327f15ffbd8446f6bdb1a
+PODFILE CHECKSUM: bfe59486cd3960a700d4aade9909e7319b119ee5
 
 COCOAPODS: 1.5.3

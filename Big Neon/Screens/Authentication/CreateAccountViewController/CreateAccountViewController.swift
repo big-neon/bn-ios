@@ -7,6 +7,7 @@ import Big_Neon_UI
 internal class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     fileprivate var welcomeLabelTopConstraint: NSLayoutConstraint?
+    internal var showPasswordValue: Bool = false
     internal let createAccountViewModel: AccountViewModel = AccountViewModel()
     
     internal lazy var errorFeedback: FeedbackSystem = {
@@ -40,6 +41,16 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         let button = GradientBrandButton()
         button.setTitle("Let's do this", for: UIControl.State.normal)
         button.addTarget(self, action: #selector(handleDone), for: UIControl.Event.touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    fileprivate lazy var showPassword: UIButton = {
+        let button = UIButton()
+        button.setTitleColor(UIColor.brandPrimary, for: UIControl.State.normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.bold)
+        button.setTitle("SHOW", for: UIControl.State.normal)
+        button.addTarget(self, action: #selector(handleShowPassword), for: UIControl.Event.touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -84,6 +95,7 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         view.addSubview(headerLabel)
         view.addSubview(emailTextView)
         view.addSubview(passwordTextView)
+        passwordTextView.addSubview(showPassword)
         view.addSubview(nextButton)
         nextButton.addSubview(loadingIndicatorView)
         
@@ -107,6 +119,11 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         nextButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -26).isActive = true
         nextButton.topAnchor.constraint(equalTo: passwordTextView.bottomAnchor, constant: 35).isActive = true
         nextButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        showPassword.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
+        showPassword.topAnchor.constraint(equalTo: passwordTextView.topAnchor, constant: -16).isActive = true
+        showPassword.bottomAnchor.constraint(equalTo: passwordTextView.bottomAnchor).isActive = true
+        showPassword.widthAnchor.constraint(equalToConstant: 80).isActive = true
         
         loadingIndicatorView.centerXAnchor.constraint(equalTo: nextButton.centerXAnchor).isActive = true
         loadingIndicatorView.centerYAnchor.constraint(equalTo: nextButton.centerYAnchor).isActive = true
@@ -139,6 +156,17 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         self.nextButton.isEnabled = true
         self.nextButton.setTitle("Let's do this", for: UIControl.State.normal)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    }
+    
+    @objc internal func handleShowPassword() {
+        buttonBounceAnimation(buttonPressed: self.showPassword)
+        self.showPasswordValue = !self.showPasswordValue
+        self.passwordTextView.authTextField.isSecureTextEntry = self.showPasswordValue
+        if self.showPasswordValue == false {
+            self.showPassword.setTitle("HIDE", for: UIControl.State.normal)
+        } else {
+            self.showPassword.setTitle("SHOW", for: UIControl.State.normal)
+        }
     }
     
     @objc internal func handleDone() {

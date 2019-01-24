@@ -4,25 +4,16 @@ import Foundation
 import Big_Neon_Core
 import SwiftKeychainWrapper
 
-final class AccountViewModel {
+final class SplashViewModel {
     
-    internal func createAccount(email: String, password: String, completion: @escaping(Bool, String?) -> Void) {
+    internal func fetchToken() -> Bool {
         
-        BusinessService.shared.database.createUser(withEmail: email, password: password) { (error, tokens) in
+        guard let acccessToken = BusinessService.shared.database.fetchAcessToken() else {
             
-            if error != nil {
-                completion(false, (error?.localizedDescription)!)
-                return
-            }
-            
-            guard let tokens = tokens else {
-                return
-            }
-            self.saveTokensInKeychain(token: tokens)
-            
-            completion(true, nil)
             return
         }
+        
+        BusinessService
     }
     
     internal func login(email: String, password: String, completion: @escaping(Bool, String?) -> Void) {

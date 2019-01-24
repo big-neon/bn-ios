@@ -15,8 +15,12 @@ public class DatabaseService {
     public init() {
     }
     
-    internal func fetchAcessToken() -> String? {
+    public func fetchAcessToken() -> String? {
         return KeychainWrapper.standard.string(forKey: Constants.keychainAccessToken)
+    }
+    
+    internal func fetchRefreshToken() -> String? {
+        return KeychainWrapper.standard.string(forKey: Constants.keychainRefreshToken)
     }
     
 }
