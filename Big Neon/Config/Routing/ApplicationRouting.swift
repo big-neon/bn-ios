@@ -4,6 +4,7 @@ import UIKit
 
 final class ApplicationRouter {
     
+    
     class func setupBaseRouting() -> UIWindow {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.tintColor = UIColor.red
@@ -19,9 +20,10 @@ final class ApplicationRouter {
     }
     
     class func userIsLoggedIn() -> Bool {
-//        if Auth.auth().currentUser != nil {
-//            return true
-//        }
+        let routingViewModel: RoutingViewModel = RoutingViewModel()
+        if routingViewModel.fetchToken() == true {
+            return true
+        }
         return false
     }
 }

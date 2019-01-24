@@ -4,54 +4,14 @@ import Foundation
 import Big_Neon_Core
 import SwiftKeychainWrapper
 
-final class SplashViewModel {
+final class RoutingViewModel {
     
     internal func fetchToken() -> Bool {
-        
-        guard let acccessToken = BusinessService.shared.database.fetchAcessToken() else {
-            
-            return
+        if BusinessService.shared.database.fetchAcessToken() == nil {
+            return false
         }
         
-        BusinessService
+        return true
     }
-    
-    internal func login(email: String, password: String, completion: @escaping(Bool, String?) -> Void) {
-        BusinessService.shared.database.loginToAccount(withEmail: email, password: password) { (error, tokens) in
-            
-            if error != nil {
-                completion(false, error?.localizedDescription)
-                return
-            }
-            
-            guard let tokens = tokens else {
-                return
-            }
-            
-            self.saveTokensInKeychain(token: tokens)
-            
-            completion(true, nil)
-            return
-        }
-    }
-    
-    internal func insert(name: String, surname: String, completion: @escaping(Error?) -> Void) {
-        
-        BusinessService.shared.database.insert(name: name, surname: surname) { (error) in
-            if error != nil {
-                completion(error)
-                return
-            }
-            
-            completion(nil)
-            return
-        }
-        
-    }
-    
-    private func saveTokensInKeychain(token: Tokens) {
-        KeychainWrapper.standard.set(token.accessToken, forKey: "accessToken")
-        KeychainWrapper.standard.set(token.refreshToken, forKey: "refreshToken")
-        return
-    }
+
 }

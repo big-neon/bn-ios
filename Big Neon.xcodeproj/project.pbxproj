@@ -464,8 +464,8 @@
 			isa = PBXGroup;
 			children = (
 				C628B15321F9E35700FCBDC9 /* SplashViewModel.swift */,
-				C66C0BA621E339CA0066CD0F /* SplashViewController.swift */,
 				C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */,
+				C66C0BA621E339CA0066CD0F /* SplashViewController.swift */,
 			);
 			path = Routing;
 			sourceTree = "<group>";
