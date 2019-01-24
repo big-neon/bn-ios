@@ -7,10 +7,9 @@ import SwiftKeychainWrapper
 final class RoutingViewModel {
     
     internal func fetchToken() -> Bool {
-        if BusinessService.shared.database.fetchAcessToken() == nil {
+        if BusinessService.shared.database.fetchRefreshToken() == nil {
             return false
         }
-        
         return true
     }
 

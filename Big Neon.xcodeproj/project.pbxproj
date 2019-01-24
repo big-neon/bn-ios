@@ -10,7 +10,7 @@
 		0E27D0CC64E689F1613EDE42 /* Pods_Big_Neon_UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C5FE81A672933D9E6C36212 /* Pods_Big_Neon_UI.framework */; };
 		3AD04FED44A9DBAF9C541482 /* Pods_Big_Neon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78310A7CD778655F8A9FC77B /* Pods_Big_Neon.framework */; };
 		C628B15021F7B75800FCBDC9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C628B14F21F7B75800FCBDC9 /* Constants.swift */; };
-		C628B15221F9C89200FCBDC9 /* DatabaseService.TokenManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C628B15121F9C89200FCBDC9 /* DatabaseService.TokenManagement.swift */; };
+		C628B15221F9C89200FCBDC9 /* DatabaseService.Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = C628B15121F9C89200FCBDC9 /* DatabaseService.Token.swift */; };
 		C628B15421F9E35700FCBDC9 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C628B15321F9E35700FCBDC9 /* SplashViewModel.swift */; };
 		C62BC78421CCC3F700830A5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC78321CCC3F700830A5F /* AppDelegate.swift */; };
 		C62BC78621CCC3F700830A5F /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC78521CCC3F700830A5F /* ExploreViewController.swift */; };
@@ -162,7 +162,7 @@
 		AB883EFDAE7FEF2892885C4C /* Pods-BigNeonCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigNeonCore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BigNeonCore/Pods-BigNeonCore.debug.xcconfig"; sourceTree = "<group>"; };
 		C5C35E86CF6274D746DC2A17 /* Pods-BigNeonCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigNeonCore.release.xcconfig"; path = "Pods/Target Support Files/Pods-BigNeonCore/Pods-BigNeonCore.release.xcconfig"; sourceTree = "<group>"; };
 		C628B14F21F7B75800FCBDC9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		C628B15121F9C89200FCBDC9 /* DatabaseService.TokenManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.TokenManagement.swift; sourceTree = "<group>"; };
+		C628B15121F9C89200FCBDC9 /* DatabaseService.Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Token.swift; sourceTree = "<group>"; };
 		C628B15321F9E35700FCBDC9 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		C62BC78021CCC3F700830A5F /* Big Neon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Big Neon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C62BC78321CCC3F700830A5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -676,7 +676,7 @@
 			isa = PBXGroup;
 			children = (
 				C6B88D6B21F1C889006394F8 /* DatabaseService.swift */,
-				C628B15121F9C89200FCBDC9 /* DatabaseService.TokenManagement.swift */,
+				C628B15121F9C89200FCBDC9 /* DatabaseService.Token.swift */,
 				C6B88D6C21F1C88A006394F8 /* DatabaseService.Authentication.swift */,
 				C644BA3321F70C19003C188B /* DatabaseService.Users.swift */,
 				C6B88D6D21F1C88A006394F8 /* DatabaseService.Events.swift */,
@@ -1114,7 +1114,7 @@
 			files = (
 				C644BA3421F70C19003C188B /* DatabaseService.Users.swift in Sources */,
 				C6B88D8F21F1C94E006394F8 /* Organisation.swift in Sources */,
-				C628B15221F9C89200FCBDC9 /* DatabaseService.TokenManagement.swift in Sources */,
+				C628B15221F9C89200FCBDC9 /* DatabaseService.Token.swift in Sources */,
 				C6B88D8121F1C93A006394F8 /* LocalizedTimes.swift in Sources */,
 				C6B88D8E21F1C94E006394F8 /* TicketType.swift in Sources */,
 				C6B88D8B21F1C94E006394F8 /* EventDetail.swift in Sources */,

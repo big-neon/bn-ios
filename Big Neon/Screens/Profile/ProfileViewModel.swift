@@ -14,4 +14,8 @@ final class ProfileViewModel {
                                      "ic_orderHistory"]
     
     internal let doorManLabel = ["Doorman"]
+    
+    internal func fetchUser(completion: @escaping(Bool) -> Void) {
+        
+    }
 }

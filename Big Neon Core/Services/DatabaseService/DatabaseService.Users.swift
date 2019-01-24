@@ -57,4 +57,10 @@ extension DatabaseService {
         
     }
     
+//    public func fetchUser(completion: @escaping(User?) -> Void) {
+//
+//
+//
+//    }
+    
 }

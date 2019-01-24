@@ -19,7 +19,7 @@ public class DatabaseService {
         return KeychainWrapper.standard.string(forKey: Constants.keychainAccessToken)
     }
     
-    internal func fetchRefreshToken() -> String? {
+    public func fetchRefreshToken() -> String? {
         return KeychainWrapper.standard.string(forKey: Constants.keychainRefreshToken)
     }
     
