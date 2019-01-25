@@ -6,16 +6,13 @@ import JWTDecode
 
 extension DatabaseService {
     
-    public func tokenIsAvailable(completion: @escaping (Bool) -> Void) {
+    public func checkTokenExpiration(completion: @escaping (Bool) -> Void) {
         
         // Fetch Access Token
-        guard let accessToken = self.fetchAcessToken(), let refreshToken = self.fetchRefreshToken() else {
+        guard let accessToken = self.fetchAcessToken() else {
             completion(false)
             return
         }
-        
-        //  Fetch the Expiration Time
-        
         
         do {
             let jwt = try decode(jwt: accessToken)
@@ -32,14 +29,47 @@ extension DatabaseService {
         
     }
     
-    public func fetchNewAccessToken(completion: @escaping (String?) -> Void) {
+    public func fetchNewAccessToken(completion: @escaping (Error?, Tokens?) -> Void) {
+       
         guard let refreshToken = self.fetchRefreshToken() else {
-            completion(nil)
+            completion(nil, nil)
             return
         }
         
-        print(refreshToken)
+        let authParameters = ["refresh_token": refreshToken]
+        let APIURL = APIService.updateUser
+        let jsonData = try? JSONSerialization.data(withJSONObject: authParameters, options: .prettyPrinted)
+        let accessToken = self.fetchAcessToken()
+        let request = NSMutableURLRequest(url: NSURL(string: APIURL)! as URL,
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
         
+        request.setValue(APIParameterKeys.requestSetValue, forHTTPHeaderField: APIParameterKeys.headerField)
+        request.setValue(accessToken!, forHTTPHeaderField: APIParameterKeys.authorization)
+        request.httpMethod = APIParameterKeys.POST
+        request.httpBody = jsonData
+        
+        URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
+            if error != nil{
+                completion(error, nil)
+                return
+            }
+            
+            guard let data = data else {
+                completion(nil, nil)
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let tokens = try decoder.decode(Tokens.self, from: data)
+                completion(nil, tokens)
+                return
+            } catch let error as NSError {
+                completion(error, nil)
+            }
+            
+            }.resume()
         
     }
 }
