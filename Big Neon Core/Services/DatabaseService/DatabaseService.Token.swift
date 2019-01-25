@@ -26,7 +26,6 @@ extension DatabaseService {
         } catch {
             completion(false)
         }
-        
     }
     
     public func fetchNewAccessToken(completion: @escaping (Error?, Tokens?) -> Void) {
