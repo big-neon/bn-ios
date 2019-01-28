@@ -29,6 +29,10 @@ extension DatabaseService {
             return
         }
         
+        /***
+         To be replaced with Alarmofire later - AF has less code & enables response status checks by default.
+         */
+        
         let authParameters = ["refresh_token": refreshToken]
         let APIURL = APIService.refreshToken
         let jsonData = try? JSONSerialization.data(withJSONObject: authParameters, options: .prettyPrinted)
@@ -46,7 +50,7 @@ extension DatabaseService {
                 return
             }
             
-//            let httpResponse = response as! HTTPURLResponse
+            // let httpResponse = response as! HTTPURLResponse
             
             guard let data = data else {
                 completion(nil, nil)

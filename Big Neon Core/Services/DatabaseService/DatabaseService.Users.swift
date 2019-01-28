@@ -9,6 +9,10 @@ extension DatabaseService {
         let authParameters = ["first_name": name,
                               "last_name": surname]
         
+        /***
+         To be replaced with Alarmofire later - AF has less code & enables response status checks by default.
+         */
+        
         let APIURL = APIService.updateUser
         let jsonData = try? JSONSerialization.data(withJSONObject: authParameters, options: .prettyPrinted)
         

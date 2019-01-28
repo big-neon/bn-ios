@@ -12,6 +12,10 @@ extension DatabaseService {
         request.httpMethod = APIParameterKeys.GET
         request.setValue(APIParameterKeys.requestSetValue, forHTTPHeaderField: APIParameterKeys.headerField)
         
+        /***
+         To be replaced with Alarmofire later - AF has less code & enables response status checks by default.
+         */
+        
         URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
             if error != nil{
                 print("Error Fetching Data: \(error)")
@@ -48,6 +52,10 @@ extension DatabaseService {
     }
     
     public func fetchEvent(withID eventID: String, completion: @escaping (Error?, EventDetail?) -> Void) {
+        
+        /***
+         To be replaced with Alarmofire later - AF has less code & enables response status checks by default.
+         */
         
         let APIURL = APIService.getEvents + "/" + eventID
         let request = NSMutableURLRequest(url: NSURL(string: APIURL)! as URL,
