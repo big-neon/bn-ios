@@ -1,5 +1,6 @@
 
 import Foundation
+import Alamofire
 
 extension DatabaseService {
 
@@ -7,6 +8,10 @@ extension DatabaseService {
         
         let authParameters = ["first_name": name,
                               "last_name": surname]
+        
+        /***
+         To be replaced with Alarmofire later - AF has less code & enables response status checks by default.
+         */
         
         let APIURL = APIService.updateUser
         let jsonData = try? JSONSerialization.data(withJSONObject: authParameters, options: .prettyPrinted)
@@ -57,10 +62,41 @@ extension DatabaseService {
         
     }
     
-//    public func fetchUser(completion: @escaping(User?) -> Void) {
-//
-//
-//
-//    }
+    public func fetchUser(withAccessToken accessToken: String, completion: @escaping(Error?, User?) -> Void) {
+        
+        let APIURL = APIService.updateUser
+        AF.request(APIURL,
+            method: HTTPMethod.get,
+            parameters: nil,
+            encoding: JSONEncoding.default,
+            headers: [APIParameterKeys.authorization :"Bearer \(accessToken)"])
+            .validate()
+            .response { (response) in
+                
+                guard response.result.isSuccess else {
+                    print("Error while fetching tags: \(response.result.error)")
+                    completion(nil, nil)
+                    return
+                }
+                
+                guard let data = response.result.value else {
+                    print("Invalid tag information received from the service")
+                    completion(nil, nil)
+                    return
+                }
+                
+                do {
+                    let decoder = JSONDecoder()
+                    let userOrg = try decoder.decode(UserOrg.self, from: data!)
+                    let user = userOrg.user
+                    completion(nil, user)
+                    return
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                    completion(error, nil)
+                }
+        }
+        
+    }
     
 }

@@ -1,20 +1,13 @@
 
 import Foundation
 import Big_Neon_Core
+import SwiftKeychainWrapper
 
 final class ExploreViewModel {
     
     internal var events: Events?
     
     internal func fetchEvents(completion: @escaping(Bool) -> Void) {
-        
-        BusinessService.shared.database.tokenIsAvailable { (tokenAvailable) in
-            print(tokenAvailable)
-        }
-        
-        BusinessService.shared.database.fetchNewAccessToken { (accessToken) in
-            print(accessToken)
-        }
         
         BusinessService.shared.database.fetchEvents { (error, eventsFetched) in
             if error != nil {

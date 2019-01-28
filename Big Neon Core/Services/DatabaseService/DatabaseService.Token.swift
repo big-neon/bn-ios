@@ -6,40 +6,66 @@ import JWTDecode
 
 extension DatabaseService {
     
-    public func tokenIsAvailable(completion: @escaping (Bool) -> Void) {
-        
-        // Fetch Access Token
-        guard let accessToken = self.fetchAcessToken(), let refreshToken = self.fetchRefreshToken() else {
+    public func tokenIsExpired(completion: @escaping (Bool) -> Void) {
+        guard let accessToken = self.fetchAcessToken() else {
             completion(false)
             return
         }
-        
-        //  Fetch the Expiration Time
-        
         
         do {
             let jwt = try decode(jwt: accessToken)
             let expired = jwt.expired
-            if expired == true {
-                completion(false)
-                return
-            }
-            completion(true)
+            completion(expired)
             return
         } catch {
             completion(false)
         }
-        
     }
     
-    public func fetchNewAccessToken(completion: @escaping (String?) -> Void) {
+    public func fetchNewAccessToken(completion: @escaping (Error?, Tokens?) -> Void) {
+       
         guard let refreshToken = self.fetchRefreshToken() else {
-            completion(nil)
+            completion(nil, nil)
             return
         }
         
-        print(refreshToken)
+        /***
+         To be replaced with Alarmofire later - AF has less code & enables response status checks by default.
+         */
         
+        let authParameters = ["refresh_token": refreshToken]
+        let APIURL = APIService.refreshToken
+        let jsonData = try? JSONSerialization.data(withJSONObject: authParameters, options: .prettyPrinted)
+        let request = NSMutableURLRequest(url: NSURL(string: APIURL)! as URL,
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
+
+        request.setValue(APIParameterKeys.requestSetValue, forHTTPHeaderField: APIParameterKeys.headerField)
+        request.httpMethod = APIParameterKeys.POST
+        request.httpBody = jsonData
         
+        URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
+            if error != nil{
+                completion(error, nil)
+                return
+            }
+            
+            // let httpResponse = response as! HTTPURLResponse
+            
+            guard let data = data else {
+                completion(nil, nil)
+                return
+            }
+
+            do {
+                let decoder = JSONDecoder()
+                let tokens = try decoder.decode(Tokens.self, from: data)
+                completion(nil, tokens)
+                return
+            } catch let error as NSError {
+                completion(error, nil)
+            }
+
+            }.resume()
     }
 }

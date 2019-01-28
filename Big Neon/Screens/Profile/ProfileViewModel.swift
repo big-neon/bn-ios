@@ -1,5 +1,7 @@
 
 import Foundation
+import Big_Neon_Core
+import SwiftKeychainWrapper
 
 final class ProfileViewModel {
     
@@ -15,7 +17,66 @@ final class ProfileViewModel {
     
     internal let doorManLabel = ["Doorman"]
     
-    internal func fetchUser(completion: @escaping(Bool) -> Void) {
+    internal var user: User?
+    
+    internal func configureAccessToken(completion: @escaping(Bool) -> Void) {
+        
+        BusinessService.shared.database.tokenIsExpired { (expired) in
+            if expired == true {
+                //  Fetch New Token
+                self.fetchNewAccessToken(completion: { (completed) in
+                    completion(completed)
+                    return
+                })
+            } else {
+                self.fetchUser(completion: { (completed) in
+                    completion(completed)
+                    return
+                })
+            }
+        }
+    }
+    
+    internal func fetchNewAccessToken(completion: @escaping(Bool) -> Void) {
+        BusinessService.shared.database.fetchNewAccessToken { (error, tokens) in
+            guard let tokens = tokens else {
+                completion(false)
+                return
+            }
+            
+            self.saveTokensInKeychain(token: tokens)
+            self.fetchUser(completion: { (completed) in
+                completion(completed)
+                return
+            })
+        }
+    }
+    
+    private func fetchUser(completion: @escaping(Bool) -> Void) {
+        
+        guard let accessToken = BusinessService.shared.database.fetchAcessToken() else {
+            completion(false)
+            return
+        }
+        
+        BusinessService.shared.database.fetchUser(withAccessToken: accessToken) { (error, userFound) in
+            guard let user = userFound else {
+                completion(false)
+                return
+            }
+            
+            self.user = user
+            completion(true)
+            return
+        }
         
     }
+    
+    private func saveTokensInKeychain(token: Tokens) {
+        KeychainWrapper.standard.set(token.accessToken, forKey: "accessToken")
+        KeychainWrapper.standard.set(token.refreshToken, forKey: "refreshToken")
+        return
+    }
 }
+
+
