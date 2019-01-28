@@ -1,5 +1,6 @@
 
 import Foundation
+import Alamofire
 
 extension DatabaseService {
 
@@ -60,47 +61,105 @@ extension DatabaseService {
     public func fetchUser(withAccessToken token: String, completion: @escaping(Error?, User?) -> Void) {
         
         let APIURL = APIService.updateUser
-        let accessToken = self.fetchAcessToken()
-        let request = NSMutableURLRequest(url: NSURL(string: APIURL)! as URL,
-                                          cachePolicy: .useProtocolCachePolicy,
-                                          timeoutInterval: 10.0)
+//        guard let apiURL =  NSURL(string: APIURL)  else {
+//            completion(nil, nil)
+//        }
         
-        request.setValue(APIParameterKeys.requestSetValue, forHTTPHeaderField: APIParameterKeys.headerField)
-        request.setValue(accessToken!, forHTTPHeaderField: APIParameterKeys.authorization)
-        request.httpMethod = APIParameterKeys.GET
         
-        URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
-            if error != nil{
-                completion(error, nil)
-                return
-            }
-            
-            guard let data = data else {
-                completion(nil, nil)
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                let error = try decoder.decode(BasicError.self, from: data)
-                print("Error logging in: \(error.error)")
-                completion(BasicErrorImpl( title: "Error", description: error.error), nil)
-                return
-            }catch {
+        let accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNTc1NzIwNC0yODM5LTQ1NTMtYWViMy02MjY3ODU4OTA4NTciLCJpc3MiOiJiZy1zYW1wbGUtaXNzdWVyIiwiZXhwIjoxNTQ4NjYyNTI5fQ.cqPheza1BAR8Hr7eUd6YScTLwKocLvsTkVVXWJ5CrKM"
+//        self.fetchAcessToken()
+        
+        
+        
+        
+//        AF.request(APIURL, parameters: nil, encoder: JSONEncoding.default, headers: [:])
+        AF.request(APIURL,
+            method: HTTPMethod.get,
+            parameters: nil,
+            encoding: JSONEncoding.default,
+            headers: [APIParameterKeys.authorization :"Bearer \(accessToken)"])
+            .validate()
+            .response { (response) in
                 
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                let userOrg = try decoder.decode(UserOrg.self, from: data)
-                let user = userOrg.user
-                completion(nil, user)
-                return
-            } catch let error as NSError {
-                completion(error, nil)
-            }
-            
-            }.resume()
+                guard response.result.isSuccess else {
+                    print("Error while fetching tags: \(response.result.error)")
+                    completion(nil, nil)
+                    return
+                }
+                
+                guard let data = response.result.value else {
+                    print("Invalid tag information received from the service")
+                    completion(nil, nil)
+                    return
+                }
+                
+                do {
+                    let decoder = JSONDecoder()
+                    let userOrg = try decoder.decode(UserOrg.self, from: data!)
+                    let user = userOrg.user
+                    completion(nil, user)
+                    return
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                    completion(error, nil)
+                }
+        }
+        
+        
+        
+        
+        
+        
+        
+//        let request = NSMutableURLRequest(url: NSURL(string: APIURL)! as URL,
+//                                          cachePolicy: .useProtocolCachePolicy,
+//                                          timeoutInterval: 10.0)
+//
+//        request.setValue(APIParameterKeys.requestSetValue, forHTTPHeaderField: APIParameterKeys.headerField)
+//        request.setValue(accessToken, forHTTPHeaderField: APIParameterKeys.authorization)
+//        request.httpMethod = APIParameterKeys.GET
+//
+//        var sessionConfig = URLSessionConfiguration.default
+//        var authValue: String? = "Bearer \(key)"
+//        sessionConfig.httpAdditionalHeaders = ["Authorization": authValue ?? default value]
+//        var session = URLSession(configuration: sessionConfig, delegate: self as? URLSessionDelegate, delegateQueue: nil)
+//
+//        URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
+//            if error != nil{
+//                completion(error, nil)
+//                return
+//            }
+//
+//            guard let data = data else {
+//                completion(nil, nil)
+//                return
+//            }
+//
+//            let httpResponse = response as! HTTPURLResponse
+//            print(httpResponse.statusCode)
+//
+//            do {
+//                let decoder = JSONDecoder()
+//                let error = try decoder.decode(BasicError.self, from: data)
+//                print("Error logging in: \(error.error)")
+//                completion(BasicErrorImpl( title: "Error", description: error.error), nil)
+//                return
+//            }catch {
+//
+//            }
+//
+//            do {
+//                let decoder = JSONDecoder()
+//                let userOrg = try decoder.decode(UserOrg.self, from: data)
+//                let user = userOrg.user
+//                completion(nil, user)
+//                return
+//            } catch let error as NSError {
+//                print(error.localizedDescription)
+//                completion(error, nil)
+//            }
+//
+//            }.resume()
         
         
     }

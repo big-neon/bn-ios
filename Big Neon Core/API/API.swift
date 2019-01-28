@@ -3,7 +3,7 @@
 public enum APIParameterKeys {
     public static let requestSetValue      = "application/json; charset=utf-8"
     public static let headerField          = "Content-Type"
-    public static let authorization         = "Authorization"
+    public static let authorization        = "Authorization"
     public static let POST                 = "POST"
     public static let GET                  = "GET"
     public static let PUT                  = "PUT"

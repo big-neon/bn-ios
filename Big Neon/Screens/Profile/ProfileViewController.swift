@@ -66,7 +66,7 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
             DispatchQueue.main.async {
                 self.loadingIndicatorView.stopAnimating()
                 if completed == false {
-                    print("Failed to Fetch the Driver Profile")
+                    print("Failed to Fetch the User Profile")
                 }
                 self.configureTableView()
                 self.configureHeaderView()
