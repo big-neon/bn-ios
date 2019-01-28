@@ -17,6 +17,8 @@ final class ProfileViewModel {
     
     internal let doorManLabel = ["Doorman"]
     
+    internal var user: User?
+    
     internal func configureAccessToken(completion: @escaping(Bool) -> Void) {
         
         BusinessService.shared.database.checkTokenExpiration { (expired) in
@@ -26,11 +28,12 @@ final class ProfileViewModel {
                     completion(completed)
                     return
                 })
+            } else {
+                self.fetchUser(completion: { (completed) in
+                    completion(completed)
+                    return
+                })
             }
-            
-            // Continue Fetching User
-            completion(true)
-            return
         }
     }
     
@@ -42,11 +45,32 @@ final class ProfileViewModel {
             }
             
             self.saveTokensInKeychain(token: tokens)
-            //  Continue Fetching User
+            self.fetchUser(completion: { (completed) in
+                completion(completed)
+                return
+            })
         }
     }
     
-    
+    private func fetchUser(completion: @escaping(Bool) -> Void) {
+        
+        guard let accessToken = BusinessService.shared.database.fetchAcessToken() else {
+            completion(false)
+            return
+        }
+        
+        BusinessService.shared.database.fetchUser(withAccessToken: accessToken) { (error, userFound) in
+            guard let user = userFound else {
+                completion(false)
+                return
+            }
+            
+            self.user = user
+            completion(true)
+            return
+        }
+        
+    }
     
     private func saveTokensInKeychain(token: Tokens) {
         KeychainWrapper.standard.set(token.accessToken, forKey: "accessToken")

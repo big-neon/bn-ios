@@ -24,6 +24,23 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
         return view
     }()
     
+    internal let loadingIndicatorView: UIActivityIndicatorView = {
+        let loader = UIActivityIndicatorView()
+        loader.style = UIActivityIndicatorView.Style.gray
+        loader.hidesWhenStopped = true
+        loader.translatesAutoresizingMaskIntoConstraints = false
+        return loader
+    }()
+    
+    private func configureLoadingView() {
+        self.view.addSubview(loadingIndicatorView)
+        loadingIndicatorView.startAnimating()
+        loadingIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loadingIndicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        loadingIndicatorView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        loadingIndicatorView.widthAnchor.constraint(equalToConstant: 30).isActive = true
+    }
+    
     internal lazy var profileTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: UITableView.Style.grouped)
         tableView.backgroundColor = UIColor.brandBackground
@@ -40,9 +57,22 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         self.configureNavBar()
-        self.configureTableView()
-        self.configureHeaderView()
-        self.configureQRCodeView()
+        self.configureLoadingView()
+        self.fetchUser()
+    }
+    
+    @objc private func fetchUser() {
+        self.profileViewModel.configureAccessToken(completion: ) { (completed) in
+            DispatchQueue.main.async {
+                self.loadingIndicatorView.stopAnimating()
+                if completed == false {
+                    print("Failed to Fetch the Driver Profile")
+                }
+                self.configureTableView()
+                self.configureHeaderView()
+                self.configureQRCodeView()
+            }
+        }
     }
     
     private func configureNavBar() {
