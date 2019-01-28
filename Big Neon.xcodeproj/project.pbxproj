@@ -34,6 +34,7 @@
 		C66C0BA521E337D40066CD0F /* splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C66C0BA421E337D40066CD0F /* splash.mp4 */; };
 		C66C0BA721E339CA0066CD0F /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C0BA621E339CA0066CD0F /* SplashViewController.swift */; };
 		C683232921FF07FE002342AE /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683232821FF07FE002342AE /* ProfileEditViewController.swift */; };
+		C683232B21FF28CB002342AE /* ProfileEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683232A21FF28CB002342AE /* ProfileEditViewModel.swift */; };
 		C694D25A21D0BFE600B2AE07 /* ApplicationRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */; };
 		C698AB1021EDE9BC0073F1FB /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB0F21EDE9BC0073F1FB /* CreateAccountViewController.swift */; };
 		C698AB1621EF1FE00073F1FB /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB1521EF1FE00073F1FB /* CreateAccountViewModel.swift */; };
@@ -192,6 +193,7 @@
 		C66C0BA421E337D40066CD0F /* splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.mp4; sourceTree = "<group>"; };
 		C66C0BA621E339CA0066CD0F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		C683232821FF07FE002342AE /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
+		C683232A21FF28CB002342AE /* ProfileEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewModel.swift; sourceTree = "<group>"; };
 		C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouting.swift; sourceTree = "<group>"; };
 		C698AB0F21EDE9BC0073F1FB /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		C698AB1521EF1FE00073F1FB /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
@@ -436,8 +438,8 @@
 		C64B0AD621D123D700386000 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				C683232721FF07F2002342AE /* ProfileEditingViewController */,
 				C683232621FF07E3002342AE /* ProfileViewController */,
+				C683232721FF07F2002342AE /* ProfileEditingViewController */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -466,6 +468,7 @@
 		C683232721FF07F2002342AE /* ProfileEditingViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C683232A21FF28CB002342AE /* ProfileEditViewModel.swift */,
 				C683232821FF07FE002342AE /* ProfileEditViewController.swift */,
 			);
 			path = ProfileEditingViewController;
@@ -1111,6 +1114,7 @@
 				C698AB1021EDE9BC0073F1FB /* CreateAccountViewController.swift in Sources */,
 				C683232921FF07FE002342AE /* ProfileEditViewController.swift in Sources */,
 				C6AFB79C21DD76AE00670AC3 /* ExploreDetailViewModel.swift in Sources */,
+				C683232B21FF28CB002342AE /* ProfileEditViewModel.swift in Sources */,
 				C64B0AD821D123F400386000 /* TicketsViewController.swift in Sources */,
 				C64B0AC221D0DD5E00386000 /* TabBarController.swift in Sources */,
 				C6AFB79121DD65D200670AC3 /* EventDetailViewController.TableView.swift in Sources */,

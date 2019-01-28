@@ -74,6 +74,7 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
     
     private func configureNavBar() {
         self.navigationClearBar()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.navigationController?.navigationBar.tintColor = UIColor.brandPrimary
         self.navigationController?.navigationBar.barTintColor = UIColor.white
     }
@@ -124,6 +125,12 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
             profileQRCodeView.frame = CGRect(x: (window.frame.width * 0.5) - 160, y: window.frame.height + 100, width: 320.0, height: 500)
             
         }
+    }
+    
+    internal func editProfileViewController() {
+        let profileEditVC = ProfileEditViewController()
+        profileEditVC.profleEditViewModel.user = self.profileViewModel.user
+        self.navigationController?.pushViewController(profileEditVC, animated: true)
     }
 }
 
