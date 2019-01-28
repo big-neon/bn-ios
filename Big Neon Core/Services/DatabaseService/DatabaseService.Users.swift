@@ -93,63 +93,6 @@ extension DatabaseService {
                 }
         }
         
-        
-        
-        
-        
-        
-        
-//        let request = NSMutableURLRequest(url: NSURL(string: APIURL)! as URL,
-//                                          cachePolicy: .useProtocolCachePolicy,
-//                                          timeoutInterval: 10.0)
-//
-//        request.setValue(APIParameterKeys.requestSetValue, forHTTPHeaderField: APIParameterKeys.headerField)
-//        request.setValue(accessToken, forHTTPHeaderField: APIParameterKeys.authorization)
-//        request.httpMethod = APIParameterKeys.GET
-//
-//        var sessionConfig = URLSessionConfiguration.default
-//        var authValue: String? = "Bearer \(key)"
-//        sessionConfig.httpAdditionalHeaders = ["Authorization": authValue ?? default value]
-//        var session = URLSession(configuration: sessionConfig, delegate: self as? URLSessionDelegate, delegateQueue: nil)
-//
-//        URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
-//            if error != nil{
-//                completion(error, nil)
-//                return
-//            }
-//
-//            guard let data = data else {
-//                completion(nil, nil)
-//                return
-//            }
-//
-//            let httpResponse = response as! HTTPURLResponse
-//            print(httpResponse.statusCode)
-//
-//            do {
-//                let decoder = JSONDecoder()
-//                let error = try decoder.decode(BasicError.self, from: data)
-//                print("Error logging in: \(error.error)")
-//                completion(BasicErrorImpl( title: "Error", description: error.error), nil)
-//                return
-//            }catch {
-//
-//            }
-//
-//            do {
-//                let decoder = JSONDecoder()
-//                let userOrg = try decoder.decode(UserOrg.self, from: data)
-//                let user = userOrg.user
-//                completion(nil, user)
-//                return
-//            } catch let error as NSError {
-//                print(error.localizedDescription)
-//                completion(error, nil)
-//            }
-//
-//            }.resume()
-        
-        
     }
     
 }

@@ -7,8 +7,6 @@ import JWTDecode
 extension DatabaseService {
     
     public func tokenIsExpired(completion: @escaping (Bool) -> Void) {
-        
-        // Fetch Access Token
         guard let accessToken = self.fetchAcessToken() else {
             completion(false)
             return
