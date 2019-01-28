@@ -65,9 +65,6 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
         self.profileViewModel.configureAccessToken(completion: ) { (completed) in
             DispatchQueue.main.async {
                 self.loadingIndicatorView.stopAnimating()
-                if completed == false {
-                    print("Failed to Fetch the User Profile")
-                }
                 self.configureTableView()
                 self.configureHeaderView()
                 self.configureQRCodeView()
@@ -97,6 +94,11 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
     private func configureHeaderView() {
         profileHeaderView  = ProfileHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 280.0))
         profileHeaderView.delegate = self
+        guard let user = self.profileViewModel.user else {
+            profileTableView.tableHeaderView = profileHeaderView
+            return
+        }
+        profileHeaderView.user = user
         profileTableView.tableHeaderView = profileHeaderView
     }
     

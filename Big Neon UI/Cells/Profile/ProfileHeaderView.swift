@@ -1,5 +1,7 @@
 
 import UIKit
+import PINRemoteImage
+import Big_Neon_Core
 
 public protocol ProfileHeaderDelegate {
     func handleShowQRCodeView()
@@ -8,6 +10,17 @@ public protocol ProfileHeaderDelegate {
 final public class ProfileHeaderView: UIView {
     
     public var delegate: ProfileHeaderDelegate?
+    
+    public var user: User? {
+        didSet {
+            guard let user = self.user else {
+                return
+            }
+            
+            self.userNameLabel.text = "\(user.firstName ?? "-") \(user.lastName ?? "-")"
+            self.userEmailLabel.text = user.email!.uppercased()
+        }
+    }
     
     public let profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -37,7 +50,6 @@ final public class ProfileHeaderView: UIView {
     
     public let userNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Kook McDropin"
         label.textColor = UIColor.brandBlack
         label.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +67,6 @@ final public class ProfileHeaderView: UIView {
     
     public let userEmailLabel: UILabel = {
         let label = UILabel()
-        label.text = "kookmcdropz@gmail.com".uppercased()
         label.textColor = UIColor.brandGrey
         label.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.semibold)
         label.translatesAutoresizingMaskIntoConstraints = false

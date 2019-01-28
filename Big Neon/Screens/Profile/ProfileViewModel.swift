@@ -21,7 +21,7 @@ final class ProfileViewModel {
     
     internal func configureAccessToken(completion: @escaping(Bool) -> Void) {
         
-        BusinessService.shared.database.checkTokenExpiration { (expired) in
+        BusinessService.shared.database.tokenIsExpired { (expired) in
             if expired == true {
                 //  Fetch New Token
                 self.fetchNewAccessToken(completion: { (completed) in
@@ -58,6 +58,8 @@ final class ProfileViewModel {
             completion(false)
             return
         }
+        
+        print(accessToken)
         
         BusinessService.shared.database.fetchUser(withAccessToken: accessToken) { (error, userFound) in
             guard let user = userFound else {

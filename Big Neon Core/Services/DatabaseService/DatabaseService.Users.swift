@@ -58,21 +58,9 @@ extension DatabaseService {
         
     }
     
-    public func fetchUser(withAccessToken token: String, completion: @escaping(Error?, User?) -> Void) {
+    public func fetchUser(withAccessToken accessToken: String, completion: @escaping(Error?, User?) -> Void) {
         
         let APIURL = APIService.updateUser
-//        guard let apiURL =  NSURL(string: APIURL)  else {
-//            completion(nil, nil)
-//        }
-        
-        
-        let accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNTc1NzIwNC0yODM5LTQ1NTMtYWViMy02MjY3ODU4OTA4NTciLCJpc3MiOiJiZy1zYW1wbGUtaXNzdWVyIiwiZXhwIjoxNTQ4NjYyNTI5fQ.cqPheza1BAR8Hr7eUd6YScTLwKocLvsTkVVXWJ5CrKM"
-//        self.fetchAcessToken()
-        
-        
-        
-        
-//        AF.request(APIURL, parameters: nil, encoder: JSONEncoding.default, headers: [:])
         AF.request(APIURL,
             method: HTTPMethod.get,
             parameters: nil,

@@ -2,15 +2,15 @@
 import Foundation
 
 public struct User: Codable {
-    let id: String?
-    let firstName: String?
-    let lastName: String?
-    let email: String?
-    let phone: String?
-    let profilePicURL: String?
-    let thumbProfilePicURL: String?
-    let coverPhotoURL: String?
-    let isOrgOwner: Bool?
+    public let id: String?
+    public let firstName: String?
+    public let lastName: String?
+    public let email: String?
+    public let phone: String?
+    public let profilePicURL: String?
+    public let thumbProfilePicURL: String?
+    public let coverPhotoURL: String?
+    public let isOrgOwner: Bool?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -26,11 +26,11 @@ public struct User: Codable {
 
 
 public struct UserOrg: Codable {
-    let user: User?
-    let roles: [String]?
-    let scopes: [String]?
-    let organizationRoles: [String: [String]]?
-    let organizationScopes: [String: [String]]?
+    public let user: User?
+    public let roles: [String]?
+    public let scopes: [String]?
+    public let organizationRoles: [String: [String]]?
+    public let organizationScopes: [String: [String]]?
 
     enum CodingKeys: String, CodingKey {
         case user, roles, scopes
