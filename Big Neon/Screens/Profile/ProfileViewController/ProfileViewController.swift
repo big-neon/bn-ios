@@ -72,6 +72,11 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     private func configureNavBar() {
         self.navigationClearBar()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -130,7 +135,8 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
     internal func editProfileViewController() {
         let profileEditVC = ProfileEditViewController()
         profileEditVC.profleEditViewModel.user = self.profileViewModel.user
-        self.navigationController?.pushViewController(profileEditVC, animated: true)
+        let profileEditNavVC = UINavigationController(rootViewController: profileEditVC)
+        self.present(profileEditNavVC, animated: true, completion: nil)
     }
 }
 

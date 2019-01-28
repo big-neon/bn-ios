@@ -4,12 +4,12 @@ import UIKit
 
 extension UIViewController {
     
-    public func setNavigationTitle(withTitle title:String, titleColour: UIColor?) {
+    public func setNavigationTitle(withTitle title:String, titleColour: UIColor) {
         let navBarTitleLabel = UILabel()
         navBarTitleLabel.textAlignment = .center
         navBarTitleLabel.text = title
         navBarTitleLabel.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
-        navBarTitleLabel.textColor = titleColour ?? UIColor.brandBlack
+        navBarTitleLabel.textColor = titleColour
         self.navigationItem.titleView = navBarTitleLabel
     }
     
