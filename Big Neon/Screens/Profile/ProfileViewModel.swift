@@ -59,8 +59,6 @@ final class ProfileViewModel {
             return
         }
         
-        print(accessToken)
-        
         BusinessService.shared.database.fetchUser(withAccessToken: accessToken) { (error, userFound) in
             guard let user = userFound else {
                 completion(false)
