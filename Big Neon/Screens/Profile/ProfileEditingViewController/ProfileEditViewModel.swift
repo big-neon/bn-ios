@@ -11,4 +11,9 @@ final class ProfileEditViewModel {
     
     internal var user: User?
 
+    internal func handleLogout(completion: @escaping (Bool) -> Void) {
+        BusinessService.shared.database.logout { (completed) in
+            completion(completed)
+        }
+    }
 }

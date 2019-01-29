@@ -50,8 +50,6 @@ extension DatabaseService {
                 return
             }
             
-            // let httpResponse = response as! HTTPURLResponse
-            
             guard let data = data else {
                 completion(nil, nil)
                 return

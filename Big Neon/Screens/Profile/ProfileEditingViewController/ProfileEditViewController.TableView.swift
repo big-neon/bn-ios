@@ -75,11 +75,21 @@ extension ProfileEditViewController {
         default:
             return 60.0
         }
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        switch indexPath.section {
+        case 0:
+            print("TO Interact Cell")
+            return
+        case 1:
+            print("TO Interact Cell")
+            return
+        default:
+            self.handleLogout()
+        }
+        
     }
     
 }

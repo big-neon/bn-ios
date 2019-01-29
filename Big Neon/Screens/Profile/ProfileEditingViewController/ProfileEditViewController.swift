@@ -61,6 +61,32 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
         self.dismiss(animated: true, completion: nil)
     }
     
+    internal func handleLogout() {
+        let alertController = UIAlertController(title: "Logout",
+                                                message: nil, preferredStyle: .actionSheet)
+        
+        let confirmButton = UIAlertAction(title: "Confirm", style: .default, handler: { (_) -> Void in
+            self.profleEditViewModel.handleLogout(completion: { (_) in
+                let welcomeVC = UINavigationController(rootViewController: WelcomeViewController())
+                welcomeVC.modalTransitionStyle = .flipHorizontal
+                self.present(welcomeVC, animated: true, completion: nil)
+                return
+            })
+        })
+        
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) -> Void in
+        })
+        
+        alertController.addAction(confirmButton)
+        alertController.addAction(cancelButton)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+}
+
+extension ProfileEditViewController {
+    
     @objc func keyboardWillShow( note:NSNotification ) {
         if let newFrame = (note.userInfo?[ UIResponder.keyboardFrameEndUserInfoKey ] as? NSValue)?.cgRectValue {
             var insets: UIEdgeInsets
@@ -75,18 +101,18 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-//        switch textField.tag {
-//        case 0:
-//            self.payoutsViewModel.bankName = textField.text!
-//        case 1:
-//            self.payoutsViewModel.accountNumber = textField.text!
-//        case 2:
-//            self.payoutsViewModel.accountHolder = textField.text!
-//        case 3:
-//            self.payoutsViewModel.branchCode = textField.text!
-//        default:
-//            self.payoutsViewModel.branchName = textField.text!
-//        }
+        //        switch textField.tag {
+        //        case 0:
+        //            self.payoutsViewModel.bankName = textField.text!
+        //        case 1:
+        //            self.payoutsViewModel.accountNumber = textField.text!
+        //        case 2:
+        //            self.payoutsViewModel.accountHolder = textField.text!
+        //        case 3:
+        //            self.payoutsViewModel.branchCode = textField.text!
+        //        default:
+        //            self.payoutsViewModel.branchName = textField.text!
+        //        }
     }
     
 }
