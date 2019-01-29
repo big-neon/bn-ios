@@ -1,12 +1,12 @@
 
-
-
 import Foundation
 import UIKit
+import PhoneNumberKit
+import Big_Neon_UI
 
-final public class ProfileEditTableCell: UITableViewCell {
+final public class ProfileEditPhoneNumberTableCell: UITableViewCell {
     
-    public static let cellID = "ProfileEditTableCell"
+    public static let cellID = "ProfileEditPhoneNumberTableCellID"
     
     public let cellLabel: UILabel = {
         let label = UILabel()
@@ -16,10 +16,12 @@ final public class ProfileEditTableCell: UITableViewCell {
         return label
     }()
     
-    public let entryTextField: UITextField = {
-        let textField = UITextField()
+    public let entryTextField: PhoneNumberTextField = {
+        let textField = PhoneNumberTextField()
+        textField.borderStyle = .none
+        textField.maxDigits = 11
+        textField.keyboardType = .phonePad
         textField.textColor = UIColor.brandBlack
-        textField.text = "Gugulethu"
         textField.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.semibold)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -42,9 +44,9 @@ final public class ProfileEditTableCell: UITableViewCell {
         self.cellLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
         
         self.entryTextField.leftAnchor.constraint(equalTo: cellLabel.rightAnchor, constant: 16).isActive = true
-        self.entryTextField.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         self.entryTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
-        self.entryTextField.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        self.entryTextField.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        self.entryTextField.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
     
     required public init?(coder aDecoder: NSCoder) {

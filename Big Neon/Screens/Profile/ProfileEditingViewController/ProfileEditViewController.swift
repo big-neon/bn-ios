@@ -4,9 +4,11 @@
 import UIKit
 import Big_Neon_UI
 
-internal class ProfileEditViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate  {
+internal class ProfileEditViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, ProfileImageUploadDelegate  {
+    
     
     internal var profleEditViewModel: ProfileEditViewModel = ProfileEditViewModel()
+    internal let picker = UIImagePickerController()
     
     internal lazy var profileEditTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: UITableView.Style.grouped)
@@ -44,6 +46,7 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
     private func configureAccountTableView() {
         self.view.addSubview(profileEditTableView)
         
+        profileEditTableView.register(ProfileEditPhoneNumberTableCell.self, forCellReuseIdentifier: ProfileEditPhoneNumberTableCell.cellID)
         profileEditTableView.register(ProfileImageUploadCell.self, forCellReuseIdentifier: ProfileImageUploadCell.cellID)
         profileEditTableView.register(ProfileEditTableCell.self, forCellReuseIdentifier: ProfileEditTableCell.cellID)
         profileEditTableView.register(LogoutCell.self, forCellReuseIdentifier: LogoutCell.cellID)
@@ -99,6 +102,40 @@ extension ProfileEditViewController {
             profileEditTableView.contentInset = insets
             profileEditTableView.scrollIndicatorInsets = insets
         }
+    }
+    
+    func uploadImage() {
+        let alertController = UIAlertController(title: "Upload a Profile Picture",
+                                                message: nil, preferredStyle: .actionSheet)
+        
+        let takePhotoButton = UIAlertAction(title: "Take a photo", style: .default, handler: { (_) -> Void in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                self.picker.delegate = self
+                self.picker.allowsEditing = true
+                self.picker.sourceType = .camera
+                self.picker.cameraDevice = .front
+                self.picker.cameraCaptureMode = .photo
+                self.picker.modalPresentationStyle = .fullScreen
+                self.present(self.picker, animated: true, completion: nil)
+            }
+        })
+        
+        let  photoLibraryButton = UIAlertAction(title: "Pick from library", style: .default, handler: { (_) -> Void in
+            self.picker.delegate = self
+            self.picker.allowsEditing = true
+            self.picker.sourceType = .photoLibrary
+            self.picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+            self.present(self.picker, animated: true, completion: nil)
+        })
+        
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) -> Void in
+        })
+        
+        alertController.addAction(takePhotoButton)
+        alertController.addAction(photoLibraryButton)
+        alertController.addAction(cancelButton)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

@@ -3,13 +3,26 @@
 import Foundation
 import UIKit
 
-protocol ProfileImageUploadDelegate {
+public protocol ProfileImageUploadDelegate {
     func uploadImage()
 }
 
 final public class ProfileImageUploadCell: UITableViewCell {
     
     public static let cellID = "ProfileImageUploadCellID"
+    public var delegate: ProfileImageUploadDelegate?
+    
+    internal lazy var userImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.layer.cornerRadius = 30.0
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleUploadImage)))
+        imageView.backgroundColor = UIColor.brandBackground
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
     
     public let cellLabel: UILabel = {
         let label = UILabel()
@@ -28,12 +41,22 @@ final public class ProfileImageUploadCell: UITableViewCell {
     }
     
     private func configureView() {
+        self.addSubview(userImageView)
         self.addSubview(cellLabel)
         
-        self.cellLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 120).isActive = true
+        self.userImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
+        self.userImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        self.userImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        self.userImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        
+        self.cellLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 100).isActive = true
         self.cellLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         self.cellLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
         self.cellLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+    }
+    
+    @objc private func handleUploadImage() {
+        self.delegate?.uploadImage()
     }
     
     required public init?(coder aDecoder: NSCoder) {
