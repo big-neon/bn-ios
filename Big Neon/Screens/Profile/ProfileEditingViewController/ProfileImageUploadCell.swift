@@ -3,16 +3,19 @@
 import Foundation
 import UIKit
 
-final public class LogoutCell: UITableViewCell {
+protocol ProfileImageUploadDelegate {
+    func uploadImage()
+}
+
+final public class ProfileImageUploadCell: UITableViewCell {
     
-    public static let cellID = "LogoutCellID"
+    public static let cellID = "ProfileImageUploadCellID"
     
     public let cellLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandPrimary
-        label.textAlignment = .center
-        label.text = "Logout"
-        label.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium)
+        label.text = "Change Profile Profile"
+        label.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -27,9 +30,9 @@ final public class LogoutCell: UITableViewCell {
     private func configureView() {
         self.addSubview(cellLabel)
         
-        self.cellLabel.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        self.cellLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 120).isActive = true
         self.cellLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        self.cellLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        self.cellLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
         self.cellLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
     

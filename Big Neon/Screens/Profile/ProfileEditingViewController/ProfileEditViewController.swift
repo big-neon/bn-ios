@@ -4,7 +4,7 @@
 import UIKit
 import Big_Neon_UI
 
-internal class ProfileEditViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+internal class ProfileEditViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate  {
     
     internal var profleEditViewModel: ProfileEditViewModel = ProfileEditViewModel()
     
@@ -25,6 +25,7 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
         view.backgroundColor = UIColor.white
         self.configureNavBar()
         self.configureAccountTableView()
+        NotificationCenter.default.addObserver( self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     private func configureNavBar() {
@@ -42,6 +43,7 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
     private func configureAccountTableView() {
         self.view.addSubview(profileEditTableView)
         
+        profileEditTableView.register(ProfileImageUploadCell.self, forCellReuseIdentifier: ProfileImageUploadCell.cellID)
         profileEditTableView.register(ProfileEditTableCell.self, forCellReuseIdentifier: ProfileEditTableCell.cellID)
         profileEditTableView.register(LogoutCell.self, forCellReuseIdentifier: LogoutCell.cellID)
         
@@ -57,6 +59,34 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
     
     @objc private func handleCancel() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func keyboardWillShow( note:NSNotification ) {
+        if let newFrame = (note.userInfo?[ UIResponder.keyboardFrameEndUserInfoKey ] as? NSValue)?.cgRectValue {
+            var insets: UIEdgeInsets
+            if profileEditTableView.contentInset.bottom == 0 {
+                insets = UIEdgeInsets( top: 0, left: 0, bottom: newFrame.height, right: 0 )
+            } else {
+                insets = UIEdgeInsets( top: 0, left: 0, bottom: 0, right: 0 )
+            }
+            profileEditTableView.contentInset = insets
+            profileEditTableView.scrollIndicatorInsets = insets
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+//        switch textField.tag {
+//        case 0:
+//            self.payoutsViewModel.bankName = textField.text!
+//        case 1:
+//            self.payoutsViewModel.accountNumber = textField.text!
+//        case 2:
+//            self.payoutsViewModel.accountHolder = textField.text!
+//        case 3:
+//            self.payoutsViewModel.branchCode = textField.text!
+//        default:
+//            self.payoutsViewModel.branchName = textField.text!
+//        }
     }
     
 }

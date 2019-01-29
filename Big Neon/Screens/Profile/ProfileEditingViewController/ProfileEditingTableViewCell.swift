@@ -16,6 +16,15 @@ final public class ProfileEditTableCell: UITableViewCell {
         return label
     }()
     
+    public let entryTextField: UITextField = {
+        let textField = UITextField()
+        textField.textColor = UIColor.brandBlack
+        textField.text = "Gugulethu"
+        textField.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.semibold)
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: UITableViewCell.CellStyle.default, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = UIColor.white
@@ -25,11 +34,17 @@ final public class ProfileEditTableCell: UITableViewCell {
     
     private func configureView() {
         self.addSubview(cellLabel)
+        self.addSubview(entryTextField)
         
         self.cellLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
         self.cellLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        self.cellLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -30).isActive = true
         self.cellLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        self.cellLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        
+        self.entryTextField.leftAnchor.constraint(equalTo: cellLabel.rightAnchor, constant: 16).isActive = true
+        self.entryTextField.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        self.entryTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
+        self.entryTextField.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
     
     required public init?(coder aDecoder: NSCoder) {
