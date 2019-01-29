@@ -13,6 +13,7 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
         tableView.backgroundColor = UIColor.brandBackground
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.keyboardDismissMode = UIScrollView.KeyboardDismissMode.interactive
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.separatorColor = UIColor.brandGrey.withAlphaComponent(0.3)
         tableView.showsVerticalScrollIndicator = false

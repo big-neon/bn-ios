@@ -173,7 +173,7 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
     @objc private func handleShowHome() {
         let tabBarVC = TabBarController()
         tabBarVC.modalTransitionStyle = .flipHorizontal
-        self.present(tabBarVC, animated: false, completion: nil)
+        self.present(tabBarVC, animated: true, completion: nil)
     }
     
 }

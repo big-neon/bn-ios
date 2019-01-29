@@ -38,23 +38,35 @@ extension ProfileEditViewController {
                 return profileCell
             } else if indexPath.row == 1 {
                 let profileCell: ProfileEditTableCell = tableView.dequeueReusableCell(withIdentifier: ProfileEditTableCell.cellID, for: indexPath) as! ProfileEditTableCell
+                profileCell.entryTextField.tag = indexPath.row
+                profileCell.entryTextField.delegate = self
+//                cellDetailTextField.attributedPlaceholder =  NSAttributedString(string: "Add",
+//                                                                                attributes: [NSAttributedStringKey.foregroundColor: UIColor.brandPrimary])
                 profileCell.cellLabel.text = self.profleEditViewModel.profileEditLabels[0]
                 return profileCell
             }
             let profileCell: ProfileEditTableCell = tableView.dequeueReusableCell(withIdentifier: ProfileEditTableCell.cellID, for: indexPath) as! ProfileEditTableCell
+            profileCell.entryTextField.tag = indexPath.row
+            profileCell.entryTextField.delegate = self
             profileCell.cellLabel.text = self.profleEditViewModel.profileEditLabels[1]
             return profileCell
         case 1:
             if indexPath.row == 0 {
                 let profileCell: ProfileEditTableCell = tableView.dequeueReusableCell(withIdentifier: ProfileEditTableCell.cellID, for: indexPath) as! ProfileEditTableCell
+                profileCell.entryTextField.tag = indexPath.row
+                profileCell.entryTextField.delegate = self
                 profileCell.cellLabel.text = self.profleEditViewModel.profileEditLabels[2]
                 return profileCell
             } else if indexPath.row == 1 {
                 let profileCell: ProfileEditTableCell = tableView.dequeueReusableCell(withIdentifier: ProfileEditTableCell.cellID, for: indexPath) as! ProfileEditTableCell
+                profileCell.entryTextField.tag = indexPath.row
+                profileCell.entryTextField.delegate = self
                 profileCell.cellLabel.text = self.profleEditViewModel.profileEditLabels[3]
                return profileCell
             }
             let profileCell: ProfileEditTableCell = tableView.dequeueReusableCell(withIdentifier: ProfileEditTableCell.cellID, for: indexPath) as! ProfileEditTableCell
+            profileCell.entryTextField.tag = indexPath.row
+            profileCell.entryTextField.delegate = self
             profileCell.cellLabel.text = self.profleEditViewModel.profileEditLabels[4]
             return profileCell
         default:
