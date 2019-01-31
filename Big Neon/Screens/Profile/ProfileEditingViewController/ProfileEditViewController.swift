@@ -65,12 +65,12 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
             return
         }
         
-        guard let surname = self.profleEditViewModel.lastName else {
+        guard let lastName = self.profleEditViewModel.lastName else {
             Utils.showAlert(presenter: self, title: "Last Name Missing", message: "Please add your last name")
             return
         }
         
-        guard let mobileNumber = self.profleEditViewModel.mobileNumber else {
+        guard let phone = self.profleEditViewModel.mobileNumber else {
             Utils.showAlert(presenter: self, title: "Mobile Number Missing", message: "Please add your mobile number")
             return
         }
@@ -80,15 +80,20 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
             return
         }
         
-        self.profleEditViewModel.updateUserAccount(firstName: firstName, lastName: surname, mobileNumber: mobileNumber, email: email) { (completed) in
-            if completed  == true {
+        print(firstName)
+        print(lastName)
+        print(phone)
+        print(email)
+        
+        self.profleEditViewModel.updateUserAccount(firstName: firstName, lastName: lastName, phone: phone, email: email) { (error) in
+            if error == nil {
                 self.dismiss(animated: true, completion: {
                     print("Reload the Profile Screen")
                 })
                 return
             }
             
-            print("Error while saving the data")
+            print("Error while saving the data: \(error?.localizedDescription)")
             return
         }
     }
@@ -145,6 +150,7 @@ extension ProfileEditViewController {
                 self.picker.delegate = self
                 self.picker.allowsEditing = true
                 self.picker.sourceType = .camera
+                
                 self.picker.cameraDevice = .front
                 self.picker.cameraCaptureMode = .photo
                 self.picker.modalPresentationStyle = .fullScreen
@@ -171,21 +177,49 @@ extension ProfileEditViewController {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        print(textField.tag)
+        print(textField.text)
+        
         switch textField.tag {
         case 0:
-            print("Profile Cell Adding")
+            self.profleEditViewModel.firstName = textField.text!
             return
         case 1:
-            self.profleEditViewModel.firstName = textField.text!
-        case 2:
             self.profleEditViewModel.lastName = textField.text!
-        case 3:
+            return
+        case 2:
             self.profleEditViewModel.mobileNumber = textField.text!
-        case 4:
+            return
+        case 3:
             self.profleEditViewModel.email = textField.text!
+            return
         default:
             print("Meant to be Password Editing area")
-//            self.profleEditViewModel.password = textField.text!
+            //            self.profleEditViewModel.password = textField.text!
+            return
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print(textField.tag)
+        print(textField.text)
+        
+        switch textField.tag {
+        case 0:
+            self.profleEditViewModel.firstName = textField.text!
+            return
+        case 1:
+            self.profleEditViewModel.lastName = textField.text!
+            return
+        case 2:
+            self.profleEditViewModel.mobileNumber = textField.text!
+            return
+        case 3:
+            self.profleEditViewModel.email = textField.text!
+            return
+        default:
+            print("Meant to be Password Editing area")
+            //            self.profleEditViewModel.password = textField.text!
             return
         }
     }

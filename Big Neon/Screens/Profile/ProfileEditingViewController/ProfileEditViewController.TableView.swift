@@ -42,9 +42,8 @@ extension ProfileEditViewController {
                 return profileCell
             } else if indexPath.row == 1 {
                 let profileCell: ProfileEditTableCell = tableView.dequeueReusableCell(withIdentifier: ProfileEditTableCell.cellID, for: indexPath) as! ProfileEditTableCell
-                profileCell.entryTextField.tag = indexPath.row
+                profileCell.entryTextField.tag = 0
                 profileCell.entryTextField.delegate = self
-                
                 profileCell.entryTextField.attributedPlaceholder =  NSAttributedString(string: self.profleEditViewModel.profileEditLabels[0],
                                                                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.brandLightGrey.withAlphaComponent(0.2)])
                 profileCell.cellLabel.text = self.profleEditViewModel.profileEditLabels[0]
@@ -54,7 +53,7 @@ extension ProfileEditViewController {
                 return profileCell
             }
             let profileCell: ProfileEditTableCell = tableView.dequeueReusableCell(withIdentifier: ProfileEditTableCell.cellID, for: indexPath) as! ProfileEditTableCell
-            profileCell.entryTextField.tag = indexPath.row
+            profileCell.entryTextField.tag = 1
             profileCell.entryTextField.delegate = self
             profileCell.entryTextField.attributedPlaceholder =  NSAttributedString(string: self.profleEditViewModel.profileEditLabels[1],
                                                                                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.brandLightGrey.withAlphaComponent(0.2)])
@@ -66,8 +65,8 @@ extension ProfileEditViewController {
         case 1:
             if indexPath.row == 0 {
                 let profileCell: ProfileEditPhoneNumberTableCell = tableView.dequeueReusableCell(withIdentifier: ProfileEditPhoneNumberTableCell.cellID, for: indexPath) as! ProfileEditPhoneNumberTableCell
-                profileCell.entryTextField.tag = indexPath.row
                 profileCell.entryTextField.delegate = self
+                profileCell.entryTextField.tag = 2
                 profileCell.entryTextField.attributedPlaceholder =  NSAttributedString(string: self.profleEditViewModel.profileEditLabels[2],
                                                                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.brandLightGrey.withAlphaComponent(0.2)])
                 profileCell.cellLabel.text = self.profleEditViewModel.profileEditLabels[2]
@@ -77,7 +76,7 @@ extension ProfileEditViewController {
                 return profileCell
             } else if indexPath.row == 1 {
                 let profileCell: ProfileEditTableCell = tableView.dequeueReusableCell(withIdentifier: ProfileEditTableCell.cellID, for: indexPath) as! ProfileEditTableCell
-                profileCell.entryTextField.tag = indexPath.row
+                profileCell.entryTextField.tag = 3
                 profileCell.entryTextField.delegate = self
                 profileCell.entryTextField.attributedPlaceholder =  NSAttributedString(string: self.profleEditViewModel.profileEditLabels[3],
                                                                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.brandLightGrey.withAlphaComponent(0.2)])
@@ -88,7 +87,7 @@ extension ProfileEditViewController {
                 return profileCell
             }
             let profileCell: ProfileEditTableCell = tableView.dequeueReusableCell(withIdentifier: ProfileEditTableCell.cellID, for: indexPath) as! ProfileEditTableCell
-            profileCell.entryTextField.tag = indexPath.row
+            profileCell.entryTextField.tag = 4
             profileCell.entryTextField.delegate = self
             profileCell.entryTextField.attributedPlaceholder =  NSAttributedString(string: self.profleEditViewModel.profileEditLabels[4],
                                                                                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.brandLightGrey.withAlphaComponent(0.2)])

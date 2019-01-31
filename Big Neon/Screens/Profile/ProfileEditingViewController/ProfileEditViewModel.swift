@@ -25,13 +25,12 @@ final class ProfileEditViewModel {
         self.email          = user?.email
     }
     
-    internal func updateUserAccount(firstName: String, lastName: String, mobileNumber: String, email: String, completion: @escaping(Bool) -> Void) {
+    internal func updateUserAccount(firstName: String, lastName: String, phone: String, email: String, completion: @escaping(Error?) -> Void) {
         
-        print(firstName)
-        print(lastName)
-        print(mobileNumber)
-        print(email)
-       
+        BusinessService.shared.database.updateUser(name: firstName, surname: lastName, email: email, phone: phone) { (error) in
+            completion(error)
+            return
+        }
     }
 
     internal func handleLogout(completion: @escaping (Bool) -> Void) {

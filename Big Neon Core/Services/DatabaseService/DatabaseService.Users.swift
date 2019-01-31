@@ -63,7 +63,7 @@ extension DatabaseService {
     }
     
     
-    public func updateUser(uid: String, name: String, surname: String, email: String, phone: String, completion: @escaping(Error?) -> Void) {
+    public func updateUser(name: String, surname: String, email: String, phone: String, completion: @escaping(Error?) -> Void) {
         
         let authParameters = ["first_name": name,
                               "last_name": surname,
