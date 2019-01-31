@@ -62,6 +62,67 @@ extension DatabaseService {
         
     }
     
+    
+    public func updateUser(uid: String, name: String, surname: String, email: String, phone: String, completion: @escaping(Error?) -> Void) {
+        
+        let authParameters = ["first_name": name,
+                              "last_name": surname,
+                              "email": email,
+                              "phone": phone]
+        
+        /***
+         To be replaced with Alarmofire later - AF has less code & enables response status checks by default.
+         */
+        
+        let APIURL = APIService.updateUser
+        let jsonData = try? JSONSerialization.data(withJSONObject: authParameters, options: .prettyPrinted)
+        
+        let accessToken = self.fetchAcessToken()
+        
+        
+        let request = NSMutableURLRequest(url: NSURL(string: APIURL)! as URL,
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
+        
+        request.setValue(APIParameterKeys.requestSetValue, forHTTPHeaderField: APIParameterKeys.headerField)
+        request.setValue(accessToken!, forHTTPHeaderField: APIParameterKeys.authorization)
+        request.httpMethod = APIParameterKeys.PUT
+        request.httpBody = jsonData
+        
+        URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
+            if error != nil{
+                completion(error)
+                return
+            }
+            
+            guard let data = data else {
+                completion(nil)
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let error = try decoder.decode(BasicError.self, from: data)
+                print("Error logging in: \(error.error)")
+                completion(BasicErrorImpl( title: "Error", description: error.error))
+                return
+            }catch {
+                
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let tokens = try decoder.decode(Tokens.self, from: data)
+                completion(nil)
+                return
+            } catch let error as NSError {
+                completion(error)
+            }
+            
+            }.resume()
+        
+    }
+    
     public func fetchUser(withAccessToken accessToken: String, completion: @escaping(Error?, User?) -> Void) {
         
         let APIURL = APIService.updateUser

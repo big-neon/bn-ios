@@ -3,6 +3,7 @@
 import Foundation
 import UIKit
 import Big_Neon_UI
+import PINRemoteImage
 
 extension ProfileEditViewController {
     
@@ -35,6 +36,9 @@ extension ProfileEditViewController {
         case 0:
             if indexPath.row == 0 {
                 let profileCell: ProfileImageUploadCell = tableView.dequeueReusableCell(withIdentifier: ProfileImageUploadCell.cellID, for: indexPath) as! ProfileImageUploadCell
+                if let profilePicURL = self.profleEditViewModel.user?.profilePicURL   {
+                    profileCell.userImageView.pin_setImage(from: URL(string: profilePicURL), placeholderImage: nil)
+                }
                 return profileCell
             } else if indexPath.row == 1 {
                 let profileCell: ProfileEditTableCell = tableView.dequeueReusableCell(withIdentifier: ProfileEditTableCell.cellID, for: indexPath) as! ProfileEditTableCell
@@ -44,8 +48,8 @@ extension ProfileEditViewController {
                 profileCell.entryTextField.attributedPlaceholder =  NSAttributedString(string: self.profleEditViewModel.profileEditLabels[0],
                                                                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.brandLightGrey.withAlphaComponent(0.2)])
                 profileCell.cellLabel.text = self.profleEditViewModel.profileEditLabels[0]
-                if let name = self.profleEditViewModel.user?.firstName, let surname = self.profleEditViewModel.user?.lastName {
-                    profileCell.entryTextField.text = "\(name) \(surname)"
+                if let name = self.profleEditViewModel.user?.firstName {
+                    profileCell.entryTextField.text = name
                 }
                 return profileCell
             }
@@ -55,6 +59,9 @@ extension ProfileEditViewController {
             profileCell.entryTextField.attributedPlaceholder =  NSAttributedString(string: self.profleEditViewModel.profileEditLabels[1],
                                                                                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.brandLightGrey.withAlphaComponent(0.2)])
             profileCell.cellLabel.text = self.profleEditViewModel.profileEditLabels[1]
+            if let surname = self.profleEditViewModel.user?.lastName {
+                profileCell.entryTextField.text = surname
+            }
             return profileCell
         case 1:
             if indexPath.row == 0 {
@@ -64,6 +71,9 @@ extension ProfileEditViewController {
                 profileCell.entryTextField.attributedPlaceholder =  NSAttributedString(string: self.profleEditViewModel.profileEditLabels[2],
                                                                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.brandLightGrey.withAlphaComponent(0.2)])
                 profileCell.cellLabel.text = self.profleEditViewModel.profileEditLabels[2]
+                if let phone = self.profleEditViewModel.user?.phone {
+                    profileCell.entryTextField.text = phone
+                }
                 return profileCell
             } else if indexPath.row == 1 {
                 let profileCell: ProfileEditTableCell = tableView.dequeueReusableCell(withIdentifier: ProfileEditTableCell.cellID, for: indexPath) as! ProfileEditTableCell

@@ -9,6 +9,7 @@ final class ProfileEditViewModel {
     
     internal let profileEditLabels: [String] = ["First Name", "Last Name", "Mobile", "Email", "Password"]
     
+    internal var userImageRL: String?
     internal var firstName: String?
     internal var lastName: String?
     internal var mobileNumber: String?
@@ -17,6 +18,7 @@ final class ProfileEditViewModel {
     internal var user: User?
     
     internal func configureUserData() {
+        self.userImageRL    = user?.profilePicURL
         self.firstName      = user?.firstName
         self.lastName       = user?.lastName
         self.mobileNumber   = user?.phone
@@ -29,25 +31,7 @@ final class ProfileEditViewModel {
         print(lastName)
         print(mobileNumber)
         print(email)
-        
-//        guard let firstName = self.firstName
-        
-//        let bankAccount = PayoutBankAccount(accountNumber: accountNumber, accountHolder: accountHolder, bankName: bankName, branchCode: branchCode, branchName: branchName)
-//
-//        guard let driver = BusinessService.shared.authentication.loggedInDriver else {
-//            completion(false)
-//            return
-//        }
-//
-//        BusinessService.shared.database.updateDriverBankRecord(driver: driver, bankRecord: bankAccount) { (error) in
-//            if error != nil {
-//                completion(false)
-//                return
-//            }
-//
-//            completion(true)
-//            return
-//        }
+       
     }
 
     internal func handleLogout(completion: @escaping (Bool) -> Void) {
