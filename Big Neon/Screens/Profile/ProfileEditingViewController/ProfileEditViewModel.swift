@@ -16,7 +16,21 @@ final class ProfileEditViewModel {
     
     internal var user: User?
     
-    internal func updateUserAccount(accountNumber: Int, accountHolder: String, bankName: String, branchCode: Int, branchName: String, completion: @escaping(Bool) -> Void) {
+    internal func configureUserData() {
+        self.firstName      = user?.firstName
+        self.lastName       = user?.lastName
+        self.mobileNumber   = user?.phone
+        self.email          = user?.email
+    }
+    
+    internal func updateUserAccount(firstName: String, lastName: String, mobileNumber: String, email: String, completion: @escaping(Bool) -> Void) {
+        
+        print(firstName)
+        print(lastName)
+        print(mobileNumber)
+        print(email)
+        
+//        guard let firstName = self.firstName
         
 //        let bankAccount = PayoutBankAccount(accountNumber: accountNumber, accountHolder: accountHolder, bankName: bankName, branchCode: branchCode, branchName: branchName)
 //

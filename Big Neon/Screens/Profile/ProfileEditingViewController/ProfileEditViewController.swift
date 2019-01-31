@@ -26,6 +26,7 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        self.profleEditViewModel.configureUserData()
         self.configureNavBar()
         self.configureAccountTableView()
         NotificationCenter.default.addObserver( self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
@@ -58,7 +59,38 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
     }
     
     @objc private func handleSave() {
-        self.dismiss(animated: true, completion: nil)
+        
+        guard let firstName = self.profleEditViewModel.firstName else {
+            Utils.showAlert(presenter: self, title: "First Name Missing", message: "Please add your name before saving")
+            return
+        }
+        
+        guard let surname = self.profleEditViewModel.lastName else {
+            Utils.showAlert(presenter: self, title: "Last Name Missing", message: "Please add your last name")
+            return
+        }
+        
+        guard let mobileNumber = self.profleEditViewModel.mobileNumber else {
+            Utils.showAlert(presenter: self, title: "Mobile Number Missing", message: "Please add your mobile number")
+            return
+        }
+        
+        guard let email = self.profleEditViewModel.email else {
+            Utils.showAlert(presenter: self, title: "Email Missing", message: "Please add your email")
+            return
+        }
+        
+        self.profleEditViewModel.updateUserAccount(firstName: firstName, lastName: surname, mobileNumber: mobileNumber, email: email) { (completed) in
+            if completed  == true {
+                self.dismiss(animated: true, completion: {
+                    print("Reload the Profile Screen")
+                })
+                return
+            }
+            
+            print("Error while saving the data")
+            return
+        }
     }
     
     @objc private func handleCancel() {
@@ -139,18 +171,23 @@ extension ProfileEditViewController {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        //        switch textField.tag {
-        //        case 0:
-        //            self.payoutsViewModel.bankName = textField.text!
-        //        case 1:
-        //            self.payoutsViewModel.accountNumber = textField.text!
-        //        case 2:
-        //            self.payoutsViewModel.accountHolder = textField.text!
-        //        case 3:
-        //            self.payoutsViewModel.branchCode = textField.text!
-        //        default:
-        //            self.payoutsViewModel.branchName = textField.text!
-        //        }
+        switch textField.tag {
+        case 0:
+            print("Profile Cell Adding")
+            return
+        case 1:
+            self.profleEditViewModel.firstName = textField.text!
+        case 2:
+            self.profleEditViewModel.lastName = textField.text!
+        case 3:
+            self.profleEditViewModel.mobileNumber = textField.text!
+        case 4:
+            self.profleEditViewModel.email = textField.text!
+        default:
+            print("Meant to be Password Editing area")
+//            self.profleEditViewModel.password = textField.text!
+            return
+        }
     }
     
 }

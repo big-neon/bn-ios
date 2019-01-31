@@ -47,7 +47,6 @@ extension ProfileEditViewController {
                 if let name = self.profleEditViewModel.user?.firstName, let surname = self.profleEditViewModel.user?.lastName {
                     profileCell.entryTextField.text = "\(name) \(surname)"
                 }
-                
                 return profileCell
             }
             let profileCell: ProfileEditTableCell = tableView.dequeueReusableCell(withIdentifier: ProfileEditTableCell.cellID, for: indexPath) as! ProfileEditTableCell
