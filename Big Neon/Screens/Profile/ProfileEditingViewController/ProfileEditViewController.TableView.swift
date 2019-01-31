@@ -17,7 +17,7 @@ extension ProfileEditViewController {
     }
     
     internal func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -93,8 +93,13 @@ extension ProfileEditViewController {
                                                                                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.brandLightGrey.withAlphaComponent(0.2)])
             profileCell.cellLabel.text = self.profleEditViewModel.profileEditLabels[4]
             return profileCell
+        case 2:
+            let saveCell: LogoutCell = tableView.dequeueReusableCell(withIdentifier: LogoutCell.cellID, for: indexPath) as! LogoutCell
+            saveCell.cellLabel.text = "Save"
+            return saveCell
         default:
             let logoutCell: LogoutCell = tableView.dequeueReusableCell(withIdentifier: LogoutCell.cellID, for: indexPath) as! LogoutCell
+            logoutCell.cellLabel.text = "Logout"
             return logoutCell
         }
         
@@ -122,6 +127,8 @@ extension ProfileEditViewController {
         case 1:
             print("TO Interact Cell")
             return
+        case 2:
+            self.handleSave()
         default:
             self.handleLogout()
         }

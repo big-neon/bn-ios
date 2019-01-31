@@ -59,6 +59,7 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
         self.configureNavBar()
         self.configureLoadingView()
         self.fetchUser()
+        self.configureObservers()
     }
     
     @objc private func fetchUser() {
@@ -71,6 +72,24 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
             }
         }
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func configureObservers() {
+        let reloadKey = Notification.Name(Constants.AppActionKeys.profileUpdateKey)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadProfile), name: reloadKey, object: nil)
+    }
+    
+    @objc func reloadProfile() {
+        self.profileViewModel.configureAccessToken(completion: ) { (completed) in
+            DispatchQueue.main.async {
+                self.profileTableView.reloadData()
+            }
+        }
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)

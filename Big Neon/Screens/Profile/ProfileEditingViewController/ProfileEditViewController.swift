@@ -10,6 +10,11 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
     internal var profleEditViewModel: ProfileEditViewModel = ProfileEditViewModel()
     internal let picker = UIImagePickerController()
     
+    internal lazy var errorFeedback: FeedbackSystem = {
+        let feedback = FeedbackSystem()
+        return feedback
+    }()
+    
     internal lazy var profileEditTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: UITableView.Style.grouped)
         tableView.backgroundColor = UIColor.brandBackground
@@ -41,7 +46,6 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.barTintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(handleCancel))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: UIBarButtonItem.Style.done, target: self, action: #selector(handleSave))
     }
     
     private func configureAccountTableView() {
@@ -58,7 +62,7 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
         self.profileEditTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
-    @objc private func handleSave() {
+    @objc internal func handleSave() {
         
         guard let firstName = self.profleEditViewModel.firstName else {
             Utils.showAlert(presenter: self, title: "First Name Missing", message: "Please add your name before saving")
@@ -80,22 +84,34 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
             return
         }
         
-        print(firstName)
-        print(lastName)
-        print(phone)
-        print(email)
-        
         self.profleEditViewModel.updateUserAccount(firstName: firstName, lastName: lastName, phone: phone, email: email) { (error) in
             if error == nil {
                 self.dismiss(animated: true, completion: {
-                    print("Reload the Profile Screen")
+                    self.postNotification()
                 })
                 return
             }
             
-            print("Error while saving the data: \(error?.localizedDescription)")
+            self.showFeedback(message: (error?.localizedDescription)!)
             return
         }
+    }
+    
+    private func showFeedback(message: String) {
+        if let window = UIApplication.shared.keyWindow {
+            self.errorFeedback.showFeedback(backgroundColor: UIColor.brandBlack,
+                                            feedbackLabel: message,
+                                            feedbackLabelColor: UIColor.white,
+                                            durationOnScreen: 3.0,
+                                            currentView: window,
+                                            showsBackgroundGradient: true,
+                                            isAboveTabBar: false)
+        }
+    }
+    
+    private func postNotification() {
+        let profileUpdateKey = Notification.Name(Constants.AppActionKeys.profileUpdateKey)
+        NotificationCenter.default.post(name: profileUpdateKey, object: nil)
     }
     
     @objc private func handleCancel() {
@@ -177,9 +193,6 @@ extension ProfileEditViewController {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print(textField.tag)
-        print(textField.text)
-        
         switch textField.tag {
         case 0:
             self.profleEditViewModel.firstName = textField.text!
@@ -194,16 +207,12 @@ extension ProfileEditViewController {
             self.profleEditViewModel.email = textField.text!
             return
         default:
-            print("Meant to be Password Editing area")
-            //            self.profleEditViewModel.password = textField.text!
+            print("Password Editing")
             return
         }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        print(textField.tag)
-        print(textField.text)
-        
         switch textField.tag {
         case 0:
             self.profleEditViewModel.firstName = textField.text!
@@ -218,8 +227,7 @@ extension ProfileEditViewController {
             self.profleEditViewModel.email = textField.text!
             return
         default:
-            print("Meant to be Password Editing area")
-            //            self.profleEditViewModel.password = textField.text!
+            print("Password Editing")
             return
         }
     }
