@@ -4,16 +4,14 @@ import UIKit
 
 extension UIViewController {
     
-    /*
     public func setNavigationTitle(withTitle title:String, titleColour: UIColor) {
-        let navBarTitleLabel = BrandSubHeaderLabel()
+        let navBarTitleLabel = UILabel()
         navBarTitleLabel.textAlignment = .center
         navBarTitleLabel.text = title
-        navBarTitleLabel.font = UIFont.subheader.withSize(17)
+        navBarTitleLabel.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
         navBarTitleLabel.textColor = titleColour
         self.navigationItem.titleView = navBarTitleLabel
     }
-    */
     
     public func navigationNoLineBar() {
         self.navigationController?.setNavigationBarHidden(false, animated: true)

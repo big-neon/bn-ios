@@ -2,6 +2,7 @@
 
 import Foundation
 import Alamofire
+import SwiftKeychainWrapper
 
 extension DatabaseService {
     
@@ -105,5 +106,12 @@ extension DatabaseService {
             }
             
             }.resume()
+    }
+    
+    public func logout(completion: @escaping (Bool) -> Void) {
+        KeychainWrapper.standard.removeObject(forKey: "accessToken")
+        KeychainWrapper.standard.removeObject(forKey: "refreshToken")
+        completion(true)
+        
     }
 }

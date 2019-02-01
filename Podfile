@@ -8,6 +8,7 @@ target 'Big Neon Core' do
     pod 'Mixpanel'
     pod 'SwiftKeychainWrapper'
     pod 'JWTDecode', '~> 2.2'
+    pod 'PhoneNumberKit', '~> 2.1'
 
   	# Pods for Big Neon
 	target 'Big Neon' do
@@ -25,4 +26,5 @@ target 'Big Neon UI' do
     pod 'PINCache', '3.0.1-beta.6'
     pod 'PINRemoteImage', '3.0.0-beta.13'
     pod 'UITextField+Shake'
+    pod 'PhoneNumberKit', '~> 2.1'
 end

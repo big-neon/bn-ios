@@ -59,6 +59,7 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
         self.configureNavBar()
         self.configureLoadingView()
         self.fetchUser()
+        self.configureObservers()
     }
     
     @objc private func fetchUser() {
@@ -72,8 +73,32 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func configureObservers() {
+        let reloadKey = Notification.Name(Constants.AppActionKeys.profileUpdateKey)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadProfile), name: reloadKey, object: nil)
+    }
+    
+    @objc func reloadProfile() {
+        self.profileViewModel.configureAccessToken(completion: ) { (completed) in
+            DispatchQueue.main.async {
+                self.profileTableView.reloadData()
+            }
+        }
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     private func configureNavBar() {
         self.navigationClearBar()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.navigationController?.navigationBar.tintColor = UIColor.brandPrimary
         self.navigationController?.navigationBar.barTintColor = UIColor.white
     }
@@ -124,6 +149,13 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
             profileQRCodeView.frame = CGRect(x: (window.frame.width * 0.5) - 160, y: window.frame.height + 100, width: 320.0, height: 500)
             
         }
+    }
+    
+    internal func editProfileViewController() {
+        let profileEditVC = ProfileEditViewController()
+        profileEditVC.profleEditViewModel.user = self.profileViewModel.user
+        let profileEditNavVC = UINavigationController(rootViewController: profileEditVC)
+        self.present(profileEditNavVC, animated: true, completion: nil)
     }
 }
 

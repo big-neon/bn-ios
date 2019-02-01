@@ -67,6 +67,17 @@ extension ProfileViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        switch indexPath.section {
+        case 0:
+            if indexPath.row == 0 {
+                self.editProfileViewController()
+                return
+            }
+        default:
+            print("Doorman")
+            return
+        }
     }
     
 }

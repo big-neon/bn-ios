@@ -7,7 +7,7 @@ final class ApplicationRouter {
     
     class func setupBaseRouting() -> UIWindow {
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.tintColor = UIColor.red
+        window.tintColor = UIColor.brandPrimary
         window.makeKeyAndVisible()
         if userIsLoggedIn() == false {
             let navController = UINavigationController(rootViewController: WelcomeViewController())
