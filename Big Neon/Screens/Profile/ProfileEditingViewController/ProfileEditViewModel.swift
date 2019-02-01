@@ -14,7 +14,6 @@ final class ProfileEditViewModel {
     internal var lastName: String?
     internal var mobileNumber: String?
     internal var email: String?
-    
     internal var user: User?
     
     internal func configureUserData() {
@@ -25,8 +24,8 @@ final class ProfileEditViewModel {
         self.email          = user?.email
     }
     
-    internal func updateUserAccount(firstName: String, lastName: String, phone: String, email: String, completion: @escaping(Error?) -> Void) {
-        BusinessService.shared.database.updateUser(name: firstName, surname: lastName, email: email, phone: phone) { (error, user) in
+    internal func updateUserAccount(firstName: String, lastName: String, email: String, completion: @escaping(Error?) -> Void) {
+        BusinessService.shared.database.updateUser(firstName: firstName, lastName: lastName, email: email) { (error, user) in
             if error != nil {
                 completion(error)
                 return

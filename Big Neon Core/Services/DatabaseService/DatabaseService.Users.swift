@@ -63,12 +63,11 @@ extension DatabaseService {
     }
     
     
-    public func updateUser(name: String, surname: String, email: String, phone: String, completion: @escaping(Error?, User?) -> Void) {
+    public func updateUser(firstName: String, lastName: String, email: String, completion: @escaping(Error?, User?) -> Void) {
         
-        let parameters = ["first_name": name,
-                              "last_name": surname,
-                              "email": email,
-                              "phone": phone]
+        let parameters = ["first_name": firstName,
+                        "last_name": lastName,
+                        "email": email]
         let APIURL = APIService.updateUser
         let accessToken = self.fetchAcessToken()
         

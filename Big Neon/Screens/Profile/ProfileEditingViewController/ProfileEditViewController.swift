@@ -74,17 +74,12 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
             return
         }
         
-        guard let phone = self.profleEditViewModel.mobileNumber else {
-            Utils.showAlert(presenter: self, title: "Mobile Number Missing", message: "Please add your mobile number")
-            return
-        }
-        
         guard let email = self.profleEditViewModel.email else {
             Utils.showAlert(presenter: self, title: "Email Missing", message: "Please add your email")
             return
         }
         
-        self.profleEditViewModel.updateUserAccount(firstName: firstName, lastName: lastName, phone: phone, email: email) { (error) in
+        self.profleEditViewModel.updateUserAccount(firstName: firstName, lastName: lastName, email: email) { (error) in
             if error == nil {
                 self.dismiss(animated: true, completion: {
                     self.postNotification()
