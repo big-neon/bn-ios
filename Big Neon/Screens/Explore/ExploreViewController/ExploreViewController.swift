@@ -5,6 +5,13 @@ import Big_Neon_Core
 
 final class ExploreViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
+    internal lazy var refresher: UIRefreshControl = {
+        let refresher = UIRefreshControl()
+        refresher.tintColor = UIColor.brandGrey
+        refresher.addTarget(self, action: #selector(reloadEvents), for: .valueChanged)
+        return refresher
+    }()
+
     internal lazy var exploreCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing = 18.0
@@ -26,7 +33,7 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
         self.configureNavBar()
         self.fetchEvents()
     }
-    
+
     private func fetchEvents() {
         self.loadingView.startAnimating()
         self.exploreViewModel.fetchEvents { (completed) in
@@ -41,12 +48,30 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
         }
     }
     
+    @objc private func reloadEvents() {
+        self.exploreViewModel.fetchEvents { (completed) in
+            DispatchQueue.main.async {
+                self.loadingView.stopAnimating()
+                self.refresher.endRefreshing()
+                
+                if completed == false {
+                    self.exploreCollectionView.reloadData()
+                    print("Failed to Reload View")
+                    return
+                }
+                self.exploreCollectionView.reloadData()
+                return
+            }
+        }
+    }
+
     private func configureNavBar() {
         self.navigationNoLineBar()
     }
-    
+
     private func configureCollectionView() {
         view.addSubview(exploreCollectionView)
+        exploreCollectionView.refreshControl = self.refresher
         exploreCollectionView.register(SectionHeaderCell.self, forCellWithReuseIdentifier: SectionHeaderCell.cellID)
         exploreCollectionView.register(HotThisWeekCell.self, forCellWithReuseIdentifier: HotThisWeekCell.cellID)
         exploreCollectionView.register(UpcomingEventCell.self, forCellWithReuseIdentifier: UpcomingEventCell.cellID)
@@ -56,13 +81,13 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
         exploreCollectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         exploreCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
-    
+
     internal func showEvent(event: Event) {
         let eventDetailVC = EventDetailViewController()
         eventDetailVC.eventDetailViewModel.event = event
         eventDetailVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(eventDetailVC, animated: true)
     }
-    
+
 }
 
