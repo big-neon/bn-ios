@@ -34,6 +34,7 @@ PODS:
   - PWSwitch (1.1.2)
   - Stripe (14.0.0)
   - SwiftKeychainWrapper (3.2.0)
+  - TransitionButton (0.5.2)
   - "UITextField+Shake (1.2.1)"
 
 DEPENDENCIES:
@@ -49,6 +50,7 @@ DEPENDENCIES:
   - PWSwitch
   - Stripe
   - SwiftKeychainWrapper
+  - TransitionButton
   - "UITextField+Shake"
 
 SPEC REPOS:
@@ -67,6 +69,7 @@ SPEC REPOS:
     - PWSwitch
     - Stripe
     - SwiftKeychainWrapper
+    - TransitionButton
     - "UITextField+Shake"
 
 SPEC CHECKSUMS:
@@ -84,8 +87,9 @@ SPEC CHECKSUMS:
   PWSwitch: 399db6ef5dd8417f9a1e9f82cb70602f10a6c38f
   Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
   SwiftKeychainWrapper: 82c4c02cdc36f9a24f7edfcaab3e336401caa1a1
+  TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
-PODFILE CHECKSUM: d21b90a534c1ca2300cb5cd91a27852c104b051f
+PODFILE CHECKSUM: 1b0ca4618ca24cf9cc39bc8467a83dd2b7683781
 
 COCOAPODS: 1.5.3

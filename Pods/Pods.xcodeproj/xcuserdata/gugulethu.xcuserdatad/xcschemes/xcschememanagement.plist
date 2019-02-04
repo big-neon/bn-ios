@@ -123,12 +123,19 @@
 			<key>orderHint</key>
 			<integer>17</integer>
 		</dict>
-		<key>UITextField+Shake.xcscheme</key>
+		<key>TransitionButton.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>18</integer>
+		</dict>
+		<key>UITextField+Shake.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>19</integer>
 		</dict>
 		<key>pop.xcscheme</key>
 		<dict>
