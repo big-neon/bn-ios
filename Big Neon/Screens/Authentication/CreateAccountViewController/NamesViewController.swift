@@ -1,6 +1,5 @@
 
 
-
 import Foundation
 import UITextField_Shake
 import Big_Neon_UI
@@ -17,7 +16,6 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
     
     private lazy var firstNameTextView: AuthenticationTextView = {
         let textField = AuthenticationTextView()
