@@ -24,16 +24,16 @@ final class WelcomeViewController: UIViewController {
         return imageView
     }()
 
-    private lazy var getStartedButton: GradientBrandButton = {
-        let button = GradientBrandButton()
+    private lazy var getStartedButton: BrandButton = {
+        let button = BrandButton()
         button.addTarget(self, action: #selector(handleCreateAccount), for: UIControl.Event.touchUpInside)
         button.setTitle("Get Started", for: UIControl.State.normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
-    private lazy var loginButton: GradientBrandButton = {
-        let button = GradientBrandButton()
+    private lazy var loginButton: UIButton = {
+        let button = UIButton()
         button.addTarget(self, action: #selector(handleLogin), for: UIControl.Event.touchUpInside)
         button.backgroundColor = UIColor.clear
         button.layer.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor

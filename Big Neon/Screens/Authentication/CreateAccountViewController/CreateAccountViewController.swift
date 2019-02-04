@@ -37,8 +37,8 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         return textField
     }()
     
-    fileprivate lazy var nextButton: GradientBrandButton = {
-        let button = GradientBrandButton()
+    fileprivate lazy var nextButton: BrandButton = {
+        let button = BrandButton()
         button.setTitle("Let's do this", for: UIControl.State.normal)
         button.addTarget(self, action: #selector(handleDone), for: UIControl.Event.touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false

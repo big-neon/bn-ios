@@ -30,8 +30,8 @@ public class TicketQRCodeView: UIView {
         return label
     }()
     
-    public lazy var gotItButton: PurpleBrandButton = {
-        let button = PurpleBrandButton()
+    public lazy var gotItButton: BrandButton = {
+        let button = BrandButton()
         button.setTitle("GOT IT", for: UIControl.State.normal)
         button.addTarget(self, action: #selector(handleGotIt), for: UIControl.Event.touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false

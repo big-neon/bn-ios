@@ -71,7 +71,6 @@
 		C6B88D5221F1C323006394F8 /* InterestedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D4B21F1C323006394F8 /* InterestedButtonView.swift */; };
 		C6B88D5321F1C323006394F8 /* BrandTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D4C21F1C323006394F8 /* BrandTitle.swift */; };
 		C6B88D5421F1C323006394F8 /* BrandTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D4D21F1C323006394F8 /* BrandTextField.swift */; };
-		C6B88D5521F1C323006394F8 /* PurpleBrandButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D4E21F1C323006394F8 /* PurpleBrandButton.swift */; };
 		C6B88D5D21F1C359006394F8 /* NavBarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D5921F1C359006394F8 /* NavBarConfig.swift */; };
 		C6B88D5E21F1C359006394F8 /* StatusBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D5A21F1C359006394F8 /* StatusBarView.swift */; };
 		C6B88D5F21F1C359006394F8 /* ValidEmailAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D5B21F1C359006394F8 /* ValidEmailAddress.swift */; };
@@ -239,7 +238,6 @@
 		C6B88D4B21F1C323006394F8 /* InterestedButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestedButtonView.swift; sourceTree = "<group>"; };
 		C6B88D4C21F1C323006394F8 /* BrandTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandTitle.swift; sourceTree = "<group>"; };
 		C6B88D4D21F1C323006394F8 /* BrandTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandTextField.swift; sourceTree = "<group>"; };
-		C6B88D4E21F1C323006394F8 /* PurpleBrandButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurpleBrandButton.swift; sourceTree = "<group>"; };
 		C6B88D5921F1C359006394F8 /* NavBarConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavBarConfig.swift; sourceTree = "<group>"; };
 		C6B88D5A21F1C359006394F8 /* StatusBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarView.swift; sourceTree = "<group>"; };
 		C6B88D5B21F1C359006394F8 /* ValidEmailAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidEmailAddress.swift; sourceTree = "<group>"; };
@@ -598,7 +596,6 @@
 				C6B88D4921F1C323006394F8 /* EventPriceView.swift */,
 				C6B88D4821F1C323006394F8 /* GradientBrandButton.swift */,
 				C6B88D4B21F1C323006394F8 /* InterestedButtonView.swift */,
-				C6B88D4E21F1C323006394F8 /* PurpleBrandButton.swift */,
 				C64124C921F26D1800233797 /* AuthTextView.swift */,
 				C6EC209D220075D100BD10DD /* PhoneNumberTextField.swift */,
 			);
@@ -1228,7 +1225,6 @@
 				C6B88D5121F1C323006394F8 /* EventDateView.swift in Sources */,
 				C6B88D6021F1C359006394F8 /* RoundedCorner.swift in Sources */,
 				C6B88D3621F1BC75006394F8 /* ProfileTableCell.swift in Sources */,
-				C6B88D5521F1C323006394F8 /* PurpleBrandButton.swift in Sources */,
 				C6B88D4F21F1C323006394F8 /* GradientBrandButton.swift in Sources */,
 				C6B88D5F21F1C359006394F8 /* ValidEmailAddress.swift in Sources */,
 				C6C45D6C21F5CEC000D2F602 /* Feedbacksystem.swift in Sources */,

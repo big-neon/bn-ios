@@ -31,8 +31,8 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
         return textField
     }()
     
-    fileprivate lazy var nextButton: GradientBrandButton = {
-        let button = GradientBrandButton()
+    fileprivate lazy var nextButton: BrandButton = {
+        let button = BrandButton()
         button.setTitle("All Done", for: UIControl.State.normal)
         button.addTarget(self, action: #selector(handleDone), for: UIControl.Event.touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false

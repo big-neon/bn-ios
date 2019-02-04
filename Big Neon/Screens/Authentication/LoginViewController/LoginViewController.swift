@@ -37,8 +37,8 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
         return textField
     }()
     
-    fileprivate lazy var loginButton: GradientBrandButton = {
-        let button = GradientBrandButton()
+    fileprivate lazy var loginButton: BrandButton = {
+        let button = BrandButton()
         button.setTitle("Login to your account", for: UIControl.State.normal)
         button.addTarget(self, action: #selector(handleLogin), for: UIControl.Event.touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
