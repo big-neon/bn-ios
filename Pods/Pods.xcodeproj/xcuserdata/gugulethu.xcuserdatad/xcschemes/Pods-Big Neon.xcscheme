@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1010"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7B35D1A5ECAAC043E01D2BAA5219201C"
+               BlueprintIdentifier = "4D827C9F4B0F7F11BA3EFD989C625435"
                BuildableName = "Pods_Big_Neon.framework"
                BlueprintName = "Pods-Big Neon"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7B35D1A5ECAAC043E01D2BAA5219201C"
+            BlueprintIdentifier = "4D827C9F4B0F7F11BA3EFD989C625435"
             BuildableName = "Pods_Big_Neon.framework"
             BlueprintName = "Pods-Big Neon"
             ReferencedContainer = "container:Pods.xcodeproj">
