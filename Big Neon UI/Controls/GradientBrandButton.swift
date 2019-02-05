@@ -2,8 +2,9 @@
 import Foundation
 import UIKit
 import DTGradientButton
+import TransitionButton
 
-public class BrandButton: UIButton {
+public class BrandButton: TransitionButton {
     
     required override public init(frame: CGRect) {
         super.init(frame: frame)
