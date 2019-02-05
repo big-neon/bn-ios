@@ -44,9 +44,9 @@ final class AccountViewModel {
         }
     }
     
-    internal func insert(name: String, surname: String, completion: @escaping(Error?) -> Void) {
+    internal func insert(name: String, lastName: String, completion: @escaping(Error?) -> Void) {
         
-        BusinessService.shared.database.insert(name: name, surname: surname) { (error, userFetched) in
+        BusinessService.shared.database.insert(name: name, lastName: lastName) { (error, userFetched) in
             if error != nil {
                 completion(error)
                 return

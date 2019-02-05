@@ -4,10 +4,10 @@ import Alamofire
 
 extension DatabaseService {
 
-    public func insert(name: String, surname: String, completion: @escaping(Error?, User?) -> Void) {
+    public func insert(name: String, lastName: String, completion: @escaping(Error?, User?) -> Void) {
         
         let parameters = ["first_name": name,
-                          "last_name": surname]
+                          "last_name": lastName]
         
         let APIURL = APIService.updateUser
         let accessToken = self.fetchAcessToken()
@@ -21,7 +21,6 @@ extension DatabaseService {
             .response { (response) in
                 
                 guard response.result.isSuccess else {
-                    print(response.result.error)
                     completion(response.result.error, nil)
                     return
                 }

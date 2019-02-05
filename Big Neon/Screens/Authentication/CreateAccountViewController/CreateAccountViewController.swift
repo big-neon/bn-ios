@@ -56,14 +56,6 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         return button
     }()
     
-    internal let loadingIndicatorView: UIActivityIndicatorView = {
-        let loader = UIActivityIndicatorView()
-        loader.style = .white
-        loader.hidesWhenStopped = true
-        loader.translatesAutoresizingMaskIntoConstraints = false
-        return loader
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
@@ -98,7 +90,6 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         view.addSubview(passwordTextView)
         passwordTextView.addSubview(showPassword)
         view.addSubview(nextButton)
-//        nextButton.addSubview(loadingIndicatorView)
         
         headerLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         headerLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
@@ -125,11 +116,6 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         showPassword.topAnchor.constraint(equalTo: passwordTextView.topAnchor, constant: -16).isActive = true
         showPassword.bottomAnchor.constraint(equalTo: passwordTextView.bottomAnchor).isActive = true
         showPassword.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        
-//        loadingIndicatorView.centerXAnchor.constraint(equalTo: nextButton.centerXAnchor).isActive = true
-//        loadingIndicatorView.centerYAnchor.constraint(equalTo: nextButton.centerYAnchor).isActive = true
-//        loadingIndicatorView.heightAnchor.constraint(equalToConstant: 30).isActive = true
-//        loadingIndicatorView.widthAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
     fileprivate func setupDelegates() {
@@ -142,7 +128,6 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     }
     
     private func disableView() {
-        self.loadingIndicatorView.startAnimating()
         self.emailTextView.authTextField.isEnabled = false
         self.passwordTextView.authTextField.isEnabled = false
         self.nextButton.isEnabled = false
@@ -151,7 +136,6 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     }
     
     private func enableView() {
-        self.loadingIndicatorView.stopAnimating()
         self.emailTextView.authTextField.isEnabled = true
         self.passwordTextView.authTextField.isEnabled = true
         self.nextButton.isEnabled = true
@@ -208,8 +192,6 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
 
         self.createAccountViewModel.createAccount(email: email, password: password) { (success, errorString) in
             DispatchQueue.main.async {
-
-                
 
                 if errorString != nil {
                     self.nextButton.stopAnimation(animationStyle: .shake,
@@ -272,7 +254,7 @@ extension CreateAccountViewController {
     @objc func handleKeyboardNotification(notification: NSNotification) {
         let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
         
-        UIView.animate(withDuration: 0.32, animations: {
+        UIView.animate(withDuration: 0.32, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.6, options: .curveEaseIn, animations: {
             if isKeyboardShowing == true {
                 guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else {
                     return

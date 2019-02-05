@@ -39,18 +39,11 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     
     fileprivate lazy var loginButton: BrandButton = {
         let button = BrandButton()
+        button.spinnerColor = .white
         button.setTitle("Login to your account", for: UIControl.State.normal)
         button.addTarget(self, action: #selector(handleLogin), for: UIControl.Event.touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
-    }()
-    
-    internal let loadingIndicatorView: UIActivityIndicatorView = {
-        let loader = UIActivityIndicatorView()
-        loader.style = .white
-        loader.hidesWhenStopped = true
-        loader.translatesAutoresizingMaskIntoConstraints = false
-        return loader
     }()
     
     override func viewDidLoad() {
@@ -85,7 +78,6 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(emailTextView)
         view.addSubview(passwordTextView)
         view.addSubview(loginButton)
-        loginButton.addSubview(loadingIndicatorView)
         
         headerLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         headerLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
@@ -106,11 +98,6 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
         loginButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -26).isActive = true
         loginButton.topAnchor.constraint(equalTo: passwordTextView.bottomAnchor, constant: 35).isActive = true
         loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
-        loadingIndicatorView.centerXAnchor.constraint(equalTo: loginButton.centerXAnchor).isActive = true
-        loadingIndicatorView.centerYAnchor.constraint(equalTo: loginButton.centerYAnchor).isActive = true
-        loadingIndicatorView.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        loadingIndicatorView.widthAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
     fileprivate func setupDelegates() {
@@ -123,7 +110,6 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func disableView() {
-        self.loadingIndicatorView.startAnimating()
         self.emailTextView.authTextField.isEnabled = false
         self.passwordTextView.authTextField.isEnabled = false
         self.loginButton.isEnabled = false
@@ -132,7 +118,6 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func enableView() {
-        self.loadingIndicatorView.stopAnimating()
         self.emailTextView.authTextField.isEnabled = true
         self.passwordTextView.authTextField.isEnabled = true
         self.loginButton.isEnabled = true
@@ -169,20 +154,34 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
         
         self.resignTextFields()
         self.disableView()
+        self.loginButton.startAnimation()
         self.createAccountViewModel.login(email: email, password: password) { (success, errorString) in
             DispatchQueue.main.async {
                 if errorString != nil {
-                    self.showFeedback(message: errorString!)
-                    self.enableView()
+                    self.loginButton.stopAnimation(animationStyle: .shake,
+                                                  revertAfterDelay: 1.0,
+                                                  completion: {
+                                                    self.showFeedback(message: errorString!)
+                                                    self.enableView()
+                    })
                     return
                 }
                 
                 if success == false {
-                    self.enableView()
+                    self.loginButton.stopAnimation(animationStyle: .shake,
+                                                   revertAfterDelay: 1.0,
+                                                   completion: {
+                                                    self.showFeedback(message: errorString!)
+                                                    self.enableView()
+                    })
                     return
                 }
-                self.enableView()
-                self.handleShowHome()
+                self.loginButton.stopAnimation(animationStyle: .expand,
+                                              revertAfterDelay: 1.0,
+                                              completion: {
+                                                self.enableView()
+                                                self.handleShowHome()
+                })
             }
         }
     }
