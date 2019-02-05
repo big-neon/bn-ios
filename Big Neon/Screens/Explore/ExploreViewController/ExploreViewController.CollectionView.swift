@@ -44,11 +44,23 @@ extension ExploreViewController {
             }
             let event = events[indexPath.item]
             
+            //  Event Show
             eventCell.eventNameLabel.text = event.name
             let eventImageURL: URL = URL(string: event.promoImageURL)!
             eventCell.eventImageView.pin_setImage(from: eventImageURL, placeholderImage: nil)
             
+            //  External Event
+            if event.isExternal == true && event.externalURL != nil {
+                eventCell.priceView.isHidden = true
+            } else {
+                eventCell.priceView.isHidden = false
+                if let price = event.minTicketPrice {
+                    eventCell.priceView.priceLabel.text = "$\(price/100)"
+                }
+            }
             
+            
+            //  Time Zone
             if event.venue.timezone != nil {
                 guard let eventStart = event.localizedTimes.eventStart else {
                     return eventCell

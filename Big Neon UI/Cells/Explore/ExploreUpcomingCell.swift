@@ -42,9 +42,8 @@ public class UpcomingEventCell: UICollectionViewCell {
         return label
     }()
     
-    private let priceView: EventPriceView = {
+    public let priceView: EventPriceView = {
         let view = EventPriceView()
-        view.priceLabel.text = "$30"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
