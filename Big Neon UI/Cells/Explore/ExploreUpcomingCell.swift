@@ -7,37 +7,6 @@ public class UpcomingEventCell: UICollectionViewCell {
     
     public static let cellID = "UpcomingEventCellID"
     
-//    public var event: Event? {
-//        didSet {
-//            guard let event = self.event else {
-//                return
-//            }
-//            
-//            self.eventNameLabel.text = event.name
-//            let eventImageURL: URL = URL(string: event.promoImageURL)!
-//            self.eventImageView.pin_setImage(from: eventImageURL, placeholderImage: nil)
-//            
-//            if event.venue.timezone != nil {
-//                guard let eventStart = event.localizedTimes.eventStart else {
-//                    return
-//                }
-//                
-//                guard let eventDate = DateConfig.dateFromString(stringDate: eventStart) else {
-//                    self.eventDateLabel.text = "-"
-//                    return
-//                }
-//                self.eventDateLabel.text = DateConfig.eventDate(date: eventDate)
-//            } else {
-//                let eventStart = event.eventStart
-//                guard let eventDate = DateConfig.dateFromUTCString(stringDate: eventStart) else {
-//                    self.eventDateLabel.text = "-"
-//                    return
-//                }
-//                self.eventDateLabel.text = DateConfig.localTime(date: eventDate)
-//            }
-//        }
-//    }
-    
     public var eventImageTopAnchor: NSLayoutConstraint?
     
     public let eventImageView: UIImageView = {

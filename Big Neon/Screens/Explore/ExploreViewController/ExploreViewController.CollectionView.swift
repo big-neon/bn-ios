@@ -2,6 +2,7 @@
 import Foundation
 import UIKit
 import Big_Neon_UI
+import Big_Neon_Core
 
 extension ExploreViewController {
     
@@ -38,10 +39,35 @@ extension ExploreViewController {
             return sectionLabelCell
         default:
             let eventCell: UpcomingEventCell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingEventCell.cellID, for: indexPath) as! UpcomingEventCell
-//            guard let events = self.exploreViewModel.events?.data else {
-//               return eventCell
-//            }
-//            eventCell.event = events[indexPath.item]
+            guard let events = self.exploreViewModel.events?.data else {
+               return eventCell
+            }
+            let event = events[indexPath.item]
+            
+            eventCell.eventNameLabel.text = event.name
+            let eventImageURL: URL = URL(string: event.promoImageURL)!
+            eventCell.eventImageView.pin_setImage(from: eventImageURL, placeholderImage: nil)
+            
+            
+            if event.venue.timezone != nil {
+                guard let eventStart = event.localizedTimes.eventStart else {
+                    return eventCell
+                }
+                
+                guard let eventDate = DateConfig.dateFromString(stringDate: eventStart) else {
+                    eventCell.eventDateLabel.text = "-"
+                    return eventCell
+                }
+                eventCell.eventDateLabel.text = DateConfig.eventDate(date: eventDate)
+            } else {
+                let eventStart = event.eventStart
+                guard let eventDate = DateConfig.dateFromUTCString(stringDate: eventStart) else {
+                    eventCell.eventDateLabel.text = "-"
+                    return eventCell
+                }
+                eventCell.eventDateLabel.text = DateConfig.localTime(date: eventDate)
+            }
+
             return eventCell
         }
         

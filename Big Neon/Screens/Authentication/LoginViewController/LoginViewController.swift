@@ -176,7 +176,7 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
                     })
                     return
                 }
-                self.loginButton.stopAnimation(animationStyle: .expand,
+                self.loginButton.stopAnimation(animationStyle: .normal,
                                               revertAfterDelay: 1.0,
                                               completion: {
                                                 self.enableView()
@@ -199,9 +199,8 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc private func handleShowHome() {
-        let tabBarVC = TabBarController()
-        tabBarVC.modalTransitionStyle = .flipHorizontal
-        self.present(tabBarVC, animated: true, completion: nil)
+        let splashVC = UINavigationController(rootViewController: SplashViewController())
+        self.present(splashVC, animated: true, completion: nil)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

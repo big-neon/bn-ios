@@ -4,7 +4,6 @@ import UIKit
 
 final class ApplicationRouter {
     
-    
     class func setupBaseRouting() -> UIWindow {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.tintColor = UIColor.brandPrimary

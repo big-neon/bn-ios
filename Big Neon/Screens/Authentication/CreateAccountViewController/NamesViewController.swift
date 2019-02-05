@@ -158,7 +158,7 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
                     return
                 }
                 
-                self.doneButton.stopAnimation(animationStyle: .expand,
+                self.doneButton.stopAnimation(animationStyle: .normal,
                                               revertAfterDelay: 1.0,
                                               completion: {
                                                 self.enableView()
@@ -181,8 +181,8 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc private func handleShowHome() {
-        let tabBarVC = TabBarController()
-        self.present(tabBarVC, animated: true, completion: nil)
+        let splashVC = UINavigationController(rootViewController: SplashViewController())
+        self.present(splashVC, animated: true, completion: nil)
     }
     
 }
