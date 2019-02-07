@@ -20,10 +20,10 @@ extension EventDetailViewController {
             let timeLocationCell: EventTimeAndLocationCell = tableView.dequeueReusableCell(withIdentifier: EventTimeAndLocationCell.cellID, for: indexPath) as! EventTimeAndLocationCell
             timeLocationCell.headerLabel.text = self.eventDetailViewModel.sectionLabels[0].uppercased()
             timeLocationCell.headerIconImageView.image = UIImage(named: self.eventDetailViewModel.sectionImages[0])
-//            guard let eventDetail = self.eventDetailViewModel.eventDetail else {
-//                return timeLocationCell
-//            }
-//            timeLocationCell.eventDetail = eventDetail
+            guard let eventDetail = self.eventDetailViewModel.eventDetail else {
+                return timeLocationCell
+            }
+            timeLocationCell.eventDetail = eventDetail
             return timeLocationCell
         case 1:
             let eventDetailCell: EventDetailCell = tableView.dequeueReusableCell(withIdentifier: EventDetailCell.cellID, for: indexPath) as! EventDetailCell
@@ -43,7 +43,6 @@ extension EventDetailViewController {
             guard let eventDetail = self.eventDetailViewModel.eventDetail else {
                 return eventDetailCell
             }
-            print(eventDetail.ageLimit)
             eventDetailCell.descriptionTextView.text = "You must be \(eventDetail.ageLimit) to enter this event"
             return eventDetailCell
         default:
@@ -66,27 +65,27 @@ extension EventDetailViewController {
     internal func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return 190.0
+            return 200.0
         case 1:
             guard let eventDetail = self.eventDetailViewModel.eventDetail else {
-                return 50.0
+                return 70.0
             }
             var artists = ""
             for artist in eventDetail.artists {
                 artists += artist.artist.name + ", "
             }
-            return 50.0 + estimateFrameForText(artists).height
+            return 70.0 + estimateFrameForText(artists).height
         case 2:
             guard let eventDetail = self.eventDetailViewModel.eventDetail else {
-                return 50.0
+                return 70.0
             }
             let ageLimitText = "You must be \(eventDetail.ageLimit) to enter this event"
-            return 50.0 + estimateFrameForText(ageLimitText).height
+            return 70.0 + estimateFrameForText(ageLimitText).height
         default:
             guard let eventDetail = self.eventDetailViewModel.eventDetail else {
-                return 50.0
+                return 70.0
             }
-            return 50.0 //+ estimateFrameForText(eventDetail.additionalInfo).height
+            return 70.0 //+ estimateFrameForText(eventDetail.additionalInfo).height
         }
         
     }
