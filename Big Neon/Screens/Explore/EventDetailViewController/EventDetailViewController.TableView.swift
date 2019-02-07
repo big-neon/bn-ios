@@ -65,7 +65,7 @@ extension EventDetailViewController {
     internal func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return 200.0
+            return 190.0
         case 1:
             guard let eventDetail = self.eventDetailViewModel.eventDetail else {
                 return 70.0
@@ -74,13 +74,13 @@ extension EventDetailViewController {
             for artist in eventDetail.artists {
                 artists += artist.artist.name + ", "
             }
-            return 70.0 + estimateFrameForText(artists).height
+            return 90.0 + estimateFrameForText(artists).height
         case 2:
             guard let eventDetail = self.eventDetailViewModel.eventDetail else {
                 return 70.0
             }
             let ageLimitText = "You must be \(eventDetail.ageLimit) to enter this event"
-            return 70.0 + estimateFrameForText(ageLimitText).height
+            return 90.0 + estimateFrameForText(ageLimitText).height
         default:
             guard let eventDetail = self.eventDetailViewModel.eventDetail else {
                 return 70.0

@@ -39,7 +39,6 @@ extension DatabaseService {
     public func fetchEvent(withID eventID: String, completion: @escaping (Error?, EventDetail?) -> Void) {
         
         let APIURL = APIService.getEvents + "/" + eventID
-        print(APIURL)
         AF.request(APIURL,
                    method: HTTPMethod.get,
                    parameters: nil,
@@ -64,34 +63,10 @@ extension DatabaseService {
                     completion(nil, event)
                     return
                 } catch let error as NSError {
+                    print(error)
                     completion(error, nil)
                 }
         }
-        
-//        URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
-//            if error != nil{
-//                print("Error Fetching Data: \(error)")
-//                completion(nil, nil)
-//                return
-//            }
-//
-//            guard let data = data else {
-//                print("Error Fetching Data")
-//                completion(nil, nil)
-//                return
-//            }
-//
-//            do {
-//
-//                let decoder = JSONDecoder()
-//                let event = try decoder.decode(EventDetail.self, from: data)
-//                completion(nil, event)
-//                return
-//            } catch {
-//                completion(nil, nil)
-//            }
-//
-//            }.resume()
     }
 
 }

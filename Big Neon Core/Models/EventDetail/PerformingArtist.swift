@@ -5,7 +5,7 @@ public struct PerformingArtist: Codable {
     public let eventID: String
     public let artist: Artist
     public let rank: Int
-    public let setTime: String
+    public let setTime: String?
     public let importance: Int
     public let stageID: String?
     
@@ -21,7 +21,7 @@ public struct PerformingArtist: Codable {
 public struct Artist: Codable {
     public let id: String
     public let organizationID: String?
-    public let isPrivate: Bool?
+    public let isPrivate: Bool
     public let name, bio: String
     public let imageURL, thumbImageURL: String?
     public let websiteURL: String?

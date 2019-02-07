@@ -17,7 +17,7 @@ public struct EventDetail: Codable {
     public let ticketTypes: [TicketType]
     public let totalInterest: Int
     public let userIsInterested: Bool
-    public let minTicketPrice, maxTicketPrice: Int
+    public let minTicketPrice, maxTicketPrice: Int?
     public let isExternal: Bool
     public let externalURL, overrideStatus: String?
     public let limitedTicketsRemaining: [Int]?

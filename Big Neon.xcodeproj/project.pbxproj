@@ -95,9 +95,6 @@
 		C6C45D6A21F5CDCD00D2F602 /* PopAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C45D6921F5CDCD00D2F602 /* PopAnimations.swift */; };
 		C6C45D6C21F5CEC000D2F602 /* Feedbacksystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C45D6B21F5CEC000D2F602 /* Feedbacksystem.swift */; };
 		C6C49DA52209A77E0087AE16 /* DollarString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C49DA42209A77E0087AE16 /* DollarString.swift */; };
-		C6CA40F1220C1D2A006A6E5E /* JSONNull.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CA40F0220C1D2A006A6E5E /* JSONNull.swift */; };
-		C6CA40F3220C1DEF006A6E5E /* JSONAny.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CA40F2220C1DEF006A6E5E /* JSONAny.swift */; };
-		C6CA40F5220C1E7B006A6E5E /* JSONCodingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CA40F4220C1E7B006A6E5E /* JSONCodingKey.swift */; };
 		C6D2413421EF53B000FC3E41 /* NamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2413321EF53B000FC3E41 /* NamesViewController.swift */; };
 		C6D37B3521F1CD8200C616D0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D37B3421F1CD8200C616D0 /* API.swift */; };
 		C6EC209A220063DE00BD10DD /* ProfileImageUploadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC2099220063DE00BD10DD /* ProfileImageUploadCell.swift */; };
@@ -265,9 +262,6 @@
 		C6C45D6921F5CDCD00D2F602 /* PopAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimations.swift; sourceTree = "<group>"; };
 		C6C45D6B21F5CEC000D2F602 /* Feedbacksystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedbacksystem.swift; sourceTree = "<group>"; };
 		C6C49DA42209A77E0087AE16 /* DollarString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarString.swift; sourceTree = "<group>"; };
-		C6CA40F0220C1D2A006A6E5E /* JSONNull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONNull.swift; sourceTree = "<group>"; };
-		C6CA40F2220C1DEF006A6E5E /* JSONAny.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONAny.swift; sourceTree = "<group>"; };
-		C6CA40F4220C1E7B006A6E5E /* JSONCodingKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCodingKey.swift; sourceTree = "<group>"; };
 		C6D2413321EF53B000FC3E41 /* NamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesViewController.swift; sourceTree = "<group>"; };
 		C6D37B3421F1CD8200C616D0 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C6EC2099220063DE00BD10DD /* ProfileImageUploadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageUploadCell.swift; sourceTree = "<group>"; };
@@ -691,7 +685,6 @@
 				C6B88D7721F1C924006394F8 /* EventDetail */,
 				C6B88D7421F1C8D3006394F8 /* User */,
 				C6B88D7321F1C8BE006394F8 /* Token */,
-				C6CA40F6220C1E8E006A6E5E /* JSON Encoding */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -772,16 +765,6 @@
 				C6B88D8821F1C94D006394F8 /* TicketType.swift */,
 			);
 			path = EventDetail;
-			sourceTree = "<group>";
-		};
-		C6CA40F6220C1E8E006A6E5E /* JSON Encoding */ = {
-			isa = PBXGroup;
-			children = (
-				C6CA40F0220C1D2A006A6E5E /* JSONNull.swift */,
-				C6CA40F2220C1DEF006A6E5E /* JSONAny.swift */,
-				C6CA40F4220C1E7B006A6E5E /* JSONCodingKey.swift */,
-			);
-			path = "JSON Encoding";
 			sourceTree = "<group>";
 		};
 		C6EC209F220079ED00BD10DD /* ProfileEditCells */ = {
@@ -1199,10 +1182,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C644BA3421F70C19003C188B /* DatabaseService.Users.swift in Sources */,
-				C6CA40F5220C1E7B006A6E5E /* JSONCodingKey.swift in Sources */,
 				C6B88D8F21F1C94E006394F8 /* Organisation.swift in Sources */,
 				C628B15221F9C89200FCBDC9 /* DatabaseService.Token.swift in Sources */,
-				C6CA40F3220C1DEF006A6E5E /* JSONAny.swift in Sources */,
 				C6B88D8121F1C93A006394F8 /* LocalizedTimes.swift in Sources */,
 				C6B88D8E21F1C94E006394F8 /* TicketType.swift in Sources */,
 				C6B88D8B21F1C94E006394F8 /* EventDetail.swift in Sources */,
@@ -1212,7 +1193,6 @@
 				C6B88D8021F1C93A006394F8 /* Venue.swift in Sources */,
 				C6B88D6F21F1C88A006394F8 /* DatabaseService.Authentication.swift in Sources */,
 				C628B15021F7B75800FCBDC9 /* Constants.swift in Sources */,
-				C6CA40F1220C1D2A006A6E5E /* JSONNull.swift in Sources */,
 				C6B88D8221F1C93A006394F8 /* Events.swift in Sources */,
 				C6B88D6E21F1C88A006394F8 /* DatabaseService.swift in Sources */,
 				C6B88D6721F1C862006394F8 /* DateConfig.swift in Sources */,

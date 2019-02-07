@@ -6,6 +6,7 @@ import Big_Neon_UI
 internal class EventDetailViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource  {
     
     internal var eventHeaderView: EventHeaderView = EventHeaderView()
+    internal var getTicketButtonBottomAnchor: NSLayoutConstraint?
     
     internal lazy var eventTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: UITableView.Style.plain)
@@ -24,7 +25,6 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
     
     public lazy var getButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Get Ticket", for: UIControl.State.normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: UIFont.Weight.semibold)
         button.backgroundColor = UIColor.brandPrimary
         button.setTitleColor(UIColor.white, for: UIControl.State.normal)
@@ -36,6 +36,7 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
         super.viewDidLoad()
         self.configureNavBar()
         self.configureTableView()
+        self.configureButtonView()
         self.configureHeaderView()
         self.fetchEvent()
     }
@@ -47,7 +48,7 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
                     return
                 }
                 self.eventTableView.reloadData()
-                self.configureButtonView()
+                self.animateGetTicketButton()
             }
         }
     }
@@ -100,8 +101,21 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
         
         self.getButton.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         self.getButton.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        self.getButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        self.getTicketButtonBottomAnchor = self.getButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 90)
+        self.getTicketButtonBottomAnchor?.isActive = true
         self.getButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
+    }
+    
+    @objc private func animateGetTicketButton() {
+        if self.eventDetailViewModel.eventDetail?.isExternal == false && self.eventDetailViewModel.eventDetail?.externalURL == nil {
+            self.getButton.setTitle("Get Ticket", for: UIControl.State.normal)
+        } else {
+            self.getButton.setTitle("Get Tickets via Web", for: UIControl.State.normal)
+        }
+        UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.6, options: .curveEaseIn, animations: {
+            self.getTicketButtonBottomAnchor?.constant = 0
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

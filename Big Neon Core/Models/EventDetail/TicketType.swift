@@ -8,7 +8,7 @@ public struct TicketType: Codable {
     public let available: Int
     public let startDate, endDate: String
     public let increment, limitPerPerson: Int
-    public let ticketPricing: TicketPricing
+    public let ticketPricing: TicketPricing?
     public let redemptionCode: String?
     
     enum CodingKeys: String, CodingKey {
