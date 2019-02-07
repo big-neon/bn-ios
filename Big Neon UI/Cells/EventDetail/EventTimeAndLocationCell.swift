@@ -13,7 +13,7 @@ final public class EventTimeAndLocationCell: UITableViewCell {
             guard let eventDetail = self.eventDetail else {
                 return
             }
-
+            
             self.venueLabel.text = eventDetail.venue.name
             self.addressLabel.text = eventDetail.venue.address
 
