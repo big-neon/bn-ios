@@ -90,7 +90,6 @@
 		C6B88D8A21F1C94E006394F8 /* PerformingArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D8421F1C94D006394F8 /* PerformingArtist.swift */; };
 		C6B88D8B21F1C94E006394F8 /* EventDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D8521F1C94D006394F8 /* EventDetail.swift */; };
 		C6B88D8C21F1C94E006394F8 /* TicketPricing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D8621F1C94D006394F8 /* TicketPricing.swift */; };
-		C6B88D8D21F1C94E006394F8 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D8721F1C94D006394F8 /* Artist.swift */; };
 		C6B88D8E21F1C94E006394F8 /* TicketType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D8821F1C94D006394F8 /* TicketType.swift */; };
 		C6B88D8F21F1C94E006394F8 /* Organisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D8921F1C94E006394F8 /* Organisation.swift */; };
 		C6C45D6A21F5CDCD00D2F602 /* PopAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C45D6921F5CDCD00D2F602 /* PopAnimations.swift */; };
@@ -261,7 +260,6 @@
 		C6B88D8421F1C94D006394F8 /* PerformingArtist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformingArtist.swift; sourceTree = "<group>"; };
 		C6B88D8521F1C94D006394F8 /* EventDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetail.swift; sourceTree = "<group>"; };
 		C6B88D8621F1C94D006394F8 /* TicketPricing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketPricing.swift; sourceTree = "<group>"; };
-		C6B88D8721F1C94D006394F8 /* Artist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		C6B88D8821F1C94D006394F8 /* TicketType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketType.swift; sourceTree = "<group>"; };
 		C6B88D8921F1C94E006394F8 /* Organisation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Organisation.swift; sourceTree = "<group>"; };
 		C6C45D6921F5CDCD00D2F602 /* PopAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimations.swift; sourceTree = "<group>"; };
@@ -693,7 +691,7 @@
 				C6B88D7721F1C924006394F8 /* EventDetail */,
 				C6B88D7421F1C8D3006394F8 /* User */,
 				C6B88D7321F1C8BE006394F8 /* Token */,
-				C6CA40F6220C1E8E006A6E5E /* JSONKeys */,
+				C6CA40F6220C1E8E006A6E5E /* JSON Encoding */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -767,7 +765,6 @@
 		C6B88D7721F1C924006394F8 /* EventDetail */ = {
 			isa = PBXGroup;
 			children = (
-				C6B88D8721F1C94D006394F8 /* Artist.swift */,
 				C6B88D8521F1C94D006394F8 /* EventDetail.swift */,
 				C6B88D8921F1C94E006394F8 /* Organisation.swift */,
 				C6B88D8421F1C94D006394F8 /* PerformingArtist.swift */,
@@ -777,14 +774,14 @@
 			path = EventDetail;
 			sourceTree = "<group>";
 		};
-		C6CA40F6220C1E8E006A6E5E /* JSONKeys */ = {
+		C6CA40F6220C1E8E006A6E5E /* JSON Encoding */ = {
 			isa = PBXGroup;
 			children = (
 				C6CA40F0220C1D2A006A6E5E /* JSONNull.swift */,
 				C6CA40F2220C1DEF006A6E5E /* JSONAny.swift */,
 				C6CA40F4220C1E7B006A6E5E /* JSONCodingKey.swift */,
 			);
-			path = JSONKeys;
+			path = "JSON Encoding";
 			sourceTree = "<group>";
 		};
 		C6EC209F220079ED00BD10DD /* ProfileEditCells */ = {
@@ -1210,7 +1207,6 @@
 				C6B88D8E21F1C94E006394F8 /* TicketType.swift in Sources */,
 				C6B88D8B21F1C94E006394F8 /* EventDetail.swift in Sources */,
 				C6B88D8321F1C93A006394F8 /* Event.swift in Sources */,
-				C6B88D8D21F1C94E006394F8 /* Artist.swift in Sources */,
 				C6B88D7021F1C88A006394F8 /* DatabaseService.Events.swift in Sources */,
 				C6B88D8C21F1C94E006394F8 /* TicketPricing.swift in Sources */,
 				C6B88D8021F1C93A006394F8 /* Venue.swift in Sources */,
