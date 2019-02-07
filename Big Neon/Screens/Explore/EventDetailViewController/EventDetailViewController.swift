@@ -107,15 +107,17 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
     }
     
     @objc private func animateGetTicketButton() {
-        if self.eventDetailViewModel.eventDetail?.isExternal == false && self.eventDetailViewModel.eventDetail?.externalURL == nil {
-            self.getButton.setTitle("Get Ticket", for: UIControl.State.normal)
-        } else {
-            self.getButton.setTitle("Get Tickets via Web", for: UIControl.State.normal)
-        }
-        UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.6, options: .curveEaseIn, animations: {
+        self.getButton.setTitle("", for: UIControl.State.normal)
+        UIView.animate(withDuration: 0.4, animations: {
             self.getTicketButtonBottomAnchor?.constant = 0
             self.view.layoutIfNeeded()
-        }, completion: nil)
+        }) { (completed) in
+            if self.eventDetailViewModel.eventDetail?.isExternal == false && self.eventDetailViewModel.eventDetail?.externalURL == nil {
+                self.getButton.setTitle("Get Ticket", for: UIControl.State.normal)
+            } else {
+                self.getButton.setTitle("Get Tickets via Web", for: UIControl.State.normal)
+            }
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
