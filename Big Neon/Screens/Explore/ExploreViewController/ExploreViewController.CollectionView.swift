@@ -59,13 +59,9 @@ extension ExploreViewController {
                 }
             }
             
-            
             //  Time Zone
             if event.venue.timezone != nil {
-                guard let eventStart = event.localizedTimes.eventStart else {
-                    return eventCell
-                }
-                
+                let eventStart = event.eventStart
                 guard let eventDate = DateConfig.dateFromString(stringDate: eventStart) else {
                     eventCell.eventDateLabel.text = "-"
                     return eventCell

@@ -11,7 +11,6 @@ extension Double {
     public var dollarString:String {
         return String(format: "$%.2f", self)
     }
-    
 }
 
 extension Int {
