@@ -2,35 +2,28 @@
 import Foundation
 
 public struct EventDetail: Codable {
-    public let id: String
-    public let name: String
-    public let organizationID: String
-    public let venueID: String
-    public let createdAt: String
-    public let eventStart: String
-    public let doorTime: String
-    public let eventEnd: String
+    public let id, name, organizationID, venueID: String
+    public let createdAt, eventStart, doorTime, eventEnd: String
+    public let cancelledAt: JSONNull?
     public let feeInCents: Int
-    public let status: String
-    public let publishDate: String
+    public let status, publishDate: String
     public let promoImageURL: String
-    public let additionalInfo: String
-    public let topLineInfo: String
+    public let additionalInfo, topLineInfo: JSONNull?
     public let ageLimit: Int
-    public let videoURL: String?
+    public let videoURL: JSONNull?
     public let organization: Organization
     public let venue: Venue
     public let artists: [PerformingArtist]
     public let ticketTypes: [TicketType]
     public let totalInterest: Int
     public let userIsInterested: Bool
-    public let minTicketPrice: Int
-    public let maxTicketPrice: Int
+    public let minTicketPrice, maxTicketPrice: Int
     public let isExternal: Bool
-    public let externalURL: String?
-    public let overrideStatus: String?
-    public let limitedTicketsRemaining: [Int]
+    public let externalURL, overrideStatus: JSONNull?
+    public let limitedTicketsRemaining: [JSONAny]
     public let localizedTimes: LocalizedTimes
+    public let trackingKeys: TrackingKeys
+    public let eventType: String
     
     enum CodingKeys: String, CodingKey {
         case id, name
@@ -40,6 +33,7 @@ public struct EventDetail: Codable {
         case eventStart = "event_start"
         case doorTime = "door_time"
         case eventEnd = "event_end"
+        case cancelledAt = "cancelled_at"
         case feeInCents = "fee_in_cents"
         case status
         case publishDate = "publish_date"
@@ -59,6 +53,16 @@ public struct EventDetail: Codable {
         case overrideStatus = "override_status"
         case limitedTicketsRemaining = "limited_tickets_remaining"
         case localizedTimes = "localized_times"
+        case trackingKeys = "tracking_keys"
+        case eventType = "event_type"
     }
 }
 
+public struct TrackingKeys: Codable {
+    public let googleGaKey, facebookPixelKey: JSONNull?
+    
+    enum CodingKeys: String, CodingKey {
+        case googleGaKey = "google_ga_key"
+        case facebookPixelKey = "facebook_pixel_key"
+    }
+}

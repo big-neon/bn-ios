@@ -51,7 +51,10 @@ extension EventDetailViewController {
             guard let eventDetail = self.eventDetailViewModel.eventDetail else {
                 return eventDetailCell
             }
-            eventDetailCell.descriptionTextView.text = eventDetail.additionalInfo
+            guard let additionalInfo = eventDetail.additionalInfo as? String else {
+                return eventDetailCell
+            }
+            eventDetailCell.descriptionTextView.text = additionalInfo
             return eventDetailCell
         }
         
@@ -81,7 +84,7 @@ extension EventDetailViewController {
             guard let eventDetail = self.eventDetailViewModel.eventDetail else {
                 return 50.0
             }
-            return 50.0 + estimateFrameForText(eventDetail.additionalInfo).height
+            return 50.0 //+ estimateFrameForText(eventDetail.additionalInfo).height
         }
         
     }

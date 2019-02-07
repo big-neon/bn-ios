@@ -45,7 +45,6 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
                 if completed == false {
                     return
                 }
-                print(self.eventDetailViewModel.eventDetail?.id)
                 self.eventTableView.reloadData()
                 self.configureButtonView()
             }
