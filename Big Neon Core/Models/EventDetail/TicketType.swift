@@ -3,13 +3,13 @@ import Foundation
 
 public struct TicketType: Codable {
     public let id, name: String
-    public let description: JSONNull?
+    public let description: String?
     public let status: String
     public let available: Int
     public let startDate, endDate: String
     public let increment, limitPerPerson: Int
     public let ticketPricing: TicketPricing
-    public let redemptionCode: JSONNull?
+    public let redemptionCode: String?
     
     enum CodingKeys: String, CodingKey {
         case id, name, description, status, available

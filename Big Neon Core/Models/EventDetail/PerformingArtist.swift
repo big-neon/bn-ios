@@ -7,7 +7,7 @@ public struct PerformingArtist: Codable {
     public let rank: Int
     public let setTime: String
     public let importance: Int
-    public let stageID: JSONNull?
+    public let stageID: String?
     
     enum CodingKeys: String, CodingKey {
         case eventID = "event_id"
@@ -20,16 +20,21 @@ public struct PerformingArtist: Codable {
 
 public struct Artist: Codable {
     public let id: String
-    public let organizationID: JSONNull?
-    public let isPrivate: Bool
+    public let organizationID: String?
+    public let isPrivate: Bool?
     public let name, bio: String
-    public let imageURL, thumbImageURL: String
-    public let websiteURL: JSONNull?
-    public let youtubeVideoUrls: [JSONAny]
-    public let facebookUsername, instagramUsername, snapchatUsername, soundcloudUsername: JSONNull?
-    public let bandcampUsername: JSONNull?
-    public let spotifyID, createdAt, updatedAt: String
-    public let otherImageUrls: JSONNull?
+    public let imageURL, thumbImageURL: String?
+    public let websiteURL: String?
+    public let youtubeVideoUrls: [String]?
+    public let facebookUsername: String?
+    public let instagramUsername: String?
+    public let snapchatUsername: String?
+    public let soundcloudUsername: String?
+    public let bandcampUsername: String?
+    public let spotifyID: String?
+    public let createdAt: String
+    public let updatedAt: String?
+    public let otherImageUrls: [String]?
     
     enum CodingKeys: String, CodingKey {
         case id

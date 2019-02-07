@@ -4,13 +4,13 @@ import Foundation
 public struct EventDetail: Codable {
     public let id, name, organizationID, venueID: String
     public let createdAt, eventStart, doorTime, eventEnd: String
-    public let cancelledAt: JSONNull?
+    public let cancelledAt: String?
     public let feeInCents: Int
     public let status, publishDate: String
     public let promoImageURL: String
-    public let additionalInfo, topLineInfo: JSONNull?
+    public let additionalInfo, topLineInfo: String?
     public let ageLimit: Int
-    public let videoURL: JSONNull?
+    public let videoURL: String?
     public let organization: Organization
     public let venue: Venue
     public let artists: [PerformingArtist]
@@ -19,8 +19,8 @@ public struct EventDetail: Codable {
     public let userIsInterested: Bool
     public let minTicketPrice, maxTicketPrice: Int
     public let isExternal: Bool
-    public let externalURL, overrideStatus: JSONNull?
-    public let limitedTicketsRemaining: [JSONAny]
+    public let externalURL, overrideStatus: String?
+    public let limitedTicketsRemaining: [Int]?
     public let localizedTimes: LocalizedTimes
     public let trackingKeys: TrackingKeys
     public let eventType: String
@@ -59,7 +59,7 @@ public struct EventDetail: Codable {
 }
 
 public struct TrackingKeys: Codable {
-    public let googleGaKey, facebookPixelKey: JSONNull?
+    public let googleGaKey, facebookPixelKey: String?
     
     enum CodingKeys: String, CodingKey {
         case googleGaKey = "google_ga_key"
