@@ -7,11 +7,13 @@ final class ExploreDetailViewModel {
     internal var event: Event?
     internal var eventDetail: EventDetail?
     
-    internal let sectionLabels = ["Performing Artists",
+    internal let sectionLabels = ["TIME and Location",
+                                  "Performing Artists",
                                  "AGE RESTRICTIONS",
                                  "Event Description"]
     
-    internal let sectionImages = ["ic_perfomingArts",
+    internal let sectionImages = ["ic_eventTime",
+                                  "ic_perfomingArts",
                                   "ic_ageRestriction",
                                   "ic_eventDescription"]
     

@@ -21,10 +21,7 @@ final public class EventTimeAndLocationCell: UITableViewCell {
 
             //Event Date
             if eventDetail.venue.timezone != nil {
-                guard let eventStart = eventDetail.localizedTimes.eventStart else {
-                    return
-                }
-
+                let eventStart = eventDetail.eventStart
                 guard let eventDate = DateConfig.dateFromString(stringDate: eventStart) else {
                     self.dateLabel.text = "-"
                     return
@@ -47,6 +44,7 @@ final public class EventTimeAndLocationCell: UITableViewCell {
     public let headerIconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = UIColor.white
         imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -119,7 +117,7 @@ final public class EventTimeAndLocationCell: UITableViewCell {
         self.headerLabel.centerYAnchor.constraint(equalTo: headerIconImageView.centerYAnchor).isActive = true
         self.headerLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
         
-        self.venueLabel.topAnchor.constraint(equalTo: headerLabel.topAnchor, constant: 16).isActive = true
+        self.venueLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 20).isActive = true
         self.venueLabel.leftAnchor.constraint(equalTo: headerLabel.leftAnchor).isActive = true
         self.venueLabel.rightAnchor.constraint(equalTo: headerLabel.rightAnchor).isActive = true
         self.venueLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true

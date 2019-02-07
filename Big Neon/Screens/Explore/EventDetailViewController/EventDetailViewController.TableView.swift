@@ -18,15 +18,17 @@ extension EventDetailViewController {
         switch indexPath.section {
         case 0:
             let timeLocationCell: EventTimeAndLocationCell = tableView.dequeueReusableCell(withIdentifier: EventTimeAndLocationCell.cellID, for: indexPath) as! EventTimeAndLocationCell
-            guard let eventDetail = self.eventDetailViewModel.eventDetail else {
-                return timeLocationCell
-            }
-            timeLocationCell.eventDetail = eventDetail
+            timeLocationCell.headerLabel.text = self.eventDetailViewModel.sectionLabels[0].uppercased()
+            timeLocationCell.headerIconImageView.image = UIImage(named: self.eventDetailViewModel.sectionImages[0])
+//            guard let eventDetail = self.eventDetailViewModel.eventDetail else {
+//                return timeLocationCell
+//            }
+//            timeLocationCell.eventDetail = eventDetail
             return timeLocationCell
         case 1:
             let eventDetailCell: EventDetailCell = tableView.dequeueReusableCell(withIdentifier: EventDetailCell.cellID, for: indexPath) as! EventDetailCell
-            eventDetailCell.headerLabel.text = self.eventDetailViewModel.sectionLabels[0].uppercased()
-            eventDetailCell.headerIconImageView.image = UIImage(named: self.eventDetailViewModel.sectionImages[0])
+            eventDetailCell.headerLabel.text = self.eventDetailViewModel.sectionLabels[1].uppercased()
+            eventDetailCell.headerIconImageView.image = UIImage(named: self.eventDetailViewModel.sectionImages[1])
             guard let eventDetail = self.eventDetailViewModel.eventDetail else {
                 return eventDetailCell
             }
@@ -36,8 +38,8 @@ extension EventDetailViewController {
             return eventDetailCell
         case 2:
             let eventDetailCell: EventDetailCell = tableView.dequeueReusableCell(withIdentifier: EventDetailCell.cellID, for: indexPath) as! EventDetailCell
-            eventDetailCell.headerLabel.text = self.eventDetailViewModel.sectionLabels[1].uppercased()
-            eventDetailCell.headerIconImageView.image = UIImage(named: self.eventDetailViewModel.sectionImages[1])
+            eventDetailCell.headerLabel.text = self.eventDetailViewModel.sectionLabels[2].uppercased()
+            eventDetailCell.headerIconImageView.image = UIImage(named: self.eventDetailViewModel.sectionImages[2])
             guard let eventDetail = self.eventDetailViewModel.eventDetail else {
                 return eventDetailCell
             }
@@ -46,8 +48,8 @@ extension EventDetailViewController {
             return eventDetailCell
         default:
             let eventDetailCell: EventDetailCell = tableView.dequeueReusableCell(withIdentifier: EventDetailCell.cellID, for: indexPath) as! EventDetailCell
-            eventDetailCell.headerLabel.text = self.eventDetailViewModel.sectionLabels[2].uppercased()
-            eventDetailCell.headerIconImageView.image = UIImage(named: self.eventDetailViewModel.sectionImages[2])
+            eventDetailCell.headerLabel.text = self.eventDetailViewModel.sectionLabels[3].uppercased()
+            eventDetailCell.headerIconImageView.image = UIImage(named: self.eventDetailViewModel.sectionImages[3])
             guard let eventDetail = self.eventDetailViewModel.eventDetail else {
                 return eventDetailCell
             }
@@ -64,7 +66,7 @@ extension EventDetailViewController {
     internal func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return 176.0
+            return 190.0
         case 1:
             guard let eventDetail = self.eventDetailViewModel.eventDetail else {
                 return 50.0
