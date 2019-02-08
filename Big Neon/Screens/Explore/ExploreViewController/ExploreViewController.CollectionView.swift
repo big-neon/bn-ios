@@ -30,7 +30,7 @@ extension ExploreViewController {
             return 1
         }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
@@ -42,17 +42,15 @@ extension ExploreViewController {
             
             //  Event Show
             eventCell.eventNameLabel.text = event.name
-            let eventImageURL: URL = URL(string: event.promoImageURL)!
+            let eventImageURL: URL = URL(string: event.compressImage(url:event.promoImageURL))!;
             eventCell.eventImageView.pin_setImage(from: eventImageURL, placeholderImage: nil)
             
             //  External Event
-            if event.isExternal == true && event.externalURL != nil {
+            if event.isExternal == true || (event.minTicketPrice == nil && event.maxTicketPrice == nil) {
                 eventCell.priceView.isHidden = true
             } else {
                 eventCell.priceView.isHidden = false
-                if let price = event.minTicketPrice {
-                    eventCell.priceView.priceLabel.text = "$\(price/100)"
-                }
+                eventCell.priceView.priceLabel.text = event.priceTag();
             }
             
             //  Time Zone
