@@ -7,37 +7,6 @@ public class UpcomingEventCell: UICollectionViewCell {
     
     public static let cellID = "UpcomingEventCellID"
     
-//    public var event: Event? {
-//        didSet {
-//            guard let event = self.event else {
-//                return
-//            }
-//            
-//            self.eventNameLabel.text = event.name
-//            let eventImageURL: URL = URL(string: event.promoImageURL)!
-//            self.eventImageView.pin_setImage(from: eventImageURL, placeholderImage: nil)
-//            
-//            if event.venue.timezone != nil {
-//                guard let eventStart = event.localizedTimes.eventStart else {
-//                    return
-//                }
-//                
-//                guard let eventDate = DateConfig.dateFromString(stringDate: eventStart) else {
-//                    self.eventDateLabel.text = "-"
-//                    return
-//                }
-//                self.eventDateLabel.text = DateConfig.eventDate(date: eventDate)
-//            } else {
-//                let eventStart = event.eventStart
-//                guard let eventDate = DateConfig.dateFromUTCString(stringDate: eventStart) else {
-//                    self.eventDateLabel.text = "-"
-//                    return
-//                }
-//                self.eventDateLabel.text = DateConfig.localTime(date: eventDate)
-//            }
-//        }
-//    }
-    
     public var eventImageTopAnchor: NSLayoutConstraint?
     
     public let eventImageView: UIImageView = {
@@ -73,11 +42,15 @@ public class UpcomingEventCell: UICollectionViewCell {
         return label
     }()
     
-    private let priceView: EventPriceView = {
-        let view = EventPriceView()
-        view.priceLabel.text = "$30"
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    public let priceView: UIButton = {
+        let button = UIButton()
+        button.setTitleColor(UIColor.brandPrimary, for: UIControl.State.normal)
+        button.backgroundColor = UIColor.white
+        button.layer.cornerRadius = 5.0
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.medium)
+        button.contentEdgeInsets = UIEdgeInsets(top: 8.0, left: 5.0, bottom: 8.0, right: 5.0)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     public override init(frame: CGRect) {
@@ -117,7 +90,6 @@ public class UpcomingEventCell: UICollectionViewCell {
         priceView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15.0).isActive = true
         priceView.bottomAnchor.constraint(equalTo: eventImageView.bottomAnchor, constant: -15.0).isActive = true
         priceView.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
-        priceView.widthAnchor.constraint(equalToConstant: 38.0).isActive = true
     }
     
     required public init?(coder aDecoder: NSCoder) {

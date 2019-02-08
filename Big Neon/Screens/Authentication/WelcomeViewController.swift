@@ -6,6 +6,9 @@ import SafariServices
 
 final class WelcomeViewController: UIViewController {
     
+    private var loginButtonBottomConstraint: NSLayoutConstraint?
+    private var getStartedButtonBottomConstraint: NSLayoutConstraint?
+    
     internal var backgroundImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "onboarding_Background")
@@ -24,16 +27,16 @@ final class WelcomeViewController: UIViewController {
         return imageView
     }()
 
-    private lazy var getStartedButton: GradientBrandButton = {
-        let button = GradientBrandButton()
+    private lazy var getStartedButton: BrandButton = {
+        let button = BrandButton()
         button.addTarget(self, action: #selector(handleCreateAccount), for: UIControl.Event.touchUpInside)
         button.setTitle("Get Started", for: UIControl.State.normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
-    private lazy var loginButton: GradientBrandButton = {
-        let button = GradientBrandButton()
+    private lazy var loginButton: UIButton = {
+        let button = UIButton()
         button.addTarget(self, action: #selector(handleLogin), for: UIControl.Event.touchUpInside)
         button.backgroundColor = UIColor.clear
         button.layer.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
@@ -48,13 +51,22 @@ final class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        self.view.backgroundColor = UIColor.white
         self.configureView()
+        self.perform(#selector(animateButtons), with: self, afterDelay: 0.5)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.configureNavBar()
+    }
+    
+    @objc private func animateButtons() {
+        UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.6, options: .curveEaseIn, animations: {
+            self.loginButtonBottomConstraint?.constant = -60
+            self.getStartedButtonBottomConstraint?.constant = -140
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
     
     private func configureNavBar() {
@@ -83,12 +95,14 @@ final class WelcomeViewController: UIViewController {
 
         self.loginButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         self.loginButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
-        self.loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70).isActive = true
+        self.loginButtonBottomConstraint = self.loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 200)
+        self.loginButtonBottomConstraint?.isActive = true
         self.loginButton.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
         
         self.getStartedButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         self.getStartedButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
-        self.getStartedButton.bottomAnchor.constraint(equalTo: loginButton.topAnchor, constant: -18).isActive = true
+        self.getStartedButtonBottomConstraint = getStartedButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 200)
+        self.getStartedButtonBottomConstraint?.isActive = true
         self.getStartedButton.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
         
     }

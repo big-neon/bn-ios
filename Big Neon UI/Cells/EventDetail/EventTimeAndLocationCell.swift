@@ -13,18 +13,14 @@ final public class EventTimeAndLocationCell: UITableViewCell {
             guard let eventDetail = self.eventDetail else {
                 return
             }
-
+            
             self.venueLabel.text = eventDetail.venue.name
-            self.venueLabel.text = eventDetail.venue.address
-            self.addressLabel.text = eventDetail.venue.name
+            self.addressLabel.text = eventDetail.venue.address
 
 
             //Event Date
             if eventDetail.venue.timezone != nil {
-                guard let eventStart = eventDetail.localizedTimes.eventStart else {
-                    return
-                }
-
+                let eventStart = eventDetail.eventStart
                 guard let eventDate = DateConfig.dateFromString(stringDate: eventStart) else {
                     self.dateLabel.text = "-"
                     return
@@ -47,6 +43,7 @@ final public class EventTimeAndLocationCell: UITableViewCell {
     public let headerIconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = UIColor.white
         imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -63,7 +60,6 @@ final public class EventTimeAndLocationCell: UITableViewCell {
     
     public let venueLabel: UILabel = {
         let label = UILabel()
-        label.text = "The Warfield"
         label.textColor = UIColor.brandPrimary
         label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -72,7 +68,6 @@ final public class EventTimeAndLocationCell: UITableViewCell {
     
     public let addressLabel: UILabel = {
         let label = UILabel()
-        label.text = "982 Market St, San Francisco, CA 94102, USA"
         label.textColor = UIColor.brandMediumGrey
         label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -81,7 +76,6 @@ final public class EventTimeAndLocationCell: UITableViewCell {
     
     public let dateLabel: UILabel = {
         let label = UILabel()
-        label.text = "Thursday, 27 September 2018"
         label.textColor = UIColor.brandMediumGrey
         label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -108,6 +102,9 @@ final public class EventTimeAndLocationCell: UITableViewCell {
         self.addSubview(headerIconImageView)
         self.addSubview(headerLabel)
         self.addSubview(venueLabel)
+        self.addSubview(addressLabel)
+        self.addSubview(dateLabel)
+        self.addSubview(doorsLabel)
         
         self.headerIconImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 24).isActive = true
         self.headerIconImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
@@ -119,10 +116,25 @@ final public class EventTimeAndLocationCell: UITableViewCell {
         self.headerLabel.centerYAnchor.constraint(equalTo: headerIconImageView.centerYAnchor).isActive = true
         self.headerLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
         
-        self.venueLabel.topAnchor.constraint(equalTo: headerLabel.topAnchor, constant: 16).isActive = true
+        self.venueLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 15).isActive = true
         self.venueLabel.leftAnchor.constraint(equalTo: headerLabel.leftAnchor).isActive = true
         self.venueLabel.rightAnchor.constraint(equalTo: headerLabel.rightAnchor).isActive = true
         self.venueLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+        
+        self.addressLabel.topAnchor.constraint(equalTo: venueLabel.bottomAnchor, constant: 15).isActive = true
+        self.addressLabel.leftAnchor.constraint(equalTo: venueLabel.leftAnchor).isActive = true
+        self.addressLabel.rightAnchor.constraint(equalTo: venueLabel.rightAnchor).isActive = true
+        self.addressLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+        
+        self.dateLabel.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: 30).isActive = true
+        self.dateLabel.leftAnchor.constraint(equalTo: addressLabel.leftAnchor).isActive = true
+        self.dateLabel.rightAnchor.constraint(equalTo: addressLabel.rightAnchor).isActive = true
+        self.dateLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+        
+        self.doorsLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 8).isActive = true
+        self.doorsLabel.leftAnchor.constraint(equalTo: dateLabel.leftAnchor).isActive = true
+        self.doorsLabel.rightAnchor.constraint(equalTo: dateLabel.rightAnchor).isActive = true
+        self.doorsLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
     }
     
     required public init?(coder aDecoder: NSCoder) {

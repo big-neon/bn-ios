@@ -55,8 +55,8 @@ public class AuthenticationTextView: UIView {
                 return
             }
             
-            self.authTextField.layer.borderColor = UIColor.brandError.cgColor
-            self.authTextField.layer.borderWidth = 1.0
+//            self.authTextField.layer.borderColor = UIColor.brandError.cgColor
+//            self.authTextField.layer.borderWidth = 1.0
             self.textFieldShake(authTextField)
             self.errorLabel.text = errorType.rawValue
             self.perform(#selector(restoreView), with: self, afterDelay: 2.4)
@@ -85,7 +85,7 @@ public class AuthenticationTextView: UIView {
     
     private let errorLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.brandError
+        label.textColor = UIColor.brandPrimary
         label.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

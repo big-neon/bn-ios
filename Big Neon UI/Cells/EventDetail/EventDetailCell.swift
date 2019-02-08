@@ -59,7 +59,7 @@ final public class EventDetailCell: UITableViewCell {
         self.headerLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
         
         self.descriptionTextView.topAnchor.constraint(equalTo: headerLabel.topAnchor, constant: 16).isActive = true
-        self.descriptionTextView.leftAnchor.constraint(equalTo: headerLabel.leftAnchor).isActive = true
+        self.descriptionTextView.leftAnchor.constraint(equalTo: headerLabel.leftAnchor, constant: -4).isActive = true
         self.descriptionTextView.rightAnchor.constraint(equalTo: headerLabel.rightAnchor).isActive = true
         self.descriptionTextView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
     }

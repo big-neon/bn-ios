@@ -10,6 +10,13 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
     internal let picker = UIImagePickerController()
     internal var qrCodeViewTopConstraint: NSLayoutConstraint?
     
+    internal lazy var refresher: UIRefreshControl = {
+        let refresher = UIRefreshControl()
+        refresher.tintColor = UIColor.brandGrey
+        refresher.addTarget(self, action: #selector(fetchUser), for: .valueChanged)
+        return refresher
+    }()
+    
     internal lazy var profileQRCodeView: TicketQRCodeView = {
         let view = TicketQRCodeView()
         view.qrCodeImage.image = UIImage(named: "ic_qrcode_large")
@@ -40,7 +47,7 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
         loadingIndicatorView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         loadingIndicatorView.widthAnchor.constraint(equalToConstant: 30).isActive = true
     }
-    
+
     internal lazy var profileTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: UITableView.Style.grouped)
         tableView.backgroundColor = UIColor.brandBackground
@@ -52,7 +59,7 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
@@ -61,7 +68,7 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
         self.fetchUser()
         self.configureObservers()
     }
-    
+
     @objc private func fetchUser() {
         self.profileViewModel.configureAccessToken(completion: ) { (completed) in
             DispatchQueue.main.async {
@@ -72,30 +79,30 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
             }
         }
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
+
     private func configureObservers() {
         let reloadKey = Notification.Name(Constants.AppActionKeys.profileUpdateKey)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadProfile), name: reloadKey, object: nil)
     }
-    
+
     @objc func reloadProfile() {
         self.profileViewModel.configureAccessToken(completion: ) { (completed) in
             DispatchQueue.main.async {
+                self.refresher.endRefreshing()
                 self.profileTableView.reloadData()
             }
         }
     }
-    
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
-    
+
     private func configureNavBar() {
         self.navigationClearBar()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -132,6 +139,7 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
         
         profileTableView.register(ProfileTableCell.self, forCellReuseIdentifier: ProfileTableCell.cellID)
         
+        self.profileTableView.refreshControl = refresher
         self.profileTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         self.profileTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         self.profileTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -181,7 +189,6 @@ extension  ProfileViewController {
                 self.profileQRCodeBackgroundView.layer.opacity = 1.0
                 self.profileQRCodeView.frame = CGRect(x: (window.frame.width * 0.5) - 160, y: (window.frame.height * 0.5) - 250, width: 320.0, height: 500)
             }, completion: nil)
-            
         }
     }
     

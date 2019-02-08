@@ -1,6 +1,5 @@
 
 
-
 import Foundation
 import UITextField_Shake
 import Big_Neon_UI
@@ -10,6 +9,11 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
     fileprivate var headerLabelTopConstraint: NSLayoutConstraint?
     internal let createAccountViewModel: AccountViewModel = AccountViewModel()
     
+    internal lazy var errorFeedback: FeedbackSystem = {
+        let feedback = FeedbackSystem()
+        return feedback
+    }()
+    
     private var headerLabel: BrandTitleLabel = {
         let label = BrandTitleLabel()
         label.text = "Make your tickets… yours."
@@ -17,7 +21,6 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
     
     private lazy var firstNameTextView: AuthenticationTextView = {
         let textField = AuthenticationTextView()
@@ -33,20 +36,13 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
         return textField
     }()
     
-    fileprivate lazy var nextButton: GradientBrandButton = {
-        let button = GradientBrandButton()
+    fileprivate lazy var doneButton: BrandButton = {
+        let button = BrandButton()
+        button.spinnerColor = .white
         button.setTitle("All Done", for: UIControl.State.normal)
         button.addTarget(self, action: #selector(handleDone), for: UIControl.Event.touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
-    }()
-    
-    internal let loadingIndicatorView: UIActivityIndicatorView = {
-        let loader = UIActivityIndicatorView()
-        loader.style = .white
-        loader.hidesWhenStopped = true
-        loader.translatesAutoresizingMaskIntoConstraints = false
-        return loader
     }()
     
     override func viewDidLoad() {
@@ -80,8 +76,7 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(headerLabel)
         view.addSubview(firstNameTextView)
         view.addSubview(lastNameTextView)
-        view.addSubview(nextButton)
-        nextButton.addSubview(loadingIndicatorView)
+        view.addSubview(doneButton)
         
         headerLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         headerLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
@@ -99,15 +94,10 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
         lastNameTextView.topAnchor.constraint(equalTo: firstNameTextView.bottomAnchor, constant: 12).isActive = true
         lastNameTextView.heightAnchor.constraint(equalToConstant: 75).isActive = true
         
-        nextButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 26).isActive = true
-        nextButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -26).isActive = true
-        nextButton.topAnchor.constraint(equalTo: lastNameTextView.bottomAnchor, constant: 35).isActive = true
-        nextButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
-        loadingIndicatorView.centerXAnchor.constraint(equalTo: nextButton.centerXAnchor).isActive = true
-        loadingIndicatorView.centerYAnchor.constraint(equalTo: nextButton.centerYAnchor).isActive = true
-        loadingIndicatorView.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        loadingIndicatorView.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        doneButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 26).isActive = true
+        doneButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -26).isActive = true
+        doneButton.topAnchor.constraint(equalTo: lastNameTextView.bottomAnchor, constant: 35).isActive = true
+        doneButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     fileprivate func setupDelegates() {
@@ -116,20 +106,18 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func disableView() {
-        self.loadingIndicatorView.startAnimating()
         self.firstNameTextView.authTextField.isEnabled = false
         self.lastNameTextView.authTextField.isEnabled = false
-        self.nextButton.isEnabled = false
-        self.nextButton.setTitle("", for: UIControl.State.normal)
+        self.doneButton.isEnabled = false
+        self.doneButton.setTitle("", for: UIControl.State.normal)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     private func enableView() {
-        self.loadingIndicatorView.stopAnimating()
         self.firstNameTextView.authTextField.isEnabled = true
         self.lastNameTextView.authTextField.isEnabled = true
-        self.nextButton.isEnabled = true
-        self.nextButton.setTitle("Let's do this", for: UIControl.State.normal)
+        self.doneButton.isEnabled = true
+        self.doneButton.setTitle("Let's do this", for: UIControl.State.normal)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
@@ -155,25 +143,46 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
+        self.doneButton.startAnimation()
         self.resignTextFields()
-//        self.disableView()
-//        self.createAccountViewModel.createAccount(email: name, password: lastName) { (success) in
-//            DispatchQueue.main.async {
-//                if success == false {
-//                    self.enableView()
-//                    return
-//                }
-//                self.enableView()
-//                self.handleShowHome()
-//            }
-//        }
-        self.handleShowHome()
+        self.disableView()
+        self.createAccountViewModel.insert(name: name, lastName: lastName) { (error) in
+            DispatchQueue.main.async {
+                if error != nil {
+                    self.doneButton.stopAnimation(animationStyle: .shake,
+                                                  revertAfterDelay: 1.0,
+                                                  completion: {
+                                                    self.showFeedback(message: (error?.localizedDescription)!)
+                                                    self.enableView()
+                    })
+                    return
+                }
+                
+                self.doneButton.stopAnimation(animationStyle: .normal,
+                                              revertAfterDelay: 1.0,
+                                              completion: {
+                                                self.enableView()
+                                                self.handleShowHome()
+                })
+            }
+        }
+    }
+    
+    private func showFeedback(message: String) {
+        if let window = UIApplication.shared.keyWindow {
+            self.errorFeedback.showFeedback(backgroundColor: UIColor.brandBlack,
+                                            feedbackLabel: message,
+                                            feedbackLabelColor: UIColor.white,
+                                            durationOnScreen: 3.0,
+                                            currentView: window,
+                                            showsBackgroundGradient: true,
+                                            isAboveTabBar: false)
+        }
     }
     
     @objc private func handleShowHome() {
-        let tabBarVC = TabBarController()
-        tabBarVC.modalTransitionStyle = .flipHorizontal
-        self.present(tabBarVC, animated: true, completion: nil)
+        let splashVC = UINavigationController(rootViewController: SplashViewController())
+        self.present(splashVC, animated: true, completion: nil)
     }
     
 }
@@ -189,7 +198,7 @@ extension NamesViewController {
     @objc func handleKeyboardNotification(notification: NSNotification) {
         let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
         
-        UIView.animate(withDuration: 0.32, animations: {
+        UIView.animate(withDuration: 0.32, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.6, options: .curveEaseIn, animations: {
             if isKeyboardShowing == true {
                 guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else {
                     return

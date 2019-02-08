@@ -8,7 +8,7 @@ final class ExploreViewModel {
     internal var events: Events?
     
     internal func fetchEvents(completion: @escaping(Bool) -> Void) {
-        
+        self.events = nil
         BusinessService.shared.database.fetchEvents { (error, eventsFetched) in
             if error != nil {
                 completion(false)
@@ -19,8 +19,9 @@ final class ExploreViewModel {
                 completion(false)
                 return
             }
-
+            print(events)
             self.events = events
+
             completion(true)
             return
         }

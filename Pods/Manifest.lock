@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.0.0.beta.1)
+  - DTGradientButton (0.1.1)
   - FLAnimatedImage (1.0.12)
   - JWTDecode (2.2.0)
   - Mixpanel (3.3.7)
@@ -33,10 +34,12 @@ PODS:
   - PWSwitch (1.1.2)
   - Stripe (14.0.0)
   - SwiftKeychainWrapper (3.2.0)
+  - TransitionButton (0.5.2)
   - "UITextField+Shake (1.2.1)"
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0.beta.1)
+  - DTGradientButton
   - JWTDecode (~> 2.2)
   - Mixpanel
   - PhoneNumberKit (~> 2.1)
@@ -47,11 +50,13 @@ DEPENDENCIES:
   - PWSwitch
   - Stripe
   - SwiftKeychainWrapper
+  - TransitionButton
   - "UITextField+Shake"
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - DTGradientButton
     - FLAnimatedImage
     - JWTDecode
     - Mixpanel
@@ -64,10 +69,12 @@ SPEC REPOS:
     - PWSwitch
     - Stripe
     - SwiftKeychainWrapper
+    - TransitionButton
     - "UITextField+Shake"
 
 SPEC CHECKSUMS:
   Alamofire: 2ef6d6c984c5d21c366e9b41a9ae7dfee2b67a44
+  DTGradientButton: c5e3c76045af259822d9cf4ebbe9805489f2d5df
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   JWTDecode: 85a405ab16d5473e99bd89ded1d535090ebd6a0e
   Mixpanel: 1e94d1d29dfc3d3c66f734d10e29ad86420889fe
@@ -80,8 +87,9 @@ SPEC CHECKSUMS:
   PWSwitch: 399db6ef5dd8417f9a1e9f82cb70602f10a6c38f
   Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
   SwiftKeychainWrapper: 82c4c02cdc36f9a24f7edfcaab3e336401caa1a1
+  TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
-PODFILE CHECKSUM: 36561d123b783342a8021a645fa08918d77c6d18
+PODFILE CHECKSUM: 1b0ca4618ca24cf9cc39bc8467a83dd2b7683781
 
 COCOAPODS: 1.5.3
