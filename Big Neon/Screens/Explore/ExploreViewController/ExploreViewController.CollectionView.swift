@@ -7,14 +7,12 @@ import Big_Neon_Core
 extension ExploreViewController {
     
     internal func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 1
     }
     
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 1
-        default:
             guard let total = self.exploreViewModel.events?.paging.total else {
                 return 0
             }
@@ -28,16 +26,14 @@ extension ExploreViewController {
             }
             
             return total
+        default:
+            return 1
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            let sectionLabelCell: SectionHeaderCell = collectionView.dequeueReusableCell(withReuseIdentifier: SectionHeaderCell.cellID, for: indexPath) as! SectionHeaderCell
-            sectionLabelCell.sectionHeaderLabel.text = "Upcoming"
-            return sectionLabelCell
-        default:
             let eventCell: UpcomingEventCell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingEventCell.cellID, for: indexPath) as! UpcomingEventCell
             guard let events = self.exploreViewModel.events?.data else {
                return eventCell
@@ -77,6 +73,10 @@ extension ExploreViewController {
             }
 
             return eventCell
+        default:
+            let sectionLabelCell: SectionHeaderCell = collectionView.dequeueReusableCell(withReuseIdentifier: SectionHeaderCell.cellID, for: indexPath) as! SectionHeaderCell
+            sectionLabelCell.sectionHeaderLabel.text = "Upcoming"
+            return sectionLabelCell
         }
         
     }
@@ -84,16 +84,16 @@ extension ExploreViewController {
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
         case 0:
-            return CGSize(width: UIScreen.main.bounds.width, height: 50)
-        default:
             return CGSize(width: UIScreen.main.bounds.width - 40, height: 210)
+        default:
+            return CGSize(width: UIScreen.main.bounds.width, height: 50)
         }
         
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        if indexPath.section == 1 {
+        if indexPath.section == 0 {
             guard let events = self.exploreViewModel.events?.data else {
                 return
             }

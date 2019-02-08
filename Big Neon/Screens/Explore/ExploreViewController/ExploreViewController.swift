@@ -11,6 +11,11 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
         refresher.addTarget(self, action: #selector(reloadEvents), for: .valueChanged)
         return refresher
     }()
+    
+    internal lazy var navBarTitleView: ExploreNavigationView = {
+        let refresher = ExploreNavigationView()
+        return refresher
+    }()
 
     internal lazy var exploreCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -18,7 +23,7 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
         flowLayout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.backgroundColor = UIColor.white
-        collectionView.contentInset = UIEdgeInsets(top: 20.0, left: 0.0, bottom: 15.0, right: 0.0)
+        collectionView.contentInset = UIEdgeInsets(top: 38.0, left: 0.0, bottom: 15.0, right: 0.0)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.alwaysBounceVertical = true
@@ -67,6 +72,9 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
 
     private func configureNavBar() {
         self.navigationNoLineBar()
+        navBarTitleView.heightAnchor.constraint(equalToConstant: 34.0).isActive = true
+        navBarTitleView.widthAnchor.constraint(equalToConstant: 140.0).isActive = true
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: navBarTitleView)
     }
 
     private func configureCollectionView() {

@@ -7,16 +7,19 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
     
     internal var eventHeaderView: EventHeaderView = EventHeaderView()
     internal var getTicketButtonBottomAnchor: NSLayoutConstraint?
+    private let kTableViewHeaderHeight: CGFloat = 470.0
     
     internal lazy var eventTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: UITableView.Style.plain)
         tableView.backgroundColor = UIColor.white
         tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 90.0, right: 0.0)
+        tableView.contentOffset = CGPoint(x: 0, y: kTableViewHeaderHeight)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.showsVerticalScrollIndicator = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -38,6 +41,7 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
         self.configureTableView()
         self.configureButtonView()
         self.configureHeaderView()
+        self.updateHeaderView()
         self.fetchEvent()
     }
     
@@ -70,18 +74,27 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
         eventHeaderView.setNeedsLayout()
         eventHeaderView.layoutIfNeeded()
         var frame = eventHeaderView.frame
-        frame.size.height = CGFloat(470.0)
+        frame.size.height = kTableViewHeaderHeight
         eventHeaderView.frame = frame
     }
     
     private func configureHeaderView() {
-        eventHeaderView  = EventHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 470.0))
+        eventHeaderView  = EventHeaderView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: kTableViewHeaderHeight))
         guard let event = self.eventDetailViewModel.event else {
             eventTableView.tableHeaderView = eventHeaderView
             return
         }
         eventHeaderView.event = event
         eventTableView.tableHeaderView = eventHeaderView
+    }
+    
+    private func updateHeaderView() {
+        var headerRect = CGRect(x: 0, y: -kTableViewHeaderHeight, width: eventTableView.bounds.width, height: kTableViewHeaderHeight)
+        if eventTableView.contentOffset.y < -kTableViewHeaderHeight {
+            headerRect.origin.y = eventTableView.contentOffset.y
+            headerRect.size.height = -eventTableView.contentOffset.y
+        }
+        eventHeaderView.frame = headerRect
     }
     
     private func configureTableView() {
@@ -125,6 +138,8 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
         if scrollView.contentOffset.y >= 0 {
             self.eventHeaderView.eventImageTopAnchor?.constant = -scrollView.contentOffset.y * -0.5
         }
+
+        self.updateHeaderView()
         
         let distanceToScroll: CGFloat = 350.0
         var offSet = scrollView.contentOffset.y / distanceToScroll
