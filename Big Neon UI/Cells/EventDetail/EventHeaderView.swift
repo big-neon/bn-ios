@@ -152,7 +152,7 @@ final public class EventHeaderView: UIView {
     
     private func configureTextView() {
         self.addSubview(eventHeader)
-        self.addSubview(presentLabel)
+//        self.addSubview(presentLabel)
         self.addSubview(eventDateView)
         self.addSubview(eventNameLabel)
         self.addSubview(interestedButton)
@@ -161,21 +161,21 @@ final public class EventHeaderView: UIView {
         self.eventHeader.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         self.eventHeader.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         self.eventHeader.topAnchor.constraint(equalTo: self.topAnchor, constant: 240).isActive = true
-        self.eventHeader.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+        self.eventHeader.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+
+//        self.presentLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
+//        self.presentLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+//        self.presentLabel.topAnchor.constraint(equalTo: eventHeader.topAnchor, constant: 50).isActive = true
+//        self.presentLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
         
-        self.presentLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-        self.presentLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        self.presentLabel.topAnchor.constraint(equalTo: eventHeader.topAnchor, constant: 50).isActive = true
-        self.presentLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
-        
-        self.eventDateView.topAnchor.constraint(equalTo: presentLabel.bottomAnchor, constant: 5).isActive = true
-        self.eventDateView.rightAnchor.constraint(equalTo: presentLabel.rightAnchor).isActive = true
+        self.eventDateView.topAnchor.constraint(equalTo: eventHeader.topAnchor, constant: 40).isActive = true
+        self.eventDateView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
         self.eventDateView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         self.eventDateView.widthAnchor.constraint(equalToConstant: 50).isActive = true
         
-        self.eventNameLabel.leftAnchor.constraint(equalTo: presentLabel.leftAnchor).isActive = true
+        self.eventNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
         self.eventNameLabel.rightAnchor.constraint(equalTo: eventDateView.leftAnchor, constant: -24).isActive = true
-        self.eventNameLabel.topAnchor.constraint(equalTo: presentLabel.bottomAnchor, constant: 10).isActive = true
+        self.eventNameLabel.topAnchor.constraint(equalTo: eventHeader.topAnchor, constant: 30).isActive = true
         self.eventNameLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         self.interestedButton.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -90).isActive = true

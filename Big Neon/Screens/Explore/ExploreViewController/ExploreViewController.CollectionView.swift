@@ -50,7 +50,7 @@ extension ExploreViewController {
                 eventCell.priceView.isHidden = true
             } else {
                 eventCell.priceView.isHidden = false
-                eventCell.priceView.priceLabel.text = event.priceTag();
+                eventCell.priceView.setTitle(event.priceTag(), for: UIControl.State.normal)
             }
             
             //  Time Zone

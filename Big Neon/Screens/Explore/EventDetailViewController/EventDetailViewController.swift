@@ -7,13 +7,12 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
     
     internal var eventHeaderView: EventHeaderView = EventHeaderView()
     internal var getTicketButtonBottomAnchor: NSLayoutConstraint?
-    private let kTableViewHeaderHeight: CGFloat = 470.0
+    private let kTableViewHeaderHeight: CGFloat = 460.0
     
     internal lazy var eventTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: UITableView.Style.plain)
         tableView.backgroundColor = UIColor.white
         tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 90.0, right: 0.0)
-        tableView.contentOffset = CGPoint(x: 0, y: kTableViewHeaderHeight)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.contentInsetAdjustmentBehavior = .never
@@ -41,7 +40,6 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
         self.configureTableView()
         self.configureButtonView()
         self.configureHeaderView()
-        self.updateHeaderView()
         self.fetchEvent()
     }
     
@@ -139,8 +137,6 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
             self.eventHeaderView.eventImageTopAnchor?.constant = -scrollView.contentOffset.y * -0.5
         }
 
-        self.updateHeaderView()
-        
         let distanceToScroll: CGFloat = 350.0
         var offSet = scrollView.contentOffset.y / distanceToScroll
         if offSet > 1 {

@@ -38,6 +38,11 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
         self.configureNavBar()
         self.fetchEvents()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationNoLineBar()
+    }
 
     private func fetchEvents() {
         self.loadingView.startAnimating()
@@ -72,6 +77,8 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
 
     private func configureNavBar() {
         self.navigationNoLineBar()
+        let bounds = self.navigationController!.navigationBar.bounds
+        self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height + 80.0)
         navBarTitleView.heightAnchor.constraint(equalToConstant: 34.0).isActive = true
         navBarTitleView.widthAnchor.constraint(equalToConstant: 140.0).isActive = true
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: navBarTitleView)
