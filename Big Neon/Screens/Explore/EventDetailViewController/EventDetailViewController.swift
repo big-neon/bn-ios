@@ -3,7 +3,7 @@
 import UIKit
 import Big_Neon_UI
 
-internal class EventDetailViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource  {
+internal class EventDetailViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, TicketTypeSelectDelegate  {
     
     internal var eventHeaderView: EventHeaderView = EventHeaderView()
     internal var getTicketButtonTopAnchor: NSLayoutConstraint?
@@ -25,14 +25,17 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
         return tableView
     }()
     
-    public lazy var getButton: UIButton = {
-        let button = UIButton()
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: UIFont.Weight.semibold)
-        button.backgroundColor = UIColor.brandPrimary
-        button.addTarget(self, action: #selector(handleGetTicket), for: UIControl.Event.touchUpInside)
-        button.setTitleColor(UIColor.white, for: UIControl.State.normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+    internal lazy var ticketTypeView: TicketTypeSelectView = {
+        let view = TicketTypeSelectView()
+        view.delegate = self
+        view.isOpen = false
+        return view
+    }()
+    
+    internal lazy var backgroundDarkView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.black
+        return view
     }()
     
     override func viewDidLoad() {
@@ -109,38 +112,44 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
     }
     
     private func configureButtonView() {
-        self.view.addSubview(getButton)
+        self.view.addSubview(backgroundDarkView)
+        self.view.addSubview(ticketTypeView)
         
-        self.getButton.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        self.getButton.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        self.getButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 90)
+        self.backgroundDarkView.frame = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.width, height: self.view.bounds.height)
+        self.ticketTypeView.frame = CGRect(x: 0.0, y: self.view.bounds.height, width: self.view.bounds.width, height: 52)
         
-        self.getTicketButtonTopAnchor = self.getButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: self.view.bounds.height)
-        self.getTicketButtonTopAnchor?.isActive = true
-        self.getButton.heightAnchor.constraint(equalToConstant: 52.0).isActive = true
+        self.backgroundDarkView.layer.opacity = 0.0
+        self.backgroundDarkView.isHidden = true
     }
     
     @objc private func animateGetTicketButton() {
-        self.getButton.setTitle("", for: UIControl.State.normal)
+        self.ticketTypeView.getButton.setTitle("", for: UIControl.State.normal)
         UIView.animate(withDuration: 0.4, animations: {
-            self.getTicketButtonTopAnchor?.constant = 0
+            self.ticketTypeView.frame = CGRect(x: 0.0, y: self.view.bounds.height - 52.0, width: self.view.bounds.width, height: 52)
             self.view.layoutIfNeeded()
         }) { (completed) in
             if self.eventDetailViewModel.eventDetail?.isExternal == false && self.eventDetailViewModel.eventDetail?.externalURL == nil {
-                self.getButton.setTitle("Get Ticket", for: UIControl.State.normal)
+                self.ticketTypeView.getButton.setTitle("Get Ticket", for: UIControl.State.normal)
             } else {
-                self.getButton.setTitle("Get Tickets via Web", for: UIControl.State.normal)
+                self.ticketTypeView.getButton.setTitle("Get Tickets via Web", for: UIControl.State.normal)
             }
         }
     }
     
-    @objc private func handleGetTicket() {
-        
-        UIView.animate(withDuration: 0.4, animations: {
-//            self.ticketButtonheightAnchor = 420.0
+    func handleSelectTypeType() {
+        self.backgroundDarkView.isHidden = false
+        UIView.animate(withDuration: 0.25, delay: 0.0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
+            if self.ticketIsSelected == false {
+                self.ticketTypeView.frame = CGRect(x: 0.0, y: self.view.bounds.height - 520, width: self.view.bounds.width, height: 520)
+                self.backgroundDarkView.layer.opacity = 0.5
+            } else {
+                self.ticketTypeView.frame = CGRect(x: 0.0, y: self.view.bounds.height - 52.0, width: self.view.bounds.width, height: 52)
+                self.backgroundDarkView.layer.opacity = 0.0
+            }
             self.view.layoutIfNeeded()
         }) { (completed) in
             self.ticketIsSelected = !self.ticketIsSelected
+            self.ticketTypeView.isOpen = self.ticketIsSelected
         }
     }
     

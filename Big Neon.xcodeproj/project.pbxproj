@@ -96,6 +96,7 @@
 		C6C45D6A21F5CDCD00D2F602 /* PopAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C45D6921F5CDCD00D2F602 /* PopAnimations.swift */; };
 		C6C45D6C21F5CEC000D2F602 /* Feedbacksystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C45D6B21F5CEC000D2F602 /* Feedbacksystem.swift */; };
 		C6C49DA52209A77E0087AE16 /* DollarString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C49DA42209A77E0087AE16 /* DollarString.swift */; };
+		C6D19C532211AC3E00D13E4D /* TicketTypeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D19C522211AC3E00D13E4D /* TicketTypeSelectView.swift */; };
 		C6D2413421EF53B000FC3E41 /* NamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2413321EF53B000FC3E41 /* NamesViewController.swift */; };
 		C6D37B3521F1CD8200C616D0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D37B3421F1CD8200C616D0 /* API.swift */; };
 		C6EC209A220063DE00BD10DD /* ProfileImageUploadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC2099220063DE00BD10DD /* ProfileImageUploadCell.swift */; };
@@ -264,6 +265,7 @@
 		C6C45D6921F5CDCD00D2F602 /* PopAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimations.swift; sourceTree = "<group>"; };
 		C6C45D6B21F5CEC000D2F602 /* Feedbacksystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedbacksystem.swift; sourceTree = "<group>"; };
 		C6C49DA42209A77E0087AE16 /* DollarString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarString.swift; sourceTree = "<group>"; };
+		C6D19C522211AC3E00D13E4D /* TicketTypeSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTypeSelectView.swift; sourceTree = "<group>"; };
 		C6D2413321EF53B000FC3E41 /* NamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesViewController.swift; sourceTree = "<group>"; };
 		C6D37B3421F1CD8200C616D0 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C6EC2099220063DE00BD10DD /* ProfileImageUploadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageUploadCell.swift; sourceTree = "<group>"; };
@@ -668,6 +670,7 @@
 			children = (
 				C6B88D6121F1C372006394F8 /* TicketQRCodeView.swift */,
 				C61D51C9220D6458002A70CE /* ExploreNavBarView.swift */,
+				C6D19C522211AC3E00D13E4D /* TicketTypeSelectView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1233,6 +1236,7 @@
 				C6B88D4F21F1C323006394F8 /* GradientBrandButton.swift in Sources */,
 				C6B88D5F21F1C359006394F8 /* ValidEmailAddress.swift in Sources */,
 				C6C45D6C21F5CEC000D2F602 /* Feedbacksystem.swift in Sources */,
+				C6D19C532211AC3E00D13E4D /* TicketTypeSelectView.swift in Sources */,
 				C6B88D3C21F1BC9B006394F8 /* ExploreUpcomingCell.swift in Sources */,
 				C6B88D3821F1BC8D006394F8 /* Colours.swift in Sources */,
 				C6B88D5021F1C323006394F8 /* EventPriceView.swift in Sources */,
