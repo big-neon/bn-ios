@@ -3,7 +3,7 @@ import UIKit
 import Big_Neon_UI
 import Big_Neon_Core
 
-final class ExploreViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+final class ExploreViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
     
     internal lazy var refresher: UIRefreshControl = {
         let refresher = UIRefreshControl()
@@ -32,10 +32,27 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
+    
+    internal lazy var searchController: UISearchController = {
+        let search = UISearchController(searchResultsController: nil)
+        search.searchResultsUpdater = self
+        search.obscuresBackgroundDuringPresentation = false
+        search.searchBar.placeholder = "Search artists, shows, venues…"
+        search.searchBar.scopeButtonTitles = nil
+        search.searchBar.scopeBarBackgroundImage = nil
+        search.searchBar.backgroundImage = nil
+        search.searchBar.backgroundImage(for: UIBarPosition.bottom, barMetrics: UIBarMetrics.default)
+        search.searchBar.barStyle = .default
+        definesPresentationContext = true
+        search.searchBar.delegate = self
+        search.searchResultsUpdater = self
+        return search
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureNavBar()
+        self.configureSearch()
         self.fetchEvents()
     }
     
@@ -74,14 +91,19 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
             }
         }
     }
+    
+    private func configureSearch() {
+        self.navigationItem.searchController = searchController
+    }
 
     private func configureNavBar() {
         self.navigationNoLineBar()
-        let bounds = self.navigationController!.navigationBar.bounds
-        self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height + 80.0)
-        navBarTitleView.heightAnchor.constraint(equalToConstant: 34.0).isActive = true
-        navBarTitleView.widthAnchor.constraint(equalToConstant: 140.0).isActive = true
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: navBarTitleView)
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.largeTitleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor.brandBlack,
+             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 32, weight: UIFont.Weight.bold)]
+        self.navigationItem.title = "Explore"
+        self.navigationItem.largeTitleDisplayMode = .automatic
     }
 
     private func configureCollectionView() {
