@@ -27,7 +27,7 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
         return tableView
     }()
     
-    public lazy var getButton: UIButton = {
+    internal lazy var getButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: UIFont.Weight.semibold)
         button.backgroundColor = UIColor.brandPrimary
