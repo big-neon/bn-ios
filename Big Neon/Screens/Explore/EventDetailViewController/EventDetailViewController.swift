@@ -131,6 +131,7 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
         modalActive = true
         let ticketTypeVC = TicketTypeViewController()
         ticketTypeVC.eventDetailsVC = self
+        ticketTypeVC.ticketTypeViewModel.eventDetail = self.eventDetailViewModel.eventDetail
         ticketTypeVC.modalTransitionStyle = .coverVertical
         self.present(ticketTypeVC, type: .custom(self), animated: true)
     }

@@ -7,5 +7,4 @@ final class TicketTypeViewModel {
     internal var event: Event?
     internal var eventDetail: EventDetail?
     
-    
 }

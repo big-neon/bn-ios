@@ -15,7 +15,8 @@ extension Double {
 
 extension Int {
     
-    public var dollarString:String {
+    public var dollarString:String
+    {
         if self/100 == 0 {
             return "FREE"
         }

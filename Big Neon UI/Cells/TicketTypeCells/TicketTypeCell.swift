@@ -8,7 +8,6 @@ final public class TicketTypeCell: UITableViewCell {
     
     public let priceLabel: UILabel = {
         let label = UILabel()
-        label.text = "$30"
         label.textColor = UIColor.brandPrimary
         label.font = UIFont.systemFont(ofSize: 26, weight: UIFont.Weight.black)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -17,7 +16,6 @@ final public class TicketTypeCell: UITableViewCell {
     
     public let ticketTypeLabel: UILabel = {
         let label = UILabel()
-        label.text = "General Admission"
         label.textColor = UIColor.brandBlack
         label.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -26,7 +24,6 @@ final public class TicketTypeCell: UITableViewCell {
     
     public let ticketTypeDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Lorem ipsum dolor sit amet non lorem."
         label.textColor = UIColor.brandGrey
         label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -37,7 +34,7 @@ final public class TicketTypeCell: UITableViewCell {
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: UITableViewCell.CellStyle.default, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = UIColor.white
-        self.accessoryType = .none
+        self.accessoryType = .disclosureIndicator
         self.configureView()
     }
     
