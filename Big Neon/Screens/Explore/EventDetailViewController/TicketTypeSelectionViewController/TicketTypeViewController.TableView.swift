@@ -24,7 +24,7 @@ extension TicketTypeViewController {
             return ticketTypeCell
         }
         let ticketType = ticketTypes[indexPath.row]
-        ticketTypeCell.priceLabel.text = ticketType.ticketPricing!.priceInCents.dollarString
+        ticketTypeCell.priceLabel.text = ticketType.ticketPricing?.priceInCents.dollarString
         if ticketType.name == ticketType.ticketPricing?.name {
             ticketTypeCell.ticketTypeLabel.text = ticketType.name
         } else {
@@ -40,5 +40,7 @@ extension TicketTypeViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        self.moveToCheckout()
     }
 }
