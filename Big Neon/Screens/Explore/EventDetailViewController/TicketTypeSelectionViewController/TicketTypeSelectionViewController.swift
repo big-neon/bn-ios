@@ -15,7 +15,7 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
     //  Animation Anchors
     internal var backButtonLeftAnchor: NSLayoutConstraint?
     internal var closeButtonRightAnchor: NSLayoutConstraint?
-//    internal var ticketTypeTableViewLeftAnchor: NSLayoutConstraint?
+    internal var purchaseTicketBottomAnchor: NSLayoutConstraint?
     
     internal let headerLabel: BrandTitleLabel = {
         let label = BrandTitleLabel()
@@ -64,6 +64,32 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+    
+    internal lazy var checkoutTableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: UITableView.Style.plain)
+        tableView.backgroundColor = UIColor.white
+        tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.isScrollEnabled = false
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.allowsSelection = true
+        tableView.separatorColor = UIColor.brandGrey.withAlphaComponent(0.3)
+        tableView.showsVerticalScrollIndicator = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+    
+    internal lazy var purchaseTicketButton: UIButton = {
+        let button = UIButton()
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: UIFont.Weight.semibold)
+        button.backgroundColor = UIColor.brandPrimary
+//        button.addTarget(self, action: #selector(handleSelectTypeType), for: UIControl.Event.touchUpInside)
+        button.setTitleColor(UIColor.white, for: UIControl.State.normal)
+        button.setTitle("Purchase Ticket", for: UIControl.State.normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,12 +114,13 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
         self.view.addSubview(headerLabel)
         self.view.addSubview(closeButton)
         self.view.addSubview(eventTableView)
+        self.view.addSubview(purchaseTicketButton)
         
         eventTableView.register(TicketTypeCell.self, forCellReuseIdentifier: TicketTypeCell.cellID)
         
         self.backButtonLeftAnchor = self.backButtonButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: -36)
         self.backButtonLeftAnchor?.isActive = true
-        self.backButtonButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 48).isActive = true
+        self.backButtonButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 36).isActive = true
         self.backButtonButton.heightAnchor.constraint(equalToConstant: 36).isActive = true
         self.backButtonButton.widthAnchor.constraint(equalToConstant: 36).isActive = true
         
@@ -110,8 +137,14 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
         
         self.eventTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         self.eventTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        self.eventTableView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 20).isActive = true
+        self.eventTableView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 22).isActive = true
         self.eventTableView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        
+        self.purchaseTicketButton.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        self.purchaseTicketButton.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        self.purchaseTicketBottomAnchor = self.purchaseTicketButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 80)
+        self.purchaseTicketBottomAnchor?.isActive = true
+        self.purchaseTicketButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
     }
     
     @objc private func handleClose() {
@@ -130,9 +163,10 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
             self.eventTableView.layer.opacity = 0.0
             self.backButtonLeftAnchor?.constant = 20.0
             self.closeButtonRightAnchor?.constant = 90.0
+            self.purchaseTicketBottomAnchor?.constant = 0.0
             self.view.layoutIfNeeded()
         }) { (_) in
-            print("Animation Completed")
+            print("Showing the Checkout View")
         }
     }
 
@@ -146,9 +180,10 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
             self.eventTableView.layer.opacity = 1.0
             self.backButtonLeftAnchor?.constant = -34.0
             self.closeButtonRightAnchor?.constant = -20.0
+            self.purchaseTicketBottomAnchor?.constant = 90.0
             self.view.layoutIfNeeded()
         }) { (_) in
-            print("Animation Completed")
+            print("Animation Reset")
         }
     }
 }
