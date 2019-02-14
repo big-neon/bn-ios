@@ -4,8 +4,12 @@
 import Foundation
 import UIKit
 import Big_Neon_UI
+import Big_Neon_Core
 
 public class CheckoutView: UIView, UITableViewDelegate, UITableViewDataSource {
+    
+    internal var event: Event?
+    internal var eventDetail: EventDetail?
     
     internal lazy var checkoutTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: UITableView.Style.plain)
@@ -13,7 +17,7 @@ public class CheckoutView: UIView, UITableViewDelegate, UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isScrollEnabled = true
-        tableView.allowsSelection = true
+        tableView.allowsSelection = false
         tableView.separatorColor = UIColor.brandGrey.withAlphaComponent(0.3)
         tableView.showsVerticalScrollIndicator = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -60,9 +64,18 @@ extension CheckoutView {
         switch indexPath.row {
         case 0:
             let quantitySelectionCell: QuantitySelectionCell = tableView.dequeueReusableCell(withIdentifier: QuantitySelectionCell.cellID, for: indexPath) as! QuantitySelectionCell
+            guard let eventDetail = self.eventDetail else {
+                return quantitySelectionCell
+            }
+//            quantitySelectionCell.ticketLimit = eventDetail.ti
             return quantitySelectionCell
         case 1:
             let eventDetailCell: EventCheckoutDetailCell = tableView.dequeueReusableCell(withIdentifier: EventCheckoutDetailCell.cellID, for: indexPath) as! EventCheckoutDetailCell
+            guard let eventDetail = self.eventDetail else {
+                return eventDetailCell
+            }
+            eventDetailCell.eventLabel.text = eventDetail.name
+            eventDetailCell.eventDetailLabel.text = eventDetail.venue.name
             return eventDetailCell
         case 2:
             let eventDetailCell: CardCheckoutCell = tableView.dequeueReusableCell(withIdentifier: CardCheckoutCell.cellID, for: indexPath) as! CardCheckoutCell

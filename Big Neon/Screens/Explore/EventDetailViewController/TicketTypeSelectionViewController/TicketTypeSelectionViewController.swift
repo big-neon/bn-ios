@@ -110,6 +110,9 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
         self.view.addSubview(checkoutView)
         self.view.addSubview(purchaseTicketButton)
         
+        self.checkoutView.event = self.ticketTypeViewModel.event
+        self.checkoutView.eventDetail = self.ticketTypeViewModel.eventDetail
+        
         if self.isInCheckout {
             self.eventTableView.layer.opacity = 0.0
             self.checkoutView.layer.opacity = 1.0
@@ -150,7 +153,7 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
         
         self.checkoutView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         self.checkoutView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        self.checkoutView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 10).isActive = true
+        self.checkoutView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 18).isActive = true
         self.checkoutView.bottomAnchor.constraint(equalTo: purchaseTicketButton.topAnchor).isActive = true
     }
     
