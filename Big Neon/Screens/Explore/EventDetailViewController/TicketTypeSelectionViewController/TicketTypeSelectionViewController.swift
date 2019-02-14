@@ -11,6 +11,7 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
     internal var isInCheckout: Bool = false
     internal var eventDetailsVC: EventDetailViewController?
     internal let ticketTypeViewModel: TicketTypeViewModel = TicketTypeViewModel()
+    internal let generator = UINotificationFeedbackGenerator()
     
     //  Animation Anchors
     internal var backButtonLeftAnchor: NSLayoutConstraint?
@@ -65,19 +66,11 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
         return tableView
     }()
     
-    internal lazy var checkoutTableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: UITableView.Style.plain)
-        tableView.backgroundColor = UIColor.white
-        tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.isScrollEnabled = false
-        tableView.contentInsetAdjustmentBehavior = .never
-        tableView.allowsSelection = true
-        tableView.separatorColor = UIColor.brandGrey.withAlphaComponent(0.3)
-        tableView.showsVerticalScrollIndicator = false
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
+    internal lazy var checkoutView: CheckoutView = {
+        let view = CheckoutView()
+        view.backgroundColor = UIColor.red
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     internal lazy var purchaseTicketButton: UIButton = {
@@ -114,7 +107,16 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
         self.view.addSubview(headerLabel)
         self.view.addSubview(closeButton)
         self.view.addSubview(eventTableView)
+        self.view.addSubview(checkoutView)
         self.view.addSubview(purchaseTicketButton)
+        
+        if self.isInCheckout {
+            self.eventTableView.layer.opacity = 0.0
+            self.checkoutView.layer.opacity = 1.0
+        } else {
+            self.eventTableView.layer.opacity = 1.0
+            self.checkoutView.layer.opacity = 0.0
+        }
         
         eventTableView.register(TicketTypeCell.self, forCellReuseIdentifier: TicketTypeCell.cellID)
         
@@ -145,6 +147,11 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
         self.purchaseTicketBottomAnchor = self.purchaseTicketButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 80)
         self.purchaseTicketBottomAnchor?.isActive = true
         self.purchaseTicketButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
+        
+        self.checkoutView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        self.checkoutView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        self.checkoutView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 10).isActive = true
+        self.checkoutView.bottomAnchor.constraint(equalTo: purchaseTicketButton.topAnchor).isActive = true
     }
     
     @objc private func handleClose() {
@@ -154,13 +161,14 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
     
     internal func moveToCheckout() {
         self.isInCheckout = true
-        
+        self.generator.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.success)
         labelShake(labelToAnimate: self.headerLabel, bounceVelocity: 5.0, springBouncinessEffect: 3.0)
         self.headerLabel.text = "Checkout"
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 1.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
             self.eventTableView.transform = CGAffineTransform.init(scaleX: 0.8, y: 0.8)
             self.eventTableView.layer.opacity = 0.0
+            self.checkoutView.layer.opacity = 1.0
             self.backButtonLeftAnchor?.constant = 20.0
             self.closeButtonRightAnchor?.constant = 90.0
             self.purchaseTicketBottomAnchor?.constant = 0.0
@@ -174,10 +182,11 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
         self.isInCheckout = false
         labelShake(labelToAnimate: self.headerLabel, bounceVelocity: 5.0, springBouncinessEffect: 3.0)
         self.headerLabel.text = "Ticket Type"
-        
+        self.generator.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 1.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.eventTableView.transform = CGAffineTransform.identity
             self.eventTableView.layer.opacity = 1.0
+            self.checkoutView.layer.opacity = 0.0
             self.backButtonLeftAnchor?.constant = -34.0
             self.closeButtonRightAnchor?.constant = -20.0
             self.purchaseTicketBottomAnchor?.constant = 90.0

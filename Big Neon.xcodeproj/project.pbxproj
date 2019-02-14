@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0E27D0CC64E689F1613EDE42 /* Pods_Big_Neon_UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C5FE81A672933D9E6C36212 /* Pods_Big_Neon_UI.framework */; };
 		3AD04FED44A9DBAF9C541482 /* Pods_Big_Neon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78310A7CD778655F8A9FC77B /* Pods_Big_Neon.framework */; };
+		C603E49D221581B20079ED73 /* EventCheckoutDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C603E49C221581B20079ED73 /* EventCheckoutDetailCell.swift */; };
+		C603E49F221583940079ED73 /* CheckoutTotalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C603E49E221583940079ED73 /* CheckoutTotalCell.swift */; };
+		C603E4A1221586040079ED73 /* SubTotalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C603E4A0221586040079ED73 /* SubTotalCell.swift */; };
+		C603E4A3221589B80079ED73 /* CardCheckoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C603E4A2221589B80079ED73 /* CardCheckoutCell.swift */; };
 		C61853B72212F1DB005D6250 /* ExploreViewController.Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853B62212F1DB005D6250 /* ExploreViewController.Search.swift */; };
 		C61853B92212F4C8005D6250 /* TicketTypeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853B82212F4C8005D6250 /* TicketTypeSelectionViewController.swift */; };
 		C61853BC2212F6FA005D6250 /* ThreeQuaterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853BB2212F6FA005D6250 /* ThreeQuaterPresenter.swift */; };
@@ -16,6 +20,7 @@
 		C61853C122140900005D6250 /* TicketTypeViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853C022140900005D6250 /* TicketTypeViewController.TableView.swift */; };
 		C61853C3221430A2005D6250 /* TicketTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853C2221430A2005D6250 /* TicketTypeViewModel.swift */; };
 		C61853C6221444C9005D6250 /* QuantitySelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853C5221444C9005D6250 /* QuantitySelectionCell.swift */; };
+		C61853C822144869005D6250 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853C722144869005D6250 /* CheckoutView.swift */; };
 		C61D51CA220D6458002A70CE /* ExploreNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61D51C9220D6458002A70CE /* ExploreNavBarView.swift */; };
 		C628B15021F7B75800FCBDC9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C628B14F21F7B75800FCBDC9 /* Constants.swift */; };
 		C628B15221F9C89200FCBDC9 /* DatabaseService.Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = C628B15121F9C89200FCBDC9 /* DatabaseService.Token.swift */; };
@@ -179,6 +184,10 @@
 		A647816EE3AC8ECF4BBCAED8 /* Pods-Big Neon UI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon UI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.debug.xcconfig"; sourceTree = "<group>"; };
 		AB883EFDAE7FEF2892885C4C /* Pods-BigNeonCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigNeonCore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BigNeonCore/Pods-BigNeonCore.debug.xcconfig"; sourceTree = "<group>"; };
 		C5C35E86CF6274D746DC2A17 /* Pods-BigNeonCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigNeonCore.release.xcconfig"; path = "Pods/Target Support Files/Pods-BigNeonCore/Pods-BigNeonCore.release.xcconfig"; sourceTree = "<group>"; };
+		C603E49C221581B20079ED73 /* EventCheckoutDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCheckoutDetailCell.swift; sourceTree = "<group>"; };
+		C603E49E221583940079ED73 /* CheckoutTotalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutTotalCell.swift; sourceTree = "<group>"; };
+		C603E4A0221586040079ED73 /* SubTotalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTotalCell.swift; sourceTree = "<group>"; };
+		C603E4A2221589B80079ED73 /* CardCheckoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCheckoutCell.swift; sourceTree = "<group>"; };
 		C61853B62212F1DB005D6250 /* ExploreViewController.Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.Search.swift; sourceTree = "<group>"; };
 		C61853B82212F4C8005D6250 /* TicketTypeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTypeSelectionViewController.swift; sourceTree = "<group>"; };
 		C61853BB2212F6FA005D6250 /* ThreeQuaterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeQuaterPresenter.swift; sourceTree = "<group>"; };
@@ -186,6 +195,7 @@
 		C61853C022140900005D6250 /* TicketTypeViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTypeViewController.TableView.swift; sourceTree = "<group>"; };
 		C61853C2221430A2005D6250 /* TicketTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTypeViewModel.swift; sourceTree = "<group>"; };
 		C61853C5221444C9005D6250 /* QuantitySelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantitySelectionCell.swift; sourceTree = "<group>"; };
+		C61853C722144869005D6250 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
 		C61D51C9220D6458002A70CE /* ExploreNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreNavBarView.swift; sourceTree = "<group>"; };
 		C628B14F21F7B75800FCBDC9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C628B15121F9C89200FCBDC9 /* DatabaseService.Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Token.swift; sourceTree = "<group>"; };
@@ -351,6 +361,7 @@
 				C61853C2221430A2005D6250 /* TicketTypeViewModel.swift */,
 				C61853B82212F4C8005D6250 /* TicketTypeSelectionViewController.swift */,
 				C61853C022140900005D6250 /* TicketTypeViewController.TableView.swift */,
+				C61853C722144869005D6250 /* CheckoutView.swift */,
 			);
 			path = TicketTypeSelectionViewController;
 			sourceTree = "<group>";
@@ -367,6 +378,10 @@
 			isa = PBXGroup;
 			children = (
 				C61853C5221444C9005D6250 /* QuantitySelectionCell.swift */,
+				C603E49C221581B20079ED73 /* EventCheckoutDetailCell.swift */,
+				C603E4A2221589B80079ED73 /* CardCheckoutCell.swift */,
+				C603E4A0221586040079ED73 /* SubTotalCell.swift */,
+				C603E49E221583940079ED73 /* CheckoutTotalCell.swift */,
 			);
 			path = CheckoutCells;
 			sourceTree = "<group>";
@@ -1204,6 +1219,7 @@
 				C698AB1021EDE9BC0073F1FB /* CreateAccountViewController.swift in Sources */,
 				C6EC20A122007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift in Sources */,
 				C683232921FF07FE002342AE /* ProfileEditViewController.swift in Sources */,
+				C61853C822144869005D6250 /* CheckoutView.swift in Sources */,
 				C683232F21FF31F5002342AE /* ProfileEditingTableViewCell.swift in Sources */,
 				C6AFB79C21DD76AE00670AC3 /* ExploreDetailViewModel.swift in Sources */,
 				C683232B21FF28CB002342AE /* ProfileEditViewModel.swift in Sources */,
@@ -1274,16 +1290,20 @@
 				C61853C6221444C9005D6250 /* QuantitySelectionCell.swift in Sources */,
 				C61D51CA220D6458002A70CE /* ExploreNavBarView.swift in Sources */,
 				C6B88D5D21F1C359006394F8 /* NavBarConfig.swift in Sources */,
+				C603E49D221581B20079ED73 /* EventCheckoutDetailCell.swift in Sources */,
 				C6B88D4721F1C217006394F8 /* EventHeaderView.swift in Sources */,
 				C61853BC2212F6FA005D6250 /* ThreeQuaterPresenter.swift in Sources */,
 				C61853BF22140548005D6250 /* TicketTypeCell.swift in Sources */,
+				C603E4A1221586040079ED73 /* SubTotalCell.swift in Sources */,
 				C6B88D4121F1C07C006394F8 /* HotWeekCell.swift in Sources */,
 				C6B88D3B21F1BC9B006394F8 /* SectionHeaderCell.swift in Sources */,
 				C6B88D5121F1C323006394F8 /* EventDateView.swift in Sources */,
 				C6B88D6021F1C359006394F8 /* RoundedCorner.swift in Sources */,
+				C603E49F221583940079ED73 /* CheckoutTotalCell.swift in Sources */,
 				C6B88D3621F1BC75006394F8 /* ProfileTableCell.swift in Sources */,
 				C6B88D4F21F1C323006394F8 /* GradientBrandButton.swift in Sources */,
 				C6B88D5F21F1C359006394F8 /* ValidEmailAddress.swift in Sources */,
+				C603E4A3221589B80079ED73 /* CardCheckoutCell.swift in Sources */,
 				C6C45D6C21F5CEC000D2F602 /* Feedbacksystem.swift in Sources */,
 				C6B88D3C21F1BC9B006394F8 /* ExploreUpcomingCell.swift in Sources */,
 				C6B88D3821F1BC8D006394F8 /* Colours.swift in Sources */,

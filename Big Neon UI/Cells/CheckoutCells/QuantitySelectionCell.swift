@@ -29,7 +29,7 @@ final public class QuantitySelectionCell: UITableViewCell {
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: UITableViewCell.CellStyle.default, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = UIColor.white
-        self.accessoryType = .disclosureIndicator
+        self.accessoryType = .none
         self.configureView()
     }
     
