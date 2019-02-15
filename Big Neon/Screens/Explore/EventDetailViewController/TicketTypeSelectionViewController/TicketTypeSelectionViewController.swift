@@ -59,7 +59,7 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
         tableView.dataSource = self
         tableView.isScrollEnabled = false 
         tableView.contentInsetAdjustmentBehavior = .never
-        tableView.allowsSelection = true
+        tableView.allowsSelection = false
         tableView.separatorColor = UIColor.brandGrey.withAlphaComponent(0.3)
         tableView.showsVerticalScrollIndicator = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
