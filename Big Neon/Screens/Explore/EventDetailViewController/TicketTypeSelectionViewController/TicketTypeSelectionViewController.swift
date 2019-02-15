@@ -16,7 +16,6 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
     //  Animation Anchors
     internal var backButtonLeftAnchor: NSLayoutConstraint?
     internal var closeButtonRightAnchor: NSLayoutConstraint?
-    internal var purchaseTicketBottomAnchor: NSLayoutConstraint?
     
     internal let headerLabel: BrandTitleLabel = {
         let label = BrandTitleLabel()
@@ -52,12 +51,12 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
     }()
     
     internal lazy var eventTableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: UITableView.Style.plain)
+        let tableView = UITableView(frame: .zero, style: UITableView.Style.grouped)
         tableView.backgroundColor = UIColor.white
         tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.isScrollEnabled = false 
+        tableView.isScrollEnabled = true
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.allowsSelection = false
         tableView.separatorColor = UIColor.brandGrey.withAlphaComponent(0.3)
@@ -77,9 +76,9 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
         let button = UIButton()
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: UIFont.Weight.semibold)
         button.backgroundColor = UIColor.brandPrimary
-//        button.addTarget(self, action: #selector(handleSelectTypeType), for: UIControl.Event.touchUpInside)
+        button.addTarget(self, action: #selector(moveToCheckout), for: UIControl.Event.touchUpInside)
         button.setTitleColor(UIColor.white, for: UIControl.State.normal)
-        button.setTitle("Purchase Ticket", for: UIControl.State.normal)
+        button.setTitle("Done", for: UIControl.State.normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -105,10 +104,10 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
     private func configureView() {
         self.view.addSubview(backButtonButton)
         self.view.addSubview(headerLabel)
+        self.view.addSubview(purchaseTicketButton)
         self.view.addSubview(closeButton)
         self.view.addSubview(eventTableView)
         self.view.addSubview(checkoutView)
-        self.view.addSubview(purchaseTicketButton)
         
         self.checkoutView.event = self.ticketTypeViewModel.event
         self.checkoutView.eventDetail = self.ticketTypeViewModel.eventDetail
@@ -140,16 +139,15 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
         self.closeButton.heightAnchor.constraint(equalToConstant: 34).isActive = true
         self.closeButton.widthAnchor.constraint(equalToConstant: 34).isActive = true
         
+        self.purchaseTicketButton.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        self.purchaseTicketButton.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        self.purchaseTicketButton.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        self.purchaseTicketButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
+        
         self.eventTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         self.eventTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         self.eventTableView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 22).isActive = true
-        self.eventTableView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        
-        self.purchaseTicketButton.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        self.purchaseTicketButton.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        self.purchaseTicketBottomAnchor = self.purchaseTicketButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 80)
-        self.purchaseTicketBottomAnchor?.isActive = true
-        self.purchaseTicketButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
+        self.eventTableView.bottomAnchor.constraint(equalTo: purchaseTicketButton.topAnchor).isActive = true
         
         self.checkoutView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         self.checkoutView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
@@ -162,7 +160,7 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
         self.dismiss(animated: true, completion: nil)
     }
     
-    internal func moveToCheckout() {
+    @objc private func moveToCheckout() {
         self.isInCheckout = true
         self.generator.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.success)
         labelShake(labelToAnimate: self.headerLabel, bounceVelocity: 5.0, springBouncinessEffect: 3.0)
@@ -174,10 +172,11 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
             self.checkoutView.layer.opacity = 1.0
             self.backButtonLeftAnchor?.constant = 20.0
             self.closeButtonRightAnchor?.constant = 90.0
-            self.purchaseTicketBottomAnchor?.constant = 0.0
+            self.purchaseTicketButton.setTitle("Purchase Ticket", for: UIControl.State.normal)
             self.view.layoutIfNeeded()
         }) { (_) in
-            print("Showing the Checkout View")
+            self.purchaseTicketButton.removeTarget(self, action: #selector(self.moveToCheckout), for: UIControl.Event.touchUpInside)
+            self.purchaseTicketButton.addTarget(self, action: #selector(self.confirmPurchase), for: UIControl.Event.touchUpInside)
         }
     }
 
@@ -187,15 +186,21 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
         self.headerLabel.text = "Ticket Type"
         self.generator.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 1.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
+            self.purchaseTicketButton.setTitle("Done", for: UIControl.State.normal)
             self.eventTableView.transform = CGAffineTransform.identity
             self.eventTableView.layer.opacity = 1.0
             self.checkoutView.layer.opacity = 0.0
             self.backButtonLeftAnchor?.constant = -34.0
             self.closeButtonRightAnchor?.constant = -20.0
-            self.purchaseTicketBottomAnchor?.constant = 90.0
+            
             self.view.layoutIfNeeded()
         }) { (_) in
-            print("Animation Reset")
+            self.purchaseTicketButton.removeTarget(self, action: #selector(self.confirmPurchase), for: UIControl.Event.touchUpInside)
+            self.purchaseTicketButton.addTarget(self, action: #selector(self.moveToCheckout), for: UIControl.Event.touchUpInside)
         }
+    }
+    
+    @objc private func confirmPurchase() {
+        
     }
 }
