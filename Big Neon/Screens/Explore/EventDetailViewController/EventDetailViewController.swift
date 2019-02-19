@@ -2,12 +2,15 @@
 
 import UIKit
 import Big_Neon_UI
+import PresenterKit
 
-internal class EventDetailViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource  {
+internal class EventDetailViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate  {
     
     internal var eventHeaderView: EventHeaderView = EventHeaderView()
     internal var getTicketButtonBottomAnchor: NSLayoutConstraint?
-    private let kTableViewHeaderHeight: CGFloat = 460.0
+    private let kTableViewHeaderHeight: CGFloat = 440.0
+    private var ticketIsSelected: Bool = false
+    internal var modalActive: Bool = false
     
     internal lazy var eventTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: UITableView.Style.plain)
@@ -24,12 +27,13 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
         return tableView
     }()
     
-    
-    public lazy var getButton: UIButton = {
+    internal lazy var getButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: UIFont.Weight.semibold)
         button.backgroundColor = UIColor.brandPrimary
+        button.addTarget(self, action: #selector(handleSelectTypeType), for: UIControl.Event.touchUpInside)
         button.setTitleColor(UIColor.white, for: UIControl.State.normal)
+        button.setTitle("Get Ticket", for: UIControl.State.normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -57,6 +61,7 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
     
     private func configureNavBar() {
         self.navigationClearBar()
+        self.navigationItem.largeTitleDisplayMode = .never
         self.navigationController?.navigationBar.tintColor = UIColor(white: 1.0, alpha: 1.0)
         self.navigationController?.navigationBar.barTintColor = UIColor(white: 1.0, alpha: 0.0)
         self.navigationController?.navigationBar.backgroundColor = UIColor(white: 1.0, alpha: 0.0)
@@ -97,38 +102,38 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
     
     private func configureTableView() {
         self.view.addSubview(eventTableView)
-        
         eventTableView.register(EventDetailCell.self, forCellReuseIdentifier: EventDetailCell.cellID)
         eventTableView.register(EventTimeAndLocationCell.self, forCellReuseIdentifier: EventTimeAndLocationCell.cellID)
-        
+    
         self.eventTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         self.eventTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         self.eventTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         self.eventTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
-    
+
     private func configureButtonView() {
         self.view.addSubview(getButton)
-        
         self.getButton.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         self.getButton.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        self.getTicketButtonBottomAnchor = self.getButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 90)
+        self.getTicketButtonBottomAnchor = self.getButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 80)
         self.getTicketButtonBottomAnchor?.isActive = true
         self.getButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
     }
     
     @objc private func animateGetTicketButton() {
-        self.getButton.setTitle("", for: UIControl.State.normal)
-        UIView.animate(withDuration: 0.4, animations: {
-            self.getTicketButtonBottomAnchor?.constant = 0
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.getTicketButtonBottomAnchor?.constant = 0.0
             self.view.layoutIfNeeded()
-        }) { (completed) in
-            if self.eventDetailViewModel.eventDetail?.isExternal == false && self.eventDetailViewModel.eventDetail?.externalURL == nil {
-                self.getButton.setTitle("Get Ticket", for: UIControl.State.normal)
-            } else {
-                self.getButton.setTitle("Get Tickets via Web", for: UIControl.State.normal)
-            }
-        }
+        }, completion: nil)
+    }
+    
+    @objc private func handleSelectTypeType() {
+        modalActive = true
+        let ticketTypeVC = TicketTypeViewController()
+        ticketTypeVC.eventDetailsVC = self
+        ticketTypeVC.ticketTypeViewModel.eventDetail = self.eventDetailViewModel.eventDetail
+        ticketTypeVC.modalTransitionStyle = .coverVertical
+        self.present(ticketTypeVC, type: .custom(self), animated: true)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -151,5 +156,17 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
             self.navigationController?.navigationBar.backgroundColor = UIColor(white: 1.0, alpha: offSet)
             UIApplication.shared.statusBarView?.backgroundColor = UIColor(white: 1.0, alpha: offSet)
         }
+    }
+    
+    // MARK: UIViewControllerTransitioningDelegate
+    internal func presentationController(forPresented presented: UIViewController,
+                                         presenting: UIViewController?,
+                                         source: UIViewController) -> UIPresentationController? {
+        return ThreeQuaterModalPresentationController(presentedViewController: presented, presenting: presenting)
+    }
+    
+    // MARK: UIPopoverPresentationControllerDelegate
+    internal func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
 }
