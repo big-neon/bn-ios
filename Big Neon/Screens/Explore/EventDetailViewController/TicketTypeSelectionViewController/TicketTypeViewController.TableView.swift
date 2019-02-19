@@ -4,6 +4,7 @@ import Foundation
 import UIKit
 import PresenterKit
 import Big_Neon_UI
+import Big_Neon_Core
 
 extension TicketTypeViewController {
     
@@ -24,13 +25,8 @@ extension TicketTypeViewController {
             return ticketTypeCell
         }
         let ticketType = ticketTypes[indexPath.row]
-        ticketTypeCell.priceLabel.text = ticketType.ticketPricing?.priceInCents.dollarString
-        if ticketType.name == ticketType.ticketPricing?.name {
-            ticketTypeCell.ticketTypeLabel.text = ticketType.name
-        } else {
-            ticketTypeCell.ticketTypeLabel.text = ticketType.ticketPricing?.name
-        }
-        ticketTypeCell.ticketTypeDescriptionLabel.text = ticketType.ticketPricing?.status
+        ticketTypeCell.ticketType  = ticketType
+        ticketTypeCell.ticketTypeStatus   = ticketType.status
         return ticketTypeCell
     }
     

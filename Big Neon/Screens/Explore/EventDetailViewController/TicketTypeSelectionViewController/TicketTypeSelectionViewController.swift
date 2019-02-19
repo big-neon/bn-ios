@@ -86,6 +86,7 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        print(self.ticketTypeViewModel.eventDetail!.id)
         self.configureView()
     }
     

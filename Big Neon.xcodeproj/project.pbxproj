@@ -108,6 +108,7 @@
 		C6C45D6A21F5CDCD00D2F602 /* PopAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C45D6921F5CDCD00D2F602 /* PopAnimations.swift */; };
 		C6C45D6C21F5CEC000D2F602 /* Feedbacksystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C45D6B21F5CEC000D2F602 /* Feedbacksystem.swift */; };
 		C6C49DA52209A77E0087AE16 /* DollarString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C49DA42209A77E0087AE16 /* DollarString.swift */; };
+		C6CEC8A9221ADBCE00F7329D /* TicketTypeStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CEC8A8221ADBCE00F7329D /* TicketTypeStatus.swift */; };
 		C6D2413421EF53B000FC3E41 /* NamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2413321EF53B000FC3E41 /* NamesViewController.swift */; };
 		C6D37B3521F1CD8200C616D0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D37B3421F1CD8200C616D0 /* API.swift */; };
 		C6EC209A220063DE00BD10DD /* ProfileImageUploadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC2099220063DE00BD10DD /* ProfileImageUploadCell.swift */; };
@@ -288,6 +289,7 @@
 		C6C45D6921F5CDCD00D2F602 /* PopAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimations.swift; sourceTree = "<group>"; };
 		C6C45D6B21F5CEC000D2F602 /* Feedbacksystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedbacksystem.swift; sourceTree = "<group>"; };
 		C6C49DA42209A77E0087AE16 /* DollarString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarString.swift; sourceTree = "<group>"; };
+		C6CEC8A8221ADBCE00F7329D /* TicketTypeStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTypeStatus.swift; sourceTree = "<group>"; };
 		C6D2413321EF53B000FC3E41 /* NamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesViewController.swift; sourceTree = "<group>"; };
 		C6D37B3421F1CD8200C616D0 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C6EC2099220063DE00BD10DD /* ProfileImageUploadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageUploadCell.swift; sourceTree = "<group>"; };
@@ -743,6 +745,7 @@
 		C6B88D6421F1C7E3006394F8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C6CEC8A7221ADB7800F7329D /* TicketTypeStatus */,
 				C644BA2D21F70693003C188B /* Error */,
 				C6B88D7621F1C8E0006394F8 /* Event */,
 				C6B88D7721F1C924006394F8 /* EventDetail */,
@@ -828,6 +831,14 @@
 				C6B88D8821F1C94D006394F8 /* TicketType.swift */,
 			);
 			path = EventDetail;
+			sourceTree = "<group>";
+		};
+		C6CEC8A7221ADB7800F7329D /* TicketTypeStatus */ = {
+			isa = PBXGroup;
+			children = (
+				C6CEC8A8221ADBCE00F7329D /* TicketTypeStatus.swift */,
+			);
+			path = TicketTypeStatus;
 			sourceTree = "<group>";
 		};
 		C6EC209F220079ED00BD10DD /* ProfileEditCells */ = {
@@ -1271,6 +1282,7 @@
 				C644BA2F21F7069D003C188B /* BasicError.swift in Sources */,
 				C6B88D7921F1C932006394F8 /* Tokens.swift in Sources */,
 				C628B15621FAD76000FCBDC9 /* User.swift in Sources */,
+				C6CEC8A9221ADBCE00F7329D /* TicketTypeStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,21 +1,84 @@
 
 import Foundation
 import UIKit
+import Big_Neon_Core
+
+public protocol TicketTypeDelegate {
+    func addTicketType(ticketType: TicketType, numberOfTickets: Int)
+}
 
 final public class TicketTypeCell: UITableViewCell {
     
+    public var delegate: TicketTypeDelegate?
+    
     public static let cellID = "TicketTypeCellID"
     
-    public var ticketLimit: Int?
-    
-    public var numberOfTickets: Int = 1 {
+    public var numberOfTickets: Int = 0 {
         didSet {
-            if numberOfTickets == 1 {
-                self.numberLabel.text = "\(numberOfTickets)"
+            self.numberLabel.text = "\(numberOfTickets)"
+            
+            if numberOfTickets == 0 {
+                self.subtractTicketButton.setImage(UIImage(named: "ic_subtract_disabled"), for: UIControl.State.normal)
+            }
+            return
+        }
+    }
+    
+    public var ticketType: TicketType? {
+        didSet {
+            guard let ticketType = self.ticketType else {
                 return
             }
-            self.numberLabel.text = "\(numberOfTickets)"
-            return
+            
+            if ticketType.name != ticketType.ticketPricing?.name {
+                self.ticketTypeLabel.text = ticketType.name
+            } else {
+                self.ticketTypeLabel.text = ticketType.ticketPricing?.name
+            }
+            
+        }
+    }
+    
+    public var ticketTypeStatus: String? {
+        didSet {
+            guard let status = self.ticketTypeStatus else {
+                return
+            }
+            
+            switch status {
+            case "NoActivePricing":
+                self.priceLabel.text = "$0"
+                self.ticketTypeDescriptionLabel.text = "Not Available"
+                self.numberLabel.isHidden           = true
+                self.addTicketButton.isHidden       = true
+                self.subtractTicketButton.isHidden  = true
+                return
+            case "Cancelled":
+                self.priceLabel.text = "$0"
+                self.ticketTypeDescriptionLabel.text = "Cancelled"
+                self.numberLabel.isHidden           = true
+                self.addTicketButton.isHidden       = true
+                self.subtractTicketButton.isHidden  = true
+                return
+            case "Published":
+                self.priceLabel.text = self.ticketType!.ticketPricing?.priceInCents.dollarString
+                self.numberLabel.isHidden           = false
+                self.addTicketButton.isHidden       = false
+                self.subtractTicketButton.isHidden  = false
+                
+                self.ticketTypeDescriptionLabel.text = self.ticketType!.ticketPricing?.status
+                return
+            case "SoldOut":
+                self.priceLabel.text = self.ticketType!.ticketPricing?.priceInCents.dollarString
+                self.ticketTypeDescriptionLabel.text = "SOLD OUT"
+                self.numberLabel.isHidden           = true
+                self.addTicketButton.isHidden       = true
+                self.subtractTicketButton.isHidden  = true
+                return
+            default:
+                print("Default Ticket Type")
+            }
+            
         }
     }
     
@@ -45,7 +108,7 @@ final public class TicketTypeCell: UITableViewCell {
     
     public let numberLabel: UILabel = {
         let label = UILabel()
-        label.text = "1"
+        label.text = "0"
         label.textColor = UIColor.brandBlack
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 30, weight: UIFont.Weight.semibold)
@@ -64,11 +127,10 @@ final public class TicketTypeCell: UITableViewCell {
     internal lazy var subtractTicketButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(handleSubtract), for: UIControl.Event.touchUpInside)
-        button.setImage(UIImage(named: "ic_subtract"), for: UIControl.State.normal)
+        button.setImage(UIImage(named: "ic_subtract_disabled"), for: UIControl.State.normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
     
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: UITableViewCell.CellStyle.default, reuseIdentifier: reuseIdentifier)
@@ -89,10 +151,10 @@ final public class TicketTypeCell: UITableViewCell {
         self.priceLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         self.priceLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
         self.priceLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        self.priceLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        self.priceLabel.widthAnchor.constraint(equalToConstant: 70).isActive = true
         
         self.ticketTypeLabel.leftAnchor.constraint(equalTo: priceLabel.rightAnchor, constant: 8).isActive = true
-        self.ticketTypeLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -80).isActive = true
+        self.ticketTypeLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -150).isActive = true
         self.ticketTypeLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
         self.ticketTypeLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
 
@@ -109,7 +171,7 @@ final public class TicketTypeCell: UITableViewCell {
         self.numberLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         self.numberLabel.rightAnchor.constraint(equalTo: addTicketButton.leftAnchor, constant: -16).isActive = true
         self.numberLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        self.numberLabel.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        self.numberLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
         
         self.subtractTicketButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         self.subtractTicketButton.rightAnchor.constraint(equalTo: numberLabel.leftAnchor, constant: -16).isActive = true
@@ -119,8 +181,10 @@ final public class TicketTypeCell: UITableViewCell {
     
     @objc private func handleAdd() {
         labelShake(labelToAnimate: numberLabel, bounceVelocity: 10.0, springBouncinessEffect: 15.0)
-        if let limit = self.ticketLimit {
-            if numberOfTickets > limit {
+        self.subtractTicketButton.setImage(UIImage(named: "ic_subtract"), for: UIControl.State.normal)
+        if let limit = self.ticketType?.limitPerPerson {
+            if numberOfTickets == limit {
+                self.addTicketButton.setImage(UIImage(named: "ic_add_disabled"), for: UIControl.State.normal)
                 return
             }
         }
@@ -129,7 +193,10 @@ final public class TicketTypeCell: UITableViewCell {
     
     @objc private func handleSubtract() {
         labelShake(labelToAnimate: numberLabel, bounceVelocity: 6.0, springBouncinessEffect: 9.0)
-        if numberOfTickets == 1 {
+        self.addTicketButton.isEnabled = true
+        self.addTicketButton.setImage(UIImage(named: "ic_add"), for: UIControl.State.normal)
+        if numberOfTickets == 0 {
+            self.subtractTicketButton.setImage(UIImage(named: "ic_subtract_disabled"), for: UIControl.State.normal)
             return
         }
         self.numberOfTickets -= 1
