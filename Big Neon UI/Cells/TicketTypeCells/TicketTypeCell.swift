@@ -151,15 +151,15 @@ final public class TicketTypeCell: UITableViewCell {
         self.priceLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         self.priceLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
         self.priceLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        self.priceLabel.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        self.priceLabel.widthAnchor.constraint(equalToConstant: 60).isActive = true
         
-        self.ticketTypeLabel.leftAnchor.constraint(equalTo: priceLabel.rightAnchor, constant: 8).isActive = true
-        self.ticketTypeLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -150).isActive = true
+        self.ticketTypeLabel.leftAnchor.constraint(equalTo: priceLabel.rightAnchor, constant: 4).isActive = true
+        self.ticketTypeLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -120).isActive = true
         self.ticketTypeLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
         self.ticketTypeLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
 
         self.ticketTypeDescriptionLabel.topAnchor.constraint(equalTo: ticketTypeLabel.bottomAnchor, constant: 10).isActive = true
-        self.ticketTypeDescriptionLabel.leftAnchor.constraint(equalTo: priceLabel.rightAnchor, constant: 8).isActive = true
+        self.ticketTypeDescriptionLabel.leftAnchor.constraint(equalTo: priceLabel.rightAnchor, constant: 4).isActive = true
         self.ticketTypeDescriptionLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
         self.ticketTypeDescriptionLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
         
@@ -169,12 +169,12 @@ final public class TicketTypeCell: UITableViewCell {
         self.addTicketButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
         
         self.numberLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        self.numberLabel.rightAnchor.constraint(equalTo: addTicketButton.leftAnchor, constant: -16).isActive = true
+        self.numberLabel.rightAnchor.constraint(equalTo: addTicketButton.leftAnchor, constant: -10).isActive = true
         self.numberLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
         self.numberLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
         
         self.subtractTicketButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        self.subtractTicketButton.rightAnchor.constraint(equalTo: numberLabel.leftAnchor, constant: -16).isActive = true
+        self.subtractTicketButton.rightAnchor.constraint(equalTo: numberLabel.leftAnchor, constant: -10).isActive = true
         self.subtractTicketButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
         self.subtractTicketButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
     }
