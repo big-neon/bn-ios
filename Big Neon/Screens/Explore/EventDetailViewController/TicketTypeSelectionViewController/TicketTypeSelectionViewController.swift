@@ -4,8 +4,9 @@ import Foundation
 import UIKit
 import PresenterKit
 import Big_Neon_UI
+import Big_Neon_Core
 
-final class TicketTypeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class TicketTypeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TicketTypeDelegate {
     
     internal var modalActive: Bool = false
     internal var isInCheckout: Bool = false
@@ -159,6 +160,10 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
     @objc private func handleClose() {
         buttonBounceAnimation(buttonPressed: closeButton)
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func addTicketType(ticketType: TicketType, numberOfTickets: Int) {
+        
     }
     
     @objc private func moveToCheckout() {

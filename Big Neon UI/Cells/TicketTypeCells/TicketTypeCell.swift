@@ -189,6 +189,7 @@ final public class TicketTypeCell: UITableViewCell {
             }
         }
         self.numberOfTickets += 1
+        self.delegate?.addTicketType(ticketType: self.ticketType!, numberOfTickets: self.numberOfTickets)
     }
     
     @objc private func handleSubtract() {
@@ -200,6 +201,7 @@ final public class TicketTypeCell: UITableViewCell {
             return
         }
         self.numberOfTickets -= 1
+        self.delegate?.addTicketType(ticketType: self.ticketType!, numberOfTickets: self.numberOfTickets)
     }
     
     required public init?(coder aDecoder: NSCoder) {
