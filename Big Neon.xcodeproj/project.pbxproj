@@ -43,6 +43,8 @@
 		C64B0ADA21D1240700386000 /* TicketsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AD921D1240700386000 /* TicketsViewModel.swift */; };
 		C64B0ADC21D1276100386000 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ADB21D1276100386000 /* ProfileViewController.swift */; };
 		C64B0AE121D1294600386000 /* ProfileViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */; };
+		C655BD37221D634400EB1FDD /* Checkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = C655BD36221D634400EB1FDD /* Checkins.swift */; };
+		C655BD39221D69FD00EB1FDD /* DatabaseService.Checkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = C655BD38221D69FD00EB1FDD /* DatabaseService.Checkins.swift */; };
 		C6562F522203286E0020B6D3 /* UtilityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6562F512203286E0020B6D3 /* UtilityConstants.swift */; };
 		C665DFE521E87CB800DFB955 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */; };
 		C66C0BA521E337D40066CD0F /* splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C66C0BA421E337D40066CD0F /* splash.mp4 */; };
@@ -223,6 +225,8 @@
 		C64B0AD921D1240700386000 /* TicketsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsViewModel.swift; sourceTree = "<group>"; };
 		C64B0ADB21D1276100386000 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.TableView.swift; sourceTree = "<group>"; };
+		C655BD36221D634400EB1FDD /* Checkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkins.swift; sourceTree = "<group>"; };
+		C655BD38221D69FD00EB1FDD /* DatabaseService.Checkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Checkins.swift; sourceTree = "<group>"; };
 		C6562F512203286E0020B6D3 /* UtilityConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityConstants.swift; sourceTree = "<group>"; };
 		C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C66C0BA421E337D40066CD0F /* splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.mp4; sourceTree = "<group>"; };
@@ -518,6 +522,14 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		C655BD35221D633400EB1FDD /* Checkins */ = {
+			isa = PBXGroup;
+			children = (
+				C655BD36221D634400EB1FDD /* Checkins.swift */,
+			);
+			path = Checkins;
+			sourceTree = "<group>";
+		};
 		C665DFE321E87CAC00DFB955 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -745,6 +757,7 @@
 		C6B88D6421F1C7E3006394F8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C655BD35221D633400EB1FDD /* Checkins */,
 				C6CEC8A7221ADB7800F7329D /* TicketTypeStatus */,
 				C644BA2D21F70693003C188B /* Error */,
 				C6B88D7621F1C8E0006394F8 /* Event */,
@@ -789,6 +802,7 @@
 				C6B88D6C21F1C88A006394F8 /* DatabaseService.Authentication.swift */,
 				C644BA3321F70C19003C188B /* DatabaseService.Users.swift */,
 				C6B88D6D21F1C88A006394F8 /* DatabaseService.Events.swift */,
+				C655BD38221D69FD00EB1FDD /* DatabaseService.Checkins.swift */,
 			);
 			path = DatabaseService;
 			sourceTree = "<group>";
@@ -1277,8 +1291,10 @@
 				C6B88D6721F1C862006394F8 /* DateConfig.swift in Sources */,
 				C6B88D7F21F1C93A006394F8 /* Paging.swift in Sources */,
 				C6B88D8A21F1C94E006394F8 /* PerformingArtist.swift in Sources */,
+				C655BD37221D634400EB1FDD /* Checkins.swift in Sources */,
 				C6B88D7221F1C890006394F8 /* BusinessService.swift in Sources */,
 				C6D37B3521F1CD8200C616D0 /* API.swift in Sources */,
+				C655BD39221D69FD00EB1FDD /* DatabaseService.Checkins.swift in Sources */,
 				C644BA2F21F7069D003C188B /* BasicError.swift in Sources */,
 				C6B88D7921F1C932006394F8 /* Tokens.swift in Sources */,
 				C628B15621FAD76000FCBDC9 /* User.swift in Sources */,

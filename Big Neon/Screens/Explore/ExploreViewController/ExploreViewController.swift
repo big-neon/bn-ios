@@ -11,11 +11,6 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
         refresher.addTarget(self, action: #selector(reloadEvents), for: .valueChanged)
         return refresher
     }()
-    
-    internal lazy var navBarTitleView: ExploreNavigationView = {
-        let refresher = ExploreNavigationView()
-        return refresher
-    }()
 
     internal lazy var exploreCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -51,9 +46,10 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.white
         self.configureNavBar()
         self.configureSearch()
-        self.fetchEvents()
+        self.fetchCheckins()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,9 +57,9 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
         self.navigationNoLineBar()
     }
 
-    private func fetchEvents() {
+    private func fetchCheckins() {
         self.loadingView.startAnimating()
-        self.exploreViewModel.fetchEvents { (completed) in
+        self.exploreViewModel.fetchCheckins { (completed) in
             DispatchQueue.main.async {
                 self.loadingView.stopAnimating()
                 if completed == false {
@@ -76,7 +72,7 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
     }
     
     @objc private func reloadEvents() {
-        self.exploreViewModel.fetchEvents { (completed) in
+        self.exploreViewModel.fetchCheckins { (completed) in
             DispatchQueue.main.async {
                 self.loadingView.stopAnimating()
                 self.refresher.endRefreshing()
@@ -97,12 +93,11 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
     }
 
     private func configureNavBar() {
-        self.navigationNoLineBar()
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.largeTitleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.brandBlack,
              NSAttributedString.Key.font: UIFont.systemFont(ofSize: 32, weight: UIFont.Weight.bold)]
-        self.navigationItem.title = "Explore"
+        self.navigationItem.title = "Doorman"
         self.navigationItem.largeTitleDisplayMode = .automatic
     }
 

@@ -237,7 +237,7 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     }
     
     @objc private func handleShowHome() {
-        let tabBarVC = TabBarController()
+        let tabBarVC = UINavigationController(rootViewController: ExploreViewController())
         tabBarVC.modalTransitionStyle = .flipHorizontal
         self.present(tabBarVC, animated: false, completion: nil)
     }

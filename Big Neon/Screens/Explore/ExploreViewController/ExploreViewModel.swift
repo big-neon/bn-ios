@@ -6,6 +6,7 @@ import SwiftKeychainWrapper
 final class ExploreViewModel {
     
     internal var events: Events?
+    internal var checkins: Checkins?
     
     internal func fetchEvents(completion: @escaping(Bool) -> Void) {
         self.events = nil
@@ -22,6 +23,27 @@ final class ExploreViewModel {
             print(events)
             self.events = events
 
+            completion(true)
+            return
+        }
+        
+    }
+    
+    internal func fetchCheckins(completion: @escaping(Bool) -> Void) {
+        self.checkins = nil
+        BusinessService.shared.database.fetchCheckins { (error, checkins) in
+            if error != nil {
+                completion(false)
+                return
+            }
+            
+            guard let checkins = checkins else {
+                completion(false)
+                return
+            }
+            print(checkins)
+            self.checkins = checkins
+            
             completion(true)
             return
         }

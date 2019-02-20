@@ -48,8 +48,8 @@ final class SplashViewController: UIViewController {
     }
     
     private func navigateHome() {
-        let tabBarVC = TabBarController()
-        self.present(tabBarVC, animated: false, completion: nil)
+        let exploreVC = UINavigationController(rootViewController: ExploreViewController())
+        self.present(exploreVC, animated: false, completion: nil)
     }
     
 }
