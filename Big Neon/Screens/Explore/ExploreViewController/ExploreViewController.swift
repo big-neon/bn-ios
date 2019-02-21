@@ -59,7 +59,7 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
 
     private func fetchCheckins() {
         self.loadingView.startAnimating()
-        self.exploreViewModel.fetchCheckins { (completed) in
+        self.exploreViewModel.configureAccessToken { (completed) in
             DispatchQueue.main.async {
                 self.loadingView.stopAnimating()
                 if completed == false {
@@ -72,7 +72,7 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
     }
     
     @objc private func reloadEvents() {
-        self.exploreViewModel.fetchCheckins { (completed) in
+        self.exploreViewModel.configureAccessToken { (completed) in
             DispatchQueue.main.async {
                 self.loadingView.stopAnimating()
                 self.refresher.endRefreshing()
@@ -89,7 +89,7 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
     }
     
     private func configureSearch() {
-        self.navigationItem.searchController = searchController
+//        self.navigationItem.searchController = searchController
     }
 
     private func configureNavBar() {

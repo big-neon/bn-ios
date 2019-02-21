@@ -29,6 +29,39 @@ final class ExploreViewModel {
         
     }
     
+    internal func configureAccessToken(completion: @escaping(Bool) -> Void) {
+        
+        BusinessService.shared.database.tokenIsExpired { (expired) in
+            if expired == true {
+                //  Fetch New Token
+                self.fetchNewAccessToken(completion: { (completed) in
+                    completion(completed)
+                    return
+                })
+            } else {
+                self.fetchCheckins(completion: { (completed) in
+                    completion(completed)
+                    return
+                })
+            }
+        }
+    }
+    
+    internal func fetchNewAccessToken(completion: @escaping(Bool) -> Void) {
+        BusinessService.shared.database.fetchNewAccessToken { (error, tokens) in
+            guard let tokens = tokens else {
+                completion(false)
+                return
+            }
+            
+            self.saveTokensInKeychain(token: tokens)
+            self.fetchCheckins(completion: { (completed) in
+                completion(completed)
+                return
+            })
+        }
+    }
+    
     internal func fetchCheckins(completion: @escaping(Bool) -> Void) {
         self.checkins = nil
         BusinessService.shared.database.fetchCheckins { (error, checkins) in
@@ -54,6 +87,12 @@ final class ExploreViewModel {
         BusinessService.shared.database.logout { (completed) in
             completion(completed)
         }
+    }
+    
+    private func saveTokensInKeychain(token: Tokens) {
+        KeychainWrapper.standard.set(token.accessToken, forKey: "accessToken")
+        KeychainWrapper.standard.set(token.refreshToken, forKey: "refreshToken")
+        return
     }
     
 }

@@ -11,13 +11,12 @@ extension DatabaseService {
         
         let APIURL = APIService.getCheckins
         let accessToken = self.fetchAcessToken()
-        let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNTc1NzIwNC0yODM5LTQ1NTMtYWViMy02MjY3ODU4OTA4NTciLCJpc3MiOiJiZy1zYW1wbGUtaXNzdWVyIiwiZXhwIjoxNTUwNzM4NjQ3fQ.UnQwth0g7-oKK2tDlQHINXvi1Whd6jYBS_eT3cM1a3g"
         
         AF.request(APIURL,
                    method: HTTPMethod.get,
                    parameters: nil,
                    encoding: JSONEncoding.default,
-                   headers: [APIParameterKeys.authorization :"Bearer \(token)"])
+                   headers: [APIParameterKeys.authorization :"Bearer \(accessToken!)"])
             .validate(statusCode: 200..<300)
             .response { (response) in
                 
