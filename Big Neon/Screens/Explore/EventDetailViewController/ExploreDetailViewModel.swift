@@ -23,7 +23,7 @@ final class ExploreDetailViewModel {
             completion(false)
             return
         }
-        BusinessService.shared.database.fetchEvent(withID: event.id) { (error, eventFetched) in
+        BusinessService.shared.database.fetchEvent(withID: event.id!) { (error, eventFetched) in
             if error != nil {
                 print(error?.localizedDescription)
                 completion(false)

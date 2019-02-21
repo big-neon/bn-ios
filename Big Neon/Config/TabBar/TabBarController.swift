@@ -7,7 +7,7 @@ import Big_Neon_Core
 final class TabBarController: UITabBarController {
     
     fileprivate var navigationControllers: [UINavigationController] = []
-    fileprivate let tabBarTitles = ["Explore", "My Tickets", "Profile"]
+    fileprivate let tabBarTitles = ["Doorperson", "My Tickets", "Profile"]
     fileprivate var currentNavigationIndex: Int = 0
     
     private let exploreController  = UINavigationController(rootViewController: ExploreViewController())
@@ -50,7 +50,6 @@ final class TabBarController: UITabBarController {
         
         let tabBarItemImageTickets = UIImage(named: "ic_tab_ticket")?.withRenderingMode(.alwaysTemplate)
         ticketsController.tabBarItem = UITabBarItem(title: tabBarTitles[1], image: tabBarItemImageTickets, selectedImage: tabBarItemImageTickets)
-        
         
         let profileTabBarItemImage = UIImage(named: "ic_tab_profile")?.withRenderingMode(.alwaysTemplate)
         profileController.tabBarItem = UITabBarItem(title: tabBarTitles[2], image: profileTabBarItemImage, selectedImage: profileTabBarItemImage)

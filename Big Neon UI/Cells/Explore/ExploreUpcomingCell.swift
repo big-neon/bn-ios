@@ -21,6 +21,7 @@ public class UpcomingEventCell: UICollectionViewCell {
     
     public lazy var favouriteButton: UIButton = {
         let button = UIButton()
+        button.isHidden = true
         button.setImage(UIImage(named: "ic_favourite_inactive"), for: UIControl.State.normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

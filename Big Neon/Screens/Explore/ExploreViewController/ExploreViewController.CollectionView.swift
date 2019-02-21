@@ -11,24 +11,19 @@ extension ExploreViewController {
     }
     
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            guard let total = self.exploreViewModel.events?.paging.total else {
-                return 0
-            }
-            
-            guard let limit = self.exploreViewModel.events?.paging.limit else {
-                return 0
-            }
-            
-            if total > limit {
-                return limit
-            }
-            
-            return total
-        default:
-            return 1
+        guard let total = self.exploreViewModel.events?.paging.total else {
+            return 0
         }
+        
+        guard let limit = self.exploreViewModel.events?.paging.limit else {
+            return 0
+        }
+        
+        if total > limit {
+            return limit
+        }
+        
+        return total
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -42,10 +37,10 @@ extension ExploreViewController {
             
             //  Event Show
             eventCell.eventNameLabel.text = event.name
-            let eventImageURL: URL = URL(string: event.compressImage(url:event.promoImageURL))!;
+            let eventImageURL: URL = URL(string: event.compressImage(url:event.promoImageURL!))!;
             eventCell.eventImageView.pin_setImage(from: eventImageURL, placeholderImage: nil)
             
-            //  External Event
+            // External Event
             if event.isExternal == true || (event.minTicketPrice == nil && event.maxTicketPrice == nil) {
                 eventCell.priceView.isHidden = true
             } else {
@@ -54,21 +49,21 @@ extension ExploreViewController {
             }
             
             //  Time Zone
-            if event.venue.timezone != nil {
-                let eventStart = event.eventStart
-                guard let eventDate = DateConfig.dateFromString(stringDate: eventStart) else {
-                    eventCell.eventDateLabel.text = "-"
-                    return eventCell
-                }
-                eventCell.eventDateLabel.text = DateConfig.eventDate(date: eventDate)
-            } else {
-                let eventStart = event.eventStart
-                guard let eventDate = DateConfig.dateFromUTCString(stringDate: eventStart) else {
-                    eventCell.eventDateLabel.text = "-"
-                    return eventCell
-                }
-                eventCell.eventDateLabel.text = DateConfig.localTime(date: eventDate)
-            }
+//            if event.venue!.timezone != nil {
+//                let eventStart = event.eventStart
+//                guard let eventDate = DateConfig.dateFromString(stringDate: eventStart!) else {
+//                    eventCell.eventDateLabel.text = "-"
+//                    return eventCell
+//                }
+//                eventCell.eventDateLabel.text = DateConfig.eventDate(date: eventDate)
+//            } else {
+//                let eventStart = event.eventStart
+//                guard let eventDate = DateConfig.dateFromUTCString(stringDate: eventStart!) else {
+//                    eventCell.eventDateLabel.text = "-"
+//                    return eventCell
+//                }
+//                eventCell.eventDateLabel.text = DateConfig.localTime(date: eventDate)
+//            }
 
             return eventCell
         default:
@@ -91,12 +86,12 @@ extension ExploreViewController {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        if indexPath.section == 0 {
-            guard let events = self.exploreViewModel.events?.data else {
-                return
-            }
-            self.showEvent(event: events[indexPath.item])
-        }
+//        if indexPath.section == 0 {
+//            guard let events = self.exploreViewModel.events?.data else {
+//                return
+//            }
+//            self.showEvent(event: events[indexPath.item])
+//        }
         
     }
     
