@@ -7,7 +7,7 @@ import Big_Neon_Core
 final class TabBarController: UITabBarController {
     
     fileprivate var navigationControllers: [UINavigationController] = []
-    fileprivate let tabBarTitles = ["Doorman", "My Tickets", "Profile"]
+    fileprivate let tabBarTitles = ["Doorperson", "My Tickets", "Profile"]
     fileprivate var currentNavigationIndex: Int = 0
     
     private let exploreController  = UINavigationController(rootViewController: ExploreViewController())

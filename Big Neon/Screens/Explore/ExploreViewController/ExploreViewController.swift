@@ -97,7 +97,7 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
         self.navigationController?.navigationBar.largeTitleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.brandBlack,
              NSAttributedString.Key.font: UIFont.systemFont(ofSize: 32, weight: UIFont.Weight.bold)]
-        self.navigationItem.title = "Doorman"
+        self.navigationItem.title = "Doorperson"
         self.navigationItem.largeTitleDisplayMode = .automatic
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.done, target: self, action: #selector(handleLogout))
     }

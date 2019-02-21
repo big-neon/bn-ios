@@ -6,7 +6,7 @@ import Alamofire
 
 extension DatabaseService {
     
-    public func fetchCheckins(completion: @escaping (Error?, Checkins?) -> Void) {
+    public func fetchCheckins(completion: @escaping (Error?, Events?) -> Void) {
         
         
         let APIURL = APIService.getCheckins
@@ -20,8 +20,6 @@ extension DatabaseService {
             .validate(statusCode: 200..<300)
             .response { (response) in
                 
-                print(response)
-                
                 guard response.result.isSuccess else {
                     completion(response.result.error, nil)
                     return
@@ -34,7 +32,7 @@ extension DatabaseService {
                 
                 do {
                     let decoder = JSONDecoder()
-                    let checkins = try decoder.decode(Checkins.self, from: data!)
+                    let checkins = try decoder.decode(Events.self, from: data!)
                     completion(nil, checkins)
                     return
                 } catch let error as NSError {

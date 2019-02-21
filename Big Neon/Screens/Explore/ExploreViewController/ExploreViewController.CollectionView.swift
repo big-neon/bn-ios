@@ -13,11 +13,11 @@ extension ExploreViewController {
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
-            guard let total = self.exploreViewModel.checkins?.paging.total else {
+            guard let total = self.exploreViewModel.events?.paging.total else {
                 return 0
             }
             
-            guard let limit = self.exploreViewModel.checkins?.paging.limit else {
+            guard let limit = self.exploreViewModel.events?.paging.limit else {
                 return 0
             }
             
@@ -35,35 +35,35 @@ extension ExploreViewController {
         switch indexPath.section {
         case 0:
             let eventCell: UpcomingEventCell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingEventCell.cellID, for: indexPath) as! UpcomingEventCell
-            guard let events = self.exploreViewModel.checkins?.data else {
+            guard let events = self.exploreViewModel.events?.data else {
                return eventCell
             }
             let event = events[indexPath.item]
             
             //  Event Show
             eventCell.eventNameLabel.text = event.name
-            let eventImageURL: URL = URL(string: event.compressImage(url:event.promoImageURL))!;
+            let eventImageURL: URL = URL(string: event.compressImage(url:event.promoImageURL!))!;
             eventCell.eventImageView.pin_setImage(from: eventImageURL, placeholderImage: nil)
             
-            //  External Event
-//            if event.isExternal == true || (event.minTicketPrice == nil && event.maxTicketPrice == nil) {
-//                eventCell.priceView.isHidden = true
-//            } else {
-//                eventCell.priceView.isHidden = false
-//                eventCell.priceView.setTitle(event.priceTag(), for: UIControl.State.normal)
-//            }
+            // External Event
+            if event.isExternal == true || (event.minTicketPrice == nil && event.maxTicketPrice == nil) {
+                eventCell.priceView.isHidden = true
+            } else {
+                eventCell.priceView.isHidden = false
+                eventCell.priceView.setTitle(event.priceTag(), for: UIControl.State.normal)
+            }
             
             //  Time Zone
-//            if event.venue.timezone != nil {
+//            if event.venue!.timezone != nil {
 //                let eventStart = event.eventStart
-//                guard let eventDate = DateConfig.dateFromString(stringDate: eventStart) else {
+//                guard let eventDate = DateConfig.dateFromString(stringDate: eventStart!) else {
 //                    eventCell.eventDateLabel.text = "-"
 //                    return eventCell
 //                }
 //                eventCell.eventDateLabel.text = DateConfig.eventDate(date: eventDate)
 //            } else {
 //                let eventStart = event.eventStart
-//                guard let eventDate = DateConfig.dateFromUTCString(stringDate: eventStart) else {
+//                guard let eventDate = DateConfig.dateFromUTCString(stringDate: eventStart!) else {
 //                    eventCell.eventDateLabel.text = "-"
 //                    return eventCell
 //                }
