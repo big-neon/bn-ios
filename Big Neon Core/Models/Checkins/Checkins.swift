@@ -7,39 +7,39 @@ public enum EventType: String, Codable {
     case music          = "Music"
 }
 
-enum Status: String, Codable {
+public enum Status: String, Codable {
     case published = "Published"
 }
 
 
 public struct Checkins: Codable {
-    let data: [Checkin]
-    let paging: Paging
+    public let data: [Checkin]
+    public let paging: Paging
 }
 
 public struct Checkin: Codable {
-    let id, name, organizationID, venueID: String
-    let createdAt, eventStart, doorTime: String
-    let status: Status
-    let publishDate: String
-    let redeemDate: String?
-    let feeInCents: Int
-    let promoImageURL: String
-    let additionalInfo: String?
-    let ageLimit: Int
-    let topLineInfo, cancelledAt: String?
-    let updatedAt: String
-    let videoURL: String?
-    let isExternal: Bool
-    let externalURL: String?
-    let overrideStatus: String?
-    let clientFeeInCents, companyFeeInCents: Int
-    let settlementAmountInCents: Int?
-    let eventEnd: String
-    let sendgridListID: String?
-    let eventType: EventType
-    let coverImageURL: String?
-    let privateAccessCode: String?
+    public let id, name, organizationID, venueID: String
+    public let createdAt, eventStart, doorTime: String
+    public let status: Status
+    public let publishDate: String
+    public let redeemDate: String?
+    public let feeInCents: Int
+    public let promoImageURL: String
+    public let additionalInfo: String?
+    public let ageLimit: Int
+    public let topLineInfo, cancelledAt: String?
+    public let updatedAt: String
+    public let videoURL: String?
+    public let isExternal: Bool
+    public let externalURL: String?
+    public let overrideStatus: String?
+    public let clientFeeInCents, companyFeeInCents: Int
+    public let settlementAmountInCents: Int?
+    public let eventEnd: String
+    public let sendgridListID: String?
+    public let eventType: EventType
+    public let coverImageURL: String?
+    public let privateAccessCode: String?
     
     enum CodingKeys: String, CodingKey {
         case id, name
@@ -71,4 +71,31 @@ public struct Checkin: Codable {
         case coverImageURL = "cover_image_url"
         case privateAccessCode = "private_access_code"
     }
+    
+    public func compressImage(url: String, quality: String = "low") -> String {
+        //  Only manipulate urls served from cloudinary
+        if !url.contains("res.cloudinary.com") {
+            return url;
+        }
+        
+        let compressedUrl = url.replacingOccurrences(of: "/image/upload", with: "/image/upload/f_auto/q_auto:"+quality);
+        return compressedUrl;
+    }
+    
+//    public func priceTag() -> String {
+//        if self.minTicketPrice == nil && self.maxTicketPrice == nil {
+//            return ""
+//        }
+//
+//        let minDollars = self.minTicketPrice!
+//        let maxDollars = self.maxTicketPrice!
+//        var text = "$\(minDollars / 100) - $\(maxDollars / 100)";
+//
+//        if self.minTicketPrice == self.maxTicketPrice {
+//            text = "$\(minDollars / 100)"
+//        }
+//
+//        return text
+//    }
+
 }

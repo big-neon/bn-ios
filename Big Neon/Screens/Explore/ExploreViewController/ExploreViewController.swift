@@ -99,6 +99,7 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
              NSAttributedString.Key.font: UIFont.systemFont(ofSize: 32, weight: UIFont.Weight.bold)]
         self.navigationItem.title = "Doorman"
         self.navigationItem.largeTitleDisplayMode = .automatic
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.done, target: self, action: #selector(handleLogout))
     }
 
     private func configureCollectionView() {
@@ -119,6 +120,15 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
         eventDetailVC.eventDetailViewModel.event = event
         eventDetailVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(eventDetailVC, animated: true)
+    }
+    
+    @objc private func handleLogout() {
+        self.exploreViewModel.handleLogout { (_) in
+            let welcomeVC = UINavigationController(rootViewController: WelcomeViewController())
+            welcomeVC.modalTransitionStyle = .flipHorizontal
+            self.present(welcomeVC, animated: true, completion: nil)
+            return
+        }
     }
 
 }

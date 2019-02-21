@@ -74,5 +74,4 @@ public struct Event: Codable {
         return text
     }
 
-
 }
