@@ -11,24 +11,19 @@ extension ExploreViewController {
     }
     
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            guard let total = self.exploreViewModel.events?.paging.total else {
-                return 0
-            }
-            
-            guard let limit = self.exploreViewModel.events?.paging.limit else {
-                return 0
-            }
-            
-            if total > limit {
-                return limit
-            }
-            
-            return total
-        default:
-            return 1
+        guard let total = self.exploreViewModel.events?.paging.total else {
+            return 0
         }
+        
+        guard let limit = self.exploreViewModel.events?.paging.limit else {
+            return 0
+        }
+        
+        if total > limit {
+            return limit
+        }
+        
+        return total
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
