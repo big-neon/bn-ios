@@ -13,6 +13,7 @@ target 'Big Neon Core' do
   	# Pods for Big Neon
 	target 'Big Neon' do
 		inherit! :search_paths
+        pod 'QRCodeReader.swift'
         pod 'PresenterKit'
         pod 'pop'
         pod 'PWSwitch'
