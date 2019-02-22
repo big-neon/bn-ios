@@ -71,7 +71,6 @@ extension DoorPersonViewController {
             sectionLabelCell.sectionHeaderLabel.text = "Upcoming"
             return sectionLabelCell
         }
-        
     }
     
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -86,6 +85,7 @@ extension DoorPersonViewController {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        self.showScanner()
 //        if indexPath.section == 0 {
 //            guard let events = self.exploreViewModel.events?.data else {
 //                return

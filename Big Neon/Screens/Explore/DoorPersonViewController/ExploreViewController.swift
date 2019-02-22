@@ -43,6 +43,19 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         search.searchResultsUpdater = self
         return search
     }()
+    
+    internal lazy var userProfileImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = UIColor.brandGrey
+        imageView.layer.cornerRadius = 15.0
+        imageView.isUserInteractionEnabled = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.borderColor = UIColor.brandGrey.cgColor
+        imageView.layer.borderWidth = 2.0
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,7 +111,12 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
              NSAttributedString.Key.font: UIFont.systemFont(ofSize: 32, weight: UIFont.Weight.bold)]
         self.navigationItem.title = "Doorperson"
         self.navigationItem.largeTitleDisplayMode = .automatic
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.done, target: self, action: #selector(handleLogout))
+        
+        //  Profile Picture
+        userProfileImageView.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
+        userProfileImageView.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: userProfileImageView)
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.done, target: self, action: #selector(handleLogout))
     }
 
     private func configureCollectionView() {
@@ -128,6 +146,11 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
             self.present(welcomeVC, animated: true, completion: nil)
             return
         }
+    }
+    
+    internal func showScanner() {
+        let scannerNavVC = UINavigationController(rootViewController: TicketScannerViewController())
+        self.present(scannerNavVC, animated: true, completion: nil)
     }
 
 }

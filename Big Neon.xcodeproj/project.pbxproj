@@ -31,7 +31,7 @@
 		C62BC78B21CCC3FB00830A5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78A21CCC3FB00830A5F /* Assets.xcassets */; };
 		C62BC78E21CCC3FB00830A5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78C21CCC3FB00830A5F /* LaunchScreen.storyboard */; };
 		C62BC79921CCC3FB00830A5F /* Big_NeonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */; };
-		C63D1A172220057400152E83 /* TicketSnnnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D1A162220057400152E83 /* TicketSnnnerViewController.swift */; };
+		C63D1A172220057400152E83 /* TicketScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D1A162220057400152E83 /* TicketScannerViewController.swift */; };
 		C64124C621F266B100233797 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64124C521F266B100233797 /* LoginViewController.swift */; };
 		C64124CA21F26D1800233797 /* AuthTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64124C921F26D1800233797 /* AuthTextView.swift */; };
 		C644BA2F21F7069D003C188B /* BasicError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C644BA2E21F7069D003C188B /* BasicError.swift */; };
@@ -213,7 +213,7 @@
 		C62BC79421CCC3FB00830A5F /* Big NeonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Big NeonTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Big_NeonTests.swift; sourceTree = "<group>"; };
 		C62BC79A21CCC3FB00830A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C63D1A162220057400152E83 /* TicketSnnnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketSnnnerViewController.swift; sourceTree = "<group>"; };
+		C63D1A162220057400152E83 /* TicketScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketScannerViewController.swift; sourceTree = "<group>"; };
 		C64124C521F266B100233797 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C64124C921F26D1800233797 /* AuthTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextView.swift; sourceTree = "<group>"; };
 		C644BA2E21F7069D003C188B /* BasicError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicError.swift; sourceTree = "<group>"; };
@@ -444,7 +444,7 @@
 		C63D1A152220054700152E83 /* TicketScannerViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C63D1A162220057400152E83 /* TicketSnnnerViewController.swift */,
+				C63D1A162220057400152E83 /* TicketScannerViewController.swift */,
 			);
 			path = TicketScannerViewController;
 			sourceTree = "<group>";
@@ -506,8 +506,8 @@
 		C64B0AD421D123C300386000 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				C63D1A152220054700152E83 /* TicketScannerViewController */,
 				C6AFB78C21DD655900670AC3 /* DoorPersonViewController */,
+				C63D1A152220054700152E83 /* TicketScannerViewController */,
 				C6AFB78D21DD656500670AC3 /* EventDetailViewController */,
 			);
 			path = Explore;
@@ -1238,7 +1238,7 @@
 				C694D25A21D0BFE600B2AE07 /* ApplicationRouting.swift in Sources */,
 				C6B2AC5E21E4DD3100F996AA /* BaseViewController.swift in Sources */,
 				C6AFB78B21DD579600670AC3 /* ProfileViewModel.swift in Sources */,
-				C63D1A172220057400152E83 /* TicketSnnnerViewController.swift in Sources */,
+				C63D1A172220057400152E83 /* TicketScannerViewController.swift in Sources */,
 				C665DFE521E87CB800DFB955 /* WelcomeViewController.swift in Sources */,
 				C64124C621F266B100233797 /* LoginViewController.swift in Sources */,
 				C6EC209C2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift in Sources */,
