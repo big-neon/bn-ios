@@ -48,7 +48,7 @@ final class SplashViewController: UIViewController {
     }
     
     private func navigateHome() {
-        let exploreVC = UINavigationController(rootViewController: ExploreViewController())
+        let exploreVC = UINavigationController(rootViewController: DoorPersonViewController())
         self.present(exploreVC, animated: false, completion: nil)
     }
     

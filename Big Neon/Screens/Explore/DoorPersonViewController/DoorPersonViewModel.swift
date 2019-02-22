@@ -3,7 +3,7 @@ import Foundation
 import Big_Neon_Core
 import SwiftKeychainWrapper
 
-final class ExploreViewModel {
+final class DoorPersonViewModel {
     
     internal var events: Events?
     

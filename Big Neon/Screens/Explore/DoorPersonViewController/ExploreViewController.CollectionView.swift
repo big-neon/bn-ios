@@ -4,18 +4,18 @@ import UIKit
 import Big_Neon_UI
 import Big_Neon_Core
 
-extension ExploreViewController {
+extension DoorPersonViewController {
     
     internal func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let total = self.exploreViewModel.events?.paging.total else {
+        guard let total = self.doorPersonViemodel.events?.paging.total else {
             return 0
         }
         
-        guard let limit = self.exploreViewModel.events?.paging.limit else {
+        guard let limit = self.doorPersonViemodel.events?.paging.limit else {
             return 0
         }
         
@@ -30,7 +30,7 @@ extension ExploreViewController {
         switch indexPath.section {
         case 0:
             let eventCell: UpcomingEventCell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingEventCell.cellID, for: indexPath) as! UpcomingEventCell
-            guard let events = self.exploreViewModel.events?.data else {
+            guard let events = self.doorPersonViemodel.events?.data else {
                return eventCell
             }
             let event = events[indexPath.item]

@@ -3,7 +3,7 @@ import Big_Neon_UI
 
 class BaseViewController: UIViewController  {
     
-    internal let exploreViewModel: ExploreViewModel = ExploreViewModel()
+    internal let doorPersonViemodel: DoorPersonViewModel = DoorPersonViewModel()
     internal var eventDetailViewModel: ExploreDetailViewModel = ExploreDetailViewModel()
     internal let ticketsViewModel: TicketsViewModel = TicketsViewModel()
     

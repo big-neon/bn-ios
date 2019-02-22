@@ -10,7 +10,7 @@ final class TabBarController: UITabBarController {
     fileprivate let tabBarTitles = ["Doorperson", "My Tickets", "Profile"]
     fileprivate var currentNavigationIndex: Int = 0
     
-    private let exploreController  = UINavigationController(rootViewController: ExploreViewController())
+    private let doorPersonController  = UINavigationController(rootViewController: DoorPersonViewController())
     private let ticketsController   = UINavigationController(rootViewController: TicketsViewController())
     private let profileController  = UINavigationController(rootViewController: ProfileViewController())
     
@@ -46,7 +46,7 @@ final class TabBarController: UITabBarController {
         flowLayout.minimumLineSpacing = 16.0
         
         let tabBarItemImageExplore = UIImage(named: "ic_tab_explore")?.withRenderingMode(.alwaysTemplate)
-        exploreController.tabBarItem = UITabBarItem(title: tabBarTitles[0], image: tabBarItemImageExplore, selectedImage: tabBarItemImageExplore)
+        doorPersonController.tabBarItem = UITabBarItem(title: tabBarTitles[0], image: tabBarItemImageExplore, selectedImage: tabBarItemImageExplore)
         
         let tabBarItemImageTickets = UIImage(named: "ic_tab_ticket")?.withRenderingMode(.alwaysTemplate)
         ticketsController.tabBarItem = UITabBarItem(title: tabBarTitles[1], image: tabBarItemImageTickets, selectedImage: tabBarItemImageTickets)
@@ -54,7 +54,7 @@ final class TabBarController: UITabBarController {
         let profileTabBarItemImage = UIImage(named: "ic_tab_profile")?.withRenderingMode(.alwaysTemplate)
         profileController.tabBarItem = UITabBarItem(title: tabBarTitles[2], image: profileTabBarItemImage, selectedImage: profileTabBarItemImage)
         
-        self.viewControllers = [exploreController, ticketsController, profileController]
+        self.viewControllers = [doorPersonController, ticketsController, profileController]
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

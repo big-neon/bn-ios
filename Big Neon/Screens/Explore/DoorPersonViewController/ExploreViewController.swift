@@ -3,7 +3,7 @@ import UIKit
 import Big_Neon_UI
 import Big_Neon_Core
 
-final class ExploreViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
+final class DoorPersonViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
     
     internal lazy var refresher: UIRefreshControl = {
         let refresher = UIRefreshControl()
@@ -47,19 +47,18 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
-        self.configureNavBar()
         self.configureSearch()
         self.fetchCheckins()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.navigationNoLineBar()
+        self.configureNavBar()
     }
 
     private func fetchCheckins() {
         self.loadingView.startAnimating()
-        self.exploreViewModel.configureAccessToken { (completed) in
+        self.doorPersonViemodel.configureAccessToken { (completed) in
             DispatchQueue.main.async {
                 self.loadingView.stopAnimating()
                 if completed == false {
@@ -72,7 +71,7 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
     }
     
     @objc private func reloadEvents() {
-        self.exploreViewModel.configureAccessToken { (completed) in
+        self.doorPersonViemodel.configureAccessToken { (completed) in
             DispatchQueue.main.async {
                 self.loadingView.stopAnimating()
                 self.refresher.endRefreshing()
@@ -123,7 +122,7 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
     }
     
     @objc private func handleLogout() {
-        self.exploreViewModel.handleLogout { (_) in
+        self.doorPersonViemodel.handleLogout { (_) in
             let welcomeVC = UINavigationController(rootViewController: WelcomeViewController())
             welcomeVC.modalTransitionStyle = .flipHorizontal
             self.present(welcomeVC, animated: true, completion: nil)
