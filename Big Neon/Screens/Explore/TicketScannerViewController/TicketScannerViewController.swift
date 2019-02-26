@@ -5,16 +5,13 @@ import Big_Neon_UI
 import AVFoundation
 import QRCodeReader
 
-final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsDelegate {
+final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsDelegate, QRCodeReaderViewControllerDelegate {
+    
+    
     
     internal var captureSession = AVCaptureSession()
     internal var videoPreviewLayer:AVCaptureVideoPreviewLayer?
-    
-    internal var guestListView: GuestListView = {
-        let view =  GuestListView()
-//        view.
-        return view
-    }()
+    internal var guestListTopAnchor: NSLayoutConstraint?
     
     internal let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
     
@@ -32,15 +29,30 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
                                       AVMetadataObject.ObjectType.interleaved2of5,
                                       AVMetadataObject.ObjectType.qr]
     
+//    internal lazy var qrReaderView: QRCodeReaderView  = {
+//        let view = QRCodeReaderView(frame: self.view.frame)
+////        view.cameraView = videoPreviewLayer
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        return view
+//    }()
+    
+    internal var guestListView: GuestListView = {
+        let view =  GuestListView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.red
         self.configureNavBar()
-        self.configureScanner()
+        self.configureCameraSession()
         self.configureCameraView()
+        self.configureScan()
+        self.configureGuestView()
     }
     
-    private func configureScanner() {
+    private func configureCameraSession() {
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back)
         
         guard let captureDevice = deviceDiscoverySession.devices.first else {
@@ -63,37 +75,14 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         }
     }
     
-    private func configureView() {
-        self.addSubview(eventImageView)
-        self.addSubview(eventNameLabel)
-        self.addSubview(eventDateLabel)
-        self.addSubview(favouriteButton)
-        self.addSubview(priceView)
+    private func configureGuestView() {
+        self.view.addSubview(guestListView)
         
-        eventImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        eventImageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        self.eventImageTopAnchor = eventImageView.topAnchor.constraint(equalTo: self.topAnchor)
-        self.eventImageTopAnchor?.isActive = true
-        eventImageView.heightAnchor.constraint(equalToConstant: 162.0).isActive = true
-        
-        favouriteButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15.0).isActive = true
-        favouriteButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 15.0).isActive = true
-        favouriteButton.heightAnchor.constraint(equalToConstant: 35.0).isActive = true
-        favouriteButton.widthAnchor.constraint(equalToConstant: 35.0).isActive = true
-        
-        eventNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        eventNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        eventNameLabel.topAnchor.constraint(equalTo: eventImageView.bottomAnchor, constant: 12).isActive = true
-        eventNameLabel.heightAnchor.constraint(equalToConstant: 16.0).isActive = true
-        
-        eventDateLabel.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        eventDateLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        eventDateLabel.topAnchor.constraint(equalTo: eventNameLabel.bottomAnchor, constant: 8).isActive = true
-        eventDateLabel.heightAnchor.constraint(equalToConstant: 14.0).isActive = true
-        
-        priceView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15.0).isActive = true
-        priceView.bottomAnchor.constraint(equalTo: eventImageView.bottomAnchor, constant: -15.0).isActive = true
-        priceView.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
+        guestListView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        guestListView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        self.guestListTopAnchor = guestListView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UIScreen.main.bounds.height - 80.0)
+        self.guestListTopAnchor?.isActive = true
+        guestListView.heightAnchor.constraint(equalToConstant: 560.0).isActive = true
     }
     
     private func configureCameraView() {
@@ -115,5 +104,53 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         self.dismiss(animated: true, completion: nil)
     }
     
+    private func configureScan() {
+        let reader = QRCodeReader(metadataObjectTypes: supportedCodeTypes, captureDevicePosition: AVCaptureDevice.Position.back)
+        self.videoPreviewLayer = reader.previewLayer
+//        reader.de
+//        reader.delegate = self
+        
+        // Or by using the closure pattern
+//        readerVC.completionBlock = { (result: QRCodeReaderResult?) in
+//            print(result)
+//        }
+        
+        // Presents the readerVC as modal form sheet
+//        readerVC.modalPresentationStyle = .formSheet
+        
+//        present(readerVC, animated: true, completion: nil)
+    }
+    
+    func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
+        reader.stopScanning()
+    }
+    
+    func readerDidCancel(_ reader: QRCodeReaderViewController) {
+        reader.stopScanning()
+    }
+}
+
+extension TicketScannerViewController {
+    
+    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+        
+        if metadataObjects.count == 0 {
+            print("No QR code is detected")
+            return
+        }
+        
+        let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
+        
+        if supportedCodeTypes.contains(metadataObj.type) {
+            // If the found metadata is equal to the QR code metadata (or barcode) then update the status label's text and set the bounds
+            let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
+            qrCodeFrameView?.frame = barCodeObject!.bounds
+            
+            if metadataObj.stringValue != nil {
+                launchApp(decodedURL: metadataObj.stringValue!)
+                messageLabel.text = metadataObj.stringValue
+            }
+        }
+    }
 }
 

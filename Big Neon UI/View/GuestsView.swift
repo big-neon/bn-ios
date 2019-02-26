@@ -9,7 +9,6 @@ public class GuestListView: UIView {
         let label = UILabel()
         label.text = "All Guests"
         label.textColor = UIColor.brandBlack
-        label.textAlignment = .center
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.bold)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -19,16 +18,12 @@ public class GuestListView: UIView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white
-        self.layer.cornerRadius = 6.0
+        self.layer.cornerRadius = 12.0
         self.layer.shadowColor = UIColor.brandBlack.cgColor
-        self.layer.shadowOffset = CGSize(width: 0.0, height: 9.0)
+        self.layer.shadowOffset = CGSize(width: 0.0, height: -4.0)
         self.layer.shadowRadius = 16.0
         self.layer.shadowOpacity = 0.32
         self.configureView()
-    }
-    
-    public override func layoutSubviews() {
-        
     }
     
     private func configureView() {
