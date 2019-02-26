@@ -9,6 +9,24 @@ public class UpcomingEventCell: UICollectionViewCell {
     
     public var eventImageTopAnchor: NSLayoutConstraint?
     
+    override public var isHighlighted: Bool {
+        didSet {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.transform = self.isHighlighted ? CGAffineTransform(scaleX: 0.9, y: 0.9) : CGAffineTransform.identity
+                self.layoutIfNeeded()
+            }, completion: nil)
+        }
+    }
+    
+    override public var isSelected: Bool {
+        didSet {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.transform = self.isSelected ? CGAffineTransform(scaleX: 0.9, y: 0.9) : CGAffineTransform.identity
+                self.layoutIfNeeded()
+            }, completion: nil)
+        }
+    }
+    
     public let eventImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.brandBackground

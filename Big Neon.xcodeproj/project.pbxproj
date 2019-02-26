@@ -22,6 +22,7 @@
 		C61853C6221444C9005D6250 /* QuantitySelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853C5221444C9005D6250 /* QuantitySelectionCell.swift */; };
 		C61853C822144869005D6250 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853C722144869005D6250 /* CheckoutView.swift */; };
 		C61D51CA220D6458002A70CE /* ExploreNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61D51C9220D6458002A70CE /* ExploreNavBarView.swift */; };
+		C626B6CA22254A9A00EB3150 /* GuestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C626B6C922254A9A00EB3150 /* GuestsView.swift */; };
 		C628B15021F7B75800FCBDC9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C628B14F21F7B75800FCBDC9 /* Constants.swift */; };
 		C628B15221F9C89200FCBDC9 /* DatabaseService.Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = C628B15121F9C89200FCBDC9 /* DatabaseService.Token.swift */; };
 		C628B15421F9E35700FCBDC9 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C628B15321F9E35700FCBDC9 /* SplashViewModel.swift */; };
@@ -200,6 +201,7 @@
 		C61853C5221444C9005D6250 /* QuantitySelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantitySelectionCell.swift; sourceTree = "<group>"; };
 		C61853C722144869005D6250 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
 		C61D51C9220D6458002A70CE /* ExploreNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreNavBarView.swift; sourceTree = "<group>"; };
+		C626B6C922254A9A00EB3150 /* GuestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestsView.swift; sourceTree = "<group>"; };
 		C628B14F21F7B75800FCBDC9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C628B15121F9C89200FCBDC9 /* DatabaseService.Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Token.swift; sourceTree = "<group>"; };
 		C628B15321F9E35700FCBDC9 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
@@ -743,6 +745,7 @@
 			children = (
 				C6B88D6121F1C372006394F8 /* TicketQRCodeView.swift */,
 				C61D51C9220D6458002A70CE /* ExploreNavBarView.swift */,
+				C626B6C922254A9A00EB3150 /* GuestsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1337,6 +1340,7 @@
 				C6C45D6C21F5CEC000D2F602 /* Feedbacksystem.swift in Sources */,
 				C6B88D3C21F1BC9B006394F8 /* ExploreUpcomingCell.swift in Sources */,
 				C6B88D3821F1BC8D006394F8 /* Colours.swift in Sources */,
+				C626B6CA22254A9A00EB3150 /* GuestsView.swift in Sources */,
 				C6B88D5021F1C323006394F8 /* EventPriceView.swift in Sources */,
 				C6B88D5221F1C323006394F8 /* InterestedButtonView.swift in Sources */,
 				C6B88D4621F1C217006394F8 /* EventTimeAndLocationCell.swift in Sources */,

@@ -9,7 +9,12 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
     
     internal var captureSession = AVCaptureSession()
     internal var videoPreviewLayer:AVCaptureVideoPreviewLayer?
-//    internal var qrCodeFrameView:UIView?
+    
+    internal var guestListView: GuestListView = {
+        let view =  GuestListView()
+//        view.
+        return view
+    }()
     
     internal let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
     
@@ -31,12 +36,11 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.red
         self.configureNavBar()
-        
-//        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-//        videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-//        videoPreviewLayer?.frame = view.layer.bounds
-//        view.layer.addSublayer(videoPreviewLayer!)
-        
+        self.configureScanner()
+        self.configureCameraView()
+    }
+    
+    private func configureScanner() {
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back)
         
         guard let captureDevice = deviceDiscoverySession.devices.first else {
@@ -45,65 +49,61 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         }
         
         do {
-            // Get an instance of the AVCaptureDeviceInput class using the previous device object.
             let input = try AVCaptureDeviceInput(device: captureDevice)
-            
-            // Set the input device on the capture session.
             captureSession.addInput(input)
-            
-            // Initialize a AVCaptureMetadataOutput object and set it as the output device to the capture session.
             let captureMetadataOutput = AVCaptureMetadataOutput()
             captureSession.addOutput(captureMetadataOutput)
-            
-            // Set delegate and use the default dispatch queue to execute the call back
             captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             captureMetadataOutput.metadataObjectTypes = supportedCodeTypes
             //            captureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
             
         } catch {
-            // If any error occurs, simply print it out and don't continue any more.
             print(error)
             return
         }
+    }
+    
+    private func configureView() {
+        self.addSubview(eventImageView)
+        self.addSubview(eventNameLabel)
+        self.addSubview(eventDateLabel)
+        self.addSubview(favouriteButton)
+        self.addSubview(priceView)
         
-        // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
+        eventImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        eventImageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        self.eventImageTopAnchor = eventImageView.topAnchor.constraint(equalTo: self.topAnchor)
+        self.eventImageTopAnchor?.isActive = true
+        eventImageView.heightAnchor.constraint(equalToConstant: 162.0).isActive = true
+        
+        favouriteButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15.0).isActive = true
+        favouriteButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 15.0).isActive = true
+        favouriteButton.heightAnchor.constraint(equalToConstant: 35.0).isActive = true
+        favouriteButton.widthAnchor.constraint(equalToConstant: 35.0).isActive = true
+        
+        eventNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        eventNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        eventNameLabel.topAnchor.constraint(equalTo: eventImageView.bottomAnchor, constant: 12).isActive = true
+        eventNameLabel.heightAnchor.constraint(equalToConstant: 16.0).isActive = true
+        
+        eventDateLabel.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        eventDateLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        eventDateLabel.topAnchor.constraint(equalTo: eventNameLabel.bottomAnchor, constant: 8).isActive = true
+        eventDateLabel.heightAnchor.constraint(equalToConstant: 14.0).isActive = true
+        
+        priceView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15.0).isActive = true
+        priceView.bottomAnchor.constraint(equalTo: eventImageView.bottomAnchor, constant: -15.0).isActive = true
+        priceView.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
+    }
+    
+    private func configureCameraView() {
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         videoPreviewLayer?.frame = view.layer.bounds
         view.layer.addSublayer(videoPreviewLayer!)
         
-        // Start video capture.
         captureSession.startRunning()
-        
-        
-        
-//        let captureMetadataOutput = AVCaptureMetadataOutput()
-//        captureSession!.addOutput(captureMetadataOutput)
-//        captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-//        captureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
     }
-    
-//    private func configureScanner() {
-//        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
-//
-//        guard let captureDevice = deviceDiscoverySession.devices.first else {
-//            print("Failed to get the camera device")
-//            return
-//        }
-//
-//        do {
-//            // Get an instance of the AVCaptureDeviceInput class using the previous device object.
-//            let input = try AVCaptureDeviceInput(device: captureDevice)
-//
-//            // Set the input device on the capture session.
-//            captureSession!.addInput(input)
-//
-//        } catch {
-//            // If any error occurs, simply print it out and don't continue any more.
-//            print(error)
-//            return
-//        }
-//    }
     
     private func configureNavBar() {
         self.navigationClearBar()
