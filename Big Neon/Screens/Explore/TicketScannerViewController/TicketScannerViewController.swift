@@ -5,8 +5,7 @@ import Big_Neon_UI
 import AVFoundation
 import QRCodeReader
 
-final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsDelegate, QRCodeReaderViewControllerDelegate {
-    
+final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsDelegate, QRCodeReaderViewControllerDelegate, GuestListViewProtocol {
     
     internal var captureSession = AVCaptureSession()
     internal var videoPreviewLayer:AVCaptureVideoPreviewLayer?
@@ -15,6 +14,31 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
     internal var reader : QRCodeReader?
     
     internal let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
+    
+    internal var isShowingGuests: Bool = false {
+        didSet {
+            if isShowingGuests == true {
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
+                    self.cameraTintView.layer.opacity = 0.85
+                    self.guestListTopAnchor?.constant = UIScreen.main.bounds.height - 560.0
+                    self.view.layoutIfNeeded()
+                }) { (complete) in
+                    print("De-Activated Camera")
+                }
+                return
+            }
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
+                self.cameraTintView.layer.opacity = 0.0
+                self.guestListTopAnchor?.constant = UIScreen.main.bounds.height - 80.0
+                self.view.layoutIfNeeded()
+            }) { (complete) in
+                print("Activated Camera")
+            }
+            return
+            
+        }
+    }
     
     private let supportedCodeTypes = [AVMetadataObject.ObjectType.upce,
                                       AVMetadataObject.ObjectType.code39,
@@ -30,9 +54,18 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
                                       AVMetadataObject.ObjectType.interleaved2of5,
                                       AVMetadataObject.ObjectType.qr]
 
-    internal var guestListView: GuestListView = {
+    internal lazy var guestListView: GuestListView = {
         let view =  GuestListView()
+        view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    internal lazy var cameraTintView: UIView = {
+        let view =  UIView()
+        view.backgroundColor = UIColor.black
+        view.layer.opacity = 0.0
+//        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -83,6 +116,7 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         videoPreviewLayer?.frame = view.layer.bounds
+        cameraTintView.frame = view.layer.bounds
         view.layer.addSublayer(videoPreviewLayer!)
         
         captureSession.startRunning()
@@ -110,6 +144,10 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
     func readerDidCancel(_ reader: QRCodeReaderViewController) {
         reader.stopScanning()
     }
+    
+    func showGuestList() {
+        self.isShowingGuests = !self.isShowingGuests
+    }
 }
 
 extension TicketScannerViewController {
@@ -130,7 +168,7 @@ extension TicketScannerViewController {
             // If the found metadata is equal to the QR code metadata (or barcode) then update the status label's text and set the bounds
 //            let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
 //            qrCodeFrameView?.frame = barCodeObject!.bounds
-//
+
             if metadataObj.stringValue != nil {
                 print(metadataObj.stringValue)
             }

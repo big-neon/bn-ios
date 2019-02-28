@@ -4,7 +4,13 @@ import Foundation
 import UIKit
 import Big_Neon_Core
 
+public protocol GuestListViewProtocol {
+    func showGuestList()
+}
+
 public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate {
+    
+    public var delegate: GuestListViewProtocol?
     
     public var guests: [User]? {
         didSet {
@@ -17,16 +23,21 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    internal var isShowingGuests: Bool? {
+    internal var isShowingGuests: Bool = false {
         didSet {
-            guard let isShowingGuest = self.isShowingGuests else {
+            if isShowingGuests == true {
+                UIView.animate(withDuration: 1.0, delay: 0.5, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.85, options: .curveEaseOut, animations: {
+                    self.showGuestButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+                    self.layoutIfNeeded()
+                }, completion: nil)
                 return
             }
             
-            if isShowingGuest == true {
-                return
-            }
-            
+            UIView.animate(withDuration: 0.9, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.85, options: .curveEaseOut, animations: {
+                self.showGuestButton.transform = CGAffineTransform.identity
+                self.layoutIfNeeded()
+            }, completion: nil)
+            return
         }
     }
     
@@ -76,7 +87,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate {
         self.addSubview(showGuestButton)
         self.addSubview(guestTableView)
         
-        self.guestTableView.register(<#T##cellClass: AnyClass?##AnyClass?#>, forCellReuseIdentifier: <#T##String#>)
+        self.guestTableView.register(GuestTableViewCell.self, forCellReuseIdentifier: GuestTableViewCell.cellID)
         
         allguestsLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 28).isActive = true
         allguestsLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
@@ -95,7 +106,8 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     
     @objc private func showGuest() {
-        self.isShowingGuests = !self.isShowingGuests!
+        self.isShowingGuests = !self.isShowingGuests
+        self.delegate?.showGuestList()
     }
     
     required public init?(coder aDecoder: NSCoder) {
