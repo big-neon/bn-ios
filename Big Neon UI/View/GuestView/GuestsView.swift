@@ -33,7 +33,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate {
                 return
             }
             
-            UIView.animate(withDuration: 0.9, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.85, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.9, delay: 0.3, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.85, options: .curveEaseOut, animations: {
                 self.showGuestButton.transform = CGAffineTransform.identity
                 self.layoutIfNeeded()
             }, completion: nil)
@@ -99,7 +99,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate {
         showGuestButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
         showGuestButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
         
-        guestTableView.topAnchor.constraint(equalTo: guestTableView.bottomAnchor, constant: 32).isActive = true
+        guestTableView.topAnchor.constraint(equalTo: allguestsLabel.bottomAnchor, constant: 24).isActive = true
         guestTableView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         guestTableView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         guestTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true

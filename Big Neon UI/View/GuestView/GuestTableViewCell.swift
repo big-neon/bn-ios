@@ -8,7 +8,7 @@ final public class GuestTableViewCell: UITableViewCell {
     
     public let cellLabel: UILabel = {
         let label = UILabel()
-        label.text = "Something"
+        label.text = "Guest"
         label.textColor = UIColor.brandMediumGrey
         label.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -17,7 +17,7 @@ final public class GuestTableViewCell: UITableViewCell {
     
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: UITableViewCell.CellStyle.default, reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = UIColor.red
+        self.backgroundColor = UIColor.white
         self.configureView()
     }
     
