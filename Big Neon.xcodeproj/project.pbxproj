@@ -118,6 +118,8 @@
 		C6EC209C2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209B2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift */; };
 		C6EC209E220075D100BD10DD /* PhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209D220075D100BD10DD /* PhoneNumberTextField.swift */; };
 		C6EC20A122007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC20A022007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift */; };
+		C6EC4B2C2227BBAD0056CE73 /* GuestsView.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC4B2B2227BBAD0056CE73 /* GuestsView.TableView.swift */; };
+		C6EC4B2E2227C1150056CE73 /* GuestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC4B2D2227C1150056CE73 /* GuestTableViewCell.swift */; };
 		EB97F63084A23DBD8F7AB6F2 /* Pods_Big_Neon_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43DCE0B89B35D38187486C08 /* Pods_Big_Neon_Core.framework */; };
 /* End PBXBuildFile section */
 
@@ -302,6 +304,8 @@
 		C6EC209B2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingPhoneNumberCell.swift; sourceTree = "<group>"; };
 		C6EC209D220075D100BD10DD /* PhoneNumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTextField.swift; sourceTree = "<group>"; };
 		C6EC20A022007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewContorller.ImageUpload.swift; sourceTree = "<group>"; };
+		C6EC4B2B2227BBAD0056CE73 /* GuestsView.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestsView.TableView.swift; sourceTree = "<group>"; };
+		C6EC4B2D2227C1150056CE73 /* GuestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestTableViewCell.swift; sourceTree = "<group>"; };
 		CF1FA333925A46724CB83E09 /* Pods-Big Neon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Big Neon/Pods-Big Neon.debug.xcconfig"; sourceTree = "<group>"; };
 		FDBD85F3E3097FD16BBAE382 /* Pods-Big Neon Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon Core.release.xcconfig"; path = "Pods/Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -745,7 +749,7 @@
 			children = (
 				C6B88D6121F1C372006394F8 /* TicketQRCodeView.swift */,
 				C61D51C9220D6458002A70CE /* ExploreNavBarView.swift */,
-				C626B6C922254A9A00EB3150 /* GuestsView.swift */,
+				C6EC4B2A2227BB8A0056CE73 /* GuestView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -867,6 +871,16 @@
 				C6EC2099220063DE00BD10DD /* ProfileImageUploadCell.swift */,
 			);
 			path = ProfileEditCells;
+			sourceTree = "<group>";
+		};
+		C6EC4B2A2227BB8A0056CE73 /* GuestView */ = {
+			isa = PBXGroup;
+			children = (
+				C626B6C922254A9A00EB3150 /* GuestsView.swift */,
+				C6EC4B2B2227BBAD0056CE73 /* GuestsView.TableView.swift */,
+				C6EC4B2D2227C1150056CE73 /* GuestTableViewCell.swift */,
+			);
+			path = GuestView;
 			sourceTree = "<group>";
 		};
 		F65EEC9195B9C5AA4DD674D2 /* Pods */ = {
@@ -1327,6 +1341,7 @@
 				C6B88D4721F1C217006394F8 /* EventHeaderView.swift in Sources */,
 				C61853BC2212F6FA005D6250 /* ThreeQuaterPresenter.swift in Sources */,
 				C61853BF22140548005D6250 /* TicketTypeCell.swift in Sources */,
+				C6EC4B2C2227BBAD0056CE73 /* GuestsView.TableView.swift in Sources */,
 				C603E4A1221586040079ED73 /* SubTotalCell.swift in Sources */,
 				C6B88D4121F1C07C006394F8 /* HotWeekCell.swift in Sources */,
 				C6B88D3B21F1BC9B006394F8 /* SectionHeaderCell.swift in Sources */,
@@ -1341,6 +1356,7 @@
 				C6B88D3C21F1BC9B006394F8 /* ExploreUpcomingCell.swift in Sources */,
 				C6B88D3821F1BC8D006394F8 /* Colours.swift in Sources */,
 				C626B6CA22254A9A00EB3150 /* GuestsView.swift in Sources */,
+				C6EC4B2E2227C1150056CE73 /* GuestTableViewCell.swift in Sources */,
 				C6B88D5021F1C323006394F8 /* EventPriceView.swift in Sources */,
 				C6B88D5221F1C323006394F8 /* InterestedButtonView.swift in Sources */,
 				C6B88D4621F1C217006394F8 /* EventTimeAndLocationCell.swift in Sources */,

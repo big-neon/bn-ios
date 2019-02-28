@@ -8,10 +8,11 @@ import QRCodeReader
 final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsDelegate, QRCodeReaderViewControllerDelegate {
     
     
-    
     internal var captureSession = AVCaptureSession()
     internal var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     internal var guestListTopAnchor: NSLayoutConstraint?
+    internal let generator = UINotificationFeedbackGenerator()
+    internal var reader : QRCodeReader?
     
     internal let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
     
@@ -28,14 +29,7 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
                                       AVMetadataObject.ObjectType.dataMatrix,
                                       AVMetadataObject.ObjectType.interleaved2of5,
                                       AVMetadataObject.ObjectType.qr]
-    
-//    internal lazy var qrReaderView: QRCodeReaderView  = {
-//        let view = QRCodeReaderView(frame: self.view.frame)
-////        view.cameraView = videoPreviewLayer
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        return view
-//    }()
-    
+
     internal var guestListView: GuestListView = {
         let view =  GuestListView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -74,7 +68,7 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
             return
         }
     }
-    
+
     private func configureGuestView() {
         self.view.addSubview(guestListView)
         
@@ -84,7 +78,7 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         self.guestListTopAnchor?.isActive = true
         guestListView.heightAnchor.constraint(equalToConstant: 560.0).isActive = true
     }
-    
+
     private func configureCameraView() {
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
@@ -105,20 +99,8 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
     }
     
     private func configureScan() {
-        let reader = QRCodeReader(metadataObjectTypes: supportedCodeTypes, captureDevicePosition: AVCaptureDevice.Position.back)
-        self.videoPreviewLayer = reader.previewLayer
-//        reader.de
-//        reader.delegate = self
-        
-        // Or by using the closure pattern
-//        readerVC.completionBlock = { (result: QRCodeReaderResult?) in
-//            print(result)
-//        }
-        
-        // Presents the readerVC as modal form sheet
-//        readerVC.modalPresentationStyle = .formSheet
-        
-//        present(readerVC, animated: true, completion: nil)
+        self.reader = QRCodeReader(metadataObjectTypes: supportedCodeTypes, captureDevicePosition: AVCaptureDevice.Position.back)
+        self.videoPreviewLayer = reader!.previewLayer
     }
     
     func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
@@ -134,7 +116,9 @@ extension TicketScannerViewController {
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         
-        if metadataObjects.count == 0 {
+        if metadataObjects.isEmpty {
+            self.generator.notificationOccurred(.error)
+            self.reader?.stopScanning()
             print("No QR code is detected")
             return
         }
@@ -142,14 +126,16 @@ extension TicketScannerViewController {
         let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         
         if supportedCodeTypes.contains(metadataObj.type) {
+            self.generator.notificationOccurred(.success)
             // If the found metadata is equal to the QR code metadata (or barcode) then update the status label's text and set the bounds
-            let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
-            qrCodeFrameView?.frame = barCodeObject!.bounds
-            
+//            let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
+//            qrCodeFrameView?.frame = barCodeObject!.bounds
+//
             if metadataObj.stringValue != nil {
-                launchApp(decodedURL: metadataObj.stringValue!)
-                messageLabel.text = metadataObj.stringValue
+                print(metadataObj.stringValue)
             }
+            self.reader?.stopScanning()
+            return
         }
     }
 }
