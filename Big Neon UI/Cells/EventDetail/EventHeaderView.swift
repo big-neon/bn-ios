@@ -49,12 +49,12 @@ final public class EventHeaderView: UIView {
             }
 
             self.eventNameLabel.text = event.name
-            let eventImageURL: URL = URL(string: event.promoImageURL!)!
+            let eventImageURL: URL = URL(string: event.promoImageURL)!
             self.eventImageView.pin_setImage(from: eventImageURL, placeholderImage: nil)
 
-            if event.venue!.timezone != nil {
+            if event.venue.timezone != nil {
                 let eventStart = event.eventStart
-                guard let eventDate = DateConfig.dateFromString(stringDate: eventStart!) else {
+                guard let eventDate = DateConfig.dateFromString(stringDate: eventStart) else {
                     self.eventDateView.monthLabel.text = "-"
                     self.eventDateView.dateLabel.text = "-"
                     return
@@ -63,7 +63,7 @@ final public class EventHeaderView: UIView {
                 self.eventDateView.dateLabel.text = DateConfig.eventDateValue(date: eventDate)
             } else {
                 let eventStart = event.eventStart
-                guard let eventDate = DateConfig.dateFromUTCString(stringDate: eventStart!) else {
+                guard let eventDate = DateConfig.dateFromUTCString(stringDate: eventStart) else {
                     self.eventDateView.monthLabel.text = "-"
                     self.eventDateView.dateLabel.text = "-"
                     return
