@@ -22,6 +22,7 @@
 		C61853C6221444C9005D6250 /* QuantitySelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853C5221444C9005D6250 /* QuantitySelectionCell.swift */; };
 		C61853C822144869005D6250 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853C722144869005D6250 /* CheckoutView.swift */; };
 		C61D51CA220D6458002A70CE /* ExploreNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61D51C9220D6458002A70CE /* ExploreNavBarView.swift */; };
+		C626B6CA22254A9A00EB3150 /* GuestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C626B6C922254A9A00EB3150 /* GuestsView.swift */; };
 		C628B15021F7B75800FCBDC9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C628B14F21F7B75800FCBDC9 /* Constants.swift */; };
 		C628B15221F9C89200FCBDC9 /* DatabaseService.Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = C628B15121F9C89200FCBDC9 /* DatabaseService.Token.swift */; };
 		C628B15421F9E35700FCBDC9 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C628B15321F9E35700FCBDC9 /* SplashViewModel.swift */; };
@@ -31,12 +32,13 @@
 		C62BC78B21CCC3FB00830A5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78A21CCC3FB00830A5F /* Assets.xcassets */; };
 		C62BC78E21CCC3FB00830A5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78C21CCC3FB00830A5F /* LaunchScreen.storyboard */; };
 		C62BC79921CCC3FB00830A5F /* Big_NeonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */; };
+		C63D1A172220057400152E83 /* TicketScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D1A162220057400152E83 /* TicketScannerViewController.swift */; };
 		C64124C621F266B100233797 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64124C521F266B100233797 /* LoginViewController.swift */; };
 		C64124CA21F26D1800233797 /* AuthTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64124C921F26D1800233797 /* AuthTextView.swift */; };
 		C644BA2F21F7069D003C188B /* BasicError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C644BA2E21F7069D003C188B /* BasicError.swift */; };
 		C644BA3421F70C19003C188B /* DatabaseService.Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = C644BA3321F70C19003C188B /* DatabaseService.Users.swift */; };
 		C64B0ABB21D0DCC900386000 /* ExploreViewController.CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABA21D0DCC900386000 /* ExploreViewController.CollectionView.swift */; };
-		C64B0ABD21D0DCDB00386000 /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABC21D0DCDB00386000 /* ExploreViewModel.swift */; };
+		C64B0ABD21D0DCDB00386000 /* DoorPersonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABC21D0DCDB00386000 /* DoorPersonViewModel.swift */; };
 		C64B0AC021D0DD1E00386000 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABF21D0DD1E00386000 /* Utils.swift */; };
 		C64B0AC221D0DD5E00386000 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AC121D0DD5E00386000 /* TabBarController.swift */; };
 		C64B0AD821D123F400386000 /* TicketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AD721D123F400386000 /* TicketsViewController.swift */; };
@@ -116,6 +118,8 @@
 		C6EC209C2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209B2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift */; };
 		C6EC209E220075D100BD10DD /* PhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209D220075D100BD10DD /* PhoneNumberTextField.swift */; };
 		C6EC20A122007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC20A022007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift */; };
+		C6EC4B2C2227BBAD0056CE73 /* GuestsView.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC4B2B2227BBAD0056CE73 /* GuestsView.TableView.swift */; };
+		C6EC4B2E2227C1150056CE73 /* GuestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC4B2D2227C1150056CE73 /* GuestTableViewCell.swift */; };
 		EB97F63084A23DBD8F7AB6F2 /* Pods_Big_Neon_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43DCE0B89B35D38187486C08 /* Pods_Big_Neon_Core.framework */; };
 /* End PBXBuildFile section */
 
@@ -199,6 +203,7 @@
 		C61853C5221444C9005D6250 /* QuantitySelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantitySelectionCell.swift; sourceTree = "<group>"; };
 		C61853C722144869005D6250 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
 		C61D51C9220D6458002A70CE /* ExploreNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreNavBarView.swift; sourceTree = "<group>"; };
+		C626B6C922254A9A00EB3150 /* GuestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestsView.swift; sourceTree = "<group>"; };
 		C628B14F21F7B75800FCBDC9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C628B15121F9C89200FCBDC9 /* DatabaseService.Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Token.swift; sourceTree = "<group>"; };
 		C628B15321F9E35700FCBDC9 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
@@ -212,12 +217,13 @@
 		C62BC79421CCC3FB00830A5F /* Big NeonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Big NeonTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Big_NeonTests.swift; sourceTree = "<group>"; };
 		C62BC79A21CCC3FB00830A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C63D1A162220057400152E83 /* TicketScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketScannerViewController.swift; sourceTree = "<group>"; };
 		C64124C521F266B100233797 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C64124C921F26D1800233797 /* AuthTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextView.swift; sourceTree = "<group>"; };
 		C644BA2E21F7069D003C188B /* BasicError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicError.swift; sourceTree = "<group>"; };
 		C644BA3321F70C19003C188B /* DatabaseService.Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Users.swift; sourceTree = "<group>"; };
 		C64B0ABA21D0DCC900386000 /* ExploreViewController.CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.CollectionView.swift; sourceTree = "<group>"; };
-		C64B0ABC21D0DCDB00386000 /* ExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
+		C64B0ABC21D0DCDB00386000 /* DoorPersonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonViewModel.swift; sourceTree = "<group>"; };
 		C64B0ABF21D0DD1E00386000 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		C64B0AC121D0DD5E00386000 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		C64B0AD721D123F400386000 /* TicketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsViewController.swift; sourceTree = "<group>"; };
@@ -298,6 +304,8 @@
 		C6EC209B2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingPhoneNumberCell.swift; sourceTree = "<group>"; };
 		C6EC209D220075D100BD10DD /* PhoneNumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTextField.swift; sourceTree = "<group>"; };
 		C6EC20A022007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewContorller.ImageUpload.swift; sourceTree = "<group>"; };
+		C6EC4B2B2227BBAD0056CE73 /* GuestsView.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestsView.TableView.swift; sourceTree = "<group>"; };
+		C6EC4B2D2227C1150056CE73 /* GuestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestTableViewCell.swift; sourceTree = "<group>"; };
 		CF1FA333925A46724CB83E09 /* Pods-Big Neon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Big Neon/Pods-Big Neon.debug.xcconfig"; sourceTree = "<group>"; };
 		FDBD85F3E3097FD16BBAE382 /* Pods-Big Neon Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon Core.release.xcconfig"; path = "Pods/Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -439,6 +447,14 @@
 			path = "Big NeonTests";
 			sourceTree = "<group>";
 		};
+		C63D1A152220054700152E83 /* TicketScannerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C63D1A162220057400152E83 /* TicketScannerViewController.swift */,
+			);
+			path = TicketScannerViewController;
+			sourceTree = "<group>";
+		};
 		C64124C721F267FF00233797 /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -496,7 +512,8 @@
 		C64B0AD421D123C300386000 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				C6AFB78C21DD655900670AC3 /* ExploreViewController */,
+				C6AFB78C21DD655900670AC3 /* DoorPersonViewController */,
+				C63D1A152220054700152E83 /* TicketScannerViewController */,
 				C6AFB78D21DD656500670AC3 /* EventDetailViewController */,
 			);
 			path = Explore;
@@ -573,15 +590,15 @@
 			path = Routing;
 			sourceTree = "<group>";
 		};
-		C6AFB78C21DD655900670AC3 /* ExploreViewController */ = {
+		C6AFB78C21DD655900670AC3 /* DoorPersonViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C64B0ABC21D0DCDB00386000 /* ExploreViewModel.swift */,
+				C64B0ABC21D0DCDB00386000 /* DoorPersonViewModel.swift */,
 				C62BC78521CCC3F700830A5F /* ExploreViewController.swift */,
 				C61853B62212F1DB005D6250 /* ExploreViewController.Search.swift */,
 				C64B0ABA21D0DCC900386000 /* ExploreViewController.CollectionView.swift */,
 			);
-			path = ExploreViewController;
+			path = DoorPersonViewController;
 			sourceTree = "<group>";
 		};
 		C6AFB78D21DD656500670AC3 /* EventDetailViewController */ = {
@@ -732,6 +749,7 @@
 			children = (
 				C6B88D6121F1C372006394F8 /* TicketQRCodeView.swift */,
 				C61D51C9220D6458002A70CE /* ExploreNavBarView.swift */,
+				C6EC4B2A2227BB8A0056CE73 /* GuestView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -853,6 +871,16 @@
 				C6EC2099220063DE00BD10DD /* ProfileImageUploadCell.swift */,
 			);
 			path = ProfileEditCells;
+			sourceTree = "<group>";
+		};
+		C6EC4B2A2227BB8A0056CE73 /* GuestView */ = {
+			isa = PBXGroup;
+			children = (
+				C626B6C922254A9A00EB3150 /* GuestsView.swift */,
+				C6EC4B2B2227BBAD0056CE73 /* GuestsView.TableView.swift */,
+				C6EC4B2D2227C1150056CE73 /* GuestTableViewCell.swift */,
+			);
+			path = GuestView;
 			sourceTree = "<group>";
 		};
 		F65EEC9195B9C5AA4DD674D2 /* Pods */ = {
@@ -1121,6 +1149,7 @@
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 				"${BUILT_PRODUCTS_DIR}/PWSwitch/PWSwitch.framework",
 				"${BUILT_PRODUCTS_DIR}/PresenterKit/PresenterKit.framework",
+				"${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
 				"${BUILT_PRODUCTS_DIR}/Mixpanel/Mixpanel.framework",
@@ -1142,6 +1171,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PWSwitch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PresenterKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCodeReader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mixpanel.framework",
@@ -1219,12 +1249,13 @@
 				C64B0ADC21D1276100386000 /* ProfileViewController.swift in Sources */,
 				C61853B72212F1DB005D6250 /* ExploreViewController.Search.swift in Sources */,
 				C6AFB78F21DD658800670AC3 /* EventDetailViewController.swift in Sources */,
-				C64B0ABD21D0DCDB00386000 /* ExploreViewModel.swift in Sources */,
+				C64B0ABD21D0DCDB00386000 /* DoorPersonViewModel.swift in Sources */,
 				C683233121FF34DF002342AE /* LogoutCell.swift in Sources */,
 				C64B0AE121D1294600386000 /* ProfileViewController.TableView.swift in Sources */,
 				C694D25A21D0BFE600B2AE07 /* ApplicationRouting.swift in Sources */,
 				C6B2AC5E21E4DD3100F996AA /* BaseViewController.swift in Sources */,
 				C6AFB78B21DD579600670AC3 /* ProfileViewModel.swift in Sources */,
+				C63D1A172220057400152E83 /* TicketScannerViewController.swift in Sources */,
 				C665DFE521E87CB800DFB955 /* WelcomeViewController.swift in Sources */,
 				C64124C621F266B100233797 /* LoginViewController.swift in Sources */,
 				C6EC209C2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift in Sources */,
@@ -1310,6 +1341,7 @@
 				C6B88D4721F1C217006394F8 /* EventHeaderView.swift in Sources */,
 				C61853BC2212F6FA005D6250 /* ThreeQuaterPresenter.swift in Sources */,
 				C61853BF22140548005D6250 /* TicketTypeCell.swift in Sources */,
+				C6EC4B2C2227BBAD0056CE73 /* GuestsView.TableView.swift in Sources */,
 				C603E4A1221586040079ED73 /* SubTotalCell.swift in Sources */,
 				C6B88D4121F1C07C006394F8 /* HotWeekCell.swift in Sources */,
 				C6B88D3B21F1BC9B006394F8 /* SectionHeaderCell.swift in Sources */,
@@ -1323,6 +1355,8 @@
 				C6C45D6C21F5CEC000D2F602 /* Feedbacksystem.swift in Sources */,
 				C6B88D3C21F1BC9B006394F8 /* ExploreUpcomingCell.swift in Sources */,
 				C6B88D3821F1BC8D006394F8 /* Colours.swift in Sources */,
+				C626B6CA22254A9A00EB3150 /* GuestsView.swift in Sources */,
+				C6EC4B2E2227C1150056CE73 /* GuestTableViewCell.swift in Sources */,
 				C6B88D5021F1C323006394F8 /* EventPriceView.swift in Sources */,
 				C6B88D5221F1C323006394F8 /* InterestedButtonView.swift in Sources */,
 				C6B88D4621F1C217006394F8 /* EventTimeAndLocationCell.swift in Sources */,

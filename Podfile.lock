@@ -32,6 +32,7 @@ PODS:
   - pop (1.0.12)
   - PresenterKit (5.1.0)
   - PWSwitch (1.1.2)
+  - QRCodeReader.swift (9.0.1)
   - Stripe (14.0.0)
   - SwiftKeychainWrapper (3.2.0)
   - TransitionButton (0.5.2)
@@ -48,6 +49,7 @@ DEPENDENCIES:
   - pop
   - PresenterKit
   - PWSwitch
+  - QRCodeReader.swift
   - Stripe
   - SwiftKeychainWrapper
   - TransitionButton
@@ -67,6 +69,7 @@ SPEC REPOS:
     - pop
     - PresenterKit
     - PWSwitch
+    - QRCodeReader.swift
     - Stripe
     - SwiftKeychainWrapper
     - TransitionButton
@@ -85,11 +88,12 @@ SPEC CHECKSUMS:
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   PresenterKit: ebb82bda6b161c720db9b5346cb593b9b00e0ed5
   PWSwitch: 399db6ef5dd8417f9a1e9f82cb70602f10a6c38f
+  QRCodeReader.swift: 96292a5612fbc2fd9a0b26f93fa5164c8d02f59d
   Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
   SwiftKeychainWrapper: 82c4c02cdc36f9a24f7edfcaab3e336401caa1a1
   TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
-PODFILE CHECKSUM: 1b0ca4618ca24cf9cc39bc8467a83dd2b7683781
+PODFILE CHECKSUM: 321ed2c92c31a268d200834700f5a4a7fd5aaf0c
 
 COCOAPODS: 1.5.3

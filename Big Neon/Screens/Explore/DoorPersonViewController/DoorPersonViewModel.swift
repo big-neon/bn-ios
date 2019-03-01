@@ -3,9 +3,10 @@ import Foundation
 import Big_Neon_Core
 import SwiftKeychainWrapper
 
-final class ExploreViewModel {
+final class DoorPersonViewModel {
     
     internal var events: Events?
+    internal var user: User?
     
     internal func fetchEvents(completion: @escaping(Bool) -> Void) {
         self.events = nil
@@ -74,7 +75,28 @@ final class ExploreViewModel {
             }
             
             self.events = events
+            self.fetchUser(completion: { (_) in
+                completion(true)
+                return
+            })
+        }
+        
+    }
+    
+    private func fetchUser(completion: @escaping(Bool) -> Void) {
+        
+        guard let accessToken = BusinessService.shared.database.fetchAcessToken() else {
+            completion(false)
+            return
+        }
+        
+        BusinessService.shared.database.fetchUser(withAccessToken: accessToken) { (error, userFound) in
+            guard let user = userFound else {
+                completion(false)
+                return
+            }
             
+            self.user = user
             completion(true)
             return
         }

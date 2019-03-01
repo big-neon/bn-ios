@@ -3,7 +3,7 @@ import UIKit
 import Big_Neon_UI
 import Big_Neon_Core
 
-final class ExploreViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
+final class DoorPersonViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
     
     internal lazy var refresher: UIRefreshControl = {
         let refresher = UIRefreshControl()
@@ -43,23 +43,35 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
         search.searchResultsUpdater = self
         return search
     }()
+    
+    internal lazy var userProfileImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = UIColor.brandGrey
+        imageView.layer.cornerRadius = 15.0
+        imageView.isUserInteractionEnabled = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.borderColor = UIColor.brandGrey.cgColor
+        imageView.layer.borderWidth = 2.0
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
-        self.configureNavBar()
         self.configureSearch()
         self.fetchCheckins()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.navigationNoLineBar()
+        self.configureNavBar()
     }
 
     private func fetchCheckins() {
         self.loadingView.startAnimating()
-        self.exploreViewModel.configureAccessToken { (completed) in
+        self.doorPersonViemodel.configureAccessToken { (completed) in
             DispatchQueue.main.async {
                 self.loadingView.stopAnimating()
                 if completed == false {
@@ -72,7 +84,7 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
     }
     
     @objc private func reloadEvents() {
-        self.exploreViewModel.configureAccessToken { (completed) in
+        self.doorPersonViemodel.configureAccessToken { (completed) in
             DispatchQueue.main.async {
                 self.loadingView.stopAnimating()
                 self.refresher.endRefreshing()
@@ -99,7 +111,12 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
              NSAttributedString.Key.font: UIFont.systemFont(ofSize: 32, weight: UIFont.Weight.bold)]
         self.navigationItem.title = "Doorperson"
         self.navigationItem.largeTitleDisplayMode = .automatic
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.done, target: self, action: #selector(handleLogout))
+        
+        //  Profile Picture
+        userProfileImageView.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
+        userProfileImageView.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: userProfileImageView)
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.done, target: self, action: #selector(handleLogout))
     }
 
     private func configureCollectionView() {
@@ -123,12 +140,17 @@ final class ExploreViewController: BaseViewController, UICollectionViewDelegate,
     }
     
     @objc private func handleLogout() {
-        self.exploreViewModel.handleLogout { (_) in
+        self.doorPersonViemodel.handleLogout { (_) in
             let welcomeVC = UINavigationController(rootViewController: WelcomeViewController())
             welcomeVC.modalTransitionStyle = .flipHorizontal
             self.present(welcomeVC, animated: true, completion: nil)
             return
         }
+    }
+    
+    internal func showScanner() {
+        let scannerNavVC = UINavigationController(rootViewController: TicketScannerViewController())
+        self.present(scannerNavVC, animated: true, completion: nil)
     }
 
 }

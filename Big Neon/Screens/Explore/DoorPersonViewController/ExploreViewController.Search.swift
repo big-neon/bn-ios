@@ -3,7 +3,7 @@ import Foundation
 import Big_Neon_UI
 import UIKit
 
-extension ExploreViewController {
+extension DoorPersonViewController {
     
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = self.searchController.searchBar
