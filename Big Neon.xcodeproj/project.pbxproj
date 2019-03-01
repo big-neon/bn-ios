@@ -13,6 +13,7 @@
 		C603E49F221583940079ED73 /* CheckoutTotalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C603E49E221583940079ED73 /* CheckoutTotalCell.swift */; };
 		C603E4A1221586040079ED73 /* SubTotalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C603E4A0221586040079ED73 /* SubTotalCell.swift */; };
 		C603E4A3221589B80079ED73 /* CardCheckoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C603E4A2221589B80079ED73 /* CardCheckoutCell.swift */; };
+		C6058DE12229520D00BDF397 /* ScannerModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6058DE02229520D00BDF397 /* ScannerModeView.swift */; };
 		C61853B72212F1DB005D6250 /* ExploreViewController.Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853B62212F1DB005D6250 /* ExploreViewController.Search.swift */; };
 		C61853B92212F4C8005D6250 /* TicketTypeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853B82212F4C8005D6250 /* TicketTypeSelectionViewController.swift */; };
 		C61853BC2212F6FA005D6250 /* ThreeQuaterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853BB2212F6FA005D6250 /* ThreeQuaterPresenter.swift */; };
@@ -194,6 +195,7 @@
 		C603E49E221583940079ED73 /* CheckoutTotalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutTotalCell.swift; sourceTree = "<group>"; };
 		C603E4A0221586040079ED73 /* SubTotalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTotalCell.swift; sourceTree = "<group>"; };
 		C603E4A2221589B80079ED73 /* CardCheckoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCheckoutCell.swift; sourceTree = "<group>"; };
+		C6058DE02229520D00BDF397 /* ScannerModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerModeView.swift; sourceTree = "<group>"; };
 		C61853B62212F1DB005D6250 /* ExploreViewController.Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.Search.swift; sourceTree = "<group>"; };
 		C61853B82212F4C8005D6250 /* TicketTypeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTypeSelectionViewController.swift; sourceTree = "<group>"; };
 		C61853BB2212F6FA005D6250 /* ThreeQuaterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeQuaterPresenter.swift; sourceTree = "<group>"; };
@@ -365,6 +367,14 @@
 				2C5FE81A672933D9E6C36212 /* Pods_Big_Neon_UI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C6058DDF222951E400BDF397 /* ScannerModeView */ = {
+			isa = PBXGroup;
+			children = (
+				C6058DE02229520D00BDF397 /* ScannerModeView.swift */,
+			);
+			path = ScannerModeView;
 			sourceTree = "<group>";
 		};
 		C61853BA2212F4D6005D6250 /* TicketTypeSelectionViewController */ = {
@@ -747,6 +757,7 @@
 		C6B88D5821F1C33E006394F8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C6058DDF222951E400BDF397 /* ScannerModeView */,
 				C6B88D6121F1C372006394F8 /* TicketQRCodeView.swift */,
 				C61D51C9220D6458002A70CE /* ExploreNavBarView.swift */,
 				C6EC4B2A2227BB8A0056CE73 /* GuestView */,
@@ -1359,6 +1370,7 @@
 				C6EC4B2E2227C1150056CE73 /* GuestTableViewCell.swift in Sources */,
 				C6B88D5021F1C323006394F8 /* EventPriceView.swift in Sources */,
 				C6B88D5221F1C323006394F8 /* InterestedButtonView.swift in Sources */,
+				C6058DE12229520D00BDF397 /* ScannerModeView.swift in Sources */,
 				C6B88D4621F1C217006394F8 /* EventTimeAndLocationCell.swift in Sources */,
 				C6C45D6A21F5CDCD00D2F602 /* PopAnimations.swift in Sources */,
 				C6B88D6221F1C372006394F8 /* TicketQRCodeView.swift in Sources */,
