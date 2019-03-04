@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -254,6 +254,7 @@
 		537BC5AD988F67ACDF0EAB86C85B59C7 /* STPEmailAddressValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = BDD40C8AE6FD3C98746428CE33C9C2EE /* STPEmailAddressValidator.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		53F0E50915BEF396A1C61758566E5874 /* STPColorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F0E7C25B3BC3B5E96C4F173DEFA447 /* STPColorUtils.m */; };
 		544BFC14B9E99681EB4F28C7CACC0ED9 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AAF481DA8FE42AC519767AF868E7E5B /* Alamofire-dummy.m */; };
+		54A918AA0D8B110493B731D8AFA7AC55 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE8BB4BB90A249442B36B2DA42900EE /* Foundation.framework */; };
 		553A5ECB1D4AEDCA0E5CF7D978E85BB8 /* stp_card_error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2B498209BA5E781C1D01A0F0B51E09 /* stp_card_error@2x.png */; };
 		556AC0098FA77DBA2737FCDC7CFE847C /* POPMath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3F59257A8B0D91E3339DC6B0ABFC9152 /* POPMath.mm */; };
 		558DC5A5F25C200B1FD9129685E73773 /* PINGIFAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B89BC65D0E1D20E53943381310A97A /* PINGIFAnimatedImage.m */; };
@@ -355,7 +356,6 @@
 		6F6AED52AB6CC838551E5153C0920A8C /* STPSourceRedirect.m in Sources */ = {isa = PBXBuildFile; fileRef = 986D7884CF44FEF37D978B0CFBBED805 /* STPSourceRedirect.m */; };
 		6F6EDA2C4419F433B4FD524E918345E3 /* SessionStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E1FD39D881A85E2B3D00602B88BFD0 /* SessionStateProvider.swift */; };
 		6F7976406D71C8CCC06FDEC1ABBB1A53 /* POPMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FFBDBA5458E3285E2184A76A110E965 /* POPMath.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		706EDA43023E8F33A94CD2B880DA254C /* Pods-Big Neon UI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D06AED920C9F52F4B640C972710FBEB8 /* Pods-Big Neon UI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		70B86D831673D2B169C68CDC429C3619 /* JWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8F61637D8ACFB207B9DDCE5345BBCB /* JWT.swift */; };
 		70BFAC7C699181DAE5E1FB0E1C2EC1B8 /* MPSwizzler.h in Headers */ = {isa = PBXBuildFile; fileRef = C999EEA516F676D0BF7F81470C5EA797 /* MPSwizzler.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		70DA00B5378F829942F913C7C8812CBC /* STPCustomerContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B7B5D11D35A064C96472122B5A2A61D /* STPCustomerContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -478,6 +478,7 @@
 		949577F1F8F36219CF850832AD900DD8 /* stp_card_applepay@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CCF7D5E6AC4274BABD688D9CCA293A /* stp_card_applepay@3x.png */; };
 		94F5ACE900265AEA3DB50D9A945EB718 /* pop-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EC363DF9F5AEFCDD966AAA930E0DEB0 /* pop-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		95CC86E0BE213077A2F4E48B750CD7B6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC0FA4CEB71A32C4AE36B68D3DF049C8 /* CoreLocation.framework */; };
+		95FD116AE08BE67D188AA4988AEF6FF6 /* Pods-Big Neon UI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D06AED920C9F52F4B640C972710FBEB8 /* Pods-Big Neon UI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		961B54341F38B05247B1767E0ACBBD7E /* STPPaymentMethodsInternalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B087368AABB63F648648D1BDD4E12207 /* STPPaymentMethodsInternalViewController.m */; };
 		9689CEF3834C20797C828E70075CE99D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE8BB4BB90A249442B36B2DA42900EE /* Foundation.framework */; };
 		96A330B00071FE25C4106BFB56D2B48A /* MPABTestDesignerConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 4363C07C05F7AC1908552558135B337B /* MPABTestDesignerConnection.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -669,7 +670,6 @@
 		CACB457A5F79AFD718E21A418E34A0B5 /* STPPaymentConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = FEF210180CCE34982F38D7961EE52BC2 /* STPPaymentConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CAE20B879666AF8AE8300085431DC97C /* STPShippingAddressViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C1C3CD5DBDD68C019D9762DDC1B46C7 /* STPShippingAddressViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CB77578AF3C686D614F9940585F78523 /* stp_card_diners@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDEA7142036B83C5D7732A17767BFE9C /* stp_card_diners@3x.png */; };
-		CB7E22884762FD7350CE4E9785EA2FC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE8BB4BB90A249442B36B2DA42900EE /* Foundation.framework */; };
 		CC446F2968ABF5FF43873A5C125237DE /* STPSourceReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 176C01FD9038A4193E45836873295905 /* STPSourceReceiver.m */; };
 		CC65C3E8B0734B18C3FE9987DE64E550 /* NSMutableURLRequest+Stripe.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C3B88BB9D30477FA44187944C3523A0 /* NSMutableURLRequest+Stripe.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		CCA991E82AE25F3F265F1A6564AD1317 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A95110DEFAF3444B2FDA9B44D7DF81C /* ImageIO.framework */; };
@@ -677,7 +677,6 @@
 		CD23294583ECB4B5214C0B68112ED714 /* Stripe-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AEC014BE322ED160CFEF9AA5EC788F90 /* Stripe-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD33D0A13C8F64046C450F6B0831E663 /* Mixpanel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D8E6199441EEED925E64A9991497EE /* Mixpanel-dummy.m */; };
 		CD7FC02F835C906514C74F3697B02C0A /* MPNSAttributedStringToNSDictionaryValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFB755185BF9222671F06F786EDF43E /* MPNSAttributedStringToNSDictionaryValueTransformer.m */; };
-		CE00010A8601D20879CC8DD1DAF1B074 /* Pods-Big Neon UI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6731FCF17D4F668EE81B8303129C6469 /* Pods-Big Neon UI-dummy.m */; };
 		CE1E85E292D15A52AB3867EE5F3706AE /* MPUIColorToNSStringValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 12DCDDDA5A653080385FD78840B2B2EA /* MPUIColorToNSStringValueTransformer.m */; };
 		CE36A3ED2561381E3CB7A385AFADD0AF /* stp_card_unionpay_zh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D473E1705D6166B0A41A5B2DA6289689 /* stp_card_unionpay_zh@2x.png */; };
 		CE7E590A8787BB68716EDF9C554C8390 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAD1D88A6E8859B8DA9AE067FEFB215 /* MultipartFormData.swift */; };
@@ -719,6 +718,7 @@
 		DC0C28CDCBC0D6D99244466F5FB9B268 /* UINavigationBar+Stripe_Theme.h in Headers */ = {isa = PBXBuildFile; fileRef = 481668D00F5B7C6855ECAA8C3D4FDB90 /* UINavigationBar+Stripe_Theme.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC1B4F4D2BCFE33C2C8934A75C30230D /* Pods-Big Neon-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB111893E958BD52878A9C8D6573AA1 /* Pods-Big Neon-dummy.m */; };
 		DD7CDEF5B5CC73E9EA38111189C1F7A6 /* Localizations in Resources */ = {isa = PBXBuildFile; fileRef = 8F65B1922D90023C56E8967E1F844856 /* Localizations */; };
+		DE017D4A005FBC14BCD3A1A3D142EAB8 /* Pods-Big Neon UI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6731FCF17D4F668EE81B8303129C6469 /* Pods-Big Neon UI-dummy.m */; };
 		DE4D6404AED4DAD8325C9D4C6FC6019C /* PWSwitch-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FB254B39210E2D3569C59ECED340365C /* PWSwitch-dummy.m */; };
 		DE8190F2E7B12974EC0BEA624F3DC239 /* PINRemoteImage-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 41C1EBC041C63061D830BDB8EB3D8FB0 /* PINRemoteImage-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF4A675BDE26413D11F86D23D237E73F /* RequestRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A72E4E0D2D808E63AD1B95AFEF03B /* RequestRetrier.swift */; };
@@ -818,12 +818,26 @@
 			remoteGlobalIDString = BA3CC641DA9A75882B78B88DBEBF3B81;
 			remoteInfo = JWTDecode;
 		};
+		067E65EB19806EEF9531ECFE8259A833 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E2F93DC689DAFDEE65C2E42449B16EC6;
+			remoteInfo = PINCache;
+		};
 		0D7F6C9A691BAEA923C44E4EDBCAEA6F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E2F93DC689DAFDEE65C2E42449B16EC6;
 			remoteInfo = PINCache;
+		};
+		1428937D6B59333F1B4A3AC62ADAEAE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B0487CB725334C59CED4AB001549C45A;
+			remoteInfo = PhoneNumberKit;
 		};
 		1C77F6A269AE0E8B55FDA402865BA5DA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -846,14 +860,14 @@
 			remoteGlobalIDString = 4D7B7D274050D6277CAECA96F3CF6722;
 			remoteInfo = FLAnimatedImage;
 		};
-		2E8DAA6AE9AF079CC62F5C2DA1E8D9A9 /* PBXContainerItemProxy */ = {
+		34C398A10DAE5B007DEFC63898F530D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4460B48BFC5E36A6946E7FDAA6684A32;
-			remoteInfo = PINRemoteImage;
+			remoteGlobalIDString = 57D1ECC6FF9B47AFEA19D8F14C41DF9F;
+			remoteInfo = TransitionButton;
 		};
-		34C398A10DAE5B007DEFC63898F530D8 /* PBXContainerItemProxy */ = {
+		36FAA1261E22581DBF1E2EC29C4CB6C5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -867,26 +881,19 @@
 			remoteGlobalIDString = 15CC5321CC1F1209D3E7A438B51B442D;
 			remoteInfo = PWSwitch;
 		};
-		407A9C321A99065E81C5956709CE3062 /* PBXContainerItemProxy */ = {
+		390A09726CC3AD70AA5FFF916003BA27 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0D45DFEACEC05D4EC62BE7895B2B7B0D;
-			remoteInfo = DTGradientButton;
+			remoteGlobalIDString = 15CC5321CC1F1209D3E7A438B51B442D;
+			remoteInfo = PWSwitch;
 		};
-		431495B3ED704DBFE22C07C7687332CF /* PBXContainerItemProxy */ = {
+		4457D50C36336CFFF64715FB88C00498 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4D7B7D274050D6277CAECA96F3CF6722;
-			remoteInfo = FLAnimatedImage;
-		};
-		4429D4C75621995F798B4EAB4E01C5A1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E2F93DC689DAFDEE65C2E42449B16EC6;
-			remoteInfo = PINCache;
+			remoteGlobalIDString = 6F292934E9BE32938041E74CD3F766D9;
+			remoteInfo = PINOperation;
 		};
 		53725E396D1ED3A0C06362E938C15096 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -902,13 +909,6 @@
 			remoteGlobalIDString = C8A758D92978EC0C497938CAA86764A8;
 			remoteInfo = SwiftKeychainWrapper;
 		};
-		5C28F3FF744A8815E27F95C519711E65 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 57D1ECC6FF9B47AFEA19D8F14C41DF9F;
-			remoteInfo = TransitionButton;
-		};
 		641D1774D1E81C1944DB7BB95C8A9F7D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -923,12 +923,26 @@
 			remoteGlobalIDString = 4460B48BFC5E36A6946E7FDAA6684A32;
 			remoteInfo = PINRemoteImage;
 		};
+		69885969A770BFACAC7BD31CC0E878BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4460B48BFC5E36A6946E7FDAA6684A32;
+			remoteInfo = PINRemoteImage;
+		};
 		6E1F793724470A2AAF244F6C59862E40 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E2F93DC689DAFDEE65C2E42449B16EC6;
 			remoteInfo = PINCache;
+		};
+		741CF614AB20C2829BE1E2DF6BA73986 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 11379D0A3A51F9A9358E08E2FA2C378F;
+			remoteInfo = pop;
 		};
 		7571B5A40FBBB1EF74782CA72BB6CD30 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -950,6 +964,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = C8A758D92978EC0C497938CAA86764A8;
 			remoteInfo = SwiftKeychainWrapper;
+		};
+		8B5854B1763C0381648B9E7E2B32C1D6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0A60BB1C8B97C29FC779332C9BF50835;
+			remoteInfo = "UITextField+Shake";
 		};
 		91E0656FD1520976771CC3845A034139 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1000,6 +1021,13 @@
 			remoteGlobalIDString = 4D7B7D274050D6277CAECA96F3CF6722;
 			remoteInfo = FLAnimatedImage;
 		};
+		AD53EA91186595AF5420D7D57E621549 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D7B7D274050D6277CAECA96F3CF6722;
+			remoteInfo = FLAnimatedImage;
+		};
 		B1CD8950454BE901A4B73DC261780A5D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -1007,26 +1035,12 @@
 			remoteGlobalIDString = 11379D0A3A51F9A9358E08E2FA2C378F;
 			remoteInfo = pop;
 		};
-		B7F74F9D44C20054B5B566298722D2AA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B0487CB725334C59CED4AB001549C45A;
-			remoteInfo = PhoneNumberKit;
-		};
 		C5C2CE35BAECE2B5996914D17A058954 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6556171B2907B6BD3FFCECF994176168;
 			remoteInfo = QRCodeReader.swift;
-		};
-		CA16E36BE03F6DA24F109A13D04CBC4D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0A60BB1C8B97C29FC779332C9BF50835;
-			remoteInfo = "UITextField+Shake";
 		};
 		CF65AA4CA83E01CCB1352A27B6B6BB4D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1049,13 +1063,6 @@
 			remoteGlobalIDString = 6F292934E9BE32938041E74CD3F766D9;
 			remoteInfo = PINOperation;
 		};
-		E9AD6C4CE5668C8E7E382CAFB01923C6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 11379D0A3A51F9A9358E08E2FA2C378F;
-			remoteInfo = pop;
-		};
 		EB1D4DFC2C1C4E94BC564D8D2FB2DD50 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -1070,12 +1077,12 @@
 			remoteGlobalIDString = F8D21842E5814FA4C3A3DD2FC8DA93F5;
 			remoteInfo = Mixpanel;
 		};
-		FE8733DC056077CC33EE7C19E7400F73 /* PBXContainerItemProxy */ = {
+		FC5B2D8E1F2B5CE638A5A767E39FA32D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6F292934E9BE32938041E74CD3F766D9;
-			remoteInfo = PINOperation;
+			remoteGlobalIDString = 0D45DFEACEC05D4EC62BE7895B2B7B0D;
+			remoteInfo = DTGradientButton;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -1146,14 +1153,14 @@
 		0F2BD476DF5645950792E0A7E9915E5D /* JWTDecode-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JWTDecode-umbrella.h"; sourceTree = "<group>"; };
 		0F32D731A76D6BC5131D01DAB4534BF0 /* Mixpanel+AutomaticTracks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Mixpanel+AutomaticTracks.m"; path = "Mixpanel/Mixpanel+AutomaticTracks.m"; sourceTree = "<group>"; };
 		0F488FDBE6D665002D599B247861F352 /* PINOperationGroup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PINOperationGroup.h; path = Source/PINOperationGroup.h; sourceTree = "<group>"; };
-		0F7D41F58FFFE9117186EC954513D620 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FLAnimatedImage.framework; path = FLAnimatedImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F7D41F58FFFE9117186EC954513D620 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FLAnimatedImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FE6F636835D88ED3BFF00CC52412D18 /* NSNotificationCenter+AutomaticTracks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSNotificationCenter+AutomaticTracks.h"; path = "Mixpanel/NSNotificationCenter+AutomaticTracks.h"; sourceTree = "<group>"; };
 		0FEAF1074D3D6C318863D642D818837F /* PINImage+ScaledImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PINImage+ScaledImage.h"; path = "Source/Classes/Categories/PINImage+ScaledImage.h"; sourceTree = "<group>"; };
 		10478F6107DA58332EE325C36B6FB029 /* STPPaymentActivityIndicatorView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPPaymentActivityIndicatorView.m; path = Stripe/STPPaymentActivityIndicatorView.m; sourceTree = "<group>"; };
 		106CE17FB38780571E29AE477DC81CFD /* PINDiskCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PINDiskCache.h; path = Source/PINDiskCache.h; sourceTree = "<group>"; };
 		1083D7875EC00120543E77E1A409F03A /* stp_card_unionpay_template_en@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "stp_card_unionpay_template_en@2x.png"; path = "Stripe/Resources/Images/stp_card_unionpay_template_en@2x.png"; sourceTree = "<group>"; };
 		10ADA1976A1CA55FF5E5D22F8DED6E32 /* STPAPIClient+ApplePay.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "STPAPIClient+ApplePay.m"; path = "Stripe/STPAPIClient+ApplePay.m"; sourceTree = "<group>"; };
-		112725FDAE51E83DA9731075365A4419 /* POPSpringAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPSpringAnimation.mm; path = pop/POPSpringAnimation.mm; sourceTree = "<group>"; };
+		112725FDAE51E83DA9731075365A4419 /* POPSpringAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPSpringAnimation.mm; path = pop/POPSpringAnimation.mm; sourceTree = "<group>"; };
 		11B8DED51E32F03DABD99874BCA4073C /* NSDecimalNumber+Stripe_Currency.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDecimalNumber+Stripe_Currency.h"; path = "Stripe/NSDecimalNumber+Stripe_Currency.h"; sourceTree = "<group>"; };
 		1215F5107C406880498AB44BB4269009 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12DCDDDA5A653080385FD78840B2B2EA /* MPUIColorToNSStringValueTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPUIColorToNSStringValueTransformer.m; path = Mixpanel/MPUIColorToNSStringValueTransformer.m; sourceTree = "<group>"; };
@@ -1213,7 +1220,7 @@
 		20A83776D0BE584FBA96D868347DEDCB /* PINSpeedRecorder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PINSpeedRecorder.h; path = Source/Classes/PINSpeedRecorder.h; sourceTree = "<group>"; };
 		2107F82889685D32B9523AF448E752F3 /* TransitionButton-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TransitionButton-prefix.pch"; sourceTree = "<group>"; };
 		210A0AB3701312BB6C181CFA70AA3958 /* stp_card_unionpay_en.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = stp_card_unionpay_en.png; path = Stripe/Resources/Images/stp_card_unionpay_en.png; sourceTree = "<group>"; };
-		21C8B0E4F502685CA00F396248B71173 /* Stripe.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Stripe.bundle; path = "Stripe-Stripe.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		21C8B0E4F502685CA00F396248B71173 /* Stripe.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Stripe.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		21FFCEF8A23F08A15DB6126612DAB396 /* STPSourceParams+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "STPSourceParams+Private.h"; path = "Stripe/STPSourceParams+Private.h"; sourceTree = "<group>"; };
 		225DFEA4A61A174E21E916948EC32AFF /* stp_card_cvc@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "stp_card_cvc@3x.png"; path = "Stripe/Resources/Images/stp_card_cvc@3x.png"; sourceTree = "<group>"; };
 		234AD902561CC81D6EA761BA19A1B494 /* POPSpringSolver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPSpringSolver.h; path = pop/POPSpringSolver.h; sourceTree = "<group>"; };
@@ -1230,7 +1237,7 @@
 		26575A487E34A033DEEE07412EDFF75C /* PINRemoteImageBasicCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PINRemoteImageBasicCache.h; path = Source/Classes/PINRemoteImageBasicCache.h; sourceTree = "<group>"; };
 		266C72A046CCA92365797A3AD82DE3C0 /* QRCodeReaderResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QRCodeReaderResult.swift; path = Sources/QRCodeReaderResult.swift; sourceTree = "<group>"; };
 		26F8C5764553F88C739BBF6A853092B5 /* A0JWT.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = A0JWT.swift; path = JWTDecode/A0JWT.swift; sourceTree = "<group>"; };
-		27337EA9D63326D906C072DE66FD08E3 /* POPAnimationExtras.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimationExtras.mm; path = pop/POPAnimationExtras.mm; sourceTree = "<group>"; };
+		27337EA9D63326D906C072DE66FD08E3 /* POPAnimationExtras.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimationExtras.mm; path = pop/POPAnimationExtras.mm; sourceTree = "<group>"; };
 		27AF7D44ADB1A1B5B613D852CF8F41B4 /* MPTweakInline.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPTweakInline.m; path = Mixpanel/MPTweakInline.m; sourceTree = "<group>"; };
 		27B2A581159674D77730130078E62308 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
 		27CE25511166BE30F1EAB01D859965AE /* PINRemoteImageManager+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PINRemoteImageManager+Private.h"; path = "Source/Classes/PINRemoteImageManager+Private.h"; sourceTree = "<group>"; };
@@ -1248,7 +1255,7 @@
 		2B4505A1992A26D712090799DC3BFDCB /* PresenterKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PresenterKit.xcconfig; sourceTree = "<group>"; };
 		2B7891E5C52B561CFE853E60106FDFEE /* PINMemMapAnimatedImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PINMemMapAnimatedImage.h; path = Source/Classes/AnimatedImages/PINMemMapAnimatedImage.h; sourceTree = "<group>"; };
 		2B88C844E832E90BC185E7E21F2D805C /* STPCategoryLoader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPCategoryLoader.m; path = Stripe/STPCategoryLoader.m; sourceTree = "<group>"; };
-		2BAFF08BF89EB0800BAF6A2F6AF8931F /* QRCodeReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = QRCodeReader.framework; path = QRCodeReader.swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BAFF08BF89EB0800BAF6A2F6AF8931F /* QRCodeReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QRCodeReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C89A63CE36F911A71C9984BEDED0A3A /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2CAF83FF4BCA4B02FED5ED40B9F2D108 /* stp_card_cvc_amex.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = stp_card_cvc_amex.png; path = Stripe/Resources/Images/stp_card_cvc_amex.png; sourceTree = "<group>"; };
 		2D23CCF0431DFC42BDB9CA7349D668DA /* MPObjectSerializerConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPObjectSerializerConfig.h; path = Mixpanel/MPObjectSerializerConfig.h; sourceTree = "<group>"; };
@@ -1256,12 +1263,12 @@
 		2D976F6520E8C48C20DC1BE05830C455 /* stp_card_visa_template@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "stp_card_visa_template@2x.png"; path = "Stripe/Resources/Images/stp_card_visa_template@2x.png"; sourceTree = "<group>"; };
 		2DDCF5A3294FA42B75D7E9F7389269E2 /* NSArray+Stripe.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+Stripe.h"; path = "Stripe/NSArray+Stripe.h"; sourceTree = "<group>"; };
 		2E632E1661EDF8579F0875004A325214 /* PINGIFAnimatedImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PINGIFAnimatedImage.h; path = Source/Classes/AnimatedImages/PINGIFAnimatedImage.h; sourceTree = "<group>"; };
-		2E7DF2E90A5B267C79F648554CE8FDAD /* POPAnimationTracer.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimationTracer.mm; path = pop/POPAnimationTracer.mm; sourceTree = "<group>"; };
-		2E83039FB89B6CAAC40BFD2302537514 /* PINCache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PINCache.framework; path = PINCache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E7DF2E90A5B267C79F648554CE8FDAD /* POPAnimationTracer.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimationTracer.mm; path = pop/POPAnimationTracer.mm; sourceTree = "<group>"; };
+		2E83039FB89B6CAAC40BFD2302537514 /* PINCache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PINCache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EC363DF9F5AEFCDD966AAA930E0DEB0 /* pop-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "pop-umbrella.h"; sourceTree = "<group>"; };
 		2F70590B1A7C11018574D255071F1C82 /* MPABTestDesignerSnapshotResponseMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPABTestDesignerSnapshotResponseMessage.h; path = Mixpanel/MPABTestDesignerSnapshotResponseMessage.h; sourceTree = "<group>"; };
 		2FD94F6A8FF3136E2BE282DF1DE8985F /* Stripe-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Stripe-prefix.pch"; sourceTree = "<group>"; };
-		2FEADD116E3BF853E62760DF5DB90E93 /* POPGeometry.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPGeometry.mm; path = pop/POPGeometry.mm; sourceTree = "<group>"; };
+		2FEADD116E3BF853E62760DF5DB90E93 /* POPGeometry.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPGeometry.mm; path = pop/POPGeometry.mm; sourceTree = "<group>"; };
 		2FEAF3937D9A02D68D1B50680EE3502E /* MPWebSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPWebSocket.h; path = Mixpanel/MPWebSocket.h; sourceTree = "<group>"; };
 		30089957CF83AD71F2A8C0FB23DA33DF /* STPAddCardViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPAddCardViewController.h; path = Stripe/PublicHeaders/STPAddCardViewController.h; sourceTree = "<group>"; };
 		3080C0F63CAD853BFDA479316ED09CB3 /* MPVariant.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPVariant.m; path = Mixpanel/MPVariant.m; sourceTree = "<group>"; };
@@ -1303,7 +1310,7 @@
 		3E747E97B6889A7FA971B8769059A569 /* PINRemoteImageManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PINRemoteImageManager.m; path = Source/Classes/PINRemoteImageManager.m; sourceTree = "<group>"; };
 		3E9EFFFAEF18671CB8219DC200ED8A3F /* UIView+MPHelpers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+MPHelpers.h"; path = "Mixpanel/UIView+MPHelpers.h"; sourceTree = "<group>"; };
 		3EB119A97DBAA08878C8D96B075375CC /* STPURLCallbackHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPURLCallbackHandler.m; path = Stripe/STPURLCallbackHandler.m; sourceTree = "<group>"; };
-		3F59257A8B0D91E3339DC6B0ABFC9152 /* POPMath.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPMath.mm; path = pop/POPMath.mm; sourceTree = "<group>"; };
+		3F59257A8B0D91E3339DC6B0ABFC9152 /* POPMath.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPMath.mm; path = pop/POPMath.mm; sourceTree = "<group>"; };
 		3F74F294FA19AF94EBDF95D92D8F828D /* Pods-Big Neon UI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Big Neon UI.release.xcconfig"; sourceTree = "<group>"; };
 		3FFBDBA5458E3285E2184A76A110E965 /* POPMath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPMath.h; path = pop/POPMath.h; sourceTree = "<group>"; };
 		40036B23F30B9DB8D72C26CA67680EF2 /* MPNotificationViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPNotificationViewController.m; path = Mixpanel/MPNotificationViewController.m; sourceTree = "<group>"; };
@@ -1337,7 +1344,7 @@
 		47104FBE7391F6691EF7900838E811BF /* STPLegalEntityParams.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPLegalEntityParams.m; path = Stripe/STPLegalEntityParams.m; sourceTree = "<group>"; };
 		47520B301118C649A1BFC8EC04004105 /* PINSpeedRecorder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PINSpeedRecorder.m; path = Source/Classes/PINSpeedRecorder.m; sourceTree = "<group>"; };
 		475BAAA579158808A357C9F41C35C341 /* MPABTestDesignerSnapshotRequestMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPABTestDesignerSnapshotRequestMessage.h; path = Mixpanel/MPABTestDesignerSnapshotRequestMessage.h; sourceTree = "<group>"; };
-		477F022B445E985B6F52C22DCAF81039 /* Pods_Big_Neon_UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Big_Neon_UI.framework; path = "Pods-Big Neon UI.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		477F022B445E985B6F52C22DCAF81039 /* Pods_Big_Neon_UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big_Neon_UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		481668D00F5B7C6855ECAA8C3D4FDB90 /* UINavigationBar+Stripe_Theme.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UINavigationBar+Stripe_Theme.h"; path = "Stripe/PublicHeaders/UINavigationBar+Stripe_Theme.h"; sourceTree = "<group>"; };
 		484E378DB13A78352D7634A7722D9304 /* STPTheme.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPTheme.m; path = Stripe/STPTheme.m; sourceTree = "<group>"; };
 		486603BF9696FF76144C74A87A3C9104 /* MPLogo.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = MPLogo.png; path = Mixpanel/Images/MPLogo.png; sourceTree = "<group>"; };
@@ -1351,12 +1358,12 @@
 		4BCA594F83D6EB771DF8D7D4D41E5F0A /* UIColor+MPColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+MPColor.m"; path = "Mixpanel/UIColor+MPColor.m"; sourceTree = "<group>"; };
 		4BD95436C7EB104584D583BC96E88D31 /* PINOperation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PINOperation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BF8A10297F6FCDBFB16EEA9C45033D0 /* MPLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPLogger.h; path = Mixpanel/MPLogger.h; sourceTree = "<group>"; };
-		4C3AE9C859A69BCAC13187833C1352CE /* TransformationMatrix.cpp */ = {isa = PBXFileReference; includeInIndex = 1; name = TransformationMatrix.cpp; path = pop/WebCore/TransformationMatrix.cpp; sourceTree = "<group>"; };
+		4C3AE9C859A69BCAC13187833C1352CE /* TransformationMatrix.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = TransformationMatrix.cpp; path = pop/WebCore/TransformationMatrix.cpp; sourceTree = "<group>"; };
 		4C4C35426AF27B0FA5F620BD26B4C28C /* PKPayment+Stripe.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PKPayment+Stripe.h"; path = "Stripe/PKPayment+Stripe.h"; sourceTree = "<group>"; };
 		4C5872F5620C187110F48CDF6F4712AC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4CC84B2FD3D1C77E283CCE41084858C1 /* Pods_Big_Neon_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Big_Neon_Core.framework; path = "Pods-Big Neon Core.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CC84B2FD3D1C77E283CCE41084858C1 /* Pods_Big_Neon_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big_Neon_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D74DEAD94095F30E89D08AB5FEEFB4F /* STPUserInformation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPUserInformation.m; path = Stripe/STPUserInformation.m; sourceTree = "<group>"; };
-		4DC66C168FC96D93BE963511B9C92D99 /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftKeychainWrapper.framework; path = SwiftKeychainWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DC66C168FC96D93BE963511B9C92D99 /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftKeychainWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E12D30DA908B2EE680D5AC787D1D914 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		4E934EF28EAB086EABF033DC821AFA79 /* STPAPIResponseDecodable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPAPIResponseDecodable.h; path = Stripe/PublicHeaders/STPAPIResponseDecodable.h; sourceTree = "<group>"; };
 		4EF4D32E2CB67F3138C089EF1CBDB553 /* POPDecayAnimationInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPDecayAnimationInternal.h; path = pop/POPDecayAnimationInternal.h; sourceTree = "<group>"; };
@@ -1365,7 +1372,7 @@
 		509981A6604EC5B86CCA1AF46B3CD206 /* STPCardParams.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPCardParams.h; path = Stripe/PublicHeaders/STPCardParams.h; sourceTree = "<group>"; };
 		50A39A37264233A6392B7724E64307D7 /* POPPropertyAnimationInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPPropertyAnimationInternal.h; path = pop/POPPropertyAnimationInternal.h; sourceTree = "<group>"; };
 		518CDD95343D7E8B39FD9E12A3459428 /* ParseManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParseManager.swift; path = PhoneNumberKit/ParseManager.swift; sourceTree = "<group>"; };
-		518DF3794AEF044251BE25893680FD39 /* POPCGUtils.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPCGUtils.mm; path = pop/POPCGUtils.mm; sourceTree = "<group>"; };
+		518DF3794AEF044251BE25893680FD39 /* POPCGUtils.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPCGUtils.mm; path = pop/POPCGUtils.mm; sourceTree = "<group>"; };
 		51CE62AD64369438BEA0613DA596FC0C /* MPABTestDesignerSnapshotRequestMessage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPABTestDesignerSnapshotRequestMessage.m; path = Mixpanel/MPABTestDesignerSnapshotRequestMessage.m; sourceTree = "<group>"; };
 		51DA0F77AD8284C4B212A47F20518A45 /* STPSwitchTableViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPSwitchTableViewCell.m; path = Stripe/STPSwitchTableViewCell.m; sourceTree = "<group>"; };
 		52FC23C08ED7EAE7097C7C5514C9A9F0 /* MPCheckmark.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = MPCheckmark.png; path = Mixpanel/Images/MPCheckmark.png; sourceTree = "<group>"; };
@@ -1397,7 +1404,7 @@
 		5BAA9FB1AB3499B1AD14C9AD78AC49C9 /* stp_card_unionpay_template_zh.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = stp_card_unionpay_template_zh.png; path = Stripe/Resources/Images/stp_card_unionpay_template_zh.png; sourceTree = "<group>"; };
 		5BBFFB9336BCAB43430FA213237D8BEC /* STPApplePayPaymentMethod.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPApplePayPaymentMethod.m; path = Stripe/STPApplePayPaymentMethod.m; sourceTree = "<group>"; };
 		5C1262E296FA3990F0AED632784389ED /* PKPaymentAuthorizationViewController+Stripe_Blocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PKPaymentAuthorizationViewController+Stripe_Blocks.h"; path = "Stripe/PKPaymentAuthorizationViewController+Stripe_Blocks.h"; sourceTree = "<group>"; };
-		5C2F2A980536283EADDE9828EA7994E4 /* Stripe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Stripe.framework; path = Stripe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C2F2A980536283EADDE9828EA7994E4 /* Stripe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Stripe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C377C87DE568457F76DCCD0C8993C44 /* FLAnimatedImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FLAnimatedImageView.m; path = FLAnimatedImage/FLAnimatedImageView.m; sourceTree = "<group>"; };
 		5C4348433AAEB8B23B27D2FB5605A33D /* PINGIFAnimatedImageManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PINGIFAnimatedImageManager.m; path = Source/Classes/PINGIFAnimatedImageManager.m; sourceTree = "<group>"; };
 		5CC41E71E4832F79F68B782B3D79E080 /* QRCodeReader.swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = QRCodeReader.swift.modulemap; sourceTree = "<group>"; };
@@ -1413,7 +1420,7 @@
 		624A72E4E0D2D808E63AD1B95AFEF03B /* RequestRetrier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestRetrier.swift; path = Source/RequestRetrier.swift; sourceTree = "<group>"; };
 		62A266F1A75C2B2B66EEC5E56884D9AA /* Pods-Big Neon Core-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Big Neon Core-dummy.m"; sourceTree = "<group>"; };
 		62EC2EF856E7C5A2763346960D7E29D7 /* PINRemoteImageCallbacks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PINRemoteImageCallbacks.m; path = Source/Classes/PINRemoteImageCallbacks.m; sourceTree = "<group>"; };
-		635E4DFB74E6D433F4981AF02887FFCB /* POPAnimatableProperty.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimatableProperty.mm; path = pop/POPAnimatableProperty.mm; sourceTree = "<group>"; };
+		635E4DFB74E6D433F4981AF02887FFCB /* POPAnimatableProperty.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimatableProperty.mm; path = pop/POPAnimatableProperty.mm; sourceTree = "<group>"; };
 		636ED79D95D8A8FE7FFDFE1602745ABE /* STPPaymentMethodsViewController+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "STPPaymentMethodsViewController+Private.h"; path = "Stripe/STPPaymentMethodsViewController+Private.h"; sourceTree = "<group>"; };
 		64592CEFEB58B1969CE8A69DC3CF8A01 /* stp_card_diners_template@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "stp_card_diners_template@3x.png"; path = "Stripe/Resources/Images/stp_card_diners_template@3x.png"; sourceTree = "<group>"; };
 		6460AC05A5B27305C45F085C8481A9B0 /* STPLegalEntityParams.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPLegalEntityParams.h; path = Stripe/PublicHeaders/STPLegalEntityParams.h; sourceTree = "<group>"; };
@@ -1452,7 +1459,7 @@
 		6DDA0C02A6DF5882E384CE682D83BF01 /* PINOperationMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PINOperationMacros.h; path = Source/PINOperationMacros.h; sourceTree = "<group>"; };
 		6DDA356F4D8834883A143F46ECB2BFD7 /* MPUITableViewBinding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPUITableViewBinding.m; path = Mixpanel/MPUITableViewBinding.m; sourceTree = "<group>"; };
 		6E1FE252156DCEB6A505E9AC473AB935 /* PINRemoteImageManagerResult.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PINRemoteImageManagerResult.m; path = Source/Classes/PINRemoteImageManagerResult.m; sourceTree = "<group>"; };
-		6E3566CEE9A4822CAAAB899D3350D77C /* UITextField_Shake.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = UITextField_Shake.framework; path = "UITextField+Shake.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E3566CEE9A4822CAAAB899D3350D77C /* UITextField_Shake.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UITextField_Shake.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E9E41009F63A70132CB92ADD17876E4 /* STPSourceProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPSourceProtocol.h; path = Stripe/PublicHeaders/STPSourceProtocol.h; sourceTree = "<group>"; };
 		6F2B498209BA5E781C1D01A0F0B51E09 /* stp_card_error@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "stp_card_error@2x.png"; path = "Stripe/Resources/Images/stp_card_error@2x.png"; sourceTree = "<group>"; };
 		6F3C7C3A17A5AABE4713478C7DB67133 /* STPSectionHeaderView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPSectionHeaderView.m; path = Stripe/STPSectionHeaderView.m; sourceTree = "<group>"; };
@@ -1490,7 +1497,7 @@
 		793C1BE788863FB51E63B49C30E63C40 /* NSNotificationCenter+AutomaticTracks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSNotificationCenter+AutomaticTracks.m"; path = "Mixpanel/NSNotificationCenter+AutomaticTracks.m"; sourceTree = "<group>"; };
 		7A51CEB3AF3C24F081B1F537AC3E8A0F /* MPPassThroughValueTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPPassThroughValueTransformer.m; path = Mixpanel/MPPassThroughValueTransformer.m; sourceTree = "<group>"; };
 		7A5DEA62DF49AF375E80418A7757644D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7AF5364B1C08CAF0FA9BF4034DA4A215 /* Mixpanel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Mixpanel.framework; path = Mixpanel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AF5364B1C08CAF0FA9BF4034DA4A215 /* Mixpanel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mixpanel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B4632F50D61DDFED816F620360810AD /* STPAPIRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPAPIRequest.m; path = Stripe/STPAPIRequest.m; sourceTree = "<group>"; };
 		7BA04472B66E411385C42B264059D9EF /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
 		7C3B88BB9D30477FA44187944C3523A0 /* NSMutableURLRequest+Stripe.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableURLRequest+Stripe.h"; path = "Stripe/NSMutableURLRequest+Stripe.h"; sourceTree = "<group>"; };
@@ -1522,7 +1529,7 @@
 		8333A15B3C035D3AC1235B4490E1737A /* stp_card_applepay.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = stp_card_applepay.png; path = Stripe/Resources/Images/stp_card_applepay.png; sourceTree = "<group>"; };
 		83801A5399AE76D905CB491239D9BE3A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83DCE76E66A9F921820BCBAF6E9D92CE /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = fi.lproj/Localizable.strings; sourceTree = "<group>"; };
-		8424915AA10B2520E012DD286A583B4E /* POPAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimation.mm; path = pop/POPAnimation.mm; sourceTree = "<group>"; };
+		8424915AA10B2520E012DD286A583B4E /* POPAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimation.mm; path = pop/POPAnimation.mm; sourceTree = "<group>"; };
 		8461697D24F152BE53C3B3E21AF61B7C /* PhoneNumberKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PhoneNumberKit.xcconfig; sourceTree = "<group>"; };
 		84C1608339AFB9D7CF12FFADD152E8FF /* POPLayerExtras.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPLayerExtras.h; path = pop/POPLayerExtras.h; sourceTree = "<group>"; };
 		84C61CDA3BF219CAF48A403F0C82D1F5 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -1530,7 +1537,7 @@
 		85B89BC65D0E1D20E53943381310A97A /* PINGIFAnimatedImage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PINGIFAnimatedImage.m; path = Source/Classes/AnimatedImages/PINGIFAnimatedImage.m; sourceTree = "<group>"; };
 		860897639A683B02C6818A25146F6E90 /* stp_card_diners_template.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = stp_card_diners_template.png; path = Stripe/Resources/Images/stp_card_diners_template.png; sourceTree = "<group>"; };
 		8628A3A9F385FC067B8517BF487E2757 /* UIImageExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIImageExtension.swift; path = DTGradientButton/Classes/UIImageExtension.swift; sourceTree = "<group>"; };
-		862F4641A54C00C389F462A2FB8778CA /* POPCustomAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPCustomAnimation.mm; path = pop/POPCustomAnimation.mm; sourceTree = "<group>"; };
+		862F4641A54C00C389F462A2FB8778CA /* POPCustomAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPCustomAnimation.mm; path = pop/POPCustomAnimation.mm; sourceTree = "<group>"; };
 		868C094DF40F8962464DD1FE6685D023 /* Pods-Big Neon UI-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Big Neon UI-resources.sh"; sourceTree = "<group>"; };
 		8693A3538311DFB000BA0610D25D8238 /* PKPayment+Stripe.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "PKPayment+Stripe.m"; path = "Stripe/PKPayment+Stripe.m"; sourceTree = "<group>"; };
 		86991FE7E2827C7C29E041909AC1900B /* UIImage+MPAverageColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MPAverageColor.h"; path = "Mixpanel/UIImage+MPAverageColor.h"; sourceTree = "<group>"; };
@@ -1555,7 +1562,7 @@
 		8A499A1042F76762AFF872EDD30109BD /* STPCard+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "STPCard+Private.h"; path = "Stripe/STPCard+Private.h"; sourceTree = "<group>"; };
 		8A5498CC9CFFB302647ECE2AD52279CC /* STPPaymentCardTextFieldViewModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPPaymentCardTextFieldViewModel.h; path = Stripe/STPPaymentCardTextFieldViewModel.h; sourceTree = "<group>"; };
 		8A5EE723FBE9F8284B0A629F5A6F2211 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8A9C598FCBDC14585B847FAC0A70B14A /* PINRemoteImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PINRemoteImage.framework; path = PINRemoteImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A9C598FCBDC14585B847FAC0A70B14A /* PINRemoteImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PINRemoteImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AB74FFD93BCDBBBE044FE6EDCE175F3 /* STPEphemeralKeyProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPEphemeralKeyProvider.h; path = Stripe/PublicHeaders/STPEphemeralKeyProvider.h; sourceTree = "<group>"; };
 		8AEFC94AD8AAD074790D3B72D9A02F88 /* MPObjectSerializerContext.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPObjectSerializerContext.m; path = Mixpanel/MPObjectSerializerContext.m; sourceTree = "<group>"; };
 		8AF3B3280CF567C5D6B12B360D4526EF /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1567,7 +1574,7 @@
 		8E267B97A4EBB72930F34A6337AC9FD3 /* JWTDecode-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JWTDecode-dummy.m"; sourceTree = "<group>"; };
 		8ECD12FF9CA565FC2FB35C63CFDD86B4 /* STPAPIClient+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "STPAPIClient+Private.h"; path = "Stripe/STPAPIClient+Private.h"; sourceTree = "<group>"; };
 		8EE8BB4BB90A249442B36B2DA42900EE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		8F65B1922D90023C56E8967E1F844856 /* Localizations */ = {isa = PBXFileReference; includeInIndex = 1; name = Localizations; path = Stripe/Resources/Localizations; sourceTree = "<group>"; };
+		8F65B1922D90023C56E8967E1F844856 /* Localizations */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = Localizations; path = Stripe/Resources/Localizations; sourceTree = "<group>"; };
 		8F89753A74556413DB176EA3DA2EB712 /* MPResources.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPResources.m; path = Mixpanel/MPResources.m; sourceTree = "<group>"; };
 		901C2426990FF6D9F47940A6BB373BE7 /* PINRemoteImageBasicCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PINRemoteImageBasicCache.m; path = Source/Classes/PINRemoteImageBasicCache.m; sourceTree = "<group>"; };
 		90648DD7E92BC64A7F408E22D4D55C30 /* UIViewController+Stripe_NavigationItemProxy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Stripe_NavigationItemProxy.m"; path = "Stripe/UIViewController+Stripe_NavigationItemProxy.m"; sourceTree = "<group>"; };
@@ -1588,7 +1595,7 @@
 		92E3050B3D3779A27B01F164D2E45343 /* stp_icon_checkmark@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "stp_icon_checkmark@3x.png"; path = "Stripe/Resources/Images/stp_icon_checkmark@3x.png"; sourceTree = "<group>"; };
 		93572567CC4DDBD0F8EE3D40D708F383 /* stp_card_jcb_template@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "stp_card_jcb_template@3x.png"; path = "Stripe/Resources/Images/stp_card_jcb_template@3x.png"; sourceTree = "<group>"; };
 		93747F6B0BFE64731E86C7431BA2092A /* STPPaymentContext.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPPaymentContext.m; path = Stripe/STPPaymentContext.m; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93CA40F8643B808F44F1E00E026B2344 /* MPABTestDesignerSnapshotResponseMessage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPABTestDesignerSnapshotResponseMessage.m; path = Mixpanel/MPABTestDesignerSnapshotResponseMessage.m; sourceTree = "<group>"; };
 		93CFAFD5DCB556EA126A68A9FAB2A2E5 /* _MPTweakBindObserver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _MPTweakBindObserver.h; path = Mixpanel/_MPTweakBindObserver.h; sourceTree = "<group>"; };
 		942F2D0B3B4846BA73DC73EE26D56E9C /* MPABTestDesignerDeviceInfoRequestMessage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPABTestDesignerDeviceInfoRequestMessage.m; path = Mixpanel/MPABTestDesignerDeviceInfoRequestMessage.m; sourceTree = "<group>"; };
@@ -1599,7 +1606,7 @@
 		9530E26D8BD2EE58634F0BD8157DB3AD /* stp_card_amex_template.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = stp_card_amex_template.png; path = Stripe/Resources/Images/stp_card_amex_template.png; sourceTree = "<group>"; };
 		954B8C4D28057AA976EA5E44668A199E /* ReaderOverlayView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReaderOverlayView.swift; path = Sources/ReaderOverlayView.swift; sourceTree = "<group>"; };
 		9550B71EA255ECAD26E9E106F8E9B0A4 /* MPPropertyDescription.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPPropertyDescription.m; path = Mixpanel/MPPropertyDescription.m; sourceTree = "<group>"; };
-		95616FC4B0F4A9C7EE44BDEB0395AAEA /* PhoneNumberKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PhoneNumberKit.framework; path = PhoneNumberKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		95616FC4B0F4A9C7EE44BDEB0395AAEA /* PhoneNumberKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PhoneNumberKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95A72A134DA19A5CD9E420382A9EC32B /* STPPaymentIntentEnums.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPPaymentIntentEnums.h; path = Stripe/PublicHeaders/STPPaymentIntentEnums.h; sourceTree = "<group>"; };
 		960B218BA99A4D1F54B760E7F6C347D9 /* STPRedirectContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPRedirectContext.h; path = Stripe/PublicHeaders/STPRedirectContext.h; sourceTree = "<group>"; };
 		962095D50D425FA7D4BACDA74F5BCCA7 /* stp_card_diners@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "stp_card_diners@2x.png"; path = "Stripe/Resources/Images/stp_card_diners@2x.png"; sourceTree = "<group>"; };
@@ -1657,7 +1664,7 @@
 		A5415336239C6E827EE9D415359E6360 /* UITextField+Shake.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITextField+Shake.m"; path = "Source/UITextField+Shake.m"; sourceTree = "<group>"; };
 		A565C631AC7AC559F396E097868D7019 /* STPBundleLocator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPBundleLocator.h; path = Stripe/STPBundleLocator.h; sourceTree = "<group>"; };
 		A5A49FE3AFC0246CA51499705EBD9E0D /* Pods-Big Neon.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Big Neon.modulemap"; sourceTree = "<group>"; };
-		A5AF9558A9790EA65ADBF2C79E76C39B /* PresenterKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PresenterKit.framework; path = PresenterKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5AF9558A9790EA65ADBF2C79E76C39B /* PresenterKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PresenterKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A660442FA2C92EB65630E485333FC12C /* PINRemoteImageCategoryManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PINRemoteImageCategoryManager.m; path = Source/Classes/PINRemoteImageCategoryManager.m; sourceTree = "<group>"; };
 		A6E1FD39D881A85E2B3D00602B88BFD0 /* SessionStateProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionStateProvider.swift; path = Source/SessionStateProvider.swift; sourceTree = "<group>"; };
 		A6E2BFB426B9D275D56048DABFBF16C1 /* QRCodeReader.swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QRCodeReader.swift-umbrella.h"; sourceTree = "<group>"; };
@@ -1678,7 +1685,7 @@
 		AD57A9622909CE08EF9DEB43883CB891 /* PINRemoteImage-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PINRemoteImage-prefix.pch"; sourceTree = "<group>"; };
 		AD8DDD9E2717CBFD7B685B05B81BAEEB /* STPCoreViewController+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "STPCoreViewController+Private.h"; path = "Stripe/STPCoreViewController+Private.h"; sourceTree = "<group>"; };
 		AE09B01E561DA512B00C86A65D25F665 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
-		AE34EF528886EBE21AED2EE38549514F /* Images */ = {isa = PBXFileReference; includeInIndex = 1; name = Images; path = Stripe/Resources/Images; sourceTree = "<group>"; };
+		AE34EF528886EBE21AED2EE38549514F /* Images */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = Images; path = Stripe/Resources/Images; sourceTree = "<group>"; };
 		AE8568C297E9974F502371090FC22A81 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE8C53A98A4DDD755343D34442201991 /* NSMutableURLRequest+Stripe.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableURLRequest+Stripe.m"; path = "Stripe/NSMutableURLRequest+Stripe.m"; sourceTree = "<group>"; };
 		AEC014BE322ED160CFEF9AA5EC788F90 /* Stripe-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Stripe-umbrella.h"; sourceTree = "<group>"; };
@@ -1702,7 +1709,7 @@
 		B66ED8191077F703626F08B54A912230 /* NSURLComponents+Stripe.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSURLComponents+Stripe.m"; path = "Stripe/NSURLComponents+Stripe.m"; sourceTree = "<group>"; };
 		B676F627D96400C825951DBE7E29CC11 /* MPTweak.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPTweak.m; path = Mixpanel/MPTweak.m; sourceTree = "<group>"; };
 		B69542136790A54B666DBA9787D0BA66 /* stp_card_mastercard_template@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "stp_card_mastercard_template@2x.png"; path = "Stripe/Resources/Images/stp_card_mastercard_template@2x.png"; sourceTree = "<group>"; };
-		B6E629AABFF082AC615774B3F08C708D /* DTGradientButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DTGradientButton.framework; path = DTGradientButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6E629AABFF082AC615774B3F08C708D /* DTGradientButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DTGradientButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7037D78983D74EE7E8698E9F641936C /* QRCodeReaderViewControllerDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QRCodeReaderViewControllerDelegate.swift; path = Sources/QRCodeReaderViewControllerDelegate.swift; sourceTree = "<group>"; };
 		B73F64CCA72EBD25D7D6AAC8B5D7FABB /* PINRemoteImageCallbacks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PINRemoteImageCallbacks.h; path = Source/Classes/PINRemoteImageCallbacks.h; sourceTree = "<group>"; };
 		B742E545D29DA242EB2702410E9F261B /* stp_card_discover@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "stp_card_discover@3x.png"; path = "Stripe/Resources/Images/stp_card_discover@3x.png"; sourceTree = "<group>"; };
@@ -1738,7 +1745,7 @@
 		BFAA9939D52A34F8EF31EE296300572E /* PINOperation.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PINOperation.xcconfig; sourceTree = "<group>"; };
 		C05E74146B5F26C0A389E3445117575E /* Pods-Big Neon Core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Big Neon Core.debug.xcconfig"; sourceTree = "<group>"; };
 		C0FF4E3BBF16E31226A2B6C114198F51 /* UIView+Stripe_SafeAreaBounds.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+Stripe_SafeAreaBounds.m"; path = "Stripe/UIView+Stripe_SafeAreaBounds.m"; sourceTree = "<group>"; };
-		C104FFB1237AAF9ECAC99352C85C806B /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C104FFB1237AAF9ECAC99352C85C806B /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C148AF290A24BC0AB7F001F30B6DEB00 /* STPCustomerContext.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPCustomerContext.m; path = Stripe/STPCustomerContext.m; sourceTree = "<group>"; };
 		C1BE138621061B5E051604FE2FB57395 /* STPConnectAccountParams.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPConnectAccountParams.m; path = Stripe/STPConnectAccountParams.m; sourceTree = "<group>"; };
 		C1C214B9AA98F32275E0BAD89479E863 /* StripeError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = StripeError.m; path = Stripe/StripeError.m; sourceTree = "<group>"; };
@@ -1746,7 +1753,7 @@
 		C1DF8D4791387DBAA0AAD4B751E0946C /* STPSourceOwner.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPSourceOwner.h; path = Stripe/PublicHeaders/STPSourceOwner.h; sourceTree = "<group>"; };
 		C1E458309FF2C8E699FE1CFFD1C0DAB0 /* MixpanelExceptionHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MixpanelExceptionHandler.h; path = Mixpanel/MixpanelExceptionHandler.h; sourceTree = "<group>"; };
 		C288F46558152EF5DCAEC66341633232 /* NSString+Stripe.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+Stripe.h"; path = "Stripe/NSString+Stripe.h"; sourceTree = "<group>"; };
-		C2CD2E49D043AD0A74B60A3F044F7E8C /* pop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = pop.framework; path = pop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2CD2E49D043AD0A74B60A3F044F7E8C /* pop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = pop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2DEE8214B3D4D8B4C18DAA92B02F226 /* MPSwizzler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPSwizzler.m; path = Mixpanel/MPSwizzler.m; sourceTree = "<group>"; };
 		C2E61C7E2365D7205408D28D066DE7B3 /* NSURLComponents+Stripe.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSURLComponents+Stripe.h"; path = "Stripe/NSURLComponents+Stripe.h"; sourceTree = "<group>"; };
 		C2F175C706E17AA520B1DD8BFC848098 /* STPPaymentCardTextFieldCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPPaymentCardTextFieldCell.h; path = Stripe/STPPaymentCardTextFieldCell.h; sourceTree = "<group>"; };
@@ -1754,16 +1761,16 @@
 		C322FB88A5B28A8F20344C9179CBC75F /* PINMemoryCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PINMemoryCache.h; path = Source/PINMemoryCache.h; sourceTree = "<group>"; };
 		C340F58B5ECDD807927150656D4CB53D /* QRCodeReaderViewContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QRCodeReaderViewContainer.swift; path = Sources/QRCodeReaderViewContainer.swift; sourceTree = "<group>"; };
 		C344C675DD971BB281EA92851AD5CE80 /* PresenterKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PresenterKit-prefix.pch"; sourceTree = "<group>"; };
-		C348AE6C717EF90823F69557BAE93DB5 /* POPPropertyAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPPropertyAnimation.mm; path = pop/POPPropertyAnimation.mm; sourceTree = "<group>"; };
-		C36BD18F23245CC79AA172F33CF365F9 /* Pods_Big_Neon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Big_Neon.framework; path = "Pods-Big Neon.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C348AE6C717EF90823F69557BAE93DB5 /* POPPropertyAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPPropertyAnimation.mm; path = pop/POPPropertyAnimation.mm; sourceTree = "<group>"; };
+		C36BD18F23245CC79AA172F33CF365F9 /* Pods_Big_Neon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big_Neon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4637812F7366E56923AF31977FC1666 /* ParameterEncoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoder.swift; path = Source/ParameterEncoder.swift; sourceTree = "<group>"; };
-		C469E438CF946DF769F547F887B84A20 /* PhoneNumberMetadata.json */ = {isa = PBXFileReference; includeInIndex = 1; name = PhoneNumberMetadata.json; path = PhoneNumberKit/Resources/PhoneNumberMetadata.json; sourceTree = "<group>"; };
+		C469E438CF946DF769F547F887B84A20 /* PhoneNumberMetadata.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = PhoneNumberMetadata.json; path = PhoneNumberKit/Resources/PhoneNumberMetadata.json; sourceTree = "<group>"; };
 		C47F7D4EF1DAF74C5E7DB8AF2E24C332 /* stp_card_unknown@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "stp_card_unknown@3x.png"; path = "Stripe/Resources/Images/stp_card_unknown@3x.png"; sourceTree = "<group>"; };
 		C493CDBC3C3AC46789F55D50EF995B29 /* MPTweakInlineInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPTweakInlineInternal.h; path = Mixpanel/MPTweakInlineInternal.h; sourceTree = "<group>"; };
 		C4FA94AF82A4005814F8F154D62D090C /* stp_card_discover_template.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = stp_card_discover_template.png; path = Stripe/Resources/Images/stp_card_discover_template.png; sourceTree = "<group>"; };
 		C5622E22DFB689BE8BC93F8CDC96B728 /* PINRequestRetryStrategy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PINRequestRetryStrategy.h; path = Source/Classes/PINRequestRetryStrategy.h; sourceTree = "<group>"; };
 		C5F0433B8CB35E884D5C28DD6BBE84A7 /* STPMultipartFormDataEncoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPMultipartFormDataEncoder.h; path = Stripe/STPMultipartFormDataEncoder.h; sourceTree = "<group>"; };
-		C64D666939C97CE0FC1EF1741D30CF4A /* PINOperation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PINOperation.framework; path = PINOperation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C64D666939C97CE0FC1EF1741D30CF4A /* PINOperation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PINOperation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6997E691DC531764B0FC5520E49188F /* NSError+Stripe.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSError+Stripe.h"; path = "Stripe/NSError+Stripe.h"; sourceTree = "<group>"; };
 		C6B8E23A08726DA888B48A331F69B346 /* STPPaymentIntentSourceActionAuthorizeWithURL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPPaymentIntentSourceActionAuthorizeWithURL.m; path = Stripe/STPPaymentIntentSourceActionAuthorizeWithURL.m; sourceTree = "<group>"; };
 		C6D27106BD7DC7D17F2E74977C729276 /* STPAnalyticsClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPAnalyticsClient.h; path = Stripe/STPAnalyticsClient.h; sourceTree = "<group>"; };
@@ -1774,7 +1781,7 @@
 		C8D922E5A754DA8FA7D08DA45B22E0F1 /* TransitionButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionButton.swift; path = Source/TransitionButton.swift; sourceTree = "<group>"; };
 		C9282522B01313421F6133A95FC1E831 /* STPCardIOProxy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPCardIOProxy.m; path = Stripe/STPCardIOProxy.m; sourceTree = "<group>"; };
 		C93005A42270FE3E81891B9033BB97BB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
-		C942FA0825C66F938801C31DF642A813 /* TransitionButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TransitionButton.framework; path = TransitionButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C942FA0825C66F938801C31DF642A813 /* TransitionButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TransitionButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C999EEA516F676D0BF7F81470C5EA797 /* MPSwizzler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPSwizzler.h; path = Mixpanel/MPSwizzler.h; sourceTree = "<group>"; };
 		C9A99DCC07F84B7283B25B97C4BAABD5 /* PINRemoteImageTask.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PINRemoteImageTask.m; path = Source/Classes/PINRemoteImageTask.m; sourceTree = "<group>"; };
 		C9B5A38A6D7EFDB919B4888A01EC0AD7 /* stp_card_discover_template@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "stp_card_discover_template@2x.png"; path = "Stripe/Resources/Images/stp_card_discover_template@2x.png"; sourceTree = "<group>"; };
@@ -1783,7 +1790,7 @@
 		CA6A9B64AE05310D7D72361A78077E8E /* UnitBezier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UnitBezier.h; path = pop/WebCore/UnitBezier.h; sourceTree = "<group>"; };
 		CA6C2DB0FAA6AF82E6143924B16FF4BA /* MPCloseButton.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = MPCloseButton.png; path = Mixpanel/Images/MPCloseButton.png; sourceTree = "<group>"; };
 		CB001B2F4A472FFBC2FE85FD2F4883E4 /* MPConnectIntegrations.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPConnectIntegrations.h; path = Mixpanel/MPConnectIntegrations.h; sourceTree = "<group>"; };
-		CB46A27114117EF5EC9AC9A47F79285D /* JWTDecode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JWTDecode.framework; path = JWTDecode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB46A27114117EF5EC9AC9A47F79285D /* JWTDecode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JWTDecode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB5F56D3ACCA7BEB118749C44DAA37C9 /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
 		CC0FA4CEB71A32C4AE36B68D3DF049C8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 		CC3D2C4A074406C1D65AB56D92A2ADBD /* STPSourceVerification.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPSourceVerification.m; path = Stripe/STPSourceVerification.m; sourceTree = "<group>"; };
@@ -1803,7 +1810,7 @@
 		CF7B0002659F3E4ABEA6CE36EC921011 /* JWTDecode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JWTDecode.swift; path = JWTDecode/JWTDecode.swift; sourceTree = "<group>"; };
 		CF9F0D86DEAC52C4EDFBC82C557E27EB /* stp_card_discover_template@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "stp_card_discover_template@3x.png"; path = "Stripe/Resources/Images/stp_card_discover_template@3x.png"; sourceTree = "<group>"; };
 		D013B45B02D04F916B3B1F0711D88AD3 /* DTGradientButton.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DTGradientButton.xcconfig; sourceTree = "<group>"; };
-		D06966EB67AAD09AACBC6E98BC214879 /* POPAnimationRuntime.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimationRuntime.mm; path = pop/POPAnimationRuntime.mm; sourceTree = "<group>"; };
+		D06966EB67AAD09AACBC6E98BC214879 /* POPAnimationRuntime.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimationRuntime.mm; path = pop/POPAnimationRuntime.mm; sourceTree = "<group>"; };
 		D06AED920C9F52F4B640C972710FBEB8 /* Pods-Big Neon UI-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Big Neon UI-umbrella.h"; sourceTree = "<group>"; };
 		D133B4C3833D06EB7A927F061E13B81E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D198A823D1B678DAC004C864A34F2D5E /* STPSectionHeaderView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPSectionHeaderView.h; path = Stripe/STPSectionHeaderView.h; sourceTree = "<group>"; };
@@ -1821,7 +1828,7 @@
 		D61016DA5D76C4FA17857B47CBE4B8C4 /* URLSessionConfiguration+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLSessionConfiguration+Alamofire.swift"; path = "Source/URLSessionConfiguration+Alamofire.swift"; sourceTree = "<group>"; };
 		D62E8CB816C52930557F8586BF3D3184 /* STPRedirectContext+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "STPRedirectContext+Private.h"; path = "Stripe/STPRedirectContext+Private.h"; sourceTree = "<group>"; };
 		D6933B4D80375F8A8FB380A0EEA0F05D /* MPNotification.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MPNotification.m; path = Mixpanel/MPNotification.m; sourceTree = "<group>"; };
-		D6A114F6F49F8D85E2DAB592873EC484 /* PWSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PWSwitch.framework; path = PWSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6A114F6F49F8D85E2DAB592873EC484 /* PWSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PWSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D71C9E97A4468D81ABF0B1CF9D3FBBDB /* UIViewController+Stripe_Promises.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Stripe_Promises.m"; path = "Stripe/UIViewController+Stripe_Promises.m"; sourceTree = "<group>"; };
 		D75CFFC0D742B34A0656E47B1B2EED1F /* Pods-Big Neon UI-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Big Neon UI-acknowledgements.plist"; sourceTree = "<group>"; };
 		D7B7A5B8395BFC59ED0EA2AD59C587F1 /* MPMiniNotification.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPMiniNotification.h; path = Mixpanel/MPMiniNotification.h; sourceTree = "<group>"; };
@@ -1844,7 +1851,7 @@
 		DBA4C5A54FDE23AC49F0EC81F6302CA0 /* MPABTestDesignerChangeRequestMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPABTestDesignerChangeRequestMessage.h; path = Mixpanel/MPABTestDesignerChangeRequestMessage.h; sourceTree = "<group>"; };
 		DBCBF77FA9B67453E97CF26BCE0CC626 /* PINMemoryCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PINMemoryCache.m; path = Source/PINMemoryCache.m; sourceTree = "<group>"; };
 		DBDAF89C905CBCD530F2F7E9637EA127 /* PINCache.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PINCache.xcconfig; sourceTree = "<group>"; };
-		DC2E7A9EE6F0EBEE95E770BE6C2795E6 /* POPLayerExtras.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPLayerExtras.mm; path = pop/POPLayerExtras.mm; sourceTree = "<group>"; };
+		DC2E7A9EE6F0EBEE95E770BE6C2795E6 /* POPLayerExtras.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPLayerExtras.mm; path = pop/POPLayerExtras.mm; sourceTree = "<group>"; };
 		DC3B498A945BFA15CF956B2967BC845A /* NSInvocation+MPHelpers.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSInvocation+MPHelpers.m"; path = "Mixpanel/NSInvocation+MPHelpers.m"; sourceTree = "<group>"; };
 		DC5353F4B5C693BBC4D687216A686D9A /* NSBundle+Stripe_AppName.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBundle+Stripe_AppName.h"; path = "Stripe/NSBundle+Stripe_AppName.h"; sourceTree = "<group>"; };
 		DC7F640F7928BDAA445BAD3B4A916A09 /* MPTakeoverNotification.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPTakeoverNotification.h; path = Mixpanel/MPTakeoverNotification.h; sourceTree = "<group>"; };
@@ -1866,9 +1873,9 @@
 		DFDFF0E72266AD60D565895DDDF4DB12 /* stp_card_amex_template@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "stp_card_amex_template@3x.png"; path = "Stripe/Resources/Images/stp_card_amex_template@3x.png"; sourceTree = "<group>"; };
 		E1AD925ADDB1C1CE2DDC9634115CD1F9 /* stp_card_visa_template.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = stp_card_visa_template.png; path = Stripe/Resources/Images/stp_card_visa_template.png; sourceTree = "<group>"; };
 		E1B7CD4AA8C9C13DE2A7BF41830F4C71 /* POPCGUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPCGUtils.h; path = pop/POPCGUtils.h; sourceTree = "<group>"; };
-		E226C2F3D266E2519A41122D66102E84 /* POPAnimationEvent.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimationEvent.mm; path = pop/POPAnimationEvent.mm; sourceTree = "<group>"; };
+		E226C2F3D266E2519A41122D66102E84 /* POPAnimationEvent.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimationEvent.mm; path = pop/POPAnimationEvent.mm; sourceTree = "<group>"; };
 		E23E3F5A085927B327D23E2BEFE57006 /* MPTakeoverNotificationViewController~iphonelandscape.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = "MPTakeoverNotificationViewController~iphonelandscape.xib"; path = "Mixpanel/MPTakeoverNotificationViewController~iphonelandscape.xib"; sourceTree = "<group>"; };
-		E23E7710D38C75121BA319D0EC4C8000 /* POPAnimator.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPAnimator.mm; path = pop/POPAnimator.mm; sourceTree = "<group>"; };
+		E23E7710D38C75121BA319D0EC4C8000 /* POPAnimator.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimator.mm; path = pop/POPAnimator.mm; sourceTree = "<group>"; };
 		E2AD62D5BA28B8A140D8666B4F887AF1 /* URLConvertible+URLRequestConvertible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLConvertible+URLRequestConvertible.swift"; path = "Source/URLConvertible+URLRequestConvertible.swift"; sourceTree = "<group>"; };
 		E2BFD368894A83D401B4995A598B1319 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
 		E2C44BBD74BA16AA8F77B9C75DC18F3C /* MPArrowRight@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "MPArrowRight@2x.png"; path = "Mixpanel/Images/MPArrowRight@2x.png"; sourceTree = "<group>"; };
@@ -1877,7 +1884,7 @@
 		E2D40538F01D47004859E254827CC203 /* PINCache+PINRemoteImageCaching.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PINCache+PINRemoteImageCaching.h"; path = "Source/Classes/PINCache/PINCache+PINRemoteImageCaching.h"; sourceTree = "<group>"; };
 		E2EA2F74B924A93DFC31E10CD5FAC851 /* QRCodeReader.swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "QRCodeReader.swift-dummy.m"; sourceTree = "<group>"; };
 		E2EE5C8E1ED9665262518EBF62F78FF7 /* STPCardValidator+Private.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "STPCardValidator+Private.m"; path = "Stripe/STPCardValidator+Private.m"; sourceTree = "<group>"; };
-		E34851EA06B32A3A3C61C3D85ADC478D /* stp_test_upload_image.jpeg */ = {isa = PBXFileReference; includeInIndex = 1; name = stp_test_upload_image.jpeg; path = Stripe/Resources/Images/stp_test_upload_image.jpeg; sourceTree = "<group>"; };
+		E34851EA06B32A3A3C61C3D85ADC478D /* stp_test_upload_image.jpeg */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.jpeg; name = stp_test_upload_image.jpeg; path = Stripe/Resources/Images/stp_test_upload_image.jpeg; sourceTree = "<group>"; };
 		E3A785F6AA5D451FE33916F719269581 /* RequestTaskMap.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestTaskMap.swift; path = Source/RequestTaskMap.swift; sourceTree = "<group>"; };
 		E4004DC092F7F2A27E8505FE5B160A37 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeychainItemAccessibility.swift; path = SwiftKeychainWrapper/KeychainItemAccessibility.swift; sourceTree = "<group>"; };
 		E42CB55F25D25663F89A74E40E2592F9 /* ServerTrustEvaluation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustEvaluation.swift; path = Source/ServerTrustEvaluation.swift; sourceTree = "<group>"; };
@@ -1894,7 +1901,7 @@
 		E6FC217E9CAE7DD000A6F43166F2C94C /* SpinerLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpinerLayer.swift; path = Source/SpinerLayer.swift; sourceTree = "<group>"; };
 		E71E23F6CECD023A1C0544EFC223C870 /* PINButton+PINRemoteImage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "PINButton+PINRemoteImage.m"; path = "Source/Classes/ImageCategories/PINButton+PINRemoteImage.m"; sourceTree = "<group>"; };
 		E7431B34418EF4B1C9A1D559869B5EEC /* MPObjectSelector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPObjectSelector.h; path = Mixpanel/MPObjectSelector.h; sourceTree = "<group>"; };
-		E79D6607C424C181AA4F0A8B5E2BA8F3 /* POPVector.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPVector.mm; path = pop/POPVector.mm; sourceTree = "<group>"; };
+		E79D6607C424C181AA4F0A8B5E2BA8F3 /* POPVector.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPVector.mm; path = pop/POPVector.mm; sourceTree = "<group>"; };
 		E88F22E69584D3CBF9619D0002C934CC /* STPBankAccountParams.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPBankAccountParams.m; path = Stripe/STPBankAccountParams.m; sourceTree = "<group>"; };
 		E8915CCD188597CE185D2A6E51AD7FCE /* PINRemoteImageTask.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PINRemoteImageTask.h; path = Source/Classes/PINRemoteImageTask.h; sourceTree = "<group>"; };
 		E8ADD734117ACECAAD37090E1A66DE8A /* stp_icon_checkmark@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "stp_icon_checkmark@2x.png"; path = "Stripe/Resources/Images/stp_icon_checkmark@2x.png"; sourceTree = "<group>"; };
@@ -1908,7 +1915,7 @@
 		EB1A098900EE9B20D17E359A0D496580 /* FLAnimatedImageView+PINRemoteImage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FLAnimatedImageView+PINRemoteImage.m"; path = "Source/Classes/ImageCategories/FLAnimatedImageView+PINRemoteImage.m"; sourceTree = "<group>"; };
 		EB7C639D23A680B836ADE7557C162274 /* CustomTransitionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomTransitionViewController.swift; path = Source/CustomTransitionViewController.swift; sourceTree = "<group>"; };
 		EBDFCEE4A0113BFCF91B383958FF9A75 /* PhoneNumber.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhoneNumber.swift; path = PhoneNumberKit/PhoneNumber.swift; sourceTree = "<group>"; };
-		EC40124085D71A6183D13C05128FDE21 /* POPBasicAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPBasicAnimation.mm; path = pop/POPBasicAnimation.mm; sourceTree = "<group>"; };
+		EC40124085D71A6183D13C05128FDE21 /* POPBasicAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPBasicAnimation.mm; path = pop/POPBasicAnimation.mm; sourceTree = "<group>"; };
 		EC55DC43F7E0D13CFE2A163E67C3AA19 /* UIView+Stripe_SafeAreaBounds.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+Stripe_SafeAreaBounds.h"; path = "Stripe/UIView+Stripe_SafeAreaBounds.h"; sourceTree = "<group>"; };
 		ED382B7DD10BA792B0C20461A022D1D5 /* STPBankAccountParams.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STPBankAccountParams.h; path = Stripe/PublicHeaders/STPBankAccountParams.h; sourceTree = "<group>"; };
 		ED3CC8BF06F7E90BFAAC4238745CB644 /* DTGradientButton-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DTGradientButton-umbrella.h"; sourceTree = "<group>"; };
@@ -1951,7 +1958,7 @@
 		F8C4659F650F370FC1CF11E3FD816BEB /* DismissButtonConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DismissButtonConfig.swift; path = Source/DismissButtonConfig.swift; sourceTree = "<group>"; };
 		F8D2A98CF3824F90C72915B4D73DC765 /* MPDesignerSessionCollection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MPDesignerSessionCollection.h; path = Mixpanel/MPDesignerSessionCollection.h; sourceTree = "<group>"; };
 		F8FAB5CA67810FEC6724149C41E40712 /* Fabric.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Fabric.h; path = Stripe/Fabric.h; sourceTree = "<group>"; };
-		FA774D7F47E554524DB3AC58761131A2 /* POPDecayAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = POPDecayAnimation.mm; path = pop/POPDecayAnimation.mm; sourceTree = "<group>"; };
+		FA774D7F47E554524DB3AC58761131A2 /* POPDecayAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPDecayAnimation.mm; path = pop/POPDecayAnimation.mm; sourceTree = "<group>"; };
 		FA8B6A112545C9480E6148F69CA829D7 /* MetadataManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MetadataManager.swift; path = PhoneNumberKit/MetadataManager.swift; sourceTree = "<group>"; };
 		FAA6FA13B70F9794F9F3564DC681C564 /* PresenterKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PresenterKit-dummy.m"; sourceTree = "<group>"; };
 		FAAEAC528FA2E805C50892F162E25725 /* STPDelegateProxy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = STPDelegateProxy.m; path = Stripe/STPDelegateProxy.m; sourceTree = "<group>"; };
@@ -2124,14 +2131,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D8D8FA28ADFB42DF91E19A4089BB9397 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CB7E22884762FD7350CE4E9785EA2FC2 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E3E8AABE9277C746E87843CF848268D6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2170,6 +2169,14 @@
 				E118FFF9FCD8979EFE2E06E91F4D92FB /* SystemConfiguration.framework in Frameworks */,
 				9E6A20C09AAA7E482F878201220C99E4 /* UIKit.framework in Frameworks */,
 				99CF784CA3F164858D9FF042825CAEFD /* UserNotifications.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD4B00A1E4CE771C48881E8B7678C75B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54A918AA0D8B110493B731D8AFA7AC55 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2435,7 +2442,6 @@
 				ACBC1C1BEFF759E8310512BBF5BA0BAE /* Resources */,
 				8DDFA26D8B815F27D3652B573B79C8DC /* Support Files */,
 			);
-			name = Stripe;
 			path = Stripe;
 			sourceTree = "<group>";
 		};
@@ -2466,7 +2472,6 @@
 				8628A3A9F385FC067B8517BF487E2757 /* UIImageExtension.swift */,
 				B4646D3BE874658559E380E71E7ED12D /* Support Files */,
 			);
-			name = DTGradientButton;
 			path = DTGradientButton;
 			sourceTree = "<group>";
 		};
@@ -2478,7 +2483,6 @@
 				0331E746845FEEAF31E0DFB69A314381 /* PINCache */,
 				61CD40B361084920B83395A3ABB9D134 /* Support Files */,
 			);
-			name = PINRemoteImage;
 			path = PINRemoteImage;
 			sourceTree = "<group>";
 		};
@@ -2492,7 +2496,6 @@
 				C8D922E5A754DA8FA7D08DA45B22E0F1 /* TransitionButton.swift */,
 				6EE2CB32282CE92FD9F39E9EFAA3878B /* Support Files */,
 			);
-			name = TransitionButton;
 			path = TransitionButton;
 			sourceTree = "<group>";
 		};
@@ -2661,7 +2664,6 @@
 				657D0800587F91485CDCD9157477BB73 /* Resources */,
 				FDF3DE2402F1F3A5CCF25DD2944DEFE1 /* Support Files */,
 			);
-			name = Mixpanel;
 			path = Mixpanel;
 			sourceTree = "<group>";
 		};
@@ -2693,7 +2695,6 @@
 				5C377C87DE568457F76DCCD0C8993C44 /* FLAnimatedImageView.m */,
 				C755008B067AC90914DE999BEBF0FE3F /* Support Files */,
 			);
-			name = FLAnimatedImage;
 			path = FLAnimatedImage;
 			sourceTree = "<group>";
 		};
@@ -2717,7 +2718,6 @@
 				16FEB1C7C2282348FDABE86EC42B84CD /* PWSwitch.swift */,
 				4B97B84CEE850CE8C2FF77A7FC83F564 /* Support Files */,
 			);
-			name = PWSwitch;
 			path = PWSwitch;
 			sourceTree = "<group>";
 		};
@@ -2733,7 +2733,6 @@
 				6654DA93E78503753F1F13F34ED3F818 /* PINOperationTypes.h */,
 				F333A1B9CDFBD6DD6E568AC0DC40D50A /* Support Files */,
 			);
-			name = PINOperation;
 			path = PINOperation;
 			sourceTree = "<group>";
 		};
@@ -2787,7 +2786,6 @@
 				E48E1B27F48D997F7BD0049B2407F4BA /* SwiftKeychainWrapper.h */,
 				F0119AB0F9ACC95C335137C1113EB707 /* Support Files */,
 			);
-			name = SwiftKeychainWrapper;
 			path = SwiftKeychainWrapper;
 			sourceTree = "<group>";
 		};
@@ -2798,7 +2796,6 @@
 				8846A73673E5484473D6FC599306A2C7 /* Core */,
 				C42BCBB96097A1FF11B1E5E5824DA3D3 /* Support Files */,
 			);
-			name = PINCache;
 			path = PINCache;
 			sourceTree = "<group>";
 		};
@@ -2876,7 +2873,6 @@
 				CA6A9B64AE05310D7D72361A78077E8E /* UnitBezier.h */,
 				946B7CE2EEE0626613ECEC14037C6DE9 /* Support Files */,
 			);
-			name = pop;
 			path = pop;
 			sourceTree = "<group>";
 		};
@@ -2887,7 +2883,6 @@
 				A5415336239C6E827EE9D415359E6360 /* UITextField+Shake.m */,
 				B9862632B33C6C8B2CAAF50166E9E934 /* Support Files */,
 			);
-			name = "UITextField+Shake";
 			path = "UITextField+Shake";
 			sourceTree = "<group>";
 		};
@@ -2998,7 +2993,6 @@
 				94DE446A5243C9BE0395FD3AB3B9A74C /* ValidatorJWT.swift */,
 				C73637DF6A1D0E632B048734F8CBA0F9 /* Support Files */,
 			);
-			name = JWTDecode;
 			path = JWTDecode;
 			sourceTree = "<group>";
 		};
@@ -3052,7 +3046,6 @@
 				BA652935C2FCA476BE8D147DAFE2A665 /* Support Files */,
 				D2774AAE0A06FCB925BA3A1C6D8C8C42 /* UIKit */,
 			);
-			name = PhoneNumberKit;
 			path = PhoneNumberKit;
 			sourceTree = "<group>";
 		};
@@ -3088,7 +3081,6 @@
 				92581092F65C2B1BEAE8FABAC92DE401 /* Validation.swift */,
 				3C4B2494CA86D4CDFB0E3DE693FE14A2 /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -3323,7 +3315,6 @@
 				349DC94AF1DDBA58A5140D195DDB6051 /* ViewControllerExtensions.swift */,
 				108CACF811E954A702C7C44F3584F634 /* Support Files */,
 			);
-			name = PresenterKit;
 			path = PresenterKit;
 			sourceTree = "<group>";
 		};
@@ -3417,7 +3408,6 @@
 				9B5723FF825F9E8874E5826B85A979BB /* ToggleTorchButton.swift */,
 				91728B48071A468C28A483AE7C309CBB /* Support Files */,
 			);
-			name = QRCodeReader.swift;
 			path = QRCodeReader.swift;
 			sourceTree = "<group>";
 		};
@@ -3525,6 +3515,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		015F0A61D2D2EAC342521F04C1CFA8E8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95FD116AE08BE67D188AA4988AEF6FF6 /* Pods-Big Neon UI-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0A8E243060DF6F0985A6B7F2951FB520 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -3968,14 +3966,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DDED8795F4D5E8C2B98A7E386C58F8D4 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				706EDA43023E8F33A94CD2B880DA254C /* Pods-Big Neon UI-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F88CF70F4B003F3D138F3C8B26BA08B6 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -4207,27 +4197,28 @@
 			productReference = C64D666939C97CE0FC1EF1741D30CF4A /* PINOperation.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		7FCD63C6C80FE095A981E473B47742BB /* Pods-Big Neon UI */ = {
+		89EBC5D29E7D5FA2B7E160FF55D4E6AF /* Pods-Big Neon UI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 10D3E62EFF3441B56BAF4AA14188D3BB /* Build configuration list for PBXNativeTarget "Pods-Big Neon UI" */;
+			buildConfigurationList = 19E725B9468DFAB6C46475C6CAAD0150 /* Build configuration list for PBXNativeTarget "Pods-Big Neon UI" */;
 			buildPhases = (
-				DDED8795F4D5E8C2B98A7E386C58F8D4 /* Headers */,
-				EF656687DDAA4D4CBE1A23DA8979C514 /* Sources */,
-				D8D8FA28ADFB42DF91E19A4089BB9397 /* Frameworks */,
-				80C3CE19591FD1972C13CA1CEE5DE5FD /* Resources */,
+				015F0A61D2D2EAC342521F04C1CFA8E8 /* Headers */,
+				9D253C64D1297FBE9627B98618D4B6F2 /* Sources */,
+				FD4B00A1E4CE771C48881E8B7678C75B /* Frameworks */,
+				60B86DF7BA83D51814E65A11453B9F41 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C0125EE686C2C38FC8590F926F2CD966 /* PBXTargetDependency */,
-				71FD383FCE45950F39B7E9487BDF20BB /* PBXTargetDependency */,
-				5598797C3DE4EF2BE6BFA74CB7A3AE22 /* PBXTargetDependency */,
-				E8D256D84947EE2A6FB70AD681DC896D /* PBXTargetDependency */,
-				0E4E17A32B1469C2C47A305D6722AFE8 /* PBXTargetDependency */,
-				5649E5F7B6F2F604A449A9F3A8DDC7F9 /* PBXTargetDependency */,
-				860D947036700509EAD0B90DAA7CABD1 /* PBXTargetDependency */,
-				72C874CA67E4B41ECCE377F7E3401550 /* PBXTargetDependency */,
-				F6A30EDAF0CE10123407545BCA27FAAD /* PBXTargetDependency */,
+				DACEC0FA2A69E81845BFC8001ED39856 /* PBXTargetDependency */,
+				ECF8BEB41F5F29DCCA4D2331D14DC3DC /* PBXTargetDependency */,
+				9DE68F8B2C1CE9E7A9182BAFB6BA9C77 /* PBXTargetDependency */,
+				080715616825AC58849A6112D33C3EF3 /* PBXTargetDependency */,
+				F0DEE05F66DB6EF0FB32E12AFBCF5577 /* PBXTargetDependency */,
+				D76C159DBBBED82239899E6BC643BE59 /* PBXTargetDependency */,
+				154DB322D2E430630C0A112555C07C73 /* PBXTargetDependency */,
+				DC115624D01CD1AD2A80CE6153720DB3 /* PBXTargetDependency */,
+				A500F666291026428F970FBC759DCAC2 /* PBXTargetDependency */,
+				058CA5420374D0BF1BA142287FA2423F /* PBXTargetDependency */,
 			);
 			name = "Pods-Big Neon UI";
 			productName = "Pods-Big Neon UI";
@@ -4411,7 +4402,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1010;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -4436,7 +4427,7 @@
 				4460B48BFC5E36A6946E7FDAA6684A32 /* PINRemoteImage */,
 				A5BE8631CEBF9DAF29B74B455DF80FB7 /* Pods-Big Neon */,
 				B230F870E84C5E577DA8EC283D13623B /* Pods-Big Neon Core */,
-				7FCD63C6C80FE095A981E473B47742BB /* Pods-Big Neon UI */,
+				89EBC5D29E7D5FA2B7E160FF55D4E6AF /* Pods-Big Neon UI */,
 				11379D0A3A51F9A9358E08E2FA2C378F /* pop */,
 				35438C3FDDA23609CB212F783370C69B /* PresenterKit */,
 				15CC5321CC1F1209D3E7A438B51B442D /* PWSwitch */,
@@ -4486,6 +4477,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		60B86DF7BA83D51814E65A11453B9F41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		61D1E301F9A20F4C1EBEF68F16345127 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4518,13 +4516,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		72BCD7CC8E2525F1EE4AEA5E20150E27 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		80C3CE19591FD1972C13CA1CEE5DE5FD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -5079,6 +5070,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9D253C64D1297FBE9627B98618D4B6F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE017D4A005FBC14BCD3A1A3D142EAB8 /* Pods-Big Neon UI-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B3228DE21FA5790348A9BB81A5D77AF1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -5165,14 +5164,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EF656687DDAA4D4CBE1A23DA8979C514 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE00010A8601D20879CC8DD1DAF1B074 /* Pods-Big Neon UI-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F3E638950F1342FB0A371805043368C4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -5190,11 +5181,23 @@
 			target = B0487CB725334C59CED4AB001549C45A /* PhoneNumberKit */;
 			targetProxy = EB1D4DFC2C1C4E94BC564D8D2FB2DD50 /* PBXContainerItemProxy */;
 		};
-		0E4E17A32B1469C2C47A305D6722AFE8 /* PBXTargetDependency */ = {
+		058CA5420374D0BF1BA142287FA2423F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = PINRemoteImage;
-			target = 4460B48BFC5E36A6946E7FDAA6684A32 /* PINRemoteImage */;
-			targetProxy = 2E8DAA6AE9AF079CC62F5C2DA1E8D9A9 /* PBXContainerItemProxy */;
+			name = pop;
+			target = 11379D0A3A51F9A9358E08E2FA2C378F /* pop */;
+			targetProxy = 741CF614AB20C2829BE1E2DF6BA73986 /* PBXContainerItemProxy */;
+		};
+		080715616825AC58849A6112D33C3EF3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PINOperation;
+			target = 6F292934E9BE32938041E74CD3F766D9 /* PINOperation */;
+			targetProxy = 4457D50C36336CFFF64715FB88C00498 /* PBXContainerItemProxy */;
+		};
+		154DB322D2E430630C0A112555C07C73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PhoneNumberKit;
+			target = B0487CB725334C59CED4AB001549C45A /* PhoneNumberKit */;
+			targetProxy = 1428937D6B59333F1B4A3AC62ADAEAE1 /* PBXContainerItemProxy */;
 		};
 		24C3FFCFE64F74C4E51F6204AEEB0A79 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5213,18 +5216,6 @@
 			name = SwiftKeychainWrapper;
 			target = C8A758D92978EC0C497938CAA86764A8 /* SwiftKeychainWrapper */;
 			targetProxy = 8990095405766699DAB97C4B75E4876B /* PBXContainerItemProxy */;
-		};
-		5598797C3DE4EF2BE6BFA74CB7A3AE22 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PINCache;
-			target = E2F93DC689DAFDEE65C2E42449B16EC6 /* PINCache */;
-			targetProxy = 4429D4C75621995F798B4EAB4E01C5A1 /* PBXContainerItemProxy */;
-		};
-		5649E5F7B6F2F604A449A9F3A8DDC7F9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PhoneNumberKit;
-			target = B0487CB725334C59CED4AB001549C45A /* PhoneNumberKit */;
-			targetProxy = B7F74F9D44C20054B5B566298722D2AA /* PBXContainerItemProxy */;
 		};
 		595DAE5F83C9960AB5F14B9B3EC55728 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5256,18 +5247,6 @@
 			target = 6556171B2907B6BD3FFCECF994176168 /* QRCodeReader.swift */;
 			targetProxy = C5C2CE35BAECE2B5996914D17A058954 /* PBXContainerItemProxy */;
 		};
-		71FD383FCE45950F39B7E9487BDF20BB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FLAnimatedImage;
-			target = 4D7B7D274050D6277CAECA96F3CF6722 /* FLAnimatedImage */;
-			targetProxy = 431495B3ED704DBFE22C07C7687332CF /* PBXContainerItemProxy */;
-		};
-		72C874CA67E4B41ECCE377F7E3401550 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "UITextField+Shake";
-			target = 0A60BB1C8B97C29FC779332C9BF50835 /* UITextField+Shake */;
-			targetProxy = CA16E36BE03F6DA24F109A13D04CBC4D /* PBXContainerItemProxy */;
-		};
 		7E4AC232EF09A4C3A75A41765773B015 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Stripe;
@@ -5279,12 +5258,6 @@
 			name = PWSwitch;
 			target = 15CC5321CC1F1209D3E7A438B51B442D /* PWSwitch */;
 			targetProxy = 382447BF9335D1925037DD6726AE1353 /* PBXContainerItemProxy */;
-		};
-		860D947036700509EAD0B90DAA7CABD1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TransitionButton;
-			target = 57D1ECC6FF9B47AFEA19D8F14C41DF9F /* TransitionButton */;
-			targetProxy = 5C28F3FF744A8815E27F95C519711E65 /* PBXContainerItemProxy */;
 		};
 		8D1D063CD6D522A3F50A8C96318B8B91 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5309,6 +5282,18 @@
 			name = PresenterKit;
 			target = 35438C3FDDA23609CB212F783370C69B /* PresenterKit */;
 			targetProxy = CF65AA4CA83E01CCB1352A27B6B6BB4D /* PBXContainerItemProxy */;
+		};
+		9DE68F8B2C1CE9E7A9182BAFB6BA9C77 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PINCache;
+			target = E2F93DC689DAFDEE65C2E42449B16EC6 /* PINCache */;
+			targetProxy = 067E65EB19806EEF9531ECFE8259A833 /* PBXContainerItemProxy */;
+		};
+		A500F666291026428F970FBC759DCAC2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "UITextField+Shake";
+			target = 0A60BB1C8B97C29FC779332C9BF50835 /* UITextField+Shake */;
+			targetProxy = 8B5854B1763C0381648B9E7E2B32C1D6 /* PBXContainerItemProxy */;
 		};
 		A99C62E7C53AF72A7BC026D05C49F34E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5346,12 +5331,6 @@
 			target = C8A758D92978EC0C497938CAA86764A8 /* SwiftKeychainWrapper */;
 			targetProxy = 591360931856B789F3048B951A7429A8 /* PBXContainerItemProxy */;
 		};
-		C0125EE686C2C38FC8590F926F2CD966 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = DTGradientButton;
-			target = 0D45DFEACEC05D4EC62BE7895B2B7B0D /* DTGradientButton */;
-			targetProxy = 407A9C321A99065E81C5956709CE3062 /* PBXContainerItemProxy */;
-		};
 		C66707FC2975609D53AAFA7DE98849E2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "UITextField+Shake";
@@ -5370,11 +5349,29 @@
 			target = F8D21842E5814FA4C3A3DD2FC8DA93F5 /* Mixpanel */;
 			targetProxy = F3E91EF866F824BCD0B3853B2A784C3E /* PBXContainerItemProxy */;
 		};
+		D76C159DBBBED82239899E6BC643BE59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PWSwitch;
+			target = 15CC5321CC1F1209D3E7A438B51B442D /* PWSwitch */;
+			targetProxy = 390A09726CC3AD70AA5FFF916003BA27 /* PBXContainerItemProxy */;
+		};
 		D94575F895E3429C7D87E36B784E9E29 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = TransitionButton;
 			target = 57D1ECC6FF9B47AFEA19D8F14C41DF9F /* TransitionButton */;
 			targetProxy = 34C398A10DAE5B007DEFC63898F530D8 /* PBXContainerItemProxy */;
+		};
+		DACEC0FA2A69E81845BFC8001ED39856 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DTGradientButton;
+			target = 0D45DFEACEC05D4EC62BE7895B2B7B0D /* DTGradientButton */;
+			targetProxy = FC5B2D8E1F2B5CE638A5A767E39FA32D /* PBXContainerItemProxy */;
+		};
+		DC115624D01CD1AD2A80CE6153720DB3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TransitionButton;
+			target = 57D1ECC6FF9B47AFEA19D8F14C41DF9F /* TransitionButton */;
+			targetProxy = 36FAA1261E22581DBF1E2EC29C4CB6C5 /* PBXContainerItemProxy */;
 		};
 		DDEB1373621681CE69DB5703A5259D41 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5382,23 +5379,23 @@
 			target = C38F3EB0ED10CE7F4F5208093E5B0D8B /* Stripe */;
 			targetProxy = 1C77F6A269AE0E8B55FDA402865BA5DA /* PBXContainerItemProxy */;
 		};
-		E8D256D84947EE2A6FB70AD681DC896D /* PBXTargetDependency */ = {
+		ECF8BEB41F5F29DCCA4D2331D14DC3DC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = PINOperation;
-			target = 6F292934E9BE32938041E74CD3F766D9 /* PINOperation */;
-			targetProxy = FE8733DC056077CC33EE7C19E7400F73 /* PBXContainerItemProxy */;
+			name = FLAnimatedImage;
+			target = 4D7B7D274050D6277CAECA96F3CF6722 /* FLAnimatedImage */;
+			targetProxy = AD53EA91186595AF5420D7D57E621549 /* PBXContainerItemProxy */;
+		};
+		F0DEE05F66DB6EF0FB32E12AFBCF5577 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PINRemoteImage;
+			target = 4460B48BFC5E36A6946E7FDAA6684A32 /* PINRemoteImage */;
+			targetProxy = 69885969A770BFACAC7BD31CC0E878BE /* PBXContainerItemProxy */;
 		};
 		F54143E3F319280CF265364AA9AA6689 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FLAnimatedImage;
 			target = 4D7B7D274050D6277CAECA96F3CF6722 /* FLAnimatedImage */;
 			targetProxy = 2C3EAE20E5B329D65A60415745358969 /* PBXContainerItemProxy */;
-		};
-		F6A30EDAF0CE10123407545BCA27FAAD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = pop;
-			target = 11379D0A3A51F9A9358E08E2FA2C378F /* pop */;
-			targetProxy = E9AD6C4CE5668C8E7E382CAFB01923C6 /* PBXContainerItemProxy */;
 		};
 		F8957A1EFDD1DDFAB8D68B79C4A6A68D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5453,11 +5450,7 @@
 				INFOPLIST_FILE = "Target Support Files/DTGradientButton/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/DTGradientButton/DTGradientButton.modulemap";
 				PRODUCT_MODULE_NAME = DTGradientButton;
 				PRODUCT_NAME = DTGradientButton;
@@ -5465,6 +5458,41 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		0F545BD2054F8962562C89D781F4456C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F74F294FA19AF94EBDF95D92D8F828D /* Pods-Big Neon UI.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Big Neon UI/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -5490,51 +5518,9 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-Big Neon Core/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		2CA06E4AAE16ACC237A2CBE5714AA1A3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BACE4E9586B2315B40579BBA8B5C7475 /* Pods-Big Neon UI.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Big Neon UI/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -5566,11 +5552,7 @@
 				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
 				PRODUCT_MODULE_NAME = Alamofire;
 				PRODUCT_NAME = Alamofire;
@@ -5601,11 +5583,7 @@
 				INFOPLIST_FILE = "Target Support Files/DTGradientButton/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/DTGradientButton/DTGradientButton.modulemap";
 				PRODUCT_MODULE_NAME = DTGradientButton;
 				PRODUCT_NAME = DTGradientButton;
@@ -5636,11 +5614,7 @@
 				INFOPLIST_FILE = "Target Support Files/PINCache/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PINCache/PINCache.modulemap";
 				PRODUCT_MODULE_NAME = PINCache;
 				PRODUCT_NAME = PINCache;
@@ -5672,11 +5646,7 @@
 				INFOPLIST_FILE = "Target Support Files/Mixpanel/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Mixpanel/Mixpanel.modulemap";
 				PRODUCT_MODULE_NAME = Mixpanel;
 				PRODUCT_NAME = Mixpanel;
@@ -5707,11 +5677,7 @@
 				INFOPLIST_FILE = "Target Support Files/PhoneNumberKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PhoneNumberKit/PhoneNumberKit.modulemap";
 				PRODUCT_MODULE_NAME = PhoneNumberKit;
 				PRODUCT_NAME = PhoneNumberKit;
@@ -5743,11 +5709,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-Big Neon Core/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.modulemap";
 				OTHER_LDFLAGS = "";
@@ -5797,11 +5759,7 @@
 				INFOPLIST_FILE = "Target Support Files/JWTDecode/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/JWTDecode/JWTDecode.modulemap";
 				PRODUCT_MODULE_NAME = JWTDecode;
 				PRODUCT_NAME = JWTDecode;
@@ -5832,11 +5790,7 @@
 				INFOPLIST_FILE = "Target Support Files/Stripe/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Stripe/Stripe.modulemap";
 				PRODUCT_MODULE_NAME = Stripe;
 				PRODUCT_NAME = Stripe;
@@ -5868,11 +5822,7 @@
 				INFOPLIST_FILE = "Target Support Files/FLAnimatedImage/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/FLAnimatedImage/FLAnimatedImage.modulemap";
 				PRODUCT_MODULE_NAME = FLAnimatedImage;
 				PRODUCT_NAME = FLAnimatedImage;
@@ -5904,11 +5854,7 @@
 				INFOPLIST_FILE = "Target Support Files/PINOperation/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PINOperation/PINOperation.modulemap";
 				PRODUCT_MODULE_NAME = PINOperation;
 				PRODUCT_NAME = PINOperation;
@@ -5955,11 +5901,7 @@
 				INFOPLIST_FILE = "Target Support Files/pop/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/pop/pop.modulemap";
 				PRODUCT_MODULE_NAME = pop;
 				PRODUCT_NAME = pop;
@@ -5990,11 +5932,7 @@
 				INFOPLIST_FILE = "Target Support Files/UITextField+Shake/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/UITextField+Shake/UITextField+Shake.modulemap";
 				PRODUCT_MODULE_NAME = UITextField_Shake;
 				PRODUCT_NAME = UITextField_Shake;
@@ -6026,11 +5964,7 @@
 				INFOPLIST_FILE = "Target Support Files/PINRemoteImage/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PINRemoteImage/PINRemoteImage.modulemap";
 				PRODUCT_MODULE_NAME = PINRemoteImage;
 				PRODUCT_NAME = PINRemoteImage;
@@ -6062,11 +5996,7 @@
 				INFOPLIST_FILE = "Target Support Files/PINRemoteImage/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PINRemoteImage/PINRemoteImage.modulemap";
 				PRODUCT_MODULE_NAME = PINRemoteImage;
 				PRODUCT_NAME = PINRemoteImage;
@@ -6084,6 +6014,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -6135,8 +6066,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -6160,11 +6090,7 @@
 				INFOPLIST_FILE = "Target Support Files/PresenterKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PresenterKit/PresenterKit.modulemap";
 				PRODUCT_MODULE_NAME = PresenterKit;
 				PRODUCT_NAME = PresenterKit;
@@ -6195,11 +6121,7 @@
 				INFOPLIST_FILE = "Target Support Files/TransitionButton/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/TransitionButton/TransitionButton.modulemap";
 				PRODUCT_MODULE_NAME = TransitionButton;
 				PRODUCT_NAME = TransitionButton;
@@ -6230,11 +6152,7 @@
 				INFOPLIST_FILE = "Target Support Files/Mixpanel/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Mixpanel/Mixpanel.modulemap";
 				PRODUCT_MODULE_NAME = Mixpanel;
 				PRODUCT_NAME = Mixpanel;
@@ -6266,11 +6184,7 @@
 				INFOPLIST_FILE = "Target Support Files/QRCodeReader.swift/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/QRCodeReader.swift/QRCodeReader.swift.modulemap";
 				PRODUCT_MODULE_NAME = QRCodeReader;
 				PRODUCT_NAME = QRCodeReader;
@@ -6278,6 +6192,40 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B23758407A7ABC695E4A2C73538F7A5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BACE4E9586B2315B40579BBA8B5C7475 /* Pods-Big Neon UI.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Big Neon UI/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -6301,11 +6249,7 @@
 				INFOPLIST_FILE = "Target Support Files/FLAnimatedImage/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/FLAnimatedImage/FLAnimatedImage.modulemap";
 				PRODUCT_MODULE_NAME = FLAnimatedImage;
 				PRODUCT_NAME = FLAnimatedImage;
@@ -6336,11 +6280,7 @@
 				INFOPLIST_FILE = "Target Support Files/QRCodeReader.swift/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/QRCodeReader.swift/QRCodeReader.swift.modulemap";
 				PRODUCT_MODULE_NAME = QRCodeReader;
 				PRODUCT_NAME = QRCodeReader;
@@ -6373,11 +6313,7 @@
 				INFOPLIST_FILE = "Target Support Files/PresenterKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PresenterKit/PresenterKit.modulemap";
 				PRODUCT_MODULE_NAME = PresenterKit;
 				PRODUCT_NAME = PresenterKit;
@@ -6409,11 +6345,7 @@
 				INFOPLIST_FILE = "Target Support Files/PINOperation/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PINOperation/PINOperation.modulemap";
 				PRODUCT_MODULE_NAME = PINOperation;
 				PRODUCT_NAME = PINOperation;
@@ -6445,11 +6377,7 @@
 				INFOPLIST_FILE = "Target Support Files/SwiftKeychainWrapper/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SwiftKeychainWrapper/SwiftKeychainWrapper.modulemap";
 				PRODUCT_MODULE_NAME = SwiftKeychainWrapper;
 				PRODUCT_NAME = SwiftKeychainWrapper;
@@ -6481,11 +6409,7 @@
 				INFOPLIST_FILE = "Target Support Files/PWSwitch/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PWSwitch/PWSwitch.modulemap";
 				PRODUCT_MODULE_NAME = PWSwitch;
 				PRODUCT_NAME = PWSwitch;
@@ -6517,11 +6441,7 @@
 				INFOPLIST_FILE = "Target Support Files/PINCache/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PINCache/PINCache.modulemap";
 				PRODUCT_MODULE_NAME = PINCache;
 				PRODUCT_NAME = PINCache;
@@ -6552,11 +6472,7 @@
 				INFOPLIST_FILE = "Target Support Files/TransitionButton/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/TransitionButton/TransitionButton.modulemap";
 				PRODUCT_MODULE_NAME = TransitionButton;
 				PRODUCT_NAME = TransitionButton;
@@ -6588,11 +6504,7 @@
 				INFOPLIST_FILE = "Target Support Files/JWTDecode/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/JWTDecode/JWTDecode.modulemap";
 				PRODUCT_MODULE_NAME = JWTDecode;
 				PRODUCT_NAME = JWTDecode;
@@ -6600,45 +6512,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		D9488FE3AD069A7C869297E8D4C12502 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3F74F294FA19AF94EBDF95D92D8F828D /* Pods-Big Neon UI.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Big Neon UI/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -6663,11 +6536,7 @@
 				INFOPLIST_FILE = "Target Support Files/Stripe/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Stripe/Stripe.modulemap";
 				PRODUCT_MODULE_NAME = Stripe;
 				PRODUCT_NAME = Stripe;
@@ -6685,6 +6554,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -6765,11 +6635,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-Big Neon/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Big Neon/Pods-Big Neon.modulemap";
 				OTHER_LDFLAGS = "";
@@ -6803,11 +6669,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-Big Neon/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Big Neon/Pods-Big Neon.modulemap";
 				OTHER_LDFLAGS = "";
@@ -6841,11 +6703,7 @@
 				INFOPLIST_FILE = "Target Support Files/UITextField+Shake/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/UITextField+Shake/UITextField+Shake.modulemap";
 				PRODUCT_MODULE_NAME = UITextField_Shake;
 				PRODUCT_NAME = UITextField_Shake;
@@ -6877,11 +6735,7 @@
 				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
 				PRODUCT_MODULE_NAME = Alamofire;
 				PRODUCT_NAME = Alamofire;
@@ -6913,11 +6767,7 @@
 				INFOPLIST_FILE = "Target Support Files/PhoneNumberKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PhoneNumberKit/PhoneNumberKit.modulemap";
 				PRODUCT_MODULE_NAME = PhoneNumberKit;
 				PRODUCT_NAME = PhoneNumberKit;
@@ -6949,11 +6799,7 @@
 				INFOPLIST_FILE = "Target Support Files/PWSwitch/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PWSwitch/PWSwitch.modulemap";
 				PRODUCT_MODULE_NAME = PWSwitch;
 				PRODUCT_NAME = PWSwitch;
@@ -6984,11 +6830,7 @@
 				INFOPLIST_FILE = "Target Support Files/SwiftKeychainWrapper/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SwiftKeychainWrapper/SwiftKeychainWrapper.modulemap";
 				PRODUCT_MODULE_NAME = SwiftKeychainWrapper;
 				PRODUCT_NAME = SwiftKeychainWrapper;
@@ -7019,11 +6861,7 @@
 				INFOPLIST_FILE = "Target Support Files/pop/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/pop/pop.modulemap";
 				PRODUCT_MODULE_NAME = pop;
 				PRODUCT_NAME = pop;
@@ -7050,11 +6888,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		10D3E62EFF3441B56BAF4AA14188D3BB /* Build configuration list for PBXNativeTarget "Pods-Big Neon UI" */ = {
+		19E725B9468DFAB6C46475C6CAAD0150 /* Build configuration list for PBXNativeTarget "Pods-Big Neon UI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2CA06E4AAE16ACC237A2CBE5714AA1A3 /* Debug */,
-				D9488FE3AD069A7C869297E8D4C12502 /* Release */,
+				B23758407A7ABC695E4A2C73538F7A5E /* Debug */,
+				0F545BD2054F8962562C89D781F4456C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

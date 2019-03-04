@@ -5,13 +5,14 @@ import Big_Neon_UI
 import AVFoundation
 import QRCodeReader
 
-final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsDelegate, QRCodeReaderViewControllerDelegate, GuestListViewProtocol {
+final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsDelegate, QRCodeReaderViewControllerDelegate, GuestListViewProtocol, ScannerModeViewDelegate {
     
     internal var captureSession = AVCaptureSession()
     internal var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     internal var guestListTopAnchor: NSLayoutConstraint?
     internal let generator = UINotificationFeedbackGenerator()
     internal var reader : QRCodeReader?
+    internal var scannerViewModel : TicketScannerViewModel = TicketScannerViewModel()
     
     internal let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
     
@@ -65,7 +66,13 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         let view =  UIView()
         view.backgroundColor = UIColor.black
         view.layer.opacity = 0.0
-//        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    internal lazy var scannerModeView: ScannerModeView = {
+        let view =  ScannerModeView()
+        view.setAutoMode = self.scannerViewModel.scannerMode()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -94,8 +101,6 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
             captureSession.addOutput(captureMetadataOutput)
             captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             captureMetadataOutput.metadataObjectTypes = supportedCodeTypes
-            //            captureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
-            
         } catch {
             print(error)
             return
@@ -118,14 +123,18 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         videoPreviewLayer?.frame = view.layer.bounds
         cameraTintView.frame = view.layer.bounds
         view.layer.addSublayer(videoPreviewLayer!)
-        
         captureSession.startRunning()
     }
     
     private func configureNavBar() {
         self.navigationClearBar()
         self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_close"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(handleClose))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_close"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(handleClose))
+        
+        scannerModeView.delegate = self
+        scannerModeView.widthAnchor.constraint(equalToConstant: 290.0).isActive = true
+        scannerModeView.heightAnchor.constraint(equalToConstant: 48.0).isActive = true
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: scannerModeView)
     }
     
     @objc private func handleClose() {
@@ -147,6 +156,14 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
     
     func showGuestList() {
         self.isShowingGuests = !self.isShowingGuests
+    }
+    
+    func scannerSetAutomatic() {
+        self.scannerViewModel.setCheckingModeAutomatic()
+    }
+    
+    func scannerSetManual() {
+        self.scannerViewModel.setCheckingModeManual()
     }
 }
 
