@@ -62,6 +62,13 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         return view
     }()
     
+    internal lazy var feedbackView: TicketScanFeedbackView = {
+        let view =  TicketScanFeedbackView()
+        view.scanFeedback = .alreadyRedeemed
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     internal lazy var cameraTintView: UIView = {
         let view =  UIView()
         view.backgroundColor = UIColor.black
@@ -84,6 +91,7 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         self.configureCameraView()
         self.configureScan()
         self.configureGuestView()
+        self.configureScanFeedbackView()
     }
     
     private func configureCameraSession() {
@@ -115,6 +123,15 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         self.guestListTopAnchor = guestListView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UIScreen.main.bounds.height - 80.0)
         self.guestListTopAnchor?.isActive = true
         guestListView.heightAnchor.constraint(equalToConstant: 560.0).isActive = true
+    }
+    
+    private func configureScanFeedbackView() {
+        self.view.addSubview(feedbackView)
+        
+        feedbackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        feedbackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        feedbackView.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
+        feedbackView.widthAnchor.constraint(equalToConstant: 220.0).isActive = true
     }
 
     private func configureCameraView() {
