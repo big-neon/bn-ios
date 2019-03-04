@@ -5,7 +5,7 @@ import Big_Neon_UI
 import AVFoundation
 import QRCodeReader
 
-final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsDelegate, QRCodeReaderViewControllerDelegate, GuestListViewProtocol {
+final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsDelegate, QRCodeReaderViewControllerDelegate, GuestListViewProtocol, ScannerModeViewDelegate {
     
     internal var captureSession = AVCaptureSession()
     internal var videoPreviewLayer:AVCaptureVideoPreviewLayer?
@@ -69,6 +69,13 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         return view
     }()
     
+    internal lazy var scannerModeView: ScannerModeView = {
+        let view =  ScannerModeView()
+        view.setAutoMode = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.red
@@ -123,6 +130,11 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         self.navigationClearBar()
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_close"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(handleClose))
+        
+        scannerModeView.delegate = self
+        scannerModeView.widthAnchor.constraint(equalToConstant: 290.0).isActive = true
+        scannerModeView.heightAnchor.constraint(equalToConstant: 48.0).isActive = true
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: scannerModeView)
     }
     
     @objc private func handleClose() {
@@ -144,6 +156,14 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
     
     func showGuestList() {
         self.isShowingGuests = !self.isShowingGuests
+    }
+    
+    func scannerSetAutomatic() {
+        print("Scanner set to Automatic")
+    }
+    
+    func scannerSetManual() {
+        print("Scanner set to Manual")
     }
 }
 

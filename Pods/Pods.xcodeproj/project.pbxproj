@@ -254,6 +254,7 @@
 		537BC5AD988F67ACDF0EAB86C85B59C7 /* STPEmailAddressValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = BDD40C8AE6FD3C98746428CE33C9C2EE /* STPEmailAddressValidator.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		53F0E50915BEF396A1C61758566E5874 /* STPColorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F0E7C25B3BC3B5E96C4F173DEFA447 /* STPColorUtils.m */; };
 		544BFC14B9E99681EB4F28C7CACC0ED9 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AAF481DA8FE42AC519767AF868E7E5B /* Alamofire-dummy.m */; };
+		54A918AA0D8B110493B731D8AFA7AC55 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE8BB4BB90A249442B36B2DA42900EE /* Foundation.framework */; };
 		553A5ECB1D4AEDCA0E5CF7D978E85BB8 /* stp_card_error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F2B498209BA5E781C1D01A0F0B51E09 /* stp_card_error@2x.png */; };
 		556AC0098FA77DBA2737FCDC7CFE847C /* POPMath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3F59257A8B0D91E3339DC6B0ABFC9152 /* POPMath.mm */; };
 		558DC5A5F25C200B1FD9129685E73773 /* PINGIFAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B89BC65D0E1D20E53943381310A97A /* PINGIFAnimatedImage.m */; };
@@ -355,7 +356,6 @@
 		6F6AED52AB6CC838551E5153C0920A8C /* STPSourceRedirect.m in Sources */ = {isa = PBXBuildFile; fileRef = 986D7884CF44FEF37D978B0CFBBED805 /* STPSourceRedirect.m */; };
 		6F6EDA2C4419F433B4FD524E918345E3 /* SessionStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E1FD39D881A85E2B3D00602B88BFD0 /* SessionStateProvider.swift */; };
 		6F7976406D71C8CCC06FDEC1ABBB1A53 /* POPMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FFBDBA5458E3285E2184A76A110E965 /* POPMath.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		706EDA43023E8F33A94CD2B880DA254C /* Pods-Big Neon UI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D06AED920C9F52F4B640C972710FBEB8 /* Pods-Big Neon UI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		70B86D831673D2B169C68CDC429C3619 /* JWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8F61637D8ACFB207B9DDCE5345BBCB /* JWT.swift */; };
 		70BFAC7C699181DAE5E1FB0E1C2EC1B8 /* MPSwizzler.h in Headers */ = {isa = PBXBuildFile; fileRef = C999EEA516F676D0BF7F81470C5EA797 /* MPSwizzler.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		70DA00B5378F829942F913C7C8812CBC /* STPCustomerContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B7B5D11D35A064C96472122B5A2A61D /* STPCustomerContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -478,6 +478,7 @@
 		949577F1F8F36219CF850832AD900DD8 /* stp_card_applepay@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2CCF7D5E6AC4274BABD688D9CCA293A /* stp_card_applepay@3x.png */; };
 		94F5ACE900265AEA3DB50D9A945EB718 /* pop-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EC363DF9F5AEFCDD966AAA930E0DEB0 /* pop-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		95CC86E0BE213077A2F4E48B750CD7B6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC0FA4CEB71A32C4AE36B68D3DF049C8 /* CoreLocation.framework */; };
+		95FD116AE08BE67D188AA4988AEF6FF6 /* Pods-Big Neon UI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D06AED920C9F52F4B640C972710FBEB8 /* Pods-Big Neon UI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		961B54341F38B05247B1767E0ACBBD7E /* STPPaymentMethodsInternalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B087368AABB63F648648D1BDD4E12207 /* STPPaymentMethodsInternalViewController.m */; };
 		9689CEF3834C20797C828E70075CE99D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE8BB4BB90A249442B36B2DA42900EE /* Foundation.framework */; };
 		96A330B00071FE25C4106BFB56D2B48A /* MPABTestDesignerConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 4363C07C05F7AC1908552558135B337B /* MPABTestDesignerConnection.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -669,7 +670,6 @@
 		CACB457A5F79AFD718E21A418E34A0B5 /* STPPaymentConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = FEF210180CCE34982F38D7961EE52BC2 /* STPPaymentConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CAE20B879666AF8AE8300085431DC97C /* STPShippingAddressViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C1C3CD5DBDD68C019D9762DDC1B46C7 /* STPShippingAddressViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CB77578AF3C686D614F9940585F78523 /* stp_card_diners@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDEA7142036B83C5D7732A17767BFE9C /* stp_card_diners@3x.png */; };
-		CB7E22884762FD7350CE4E9785EA2FC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE8BB4BB90A249442B36B2DA42900EE /* Foundation.framework */; };
 		CC446F2968ABF5FF43873A5C125237DE /* STPSourceReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 176C01FD9038A4193E45836873295905 /* STPSourceReceiver.m */; };
 		CC65C3E8B0734B18C3FE9987DE64E550 /* NSMutableURLRequest+Stripe.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C3B88BB9D30477FA44187944C3523A0 /* NSMutableURLRequest+Stripe.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		CCA991E82AE25F3F265F1A6564AD1317 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A95110DEFAF3444B2FDA9B44D7DF81C /* ImageIO.framework */; };
@@ -677,7 +677,6 @@
 		CD23294583ECB4B5214C0B68112ED714 /* Stripe-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AEC014BE322ED160CFEF9AA5EC788F90 /* Stripe-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD33D0A13C8F64046C450F6B0831E663 /* Mixpanel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D8E6199441EEED925E64A9991497EE /* Mixpanel-dummy.m */; };
 		CD7FC02F835C906514C74F3697B02C0A /* MPNSAttributedStringToNSDictionaryValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFB755185BF9222671F06F786EDF43E /* MPNSAttributedStringToNSDictionaryValueTransformer.m */; };
-		CE00010A8601D20879CC8DD1DAF1B074 /* Pods-Big Neon UI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6731FCF17D4F668EE81B8303129C6469 /* Pods-Big Neon UI-dummy.m */; };
 		CE1E85E292D15A52AB3867EE5F3706AE /* MPUIColorToNSStringValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 12DCDDDA5A653080385FD78840B2B2EA /* MPUIColorToNSStringValueTransformer.m */; };
 		CE36A3ED2561381E3CB7A385AFADD0AF /* stp_card_unionpay_zh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D473E1705D6166B0A41A5B2DA6289689 /* stp_card_unionpay_zh@2x.png */; };
 		CE7E590A8787BB68716EDF9C554C8390 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAD1D88A6E8859B8DA9AE067FEFB215 /* MultipartFormData.swift */; };
@@ -719,6 +718,7 @@
 		DC0C28CDCBC0D6D99244466F5FB9B268 /* UINavigationBar+Stripe_Theme.h in Headers */ = {isa = PBXBuildFile; fileRef = 481668D00F5B7C6855ECAA8C3D4FDB90 /* UINavigationBar+Stripe_Theme.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC1B4F4D2BCFE33C2C8934A75C30230D /* Pods-Big Neon-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB111893E958BD52878A9C8D6573AA1 /* Pods-Big Neon-dummy.m */; };
 		DD7CDEF5B5CC73E9EA38111189C1F7A6 /* Localizations in Resources */ = {isa = PBXBuildFile; fileRef = 8F65B1922D90023C56E8967E1F844856 /* Localizations */; };
+		DE017D4A005FBC14BCD3A1A3D142EAB8 /* Pods-Big Neon UI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6731FCF17D4F668EE81B8303129C6469 /* Pods-Big Neon UI-dummy.m */; };
 		DE4D6404AED4DAD8325C9D4C6FC6019C /* PWSwitch-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FB254B39210E2D3569C59ECED340365C /* PWSwitch-dummy.m */; };
 		DE8190F2E7B12974EC0BEA624F3DC239 /* PINRemoteImage-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 41C1EBC041C63061D830BDB8EB3D8FB0 /* PINRemoteImage-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF4A675BDE26413D11F86D23D237E73F /* RequestRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A72E4E0D2D808E63AD1B95AFEF03B /* RequestRetrier.swift */; };
@@ -818,12 +818,26 @@
 			remoteGlobalIDString = BA3CC641DA9A75882B78B88DBEBF3B81;
 			remoteInfo = JWTDecode;
 		};
+		067E65EB19806EEF9531ECFE8259A833 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E2F93DC689DAFDEE65C2E42449B16EC6;
+			remoteInfo = PINCache;
+		};
 		0D7F6C9A691BAEA923C44E4EDBCAEA6F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E2F93DC689DAFDEE65C2E42449B16EC6;
 			remoteInfo = PINCache;
+		};
+		1428937D6B59333F1B4A3AC62ADAEAE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B0487CB725334C59CED4AB001549C45A;
+			remoteInfo = PhoneNumberKit;
 		};
 		1C77F6A269AE0E8B55FDA402865BA5DA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -846,14 +860,14 @@
 			remoteGlobalIDString = 4D7B7D274050D6277CAECA96F3CF6722;
 			remoteInfo = FLAnimatedImage;
 		};
-		2E8DAA6AE9AF079CC62F5C2DA1E8D9A9 /* PBXContainerItemProxy */ = {
+		34C398A10DAE5B007DEFC63898F530D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4460B48BFC5E36A6946E7FDAA6684A32;
-			remoteInfo = PINRemoteImage;
+			remoteGlobalIDString = 57D1ECC6FF9B47AFEA19D8F14C41DF9F;
+			remoteInfo = TransitionButton;
 		};
-		34C398A10DAE5B007DEFC63898F530D8 /* PBXContainerItemProxy */ = {
+		36FAA1261E22581DBF1E2EC29C4CB6C5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -867,26 +881,19 @@
 			remoteGlobalIDString = 15CC5321CC1F1209D3E7A438B51B442D;
 			remoteInfo = PWSwitch;
 		};
-		407A9C321A99065E81C5956709CE3062 /* PBXContainerItemProxy */ = {
+		390A09726CC3AD70AA5FFF916003BA27 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0D45DFEACEC05D4EC62BE7895B2B7B0D;
-			remoteInfo = DTGradientButton;
+			remoteGlobalIDString = 15CC5321CC1F1209D3E7A438B51B442D;
+			remoteInfo = PWSwitch;
 		};
-		431495B3ED704DBFE22C07C7687332CF /* PBXContainerItemProxy */ = {
+		4457D50C36336CFFF64715FB88C00498 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4D7B7D274050D6277CAECA96F3CF6722;
-			remoteInfo = FLAnimatedImage;
-		};
-		4429D4C75621995F798B4EAB4E01C5A1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E2F93DC689DAFDEE65C2E42449B16EC6;
-			remoteInfo = PINCache;
+			remoteGlobalIDString = 6F292934E9BE32938041E74CD3F766D9;
+			remoteInfo = PINOperation;
 		};
 		53725E396D1ED3A0C06362E938C15096 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -902,13 +909,6 @@
 			remoteGlobalIDString = C8A758D92978EC0C497938CAA86764A8;
 			remoteInfo = SwiftKeychainWrapper;
 		};
-		5C28F3FF744A8815E27F95C519711E65 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 57D1ECC6FF9B47AFEA19D8F14C41DF9F;
-			remoteInfo = TransitionButton;
-		};
 		641D1774D1E81C1944DB7BB95C8A9F7D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -923,12 +923,26 @@
 			remoteGlobalIDString = 4460B48BFC5E36A6946E7FDAA6684A32;
 			remoteInfo = PINRemoteImage;
 		};
+		69885969A770BFACAC7BD31CC0E878BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4460B48BFC5E36A6946E7FDAA6684A32;
+			remoteInfo = PINRemoteImage;
+		};
 		6E1F793724470A2AAF244F6C59862E40 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E2F93DC689DAFDEE65C2E42449B16EC6;
 			remoteInfo = PINCache;
+		};
+		741CF614AB20C2829BE1E2DF6BA73986 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 11379D0A3A51F9A9358E08E2FA2C378F;
+			remoteInfo = pop;
 		};
 		7571B5A40FBBB1EF74782CA72BB6CD30 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -950,6 +964,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = C8A758D92978EC0C497938CAA86764A8;
 			remoteInfo = SwiftKeychainWrapper;
+		};
+		8B5854B1763C0381648B9E7E2B32C1D6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0A60BB1C8B97C29FC779332C9BF50835;
+			remoteInfo = "UITextField+Shake";
 		};
 		91E0656FD1520976771CC3845A034139 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1000,6 +1021,13 @@
 			remoteGlobalIDString = 4D7B7D274050D6277CAECA96F3CF6722;
 			remoteInfo = FLAnimatedImage;
 		};
+		AD53EA91186595AF5420D7D57E621549 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D7B7D274050D6277CAECA96F3CF6722;
+			remoteInfo = FLAnimatedImage;
+		};
 		B1CD8950454BE901A4B73DC261780A5D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -1007,26 +1035,12 @@
 			remoteGlobalIDString = 11379D0A3A51F9A9358E08E2FA2C378F;
 			remoteInfo = pop;
 		};
-		B7F74F9D44C20054B5B566298722D2AA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B0487CB725334C59CED4AB001549C45A;
-			remoteInfo = PhoneNumberKit;
-		};
 		C5C2CE35BAECE2B5996914D17A058954 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6556171B2907B6BD3FFCECF994176168;
 			remoteInfo = QRCodeReader.swift;
-		};
-		CA16E36BE03F6DA24F109A13D04CBC4D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0A60BB1C8B97C29FC779332C9BF50835;
-			remoteInfo = "UITextField+Shake";
 		};
 		CF65AA4CA83E01CCB1352A27B6B6BB4D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1049,13 +1063,6 @@
 			remoteGlobalIDString = 6F292934E9BE32938041E74CD3F766D9;
 			remoteInfo = PINOperation;
 		};
-		E9AD6C4CE5668C8E7E382CAFB01923C6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 11379D0A3A51F9A9358E08E2FA2C378F;
-			remoteInfo = pop;
-		};
 		EB1D4DFC2C1C4E94BC564D8D2FB2DD50 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -1070,12 +1077,12 @@
 			remoteGlobalIDString = F8D21842E5814FA4C3A3DD2FC8DA93F5;
 			remoteInfo = Mixpanel;
 		};
-		FE8733DC056077CC33EE7C19E7400F73 /* PBXContainerItemProxy */ = {
+		FC5B2D8E1F2B5CE638A5A767E39FA32D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6F292934E9BE32938041E74CD3F766D9;
-			remoteInfo = PINOperation;
+			remoteGlobalIDString = 0D45DFEACEC05D4EC62BE7895B2B7B0D;
+			remoteInfo = DTGradientButton;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -2124,14 +2131,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D8D8FA28ADFB42DF91E19A4089BB9397 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CB7E22884762FD7350CE4E9785EA2FC2 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E3E8AABE9277C746E87843CF848268D6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2170,6 +2169,14 @@
 				E118FFF9FCD8979EFE2E06E91F4D92FB /* SystemConfiguration.framework in Frameworks */,
 				9E6A20C09AAA7E482F878201220C99E4 /* UIKit.framework in Frameworks */,
 				99CF784CA3F164858D9FF042825CAEFD /* UserNotifications.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD4B00A1E4CE771C48881E8B7678C75B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54A918AA0D8B110493B731D8AFA7AC55 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3508,6 +3515,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		015F0A61D2D2EAC342521F04C1CFA8E8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95FD116AE08BE67D188AA4988AEF6FF6 /* Pods-Big Neon UI-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0A8E243060DF6F0985A6B7F2951FB520 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -3951,14 +3966,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DDED8795F4D5E8C2B98A7E386C58F8D4 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				706EDA43023E8F33A94CD2B880DA254C /* Pods-Big Neon UI-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F88CF70F4B003F3D138F3C8B26BA08B6 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -4190,27 +4197,28 @@
 			productReference = C64D666939C97CE0FC1EF1741D30CF4A /* PINOperation.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		7FCD63C6C80FE095A981E473B47742BB /* Pods-Big Neon UI */ = {
+		89EBC5D29E7D5FA2B7E160FF55D4E6AF /* Pods-Big Neon UI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 10D3E62EFF3441B56BAF4AA14188D3BB /* Build configuration list for PBXNativeTarget "Pods-Big Neon UI" */;
+			buildConfigurationList = 19E725B9468DFAB6C46475C6CAAD0150 /* Build configuration list for PBXNativeTarget "Pods-Big Neon UI" */;
 			buildPhases = (
-				DDED8795F4D5E8C2B98A7E386C58F8D4 /* Headers */,
-				EF656687DDAA4D4CBE1A23DA8979C514 /* Sources */,
-				D8D8FA28ADFB42DF91E19A4089BB9397 /* Frameworks */,
-				80C3CE19591FD1972C13CA1CEE5DE5FD /* Resources */,
+				015F0A61D2D2EAC342521F04C1CFA8E8 /* Headers */,
+				9D253C64D1297FBE9627B98618D4B6F2 /* Sources */,
+				FD4B00A1E4CE771C48881E8B7678C75B /* Frameworks */,
+				60B86DF7BA83D51814E65A11453B9F41 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C0125EE686C2C38FC8590F926F2CD966 /* PBXTargetDependency */,
-				71FD383FCE45950F39B7E9487BDF20BB /* PBXTargetDependency */,
-				5598797C3DE4EF2BE6BFA74CB7A3AE22 /* PBXTargetDependency */,
-				E8D256D84947EE2A6FB70AD681DC896D /* PBXTargetDependency */,
-				0E4E17A32B1469C2C47A305D6722AFE8 /* PBXTargetDependency */,
-				5649E5F7B6F2F604A449A9F3A8DDC7F9 /* PBXTargetDependency */,
-				860D947036700509EAD0B90DAA7CABD1 /* PBXTargetDependency */,
-				72C874CA67E4B41ECCE377F7E3401550 /* PBXTargetDependency */,
-				F6A30EDAF0CE10123407545BCA27FAAD /* PBXTargetDependency */,
+				DACEC0FA2A69E81845BFC8001ED39856 /* PBXTargetDependency */,
+				ECF8BEB41F5F29DCCA4D2331D14DC3DC /* PBXTargetDependency */,
+				9DE68F8B2C1CE9E7A9182BAFB6BA9C77 /* PBXTargetDependency */,
+				080715616825AC58849A6112D33C3EF3 /* PBXTargetDependency */,
+				F0DEE05F66DB6EF0FB32E12AFBCF5577 /* PBXTargetDependency */,
+				D76C159DBBBED82239899E6BC643BE59 /* PBXTargetDependency */,
+				154DB322D2E430630C0A112555C07C73 /* PBXTargetDependency */,
+				DC115624D01CD1AD2A80CE6153720DB3 /* PBXTargetDependency */,
+				A500F666291026428F970FBC759DCAC2 /* PBXTargetDependency */,
+				058CA5420374D0BF1BA142287FA2423F /* PBXTargetDependency */,
 			);
 			name = "Pods-Big Neon UI";
 			productName = "Pods-Big Neon UI";
@@ -4419,7 +4427,7 @@
 				4460B48BFC5E36A6946E7FDAA6684A32 /* PINRemoteImage */,
 				A5BE8631CEBF9DAF29B74B455DF80FB7 /* Pods-Big Neon */,
 				B230F870E84C5E577DA8EC283D13623B /* Pods-Big Neon Core */,
-				7FCD63C6C80FE095A981E473B47742BB /* Pods-Big Neon UI */,
+				89EBC5D29E7D5FA2B7E160FF55D4E6AF /* Pods-Big Neon UI */,
 				11379D0A3A51F9A9358E08E2FA2C378F /* pop */,
 				35438C3FDDA23609CB212F783370C69B /* PresenterKit */,
 				15CC5321CC1F1209D3E7A438B51B442D /* PWSwitch */,
@@ -4469,6 +4477,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		60B86DF7BA83D51814E65A11453B9F41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		61D1E301F9A20F4C1EBEF68F16345127 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4501,13 +4516,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		72BCD7CC8E2525F1EE4AEA5E20150E27 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		80C3CE19591FD1972C13CA1CEE5DE5FD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -5062,6 +5070,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9D253C64D1297FBE9627B98618D4B6F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE017D4A005FBC14BCD3A1A3D142EAB8 /* Pods-Big Neon UI-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B3228DE21FA5790348A9BB81A5D77AF1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -5148,14 +5164,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EF656687DDAA4D4CBE1A23DA8979C514 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE00010A8601D20879CC8DD1DAF1B074 /* Pods-Big Neon UI-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F3E638950F1342FB0A371805043368C4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -5173,11 +5181,23 @@
 			target = B0487CB725334C59CED4AB001549C45A /* PhoneNumberKit */;
 			targetProxy = EB1D4DFC2C1C4E94BC564D8D2FB2DD50 /* PBXContainerItemProxy */;
 		};
-		0E4E17A32B1469C2C47A305D6722AFE8 /* PBXTargetDependency */ = {
+		058CA5420374D0BF1BA142287FA2423F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = PINRemoteImage;
-			target = 4460B48BFC5E36A6946E7FDAA6684A32 /* PINRemoteImage */;
-			targetProxy = 2E8DAA6AE9AF079CC62F5C2DA1E8D9A9 /* PBXContainerItemProxy */;
+			name = pop;
+			target = 11379D0A3A51F9A9358E08E2FA2C378F /* pop */;
+			targetProxy = 741CF614AB20C2829BE1E2DF6BA73986 /* PBXContainerItemProxy */;
+		};
+		080715616825AC58849A6112D33C3EF3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PINOperation;
+			target = 6F292934E9BE32938041E74CD3F766D9 /* PINOperation */;
+			targetProxy = 4457D50C36336CFFF64715FB88C00498 /* PBXContainerItemProxy */;
+		};
+		154DB322D2E430630C0A112555C07C73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PhoneNumberKit;
+			target = B0487CB725334C59CED4AB001549C45A /* PhoneNumberKit */;
+			targetProxy = 1428937D6B59333F1B4A3AC62ADAEAE1 /* PBXContainerItemProxy */;
 		};
 		24C3FFCFE64F74C4E51F6204AEEB0A79 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5196,18 +5216,6 @@
 			name = SwiftKeychainWrapper;
 			target = C8A758D92978EC0C497938CAA86764A8 /* SwiftKeychainWrapper */;
 			targetProxy = 8990095405766699DAB97C4B75E4876B /* PBXContainerItemProxy */;
-		};
-		5598797C3DE4EF2BE6BFA74CB7A3AE22 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PINCache;
-			target = E2F93DC689DAFDEE65C2E42449B16EC6 /* PINCache */;
-			targetProxy = 4429D4C75621995F798B4EAB4E01C5A1 /* PBXContainerItemProxy */;
-		};
-		5649E5F7B6F2F604A449A9F3A8DDC7F9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PhoneNumberKit;
-			target = B0487CB725334C59CED4AB001549C45A /* PhoneNumberKit */;
-			targetProxy = B7F74F9D44C20054B5B566298722D2AA /* PBXContainerItemProxy */;
 		};
 		595DAE5F83C9960AB5F14B9B3EC55728 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5239,18 +5247,6 @@
 			target = 6556171B2907B6BD3FFCECF994176168 /* QRCodeReader.swift */;
 			targetProxy = C5C2CE35BAECE2B5996914D17A058954 /* PBXContainerItemProxy */;
 		};
-		71FD383FCE45950F39B7E9487BDF20BB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FLAnimatedImage;
-			target = 4D7B7D274050D6277CAECA96F3CF6722 /* FLAnimatedImage */;
-			targetProxy = 431495B3ED704DBFE22C07C7687332CF /* PBXContainerItemProxy */;
-		};
-		72C874CA67E4B41ECCE377F7E3401550 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "UITextField+Shake";
-			target = 0A60BB1C8B97C29FC779332C9BF50835 /* UITextField+Shake */;
-			targetProxy = CA16E36BE03F6DA24F109A13D04CBC4D /* PBXContainerItemProxy */;
-		};
 		7E4AC232EF09A4C3A75A41765773B015 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Stripe;
@@ -5262,12 +5258,6 @@
 			name = PWSwitch;
 			target = 15CC5321CC1F1209D3E7A438B51B442D /* PWSwitch */;
 			targetProxy = 382447BF9335D1925037DD6726AE1353 /* PBXContainerItemProxy */;
-		};
-		860D947036700509EAD0B90DAA7CABD1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TransitionButton;
-			target = 57D1ECC6FF9B47AFEA19D8F14C41DF9F /* TransitionButton */;
-			targetProxy = 5C28F3FF744A8815E27F95C519711E65 /* PBXContainerItemProxy */;
 		};
 		8D1D063CD6D522A3F50A8C96318B8B91 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5292,6 +5282,18 @@
 			name = PresenterKit;
 			target = 35438C3FDDA23609CB212F783370C69B /* PresenterKit */;
 			targetProxy = CF65AA4CA83E01CCB1352A27B6B6BB4D /* PBXContainerItemProxy */;
+		};
+		9DE68F8B2C1CE9E7A9182BAFB6BA9C77 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PINCache;
+			target = E2F93DC689DAFDEE65C2E42449B16EC6 /* PINCache */;
+			targetProxy = 067E65EB19806EEF9531ECFE8259A833 /* PBXContainerItemProxy */;
+		};
+		A500F666291026428F970FBC759DCAC2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "UITextField+Shake";
+			target = 0A60BB1C8B97C29FC779332C9BF50835 /* UITextField+Shake */;
+			targetProxy = 8B5854B1763C0381648B9E7E2B32C1D6 /* PBXContainerItemProxy */;
 		};
 		A99C62E7C53AF72A7BC026D05C49F34E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5329,12 +5331,6 @@
 			target = C8A758D92978EC0C497938CAA86764A8 /* SwiftKeychainWrapper */;
 			targetProxy = 591360931856B789F3048B951A7429A8 /* PBXContainerItemProxy */;
 		};
-		C0125EE686C2C38FC8590F926F2CD966 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = DTGradientButton;
-			target = 0D45DFEACEC05D4EC62BE7895B2B7B0D /* DTGradientButton */;
-			targetProxy = 407A9C321A99065E81C5956709CE3062 /* PBXContainerItemProxy */;
-		};
 		C66707FC2975609D53AAFA7DE98849E2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "UITextField+Shake";
@@ -5353,11 +5349,29 @@
 			target = F8D21842E5814FA4C3A3DD2FC8DA93F5 /* Mixpanel */;
 			targetProxy = F3E91EF866F824BCD0B3853B2A784C3E /* PBXContainerItemProxy */;
 		};
+		D76C159DBBBED82239899E6BC643BE59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PWSwitch;
+			target = 15CC5321CC1F1209D3E7A438B51B442D /* PWSwitch */;
+			targetProxy = 390A09726CC3AD70AA5FFF916003BA27 /* PBXContainerItemProxy */;
+		};
 		D94575F895E3429C7D87E36B784E9E29 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = TransitionButton;
 			target = 57D1ECC6FF9B47AFEA19D8F14C41DF9F /* TransitionButton */;
 			targetProxy = 34C398A10DAE5B007DEFC63898F530D8 /* PBXContainerItemProxy */;
+		};
+		DACEC0FA2A69E81845BFC8001ED39856 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DTGradientButton;
+			target = 0D45DFEACEC05D4EC62BE7895B2B7B0D /* DTGradientButton */;
+			targetProxy = FC5B2D8E1F2B5CE638A5A767E39FA32D /* PBXContainerItemProxy */;
+		};
+		DC115624D01CD1AD2A80CE6153720DB3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TransitionButton;
+			target = 57D1ECC6FF9B47AFEA19D8F14C41DF9F /* TransitionButton */;
+			targetProxy = 36FAA1261E22581DBF1E2EC29C4CB6C5 /* PBXContainerItemProxy */;
 		};
 		DDEB1373621681CE69DB5703A5259D41 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5365,23 +5379,23 @@
 			target = C38F3EB0ED10CE7F4F5208093E5B0D8B /* Stripe */;
 			targetProxy = 1C77F6A269AE0E8B55FDA402865BA5DA /* PBXContainerItemProxy */;
 		};
-		E8D256D84947EE2A6FB70AD681DC896D /* PBXTargetDependency */ = {
+		ECF8BEB41F5F29DCCA4D2331D14DC3DC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = PINOperation;
-			target = 6F292934E9BE32938041E74CD3F766D9 /* PINOperation */;
-			targetProxy = FE8733DC056077CC33EE7C19E7400F73 /* PBXContainerItemProxy */;
+			name = FLAnimatedImage;
+			target = 4D7B7D274050D6277CAECA96F3CF6722 /* FLAnimatedImage */;
+			targetProxy = AD53EA91186595AF5420D7D57E621549 /* PBXContainerItemProxy */;
+		};
+		F0DEE05F66DB6EF0FB32E12AFBCF5577 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PINRemoteImage;
+			target = 4460B48BFC5E36A6946E7FDAA6684A32 /* PINRemoteImage */;
+			targetProxy = 69885969A770BFACAC7BD31CC0E878BE /* PBXContainerItemProxy */;
 		};
 		F54143E3F319280CF265364AA9AA6689 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FLAnimatedImage;
 			target = 4D7B7D274050D6277CAECA96F3CF6722 /* FLAnimatedImage */;
 			targetProxy = 2C3EAE20E5B329D65A60415745358969 /* PBXContainerItemProxy */;
-		};
-		F6A30EDAF0CE10123407545BCA27FAAD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = pop;
-			target = 11379D0A3A51F9A9358E08E2FA2C378F /* pop */;
-			targetProxy = E9AD6C4CE5668C8E7E382CAFB01923C6 /* PBXContainerItemProxy */;
 		};
 		F8957A1EFDD1DDFAB8D68B79C4A6A68D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5451,6 +5465,41 @@
 			};
 			name = Release;
 		};
+		0F545BD2054F8962562C89D781F4456C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F74F294FA19AF94EBDF95D92D8F828D /* Pods-Big Neon UI.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Big Neon UI/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		26CB760521975F9E23C384CD0340F342 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C05E74146B5F26C0A389E3445117575E /* Pods-Big Neon Core.debug.xcconfig */;
@@ -5472,40 +5521,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		2CA06E4AAE16ACC237A2CBE5714AA1A3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BACE4E9586B2315B40579BBA8B5C7475 /* Pods-Big Neon UI.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Big Neon UI/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -6183,6 +6198,40 @@
 			};
 			name = Debug;
 		};
+		B23758407A7ABC695E4A2C73538F7A5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BACE4E9586B2315B40579BBA8B5C7475 /* Pods-Big Neon UI.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Big Neon UI/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		BA3498B312952F6ADB3DE6DD1C4526DC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5EDAE8F4A5DCEDFC5D67BA4B87B02CDC /* FLAnimatedImage.xcconfig */;
@@ -6463,41 +6512,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		D9488FE3AD069A7C869297E8D4C12502 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3F74F294FA19AF94EBDF95D92D8F828D /* Pods-Big Neon UI.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Big Neon UI/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -6874,11 +6888,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		10D3E62EFF3441B56BAF4AA14188D3BB /* Build configuration list for PBXNativeTarget "Pods-Big Neon UI" */ = {
+		19E725B9468DFAB6C46475C6CAAD0150 /* Build configuration list for PBXNativeTarget "Pods-Big Neon UI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2CA06E4AAE16ACC237A2CBE5714AA1A3 /* Debug */,
-				D9488FE3AD069A7C869297E8D4C12502 /* Release */,
+				B23758407A7ABC695E4A2C73538F7A5E /* Debug */,
+				0F545BD2054F8962562C89D781F4456C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

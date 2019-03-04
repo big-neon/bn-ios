@@ -25,6 +25,7 @@ target 'Big Neon UI' do
     inherit! :search_paths
     pod 'TransitionButton'
 	pod 'pop'
+    pod 'PWSwitch'
     pod 'DTGradientButton'
     pod 'PINCache', '3.0.1-beta.6'
     pod 'PINRemoteImage', '3.0.0-beta.13'

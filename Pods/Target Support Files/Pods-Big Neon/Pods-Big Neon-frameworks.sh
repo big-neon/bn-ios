@@ -144,8 +144,8 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/pop/pop.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PWSwitch/PWSwitch.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/pop/pop.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PresenterKit/PresenterKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
@@ -164,8 +164,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/pop/pop.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PWSwitch/PWSwitch.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/pop/pop.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PresenterKit/PresenterKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
