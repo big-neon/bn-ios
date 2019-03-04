@@ -12,6 +12,7 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
     internal var guestListTopAnchor: NSLayoutConstraint?
     internal let generator = UINotificationFeedbackGenerator()
     internal var reader : QRCodeReader?
+    internal var scannerViewModel : TicketScannerViewModel = TicketScannerViewModel()
     
     internal let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
     
@@ -65,13 +66,12 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         let view =  UIView()
         view.backgroundColor = UIColor.black
         view.layer.opacity = 0.0
-//        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     internal lazy var scannerModeView: ScannerModeView = {
         let view =  ScannerModeView()
-        view.setAutoMode = false
+        view.setAutoMode = self.scannerViewModel.scannerMode()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -159,11 +159,11 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
     }
     
     func scannerSetAutomatic() {
-        print("Scanner set to Automatic")
+        self.scannerViewModel.setCheckingModeAutomatic()
     }
     
     func scannerSetManual() {
-        print("Scanner set to Manual")
+        self.scannerViewModel.setCheckingModeManual()
     }
 }
 
