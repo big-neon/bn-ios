@@ -56,6 +56,7 @@
 		C683232D21FF2D71002342AE /* ProfileEditViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683232C21FF2D71002342AE /* ProfileEditViewController.TableView.swift */; };
 		C683232F21FF31F5002342AE /* ProfileEditingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683232E21FF31F5002342AE /* ProfileEditingTableViewCell.swift */; };
 		C683233121FF34DF002342AE /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683233021FF34DF002342AE /* LogoutCell.swift */; };
+		C68A4221222FE65F002789E6 /* ManualCheckinModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A4220222FE65F002789E6 /* ManualCheckinModeView.swift */; };
 		C694D25A21D0BFE600B2AE07 /* ApplicationRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */; };
 		C698AB1021EDE9BC0073F1FB /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB0F21EDE9BC0073F1FB /* CreateAccountViewController.swift */; };
 		C698AB1621EF1FE00073F1FB /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB1521EF1FE00073F1FB /* CreateAccountViewModel.swift */; };
@@ -244,6 +245,7 @@
 		C683232C21FF2D71002342AE /* ProfileEditViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.TableView.swift; sourceTree = "<group>"; };
 		C683232E21FF31F5002342AE /* ProfileEditingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingTableViewCell.swift; sourceTree = "<group>"; };
 		C683233021FF34DF002342AE /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
+		C68A4220222FE65F002789E6 /* ManualCheckinModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualCheckinModeView.swift; sourceTree = "<group>"; };
 		C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouting.swift; sourceTree = "<group>"; };
 		C698AB0F21EDE9BC0073F1FB /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		C698AB1521EF1FE00073F1FB /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 			children = (
 				C6058DE02229520D00BDF397 /* ScannerModeView.swift */,
 				C6BCBE9F222D38730026B858 /* TicketScanFeedbackView.swift */,
+				C68A4220222FE65F002789E6 /* ManualCheckinModeView.swift */,
 			);
 			path = ScannerModeView;
 			sourceTree = "<group>";
@@ -1360,6 +1363,7 @@
 				C61853BC2212F6FA005D6250 /* ThreeQuaterPresenter.swift in Sources */,
 				C61853BF22140548005D6250 /* TicketTypeCell.swift in Sources */,
 				C6EC4B2C2227BBAD0056CE73 /* GuestsView.TableView.swift in Sources */,
+				C68A4221222FE65F002789E6 /* ManualCheckinModeView.swift in Sources */,
 				C603E4A1221586040079ED73 /* SubTotalCell.swift in Sources */,
 				C6B88D4121F1C07C006394F8 /* HotWeekCell.swift in Sources */,
 				C6B88D3B21F1BC9B006394F8 /* SectionHeaderCell.swift in Sources */,

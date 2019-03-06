@@ -10,6 +10,7 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
     internal var captureSession = AVCaptureSession()
     internal var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     internal var guestListTopAnchor: NSLayoutConstraint?
+    internal var manualCheckingTopAnchor: NSLayoutConstraint?
     internal let generator = UINotificationFeedbackGenerator()
     internal var reader : QRCodeReader?
     internal var scannerViewModel : TicketScannerViewModel = TicketScannerViewModel()
@@ -62,6 +63,12 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         return view
     }()
     
+    internal lazy var manualUserCheckinView: ManualCheckinModeView = {
+        let view =  ManualCheckinModeView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     internal lazy var feedbackView: TicketScanFeedbackView = {
         let view =  TicketScanFeedbackView()
         view.scanFeedback = .alreadyRedeemed
@@ -90,8 +97,9 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         self.configureCameraSession()
         self.configureCameraView()
         self.configureScan()
-        self.configureGuestView()
-        self.configureScanFeedbackView()
+//        self.configureScanFeedbackView()
+//        self.configureGuestView()
+        self.configureManualCheckinView()
     }
     
     private func configureCameraSession() {
@@ -123,6 +131,16 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         self.guestListTopAnchor = guestListView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UIScreen.main.bounds.height - 80.0)
         self.guestListTopAnchor?.isActive = true
         guestListView.heightAnchor.constraint(equalToConstant: 560.0).isActive = true
+    }
+    
+    private func configureManualCheckinView() {
+        self.view.addSubview(manualUserCheckinView)
+        
+        manualUserCheckinView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        manualUserCheckinView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        self.manualCheckingTopAnchor = manualUserCheckinView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UIScreen.main.bounds.height - 250.0)
+        self.manualCheckingTopAnchor?.isActive = true
+        manualUserCheckinView.heightAnchor.constraint(equalToConstant: 250.0).isActive = true
     }
     
     private func configureScanFeedbackView() {
