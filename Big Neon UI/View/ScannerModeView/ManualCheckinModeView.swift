@@ -22,7 +22,7 @@ public class ManualCheckinModeView: UIView {
         button.setTitle("Complete Check-in", for: UIControl.State.normal)
         button.backgroundColor = UIColor.brandPrimary
         button.setTitleColor(UIColor.brandWhite, for: UIControl.State.normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.bold)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

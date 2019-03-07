@@ -216,14 +216,27 @@ extension TicketScannerViewController {
         let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         
         if supportedCodeTypes.contains(metadataObj.type) {
-            self.generator.notificationOccurred(.success)
+            
             // If the found metadata is equal to the QR code metadata (or barcode) then update the status label's text and set the bounds
 //            let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
 //            qrCodeFrameView?.frame = barCodeObject!.bounds
 
             if metadataObj.stringValue != nil {
                 print(metadataObj.stringValue)
+                self.reader?.stopScanning()
+                self.generator.notificationOccurred(.success)
+                self.scannerViewModel.getRedeemTicket(ticketID: "") { (completed) in
+                    if completed == true {
+                        print(self.scannerViewModel.redeemedTicket?.redeemKey)
+                        return
+                        //  Show the Scanned Data
+                    }
+                    
+                    print("Error Found")
+                    return
+                }
             }
+             self.generator.notificationOccurred(.error)
             self.reader?.stopScanning()
             return
         }
