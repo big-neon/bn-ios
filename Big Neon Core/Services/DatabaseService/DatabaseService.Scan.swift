@@ -5,8 +5,7 @@ import Alamofire
 
 extension DatabaseService {
     
-    public func getRedeemKey(ticketID: String, completion: @escaping (Error?, RedeemedTicket?) -> Void) {
-        
+    public func getRedeemTicket(forTicketID ticketID: String, completion: @escaping (Error?, RedeemedTicket?) -> Void) {
         
         let APIURL = APIService.redeem + "\(ticketID)/redeem"
         let accessToken = self.fetchAcessToken()
@@ -41,7 +40,7 @@ extension DatabaseService {
     }
     
     
-    public func redeemTicket(ticketID: String, completion: @escaping (Error?) -> Void) {
+    public func redeemTicket(forTicketID ticketID: String, completion: @escaping (Error?) -> Void) {
         
         
         let APIURL = APIService.redeem + "\(ticketID)/redeem"

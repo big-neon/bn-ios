@@ -24,9 +24,8 @@ final class TicketScannerViewModel {
 
     internal func getRedeemTicket(ticketID: String, completion: @escaping(Bool) -> Void) {
         
-        BusinessService.shared.database.getRedeemKey(ticketID: ticketID) { (error, redeemTicket) in
+        BusinessService.shared.database.getRedeemTicket(forTicketID: ticketID) { (error, redeemTicket) in
             if error != nil {
-                
                 completion(false)
                 return
             }
@@ -40,6 +39,34 @@ final class TicketScannerViewModel {
             return
         }
         
+    }
+    
+    internal func getRedeemKey(fromStringValue value: String) -> String? {
+        guard let data = try? JSONSerialization.jsonObject(with: Data(value.utf8), options: []) else {
+            return nil
+        }
+        
+        guard let dataValue = data as? [String: Any] else {
+            return nil
+        }
+        guard let redeemKeyData = dataValue["data"] as? [String:String] else {
+            return nil
+        }
+        return redeemKeyData["redeem_key"]
+    }
+    
+    internal func getTicketID(fromStringValue value: String) -> String? {
+        guard let data = try? JSONSerialization.jsonObject(with: Data(value.utf8), options: []) else {
+            return nil
+        }
+        
+        guard let dataValue = data as? [String: Any] else {
+            return nil
+        }
+        guard let redeemKeyData = dataValue["data"] as? [String:String] else {
+            return nil
+        }
+        return redeemKeyData["id"]
     }
 
 }

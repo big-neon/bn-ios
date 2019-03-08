@@ -213,31 +213,41 @@ extension TicketScannerViewController {
             return
         }
         
-        let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
-        
+        let metadataObj = metadataObjects.first as! AVMetadataMachineReadableCodeObject
         if supportedCodeTypes.contains(metadataObj.type) {
-            
-            // If the found metadata is equal to the QR code metadata (or barcode) then update the status label's text and set the bounds
-//            let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
-//            qrCodeFrameView?.frame = barCodeObject!.bounds
 
-            if metadataObj.stringValue != nil {
-                print(metadataObj.stringValue)
+            guard let metaDataString = metadataObj.stringValue else {
+                self.generator.notificationOccurred(.error)
                 self.reader?.stopScanning()
-                self.generator.notificationOccurred(.success)
-                self.scannerViewModel.getRedeemTicket(ticketID: "") { (completed) in
-                    if completed == true {
-                        print(self.scannerViewModel.redeemedTicket?.redeemKey)
-                        return
-                        //  Show the Scanned Data
-                    }
-                    
-                    print("Error Found")
-                    return
-                }
+                return
             }
-             self.generator.notificationOccurred(.error)
+            
+            guard let redeemKey = self.scannerViewModel.getRedeemKey(fromStringValue: metaDataString) else {
+                self.generator.notificationOccurred(.error)
+                self.reader?.stopScanning()
+                return
+            }
+            
+            guard let ticketID = self.scannerViewModel.getTicketID(fromStringValue: metaDataString) else {
+                self.generator.notificationOccurred(.error)
+                self.reader?.stopScanning()
+                return
+            }
+            
             self.reader?.stopScanning()
+            self.scannerViewModel.getRedeemTicket(ticketID: ticketID) { (completed) in
+                if completed == true {
+                    self.generator.notificationOccurred(.success)
+                    print(self.scannerViewModel.redeemedTicket)
+                    self.reader?.stopScanning()
+                    return
+                    //  Show the Scanned Data so it can be redeemed
+                }
+                print("Error Found")
+                return
+            }
+            
+        } else {
             return
         }
     }
