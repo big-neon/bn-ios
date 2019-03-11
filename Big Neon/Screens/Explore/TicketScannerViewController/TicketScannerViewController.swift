@@ -97,8 +97,6 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         self.configureCameraSession()
         self.configureCameraView()
         self.configureScan()
-//        self.configureScanFeedbackView()
-//        self.configureGuestView()
         self.configureManualCheckinView()
     }
     
@@ -138,7 +136,7 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         
         manualUserCheckinView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         manualUserCheckinView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-        self.manualCheckingTopAnchor = manualUserCheckinView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UIScreen.main.bounds.height - 250.0)
+        self.manualCheckingTopAnchor = manualUserCheckinView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UIScreen.main.bounds.height + 50.0)
         self.manualCheckingTopAnchor?.isActive = true
         manualUserCheckinView.heightAnchor.constraint(equalToConstant: 250.0).isActive = true
     }
@@ -238,7 +236,6 @@ extension TicketScannerViewController {
             self.scannerViewModel.getRedeemTicket(ticketID: ticketID) { (completed) in
                 if completed == true {
                     self.generator.notificationOccurred(.success)
-                    print(self.scannerViewModel.redeemedTicket)
                     self.reader?.stopScanning()
                     return
                     //  Show the Scanned Data so it can be redeemed
@@ -250,6 +247,15 @@ extension TicketScannerViewController {
         } else {
             return
         }
+    }
+    
+    private func showRedeemedTicket() {
+        let redemeedTicket = self.scannerViewModel.redeemedTicket
+        self.manualUserCheckinView.
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
 }
 

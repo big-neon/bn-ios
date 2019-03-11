@@ -6,13 +6,13 @@ import Big_Neon_Core
 
 public class ManualCheckinModeView: UIView {
     
-    public var scannedUser: User? {
+    public var redemeedTicket: RedeemedTicket? {
         didSet {
-            guard let user = self.scannedUser else {
+            guard let ticket = self.redemeedTicket else {
                 return
             }
             
-            print(user)
+            print(redemeedTicket)
             
         }
     }
