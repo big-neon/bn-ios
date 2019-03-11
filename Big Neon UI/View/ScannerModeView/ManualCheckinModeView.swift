@@ -12,9 +12,9 @@ public class ManualCheckinModeView: UIView {
     
     public var delegate: ManualCheckinModeDelegate?
     
-    public var redemeedTicket: RedeemedTicket? {
+    public var redeemableTicket: RedeemableTicket? {
         didSet {
-            guard let ticket = self.redemeedTicket else {
+            guard let ticket = self.redeemableTicket else {
                 return
             }
             

@@ -6,7 +6,7 @@ import Big_Neon_Core
 final class TicketScannerViewModel {
     
     internal var event: Event?
-    internal var redeemedTicket: RedeemedTicket?
+    internal var redeemedTicket: RedeemableTicket?
 
     internal func setCheckingModeAutomatic() {
         UserDefaults.standard.set(true, forKey: Constants.CheckingMode.scannerCheckinKey)

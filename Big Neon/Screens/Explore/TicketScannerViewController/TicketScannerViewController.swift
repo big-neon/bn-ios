@@ -268,7 +268,7 @@ extension TicketScannerViewController {
             return
         }
         self.generator.notificationOccurred(.success)
-        self.manualUserCheckinView.redemeedTicket = self.scannerViewModel.redeemedTicket
+        self.manualUserCheckinView.redeemableTicket = self.scannerViewModel.redeemedTicket
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.feedbackView.layer.contentsScale = 1.0
             self.feedbackView.layer.opacity = 1.0

@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct RedeemedTicket: Codable {
+public struct RedeemableTicket: Codable {
     public let id, ticketType, userID, orderID: String
     public let orderItemID: String
     public let priceInCents: Int

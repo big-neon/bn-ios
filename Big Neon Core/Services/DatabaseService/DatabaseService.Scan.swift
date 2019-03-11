@@ -5,7 +5,7 @@ import Alamofire
 
 extension DatabaseService {
     
-    public func getRedeemTicket(forTicketID ticketID: String, completion: @escaping (Error?, RedeemedTicket?) -> Void) {
+    public func getRedeemTicket(forTicketID ticketID: String, completion: @escaping (Error?, RedeemableTicket?) -> Void) {
         
         let APIURL = APIService.redeem + "\(ticketID)/redeem"
         let accessToken = self.fetchAcessToken()
@@ -30,7 +30,7 @@ extension DatabaseService {
                 
                 do {
                     let decoder = JSONDecoder()
-                    let redeemKeyData = try decoder.decode(RedeemedTicket.self, from: data!)
+                    let redeemKeyData = try decoder.decode(RedeemableTicket.self, from: data!)
                     completion(nil, redeemKeyData)
                     return
                 } catch let error as NSError {
