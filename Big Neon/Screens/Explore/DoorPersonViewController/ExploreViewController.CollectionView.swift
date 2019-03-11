@@ -85,7 +85,7 @@ extension DoorPersonViewController {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        self.showScanner()
+        self.showScanner(forTicketIndex: indexPath.item)
 //        if indexPath.section == 0 {
 //            guard let events = self.exploreViewModel.events?.data else {
 //                return

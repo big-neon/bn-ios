@@ -148,8 +148,13 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         }
     }
     
-    internal func showScanner() {
-        let scannerNavVC = UINavigationController(rootViewController: TicketScannerViewController())
+    internal func showScanner(forTicketIndex ticketIndex: Int) {
+        guard let events = self.doorPersonViemodel.events?.data else {
+            return
+        }
+        let scannerVC = TicketScannerViewController()
+        scannerVC.scannerViewModel.event = events[ticketIndex]
+        let scannerNavVC = UINavigationController(rootViewController: scannerVC)
         self.present(scannerNavVC, animated: true, completion: nil)
     }
 

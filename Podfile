@@ -23,7 +23,7 @@ end
 
 target 'Big Neon UI' do
     inherit! :search_paths
-    pod 'TransitionButton'
+    pod 'TransitionButton' 
 	pod 'pop'
     pod 'PWSwitch'
     pod 'DTGradientButton'

@@ -5,15 +5,19 @@ import Big_Neon_UI
 import AVFoundation
 import QRCodeReader
 
-final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsDelegate, QRCodeReaderViewControllerDelegate, GuestListViewProtocol, ScannerModeViewDelegate {
+final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsDelegate, QRCodeReaderViewControllerDelegate, GuestListViewProtocol, ScannerModeViewDelegate, ManualCheckinModeDelegate {
     
     internal var captureSession = AVCaptureSession()
     internal var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     internal var guestListTopAnchor: NSLayoutConstraint?
+    internal var manualCheckingTopAnchor: NSLayoutConstraint?
     internal let generator = UINotificationFeedbackGenerator()
     internal var reader : QRCodeReader?
+    internal var scanCompleted: Bool?
     internal var scannerViewModel : TicketScannerViewModel = TicketScannerViewModel()
-    
+    internal let blurEffect = UIBlurEffect(style: .dark)
+    internal var blurView: UIVisualEffectView?
+
     internal let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
     
     internal var isShowingGuests: Bool = false {
@@ -62,6 +66,21 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         return view
     }()
     
+    internal lazy var manualUserCheckinView: ManualCheckinModeView = {
+        let view =  ManualCheckinModeView()
+        view.delegate = self
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    internal lazy var feedbackView: TicketScanFeedbackView = {
+        let view =  TicketScanFeedbackView()
+        view.layer.opacity = 0.0
+        view.layer.contentsScale = 0.0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     internal lazy var cameraTintView: UIView = {
         let view =  UIView()
         view.backgroundColor = UIColor.black
@@ -83,7 +102,8 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         self.configureCameraSession()
         self.configureCameraView()
         self.configureScan()
-        self.configureGuestView()
+        self.configureManualCheckinView()
+        self.configureScanFeedbackView()
     }
     
     private func configureCameraSession() {
@@ -116,6 +136,24 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         self.guestListTopAnchor?.isActive = true
         guestListView.heightAnchor.constraint(equalToConstant: 560.0).isActive = true
     }
+    
+    private func configureManualCheckinView() {
+        self.view.addSubview(manualUserCheckinView)
+        
+        manualUserCheckinView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        manualUserCheckinView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        self.manualCheckingTopAnchor = manualUserCheckinView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UIScreen.main.bounds.height + 50.0)
+        self.manualCheckingTopAnchor?.isActive = true
+        manualUserCheckinView.heightAnchor.constraint(equalToConstant: 250.0).isActive = true
+    }
+    
+    private func configureScanFeedbackView() {
+        self.view.addSubview(feedbackView)
+        feedbackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        feedbackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -80.0).isActive = true
+        feedbackView.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
+        feedbackView.widthAnchor.constraint(equalToConstant: 220.0).isActive = true
+    }
 
     private func configureCameraView() {
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
@@ -124,6 +162,7 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         cameraTintView.frame = view.layer.bounds
         view.layer.addSublayer(videoPreviewLayer!)
         captureSession.startRunning()
+        self.configureBlur()
     }
     
     private func configureNavBar() {
@@ -135,6 +174,15 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         scannerModeView.widthAnchor.constraint(equalToConstant: 290.0).isActive = true
         scannerModeView.heightAnchor.constraint(equalToConstant: 48.0).isActive = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: scannerModeView)
+    }
+    
+    private func configureBlur() {
+        let blur = UIBlurEffect(style: .dark)
+        self.blurView = UIVisualEffectView(effect: blur)
+        self.blurView?.frame = self.view.bounds
+        self.blurView?.layer.opacity = 0.0
+        self.blurView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.view.addSubview(self.blurView!)
     }
     
     @objc private func handleClose() {
@@ -171,27 +219,80 @@ extension TicketScannerViewController {
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         
-        if metadataObjects.isEmpty {
-            self.generator.notificationOccurred(.error)
+        if metadataObjects.isEmpty == true {
             self.reader?.stopScanning()
-            print("No QR code is detected")
+            self.reader = nil
+            print("No QR code detected")
+            self.scanCompleted = true
             return
         }
         
-        let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
-        
+        let metadataObj = metadataObjects.first as! AVMetadataMachineReadableCodeObject
         if supportedCodeTypes.contains(metadataObj.type) {
-            self.generator.notificationOccurred(.success)
-            // If the found metadata is equal to the QR code metadata (or barcode) then update the status label's text and set the bounds
-//            let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
-//            qrCodeFrameView?.frame = barCodeObject!.bounds
 
-            if metadataObj.stringValue != nil {
-                print(metadataObj.stringValue)
+            guard let metaDataString = metadataObj.stringValue else {
+                self.reader?.stopScanning()
+                return
             }
+            
+            guard self.scannerViewModel.getRedeemKey(fromStringValue: metaDataString) != nil else {
+                self.reader?.stopScanning()
+                return
+            }
+            
+            guard let ticketID = self.scannerViewModel.getTicketID(fromStringValue: metaDataString) else {
+                self.reader?.stopScanning()
+                return
+            }
+            
             self.reader?.stopScanning()
+            self.scannerViewModel.getRedeemTicket(ticketID: ticketID) { (completed) in
+                if completed == true {
+                    self.reader?.stopScanning()
+                    self.showRedeemedTicket()
+                    self.reader = nil
+                    return
+                }
+                print("Error Found")
+                return
+            }
+        } else {
+            self.reader?.stopScanning()
+            self.reader = nil
             return
         }
+    }
+    
+    private func showRedeemedTicket() {
+        if self.scanCompleted == true {
+            return
+        }
+        self.generator.notificationOccurred(.success)
+        self.manualUserCheckinView.redeemableTicket = self.scannerViewModel.redeemedTicket
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.feedbackView.layer.contentsScale = 1.0
+            self.feedbackView.layer.opacity = 1.0
+            self.blurView?.layer.opacity = 1.0
+            self.feedbackView.scanFeedback = .valid
+            self.scannerModeView.layer.opacity = 0.0
+            self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height - 250.0
+            self.view.layoutIfNeeded()
+        }, completion: { (completed) in
+            self.scanCompleted = true
+            
+        })
+    }
+    
+    internal func completeCheckin() {
+        UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.feedbackView.layer.opacity = 0.0
+            self.blurView?.layer.opacity = 0.0
+            self.scannerModeView.layer.opacity = 1.0
+            self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+            self.view.layoutIfNeeded()
+        }, completion: { (completed) in
+            self.scanCompleted = false
+        })
     }
 }
 

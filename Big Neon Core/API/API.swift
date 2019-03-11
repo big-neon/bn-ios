@@ -23,4 +23,7 @@ public enum APIService {
     public static let login         =  stagingBaseURL + "/auth/token"
     public static let updateUser    = stagingBaseURL + "/users/me"
     public static let refreshToken  = stagingBaseURL + "/auth/token/refresh"
+    public static let redeem        = stagingBaseURL + "/tickets/"
+    
+    
 }

@@ -34,6 +34,9 @@
 		C62BC78E21CCC3FB00830A5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78C21CCC3FB00830A5F /* LaunchScreen.storyboard */; };
 		C62BC79921CCC3FB00830A5F /* Big_NeonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */; };
 		C63D1A172220057400152E83 /* TicketScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D1A162220057400152E83 /* TicketScannerViewController.swift */; };
+		C63D86C02231282F003CFAA7 /* DatabaseService.Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D86BF2231282F003CFAA7 /* DatabaseService.Scan.swift */; };
+		C63D86C22231414D003CFAA7 /* RedeemedTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D86C12231414D003CFAA7 /* RedeemedTicket.swift */; };
+		C63D86C622325C8B003CFAA7 /* RedeemKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D86C522325C8B003CFAA7 /* RedeemKey.swift */; };
 		C64124C621F266B100233797 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64124C521F266B100233797 /* LoginViewController.swift */; };
 		C64124CA21F26D1800233797 /* AuthTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64124C921F26D1800233797 /* AuthTextView.swift */; };
 		C644BA2F21F7069D003C188B /* BasicError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C644BA2E21F7069D003C188B /* BasicError.swift */; };
@@ -56,6 +59,8 @@
 		C683232D21FF2D71002342AE /* ProfileEditViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683232C21FF2D71002342AE /* ProfileEditViewController.TableView.swift */; };
 		C683232F21FF31F5002342AE /* ProfileEditingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683232E21FF31F5002342AE /* ProfileEditingTableViewCell.swift */; };
 		C683233121FF34DF002342AE /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683233021FF34DF002342AE /* LogoutCell.swift */; };
+		C68A4221222FE65F002789E6 /* ManualCheckinModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A4220222FE65F002789E6 /* ManualCheckinModeView.swift */; };
+		C68A422322304D9F002789E6 /* CheckinTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A422222304D9F002789E6 /* CheckinTagView.swift */; };
 		C694D25A21D0BFE600B2AE07 /* ApplicationRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */; };
 		C698AB1021EDE9BC0073F1FB /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB0F21EDE9BC0073F1FB /* CreateAccountViewController.swift */; };
 		C698AB1621EF1FE00073F1FB /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB1521EF1FE00073F1FB /* CreateAccountViewModel.swift */; };
@@ -110,6 +115,7 @@
 		C6B88D8E21F1C94E006394F8 /* TicketType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D8821F1C94D006394F8 /* TicketType.swift */; };
 		C6B88D8F21F1C94E006394F8 /* Organisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D8921F1C94E006394F8 /* Organisation.swift */; };
 		C6BCBE9E222D06C70026B858 /* TicketScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BCBE9D222D06C70026B858 /* TicketScannerViewModel.swift */; };
+		C6BCBEA0222D38730026B858 /* TicketScanFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BCBE9F222D38730026B858 /* TicketScanFeedbackView.swift */; };
 		C6C45D6A21F5CDCD00D2F602 /* PopAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C45D6921F5CDCD00D2F602 /* PopAnimations.swift */; };
 		C6C45D6C21F5CEC000D2F602 /* Feedbacksystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C45D6B21F5CEC000D2F602 /* Feedbacksystem.swift */; };
 		C6C49DA52209A77E0087AE16 /* DollarString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C49DA42209A77E0087AE16 /* DollarString.swift */; };
@@ -221,6 +227,9 @@
 		C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Big_NeonTests.swift; sourceTree = "<group>"; };
 		C62BC79A21CCC3FB00830A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C63D1A162220057400152E83 /* TicketScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketScannerViewController.swift; sourceTree = "<group>"; };
+		C63D86BF2231282F003CFAA7 /* DatabaseService.Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Scan.swift; sourceTree = "<group>"; };
+		C63D86C12231414D003CFAA7 /* RedeemedTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemedTicket.swift; sourceTree = "<group>"; };
+		C63D86C522325C8B003CFAA7 /* RedeemKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemKey.swift; sourceTree = "<group>"; };
 		C64124C521F266B100233797 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C64124C921F26D1800233797 /* AuthTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextView.swift; sourceTree = "<group>"; };
 		C644BA2E21F7069D003C188B /* BasicError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicError.swift; sourceTree = "<group>"; };
@@ -243,6 +252,8 @@
 		C683232C21FF2D71002342AE /* ProfileEditViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.TableView.swift; sourceTree = "<group>"; };
 		C683232E21FF31F5002342AE /* ProfileEditingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingTableViewCell.swift; sourceTree = "<group>"; };
 		C683233021FF34DF002342AE /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
+		C68A4220222FE65F002789E6 /* ManualCheckinModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualCheckinModeView.swift; sourceTree = "<group>"; };
+		C68A422222304D9F002789E6 /* CheckinTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinTagView.swift; sourceTree = "<group>"; };
 		C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouting.swift; sourceTree = "<group>"; };
 		C698AB0F21EDE9BC0073F1FB /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		C698AB1521EF1FE00073F1FB /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
@@ -298,6 +309,7 @@
 		C6B88D8821F1C94D006394F8 /* TicketType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketType.swift; sourceTree = "<group>"; };
 		C6B88D8921F1C94E006394F8 /* Organisation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Organisation.swift; sourceTree = "<group>"; };
 		C6BCBE9D222D06C70026B858 /* TicketScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketScannerViewModel.swift; sourceTree = "<group>"; };
+		C6BCBE9F222D38730026B858 /* TicketScanFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketScanFeedbackView.swift; sourceTree = "<group>"; };
 		C6C45D6921F5CDCD00D2F602 /* PopAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimations.swift; sourceTree = "<group>"; };
 		C6C45D6B21F5CEC000D2F602 /* Feedbacksystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedbacksystem.swift; sourceTree = "<group>"; };
 		C6C49DA42209A77E0087AE16 /* DollarString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarString.swift; sourceTree = "<group>"; };
@@ -375,6 +387,9 @@
 			isa = PBXGroup;
 			children = (
 				C6058DE02229520D00BDF397 /* ScannerModeView.swift */,
+				C6BCBE9F222D38730026B858 /* TicketScanFeedbackView.swift */,
+				C68A4220222FE65F002789E6 /* ManualCheckinModeView.swift */,
+				C68A422222304D9F002789E6 /* CheckinTagView.swift */,
 			);
 			path = ScannerModeView;
 			sourceTree = "<group>";
@@ -785,6 +800,8 @@
 				C6B88D7721F1C924006394F8 /* EventDetail */,
 				C6B88D7421F1C8D3006394F8 /* User */,
 				C6B88D7321F1C8BE006394F8 /* Token */,
+				C63D86C12231414D003CFAA7 /* RedeemedTicket.swift */,
+				C63D86C522325C8B003CFAA7 /* RedeemKey.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -824,6 +841,7 @@
 				C644BA3321F70C19003C188B /* DatabaseService.Users.swift */,
 				C6B88D6D21F1C88A006394F8 /* DatabaseService.Events.swift */,
 				C655BD38221D69FD00EB1FDD /* DatabaseService.Checkins.swift */,
+				C63D86BF2231282F003CFAA7 /* DatabaseService.Scan.swift */,
 			);
 			path = DatabaseService;
 			sourceTree = "<group>";
@@ -1324,10 +1342,13 @@
 				C6B88D8221F1C93A006394F8 /* Events.swift in Sources */,
 				C6B88D6E21F1C88A006394F8 /* DatabaseService.swift in Sources */,
 				C6B88D6721F1C862006394F8 /* DateConfig.swift in Sources */,
+				C63D86C622325C8B003CFAA7 /* RedeemKey.swift in Sources */,
 				C6B88D7F21F1C93A006394F8 /* Paging.swift in Sources */,
 				C6B88D8A21F1C94E006394F8 /* PerformingArtist.swift in Sources */,
+				C63D86C02231282F003CFAA7 /* DatabaseService.Scan.swift in Sources */,
 				C6B88D7221F1C890006394F8 /* BusinessService.swift in Sources */,
 				C6D37B3521F1CD8200C616D0 /* API.swift in Sources */,
+				C63D86C22231414D003CFAA7 /* RedeemedTicket.swift in Sources */,
 				C655BD39221D69FD00EB1FDD /* DatabaseService.Checkins.swift in Sources */,
 				C644BA2F21F7069D003C188B /* BasicError.swift in Sources */,
 				C6B88D7921F1C932006394F8 /* Tokens.swift in Sources */,
@@ -1353,14 +1374,17 @@
 				C61D51CA220D6458002A70CE /* ExploreNavBarView.swift in Sources */,
 				C6B88D5D21F1C359006394F8 /* NavBarConfig.swift in Sources */,
 				C603E49D221581B20079ED73 /* EventCheckoutDetailCell.swift in Sources */,
+				C68A422322304D9F002789E6 /* CheckinTagView.swift in Sources */,
 				C6B88D4721F1C217006394F8 /* EventHeaderView.swift in Sources */,
 				C61853BC2212F6FA005D6250 /* ThreeQuaterPresenter.swift in Sources */,
 				C61853BF22140548005D6250 /* TicketTypeCell.swift in Sources */,
 				C6EC4B2C2227BBAD0056CE73 /* GuestsView.TableView.swift in Sources */,
+				C68A4221222FE65F002789E6 /* ManualCheckinModeView.swift in Sources */,
 				C603E4A1221586040079ED73 /* SubTotalCell.swift in Sources */,
 				C6B88D4121F1C07C006394F8 /* HotWeekCell.swift in Sources */,
 				C6B88D3B21F1BC9B006394F8 /* SectionHeaderCell.swift in Sources */,
 				C6B88D5121F1C323006394F8 /* EventDateView.swift in Sources */,
+				C6BCBEA0222D38730026B858 /* TicketScanFeedbackView.swift in Sources */,
 				C6B88D6021F1C359006394F8 /* RoundedCorner.swift in Sources */,
 				C603E49F221583940079ED73 /* CheckoutTotalCell.swift in Sources */,
 				C6B88D3621F1BC75006394F8 /* ProfileTableCell.swift in Sources */,
