@@ -3,7 +3,7 @@
 import UIKit
 import PWSwitch
 
-public enum ScanFeedback {
+public enum ScanFeedback: String {
     case valid
     case alreadyRedeemed
     case issueFound

@@ -4,7 +4,13 @@ import Foundation
 import UIKit
 import Big_Neon_Core
 
+public protocol ManualCheckinModeDelegate {
+    func completeCheckin()
+}
+
 public class ManualCheckinModeView: UIView {
+    
+    public var delegate: ManualCheckinModeDelegate?
     
     public var redemeedTicket: RedeemedTicket? {
         didSet {
@@ -12,13 +18,14 @@ public class ManualCheckinModeView: UIView {
                 return
             }
             
-            print(redemeedTicket)
-            
+            self.userNameLabel.text = ticket.firstName
+            self.ticketTypeLabel.text = ticket.ticketType
         }
     }
     
     public lazy var completeCheckinButton: UIButton = {
         let button = UIButton()
+        button.addTarget(self, action: #selector(handleCompleteCheckin), for: UIControl.Event.touchUpInside)
         button.setTitle("Complete Check-in", for: UIControl.State.normal)
         button.backgroundColor = UIColor.brandPrimary
         button.setTitleColor(UIColor.brandWhite, for: UIControl.State.normal)
@@ -38,7 +45,6 @@ public class ManualCheckinModeView: UIView {
     
     public let userNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Anna Behrensmeyer"
         label.textColor = UIColor.brandBlack
         label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.bold)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -47,7 +53,6 @@ public class ManualCheckinModeView: UIView {
     
     public let ticketTypeLabel: UILabel = {
         let label = UILabel()
-        label.text = "General Admission"
         label.textColor = UIColor.brandGrey
         label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -87,7 +92,7 @@ public class ManualCheckinModeView: UIView {
     
     public let birthValueLabel: UILabel = {
         let label = UILabel()
-        label.text = "9/21/86"
+        label.text = "-"
         label.textColor = UIColor.brandGrey
         label.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -160,6 +165,10 @@ public class ManualCheckinModeView: UIView {
         completeCheckinButton.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         completeCheckinButton.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         completeCheckinButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+    }
+    
+    @objc private func handleCompleteCheckin() {
+        self.delegate?.completeCheckin()
     }
     
     required public init?(coder aDecoder: NSCoder) {

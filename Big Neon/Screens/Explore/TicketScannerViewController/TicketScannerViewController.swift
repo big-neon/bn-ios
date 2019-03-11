@@ -5,7 +5,7 @@ import Big_Neon_UI
 import AVFoundation
 import QRCodeReader
 
-final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsDelegate, QRCodeReaderViewControllerDelegate, GuestListViewProtocol, ScannerModeViewDelegate {
+final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsDelegate, QRCodeReaderViewControllerDelegate, GuestListViewProtocol, ScannerModeViewDelegate, ManualCheckinModeDelegate {
     
     internal var captureSession = AVCaptureSession()
     internal var videoPreviewLayer:AVCaptureVideoPreviewLayer?
@@ -13,8 +13,11 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
     internal var manualCheckingTopAnchor: NSLayoutConstraint?
     internal let generator = UINotificationFeedbackGenerator()
     internal var reader : QRCodeReader?
+    internal var scanCompleted: Bool?
     internal var scannerViewModel : TicketScannerViewModel = TicketScannerViewModel()
-    
+    internal let blurEffect = UIBlurEffect(style: .dark)
+    internal var blurView: UIVisualEffectView?
+
     internal let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
     
     internal var isShowingGuests: Bool = false {
@@ -65,13 +68,15 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
     
     internal lazy var manualUserCheckinView: ManualCheckinModeView = {
         let view =  ManualCheckinModeView()
+        view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     internal lazy var feedbackView: TicketScanFeedbackView = {
         let view =  TicketScanFeedbackView()
-        view.scanFeedback = .alreadyRedeemed
+        view.layer.opacity = 0.0
+        view.layer.contentsScale = 0.0
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -98,6 +103,7 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         self.configureCameraView()
         self.configureScan()
         self.configureManualCheckinView()
+        self.configureScanFeedbackView()
     }
     
     private func configureCameraSession() {
@@ -143,9 +149,8 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
     
     private func configureScanFeedbackView() {
         self.view.addSubview(feedbackView)
-        
         feedbackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        feedbackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        feedbackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -80.0).isActive = true
         feedbackView.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
         feedbackView.widthAnchor.constraint(equalToConstant: 220.0).isActive = true
     }
@@ -157,6 +162,7 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         cameraTintView.frame = view.layer.bounds
         view.layer.addSublayer(videoPreviewLayer!)
         captureSession.startRunning()
+        self.configureBlur()
     }
     
     private func configureNavBar() {
@@ -168,6 +174,15 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         scannerModeView.widthAnchor.constraint(equalToConstant: 290.0).isActive = true
         scannerModeView.heightAnchor.constraint(equalToConstant: 48.0).isActive = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: scannerModeView)
+    }
+    
+    private func configureBlur() {
+        let blur = UIBlurEffect(style: .dark)
+        self.blurView = UIVisualEffectView(effect: blur)
+        self.blurView?.frame = self.view.bounds
+        self.blurView?.layer.opacity = 0.0
+        self.blurView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.view.addSubview(self.blurView!)
     }
     
     @objc private func handleClose() {
@@ -204,10 +219,11 @@ extension TicketScannerViewController {
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         
-        if metadataObjects.isEmpty {
-            self.generator.notificationOccurred(.error)
+        if metadataObjects.isEmpty == true {
             self.reader?.stopScanning()
-            print("No QR code is detected")
+            self.reader = nil
+            print("No QR code detected")
+            self.scanCompleted = true
             return
         }
         
@@ -215,19 +231,16 @@ extension TicketScannerViewController {
         if supportedCodeTypes.contains(metadataObj.type) {
 
             guard let metaDataString = metadataObj.stringValue else {
-                self.generator.notificationOccurred(.error)
                 self.reader?.stopScanning()
                 return
             }
             
-            guard let redeemKey = self.scannerViewModel.getRedeemKey(fromStringValue: metaDataString) else {
-                self.generator.notificationOccurred(.error)
+            guard self.scannerViewModel.getRedeemKey(fromStringValue: metaDataString) != nil else {
                 self.reader?.stopScanning()
                 return
             }
             
             guard let ticketID = self.scannerViewModel.getTicketID(fromStringValue: metaDataString) else {
-                self.generator.notificationOccurred(.error)
                 self.reader?.stopScanning()
                 return
             }
@@ -235,27 +248,51 @@ extension TicketScannerViewController {
             self.reader?.stopScanning()
             self.scannerViewModel.getRedeemTicket(ticketID: ticketID) { (completed) in
                 if completed == true {
-                    self.generator.notificationOccurred(.success)
                     self.reader?.stopScanning()
+                    self.showRedeemedTicket()
+                    self.reader = nil
                     return
-                    //  Show the Scanned Data so it can be redeemed
                 }
                 print("Error Found")
                 return
             }
-            
         } else {
+            self.reader?.stopScanning()
+            self.reader = nil
             return
         }
     }
     
     private func showRedeemedTicket() {
-        let redemeedTicket = self.scannerViewModel.redeemedTicket
-        self.manualUserCheckinView.
+        if self.scanCompleted == true {
+            return
+        }
+        self.generator.notificationOccurred(.success)
+        self.manualUserCheckinView.redemeedTicket = self.scannerViewModel.redeemedTicket
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.feedbackView.layer.contentsScale = 1.0
+            self.feedbackView.layer.opacity = 1.0
+            self.blurView?.layer.opacity = 1.0
+            self.feedbackView.scanFeedback = .valid
+            self.scannerModeView.layer.opacity = 0.0
+            self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height - 250.0
+            self.view.layoutIfNeeded()
+        }, completion: { (completed) in
+            self.scanCompleted = true
+            
+        })
+    }
+    
+    internal func completeCheckin() {
+        UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.feedbackView.layer.opacity = 0.0
+            self.blurView?.layer.opacity = 0.0
+            self.scannerModeView.layer.opacity = 1.0
             self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
             self.view.layoutIfNeeded()
-        }, completion: nil)
+        }, completion: { (completed) in
+            self.scanCompleted = false
+        })
     }
 }
 

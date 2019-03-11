@@ -26,6 +26,7 @@ final class TicketScannerViewModel {
         
         BusinessService.shared.database.getRedeemTicket(forTicketID: ticketID) { (error, redeemTicket) in
             if error != nil {
+                print("Error Found while Scanning Ticket: \(error)")
                 completion(false)
                 return
             }
