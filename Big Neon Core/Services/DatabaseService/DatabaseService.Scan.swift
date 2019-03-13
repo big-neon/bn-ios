@@ -40,32 +40,34 @@ extension DatabaseService {
     }
     
     
-    public func redeemTicket(forTicketID ticketID: String, completion: @escaping (Error?) -> Void) {
-        
-        
-        let APIURL = APIService.redeem + "\(ticketID)/redeem"
+    public func redeemTicket(forTicketID ticketID: String, eventID: String, redeemKey: String, completion: @escaping (Error?) -> Void) {
+
+
+        let APIURL = APIService.redeem + "\(eventID)/redeem/\(ticketID)"
         let accessToken = self.fetchAcessToken()
-        
-        let parameters = ["ticket_id": ticketID]
-        
+
+        let parameters = ["ticket_id": ticketID,
+                          "event_id": eventID,
+                          "redeem_key": redeemKey]
+
         AF.request(APIURL,
-                   method: HTTPMethod.get,
+                   method: HTTPMethod.post,
                    parameters: parameters,
                    encoding: JSONEncoding.default,
                    headers: [APIParameterKeys.authorization :"Bearer \(accessToken!)"])
             .validate(statusCode: 200..<300)
             .response { (response) in
-                
+
                 guard response.result.isSuccess else {
                     completion(response.result.error)
                     return
                 }
-                
+
                 guard let data = response.result.value else {
                     completion(nil)
                     return
                 }
-                
+
                 do {
                     let decoder = JSONDecoder()
                     let checkins = try decoder.decode(Events.self, from: data!)

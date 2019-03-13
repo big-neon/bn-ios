@@ -69,5 +69,11 @@ final class TicketScannerViewModel {
         }
         return redeemKeyData["id"]
     }
+    
+    internal func redeemTicket(completion: @escaping(Bool) -> Void) {
+        
+        
+        
+    }
 
 }
