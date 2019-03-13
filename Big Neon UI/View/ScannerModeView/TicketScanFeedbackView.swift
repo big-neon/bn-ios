@@ -2,12 +2,7 @@
 
 import UIKit
 import PWSwitch
-
-public enum ScanFeedback: String {
-    case valid
-    case alreadyRedeemed
-    case issueFound
-}
+import Big_Neon_Core
 
 public class TicketScanFeedbackView: UIView {
     
@@ -23,6 +18,9 @@ public class TicketScanFeedbackView: UIView {
                 self.feedbackImageView.image = UIImage(named: "ic_ticketValid")
             case .issueFound:
                 self.feedbackLabel.text = "We found an issue"
+                self.feedbackImageView.image = UIImage(named: "ic_issueFound")
+            case .wrongEvent:
+                self.feedbackLabel.text = "Wrong Event"
                 self.feedbackImageView.image = UIImage(named: "ic_issueFound")
             default:
                 self.feedbackLabel.text = "Already Redeemed"

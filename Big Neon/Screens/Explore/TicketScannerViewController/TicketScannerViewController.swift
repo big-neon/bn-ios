@@ -2,6 +2,7 @@
 
 import UIKit
 import Big_Neon_UI
+import Big_Neon_Core
 import AVFoundation
 import QRCodeReader
 
@@ -150,7 +151,7 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
     private func configureScanFeedbackView() {
         self.view.addSubview(feedbackView)
         feedbackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        feedbackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -80.0).isActive = true
+        feedbackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -20.0).isActive = true
         feedbackView.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
         feedbackView.widthAnchor.constraint(equalToConstant: 220.0).isActive = true
     }
@@ -246,15 +247,47 @@ extension TicketScannerViewController {
             }
             
             self.reader?.stopScanning()
-            self.scannerViewModel.getRedeemTicket(ticketID: ticketID) { (completed) in
-                if completed == true {
+            self.scannerViewModel.getRedeemTicket(ticketID: ticketID) { (scanFeedback) in
+                switch scanFeedback {
+                case .alreadyRedeemed?:
+                    UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                        self.blurView?.layer.opacity = 1.0
+                        self.feedbackView.layer.opacity = 1.0
+                        self.feedbackView.scanFeedback = .alreadyRedeemed
+                        self.scannerModeView.layer.opacity = 0.0
+                        self.view.layoutIfNeeded()
+                    }, completion: { (completed) in
+                        self.dismissFeedbackView()
+                    })
+                    return
+                case .issueFound?:
+                    UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                        self.blurView?.layer.opacity = 1.0
+                        self.feedbackView.layer.opacity = 1.0
+                        self.feedbackView.scanFeedback = .issueFound
+                        self.scannerModeView.layer.opacity = 0.0
+                        self.view.layoutIfNeeded()
+                    }, completion: { (completed) in
+                        self.dismissFeedbackView()
+                    })
+                    return
+                case .wrongEvent?:
+                    UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                        self.blurView?.layer.opacity = 1.0
+                        self.feedbackView.layer.opacity = 1.0
+                        self.feedbackView.scanFeedback = .wrongEvent
+                        self.scannerModeView.layer.opacity = 0.0
+                        self.view.layoutIfNeeded()
+                    }, completion: { (completed) in
+                        self.dismissFeedbackView()
+                    })
+                    return
+                default:
                     self.reader?.stopScanning()
                     self.showRedeemedTicket()
                     self.reader = nil
                     return
                 }
-                print("Error Found")
-                return
             }
         } else {
             self.reader?.stopScanning()
@@ -262,18 +295,16 @@ extension TicketScannerViewController {
             return
         }
     }
-    
+
     private func showRedeemedTicket() {
         if self.scanCompleted == true {
             return
         }
         self.generator.notificationOccurred(.success)
-        self.manualUserCheckinView.redeemableTicket = self.scannerViewModel.redeemedTicket
+        self.manualUserCheckinView.redeemableTicket = self.scannerViewModel.redeemableTicket
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.feedbackView.layer.contentsScale = 1.0
-            self.feedbackView.layer.opacity = 1.0
             self.blurView?.layer.opacity = 1.0
-            self.feedbackView.scanFeedback = .valid
             self.scannerModeView.layer.opacity = 0.0
             self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height - 250.0
             self.view.layoutIfNeeded()
@@ -282,16 +313,72 @@ extension TicketScannerViewController {
             
         })
     }
-    
+
     internal func completeCheckin() {
-        UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.feedbackView.layer.opacity = 0.0
+        self.scannerViewModel.completeCheckin { (scanFeedback) in
+            
+            switch scanFeedback {
+            case .alreadyRedeemed:
+                UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    self.blurView?.layer.opacity = 1.0
+                    self.feedbackView.layer.opacity = 1.0
+                    self.feedbackView.scanFeedback = .alreadyRedeemed
+                    self.scannerModeView.layer.opacity = 0.0
+                    self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+                    self.view.layoutIfNeeded()
+                }, completion: { (completed) in
+                    self.dismissFeedbackView()
+                })
+                return
+            case .issueFound:
+                UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    self.blurView?.layer.opacity = 1.0
+                    self.feedbackView.layer.opacity = 1.0
+                    self.feedbackView.scanFeedback = .issueFound
+                    self.scannerModeView.layer.opacity = 0.0
+                    self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+                    self.view.layoutIfNeeded()
+                }, completion: { (completed) in
+                    self.dismissFeedbackView()
+                })
+                return
+            case .wrongEvent:
+                UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    self.blurView?.layer.opacity = 1.0
+                    self.feedbackView.layer.opacity = 1.0
+                    self.feedbackView.scanFeedback = .wrongEvent
+                    self.scannerModeView.layer.opacity = 0.0
+                    self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+                    self.view.layoutIfNeeded()
+                }, completion: { (completed) in
+                    self.dismissFeedbackView()
+                })
+                return
+            default:
+                UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    self.blurView?.layer.opacity = 1.0
+                    self.feedbackView.layer.opacity = 1.0
+                    self.feedbackView.scanFeedback = .valid
+                    self.scannerModeView.layer.opacity = 0.0
+                    self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+                    self.view.layoutIfNeeded()
+                }, completion: { (completed) in
+                    self.dismissFeedbackView()
+                })
+                return
+            }
+        }
+    }
+    
+    private func dismissFeedbackView() {
+        UIView.animate(withDuration: 0.8, delay: 2.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.blurView?.layer.opacity = 0.0
+            self.feedbackView.layer.opacity = 0.0
             self.scannerModeView.layer.opacity = 1.0
             self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
-            self.scanCompleted = false
+            self.scanCompleted = true
         })
     }
 }
