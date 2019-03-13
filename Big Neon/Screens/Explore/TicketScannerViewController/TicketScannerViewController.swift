@@ -223,7 +223,6 @@ extension TicketScannerViewController {
         if metadataObjects.isEmpty == true {
             self.reader?.stopScanning()
             self.reader = nil
-            print("No QR code detected")
             self.scanCompleted = true
             return
         }
@@ -371,7 +370,7 @@ extension TicketScannerViewController {
     }
     
     private func dismissFeedbackView() {
-        UIView.animate(withDuration: 0.8, delay: 2.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.8, delay: 1.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.blurView?.layer.opacity = 0.0
             self.feedbackView.layer.opacity = 0.0
             self.scannerModeView.layer.opacity = 1.0
