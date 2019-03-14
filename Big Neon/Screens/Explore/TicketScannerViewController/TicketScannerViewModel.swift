@@ -6,6 +6,7 @@ import Big_Neon_Core
 final class TicketScannerViewModel {
     
     internal var event: Event?
+    internal var redeemableTicket: RedeemableTicket?
     internal var redeemedTicket: RedeemableTicket?
 
     internal func setCheckingModeAutomatic() {
@@ -22,22 +23,30 @@ final class TicketScannerViewModel {
         return UserDefaults.standard.bool(forKey: Constants.CheckingMode.scannerCheckinKey)
     }
 
-    internal func getRedeemTicket(ticketID: String, completion: @escaping(Bool) -> Void) {
+    internal func getRedeemTicket(ticketID: String, completion: @escaping(ScanFeedback?) -> Void) {
         
-        BusinessService.shared.database.getRedeemTicket(forTicketID: ticketID) { (error, redeemTicket) in
-            if error != nil {
-                print("Error Found while Scanning Ticket: \(error)")
-                completion(false)
-                return
-            }
+        BusinessService.shared.database.getRedeemTicket(forTicketID: ticketID) { (scanFeedback, redeemTicket) in
             
-            guard let ticket = redeemTicket else {
-                completion(false)
+            switch scanFeedback {
+            case .alreadyRedeemed?:
+                completion(.alreadyRedeemed)
+                return
+            case .issueFound?:
+                completion(.issueFound)
+                return
+            case .wrongEvent?:
+                completion(.wrongEvent)
+                return
+            default:
+                guard let ticket = redeemTicket else {
+                    completion(nil)
+                    return
+                }
+                
+                self.redeemableTicket = ticket
+                completion(nil)
                 return
             }
-            self.redeemedTicket = ticket
-            completion(true)
-            return
         }
         
     }
@@ -68,6 +77,38 @@ final class TicketScannerViewModel {
             return nil
         }
         return redeemKeyData["id"]
+    }
+    
+    internal func completeCheckin(completion: @escaping(ScanFeedback) -> Void) {
+        guard let eventID = self.event?.id else {
+            completion(.issueFound)
+            return
+        }
+        
+        guard let ticket = self.redeemableTicket else {
+            completion(.issueFound)
+            return
+        }
+        
+        BusinessService.shared.database.redeemTicket(forTicketID: ticket.id, eventID: eventID, redeemKey: ticket.redeemKey) { (scanFeedback, ticket) in
+            switch scanFeedback {
+            case .alreadyRedeemed:
+                completion(.alreadyRedeemed)
+                return
+            case .issueFound:
+                completion(.issueFound)
+                return
+            case .wrongEvent:
+                completion(.wrongEvent)
+                return
+            default:
+                self.event = nil
+                self.redeemableTicket = nil
+                self.redeemedTicket = ticket!
+                completion(.valid)
+                return
+            }
+        }
     }
 
 }

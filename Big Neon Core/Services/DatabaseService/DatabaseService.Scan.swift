@@ -5,7 +5,7 @@ import Alamofire
 
 extension DatabaseService {
     
-    public func getRedeemTicket(forTicketID ticketID: String, completion: @escaping (Error?, RedeemableTicket?) -> Void) {
+    public func getRedeemTicket(forTicketID ticketID: String, completion: @escaping (ScanFeedback?, RedeemableTicket?) -> Void) {
         
         let APIURL = APIService.redeem + "\(ticketID)/redeem"
         let accessToken = self.fetchAcessToken()
@@ -19,12 +19,21 @@ extension DatabaseService {
             .response { (response) in
                 
                 guard response.result.isSuccess else {
-                    completion(response.result.error, nil)
-                    return
+                    switch response.result.error?.asAFError?.responseCode {
+                    case 409:
+                        completion(.alreadyRedeemed, nil)
+                        return
+                    case 404:
+                        completion(.wrongEvent, nil)
+                        return
+                    default:
+                        completion(.issueFound, nil)
+                        return
+                    }
                 }
                 
                 guard let data = response.result.value else {
-                    completion(nil, nil)
+                    completion(.issueFound, nil)
                     return
                 }
                 
@@ -34,45 +43,56 @@ extension DatabaseService {
                     completion(nil, redeemKeyData)
                     return
                 } catch let error as NSError {
-                    completion(error, nil)
+                    completion(.issueFound, nil)
                 }
         }
     }
     
     
-    public func redeemTicket(forTicketID ticketID: String, completion: @escaping (Error?) -> Void) {
-        
-        
-        let APIURL = APIService.redeem + "\(ticketID)/redeem"
+    public func redeemTicket(forTicketID ticketID: String, eventID: String, redeemKey: String, completion: @escaping (ScanFeedback, RedeemableTicket?) -> Void) {
+
+
+        let APIURL = APIService.redeemTicket + "\(eventID)/redeem/\(ticketID)"
         let accessToken = self.fetchAcessToken()
         
-        let parameters = ["ticket_id": ticketID]
-        
+        let parameters = ["ticket_id": ticketID,
+                          "event_id": eventID,
+                          "redeem_key": redeemKey]
+
         AF.request(APIURL,
-                   method: HTTPMethod.get,
+                   method: HTTPMethod.post,
                    parameters: parameters,
                    encoding: JSONEncoding.default,
                    headers: [APIParameterKeys.authorization :"Bearer \(accessToken!)"])
             .validate(statusCode: 200..<300)
             .response { (response) in
-                
+
                 guard response.result.isSuccess else {
-                    completion(response.result.error)
-                    return
+                    switch response.result.error?.asAFError?.responseCode {
+                    case 409:
+                        completion(.alreadyRedeemed, nil)
+                        return
+                    case 404:
+                        completion(.wrongEvent, nil)
+                        return
+                    default:
+                        completion(.issueFound, nil)
+                        return
+                    }
                 }
-                
+
                 guard let data = response.result.value else {
-                    completion(nil)
+                    completion(.issueFound, nil)
                     return
                 }
-                
+
                 do {
                     let decoder = JSONDecoder()
-                    let checkins = try decoder.decode(Events.self, from: data!)
-                    completion(nil)
+                    let ticket = try decoder.decode(RedeemableTicket.self, from: data!)
+                    completion(.valid, ticket)
                     return
                 } catch let error as NSError {
-                    completion(error)
+                    completion(.issueFound, nil)
                 }
         }
     }
