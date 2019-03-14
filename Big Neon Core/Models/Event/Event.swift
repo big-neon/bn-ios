@@ -36,9 +36,10 @@ public struct Event: Codable {
     public let updatedAt: String?
     public let videoURL: String?
     public let overrideStatus: String?
-    public let clientFeeInCents, companyFeeInCents: Int
+    public let clientFeeInCents: Int?
+    public let companyFeeInCents: Int?
     public let settlementAmountInCents: Int?
-    public let eventEnd: String
+    public let eventEnd: String?
     public let sendgridListID: String?
     public let eventType: EventType
     public let coverImageURL: String?

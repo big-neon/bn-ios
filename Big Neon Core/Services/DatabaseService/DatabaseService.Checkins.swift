@@ -36,6 +36,7 @@ extension DatabaseService {
                     completion(nil, checkins)
                     return
                 } catch let error as NSError {
+                    print(error)
                     completion(error, nil)
                 }
         }
