@@ -24,7 +24,16 @@ public enum APIService {
     public static let updateUser    = stagingBaseURL + "/users/me"
     public static let refreshToken  = stagingBaseURL + "/auth/token/refresh"
     public static let redeem        = stagingBaseURL + "/tickets/"
-    public static let redeemTicket  = stagingBaseURL + "/events/"
+}
+
+public class StagingAPIService {
     
+    private static let baseURL = "https://beta.bigneon.com/api"
     
+    /**
+     URL: /events/{event_id}/redeem/{ticket_id}
+     */
+    class func redeemTicket(eventID: String, ticketID: String) -> String {
+        return baseURL + "/events/\(eventID)/redeem/\(ticketID)"
+    }
 }
