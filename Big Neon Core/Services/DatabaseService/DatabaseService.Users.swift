@@ -9,7 +9,7 @@ extension DatabaseService {
         let parameters = ["first_name": name,
                           "last_name": lastName]
         
-        let APIURL = APIService.updateUser
+        let APIURL = APIService.updateUser()
         let accessToken = self.fetchAcessToken()
         
         AF.request(APIURL,
@@ -51,7 +51,7 @@ extension DatabaseService {
         let parameters = ["first_name": firstName,
                         "last_name": lastName,
                         "email": email]
-        let APIURL = APIService.updateUser
+        let APIURL = APIService.updateUser()
         let accessToken = self.fetchAcessToken()
         
         AF.request(APIURL,
@@ -90,7 +90,7 @@ extension DatabaseService {
     
     public func fetchUser(withAccessToken accessToken: String, completion: @escaping(Error?, User?) -> Void) {
         
-        let APIURL = APIService.updateUser
+        let APIURL = APIService.updateUser()
         AF.request(APIURL,
             method: HTTPMethod.get,
             parameters: nil,

@@ -7,26 +7,10 @@ public enum APIParameterKeys {
     public static let POST                 = "POST"
     public static let GET                  = "GET"
     public static let PUT                  = "PUT"
-    
+
 }
 
-public enum APIService {
-    
-    // Staging
-    private static let stagingBaseURL = "https://beta.bigneon.com/api"
-    
-    //  Production
-    
-    public static let getEvents     =  stagingBaseURL + "/events"
-    public static let getCheckins   =  stagingBaseURL + "/events/checkins"
-    public static let users         =  stagingBaseURL + "/users"
-    public static let login         =  stagingBaseURL + "/auth/token"
-    public static let updateUser    = stagingBaseURL + "/users/me"
-    public static let refreshToken  = stagingBaseURL + "/auth/token/refresh"
-    public static let redeem        = stagingBaseURL + "/tickets/"
-}
-
-public class StagingAPIService {
+public class APIService {
     
     private static let baseURL = "https://beta.bigneon.com/api"
     
@@ -36,4 +20,57 @@ public class StagingAPIService {
     class func redeemTicket(eventID: String, ticketID: String) -> String {
         return baseURL + "/events/\(eventID)/redeem/\(ticketID)"
     }
+    
+    /**
+     URL: "/tickets/{ticketID}/redeem
+     */
+    class func getRedeemableTicket(ticketID: String) -> String {
+        return baseURL + "/tickets/\(ticketID)/redeem"
+    }
+    
+    /**
+     - Retrieves Events from the Database
+     */
+    class func getEvents(eventID: String?) -> String {
+        if eventID == nil {
+           return baseURL + "/events"
+        }
+        return baseURL + "/events/\(eventID!)"
+    }
+    
+    /**
+     - Retrieves all the Checkin Events
+     */
+    class func getCheckins() -> String {
+        return baseURL + "/events/checkins"
+    }
+    
+    /**
+     - Retrieves all the Checkin Events
+     */
+    class func users() -> String {
+        return baseURL + "/users"
+    }
+    
+    /**
+     - Logs in the Users
+     */
+    class func login() -> String {
+        return baseURL + "/auth/token"
+    }
+    
+    /**
+     - Updates the User Details
+     */
+    class func updateUser() -> String {
+        return baseURL + "/users/me"
+    }
+    
+    /**
+     - Retrieves an Access Token using the Refresh Token
+     */
+    class func refreshToken() -> String {
+        return baseURL + "/auth/token/refresh"
+    }
+    
 }

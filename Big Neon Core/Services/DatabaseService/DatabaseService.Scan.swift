@@ -7,7 +7,7 @@ extension DatabaseService {
     
     public func getRedeemTicket(forTicketID ticketID: String, completion: @escaping (ScanFeedback?, RedeemableTicket?) -> Void) {
         
-        let APIURL = APIService.redeem + "\(ticketID)/redeem"
+        let APIURL = APIService.getRedeemableTicket(ticketID: ticketID)
         let accessToken = self.fetchAcessToken()
 
         AF.request(APIURL,
@@ -51,7 +51,7 @@ extension DatabaseService {
     
     public func redeemTicket(forTicketID ticketID: String, eventID: String, redeemKey: String, completion: @escaping (ScanFeedback, RedeemableTicket?) -> Void) {
 
-        let apiURL = StagingAPIService.redeemTicket(eventID: eventID, ticketID: ticketID)
+        let apiURL = APIService.redeemTicket(eventID: eventID, ticketID: ticketID)
         let accessToken = self.fetchAcessToken()
         
         let parameters = ["ticket_id": ticketID,
