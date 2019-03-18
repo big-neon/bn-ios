@@ -7,9 +7,12 @@ import AVFoundation
 import QRCodeReader
 
 final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsDelegate, QRCodeReaderViewControllerDelegate, GuestListViewProtocol, ScannerModeViewDelegate, ManualCheckinModeDelegate {
-    
-    internal var captureSession = AVCaptureSession()
+
     internal var videoPreviewLayer:AVCaptureVideoPreviewLayer?
+    
+    internal var captureSession: AVCaptureSession!
+    internal var previewLayer: AVCaptureVideoPreviewLayer!
+    
     internal var guestListTopAnchor: NSLayoutConstraint?
     internal var manualCheckingTopAnchor: NSLayoutConstraint?
     internal let generator = UINotificationFeedbackGenerator()
@@ -98,7 +101,7 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.red
+        self.view.backgroundColor = UIColor.black
         self.configureNavBar()
         self.configureCameraSession()
         self.configureCameraView()
@@ -107,7 +110,19 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         self.configureScanFeedbackView()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if (captureSession.isRunning == true) {
+            captureSession.stopRunning()
+        }
+    }
+    
+    
+    
     private func configureCameraSession() {
+        self.captureSession = AVCaptureSession()
+        
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back)
         
         guard let captureDevice = deviceDiscoverySession.devices.first else {
@@ -228,6 +243,17 @@ extension TicketScannerViewController {
         }
         
         let metadataObj = metadataObjects.first as! AVMetadataMachineReadableCodeObject
+        if metadataObj.type == AVMetadataObject.ObjectType.qr {
+            // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
+            let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
+            qrCodeFrameView?.frame = barCodeObject!.bounds
+            
+            if metadataObj.stringValue != nil {
+                messageLabel.text = metadataObj.stringValue
+            }
+        }
+        
+        /*
         if supportedCodeTypes.contains(metadataObj.type) {
 
             guard let metaDataString = metadataObj.stringValue else {
@@ -293,6 +319,7 @@ extension TicketScannerViewController {
             self.reader = nil
             return
         }
+        */
     }
 
     private func showRedeemedTicket() {
