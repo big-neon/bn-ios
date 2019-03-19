@@ -5,14 +5,14 @@ import UIKit
 import Big_Neon_UI
 import Big_Neon_Core
 
-final class ScannerViewController: UIViewController, ScannerModeViewDelegate {
+final class ScannerViewController: UIViewController, ScannerModeViewDelegate, GuestListViewProtocol, ManualCheckinModeDelegate {
     
     //  Video Capture Session
     internal var captureSession = AVCaptureSession()
     internal var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     
     //  Layout
-    internal var qrCodeFrameView: UIView?
+//    internal var qrCodeFrameView: UIView?
     internal let generator = UINotificationFeedbackGenerator()
     internal var guestListTopAnchor: NSLayoutConstraint?
     internal var manualCheckingTopAnchor: NSLayoutConstraint?
@@ -35,10 +35,64 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate {
                                       AVMetadataObject.ObjectType.interleaved2of5,
                                       AVMetadataObject.ObjectType.qr]
     
+    internal var isShowingGuests: Bool = false {
+        didSet {
+            if isShowingGuests == true {
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
+                    self.cameraTintView.layer.opacity = 0.85
+                    self.guestListTopAnchor?.constant = UIScreen.main.bounds.height - 560.0
+                    self.view.layoutIfNeeded()
+                }) { (complete) in
+                    print("De-Activated Camera")
+                }
+                return
+            }
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
+                self.cameraTintView.layer.opacity = 0.0
+                self.guestListTopAnchor?.constant = UIScreen.main.bounds.height - 80.0
+                self.view.layoutIfNeeded()
+            }) { (complete) in
+                print("Activated Camera")
+            }
+            return
+            
+        }
+    }
+    
     internal lazy var scannerModeView: ScannerModeView = {
         let view =  ScannerModeView()
         view.setAutoMode = self.scannerViewModel.scannerMode()
         view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    internal lazy var guestListView: GuestListView = {
+        let view =  GuestListView()
+        view.delegate = self
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    internal lazy var manualUserCheckinView: ManualCheckinModeView = {
+        let view =  ManualCheckinModeView()
+        view.delegate = self
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    internal lazy var feedbackView: TicketScanFeedbackView = {
+        let view =  TicketScanFeedbackView()
+        view.layer.opacity = 0.0
+        view.layer.contentsScale = 0.0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    internal lazy var cameraTintView: UIView = {
+        let view =  UIView()
+        view.backgroundColor = UIColor.black
+        view.layer.opacity = 0.0
         return view
     }()
 
@@ -47,6 +101,8 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate {
         view.backgroundColor = UIColor.black
         self.configureNavBar()
         self.configureScanner()
+        self.configureManualCheckinView()
+        self.configureScanFeedbackView()
     }
     
     private func configureNavBar() {
@@ -72,7 +128,7 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate {
             let captureMetadataOutput = AVCaptureMetadataOutput()
             captureSession.addOutput(captureMetadataOutput)
             captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-            captureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
+            captureMetadataOutput.metadataObjectTypes = supportedCodeTypes
         } catch {
             print(error)
             return
@@ -84,6 +140,24 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate {
         videoPreviewLayer?.frame = view.layer.bounds
         view.layer.addSublayer(videoPreviewLayer!)
         captureSession.startRunning()
+    }
+    
+    private func configureManualCheckinView() {
+        self.view.addSubview(manualUserCheckinView)
+        
+        manualUserCheckinView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        manualUserCheckinView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        self.manualCheckingTopAnchor = manualUserCheckinView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UIScreen.main.bounds.height + 50.0)
+        self.manualCheckingTopAnchor?.isActive = true
+        manualUserCheckinView.heightAnchor.constraint(equalToConstant: 250.0).isActive = true
+    }
+    
+    private func configureScanFeedbackView() {
+        self.view.addSubview(feedbackView)
+        feedbackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        feedbackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -20.0).isActive = true
+        feedbackView.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
+        feedbackView.widthAnchor.constraint(equalToConstant: 220.0).isActive = true
     }
     
     private func configureScannerFrame() {
@@ -111,6 +185,10 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
+    func showGuestList() {
+        self.isShowingGuests = !self.isShowingGuests
+    }
+    
     func scannerSetAutomatic() {
         print("Automatic")
     }
@@ -121,7 +199,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if metadataObjects.count == 0 {
-            qrCodeFrameView?.frame = CGRect.zero
+//            qrCodeFrameView?.frame = CGRect.zero
             print("No QR code is detected")
             return
         }
@@ -130,17 +208,147 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         
         if supportedCodeTypes.contains(metadataObj.type) {
-            // If the found metadata is equal to the QR code metadata (or barcode) then update the status label's text and set the bounds
-            let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
-            qrCodeFrameView?.frame = barCodeObject!.bounds
+            guard let metaDataString = metadataObj.stringValue else {
+                self.generator.notificationOccurred(.error)
+                return
+            }
             
-            if metadataObj.stringValue != nil {
-//                launchApp(decodedURL: metadataObj.stringValue!)
-//                messageLabel.text = metadataObj.stringValue
-                self.generator.notificationOccurred(.success)
-                print(metadataObj.stringValue)
+            guard self.scannerViewModel.getRedeemKey(fromStringValue: metaDataString) != nil else {
+                self.generator.notificationOccurred(.error)
+                return
+            }
+            
+            guard let ticketID = self.scannerViewModel.getTicketID(fromStringValue: metaDataString) else {
+                self.generator.notificationOccurred(.error)
+                return
+            }
+            
+            self.scannerViewModel.getRedeemTicket(ticketID: ticketID) { (scanFeedback) in
+                switch scanFeedback {
+                case .alreadyRedeemed?:
+                    UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                        self.blurView?.layer.opacity = 1.0
+                        self.feedbackView.layer.opacity = 1.0
+                        self.feedbackView.scanFeedback = .alreadyRedeemed
+                        self.scannerModeView.layer.opacity = 0.0
+                        self.view.layoutIfNeeded()
+                    }, completion: { (completed) in
+                        self.dismissFeedbackView()
+                    })
+                    return
+                case .issueFound?:
+                    UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                        self.blurView?.layer.opacity = 1.0
+                        self.feedbackView.layer.opacity = 1.0
+                        self.feedbackView.scanFeedback = .issueFound
+                        self.scannerModeView.layer.opacity = 0.0
+                        self.view.layoutIfNeeded()
+                    }, completion: { (completed) in
+                        self.dismissFeedbackView()
+                    })
+                    return
+                case .wrongEvent?:
+                    UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                        self.blurView?.layer.opacity = 1.0
+                        self.feedbackView.layer.opacity = 1.0
+                        self.feedbackView.scanFeedback = .wrongEvent
+                        self.scannerModeView.layer.opacity = 0.0
+                        self.view.layoutIfNeeded()
+                    }, completion: { (completed) in
+                        self.dismissFeedbackView()
+                    })
+                    return
+                default:
+                    self.showRedeemedTicket()
+                    return
+                }
             }
         }
+    }
+    
+    private func showRedeemedTicket() {
+        if self.scanCompleted == true {
+            return
+        }
+        self.generator.notificationOccurred(.success)
+        self.manualUserCheckinView.redeemableTicket = self.scannerViewModel.redeemableTicket
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.feedbackView.layer.contentsScale = 1.0
+            self.blurView?.layer.opacity = 1.0
+            self.scannerModeView.layer.opacity = 0.0
+            self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height - 250.0
+            self.view.layoutIfNeeded()
+        }, completion: { (completed) in
+            self.scanCompleted = true
+        })
+    }
+    
+    internal func completeCheckin() {
+        self.scannerViewModel.completeCheckin { (scanFeedback) in
+            
+            switch scanFeedback {
+            case .alreadyRedeemed:
+                UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    self.blurView?.layer.opacity = 1.0
+                    self.feedbackView.layer.opacity = 1.0
+                    self.feedbackView.scanFeedback = .alreadyRedeemed
+                    self.scannerModeView.layer.opacity = 0.0
+                    self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+                    self.view.layoutIfNeeded()
+                }, completion: { (completed) in
+                    self.dismissFeedbackView()
+                })
+                return
+            case .issueFound:
+                UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    self.blurView?.layer.opacity = 1.0
+                    self.feedbackView.layer.opacity = 1.0
+                    self.feedbackView.scanFeedback = .issueFound
+                    self.scannerModeView.layer.opacity = 0.0
+                    self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+                    self.view.layoutIfNeeded()
+                }, completion: { (completed) in
+                    self.dismissFeedbackView()
+                })
+                return
+            case .wrongEvent:
+                UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    self.blurView?.layer.opacity = 1.0
+                    self.feedbackView.layer.opacity = 1.0
+                    self.feedbackView.scanFeedback = .wrongEvent
+                    self.scannerModeView.layer.opacity = 0.0
+                    self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+                    self.view.layoutIfNeeded()
+                }, completion: { (completed) in
+                    self.dismissFeedbackView()
+                })
+                return
+            default:
+                UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    self.blurView?.layer.opacity = 1.0
+                    self.feedbackView.layer.opacity = 1.0
+                    self.feedbackView.scanFeedback = .valid
+                    self.scannerModeView.layer.opacity = 0.0
+                    self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+                    self.view.layoutIfNeeded()
+                }, completion: { (completed) in
+                    self.dismissFeedbackView()
+                })
+                return
+            }
+        }
+    }
+    
+    private func dismissFeedbackView() {
+        UIView.animate(withDuration: 0.8, delay: 1.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.blurView?.layer.opacity = 0.0
+            self.feedbackView.layer.opacity = 0.0
+            self.scannerModeView.layer.opacity = 1.0
+            self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+            self.view.layoutIfNeeded()
+        }, completion: { (completed) in
+            self.scanCompleted = true
+        })
     }
     
 }
