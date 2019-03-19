@@ -152,7 +152,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         guard let events = self.doorPersonViemodel.events?.data else {
             return
         }
-        let scannerVC = TicketScannerViewController()
+        let scannerVC = ScannerViewController()
         scannerVC.scannerViewModel.event = events[ticketIndex]
         let scannerNavVC = UINavigationController(rootViewController: scannerVC)
         self.present(scannerNavVC, animated: true, completion: nil)

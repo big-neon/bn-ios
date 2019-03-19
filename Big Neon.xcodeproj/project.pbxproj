@@ -124,6 +124,7 @@
 		C6CEC8A9221ADBCE00F7329D /* TicketTypeStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CEC8A8221ADBCE00F7329D /* TicketTypeStatus.swift */; };
 		C6D2413421EF53B000FC3E41 /* NamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2413321EF53B000FC3E41 /* NamesViewController.swift */; };
 		C6D37B3521F1CD8200C616D0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D37B3421F1CD8200C616D0 /* API.swift */; };
+		C6E648532240D088000F2DFB /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E648522240D088000F2DFB /* ScannerViewController.swift */; };
 		C6EC209A220063DE00BD10DD /* ProfileImageUploadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC2099220063DE00BD10DD /* ProfileImageUploadCell.swift */; };
 		C6EC209C2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209B2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift */; };
 		C6EC209E220075D100BD10DD /* PhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209D220075D100BD10DD /* PhoneNumberTextField.swift */; };
@@ -320,6 +321,7 @@
 		C6CEC8A8221ADBCE00F7329D /* TicketTypeStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTypeStatus.swift; sourceTree = "<group>"; };
 		C6D2413321EF53B000FC3E41 /* NamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesViewController.swift; sourceTree = "<group>"; };
 		C6D37B3421F1CD8200C616D0 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		C6E648522240D088000F2DFB /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		C6EC2099220063DE00BD10DD /* ProfileImageUploadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageUploadCell.swift; sourceTree = "<group>"; };
 		C6EC209B2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingPhoneNumberCell.swift; sourceTree = "<group>"; };
 		C6EC209D220075D100BD10DD /* PhoneNumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTextField.swift; sourceTree = "<group>"; };
@@ -484,6 +486,7 @@
 			children = (
 				C6BCBE9D222D06C70026B858 /* TicketScannerViewModel.swift */,
 				C63D1A162220057400152E83 /* TicketScannerViewController.swift */,
+				C6E648522240D088000F2DFB /* ScannerViewController.swift */,
 			);
 			path = TicketScannerViewController;
 			sourceTree = "<group>";
@@ -1302,6 +1305,7 @@
 				C698AB1021EDE9BC0073F1FB /* CreateAccountViewController.swift in Sources */,
 				C6EC20A122007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift in Sources */,
 				C683232921FF07FE002342AE /* ProfileEditViewController.swift in Sources */,
+				C6E648532240D088000F2DFB /* ScannerViewController.swift in Sources */,
 				C61853C822144869005D6250 /* CheckoutView.swift in Sources */,
 				C683232F21FF31F5002342AE /* ProfileEditingTableViewCell.swift in Sources */,
 				C6AFB79C21DD76AE00670AC3 /* ExploreDetailViewModel.swift in Sources */,

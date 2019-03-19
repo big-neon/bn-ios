@@ -6,23 +6,42 @@ import Big_Neon_Core
 import AVFoundation
 import QRCodeReader
 
-final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsDelegate, QRCodeReaderViewControllerDelegate, GuestListViewProtocol, ScannerModeViewDelegate, ManualCheckinModeDelegate {
-
-    internal var videoPreviewLayer:AVCaptureVideoPreviewLayer?
+final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsDelegate, GuestListViewProtocol, ScannerModeViewDelegate, ManualCheckinModeDelegate {
+    func showGuestList() {
+        
+    }
     
-    internal var captureSession: AVCaptureSession!
-    internal var previewLayer: AVCaptureVideoPreviewLayer!
+    func scannerSetAutomatic() {
+        
+    }
+    
+    func scannerSetManual() {
+        
+    }
+    
+//    func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
+//
+//    }
+//
+//    func readerDidCancel(_ reader: QRCodeReaderViewController) {
+//
+//    }
+    
+    
     
     internal var guestListTopAnchor: NSLayoutConstraint?
     internal var manualCheckingTopAnchor: NSLayoutConstraint?
-    internal let generator = UINotificationFeedbackGenerator()
-    internal var reader : QRCodeReader?
     internal var scanCompleted: Bool?
     internal var scannerViewModel : TicketScannerViewModel = TicketScannerViewModel()
     internal let blurEffect = UIBlurEffect(style: .dark)
     internal var blurView: UIVisualEffectView?
 
+    //  Scanner
     internal let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
+    internal var captureSession: AVCaptureSession!
+    internal var previewLayer: AVCaptureVideoPreviewLayer!
+    internal let generator = UINotificationFeedbackGenerator()
+    internal var reader : QRCodeReader?
     
     internal var isShowingGuests: Bool = false {
         didSet {
@@ -103,23 +122,156 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.black
         self.configureNavBar()
-        self.configureCameraSession()
-        self.configureCameraView()
-        self.configureScan()
-        self.configureManualCheckinView()
-        self.configureScanFeedbackView()
+        captureSession = AVCaptureSession()
+        
+        
+        
+        guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
+        let videoInput: AVCaptureDeviceInput
+        
+        do {
+            videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
+        } catch {
+            return
+        }
+        
+        if (captureSession.canAddInput(videoInput)) {
+            captureSession.addInput(videoInput)
+        } else {
+            self.metaDataConfigure()
+            return
+        }
+        
+        let metadataOutput = AVCaptureMetadataOutput()
+        
+        if (captureSession.canAddOutput(metadataOutput)) {
+            captureSession.addOutput(metadataOutput)
+            
+            metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+            metadataOutput.metadataObjectTypes = [.qr]
+        } else {
+            self.metaDataConfigure()
+            return
+        }
+        
+        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        previewLayer.frame = view.layer.bounds
+        previewLayer.videoGravity = .resizeAspectFill
+        view.layer.addSublayer(previewLayer)
+        
+        captureSession.startRunning()
+        
+//        self.configureCameraSession()
+//        self.configureCameraView()
+//        self.configureScan()
+//        self.configureManualCheckinView()
+//        self.configureScanFeedbackView()
+    }
+    
+    private func configureNavBar() {
+        self.navigationClearBar()
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_close"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(handleClose))
+        
+        scannerModeView.delegate = self
+        scannerModeView.widthAnchor.constraint(equalToConstant: 290.0).isActive = true
+        scannerModeView.heightAnchor.constraint(equalToConstant: 48.0).isActive = true
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: scannerModeView)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        if (captureSession?.isRunning == false) {
+            captureSession?.startRunning()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        if (captureSession.isRunning == true) {
-            captureSession.stopRunning()
+        if (captureSession?.isRunning == true) {
+            captureSession?.stopRunning()
         }
     }
     
+    private func confiureCamera() {
+        guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else {
+            return
+        }
+        let videoInput: AVCaptureDeviceInput
+        
+        do {
+            videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
+        } catch {
+            return
+        }
+        self.captureSession = AVCaptureSession()
+        if ((captureSession!.canAddInput(videoInput))) {
+            captureSession!.addInput(videoInput)
+        } else {
+            self.cameraSetupFailure()
+            return
+        }
+        
+        self.metaDataConfigure()
+    }
     
+    private func metaDataConfigure() {
+        let metadataOutput = AVCaptureMetadataOutput()
+        
+        if (captureSession!.canAddOutput(metadataOutput)) {
+            captureSession!.addOutput(metadataOutput)
+            
+            metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+            metadataOutput.metadataObjectTypes = [.qr]
+        } else {
+            cameraSetupFailure()
+            return
+        }
+        
+        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
+        previewLayer?.frame = view.layer.bounds
+        previewLayer!.videoGravity = .resizeAspectFill
+        view.layer.addSublayer(previewLayer!)
+        
+        captureSession?.startRunning()
+    }
     
+    private func cameraSetupFailure() {
+        let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code. Please use a device with a camera.", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
+        captureSession = nil
+    }
+    
+    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+        if let metadataObject = metadataObjects.first {
+            guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else {
+                self.generator.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+                return
+            }
+            
+            guard let stringValue = readableObject.stringValue else {
+                self.generator.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
+                return
+            }
+            
+            self.generator.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.success)
+            //            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+            print(stringValue)
+        }
+        
+        self.captureSession?.stopRunning()
+        dismiss(animated: true)
+    }
+
+    
+    @objc private func handleClose() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+     /*
     private func configureCameraSession() {
         self.captureSession = AVCaptureSession()
         
@@ -181,17 +333,6 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         self.configureBlur()
     }
     
-    private func configureNavBar() {
-        self.navigationClearBar()
-        self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_close"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(handleClose))
-        
-        scannerModeView.delegate = self
-        scannerModeView.widthAnchor.constraint(equalToConstant: 290.0).isActive = true
-        scannerModeView.heightAnchor.constraint(equalToConstant: 48.0).isActive = true
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: scannerModeView)
-    }
-    
     private func configureBlur() {
         let blur = UIBlurEffect(style: .dark)
         self.blurView = UIVisualEffectView(effect: blur)
@@ -199,10 +340,6 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
         self.blurView?.layer.opacity = 0.0
         self.blurView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.addSubview(self.blurView!)
-    }
-    
-    @objc private func handleClose() {
-        self.dismiss(animated: true, completion: nil)
     }
     
     private func configureScan() {
@@ -229,29 +366,30 @@ final class TicketScannerViewController: BaseViewController, AVCaptureMetadataOu
     func scannerSetManual() {
         self.scannerViewModel.setCheckingModeManual()
     }
+  */
 }
 
 extension TicketScannerViewController {
-    
+    /*
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         
-        if metadataObjects.isEmpty == true {
-            self.reader?.stopScanning()
-            self.reader = nil
-            self.scanCompleted = true
-            return
-        }
-        
-        let metadataObj = metadataObjects.first as! AVMetadataMachineReadableCodeObject
-        if metadataObj.type == AVMetadataObject.ObjectType.qr {
-            // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
-            let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
-            qrCodeFrameView?.frame = barCodeObject!.bounds
-            
-            if metadataObj.stringValue != nil {
-                messageLabel.text = metadataObj.stringValue
-            }
-        }
+//        if metadataObjects.isEmpty == true {
+//            self.reader?.stopScanning()
+//            self.reader = nil
+//            self.scanCompleted = true
+//            return
+//        }
+//
+//        let metadataObj = metadataObjects.first as! AVMetadataMachineReadableCodeObject
+//        if metadataObj.type == AVMetadataObject.ObjectType.qr {
+//            // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
+//            let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
+//            qrCodeFrameView?.frame = barCodeObject!.bounds
+//
+//            if metadataObj.stringValue != nil {
+//                messageLabel.text = metadataObj.stringValue
+//            }
+//        }
         
         /*
         if supportedCodeTypes.contains(metadataObj.type) {
@@ -321,6 +459,8 @@ extension TicketScannerViewController {
         }
         */
     }
+    
+    */
 
     private func showRedeemedTicket() {
         if self.scanCompleted == true {
