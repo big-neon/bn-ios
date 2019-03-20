@@ -81,10 +81,25 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         return view
     }()
     
+    private func configureBlur() {
+        let blur = UIBlurEffect(style: .dark)
+        self.blurView = UIVisualEffectView(effect: blur)
+        self.blurView?.frame = self.view.bounds
+        self.blurView?.layer.opacity = 0.0
+        self.blurView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.view.addSubview(self.blurView!)
+    }
+    
     internal lazy var feedbackView: TicketScanFeedbackView = {
         let view =  TicketScanFeedbackView()
         view.layer.opacity = 0.0
         view.layer.contentsScale = 0.0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    internal lazy var scannedUserView: LastScannedUserView = {
+        let view =  LastScannedUserView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -140,6 +155,7 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         videoPreviewLayer?.frame = view.layer.bounds
         view.layer.addSublayer(videoPreviewLayer!)
         captureSession.startRunning()
+        self.configureBlur()
     }
     
     private func configureManualCheckinView() {
@@ -158,23 +174,6 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         feedbackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -20.0).isActive = true
         feedbackView.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
         feedbackView.widthAnchor.constraint(equalToConstant: 220.0).isActive = true
-    }
-    
-    private func configureScannerFrame() {
-        
-        // Move the message label and top bar to the front
-//        view.bringSubview(toFront: messageLabel)
-//        view.bringSubview(toFront: topbar)
-        
-        // Initialize QR Code Frame to highlight the QR code
-//        qrCodeFrameView = UIView()
-//
-//        if let qrCodeFrameView = qrCodeFrameView {
-//            qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
-//            qrCodeFrameView.layer.borderWidth = 2
-//            view.addSubview(qrCodeFrameView)
-//            view.bringSubview(toFront: qrCodeFrameView)
-//        }
     }
 }
 
