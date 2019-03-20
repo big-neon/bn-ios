@@ -156,6 +156,7 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         view.layer.addSublayer(videoPreviewLayer!)
         captureSession.startRunning()
         self.configureBlur()
+        self.configureScannedUserView()
     }
     
     private func configureManualCheckinView() {
@@ -174,6 +175,14 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         feedbackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -20.0).isActive = true
         feedbackView.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
         feedbackView.widthAnchor.constraint(equalToConstant: 220.0).isActive = true
+    }
+    
+    private func configureScannedUserView() {
+        self.view.addSubview(scannedUserView)
+        scannedUserView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 40.0).isActive = true
+        scannedUserView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -40.0).isActive = true
+        scannedUserView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -80.0).isActive = true
+        scannedUserView.heightAnchor.constraint(equalToConstant: 64.0).isActive = true
     }
 }
 

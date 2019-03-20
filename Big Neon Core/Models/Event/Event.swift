@@ -20,7 +20,7 @@ public struct Event: Codable {
     public let promoImageURL: String?
     public let additionalInfo: String?
     public let topLineInfo: String?
-    public let ageLimit: Int?
+    public let ageLimit: String?
     public let cancelledAt: String?
     public let venue: Venue?
     public let minTicketPrice :Int?
