@@ -124,6 +124,7 @@
 		C6D2413421EF53B000FC3E41 /* NamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2413321EF53B000FC3E41 /* NamesViewController.swift */; };
 		C6D37B3521F1CD8200C616D0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D37B3421F1CD8200C616D0 /* API.swift */; };
 		C6E648532240D088000F2DFB /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E648522240D088000F2DFB /* ScannerViewController.swift */; };
+		C6E6485622423C11000F2DFB /* Big Neon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C6E6485422423C11000F2DFB /* Big Neon.xcdatamodeld */; };
 		C6EC209A220063DE00BD10DD /* ProfileImageUploadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC2099220063DE00BD10DD /* ProfileImageUploadCell.swift */; };
 		C6EC209C2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209B2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift */; };
 		C6EC209E220075D100BD10DD /* PhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209D220075D100BD10DD /* PhoneNumberTextField.swift */; };
@@ -320,6 +321,7 @@
 		C6D2413321EF53B000FC3E41 /* NamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesViewController.swift; sourceTree = "<group>"; };
 		C6D37B3421F1CD8200C616D0 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C6E648522240D088000F2DFB /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		C6E6485522423C11000F2DFB /* Big Neon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Big Neon.xcdatamodel"; sourceTree = "<group>"; };
 		C6EC2099220063DE00BD10DD /* ProfileImageUploadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageUploadCell.swift; sourceTree = "<group>"; };
 		C6EC209B2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingPhoneNumberCell.swift; sourceTree = "<group>"; };
 		C6EC209D220075D100BD10DD /* PhoneNumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTextField.swift; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 			isa = PBXGroup;
 			children = (
 				C62BC78321CCC3F700830A5F /* AppDelegate.swift */,
+				C6E6485422423C11000F2DFB /* Big Neon.xcdatamodeld */,
 				C62BC78A21CCC3FB00830A5F /* Assets.xcassets */,
 				C66C0BA421E337D40066CD0F /* splash.mp4 */,
 				C62BC78C21CCC3FB00830A5F /* LaunchScreen.storyboard */,
@@ -1286,6 +1289,7 @@
 				C61853C122140900005D6250 /* TicketTypeViewController.TableView.swift in Sources */,
 				C64B0ADC21D1276100386000 /* ProfileViewController.swift in Sources */,
 				C61853B72212F1DB005D6250 /* ExploreViewController.Search.swift in Sources */,
+				C6E6485622423C11000F2DFB /* Big Neon.xcdatamodeld in Sources */,
 				C6AFB78F21DD658800670AC3 /* EventDetailViewController.swift in Sources */,
 				C64B0ABD21D0DCDB00386000 /* DoorPersonViewModel.swift in Sources */,
 				C683233121FF34DF002342AE /* LogoutCell.swift in Sources */,
@@ -1893,6 +1897,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C6E6485422423C11000F2DFB /* Big Neon.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C6E6485522423C11000F2DFB /* Big Neon.xcdatamodel */,
+			);
+			currentVersion = C6E6485522423C11000F2DFB /* Big Neon.xcdatamodel */;
+			path = "Big Neon.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C62BC77821CCC3F700830A5F /* Project object */;
 }

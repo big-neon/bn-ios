@@ -16,6 +16,7 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
     internal let generator = UINotificationFeedbackGenerator()
     internal var guestListTopAnchor: NSLayoutConstraint?
     internal var manualCheckingTopAnchor: NSLayoutConstraint?
+    internal var scannedUserBottomAnchor: NSLayoutConstraint?
     internal var scanCompleted: Bool?
     internal var scannerViewModel : TicketScannerViewModel = TicketScannerViewModel()
     internal let blurEffect = UIBlurEffect(style: .dark)
@@ -181,7 +182,8 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         self.view.addSubview(scannedUserView)
         scannedUserView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 40.0).isActive = true
         scannedUserView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -40.0).isActive = true
-        scannedUserView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -80.0).isActive = true
+        self.scannedUserBottomAnchor = scannedUserView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 150.0)
+        self.scannedUserBottomAnchor?.isActive = true
         scannedUserView.heightAnchor.constraint(equalToConstant: 64.0).isActive = true
     }
 }
@@ -346,7 +348,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             }
         }
     }
-    
+
     private func dismissFeedbackView() {
         UIView.animate(withDuration: 0.8, delay: 1.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.blurView?.layer.opacity = 0.0
@@ -355,8 +357,18 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
-            self.scanCompleted = true
+            self.presentScannedUser()
         })
     }
-    
+
+    private func presentScannedUser() {
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.scannedUserBottomAnchor?.constant = -80.0
+            self.view.layoutIfNeeded()
+        }, completion: { (completed) in
+            self.scanCompleted = true
+        })
+        
+    }
+
 }
