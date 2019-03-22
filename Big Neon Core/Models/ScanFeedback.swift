@@ -7,4 +7,5 @@ public enum ScanFeedback: String {
     case alreadyRedeemed
     case issueFound
     case wrongEvent
+    case validTicketID
 }

@@ -208,14 +208,23 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     }
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        if metadataObjects.count == 0 {
-//            qrCodeFrameView?.frame = CGRect.zero
-            print("No QR code is detected")
+        
+        self.hideScannedUser()
+        print(metadataObjects)
+        print(metadataObjects.count)
+        print(metadataObjects.first?.type)
+ 
+//        if metadataObjects.count == 0 {
+//            print("No QR code detected")
+//            return
+//        }
+        
+        // Get the metadata object.
+        guard let metadataObj = metadataObjects.first as? AVMetadataMachineReadableCodeObject else {
+            print("No QR data detected")
             return
         }
         
-        // Get the metadata object.
-        let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         
         if supportedCodeTypes.contains(metadataObj.type) {
             guard let metaDataString = metadataObj.stringValue else {
@@ -233,7 +242,10 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                 return
             }
             
+            print(ticketID)
+            
             self.scannerViewModel.getRedeemTicket(ticketID: ticketID) { (scanFeedback) in
+                print(scanFeedback)
                 switch scanFeedback {
                 case .alreadyRedeemed?:
                     UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
@@ -243,6 +255,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                         self.scannerModeView.layer.opacity = 0.0
                         self.view.layoutIfNeeded()
                     }, completion: { (completed) in
+                        self.scanCompleted = true
                         self.dismissFeedbackView()
                     })
                     return
@@ -254,6 +267,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                         self.scannerModeView.layer.opacity = 0.0
                         self.view.layoutIfNeeded()
                     }, completion: { (completed) in
+                        self.scanCompleted = true
                         self.dismissFeedbackView()
                     })
                     return
@@ -265,11 +279,14 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                         self.scannerModeView.layer.opacity = 0.0
                         self.view.layoutIfNeeded()
                     }, completion: { (completed) in
+                        self.scanCompleted = true
                         self.dismissFeedbackView()
                     })
                     return
-                default:
+                case validTicketID?:
                     self.showRedeemedTicket()
+                default:
+                    print("No Ticket Data")
                     return
                 }
             }
@@ -362,13 +379,24 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     }
 
     private func presentScannedUser() {
+        self.manualUserCheckinView.redeemableTicket = self.scannerViewModel.redeemableTicket
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.scannedUserBottomAnchor?.constant = -80.0
+            self.scannedUserBottomAnchor?.constant = -40.0
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
             self.scanCompleted = true
         })
-        
+    }
+    
+    private func hideScannedUser() {
+        self.manualUserCheckinView.redeemableTicket = nil
+        self.scannerViewModel.redeemableTicket = nil
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.scannedUserBottomAnchor?.constant = 150.0
+            self.view.layoutIfNeeded()
+        }, completion: { (completed) in
+            self.scanCompleted = true
+        })
     }
 
 }

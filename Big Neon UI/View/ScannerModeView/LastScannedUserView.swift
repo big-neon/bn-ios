@@ -1,8 +1,20 @@
 
 
 import UIKit
+import Big_Neon_Core
 
 public class LastScannedUserView: UIView {
+    
+    public var redeemableTicket: RedeemableTicket? {
+        didSet {
+            guard let ticket = self.redeemableTicket else {
+                return
+            }
+            
+            self.userNameLabel.text = ticket.firstName
+            self.ticketTypeLabel.text = ticket.ticketType
+        }
+    }
     
     public lazy var userImageView: UIImageView = {
         let imageView = UIImageView()

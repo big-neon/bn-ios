@@ -11,7 +11,7 @@ public struct RedeemableTicket: Codable {
     public let status, eventID, eventName, doorTime: String
     public let eventStart, venueID, venueName: String
     
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case id
         case ticketType     = "ticket_type"
         case userID         = "user_id"

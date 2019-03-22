@@ -10,6 +10,9 @@ extension DatabaseService {
         let APIURL = APIService.getRedeemableTicket(ticketID: ticketID)
         let accessToken = self.fetchAcessToken()
 
+        print(APIURL)
+        print(accessToken!)
+        
         AF.request(APIURL,
                    method: HTTPMethod.get,
                    parameters: nil,
@@ -40,7 +43,7 @@ extension DatabaseService {
                 do {
                     let decoder = JSONDecoder()
                     let redeemKeyData = try decoder.decode(RedeemableTicket.self, from: data!)
-                    completion(nil, redeemKeyData)
+                    completion(.validTicketID, redeemKeyData)
                     return
                 } catch let error as NSError {
                     completion(.issueFound, nil)
