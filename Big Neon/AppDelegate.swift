@@ -69,7 +69,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if Environment.isProduction() == true {
                     let nserror = error as NSError
                     fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-                    return
                 }
                 
                 
