@@ -94,6 +94,7 @@ extension DatabaseService {
                     completion(.valid, ticket)
                     return
                 } catch let error as NSError {
+                    print(error)
                     completion(.issueFound, nil)
                 }
         }

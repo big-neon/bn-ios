@@ -27,31 +27,29 @@ final class TicketScannerViewModel {
     internal func getRedeemTicket(ticketID: String, completion: @escaping(ScanFeedback?) -> Void) {
         BusinessService.shared.database.getRedeemTicket(forTicketID: ticketID) { (scanFeedback, redeemTicket) in
             
-            print(scanFeedback)
-            print(redeemTicket)
-            
-            switch scanFeedback {
-            case .alreadyRedeemed?:
-                completion(.alreadyRedeemed)
-                return
-            case .issueFound?:
-                completion(.issueFound)
-                return
-            case .wrongEvent?:
-                completion(.wrongEvent)
-                return
-            case .validTicketID?:
-                guard let ticket = redeemTicket else {
-                    completion(nil)
+            DispatchQueue.main.async {
+                switch scanFeedback {
+                case .alreadyRedeemed?:
+                    completion(.alreadyRedeemed)
+                    return
+                case .issueFound?:
+                    completion(.issueFound)
+                    return
+                case .wrongEvent?:
+                    completion(.wrongEvent)
+                    return
+                case .validTicketID?:
+                    guard let ticket = redeemTicket else {
+                        completion(.validTicketID)
+                        return
+                    }
+                    self.redeemableTicket = ticket
+                    completion(.validTicketID)
+                    return
+                default:
+                    print("No Data Returned")
                     return
                 }
-                
-                self.redeemableTicket = ticket
-                completion(nil)
-                return
-            default:
-                print("No Data Returned")
-                return
             }
         }
         
@@ -97,25 +95,27 @@ final class TicketScannerViewModel {
         }
         
         BusinessService.shared.database.redeemTicket(forTicketID: ticket.id, eventID: eventID, redeemKey: ticket.redeemKey) { (scanFeedback, ticket) in
-            switch scanFeedback {
-            case .alreadyRedeemed:
-                completion(.alreadyRedeemed)
-                return
-            case .issueFound:
-                completion(.issueFound)
-                return
-            case .wrongEvent:
-                completion(.wrongEvent)
-                return
-            default:
-                self.saveRedeemedTicket(ticket: self.redeemableTicket!, completion: { (completed) in
-                    print(completed)
-                    self.redeemableTicket = nil
-                    self.redeemedTicket = ticket!
-                    completion(.valid)
+            DispatchQueue.main.async {
+                switch scanFeedback {
+                case .alreadyRedeemed:
+                    completion(.alreadyRedeemed)
                     return
-                })
+                case .issueFound:
+                    completion(.issueFound)
+                    return
+                case .wrongEvent:
+                    completion(.wrongEvent)
+                    return
+                default:
+                    self.saveRedeemedTicket(ticket: self.redeemableTicket!, completion: { (completed) in
+                        self.redeemableTicket = nil
+                        self.redeemedTicket = ticket!
+                        completion(.valid)
+                        return
+                    })
+                }
             }
+            
         }
     }
 
@@ -129,7 +129,7 @@ extension TicketScannerViewModel {
         
         let entity = NSEntityDescription.entity(forEntityName: "RedeemedTicket", in: context)
         let newTicket = NSManagedObject(entity: entity!, insertInto: context)
-        
+        print(RedeemableTicket.CodingKeys.id.rawValue)
         newTicket.setValue(ticket.id, forKey: RedeemableTicket.CodingKeys.id.rawValue)
         newTicket.setValue(ticket.ticketType, forKey: RedeemableTicket.CodingKeys.ticketType.rawValue)
         newTicket.setValue(ticket.userID, forKey: RedeemableTicket.CodingKeys.userID.rawValue)
