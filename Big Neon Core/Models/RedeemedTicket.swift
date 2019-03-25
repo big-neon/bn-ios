@@ -16,7 +16,6 @@ public struct RedeemableTicket: Codable {
         case ticketType     = "ticket_type"
         case userID         = "user_id"
         case orderID        = "order_id"
-        
         case orderItemID    = "order_item_id"
         case priceInCents   = "price_in_cents"
         case firstName      = "first_name"
