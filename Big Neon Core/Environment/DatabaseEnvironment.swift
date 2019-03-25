@@ -1,8 +1,7 @@
 
-
 import Foundation
 
-struct Environment {
+public struct Environment {
     
     private static let production : Bool = {
         #if DEBUG
@@ -18,12 +17,7 @@ struct Environment {
         #endif
     }()
     
-    static func isProduction () -> Bool {
+    public static func isProduction () -> Bool {
         return self.production
     }
-    
-    static func isProduction () -> Bool {
-        return self.production
-    }
-    
 }

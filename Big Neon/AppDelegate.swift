@@ -1,6 +1,7 @@
 
 import UIKit
 import CoreData
+import Big_Neon_Core
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
