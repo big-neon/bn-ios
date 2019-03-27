@@ -51,6 +51,7 @@
 		C64B0AE121D1294600386000 /* ProfileViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */; };
 		C655BD39221D69FD00EB1FDD /* DatabaseService.Checkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = C655BD38221D69FD00EB1FDD /* DatabaseService.Checkins.swift */; };
 		C6562F522203286E0020B6D3 /* UtilityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6562F512203286E0020B6D3 /* UtilityConstants.swift */; };
+		C665B6E7224B506900581E2E /* ScannerViewController.Checkin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665B6E6224B506900581E2E /* ScannerViewController.Checkin.swift */; };
 		C665DFE521E87CB800DFB955 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */; };
 		C66C0BA521E337D40066CD0F /* splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C66C0BA421E337D40066CD0F /* splash.mp4 */; };
 		C66C0BA721E339CA0066CD0F /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C0BA621E339CA0066CD0F /* SplashViewController.swift */; };
@@ -248,6 +249,7 @@
 		C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.TableView.swift; sourceTree = "<group>"; };
 		C655BD38221D69FD00EB1FDD /* DatabaseService.Checkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Checkins.swift; sourceTree = "<group>"; };
 		C6562F512203286E0020B6D3 /* UtilityConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityConstants.swift; sourceTree = "<group>"; };
+		C665B6E6224B506900581E2E /* ScannerViewController.Checkin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.Checkin.swift; sourceTree = "<group>"; };
 		C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C66C0BA421E337D40066CD0F /* splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.mp4; sourceTree = "<group>"; };
 		C66C0BA621E339CA0066CD0F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -497,6 +499,7 @@
 			children = (
 				C6BCBE9D222D06C70026B858 /* ScannerViewModel.swift */,
 				C6E648522240D088000F2DFB /* ScannerViewController.swift */,
+				C665B6E6224B506900581E2E /* ScannerViewController.Checkin.swift */,
 			);
 			path = TicketScannerViewController;
 			sourceTree = "<group>";
@@ -1297,6 +1300,7 @@
 				C61853B92212F4C8005D6250 /* TicketTypeSelectionViewController.swift in Sources */,
 				C64B0ABB21D0DCC900386000 /* ExploreViewController.CollectionView.swift in Sources */,
 				C6562F522203286E0020B6D3 /* UtilityConstants.swift in Sources */,
+				C665B6E7224B506900581E2E /* ScannerViewController.Checkin.swift in Sources */,
 				C61853C122140900005D6250 /* TicketTypeViewController.TableView.swift in Sources */,
 				C64B0ADC21D1276100386000 /* ProfileViewController.swift in Sources */,
 				C61853B72212F1DB005D6250 /* ExploreViewController.Search.swift in Sources */,
