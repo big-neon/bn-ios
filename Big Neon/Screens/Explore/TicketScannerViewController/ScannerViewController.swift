@@ -10,6 +10,9 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
     //  Video Capture Session
     internal var captureSession = AVCaptureSession()
     internal var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    internal var scannedTicket: RedeemableTicket?
+    internal var scannedTicketID: String?
+    internal var event: Event?
     
     //  Layout
     internal let generator = UINotificationFeedbackGenerator()
@@ -17,7 +20,7 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
     internal var manualCheckingTopAnchor: NSLayoutConstraint?
     internal var scannedUserBottomAnchor: NSLayoutConstraint?
     internal var scanCompleted: Bool?
-    internal var scannerViewModel : TicketScannerViewModel = TicketScannerViewModel()
+    internal var scannerViewModel : TicketScannerViewModel?
     internal let blurEffect = UIBlurEffect(style: .dark)
     internal var blurView: UIVisualEffectView?
     
@@ -62,7 +65,6 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
     
     internal lazy var scannerModeView: ScannerModeView = {
         let view =  ScannerModeView()
-        view.setAutoMode = self.scannerViewModel.scannerMode()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -117,11 +119,18 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureViewModel()
         view.backgroundColor = UIColor.black
         self.configureNavBar()
         self.configureScanner()
         self.configureManualCheckinView()
         self.configureScanFeedbackView()
+    }
+    
+    private func configureViewModel() {
+        self.scannerViewModel = TicketScannerViewModel()
+        self.scannerViewModel?.scanVC = self
+        self.scannerModeView.setAutoMode = self.scannerViewModel!.scannerMode()
     }
     
     private func configureNavBar() {

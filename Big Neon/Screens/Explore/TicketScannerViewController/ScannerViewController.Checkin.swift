@@ -15,11 +15,13 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     }
     
     func scannerSetAutomatic() {
-        self.scannerViewModel.setCheckingModeAutomatic()
+        self.hideScannedUser()
+        self.scannerViewModel?.setCheckingModeAutomatic()
     }
     
     func scannerSetManual() {
-        self.scannerViewModel.setCheckingModeManual()
+        self.hideScannedUser()
+        self.scannerViewModel?.setCheckingModeManual()
     }
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
@@ -42,20 +44,20 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                 return
             }
             
-            guard self.scannerViewModel.getRedeemKey(fromStringValue: metaDataString) != nil else {
+            guard self.scannerViewModel?.getRedeemKey(fromStringValue: metaDataString) != nil else {
                 self.generator.notificationOccurred(.error)
                 Utils.showAlert(presenter: self, title: "No Redeem Key Found", message: "The ticket does not contain a redeem key. Check the guest in from the guest list")
                 self.scanCompleted = true
                 return
             }
             
-            guard let ticketID = self.scannerViewModel.getTicketID(fromStringValue: metaDataString) else {
+            guard let ticketID = self.scannerViewModel?.getTicketID(fromStringValue: metaDataString) else {
                 self.generator.notificationOccurred(.error)
                 self.scanCompleted = true
                 return
             }
             
-            if self.scannerViewModel.scannerMode() == true {
+            if self.scannerViewModel?.scannerMode() == true {
                 self.generator.notificationOccurred(.success)
                 self.checkinAutomatically(withTicketID: ticketID)
             } else {
@@ -66,7 +68,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     }
     
     private func checkinAutomatically(withTicketID ticketID: String) {
-        self.scannerViewModel.automaticallyChecking(ticketID: ticketID) { (scanFeedback) in
+        self.scannerViewModel?.automaticallyChecking(ticketID: ticketID) { (scanFeedback) in
             switch scanFeedback {
             case .alreadyRedeemed:
                 UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
@@ -85,6 +87,18 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                     self.blurView?.layer.opacity = 1.0
                     self.feedbackView.layer.opacity = 1.0
                     self.feedbackView.scanFeedback = .issueFound
+                    self.scannerModeView.layer.opacity = 0.0
+                    self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+                    self.view.layoutIfNeeded()
+                }, completion: { (completed) in
+                    self.dismissFeedbackView(feedback: scanFeedback)
+                })
+                return
+            case .ticketNotFound:
+                UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    self.blurView?.layer.opacity = 1.0
+                    self.feedbackView.layer.opacity = 1.0
+                    self.feedbackView.scanFeedback = .ticketNotFound
                     self.scannerModeView.layer.opacity = 0.0
                     self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
                     self.view.layoutIfNeeded()
@@ -122,7 +136,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     }
     
     private func checkinManually(withTicketID ticketID: String) {
-        self.scannerViewModel.getRedeemTicket(ticketID: ticketID) { (scanFeedback) in
+        self.scannerViewModel?.getRedeemTicket(ticketID: ticketID) { (scanFeedback) in
             switch scanFeedback {
             case .alreadyRedeemed?:
                 UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
@@ -171,7 +185,8 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         }
         self.scanCompleted = true
         self.generator.notificationOccurred(.success)
-        self.manualUserCheckinView.redeemableTicket = self.scannerViewModel.redeemableTicket
+        self.scannedTicketID = self.scannedTicket?.id
+        self.manualUserCheckinView.redeemableTicket = self.scannedTicket
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.feedbackView.layer.contentsScale = 1.0
             self.blurView?.layer.opacity = 1.0
@@ -184,8 +199,12 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     }
     
     internal func completeCheckin() {
-        self.scannerViewModel.completeCheckin { (scanFeedback) in
-            
+        
+        guard let ticketID = self.scannedTicketID else {
+            return
+        }
+        
+        self.scannerViewModel?.automaticallyChecking(ticketID: ticketID) { (scanFeedback) in
             switch scanFeedback {
             case .alreadyRedeemed:
                 UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
@@ -251,30 +270,31 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             if feedback == .valid {
                 self.presentScannedUser()
             } else {
-                self.scanCompleted = false
+                self.scanCompleted = true
             }
             
         })
     }
     
     private func presentScannedUser() {
-        self.manualUserCheckinView.redeemableTicket = self.scannerViewModel.redeemableTicket
+        self.manualUserCheckinView.redeemableTicket = self.scannedTicket
+        
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.scannedUserBottomAnchor?.constant = -40.0
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
-            self.scanCompleted = false
+            self.scanCompleted = true
         })
     }
     
     private func hideScannedUser() {
         self.manualUserCheckinView.redeemableTicket = nil
-        self.scannerViewModel.redeemableTicket = nil
+        self.scannedTicket = nil
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.scannedUserBottomAnchor?.constant = 150.0
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
-            self.scanCompleted = false
+            self.scanCompleted = true
         })
     }
     

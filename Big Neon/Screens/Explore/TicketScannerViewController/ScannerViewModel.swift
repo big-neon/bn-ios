@@ -6,9 +6,8 @@ import CoreData
 
 final class TicketScannerViewModel {
     
-    internal var event: Event?
-    internal var redeemableTicket: RedeemableTicket?
     internal var redeemedTicket: RedeemableTicket?
+    internal var scanVC: ScannerViewController?
 
     internal func setCheckingModeAutomatic() {
         UserDefaults.standard.set(true, forKey: Constants.CheckingMode.scannerCheckinKey)
@@ -66,9 +65,7 @@ final class TicketScannerViewModel {
                     completion(.wrongEvent)
                     return
                 case .validTicketID?:
-                    self.redeemableTicket = redeemTicket
-                    
-                    print(self.redeemableTicket)
+                    self.scanVC?.scannedTicket = redeemTicket
                     completion(.validTicketID)
                     return
                 default:
@@ -79,13 +76,9 @@ final class TicketScannerViewModel {
         }
     }
     
-    internal func completeCheckin(completion: @escaping(ScanFeedback) -> Void) {
-        guard let eventID = self.event?.id else {
-            completion(.issueFound)
-            return
-        }
+    internal func completeCheckin(ticket: RedeemableTicket,completion: @escaping(ScanFeedback) -> Void) {
         
-        guard let ticket = self.redeemableTicket else {
+        guard let eventID = self.scanVC?.event?.id else {
             completion(.issueFound)
             return
         }
@@ -103,8 +96,7 @@ final class TicketScannerViewModel {
                     completion(.wrongEvent)
                     return
                 default:
-                    self.saveRedeemedTicket(ticket: self.redeemableTicket!, completion: { (completed) in
-                        self.redeemableTicket = nil
+                    self.saveRedeemedTicket(ticket: ticket!, completion: { (completed) in
                         self.redeemedTicket = ticket!
                         completion(.valid)
                         return
@@ -130,11 +122,11 @@ final class TicketScannerViewModel {
                     return
                 case .validTicketID?:
                     guard let ticket = redeemTicket else {
-                        completion(.validTicketID)
+                        completion(.ticketNotFound)
                         return
                     }
                     
-                    guard let eventID = self.event?.id else {
+                    guard let eventID = self.scanVC?.event?.id else {
                         completion(.issueFound)
                         return
                     }

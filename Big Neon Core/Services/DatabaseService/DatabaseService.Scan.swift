@@ -42,10 +42,12 @@ extension DatabaseService {
                 
                 do {
                     let decoder = JSONDecoder()
-                    let redeemKeyData = try decoder.decode(RedeemableTicket.self, from: data!)
-                    completion(.validTicketID, redeemKeyData)
+                    let redeemableTicket = try decoder.decode(RedeemableTicket.self, from: data!)
+                    print(redeemableTicket)
+                    completion(.validTicketID, redeemableTicket)
                     return
                 } catch let error as NSError {
+                    print(error)
                     completion(.issueFound, nil)
                 }
         }
