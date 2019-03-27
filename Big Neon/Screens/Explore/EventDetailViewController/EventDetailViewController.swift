@@ -114,7 +114,7 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
         
         eventTableView.tableHeaderView = eventHeaderView
     }
-    
+
     private func updateHeaderView() {
         var headerRect = CGRect(x: 0, y: -kTableViewHeaderHeight, width: eventTableView.bounds.width, height: kTableViewHeaderHeight)
         if eventTableView.contentOffset.y < -kTableViewHeaderHeight {
@@ -123,7 +123,7 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
         }
         eventHeaderView.frame = headerRect
     }
-    
+
     private func configureTableView() {
         self.view.addSubview(eventTableView)
         eventTableView.register(EventDetailCell.self, forCellReuseIdentifier: EventDetailCell.cellID)
@@ -143,14 +143,14 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
         self.getTicketButtonBottomAnchor?.isActive = true
         self.getButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
     }
-    
+
     @objc private func animateGetTicketButton() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.getTicketButtonBottomAnchor?.constant = 0.0
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
-    
+
     @objc private func handleSelectTypeType() {
         modalActive = true
         let ticketTypeVC = TicketTypeViewController()
@@ -159,7 +159,7 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
         ticketTypeVC.modalTransitionStyle = .coverVertical
         self.present(ticketTypeVC, type: .custom(self), animated: true)
     }
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
  
         if scrollView.contentOffset.y >= 0 {
@@ -181,7 +181,7 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
             UIApplication.shared.statusBarView?.backgroundColor = UIColor(white: 1.0, alpha: offSet)
         }
     }
-    
+
     // MARK: UIViewControllerTransitioningDelegate
     internal func presentationController(forPresented presented: UIViewController,
                                          presenting: UIViewController?,
