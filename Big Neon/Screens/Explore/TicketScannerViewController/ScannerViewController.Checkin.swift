@@ -56,6 +56,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             }
             
             if self.scannerViewModel.scannerMode() == true {
+                self.generator.notificationOccurred(.success)
                 self.checkinAutomatically(withTicketID: ticketID)
             } else {
                 self.checkinManually(withTicketID: ticketID)
@@ -250,7 +251,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             if feedback == .valid {
                 self.presentScannedUser()
             } else {
-                self.scanCompleted = true
+                self.scanCompleted = false
             }
             
         })
@@ -262,7 +263,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             self.scannedUserBottomAnchor?.constant = -40.0
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
-            self.scanCompleted = true
+            self.scanCompleted = false
         })
     }
     
@@ -273,7 +274,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             self.scannedUserBottomAnchor?.constant = 150.0
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
-            self.scanCompleted = true
+            self.scanCompleted = false
         })
     }
     

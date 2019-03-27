@@ -12,7 +12,6 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
     internal var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     
     //  Layout
-//    internal var qrCodeFrameView: UIView?
     internal let generator = UINotificationFeedbackGenerator()
     internal var guestListTopAnchor: NSLayoutConstraint?
     internal var manualCheckingTopAnchor: NSLayoutConstraint?
