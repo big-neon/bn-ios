@@ -231,11 +231,9 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                 return
             }
             
-            print(metaDataString)
-            
             guard self.scannerViewModel.getRedeemKey(fromStringValue: metaDataString) != nil else {
                 self.generator.notificationOccurred(.error)
-                Utils.showAlert(presenter: self, title: "No Redeem Key Found", message: "The ticket does not contain a redeem key. Check them in from the guest list")
+                Utils.showAlert(presenter: self, title: "No Redeem Key Found", message: "The ticket does not contain a redeem key. Check the guest in from the guest list")
                 self.scanCompleted = true
                 return
             }
@@ -246,6 +244,61 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                 return
             }
             
+            self.scannerViewModel.automaticallyChecking(ticketID: ticketID) { (scanFeedback) in
+                switch scanFeedback {
+                case .alreadyRedeemed:
+                    UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                        self.blurView?.layer.opacity = 1.0
+                        self.feedbackView.layer.opacity = 1.0
+                        self.feedbackView.scanFeedback = .alreadyRedeemed
+                        self.scannerModeView.layer.opacity = 0.0
+                        self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+                        self.view.layoutIfNeeded()
+                    }, completion: { (completed) in
+                        self.dismissFeedbackView(feedback: scanFeedback)
+                    })
+                    return
+                case .issueFound:
+                    UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                        self.blurView?.layer.opacity = 1.0
+                        self.feedbackView.layer.opacity = 1.0
+                        self.feedbackView.scanFeedback = .issueFound
+                        self.scannerModeView.layer.opacity = 0.0
+                        self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+                        self.view.layoutIfNeeded()
+                    }, completion: { (completed) in
+                        Utils.showAlert(presenter: self, title: "Ticket Not Found", message: "We could not find the redeemable ticket you scanned. Check the guest in from the guest list")
+                        self.dismissFeedbackView(feedback: scanFeedback)
+                    })
+                    return
+                case .wrongEvent:
+                    UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                        self.blurView?.layer.opacity = 1.0
+                        self.feedbackView.layer.opacity = 1.0
+                        self.feedbackView.scanFeedback = .wrongEvent
+                        self.scannerModeView.layer.opacity = 0.0
+                        self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+                        self.view.layoutIfNeeded()
+                    }, completion: { (completed) in
+                        self.dismissFeedbackView(feedback: scanFeedback)
+                    })
+                    return
+                default:
+                    UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                        self.blurView?.layer.opacity = 1.0
+                        self.feedbackView.layer.opacity = 1.0
+                        self.feedbackView.scanFeedback = .valid
+                        self.scannerModeView.layer.opacity = 0.0
+                        self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+                        self.view.layoutIfNeeded()
+                    }, completion: { (completed) in
+                        self.dismissFeedbackView(feedback: scanFeedback)
+                    })
+                    return
+                }
+            }
+            
+            /*
             self.scannerViewModel.getRedeemTicket(ticketID: ticketID) { (scanFeedback) in
                
                 switch scanFeedback {
@@ -288,6 +341,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                     return
                 }
             }
+            */
         }
     }
     
@@ -334,6 +388,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                     self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
                     self.view.layoutIfNeeded()
                 }, completion: { (completed) in
+                    Utils.showAlert(presenter: self, title: "Ticket Not Found", message: "We could not find the redeemable ticket you scanned. Check the guest in from the guest list")
                     self.dismissFeedbackView(feedback: scanFeedback)
                 })
                 return
