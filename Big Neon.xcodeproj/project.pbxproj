@@ -14,6 +14,7 @@
 		C603E4A1221586040079ED73 /* SubTotalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C603E4A0221586040079ED73 /* SubTotalCell.swift */; };
 		C603E4A3221589B80079ED73 /* CardCheckoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C603E4A2221589B80079ED73 /* CardCheckoutCell.swift */; };
 		C6058DE12229520D00BDF397 /* ScannerModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6058DE02229520D00BDF397 /* ScannerModeView.swift */; };
+		C60EDC852248E3EE00C9CC27 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EDC842248E3EE00C9CC27 /* Environment.swift */; };
 		C61853B72212F1DB005D6250 /* ExploreViewController.Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853B62212F1DB005D6250 /* ExploreViewController.Search.swift */; };
 		C61853B92212F4C8005D6250 /* TicketTypeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853B82212F4C8005D6250 /* TicketTypeSelectionViewController.swift */; };
 		C61853BC2212F6FA005D6250 /* ThreeQuaterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853BB2212F6FA005D6250 /* ThreeQuaterPresenter.swift */; };
@@ -33,7 +34,6 @@
 		C62BC78B21CCC3FB00830A5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78A21CCC3FB00830A5F /* Assets.xcassets */; };
 		C62BC78E21CCC3FB00830A5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78C21CCC3FB00830A5F /* LaunchScreen.storyboard */; };
 		C62BC79921CCC3FB00830A5F /* Big_NeonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */; };
-		C63D1A172220057400152E83 /* TicketScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D1A162220057400152E83 /* TicketScannerViewController.swift */; };
 		C63D86C02231282F003CFAA7 /* DatabaseService.Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D86BF2231282F003CFAA7 /* DatabaseService.Scan.swift */; };
 		C63D86C22231414D003CFAA7 /* RedeemedTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D86C12231414D003CFAA7 /* RedeemedTicket.swift */; };
 		C63D86C622325C8B003CFAA7 /* RedeemKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D86C522325C8B003CFAA7 /* RedeemKey.swift */; };
@@ -51,6 +51,7 @@
 		C64B0AE121D1294600386000 /* ProfileViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */; };
 		C655BD39221D69FD00EB1FDD /* DatabaseService.Checkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = C655BD38221D69FD00EB1FDD /* DatabaseService.Checkins.swift */; };
 		C6562F522203286E0020B6D3 /* UtilityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6562F512203286E0020B6D3 /* UtilityConstants.swift */; };
+		C665B6E7224B506900581E2E /* ScannerViewController.Checkin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665B6E6224B506900581E2E /* ScannerViewController.Checkin.swift */; };
 		C665DFE521E87CB800DFB955 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */; };
 		C66C0BA521E337D40066CD0F /* splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C66C0BA421E337D40066CD0F /* splash.mp4 */; };
 		C66C0BA721E339CA0066CD0F /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C0BA621E339CA0066CD0F /* SplashViewController.swift */; };
@@ -115,14 +116,17 @@
 		C6B88D8C21F1C94E006394F8 /* TicketPricing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D8621F1C94D006394F8 /* TicketPricing.swift */; };
 		C6B88D8E21F1C94E006394F8 /* TicketType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D8821F1C94D006394F8 /* TicketType.swift */; };
 		C6B88D8F21F1C94E006394F8 /* Organisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D8921F1C94E006394F8 /* Organisation.swift */; };
-		C6BCBE9E222D06C70026B858 /* TicketScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BCBE9D222D06C70026B858 /* TicketScannerViewModel.swift */; };
+		C6BCBE9E222D06C70026B858 /* ScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BCBE9D222D06C70026B858 /* ScannerViewModel.swift */; };
 		C6BCBEA0222D38730026B858 /* TicketScanFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BCBE9F222D38730026B858 /* TicketScanFeedbackView.swift */; };
 		C6C45D6A21F5CDCD00D2F602 /* PopAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C45D6921F5CDCD00D2F602 /* PopAnimations.swift */; };
 		C6C45D6C21F5CEC000D2F602 /* Feedbacksystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C45D6B21F5CEC000D2F602 /* Feedbacksystem.swift */; };
 		C6C49DA52209A77E0087AE16 /* DollarString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C49DA42209A77E0087AE16 /* DollarString.swift */; };
+		C6C689AF223A74AC00004593 /* LastScannedUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C689AE223A74AC00004593 /* LastScannedUserView.swift */; };
 		C6CEC8A9221ADBCE00F7329D /* TicketTypeStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CEC8A8221ADBCE00F7329D /* TicketTypeStatus.swift */; };
 		C6D2413421EF53B000FC3E41 /* NamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2413321EF53B000FC3E41 /* NamesViewController.swift */; };
 		C6D37B3521F1CD8200C616D0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D37B3421F1CD8200C616D0 /* API.swift */; };
+		C6E648532240D088000F2DFB /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E648522240D088000F2DFB /* ScannerViewController.swift */; };
+		C6E6485622423C11000F2DFB /* Big Neon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C6E6485422423C11000F2DFB /* Big Neon.xcdatamodeld */; };
 		C6EC209A220063DE00BD10DD /* ProfileImageUploadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC2099220063DE00BD10DD /* ProfileImageUploadCell.swift */; };
 		C6EC209C2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209B2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift */; };
 		C6EC209E220075D100BD10DD /* PhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209D220075D100BD10DD /* PhoneNumberTextField.swift */; };
@@ -204,6 +208,7 @@
 		C603E4A0221586040079ED73 /* SubTotalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTotalCell.swift; sourceTree = "<group>"; };
 		C603E4A2221589B80079ED73 /* CardCheckoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCheckoutCell.swift; sourceTree = "<group>"; };
 		C6058DE02229520D00BDF397 /* ScannerModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerModeView.swift; sourceTree = "<group>"; };
+		C60EDC842248E3EE00C9CC27 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		C61853B62212F1DB005D6250 /* ExploreViewController.Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.Search.swift; sourceTree = "<group>"; };
 		C61853B82212F4C8005D6250 /* TicketTypeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTypeSelectionViewController.swift; sourceTree = "<group>"; };
 		C61853BB2212F6FA005D6250 /* ThreeQuaterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeQuaterPresenter.swift; sourceTree = "<group>"; };
@@ -227,7 +232,6 @@
 		C62BC79421CCC3FB00830A5F /* Big NeonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Big NeonTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Big_NeonTests.swift; sourceTree = "<group>"; };
 		C62BC79A21CCC3FB00830A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C63D1A162220057400152E83 /* TicketScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketScannerViewController.swift; sourceTree = "<group>"; };
 		C63D86BF2231282F003CFAA7 /* DatabaseService.Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Scan.swift; sourceTree = "<group>"; };
 		C63D86C12231414D003CFAA7 /* RedeemedTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemedTicket.swift; sourceTree = "<group>"; };
 		C63D86C522325C8B003CFAA7 /* RedeemKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemKey.swift; sourceTree = "<group>"; };
@@ -245,6 +249,7 @@
 		C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.TableView.swift; sourceTree = "<group>"; };
 		C655BD38221D69FD00EB1FDD /* DatabaseService.Checkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Checkins.swift; sourceTree = "<group>"; };
 		C6562F512203286E0020B6D3 /* UtilityConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityConstants.swift; sourceTree = "<group>"; };
+		C665B6E6224B506900581E2E /* ScannerViewController.Checkin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.Checkin.swift; sourceTree = "<group>"; };
 		C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C66C0BA421E337D40066CD0F /* splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.mp4; sourceTree = "<group>"; };
 		C66C0BA621E339CA0066CD0F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -310,14 +315,17 @@
 		C6B88D8621F1C94D006394F8 /* TicketPricing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketPricing.swift; sourceTree = "<group>"; };
 		C6B88D8821F1C94D006394F8 /* TicketType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketType.swift; sourceTree = "<group>"; };
 		C6B88D8921F1C94E006394F8 /* Organisation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Organisation.swift; sourceTree = "<group>"; };
-		C6BCBE9D222D06C70026B858 /* TicketScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketScannerViewModel.swift; sourceTree = "<group>"; };
+		C6BCBE9D222D06C70026B858 /* ScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewModel.swift; sourceTree = "<group>"; };
 		C6BCBE9F222D38730026B858 /* TicketScanFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketScanFeedbackView.swift; sourceTree = "<group>"; };
 		C6C45D6921F5CDCD00D2F602 /* PopAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimations.swift; sourceTree = "<group>"; };
 		C6C45D6B21F5CEC000D2F602 /* Feedbacksystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedbacksystem.swift; sourceTree = "<group>"; };
 		C6C49DA42209A77E0087AE16 /* DollarString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarString.swift; sourceTree = "<group>"; };
+		C6C689AE223A74AC00004593 /* LastScannedUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastScannedUserView.swift; sourceTree = "<group>"; };
 		C6CEC8A8221ADBCE00F7329D /* TicketTypeStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTypeStatus.swift; sourceTree = "<group>"; };
 		C6D2413321EF53B000FC3E41 /* NamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesViewController.swift; sourceTree = "<group>"; };
 		C6D37B3421F1CD8200C616D0 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		C6E648522240D088000F2DFB /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		C6E6485522423C11000F2DFB /* Big Neon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Big Neon.xcdatamodel"; sourceTree = "<group>"; };
 		C6EC2099220063DE00BD10DD /* ProfileImageUploadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageUploadCell.swift; sourceTree = "<group>"; };
 		C6EC209B2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingPhoneNumberCell.swift; sourceTree = "<group>"; };
 		C6EC209D220075D100BD10DD /* PhoneNumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTextField.swift; sourceTree = "<group>"; };
@@ -392,6 +400,7 @@
 				C6BCBE9F222D38730026B858 /* TicketScanFeedbackView.swift */,
 				C68A4220222FE65F002789E6 /* ManualCheckinModeView.swift */,
 				C68A422222304D9F002789E6 /* CheckinTagView.swift */,
+				C6C689AE223A74AC00004593 /* LastScannedUserView.swift */,
 			);
 			path = ScannerModeView;
 			sourceTree = "<group>";
@@ -457,6 +466,7 @@
 			isa = PBXGroup;
 			children = (
 				C62BC78321CCC3F700830A5F /* AppDelegate.swift */,
+				C6E6485422423C11000F2DFB /* Big Neon.xcdatamodeld */,
 				C62BC78A21CCC3FB00830A5F /* Assets.xcassets */,
 				C66C0BA421E337D40066CD0F /* splash.mp4 */,
 				C62BC78C21CCC3FB00830A5F /* LaunchScreen.storyboard */,
@@ -476,11 +486,20 @@
 			path = "Big NeonTests";
 			sourceTree = "<group>";
 		};
+		C63B39BA2248D3AA00E560A7 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				C60EDC842248E3EE00C9CC27 /* Environment.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
 		C63D1A152220054700152E83 /* TicketScannerViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C6BCBE9D222D06C70026B858 /* TicketScannerViewModel.swift */,
-				C63D1A162220057400152E83 /* TicketScannerViewController.swift */,
+				C6BCBE9D222D06C70026B858 /* ScannerViewModel.swift */,
+				C6E648522240D088000F2DFB /* ScannerViewController.swift */,
+				C665B6E6224B506900581E2E /* ScannerViewController.Checkin.swift */,
 			);
 			path = TicketScannerViewController;
 			sourceTree = "<group>";
@@ -645,6 +664,7 @@
 		C6B88D0021F19FC0006394F8 /* Big Neon Core */ = {
 			isa = PBXGroup;
 			children = (
+				C63B39BA2248D3AA00E560A7 /* Environment */,
 				C6B88D6821F1C86B006394F8 /* Services */,
 				C6B88D6521F1C844006394F8 /* Utilities */,
 				C6B88D6421F1C7E3006394F8 /* Models */,
@@ -1280,9 +1300,11 @@
 				C61853B92212F4C8005D6250 /* TicketTypeSelectionViewController.swift in Sources */,
 				C64B0ABB21D0DCC900386000 /* ExploreViewController.CollectionView.swift in Sources */,
 				C6562F522203286E0020B6D3 /* UtilityConstants.swift in Sources */,
+				C665B6E7224B506900581E2E /* ScannerViewController.Checkin.swift in Sources */,
 				C61853C122140900005D6250 /* TicketTypeViewController.TableView.swift in Sources */,
 				C64B0ADC21D1276100386000 /* ProfileViewController.swift in Sources */,
 				C61853B72212F1DB005D6250 /* ExploreViewController.Search.swift in Sources */,
+				C6E6485622423C11000F2DFB /* Big Neon.xcdatamodeld in Sources */,
 				C6AFB78F21DD658800670AC3 /* EventDetailViewController.swift in Sources */,
 				C64B0ABD21D0DCDB00386000 /* DoorPersonViewModel.swift in Sources */,
 				C683233121FF34DF002342AE /* LogoutCell.swift in Sources */,
@@ -1290,7 +1312,6 @@
 				C694D25A21D0BFE600B2AE07 /* ApplicationRouting.swift in Sources */,
 				C6B2AC5E21E4DD3100F996AA /* BaseViewController.swift in Sources */,
 				C6AFB78B21DD579600670AC3 /* ProfileViewModel.swift in Sources */,
-				C63D1A172220057400152E83 /* TicketScannerViewController.swift in Sources */,
 				C665DFE521E87CB800DFB955 /* WelcomeViewController.swift in Sources */,
 				C64124C621F266B100233797 /* LoginViewController.swift in Sources */,
 				C6EC209C2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift in Sources */,
@@ -1299,13 +1320,14 @@
 				C698AB1021EDE9BC0073F1FB /* CreateAccountViewController.swift in Sources */,
 				C6EC20A122007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift in Sources */,
 				C683232921FF07FE002342AE /* ProfileEditViewController.swift in Sources */,
+				C6E648532240D088000F2DFB /* ScannerViewController.swift in Sources */,
 				C61853C822144869005D6250 /* CheckoutView.swift in Sources */,
 				C683232F21FF31F5002342AE /* ProfileEditingTableViewCell.swift in Sources */,
 				C6AFB79C21DD76AE00670AC3 /* ExploreDetailViewModel.swift in Sources */,
 				C683232B21FF28CB002342AE /* ProfileEditViewModel.swift in Sources */,
 				C64B0AD821D123F400386000 /* TicketsViewController.swift in Sources */,
 				C64B0AC221D0DD5E00386000 /* TabBarController.swift in Sources */,
-				C6BCBE9E222D06C70026B858 /* TicketScannerViewModel.swift in Sources */,
+				C6BCBE9E222D06C70026B858 /* ScannerViewModel.swift in Sources */,
 				C6AFB79121DD65D200670AC3 /* EventDetailViewController.TableView.swift in Sources */,
 				C6EC209A220063DE00BD10DD /* ProfileImageUploadCell.swift in Sources */,
 				C6D2413421EF53B000FC3E41 /* NamesViewController.swift in Sources */,
@@ -1355,6 +1377,7 @@
 				C655BD39221D69FD00EB1FDD /* DatabaseService.Checkins.swift in Sources */,
 				C698F6032238F76400977259 /* ScanFeedback.swift in Sources */,
 				C644BA2F21F7069D003C188B /* BasicError.swift in Sources */,
+				C60EDC852248E3EE00C9CC27 /* Environment.swift in Sources */,
 				C6B88D7921F1C932006394F8 /* Tokens.swift in Sources */,
 				C628B15621FAD76000FCBDC9 /* User.swift in Sources */,
 				C6CEC8A9221ADBCE00F7329D /* TicketTypeStatus.swift in Sources */,
@@ -1409,6 +1432,7 @@
 				C6B88D4521F1C217006394F8 /* EventDetailCell.swift in Sources */,
 				C64124CA21F26D1800233797 /* AuthTextView.swift in Sources */,
 				C6EC209E220075D100BD10DD /* PhoneNumberTextField.swift in Sources */,
+				C6C689AF223A74AC00004593 /* LastScannedUserView.swift in Sources */,
 				C6B88D5E21F1C359006394F8 /* StatusBarView.swift in Sources */,
 				C6B88D3521F1BC75006394F8 /* ProfileHeaderView.swift in Sources */,
 				C6B88D4021F1C07C006394F8 /* HotThisWeekCell.swift in Sources */,
@@ -1589,6 +1613,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEBUG\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bigneon.Big-Neon.stagin";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1889,6 +1914,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C6E6485422423C11000F2DFB /* Big Neon.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C6E6485522423C11000F2DFB /* Big Neon.xcdatamodel */,
+			);
+			currentVersion = C6E6485522423C11000F2DFB /* Big Neon.xcdatamodel */;
+			path = "Big Neon.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C62BC77821CCC3F700830A5F /* Project object */;
 }

@@ -1,12 +1,12 @@
 
 
 import UIKit
-import Big_Neon_Core
+//import Big_Neon_Core
 
 final public class EventHeaderView: UIView {
     
     public var eventImageTopAnchor: NSLayoutConstraint?
-    
+    /*
     public var eventDetail: EventDetail? {
         didSet {
             guard let event = self.eventDetail else {
@@ -73,7 +73,7 @@ final public class EventHeaderView: UIView {
             }
         }
     }
-    
+    */
     public let eventImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.brandBackground

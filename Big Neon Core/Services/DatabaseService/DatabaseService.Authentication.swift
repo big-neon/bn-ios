@@ -10,7 +10,7 @@ extension DatabaseService {
         
         let parameters = ["email": email, "password": password]
         
-        let APIURL = APIService.users
+        let APIURL = APIService.users()
         
         AF.request(APIURL,
                    method: HTTPMethod.post,
@@ -49,7 +49,7 @@ extension DatabaseService {
         
         let parameters = ["email": email,
                           "password": password]
-        let APIURL = APIService.login
+        let APIURL = APIService.login()
         
         AF.request(APIURL,
                    method: HTTPMethod.post,

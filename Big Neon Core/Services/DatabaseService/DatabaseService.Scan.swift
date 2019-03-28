@@ -7,9 +7,12 @@ extension DatabaseService {
     
     public func getRedeemTicket(forTicketID ticketID: String, completion: @escaping (ScanFeedback?, RedeemableTicket?) -> Void) {
         
-        let APIURL = APIService.redeem + "\(ticketID)/redeem"
+        let APIURL = APIService.getRedeemableTicket(ticketID: ticketID)
         let accessToken = self.fetchAcessToken()
 
+        print(APIURL)
+        print(accessToken!)
+        
         AF.request(APIURL,
                    method: HTTPMethod.get,
                    parameters: nil,
@@ -39,10 +42,12 @@ extension DatabaseService {
                 
                 do {
                     let decoder = JSONDecoder()
-                    let redeemKeyData = try decoder.decode(RedeemableTicket.self, from: data!)
-                    completion(nil, redeemKeyData)
+                    let redeemableTicket = try decoder.decode(RedeemableTicket.self, from: data!)
+                    print(redeemableTicket)
+                    completion(.validTicketID, redeemableTicket)
                     return
                 } catch let error as NSError {
+                    print(error)
                     completion(.issueFound, nil)
                 }
         }
@@ -51,15 +56,14 @@ extension DatabaseService {
     
     public func redeemTicket(forTicketID ticketID: String, eventID: String, redeemKey: String, completion: @escaping (ScanFeedback, RedeemableTicket?) -> Void) {
 
-
-        let APIURL = APIService.redeemTicket + "\(eventID)/redeem/\(ticketID)"
+        let apiURL = APIService.redeemTicket(eventID: eventID, ticketID: ticketID)
         let accessToken = self.fetchAcessToken()
         
         let parameters = ["ticket_id": ticketID,
                           "event_id": eventID,
                           "redeem_key": redeemKey]
 
-        AF.request(APIURL,
+        AF.request(apiURL,
                    method: HTTPMethod.post,
                    parameters: parameters,
                    encoding: JSONEncoding.default,
@@ -92,6 +96,7 @@ extension DatabaseService {
                     completion(.valid, ticket)
                     return
                 } catch let error as NSError {
+                    print(error)
                     completion(.issueFound, nil)
                 }
         }

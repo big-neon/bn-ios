@@ -9,7 +9,7 @@ extension DatabaseService {
     public func fetchCheckins(completion: @escaping (Error?, Events?) -> Void) {
         
         
-        let APIURL = APIService.getCheckins
+        let APIURL = APIService.getCheckins()
         let accessToken = self.fetchAcessToken()
         
         AF.request(APIURL,
@@ -36,6 +36,7 @@ extension DatabaseService {
                     completion(nil, checkins)
                     return
                 } catch let error as NSError {
+                    print(error)
                     completion(error, nil)
                 }
         }

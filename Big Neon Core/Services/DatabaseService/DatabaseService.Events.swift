@@ -6,7 +6,7 @@ extension DatabaseService {
     
     public func fetchEvents(completion: @escaping (Error?, Events?) -> Void) {
         
-        let APIURL = APIService.getEvents
+        let APIURL = APIService.getEvents(eventID: nil)
         AF.request(APIURL,
                    method: HTTPMethod.get,
                    parameters: nil,
@@ -38,7 +38,7 @@ extension DatabaseService {
     
     public func fetchEvent(withID eventID: String, completion: @escaping (Error?, EventDetail?) -> Void) {
         
-        let APIURL = APIService.getEvents + "/" + eventID
+        let APIURL = APIService.getEvents(eventID: eventID)
         AF.request(APIURL,
                    method: HTTPMethod.get,
                    parameters: nil,

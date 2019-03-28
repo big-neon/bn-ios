@@ -34,7 +34,7 @@ extension DatabaseService {
          */
         
         let authParameters = ["refresh_token": refreshToken]
-        let APIURL = APIService.refreshToken
+        let APIURL = APIService.refreshToken()
         let jsonData = try? JSONSerialization.data(withJSONObject: authParameters, options: .prettyPrinted)
         let request = NSMutableURLRequest(url: NSURL(string: APIURL)! as URL,
                                           cachePolicy: .useProtocolCachePolicy,

@@ -22,6 +22,9 @@ public class TicketScanFeedbackView: UIView {
             case .wrongEvent:
                 self.feedbackLabel.text = "Wrong Event"
                 self.feedbackImageView.image = UIImage(named: "ic_issueFound")
+            case .ticketNotFound:
+                self.feedbackLabel.text = "No Ticket Found"
+                self.feedbackImageView.image = UIImage(named: "ic_issueFound")
             default:
                 self.feedbackLabel.text = "Already Redeemed"
                 self.feedbackImageView.image = UIImage(named: "ic_alreadyRedeemed")

@@ -7,24 +7,77 @@ public enum APIParameterKeys {
     public static let POST                 = "POST"
     public static let GET                  = "GET"
     public static let PUT                  = "PUT"
-    
+
 }
 
-public enum APIService {
+public class APIService {
     
-    // Staging
-    private static let stagingBaseURL = "https://beta.bigneon.com/api"
+    private class func baseURL() -> String {
+        let isProduction = Environment.isProduction()
+        if isProduction == true {
+            return "https://bigneon.com/api"
+        } else {
+            return "https://beta.bigneon.com/api"
+        }
+    }
     
-    //  Production
+    /**
+     URL: /events/{event_id}/redeem/{ticket_id}
+     */
+    class func redeemTicket(eventID: String, ticketID: String) -> String {
+        return self.baseURL() + "/events/\(eventID)/redeem/\(ticketID)"
+    }
     
-    public static let getEvents     =  stagingBaseURL + "/events"
-    public static let getCheckins   =  stagingBaseURL + "/events/checkins"
-    public static let users         =  stagingBaseURL + "/users"
-    public static let login         =  stagingBaseURL + "/auth/token"
-    public static let updateUser    = stagingBaseURL + "/users/me"
-    public static let refreshToken  = stagingBaseURL + "/auth/token/refresh"
-    public static let redeem        = stagingBaseURL + "/tickets/"
-    public static let redeemTicket  = stagingBaseURL + "/events/"
+    /**
+     URL: "/tickets/{ticketID}/redeem
+     */
+    class func getRedeemableTicket(ticketID: String) -> String {
+        return self.baseURL() + "/tickets/\(ticketID)/redeem"
+    }
     
+    /**
+     - Retrieves Events from the Database
+     */
+    class func getEvents(eventID: String?) -> String {
+        if eventID == nil {
+           return self.baseURL() + "/events"
+        }
+        return self.baseURL() + "/events/\(eventID!)"
+    }
+    
+    /**
+     - Retrieves all the Checkin Events
+     */
+    class func getCheckins() -> String {
+        return self.baseURL() + "/events/checkins"
+    }
+    
+    /**
+     - Retrieves all the Checkin Events
+     */
+    class func users() -> String {
+        return self.baseURL() + "/users"
+    }
+    
+    /**
+     - Logs in the Users
+     */
+    class func login() -> String {
+        return self.baseURL() + "/auth/token"
+    }
+    
+    /**
+     - Updates the User Details
+     */
+    class func updateUser() -> String {
+        return self.baseURL() + "/users/me"
+    }
+    
+    /**
+     - Retrieves an Access Token using the Refresh Token
+     */
+    class func refreshToken() -> String {
+        return self.baseURL() + "/auth/token/refresh"
+    }
     
 }

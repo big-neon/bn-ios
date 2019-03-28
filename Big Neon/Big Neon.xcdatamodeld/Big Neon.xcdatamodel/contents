@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="RedeemedTicket" representedClassName="RedeemedTicket" syncable="YES" codeGenerationType="class">
+        <attribute name="door_time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_start" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="first_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="last_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order_item_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price_in_cents" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="redeem_date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="redeem_key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ticket_type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="venue_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="venue_name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ScannedUser" representedClassName="ScannedUser" syncable="YES" codeGenerationType="class"/>
+    <elements>
+        <element name="RedeemedTicket" positionX="-54" positionY="-9" width="128" height="330"/>
+        <element name="ScannedUser" positionX="-63" positionY="-18" width="128" height="45"/>
+    </elements>
+</model>
