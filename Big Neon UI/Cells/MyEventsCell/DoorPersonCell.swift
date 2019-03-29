@@ -59,6 +59,16 @@ public class DoorPersonCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    
+    public let disclosureIndicatorView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "ic_disclosureIndicator")
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -73,6 +83,7 @@ public class DoorPersonCell: UICollectionViewCell {
         self.addSubview(eventNameLabel)
         self.addSubview(eventDetailsLabel)
         self.addSubview(eventDateLabel)
+        self.addSubview(disclosureIndicatorView)
         
         eventImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         eventImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
@@ -80,7 +91,7 @@ public class DoorPersonCell: UICollectionViewCell {
         eventImageView.widthAnchor.constraint(equalToConstant: 80.0).isActive = true
         
         eventNameLabel.leftAnchor.constraint(equalTo: eventImageView.rightAnchor, constant: 16).isActive = true
-        eventNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -29).isActive = true
+        eventNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -32).isActive = true
         eventNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 16).isActive = true
         eventNameLabel.heightAnchor.constraint(equalToConstant: 22.0).isActive = true
         
@@ -88,6 +99,11 @@ public class DoorPersonCell: UICollectionViewCell {
         eventDetailsLabel.rightAnchor.constraint(equalTo: eventNameLabel.rightAnchor).isActive = true
         eventDetailsLabel.topAnchor.constraint(equalTo: eventNameLabel.bottomAnchor, constant: 6).isActive = true
         eventDetailsLabel.heightAnchor.constraint(equalToConstant: 16.0).isActive = true
+        
+        disclosureIndicatorView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
+        disclosureIndicatorView.centerYAnchor.constraint(equalTo: eventNameLabel.centerYAnchor).isActive = true
+        disclosureIndicatorView.heightAnchor.constraint(equalToConstant: 14.0).isActive = true
+        disclosureIndicatorView.widthAnchor.constraint(equalToConstant: 8.0).isActive = true
         
         eventDateLabel.leftAnchor.constraint(equalTo: eventNameLabel.leftAnchor).isActive = true
         eventDateLabel.rightAnchor.constraint(equalTo: eventNameLabel.rightAnchor).isActive = true
