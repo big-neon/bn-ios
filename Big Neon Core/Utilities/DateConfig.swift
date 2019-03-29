@@ -49,14 +49,14 @@ final public class DateConfig {
         return dateFormatter.string(from: date)
     }
     
-    public class  func localisedTime(date: Date) -> String {
+    public class  func dateFormatShort(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.current
         dateFormatter.dateFormat = "dd/MM/YY"
         return dateFormatter.string(from: date)
     }
     
-    public class  func localFullDate(date: Date) -> String {
+    public class  func dateFormatLong(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.current
         dateFormatter.dateFormat = "EEEE, dd MMMM YYYY"

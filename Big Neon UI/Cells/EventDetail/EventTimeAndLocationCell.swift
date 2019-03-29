@@ -32,7 +32,7 @@ final public class EventTimeAndLocationCell: UITableViewCell {
                     self.dateLabel.text = "-"
                     return
                 }
-                self.dateLabel.text = DateConfig.localFullDate(date: eventDate)
+                self.dateLabel.text = DateConfig.dateFormatLong(date: eventDate)
             }
 
             //  Doors Label
