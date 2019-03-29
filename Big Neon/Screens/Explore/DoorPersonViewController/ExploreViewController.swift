@@ -100,7 +100,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     }
     
     private func configureSearch() {
-//        self.navigationItem.searchController = searchController
+//        self.navigationItem.searchController = searchController   //  Search Controller - TO BE ADDED LATER
     }
 
     private func configureNavBar() {
@@ -116,7 +116,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         userProfileImageView.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
         userProfileImageView.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: userProfileImageView)
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.done, target: self, action: #selector(handleLogout))
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.done, target: self, action: #selector(handleLogout))   //  Logout Information
     }
 
     private func configureCollectionView() {

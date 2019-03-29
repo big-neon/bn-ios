@@ -46,7 +46,14 @@ public class DoorPersonCell: UICollectionViewCell {
 
     public let eventDetailsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Fox Theater  •  Oakland, CA  •  6/15/18"
+        label.textColor = UIColor.brandMediumGrey
+        label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    public let eventDateLabel: UILabel = {
+        let label = UILabel()
         label.textColor = UIColor.brandMediumGrey
         label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +63,7 @@ public class DoorPersonCell: UICollectionViewCell {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white
-        self.layer.cornerRadius = 4.0
+        self.layer.cornerRadius = 12.0
         self.layer.masksToBounds = true
         self.configureView()
     }
@@ -65,6 +72,7 @@ public class DoorPersonCell: UICollectionViewCell {
         self.addSubview(eventImageView)
         self.addSubview(eventNameLabel)
         self.addSubview(eventDetailsLabel)
+        self.addSubview(eventDateLabel)
         
         eventImageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         eventImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
@@ -80,6 +88,11 @@ public class DoorPersonCell: UICollectionViewCell {
         eventDetailsLabel.rightAnchor.constraint(equalTo: eventNameLabel.rightAnchor).isActive = true
         eventDetailsLabel.topAnchor.constraint(equalTo: eventNameLabel.bottomAnchor, constant: 6).isActive = true
         eventDetailsLabel.heightAnchor.constraint(equalToConstant: 16.0).isActive = true
+        
+        eventDateLabel.leftAnchor.constraint(equalTo: eventNameLabel.leftAnchor).isActive = true
+        eventDateLabel.rightAnchor.constraint(equalTo: eventNameLabel.rightAnchor).isActive = true
+        eventDateLabel.topAnchor.constraint(equalTo: eventDetailsLabel.bottomAnchor, constant: 6).isActive = true
+        eventDateLabel.heightAnchor.constraint(equalToConstant: 16.0).isActive = true
     }
     
     required public init?(coder aDecoder: NSCoder) {

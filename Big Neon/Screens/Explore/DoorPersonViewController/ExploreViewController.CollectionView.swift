@@ -40,29 +40,11 @@ extension DoorPersonViewController {
                return eventCell
             }
             let event = events[indexPath.item]
-            
-            //  Event Show
             eventCell.eventNameLabel.text = event.name
             let eventImageURL: URL = URL(string: event.compressImage(url:event.promoImageURL!))!;
             eventCell.eventImageView.pin_setImage(from: eventImageURL, placeholderImage: nil)
-            
-            //  Time Zone
-            if event.venue!.timezone != nil {
-                let eventStart = event.eventStart
-                guard let eventDate = DateConfig.dateFromString(stringDate: eventStart!) else {
-                    eventCell.eventDetailsLabel.text = "-"
-                    return eventCell
-                }
-                eventCell.eventDetailsLabel.text = DateConfig.eventDate(date: eventDate)
-            } else {
-                let eventStart = event.eventStart
-                guard let eventDate = DateConfig.dateFromUTCString(stringDate: eventStart!) else {
-                    eventCell.eventDetailsLabel.text = "-"
-                    return eventCell
-                }
-                eventCell.eventDetailsLabel.text = DateConfig.localisedTime(date: eventDate)
-            }
-
+            eventCell.eventDetailsLabel.text = self.configureEventDetails(event: event)
+            eventCell.eventDateLabel.text = self.configureEventDate(event: event)
             return eventCell
         default:
             let sectionLabelCell: SectionHeaderCell = collectionView.dequeueReusableCell(withReuseIdentifier: SectionHeaderCell.cellID, for: indexPath) as! SectionHeaderCell
@@ -71,12 +53,32 @@ extension DoorPersonViewController {
         }
     }
     
+    private func configureEventDetails(event: Event) -> String {
+        return event.venue!.name + "   •   " + event.venue!.city + ", " + event.venue!.state
+    }
+    
+    private func configureEventDate(event: Event) -> String {
+        if event.venue!.timezone != nil {
+            let eventStart = event.eventStart
+            guard let eventDate = DateConfig.dateFromString(stringDate: eventStart!) else {
+                return "-"
+            }
+            return DateConfig.localisedTime(date: eventDate)
+        } else {
+            let eventStart = event.eventStart
+            guard let eventDate = DateConfig.dateFromUTCString(stringDate: eventStart!) else {
+                return "-"
+            }
+            return DateConfig.localisedTime(date: eventDate)
+        }
+    }
+    
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
         case 0:
             return CGSize(width: UIScreen.main.bounds.width - 40, height: 60)
         default:
-            return CGSize(width: UIScreen.main.bounds.width - 40, height: 80)
+            return CGSize(width: UIScreen.main.bounds.width - 40, height: 100)
         }
         
     }
