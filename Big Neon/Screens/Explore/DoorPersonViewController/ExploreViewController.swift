@@ -14,11 +14,10 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
 
     internal lazy var exploreCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.minimumLineSpacing = 18.0
+        flowLayout.minimumLineSpacing = 20.0
         flowLayout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.backgroundColor = UIColor.white
-        collectionView.contentInset = UIEdgeInsets(top: 38.0, left: 0.0, bottom: 15.0, right: 0.0)
+        collectionView.backgroundColor = UIColor.brandBackground
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.alwaysBounceVertical = true
@@ -105,11 +104,12 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     }
 
     private func configureNavBar() {
+        self.navigationNoLineBar()
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.largeTitleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.brandBlack,
-             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 32, weight: UIFont.Weight.bold)]
-        self.navigationItem.title = "Doorperson"
+             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 32, weight: UIFont.Weight.heavy)]
+        self.navigationItem.title = "My Events"
         self.navigationItem.largeTitleDisplayMode = .automatic
         
         //  Profile Picture
@@ -124,7 +124,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         exploreCollectionView.refreshControl = self.refresher
         exploreCollectionView.register(SectionHeaderCell.self, forCellWithReuseIdentifier: SectionHeaderCell.cellID)
         exploreCollectionView.register(HotThisWeekCell.self, forCellWithReuseIdentifier: HotThisWeekCell.cellID)
-        exploreCollectionView.register(UpcomingEventCell.self, forCellWithReuseIdentifier: UpcomingEventCell.cellID)
+        exploreCollectionView.register(DoorPersonCell.self, forCellWithReuseIdentifier: DoorPersonCell.cellID)
         
         exploreCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         exploreCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true

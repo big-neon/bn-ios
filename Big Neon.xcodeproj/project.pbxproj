@@ -34,6 +34,7 @@
 		C62BC78B21CCC3FB00830A5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78A21CCC3FB00830A5F /* Assets.xcassets */; };
 		C62BC78E21CCC3FB00830A5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78C21CCC3FB00830A5F /* LaunchScreen.storyboard */; };
 		C62BC79921CCC3FB00830A5F /* Big_NeonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */; };
+		C62E64ED224E0DC000A1039C /* DoorPersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62E64EC224E0DC000A1039C /* DoorPersonCell.swift */; };
 		C63D86C02231282F003CFAA7 /* DatabaseService.Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D86BF2231282F003CFAA7 /* DatabaseService.Scan.swift */; };
 		C63D86C22231414D003CFAA7 /* RedeemedTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D86C12231414D003CFAA7 /* RedeemedTicket.swift */; };
 		C63D86C622325C8B003CFAA7 /* RedeemKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D86C522325C8B003CFAA7 /* RedeemKey.swift */; };
@@ -232,6 +233,7 @@
 		C62BC79421CCC3FB00830A5F /* Big NeonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Big NeonTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Big_NeonTests.swift; sourceTree = "<group>"; };
 		C62BC79A21CCC3FB00830A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C62E64EC224E0DC000A1039C /* DoorPersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonCell.swift; sourceTree = "<group>"; };
 		C63D86BF2231282F003CFAA7 /* DatabaseService.Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Scan.swift; sourceTree = "<group>"; };
 		C63D86C12231414D003CFAA7 /* RedeemedTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemedTicket.swift; sourceTree = "<group>"; };
 		C63D86C522325C8B003CFAA7 /* RedeemKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemKey.swift; sourceTree = "<group>"; };
@@ -486,6 +488,14 @@
 			path = "Big NeonTests";
 			sourceTree = "<group>";
 		};
+		C62E64EB224E0DA600A1039C /* MyEventsCell */ = {
+			isa = PBXGroup;
+			children = (
+				C62E64EC224E0DC000A1039C /* DoorPersonCell.swift */,
+			);
+			path = MyEventsCell;
+			sourceTree = "<group>";
+		};
 		C63B39BA2248D3AA00E560A7 /* Environment */ = {
 			isa = PBXGroup;
 			children = (
@@ -702,6 +712,7 @@
 		C6B88D2D21F1BBE8006394F8 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				C62E64EB224E0DA600A1039C /* MyEventsCell */,
 				C61853C4221444B7005D6250 /* CheckoutCells */,
 				C61853BD2214051D005D6250 /* TicketTypeCells */,
 				C6B88D3121F1BC0F006394F8 /* Explore */,
@@ -1411,6 +1422,7 @@
 				C6B88D4121F1C07C006394F8 /* HotWeekCell.swift in Sources */,
 				C6B88D3B21F1BC9B006394F8 /* SectionHeaderCell.swift in Sources */,
 				C6B88D5121F1C323006394F8 /* EventDateView.swift in Sources */,
+				C62E64ED224E0DC000A1039C /* DoorPersonCell.swift in Sources */,
 				C6BCBEA0222D38730026B858 /* TicketScanFeedbackView.swift in Sources */,
 				C6B88D6021F1C359006394F8 /* RoundedCorner.swift in Sources */,
 				C603E49F221583940079ED73 /* CheckoutTotalCell.swift in Sources */,
