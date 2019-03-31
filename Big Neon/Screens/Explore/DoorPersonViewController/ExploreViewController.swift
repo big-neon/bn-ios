@@ -45,13 +45,11 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     
     internal lazy var userProfileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.brandGrey
-        imageView.layer.cornerRadius = 15.0
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowProfile)))
+        imageView.image = UIImage(named: "ic_profilePicture")
         imageView.isUserInteractionEnabled = true
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.borderColor = UIColor.brandGrey.cgColor
-        imageView.layer.borderWidth = 2.0
-        imageView.layer.masksToBounds = true
+        imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -116,7 +114,6 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         userProfileImageView.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
         userProfileImageView.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: userProfileImageView)
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.done, target: self, action: #selector(handleLogout))   //  Logout Information
     }
 
     private func configureCollectionView() {
@@ -146,6 +143,12 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
             self.present(welcomeVC, animated: true, completion: nil)
             return
         }
+    }
+    
+    @objc private func handleShowProfile() {
+        let profileVC = UINavigationController(rootViewController: ProfileViewController())
+        profileVC.modalTransitionStyle = .flipHorizontal
+        self.present(profileVC, animated: true, completion: nil)
     }
     
     internal func showScanner(forTicketIndex ticketIndex: Int) {

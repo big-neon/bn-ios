@@ -1,4 +1,5 @@
 
+
 import Foundation
 import UIKit
 import Big_Neon_Core
@@ -157,7 +158,7 @@ final public class TicketTypeCell: UITableViewCell {
         self.ticketTypeLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -120).isActive = true
         self.ticketTypeLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
         self.ticketTypeLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-
+        
         self.ticketTypeDescriptionLabel.topAnchor.constraint(equalTo: ticketTypeLabel.bottomAnchor, constant: 10).isActive = true
         self.ticketTypeDescriptionLabel.leftAnchor.constraint(equalTo: priceLabel.rightAnchor, constant: 4).isActive = true
         self.ticketTypeDescriptionLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true

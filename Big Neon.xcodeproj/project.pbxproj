@@ -134,6 +134,7 @@
 		C6EC20A122007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC20A022007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift */; };
 		C6EC4B2C2227BBAD0056CE73 /* GuestsView.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC4B2B2227BBAD0056CE73 /* GuestsView.TableView.swift */; };
 		C6EC4B2E2227C1150056CE73 /* GuestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC4B2D2227C1150056CE73 /* GuestTableViewCell.swift */; };
+		C6FE8E05224FF80200EF44DC /* TicketTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853BE22140548005D6250 /* TicketTypeCell.swift */; };
 		EB97F63084A23DBD8F7AB6F2 /* Pods_Big_Neon_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43DCE0B89B35D38187486C08 /* Pods_Big_Neon_Core.framework */; };
 /* End PBXBuildFile section */
 
@@ -1368,6 +1369,7 @@
 				C628B15221F9C89200FCBDC9 /* DatabaseService.Token.swift in Sources */,
 				C6B88D8121F1C93A006394F8 /* LocalizedTimes.swift in Sources */,
 				C6B88D8E21F1C94E006394F8 /* TicketType.swift in Sources */,
+				C6FE8E05224FF80200EF44DC /* TicketTypeCell.swift in Sources */,
 				C6B88D8B21F1C94E006394F8 /* EventDetail.swift in Sources */,
 				C6B88D8321F1C93A006394F8 /* Event.swift in Sources */,
 				C6B88D7021F1C88A006394F8 /* DatabaseService.Events.swift in Sources */,
