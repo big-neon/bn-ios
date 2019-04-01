@@ -6,9 +6,13 @@ import Foundation
 
 final public class DateConfig {
     
-    public class func dateFromString(stringDate: String) -> Date? {
+    public class func dateFromString(stringDate: String, timeZone: String?) -> Date? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'PST'"
+        if timeZone != nil {
+            dateFormatter.timeZone = TimeZone(identifier: timeZone!);
+        }
+
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         return dateFormatter.date(from: stringDate)
     }
     

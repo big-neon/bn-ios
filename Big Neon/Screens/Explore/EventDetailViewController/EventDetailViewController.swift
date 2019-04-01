@@ -91,27 +91,17 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
         eventHeaderView.eventNameLabel.text = event.name
         let eventImageURL: URL = URL(string: event.promoImageURL!)!
         eventHeaderView.eventImageView.pin_setImage(from: eventImageURL, placeholderImage: nil)
-        
-        if event.venue!.timezone != nil {
-            let eventStart = event.eventStart
-            guard let eventDate = DateConfig.dateFromString(stringDate: eventStart!) else {
-                eventHeaderView.eventDateView.monthLabel.text = "-"
-                eventHeaderView.eventDateView.dateLabel.text = "-"
-                return
-            }
-            eventHeaderView.eventDateView.monthLabel.text = DateConfig.eventDateMonth(date: eventDate)
-            eventHeaderView.eventDateView.dateLabel.text = DateConfig.eventDateValue(date: eventDate)
-        } else {
-            let eventStart = event.eventStart
-            guard let eventDate = DateConfig.dateFromUTCString(stringDate: eventStart!) else {
-                eventHeaderView.eventDateView.monthLabel.text = "-"
-                eventHeaderView.eventDateView.dateLabel.text = "-"
-                return
-            }
-            eventHeaderView.eventDateView.monthLabel.text = DateConfig.eventDateMonth(date: eventDate)
-            eventHeaderView.eventDateView.dateLabel.text = DateConfig.eventDateValue(date: eventDate)
+
+
+        let eventStart = event.eventStart
+        guard let eventDate = DateConfig.dateFromString(stringDate: eventStart!, timeZone: event.venue!.timezone ) else {
+            eventHeaderView.eventDateView.monthLabel.text = "-"
+            eventHeaderView.eventDateView.dateLabel.text = "-"
+            return
         }
-        
+        eventHeaderView.eventDateView.monthLabel.text = DateConfig.eventDateMonth(date: eventDate)
+        eventHeaderView.eventDateView.dateLabel.text = DateConfig.eventDateValue(date: eventDate)
+
         eventTableView.tableHeaderView = eventHeaderView
     }
 
