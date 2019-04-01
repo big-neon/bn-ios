@@ -16,10 +16,13 @@ extension DoorPersonViewController {
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String) {
-//        self.passengersViewModel.filteredPassengers = self.passengersViewModel.passengers.filter({( passenger : Passenger) -> Bool in
-//            return passenger.fullname.lowercased().contains(searchText.lowercased())
-//        })
-//        self.passengersTableView.reloadData()
+        //  TO BE ADDED LATER
+        /*
+        self.passengersViewModel.filteredPassengers = self.passengersViewModel.passengers.filter({( passenger : Passenger) -> Bool in
+            return passenger.fullname.lowercased().contains(searchText.lowercased())
+        })
+        self.passengersTableView.reloadData()
+        */
     }
     
     internal func isFiltering() -> Bool {

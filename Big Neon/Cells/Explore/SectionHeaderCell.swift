@@ -8,9 +8,9 @@ public class SectionHeaderCell: UICollectionViewCell {
     
     public let sectionHeaderLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.brandMediumGrey
+        label.textColor = UIColor.brandGrey
         label.text = "Hot This Week"
-        label.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.bold)
+        label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -23,10 +23,11 @@ public class SectionHeaderCell: UICollectionViewCell {
     
     private func configureView() {
         self.addSubview(sectionHeaderLabel)
-        sectionHeaderLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-        sectionHeaderLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        sectionHeaderLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        sectionHeaderLabel.heightAnchor.constraint(equalToConstant: 24.0).isActive = true
+
+        sectionHeaderLabel.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        sectionHeaderLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        sectionHeaderLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        sectionHeaderLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
     
     required public init?(coder aDecoder: NSCoder) {

@@ -2,6 +2,7 @@
 
 import Foundation
 import UIKit
+import Big_Neon_UI
 
 public protocol TicketQRCodeDelegate {
     func handleDismissQRCodeView()

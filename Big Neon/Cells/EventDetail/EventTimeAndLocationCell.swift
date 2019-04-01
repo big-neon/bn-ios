@@ -19,21 +19,12 @@ final public class EventTimeAndLocationCell: UITableViewCell {
 
 
             //Event Date
-            if eventDetail.venue.timezone != nil {
-                let eventStart = eventDetail.eventStart
-                guard let eventDate = DateConfig.dateFromString(stringDate: eventStart) else {
-                    self.dateLabel.text = "-"
-                    return
-                }
-                self.dateLabel.text = DateConfig.eventFullDate(date: eventDate)
-            } else {
-                let eventStart = eventDetail.eventStart
-                guard let eventDate = DateConfig.dateFromUTCString(stringDate: eventStart) else {
-                    self.dateLabel.text = "-"
-                    return
-                }
-                self.dateLabel.text = DateConfig.localFullDate(date: eventDate)
+            let eventStart = eventDetail.eventStart
+            guard let eventDate = DateConfig.dateFromString(stringDate: eventStart, timeZone: eventDetail.venue.timezone ) else {
+                self.dateLabel.text = "-"
+                return
             }
+            self.dateLabel.text = DateConfig.eventFullDate(date: eventDate)
 
             //  Doors Label
             // Doors 7:00 PM PDT  -  Show 8:00 PM PDT"

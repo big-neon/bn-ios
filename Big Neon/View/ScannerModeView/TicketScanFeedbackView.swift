@@ -3,6 +3,7 @@
 import UIKit
 import PWSwitch
 import Big_Neon_Core
+import Big_Neon_UI
 
 public class TicketScanFeedbackView: UIView {
     

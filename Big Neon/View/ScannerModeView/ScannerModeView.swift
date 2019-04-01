@@ -1,6 +1,7 @@
 
 import UIKit
 import PWSwitch
+import Big_Neon_UI
 
 public protocol ScannerModeViewDelegate {
     func scannerSetAutomatic()

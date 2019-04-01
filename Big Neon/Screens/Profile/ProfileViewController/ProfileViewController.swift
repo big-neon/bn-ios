@@ -54,6 +54,7 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
         tableView.delegate = self
         tableView.dataSource = self
         tableView.contentInsetAdjustmentBehavior = .never
+        tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
         tableView.separatorColor = UIColor.brandGrey.withAlphaComponent(0.3)
         tableView.showsVerticalScrollIndicator = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -63,10 +64,16 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        self.configureNavBar()
         self.configureLoadingView()
         self.fetchUser()
         self.configureObservers()
+        self.navigationClearBar()
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        self.navigationClearBar()
     }
 
     @objc private func fetchUser() {
@@ -96,18 +103,6 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
                 self.profileTableView.reloadData()
             }
         }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-
-    private func configureNavBar() {
-        self.navigationClearBar()
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        self.navigationController?.navigationBar.tintColor = UIColor.brandPrimary
-        self.navigationController?.navigationBar.barTintColor = UIColor.white
     }
     
     override func viewDidLayoutSubviews() {
