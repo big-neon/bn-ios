@@ -40,6 +40,12 @@ final public class DateConfig {
         return dateFormatter.string(from: date)
     }
     
+    public class func stringDateFromUTCDate(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        return dateFormatter.string(from: date)
+    }
+    
     public class func dateFromUTCString(stringDate: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"

@@ -95,9 +95,9 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate {
         allguestsLabel.widthAnchor.constraint(equalToConstant: 150).isActive = true
         
         showGuestButton.centerYAnchor.constraint(equalTo: allguestsLabel.centerYAnchor).isActive = true
-        showGuestButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        showGuestButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        showGuestButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        showGuestButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -26).isActive = true
+        showGuestButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        showGuestButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
         
         guestTableView.topAnchor.constraint(equalTo: allguestsLabel.bottomAnchor, constant: 24).isActive = true
         guestTableView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true

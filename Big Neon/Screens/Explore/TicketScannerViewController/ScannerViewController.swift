@@ -43,6 +43,7 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
             if isShowingGuests == true {
                 UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
                     self.cameraTintView.layer.opacity = 0.85
+                    self.scannerModeView.layer.opacity = 0.0
                     self.guestListTopAnchor?.constant = UIScreen.main.bounds.height - 560.0
                     self.view.layoutIfNeeded()
                 }) { (complete) in
@@ -53,6 +54,7 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
             
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
                 self.cameraTintView.layer.opacity = 0.0
+                self.scannerModeView.layer.opacity = 1.0
                 self.guestListTopAnchor?.constant = UIScreen.main.bounds.height - 80.0
                 self.view.layoutIfNeeded()
             }) { (complete) in
