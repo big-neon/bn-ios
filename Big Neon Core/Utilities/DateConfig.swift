@@ -7,13 +7,48 @@ import Foundation
 final public class DateConfig {
     
     public class func dateFromString(stringDate: String, timeZone: String?) -> Date? {
-        let dateFormatter = DateFormatter()
+        //Take in UTC date from the server
+        let dateFormatter = DateFormatter();
+
+        //Create a dateFormatter that is parsing the UTC time from the server
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC");
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+
+
+        let utcDt = dateFormatter.date(from: stringDate);
+
+        var tz = TimeZone.current;
+        //Use the vnue timezone otherwise the phones timezone
         if timeZone != nil {
-            dateFormatter.timeZone = TimeZone(identifier: timeZone!);
+            tz = TimeZone(identifier: timeZone!)!;
         }
 
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        return dateFormatter.date(from: stringDate)
+        dateFormatter.timeZone = tz;
+        return  dateFormatter.date(from: dateFormatter.string(from: utcDt!));
+
+
+//
+//
+//        //Apply the venues timezone
+//
+//
+//        //Return "Localized time"
+//
+//
+//
+//
+//        let dateFormatter = DateFormatter()
+//        let utcDate = DateFormatter.date(from: stringDate);
+//        utcDate.timeZone = TimeZone(abbreviation: "UTC")
+//
+//        if timeZone != nil {
+//            dateFormatter.timeZone = TimeZone(identifier: timeZone!);
+//        } else {
+//
+//        }
+//
+//
+//        return dateFormatter.date(from: utcDate!)
     }
     
     public class func eventDate(date: Date) -> String {
