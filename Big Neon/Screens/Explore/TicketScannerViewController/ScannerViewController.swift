@@ -170,6 +170,7 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         captureSession.startRunning()
         self.configureBlur()
         self.configureScannedUserView()
+        self.configureGuestList()
     }
 
     private func configureManualCheckinView() {
@@ -197,6 +198,15 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         self.scannedUserBottomAnchor = scannedUserView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 150.0)
         self.scannedUserBottomAnchor?.isActive = true
         scannedUserView.heightAnchor.constraint(equalToConstant: 64.0).isActive = true
+    }
+    
+    private func configureGuestList() {
+        self.view.addSubview(guestListView)
+        guestListView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        guestListView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        self.guestListTopAnchor = guestListView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UIScreen.main.bounds.height - 64.0 )
+        self.guestListTopAnchor?.isActive = true
+        guestListView.heightAnchor.constraint(equalToConstant: 560.0).isActive = true
     }
 }
 

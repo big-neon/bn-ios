@@ -55,6 +55,7 @@ public class DoorPersonCell: UICollectionViewCell {
     public let eventDateLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandMediumGrey
+        label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -106,9 +107,9 @@ public class DoorPersonCell: UICollectionViewCell {
         disclosureIndicatorView.widthAnchor.constraint(equalToConstant: 8.0).isActive = true
         
         eventDateLabel.leftAnchor.constraint(equalTo: eventNameLabel.leftAnchor).isActive = true
-        eventDateLabel.rightAnchor.constraint(equalTo: eventNameLabel.rightAnchor).isActive = true
+        eventDateLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
         eventDateLabel.topAnchor.constraint(equalTo: eventDetailsLabel.bottomAnchor, constant: 6).isActive = true
-        eventDateLabel.heightAnchor.constraint(equalToConstant: 16.0).isActive = true
+        eventDateLabel.heightAnchor.constraint(equalToConstant: 52.0).isActive = true
     }
     
     required public init?(coder aDecoder: NSCoder) {
