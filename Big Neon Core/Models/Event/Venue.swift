@@ -14,7 +14,7 @@ public struct Venue: Codable {
     public let createdAt, updatedAt: String
     public let googlePlaceID: String?
     public let latitude, longitude: Double?
-    public let timezone: String?
+    public let timezone: String
     
     enum CodingKeys: String, CodingKey {
         case id
