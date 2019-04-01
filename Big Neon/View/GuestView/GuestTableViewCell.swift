@@ -19,7 +19,16 @@ final public class GuestTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "General Admission"
         label.textColor = UIColor.brandGrey
-        label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
+        label.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    public let ticketDetailsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "List: Priority   |   Free   |   Transfer: John Collins"
+        label.textColor = UIColor.brandGrey
+        label.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -33,6 +42,7 @@ final public class GuestTableViewCell: UITableViewCell {
     private func configureView() {
         self.addSubview(guestNameLabel)
         self.addSubview(ticketTypeNameLabel)
+        self.addSubview(ticketDetailsLabel)
     
         self.guestNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
         self.guestNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 12).isActive = true
@@ -42,7 +52,12 @@ final public class GuestTableViewCell: UITableViewCell {
         self.ticketTypeNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
         self.ticketTypeNameLabel.topAnchor.constraint(equalTo: guestNameLabel.bottomAnchor, constant: 12).isActive = true
         self.ticketTypeNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -30).isActive = true
-        self.ticketTypeNameLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+        self.ticketTypeNameLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        
+        self.ticketDetailsLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
+        self.ticketDetailsLabel.topAnchor.constraint(equalTo: ticketTypeNameLabel.bottomAnchor, constant: 10).isActive = true
+        self.ticketDetailsLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -30).isActive = true
+        self.ticketDetailsLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
     }
     
     required public init?(coder aDecoder: NSCoder) {
