@@ -56,16 +56,12 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureNavBar()
         self.view.backgroundColor = UIColor.white
         self.configureSearch()
         self.fetchCheckins()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        self.configureNavBar()
-    }
-
     private func fetchCheckins() {
         self.loadingView.startAnimating()
         self.doorPersonViemodel.configureAccessToken { (completed) in
@@ -98,19 +94,17 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     }
     
     private func configureSearch() {
-//        self.navigationItem.searchController = searchController   //  Search Controller - TO BE ADDED LATER
+//        self.navigationItem.searchController = searchController   //  TO BE ADDED LATER
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationNoLineBar()
     }
 
     private func configureNavBar() {
         self.navigationNoLineBar()
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.largeTitleTextAttributes =
-            [NSAttributedString.Key.foregroundColor: UIColor.brandBlack,
-             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 32, weight: UIFont.Weight.heavy)]
         self.navigationItem.title = "My Events"
-        self.navigationItem.largeTitleDisplayMode = .automatic
-        
-        //  Profile Picture
         userProfileImageView.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
         userProfileImageView.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: userProfileImageView)
