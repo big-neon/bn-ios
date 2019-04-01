@@ -60,10 +60,10 @@ extension DoorPersonViewController {
     private func configureEventDate(event: Event) -> String {
         if event.venue!.timezone != nil {
             let eventStart = event.eventStart
-            guard let eventDate = DateConfig.dateFormatShort(stringDate: eventStart!) else {
+            guard let eventDate = DateConfig.dateFromString(stringDate: eventStart!) else {
                 return "-"
             }
-            return DateConfig.dateFormatOne(date: eventDate)
+            return DateConfig.dateFormatShort(date: eventDate)
         } else {
             let eventStart = event.eventStart
             guard let eventDate = DateConfig.dateFromUTCString(stringDate: eventStart!) else {

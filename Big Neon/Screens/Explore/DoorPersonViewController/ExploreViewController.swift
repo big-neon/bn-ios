@@ -146,9 +146,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     }
     
     @objc private func handleShowProfile() {
-        let profileVC = UINavigationController(rootViewController: ProfileViewController())
-        profileVC.modalTransitionStyle = .flipHorizontal
-        self.present(profileVC, animated: true, completion: nil)
+        self.navigationController?.push(ProfileViewController())
     }
     
     internal func showScanner(forTicketIndex ticketIndex: Int) {

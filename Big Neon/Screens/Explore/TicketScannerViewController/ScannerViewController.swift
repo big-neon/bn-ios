@@ -105,14 +105,14 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     internal lazy var cameraTintView: UIView = {
         let view =  UIView()
         view.backgroundColor = UIColor.black
         view.layer.opacity = 0.0
         return view
     }()
-    
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
@@ -126,13 +126,13 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         self.configureManualCheckinView()
         self.configureScanFeedbackView()
     }
-    
+
     private func configureViewModel() {
         self.scannerViewModel = TicketScannerViewModel()
         self.scannerViewModel?.scanVC = self
         self.scannerModeView.setAutoMode = self.scannerViewModel!.scannerMode()
     }
-    
+
     private func configureNavBar() {
         self.navigationClearBar()
         self.navigationController?.navigationBar.tintColor = UIColor.white
@@ -143,13 +143,13 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         scannerModeView.heightAnchor.constraint(equalToConstant: 48.0).isActive = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: scannerModeView)
     }
-    
+
     private func configureScanner() {
         
         guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else {
             return
         }
-        
+
         do {
             let input = try AVCaptureDeviceInput(device: videoCaptureDevice)
             captureSession.addInput(input)
@@ -161,7 +161,7 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
             print(error)
             return
         }
-        
+
         // Video preview Layer Init
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
@@ -171,7 +171,7 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         self.configureBlur()
         self.configureScannedUserView()
     }
-    
+
     private func configureManualCheckinView() {
         self.view.addSubview(manualUserCheckinView)
         

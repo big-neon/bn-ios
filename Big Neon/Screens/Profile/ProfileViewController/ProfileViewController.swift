@@ -100,13 +100,13 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
     private func configureNavBar() {
         self.navigationClearBar()
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        self.navigationController?.navigationBar.tintColor = UIColor.brandPrimary
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.barTintColor = UIColor.white
     }
     
