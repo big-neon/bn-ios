@@ -6,14 +6,14 @@ import Foundation
 
 final public class DateConfig {
     
-    public class func dateFromString(stringDate: String, timeZone: String?) -> Date? {
+    public class func formatServerDate(date: String, timeZone: String) -> Date? {
         let dateFormatter = DateFormatter()
-        if timeZone != nil {
-            dateFormatter.timeZone = TimeZone(identifier: timeZone!);
-        }
-
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        return dateFormatter.date(from: stringDate)
+        let utcDate = dateFormatter.date(from: date)
+        let tz = TimeZone(identifier: timeZone)!
+        dateFormatter.timeZone = tz
+        return  dateFormatter.date(from: dateFormatter.string(from: utcDate!))
     }
     
     public class func eventDate(date: Date) -> String {
@@ -37,12 +37,6 @@ final public class DateConfig {
     public class func eventDateValue(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd"
-        return dateFormatter.string(from: date)
-    }
-    
-    public class func stringDateFromUTCDate(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         return dateFormatter.string(from: date)
     }
     

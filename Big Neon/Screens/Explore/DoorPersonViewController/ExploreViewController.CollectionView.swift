@@ -59,10 +59,10 @@ extension DoorPersonViewController {
     private func configureEventDate(event: Event) -> String {
         let utcEventStart = event.eventStart
         let timezone = event.venue!.timezone;
-        guard let eventDate = DateConfig.dateFromString(stringDate: utcEventStart!, timeZone: timezone) else {
+        guard let eventDate = DateConfig.formatServerDate(date: utcEventStart!, timeZone: timezone) else {
             return "-"
         }
-        return utcEventStart! + "\n" + timezone! + "\n" + DateConfig.stringDateFromUTCDate(date: eventDate)
+        return DateConfig.dateFormatShort(date: eventDate)
     }
 
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -70,7 +70,7 @@ extension DoorPersonViewController {
         case 0:
             return CGSize(width: UIScreen.main.bounds.width - 40, height: 60)
         default:
-            return CGSize(width: UIScreen.main.bounds.width - 40, height: 130)
+            return CGSize(width: UIScreen.main.bounds.width - 40, height: 100)
         }
 
     }
