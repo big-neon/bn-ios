@@ -101,4 +101,40 @@ extension DatabaseService {
                 }
         }
     }
+    
+    public func fetchGuests(forEventID eventID: String, completion: @escaping (Error?, Guests?) -> Void) {
+        
+        let apiURL = APIService.fetchEvents(eventID: eventID)
+        let accessToken = self.fetchAcessToken()
+    
+        AF.request(apiURL,
+                   method: HTTPMethod.get,
+                   parameters: nil,
+                   encoding: JSONEncoding.default,
+                   headers: [APIParameterKeys.authorization :"Bearer \(accessToken!)"])
+            .validate(statusCode: 200..<300)
+            .response { (response) in
+                
+                guard response.result.isSuccess else {
+                    completion(response.result.error, nil)
+                    return
+                }
+                
+                guard let data = response.result.value else {
+                    completion(nil, nil)
+                    return
+                }
+                
+                do {
+                    let decoder = JSONDecoder()
+                    let ticket = try decoder.decode(Guests.self, from: data!)
+                    completion(nil, ticket)
+                    return
+                } catch let error as NSError {
+                    print(error)
+                    completion(error, nil)
+                }
+        }
+    }
 }
+

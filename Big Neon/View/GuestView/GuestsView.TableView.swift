@@ -10,7 +10,10 @@ extension GuestListView {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 13
+        guard let guests =  self.guests?.data else {
+            return 0
+        }
+        return guests.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -203,12 +203,21 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
     }
     
     private func configureGuestList() {
+        
         self.view.addSubview(guestListView)
         guestListView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         guestListView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         self.guestListTopAnchor = guestListView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UIScreen.main.bounds.height - 64.0 )
         self.guestListTopAnchor?.isActive = true
         guestListView.heightAnchor.constraint(equalToConstant: 560.0).isActive = true
+        
+        guard let eventID = self.event?.id else {
+            return
+        }
+        self.scannerViewModel?.fetchGuests(forEventID: eventID, completion: { (completed) in
+            self.guestListView.guests = self.scannerViewModel?.guests
+        })
+        
     }
 }
 

@@ -8,6 +8,7 @@ final class TicketScannerViewModel {
     
     internal var redeemedTicket: RedeemableTicket?
     internal var scanVC: ScannerViewController?
+    internal var guests: Guests?
 
     internal func setCheckingModeAutomatic() {
         UserDefaults.standard.set(true, forKey: Constants.CheckingMode.scannerCheckinKey)
@@ -141,6 +142,25 @@ final class TicketScannerViewModel {
                     return
                 }
             }
+        }
+    }
+    
+    internal func fetchGuests(forEventID eventID: String, completion: @escaping(Bool) -> Void) {
+
+        BusinessService.shared.database.fetchGuests(forEventID: eventID) { (error, guestsFetched) in
+            if error != nil {
+                completion(false)
+                return
+            }
+            
+            guard let guests = guestsFetched else {
+                completion(false)
+                return
+            }
+            
+            self.guests = guests
+            completion(true)
+            return
         }
     }
     

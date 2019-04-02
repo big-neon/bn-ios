@@ -12,9 +12,9 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate {
     
     public var delegate: GuestListViewProtocol?
     
-    public var guests: [User]? {
+    public var guests: Guests? {
         didSet {
-            guard let guests = self.guests else {
+            if self.guests == nil  {
                 return
             }
             
