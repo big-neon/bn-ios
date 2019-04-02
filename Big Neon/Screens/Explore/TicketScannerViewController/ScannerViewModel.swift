@@ -148,19 +148,21 @@ final class TicketScannerViewModel {
     internal func fetchGuests(forEventID eventID: String, completion: @escaping(Bool) -> Void) {
 
         BusinessService.shared.database.fetchGuests(forEventID: eventID) { (error, guestsFetched) in
-            if error != nil {
-                completion(false)
+            DispatchQueue.main.async {
+                if error != nil {
+                    completion(false)
+                    return
+                }
+                
+                guard let guests = guestsFetched else {
+                    completion(false)
+                    return
+                }
+                
+                self.guests = guests
+                completion(true)
                 return
             }
-            
-            guard let guests = guestsFetched else {
-                completion(false)
-                return
-            }
-            
-            self.guests = guests
-            completion(true)
-            return
         }
     }
     

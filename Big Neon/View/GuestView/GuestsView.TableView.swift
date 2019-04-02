@@ -18,6 +18,11 @@ extension GuestListView {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let guestCell: GuestTableViewCell = tableView.dequeueReusableCell(withIdentifier: GuestTableViewCell.cellID, for: indexPath) as! GuestTableViewCell
+        guard let name = self.guests?.data[indexPath.row].firstName, let surname = self.guests?.data[indexPath.row].lastName else {
+            return guestCell
+        }
+        guestCell.guestNameLabel.text = name + " " + surname
+        guestCell.ticketTypeNameLabel.text = self.guests?.data[indexPath.row].ticketType
         return guestCell
     }
     

@@ -8,7 +8,6 @@ final public class GuestTableViewCell: UITableViewCell {
     
     public let guestNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Guest"
         label.textColor = UIColor.brandBlack
         label.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.bold)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -17,7 +16,6 @@ final public class GuestTableViewCell: UITableViewCell {
     
     public let ticketTypeNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "General Admission"
         label.textColor = UIColor.brandGrey
         label.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium)
         label.translatesAutoresizingMaskIntoConstraints = false

@@ -215,7 +215,9 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
             return
         }
         self.scannerViewModel?.fetchGuests(forEventID: eventID, completion: { (completed) in
-            self.guestListView.guests = self.scannerViewModel?.guests
+            DispatchQueue.main.async {
+                self.guestListView.guests = self.scannerViewModel?.guests
+            }
         })
         
     }

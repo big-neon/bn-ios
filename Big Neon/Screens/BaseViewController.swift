@@ -22,6 +22,7 @@ class BaseViewController: UIViewController  {
         loadingView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         loadingView.widthAnchor.constraint(equalToConstant: 30).isActive = true
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadingAnimation()
