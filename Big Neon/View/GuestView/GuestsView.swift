@@ -36,10 +36,6 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate {
             self.guestSectionTitles = [String](guestsDictionary.keys)
             self.guestSectionTitles = guestSectionTitles.sorted(by: { $0 < $1 })
             self.guestTableView.reloadData()
-            
-            
-            
-            
         }
     }
     
