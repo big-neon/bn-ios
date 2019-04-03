@@ -29,6 +29,13 @@ public class APIService {
     }
     
     /**
+     URL: /events/{event_id}/guests
+     */
+    class func fetchEvents(eventID: String) -> String {
+        return self.baseURL() + "/events/\(eventID)/guests"
+    }
+    
+    /**
      URL: "/tickets/{ticketID}/redeem
      */
     class func getRedeemableTicket(ticketID: String) -> String {

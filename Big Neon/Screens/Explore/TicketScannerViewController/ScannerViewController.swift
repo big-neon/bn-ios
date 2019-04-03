@@ -43,6 +43,7 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
             if isShowingGuests == true {
                 UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
                     self.cameraTintView.layer.opacity = 0.85
+                    self.scannerModeView.layer.opacity = 0.0
                     self.guestListTopAnchor?.constant = UIScreen.main.bounds.height - 560.0
                     self.view.layoutIfNeeded()
                 }) { (complete) in
@@ -53,6 +54,7 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
             
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
                 self.cameraTintView.layer.opacity = 0.0
+                self.scannerModeView.layer.opacity = 1.0
                 self.guestListTopAnchor?.constant = UIScreen.main.bounds.height - 80.0
                 self.view.layoutIfNeeded()
             }) { (complete) in
@@ -170,6 +172,7 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         captureSession.startRunning()
         self.configureBlur()
         self.configureScannedUserView()
+        self.configureGuestList()
     }
 
     private func configureManualCheckinView() {
@@ -197,6 +200,26 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         self.scannedUserBottomAnchor = scannedUserView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 150.0)
         self.scannedUserBottomAnchor?.isActive = true
         scannedUserView.heightAnchor.constraint(equalToConstant: 64.0).isActive = true
+    }
+    
+    private func configureGuestList() {
+        
+        self.view.addSubview(guestListView)
+        guestListView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        guestListView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        self.guestListTopAnchor = guestListView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UIScreen.main.bounds.height - 64.0 )
+        self.guestListTopAnchor?.isActive = true
+        guestListView.heightAnchor.constraint(equalToConstant: 560.0).isActive = true
+        
+        guard let eventID = self.event?.id else {
+            return
+        }
+        self.scannerViewModel?.fetchGuests(forEventID: eventID, completion: { (completed) in
+            DispatchQueue.main.async {
+                self.guestListView.guests = self.scannerViewModel?.guests
+            }
+        })
+        
     }
 }
 

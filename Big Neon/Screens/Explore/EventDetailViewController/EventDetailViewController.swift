@@ -94,7 +94,7 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
 
 
         let eventStart = event.eventStart
-        guard let eventDate = DateConfig.dateFromString(stringDate: eventStart!, timeZone: event.venue!.timezone ) else {
+        guard let eventDate = DateConfig.formatServerDate(date: eventStart!, timeZone: event.venue!.timezone) else {
             eventHeaderView.eventDateView.monthLabel.text = "-"
             eventHeaderView.eventDateView.dateLabel.text = "-"
             return

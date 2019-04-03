@@ -20,7 +20,7 @@ final public class EventTimeAndLocationCell: UITableViewCell {
 
             //Event Date
             let eventStart = eventDetail.eventStart
-            guard let eventDate = DateConfig.dateFromString(stringDate: eventStart, timeZone: eventDetail.venue.timezone ) else {
+            guard let eventDate = DateConfig.formatServerDate(date: eventStart, timeZone: eventDetail.venue.timezone ) else {
                 self.dateLabel.text = "-"
                 return
             }

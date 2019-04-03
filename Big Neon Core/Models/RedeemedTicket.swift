@@ -5,11 +5,13 @@ public struct RedeemableTicket: Codable {
     public let id, ticketType, userID, orderID: String
     public let orderItemID: String
     public let priceInCents: Int
-    public let firstName, lastName, email, phone: String
+    public let firstName, lastName, email: String
+    public let phone: String?
     public let redeemKey: String
     public let redeemDate: String?
     public let status, eventID, eventName, doorTime: String
     public let eventStart, venueID, venueName: String
+    public let refundSupported: Bool?
     
     public enum CodingKeys: String, CodingKey {
         case id
@@ -31,5 +33,7 @@ public struct RedeemableTicket: Codable {
         case eventStart     = "event_start"
         case venueID        = "venue_id"
         case venueName      = "venue_name"
+        case refundSupported = "refund_supported"
     }
 }
+

@@ -12,12 +12,13 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate {
     
     public var delegate: GuestListViewProtocol?
     
-    public var guests: [User]? {
+    public var guests: Guests? {
         didSet {
-            guard let guests = self.guests else {
+            if self.guests == nil  {
                 return
             }
             
+            self.configureView()
             self.guestTableView.reloadData()
             
         }
@@ -71,6 +72,22 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate {
         return tableView
     }()
     
+    internal let loadingView: UIActivityIndicatorView = {
+        let loader = UIActivityIndicatorView()
+        loader.style = UIActivityIndicatorView.Style.gray
+        loader.hidesWhenStopped = true
+        loader.translatesAutoresizingMaskIntoConstraints = false
+        return loader
+    }()
+    
+    private func loadingAnimation() {
+        self.addSubview(loadingView)
+        loadingView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        loadingView.topAnchor.constraint(equalTo: self.topAnchor, constant: 24).isActive = true
+        loadingView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        loadingView.widthAnchor.constraint(equalToConstant: 30).isActive = true
+    }
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white
@@ -79,27 +96,28 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate {
         self.layer.shadowOffset = CGSize(width: 0.0, height: -4.0)
         self.layer.shadowRadius = 16.0
         self.layer.shadowOpacity = 0.32
-        self.configureView()
+        self.loadingAnimation()
     }
     
     private func configureView() {
+        self.loadingView.stopAnimating()
         self.addSubview(allguestsLabel)
         self.addSubview(showGuestButton)
         self.addSubview(guestTableView)
-        
+
         self.guestTableView.register(GuestTableViewCell.self, forCellReuseIdentifier: GuestTableViewCell.cellID)
-        
-        allguestsLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 28).isActive = true
+
+        allguestsLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 25).isActive = true
         allguestsLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
         allguestsLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         allguestsLabel.widthAnchor.constraint(equalToConstant: 150).isActive = true
         
         showGuestButton.centerYAnchor.constraint(equalTo: allguestsLabel.centerYAnchor).isActive = true
-        showGuestButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        showGuestButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        showGuestButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        showGuestButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -32).isActive = true
+        showGuestButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        showGuestButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
         
-        guestTableView.topAnchor.constraint(equalTo: allguestsLabel.bottomAnchor, constant: 24).isActive = true
+        guestTableView.topAnchor.constraint(equalTo: allguestsLabel.bottomAnchor, constant: 20).isActive = true
         guestTableView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         guestTableView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         guestTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true

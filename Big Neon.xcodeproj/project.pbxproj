@@ -128,6 +128,7 @@
 		C6CEC8A9221ADBCE00F7329D /* TicketTypeStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CEC8A8221ADBCE00F7329D /* TicketTypeStatus.swift */; };
 		C6D2413421EF53B000FC3E41 /* NamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2413321EF53B000FC3E41 /* NamesViewController.swift */; };
 		C6D37B3521F1CD8200C616D0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D37B3421F1CD8200C616D0 /* API.swift */; };
+		C6DE2F7A225360BA00ECF7D7 /* EventGuests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DE2F79225360BA00ECF7D7 /* EventGuests.swift */; };
 		C6E648532240D088000F2DFB /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E648522240D088000F2DFB /* ScannerViewController.swift */; };
 		C6E6485622423C11000F2DFB /* Big Neon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C6E6485422423C11000F2DFB /* Big Neon.xcdatamodeld */; };
 		C6EC209A220063DE00BD10DD /* ProfileImageUploadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC2099220063DE00BD10DD /* ProfileImageUploadCell.swift */; };
@@ -326,6 +327,7 @@
 		C6CEC8A8221ADBCE00F7329D /* TicketTypeStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTypeStatus.swift; sourceTree = "<group>"; };
 		C6D2413321EF53B000FC3E41 /* NamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesViewController.swift; sourceTree = "<group>"; };
 		C6D37B3421F1CD8200C616D0 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		C6DE2F79225360BA00ECF7D7 /* EventGuests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventGuests.swift; sourceTree = "<group>"; };
 		C6E648522240D088000F2DFB /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		C6E6485522423C11000F2DFB /* Big Neon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Big Neon.xcdatamodel"; sourceTree = "<group>"; };
 		C6EC2099220063DE00BD10DD /* ProfileImageUploadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageUploadCell.swift; sourceTree = "<group>"; };
@@ -833,6 +835,7 @@
 				C6B88D7721F1C924006394F8 /* EventDetail */,
 				C6B88D7421F1C8D3006394F8 /* User */,
 				C6B88D7321F1C8BE006394F8 /* Token */,
+				C6DE2F79225360BA00ECF7D7 /* EventGuests.swift */,
 				C63D86C12231414D003CFAA7 /* RedeemedTicket.swift */,
 				C63D86C522325C8B003CFAA7 /* RedeemKey.swift */,
 				C698F6022238F76400977259 /* ScanFeedback.swift */,
@@ -1408,6 +1411,7 @@
 				C6B88D7F21F1C93A006394F8 /* Paging.swift in Sources */,
 				C6B88D8A21F1C94E006394F8 /* PerformingArtist.swift in Sources */,
 				C63D86C02231282F003CFAA7 /* DatabaseService.Scan.swift in Sources */,
+				C6DE2F7A225360BA00ECF7D7 /* EventGuests.swift in Sources */,
 				C6B88D7221F1C890006394F8 /* BusinessService.swift in Sources */,
 				C6D37B3521F1CD8200C616D0 /* API.swift in Sources */,
 				C63D86C22231414D003CFAA7 /* RedeemedTicket.swift in Sources */,
