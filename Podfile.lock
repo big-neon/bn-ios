@@ -1,6 +1,9 @@
 PODS:
   - Alamofire (5.0.0.beta.1)
+  - Crashlytics (3.12.0):
+    - Fabric (~> 1.9.0)
   - DTGradientButton (0.1.1)
+  - Fabric (1.9.0)
   - FLAnimatedImage (1.0.12)
   - JWTDecode (2.2.0)
   - Mixpanel (3.3.7)
@@ -40,7 +43,9 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0.beta.1)
+  - Crashlytics
   - DTGradientButton
+  - Fabric
   - JWTDecode (~> 2.2)
   - Mixpanel
   - PhoneNumberKit (~> 2.1)
@@ -58,7 +63,9 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - Crashlytics
     - DTGradientButton
+    - Fabric
     - FLAnimatedImage
     - JWTDecode
     - Mixpanel
@@ -77,7 +84,9 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 2ef6d6c984c5d21c366e9b41a9ae7dfee2b67a44
+  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   DTGradientButton: c5e3c76045af259822d9cf4ebbe9805489f2d5df
+  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   JWTDecode: 85a405ab16d5473e99bd89ded1d535090ebd6a0e
   Mixpanel: 1e94d1d29dfc3d3c66f734d10e29ad86420889fe
@@ -94,6 +103,6 @@ SPEC CHECKSUMS:
   TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
-PODFILE CHECKSUM: cb43ab400a0f34aa487280b5d1155590b8dd44ce
+PODFILE CHECKSUM: 309ecec5fcbc2bd19f2b24fbb2bf9ebcf3f0c3ae
 
 COCOAPODS: 1.5.3

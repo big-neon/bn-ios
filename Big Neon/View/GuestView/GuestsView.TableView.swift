@@ -6,14 +6,34 @@ import UIKit
 extension GuestListView {
     
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return self.guestSectionTitles.count
     }
     
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return guestSectionTitles[section]
+    }
+    
+    public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return guestSectionTitles
+    }
+    
+//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return carSectionTitles[section]
+//    }
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let guests =  self.guests?.data else {
-            return 0
+        
+        let guestKey = guestSectionTitles[section]
+        if let guestValues = guestsDictionary[guestKey] {
+            return guestValues.count
         }
-        return guests.count
+        
+        return 0
+        
+//        guard let guests =  self.guests?.data else {
+//            return 0
+//        }
+//        return guests.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

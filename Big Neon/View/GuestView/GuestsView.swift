@@ -11,6 +11,8 @@ public protocol GuestListViewProtocol {
 public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate {
     
     public var delegate: GuestListViewProtocol?
+    internal var guestsDictionary = [String: [RedeemableTicket]]()
+    internal var guestSectionTitles = [String]()
     
     public var guests: Guests? {
         didSet {
@@ -19,7 +21,24 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate {
             }
             
             self.configureView()
+            
+            //  Configuring Alphabetic List
+            for guest in guests!.data {
+                let guestKey = String(guest.firstName.prefix(1))
+                if var guestValues = guestsDictionary[guestKey] {
+                    guestValues.append(guest)
+                    guestsDictionary[guestKey] = guestValues
+                } else {
+                    guestsDictionary[guestKey] = [guest]
+                }
+            }
+            
+            self.guestSectionTitles = [String](guestsDictionary.keys)
+            self.guestSectionTitles = guestSectionTitles.sorted(by: { $0 < $1 })
             self.guestTableView.reloadData()
+            
+            
+            
             
         }
     }

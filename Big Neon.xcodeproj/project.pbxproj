@@ -1001,6 +1001,7 @@
 				C62BC77E21CCC3F700830A5F /* Resources */,
 				C694D23321D0BBFF00B2AE07 /* Embed Frameworks */,
 				38CC1584353202938BF8C806 /* [CP] Embed Pods Frameworks */,
+				C6DE2F802254D34E00ECF7D7 /* Fabric Script */,
 			);
 			buildRules = (
 			);
@@ -1040,6 +1041,7 @@
 				C6B88CFB21F19FC0006394F8 /* Sources */,
 				C6B88CFC21F19FC0006394F8 /* Frameworks */,
 				C6B88CFD21F19FC0006394F8 /* Resources */,
+				C60602582254D6C600C5C066 /* Fabric Script */,
 			);
 			buildRules = (
 			);
@@ -1078,6 +1080,7 @@
 				C6B88D1D21F19FD4006394F8 /* Sources */,
 				C6B88D1E21F19FD4006394F8 /* Frameworks */,
 				C6B88D1F21F19FD4006394F8 /* Resources */,
+				C60602592254D6D000C5C066 /* Fabric Script */,
 			);
 			buildRules = (
 			);
@@ -1302,6 +1305,60 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		C60602582254D6C600C5C066 /* Fabric Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Fabric Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run aa0b5f33b3ba00e613962388fc955505c3fe52d3 51cf5667ff9acebe5ac2c48a9dc25e7f40b2664198eca7fa1836fa11074469b6\n";
+		};
+		C60602592254D6D000C5C066 /* Fabric Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Fabric Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run aa0b5f33b3ba00e613962388fc955505c3fe52d3 51cf5667ff9acebe5ac2c48a9dc25e7f40b2664198eca7fa1836fa11074469b6\n";
+		};
+		C6DE2F802254D34E00ECF7D7 /* Fabric Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Fabric Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run aa0b5f33b3ba00e613962388fc955505c3fe52d3 51cf5667ff9acebe5ac2c48a9dc25e7f40b2664198eca7fa1836fa11074469b6\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

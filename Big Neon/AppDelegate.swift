@@ -1,6 +1,8 @@
 
 import UIKit
 import CoreData
+import Crashlytics
+import Fabric
 import Big_Neon_Core
 
 @UIApplicationMain
@@ -9,6 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+//        Fabric.with([Crashlytics.self])
         self.window = ApplicationRouter.setupBaseRouting()
         return true
     }
