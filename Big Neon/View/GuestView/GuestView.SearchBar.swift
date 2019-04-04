@@ -2,42 +2,44 @@
 
 import Foundation
 import UIKit
+import Big_Neon_UI
+import Big_Neon_Core
 
 extension GuestListView {
-    
-    public func updateSearchResults(for searchController: UISearchController) {
-        let searchBar = self.searchBar
-        let scope = searchBar.scopeButtonTitles?[searchBar.selectedScopeButtonIndex]
-        filterContentForSearchText(searchController.searchBar.text!, scope: scope ?? "")
-    }
     
     func searchBarIsEmpty() -> Bool {
         return self.searchBar.text?.isEmpty ?? true
     }
     
-    func filterContentForSearchText(_ searchText: String, scope: String) {
-        //  TO BE ADDED LATER
-        /*
-         self.passengersViewModel.filteredPassengers = self.passengersViewModel.passengers.filter({( passenger : Passenger) -> Bool in
-         return passenger.fullname.lowercased().contains(searchText.lowercased())
-         })
-         self.passengersTableView.reloadData()
-         */
+    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            self.guestTableView.reloadData()
+            return
+        }
+        
+        self.filteredSearchResults = (self.guests?.data.filter({( guestTicket : RedeemableTicket) -> Bool in
+            return guestTicket.firstName.lowercased().contains(searchText.lowercased())
+        }))!
+        self.guestTableView.reloadData()
     }
     
     internal func isFiltering() -> Bool {
         return !searchBarIsEmpty()
     }
     
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
-    }
-    
     public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.isSearching = true
         self.searchBar.setShowsCancelButton(true, animated: true)
     }
     
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.isSearching = false
+        self.searchBar.setShowsCancelButton(false, animated: true)
+        self.searchBar.endEditing(true)
+        self.guestTableView.reloadData()
+    }
+    
+    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.endEditing(true)
     }
     

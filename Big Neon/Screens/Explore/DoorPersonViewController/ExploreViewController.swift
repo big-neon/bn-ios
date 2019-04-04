@@ -29,7 +29,6 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     
     internal lazy var searchController: UISearchController = {
         let search = UISearchController(searchResultsController: nil)
-        search.searchResultsUpdater = self
         search.obscuresBackgroundDuringPresentation = false
         search.searchBar.placeholder = "Search artists, shows, venues…"
         search.searchBar.scopeButtonTitles = nil

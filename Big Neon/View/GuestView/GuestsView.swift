@@ -8,11 +8,13 @@ public protocol GuestListViewProtocol {
     func showGuestList()
 }
 
-public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate {
+public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     public var delegate: GuestListViewProtocol?
     internal var guestsDictionary = [String: [RedeemableTicket]]()
     internal var guestSectionTitles = [String]()
+    internal var filteredSearchResults: [RedeemableTicket]?
+    internal var isSearching: Bool = false
     
     public var guests: Guests? {
         didSet {
@@ -62,12 +64,15 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         let searchBar = UISearchBar()
         searchBar.tintColor = UIColor.brandPrimary
         searchBar.backgroundColor = UIColor.brandBackground
-        searchBar.barTintColor = UIColor.brandBackground
+        searchBar.barTintColor = UIColor.white
         searchBar.placeholder = "Search for guests"
         searchBar.backgroundImage = UIImage(named: "search_box_background")
         searchBar.setBackgroundImage(UIImage(named: "search_box"), for: UIBarPosition.bottom, barMetrics: UIBarMetrics.default)
-        searchBar.setSearchFieldBackgroundImage(UIImage(named: "search_box"), for: UIControl.State.normal)
+        searchBar.setSearchFieldBackgroundImage(UIImage(named: "search_box_background"), for: UIControl.State.normal)
         searchBar.barStyle = .default
+        searchBar.insetsLayoutMarginsFromSafeArea = true
+        searchBar.enablesReturnKeyAutomatically = true
+        searchBar.returnKeyType = UIReturnKeyType.done
         searchBar.delegate = self
         return searchBar
     }()
@@ -92,7 +97,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
     }()
     
     internal lazy var guestTableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: UITableView.Style.grouped)
+        let tableView = UITableView(frame: .zero, style: UITableView.Style.plain)
         tableView.backgroundColor = UIColor.white
         tableView.delegate = self
         tableView.dataSource = self
@@ -127,8 +132,22 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         self.layer.shadowRadius = 16.0
         self.layer.shadowOpacity = 0.32
         self.loadingAnimation()
-        searchBar.frame = CGRect(x: 16.0, y: 0.0, width: UIScreen.main.bounds.width - 32, height: 40.0)
+        self.searchBarConfig()
+        searchBar.frame = CGRect(x: 16.0, y: 0.0, width: UIScreen.main.bounds.width - 32, height: 60.0)
         self.guestTableView.tableHeaderView = searchBar
+    }
+    
+    private func searchBarConfig() {
+        if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
+            
+            textfield.backgroundColor = UIColor.red
+            textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+            
+            if let leftView = textfield.leftView as? UIImageView {
+                leftView.image = leftView.image?.withRenderingMode(.alwaysTemplate)
+                leftView.tintColor = UIColor.white
+            }
+        }
     }
     
     private func configureView() {
