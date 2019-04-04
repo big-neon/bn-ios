@@ -8,7 +8,11 @@ public protocol GuestListViewProtocol {
     func showGuestList()
 }
 
-public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate {
+public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate {
+    public func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+    
     
     public var delegate: GuestListViewProtocol?
     internal var guestsDictionary = [String: [RedeemableTicket]]()
@@ -56,6 +60,21 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate {
             return
         }
     }
+    
+    internal lazy var searchController: UISearchController = {
+        let search = UISearchController(searchResultsController: nil)
+        search.searchResultsUpdater = self
+        search.obscuresBackgroundDuringPresentation = false
+        search.searchBar.placeholder = "Search for guests"
+        search.searchBar.scopeButtonTitles = nil
+        search.searchBar.scopeBarBackgroundImage = nil
+        search.searchBar.backgroundImage = nil
+        search.searchBar.backgroundImage(for: UIBarPosition.bottom, barMetrics: UIBarMetrics.default)
+        search.searchBar.barStyle = .default
+        search.searchBar.delegate = self
+        search.searchResultsUpdater = self
+        return search
+    }()
     
     public lazy var showGuestButton: UIButton = {
         let button = UIButton()
@@ -112,6 +131,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate {
         self.layer.shadowRadius = 16.0
         self.layer.shadowOpacity = 0.32
         self.loadingAnimation()
+        self.guestTableView.tableHeaderView = searchController.searchBar
     }
     
     private func configureView() {
