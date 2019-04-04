@@ -9,10 +9,6 @@ public protocol GuestListViewProtocol {
 }
 
 public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate {
-    public func updateSearchResults(for searchController: UISearchController) {
-        
-    }
-    
     
     public var delegate: GuestListViewProtocol?
     internal var guestsDictionary = [String: [RedeemableTicket]]()
@@ -64,7 +60,8 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
     internal lazy var searchController: UISearchController = {
         let search = UISearchController(searchResultsController: nil)
         search.searchResultsUpdater = self
-        search.obscuresBackgroundDuringPresentation = false
+//        search.obscuresBackgroundDuringPresentation = false
+        search.hidesNavigationBarDuringPresentation = false
         search.searchBar.placeholder = "Search for guests"
         search.searchBar.scopeButtonTitles = nil
         search.searchBar.scopeBarBackgroundImage = nil
@@ -74,6 +71,23 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         search.searchBar.delegate = self
         search.searchResultsUpdater = self
         return search
+    }()
+    
+    internal lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.tintColor = UIColor.brandPrimary
+        searchBar.backgroundColor = UIColor.brandBackground
+        searchBar.barTintColor = UIColor.brandBackground
+        searchBar.placeholder = "Search for guests"
+        searchBar.showsCancelButton = true
+        searchBar.scopeButtonTitles = nil
+        searchBar.scopeBarBackgroundImage = nil
+        searchBar.backgroundImage = UIImage(named: "search_box_background")
+        searchBar.setBackgroundImage(UIImage(named: "search_box"), for: UIBarPosition.bottom, barMetrics: UIBarMetrics.default)
+        searchBar.setSearchFieldBackgroundImage(UIImage(named: "search_box"), for: UIControl.State.normal)
+        searchBar.barStyle = .default
+        searchBar.delegate = self
+        return searchBar
     }()
     
     public lazy var showGuestButton: UIButton = {
@@ -131,7 +145,8 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         self.layer.shadowRadius = 16.0
         self.layer.shadowOpacity = 0.32
         self.loadingAnimation()
-        self.guestTableView.tableHeaderView = searchController.searchBar
+        searchBar.frame = CGRect(x: 16.0, y: 0.0, width: UIScreen.main.bounds.width - 32, height: 40.0)
+        self.guestTableView.tableHeaderView = searchBar
     }
     
     private func configureView() {
