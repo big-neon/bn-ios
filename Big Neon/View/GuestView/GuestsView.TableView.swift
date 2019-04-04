@@ -18,7 +18,6 @@ extension GuestListView {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         let guestKey = guestSectionTitles[section]
         if let guestValues = guestsDictionary[guestKey] {
             return guestValues.count

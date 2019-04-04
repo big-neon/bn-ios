@@ -49,6 +49,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
                 return
             }
             
+            self.searchBar.endEditing(true)
             UIView.animate(withDuration: 0.9, delay: 0.3, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.85, options: .curveEaseOut, animations: {
                 self.showGuestButton.transform = CGAffineTransform.identity
                 self.layoutIfNeeded()
@@ -57,31 +58,12 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         }
     }
     
-    internal lazy var searchController: UISearchController = {
-        let search = UISearchController(searchResultsController: nil)
-        search.searchResultsUpdater = self
-//        search.obscuresBackgroundDuringPresentation = false
-        search.hidesNavigationBarDuringPresentation = false
-        search.searchBar.placeholder = "Search for guests"
-        search.searchBar.scopeButtonTitles = nil
-        search.searchBar.scopeBarBackgroundImage = nil
-        search.searchBar.backgroundImage = nil
-        search.searchBar.backgroundImage(for: UIBarPosition.bottom, barMetrics: UIBarMetrics.default)
-        search.searchBar.barStyle = .default
-        search.searchBar.delegate = self
-        search.searchResultsUpdater = self
-        return search
-    }()
-    
     internal lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.tintColor = UIColor.brandPrimary
         searchBar.backgroundColor = UIColor.brandBackground
         searchBar.barTintColor = UIColor.brandBackground
         searchBar.placeholder = "Search for guests"
-        searchBar.showsCancelButton = true
-        searchBar.scopeButtonTitles = nil
-        searchBar.scopeBarBackgroundImage = nil
         searchBar.backgroundImage = UIImage(named: "search_box_background")
         searchBar.setBackgroundImage(UIImage(named: "search_box"), for: UIBarPosition.bottom, barMetrics: UIBarMetrics.default)
         searchBar.setSearchFieldBackgroundImage(UIImage(named: "search_box"), for: UIControl.State.normal)
