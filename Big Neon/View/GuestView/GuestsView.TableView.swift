@@ -77,21 +77,10 @@ extension GuestListView {
     }
     
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            self.handleDeletePayment(atIndex: indexPath.row)
-//        }
-        
-//        switch editingStyle {
-//        case .delete:
-//            print("")
-//        default:
-//            return
-//        }
     }
     
     public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteButton = UITableViewRowAction(style: .default, title: "Checkin") { (action, indexPath) in
-//            self.tableView.dataSource?.tableView!(self.tableView, commit: .delete, forRowAt: indexPath)
             return
         }
         deleteButton.backgroundColor = UIColor.black

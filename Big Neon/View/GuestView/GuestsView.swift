@@ -60,23 +60,6 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         }
     }
     
-    internal lazy var searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.tintColor = UIColor.brandPrimary
-        searchBar.backgroundColor = UIColor.red
-        searchBar.barTintColor = UIColor.white
-        searchBar.placeholder = "Search for guests"
-        searchBar.backgroundImage = UIImage(named: "search_box_background")
-        searchBar.setBackgroundImage(UIImage(named: "search_box"), for: UIBarPosition.bottom, barMetrics: UIBarMetrics.default)
-        searchBar.setSearchFieldBackgroundImage(UIImage(named: "search_box_background"), for: UIControl.State.normal)
-        searchBar.barStyle = .default
-        searchBar.insetsLayoutMarginsFromSafeArea = true
-        searchBar.enablesReturnKeyAutomatically = true
-        searchBar.returnKeyType = UIReturnKeyType.done
-        searchBar.delegate = self
-        return searchBar
-    }()
-    
     public lazy var showGuestButton: UIButton = {
         let button = UIButton()
         button.layer.masksToBounds = true
@@ -123,6 +106,22 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         loadingView.widthAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
+    internal lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.tintColor = UIColor.brandPrimary
+        searchBar.backgroundColor = UIColor.white
+        searchBar.barTintColor = UIColor.white
+        searchBar.placeholder = "Search for guests"
+        searchBar.backgroundImage = UIImage()
+        searchBar.setBackgroundImage(UIImage(named: "search_box"), for: UIBarPosition.bottom, barMetrics: UIBarMetrics.default)
+        searchBar.barStyle = .default
+        searchBar.insetsLayoutMarginsFromSafeArea = true
+        searchBar.enablesReturnKeyAutomatically = true
+        searchBar.returnKeyType = UIReturnKeyType.done
+        searchBar.delegate = self
+        return searchBar
+    }()
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white
@@ -132,22 +131,15 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         self.layer.shadowRadius = 16.0
         self.layer.shadowOpacity = 0.32
         self.loadingAnimation()
-//        self.searchBarConfig()
         searchBar.frame = CGRect(x: 16.0, y: 0.0, width: UIScreen.main.bounds.width - 32, height: 60.0)
         
         if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
-            textfield.backgroundColor = UIColor.red
+            textfield.backgroundColor = UIColor.brandBackground
             textfield.background = UIImage(named: "search_box")
             textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.brandGrey])
         }
         
         self.guestTableView.tableHeaderView = searchBar
-    }
-    
-    
-    
-    private func searchBarConfig() {
-        
     }
     
     private func configureView() {

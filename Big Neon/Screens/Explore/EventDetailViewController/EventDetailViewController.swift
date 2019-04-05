@@ -172,14 +172,12 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
         }
     }
 
-    // MARK: UIViewControllerTransitioningDelegate
     internal func presentationController(forPresented presented: UIViewController,
                                          presenting: UIViewController?,
                                          source: UIViewController) -> UIPresentationController? {
         return ThreeQuaterModalPresentationController(presentedViewController: presented, presenting: presenting)
     }
     
-    // MARK: UIPopoverPresentationControllerDelegate
     internal func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
