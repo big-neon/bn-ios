@@ -9,11 +9,20 @@ final public class DateConfig {
     public class func formatServerDate(date: String, timeZone: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        var dateFetched = ""
+        if date.count > 19 {
+            dateFetched = String(date.dropLast(4))
+        } else {
+            dateFetched = date
+        }
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        let utcDate = dateFormatter.date(from: date)
+        let utcDate = dateFormatter.date(from: dateFetched)
         let tz = TimeZone(identifier: timeZone)!
         dateFormatter.timeZone = tz
-        return  dateFormatter.date(from: dateFormatter.string(from: utcDate!))
+        guard let convertedDate = utcDate else {
+            return nil
+        }
+        return  dateFormatter.date(from: dateFormatter.string(from: convertedDate))
     }
     
     public class func eventDate(date: Date) -> String {

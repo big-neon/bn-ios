@@ -69,12 +69,13 @@ final class DoorPersonViewModel {
                 return
             }
             
-            guard let events = events else {
+            guard var events = events else {
                 completion(false)
                 return
             }
-            
+//            events = events.data.sort(by: {$0.eve > $1.timestamp})
             self.events = events
+            
             self.fetchUser(completion: { (_) in
                 completion(true)
                 return

@@ -63,7 +63,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
     internal lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.tintColor = UIColor.brandPrimary
-        searchBar.backgroundColor = UIColor.brandBackground
+        searchBar.backgroundColor = UIColor.red
         searchBar.barTintColor = UIColor.white
         searchBar.placeholder = "Search for guests"
         searchBar.backgroundImage = UIImage(named: "search_box_background")
@@ -132,22 +132,22 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         self.layer.shadowRadius = 16.0
         self.layer.shadowOpacity = 0.32
         self.loadingAnimation()
-        self.searchBarConfig()
+//        self.searchBarConfig()
         searchBar.frame = CGRect(x: 16.0, y: 0.0, width: UIScreen.main.bounds.width - 32, height: 60.0)
+        
+        if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
+            textfield.backgroundColor = UIColor.red
+            textfield.background = UIImage(named: "search_box")
+            textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.brandGrey])
+        }
+        
         self.guestTableView.tableHeaderView = searchBar
     }
     
+    
+    
     private func searchBarConfig() {
-        if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
-            
-            textfield.backgroundColor = UIColor.red
-            textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
-            
-            if let leftView = textfield.leftView as? UIImageView {
-                leftView.image = leftView.image?.withRenderingMode(.alwaysTemplate)
-                leftView.tintColor = UIColor.white
-            }
-        }
+        
     }
     
     private func configureView() {
