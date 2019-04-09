@@ -15,9 +15,9 @@ public class APIService {
     private class func baseURL() -> String {
         let isProduction = Environment.isProduction()
         if isProduction == true {
-            return "https://bigneon.com/api"
+            return "https://api.production.bigneon.com"
         } else {
-            return "https://beta.bigneon.com/api"
+            return "https://api.staging.bigneon.com"
         }
     }
     

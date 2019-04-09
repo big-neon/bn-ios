@@ -6,30 +6,68 @@ import UIKit
 extension GuestListView {
     
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if self.isSearching == true {
+            return 1
+        }
+        return self.guestSectionTitles.count
+    }
+    
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if self.isSearching == true {
+            return nil
+        }
+        return guestSectionTitles[section]
+    }
+    
+    public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        if self.isSearching == true {
+            return nil
+        }
+        return guestSectionTitles
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let guests =  self.guests?.data else {
-            return 0
+        if self.isSearching == true {
+            return self.filteredSearchResults!.count
         }
-        return guests.count
+        let guestKey = guestSectionTitles[section]
+        if let guestValues = guestsDictionary[guestKey] {
+            return guestValues.count
+        }
+        return 0
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let guestCell: GuestTableViewCell = tableView.dequeueReusableCell(withIdentifier: GuestTableViewCell.cellID, for: indexPath) as! GuestTableViewCell
-        guard let name = self.guests?.data[indexPath.row].firstName, let surname = self.guests?.data[indexPath.row].lastName else {
+        
+        if self.isSearching == true {
+            let searchResult = self.filteredSearchResults![indexPath.row]
+            guestCell.guestNameLabel.text = searchResult.firstName
+            guestCell.ticketTypeNameLabel.text = searchResult.priceInCents.dollarString + " | " + searchResult.ticketType
+            
+            if searchResult.status == "Purchased" {
+                guestCell.ticketStateView.tagLabel.text = "PURCHASED"
+                guestCell.ticketStateView.backgroundColor = UIColor.brandGreen
+            } else {
+                guestCell.ticketStateView.tagLabel.text = "REDEEMED"
+                guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
+            }
             return guestCell
         }
-        guestCell.guestNameLabel.text = name + " " + surname
-        guestCell.ticketTypeNameLabel.text = (self.guests?.data[indexPath.row].priceInCents.dollarString)! + " | " + (self.guests?.data[indexPath.row].ticketType)!
         
-        if self.guests?.data[indexPath.row].status == "Purchased" {
-            guestCell.ticketStateView.tagLabel.text = "PURCHASED"
-            guestCell.ticketStateView.backgroundColor = UIColor.brandGreen
-        } else {
-            guestCell.ticketStateView.tagLabel.text = "REDEEMED"
-            guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
+        
+        let guestKey = guestSectionTitles[indexPath.section]
+        if let guestValues = guestsDictionary[guestKey] {
+            guestCell.guestNameLabel.text = guestValues[indexPath.row].firstName
+            guestCell.ticketTypeNameLabel.text = guestValues[indexPath.row].priceInCents.dollarString + " | " + guestValues[indexPath.row].ticketType
+            
+            if guestValues[indexPath.row].status == "Purchased" {
+                guestCell.ticketStateView.tagLabel.text = "PURCHASED"
+                guestCell.ticketStateView.backgroundColor = UIColor.brandGreen
+            } else {
+                guestCell.ticketStateView.tagLabel.text = "REDEEMED"
+                guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
+            }
         }
         return guestCell
     }
@@ -39,21 +77,10 @@ extension GuestListView {
     }
     
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            self.handleDeletePayment(atIndex: indexPath.row)
-//        }
-        
-//        switch editingStyle {
-//        case .delete:
-//            print("")
-//        default:
-//            return
-//        }
     }
     
     public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteButton = UITableViewRowAction(style: .default, title: "Checkin") { (action, indexPath) in
-//            self.tableView.dataSource?.tableView!(self.tableView, commit: .delete, forRowAt: indexPath)
             return
         }
         deleteButton.backgroundColor = UIColor.black

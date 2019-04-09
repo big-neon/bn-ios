@@ -122,7 +122,7 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureViewModel()
-        view.backgroundColor = UIColor.black
+        self.view.backgroundColor = UIColor.black
         self.configureNavBar()
         self.configureScanner()
         self.configureManualCheckinView()
@@ -149,6 +149,9 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
     private func configureScanner() {
         
         guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else {
+            print("Video Failed to Run: Possibly running on a simulator with no video")
+            self.configureScannedUserView()
+            self.configureGuestList()
             return
         }
 
@@ -197,17 +200,16 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         self.view.addSubview(scannedUserView)
         scannedUserView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 40.0).isActive = true
         scannedUserView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -40.0).isActive = true
-        self.scannedUserBottomAnchor = scannedUserView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 150.0)
+        self.scannedUserBottomAnchor = scannedUserView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 160.0)
         self.scannedUserBottomAnchor?.isActive = true
         scannedUserView.heightAnchor.constraint(equalToConstant: 64.0).isActive = true
     }
     
     private func configureGuestList() {
-        
         self.view.addSubview(guestListView)
         guestListView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         guestListView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-        self.guestListTopAnchor = guestListView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UIScreen.main.bounds.height - 64.0 )
+        self.guestListTopAnchor = guestListView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UIScreen.main.bounds.height - 64.0)
         self.guestListTopAnchor?.isActive = true
         guestListView.heightAnchor.constraint(equalToConstant: 560.0).isActive = true
         

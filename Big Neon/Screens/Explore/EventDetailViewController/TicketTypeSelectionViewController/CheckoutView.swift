@@ -64,10 +64,6 @@ extension CheckoutView {
         switch indexPath.row {
         case 0:
             let quantitySelectionCell: QuantitySelectionCell = tableView.dequeueReusableCell(withIdentifier: QuantitySelectionCell.cellID, for: indexPath) as! QuantitySelectionCell
-            guard let eventDetail = self.eventDetail else {
-                return quantitySelectionCell
-            }
-//            quantitySelectionCell.ticketLimit = eventDetail.ti
             return quantitySelectionCell
         case 1:
             let eventDetailCell: EventCheckoutDetailCell = tableView.dequeueReusableCell(withIdentifier: EventCheckoutDetailCell.cellID, for: indexPath) as! EventCheckoutDetailCell
