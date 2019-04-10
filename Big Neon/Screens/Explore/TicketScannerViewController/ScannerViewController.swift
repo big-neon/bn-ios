@@ -61,7 +61,6 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
                 print("Activated Camera")
             }
             return
-            
         }
     }
     
