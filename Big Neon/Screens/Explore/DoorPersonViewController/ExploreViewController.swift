@@ -63,30 +63,30 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     
     private func fetchCheckins() {
         self.loadingView.startAnimating()
-        self.doorPersonViemodel.configureAccessToken { (completed) in
+        self.doorPersonViemodel.configureAccessToken { [weak self] (completed) in
             DispatchQueue.main.async {
-                self.loadingView.stopAnimating()
+                self?.loadingView.stopAnimating()
                 if completed == false {
                     print(completed)
                     return
                 }
-                self.configureCollectionView()
+                self?.configureCollectionView()
             }
         }
     }
     
     @objc private func reloadEvents() {
-        self.doorPersonViemodel.configureAccessToken { (completed) in
+        self.doorPersonViemodel.configureAccessToken { [weak self] (completed) in
             DispatchQueue.main.async {
-                self.loadingView.stopAnimating()
-                self.refresher.endRefreshing()
+                self?.loadingView.stopAnimating()
+                self?.refresher.endRefreshing()
                 
                 if completed == false {
-                    self.exploreCollectionView.reloadData()
+                    self?.exploreCollectionView.reloadData()
                     print("Failed to Reload View")
                     return
                 }
-                self.exploreCollectionView.reloadData()
+                self?.exploreCollectionView.reloadData()
                 return
             }
         }
