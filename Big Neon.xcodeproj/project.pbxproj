@@ -10,7 +10,7 @@
 		0E27D0CC64E689F1613EDE42 /* Pods_Big_Neon_UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C5FE81A672933D9E6C36212 /* Pods_Big_Neon_UI.framework */; };
 		3AD04FED44A9DBAF9C541482 /* Pods_Big_Neon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78310A7CD778655F8A9FC77B /* Pods_Big_Neon.framework */; };
 		C60EDC852248E3EE00C9CC27 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EDC842248E3EE00C9CC27 /* Environment.swift */; };
-		C61853B72212F1DB005D6250 /* ExploreViewController.Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853B62212F1DB005D6250 /* ExploreViewController.Search.swift */; };
+		C61853B72212F1DB005D6250 /* DoorPersonViewController.Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853B62212F1DB005D6250 /* DoorPersonViewController.Search.swift */; };
 		C61853B92212F4C8005D6250 /* TicketTypeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853B82212F4C8005D6250 /* TicketTypeSelectionViewController.swift */; };
 		C61853BC2212F6FA005D6250 /* ThreeQuaterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853BB2212F6FA005D6250 /* ThreeQuaterPresenter.swift */; };
 		C61853C122140900005D6250 /* TicketTypeViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853C022140900005D6250 /* TicketTypeViewController.TableView.swift */; };
@@ -47,10 +47,11 @@
 		C628B15421F9E35700FCBDC9 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C628B15321F9E35700FCBDC9 /* SplashViewModel.swift */; };
 		C628B15621FAD76000FCBDC9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C628B15521FAD76000FCBDC9 /* User.swift */; };
 		C62BC78421CCC3F700830A5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC78321CCC3F700830A5F /* AppDelegate.swift */; };
-		C62BC78621CCC3F700830A5F /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC78521CCC3F700830A5F /* ExploreViewController.swift */; };
+		C62BC78621CCC3F700830A5F /* DoorPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC78521CCC3F700830A5F /* DoorPersonViewController.swift */; };
 		C62BC78B21CCC3FB00830A5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78A21CCC3FB00830A5F /* Assets.xcassets */; };
 		C62BC78E21CCC3FB00830A5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78C21CCC3FB00830A5F /* LaunchScreen.storyboard */; };
 		C62BC79921CCC3FB00830A5F /* Big_NeonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */; };
+		C636C2AC22609DB90046E092 /* DoorPersonViewController.CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C636C2AB22609DB90046E092 /* DoorPersonViewController.CoreData.swift */; };
 		C63D86C02231282F003CFAA7 /* DatabaseService.Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D86BF2231282F003CFAA7 /* DatabaseService.Scan.swift */; };
 		C63D86C22231414D003CFAA7 /* RedeemedTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D86C12231414D003CFAA7 /* RedeemedTicket.swift */; };
 		C63D86C622325C8B003CFAA7 /* RedeemKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D86C522325C8B003CFAA7 /* RedeemKey.swift */; };
@@ -58,7 +59,7 @@
 		C64124CA21F26D1800233797 /* AuthTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64124C921F26D1800233797 /* AuthTextView.swift */; };
 		C644BA2F21F7069D003C188B /* BasicError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C644BA2E21F7069D003C188B /* BasicError.swift */; };
 		C644BA3421F70C19003C188B /* DatabaseService.Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = C644BA3321F70C19003C188B /* DatabaseService.Users.swift */; };
-		C64B0ABB21D0DCC900386000 /* ExploreViewController.CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABA21D0DCC900386000 /* ExploreViewController.CollectionView.swift */; };
+		C64B0ABB21D0DCC900386000 /* DoorPersonViewController.CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABA21D0DCC900386000 /* DoorPersonViewController.CollectionView.swift */; };
 		C64B0ABD21D0DCDB00386000 /* DoorPersonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABC21D0DCDB00386000 /* DoorPersonViewModel.swift */; };
 		C64B0AC021D0DD1E00386000 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABF21D0DD1E00386000 /* Utils.swift */; };
 		C64B0AC221D0DD5E00386000 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AC121D0DD5E00386000 /* TabBarController.swift */; };
@@ -213,7 +214,7 @@
 		C603E4A2221589B80079ED73 /* CardCheckoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCheckoutCell.swift; sourceTree = "<group>"; };
 		C6058DE02229520D00BDF397 /* ScannerModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerModeView.swift; sourceTree = "<group>"; };
 		C60EDC842248E3EE00C9CC27 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
-		C61853B62212F1DB005D6250 /* ExploreViewController.Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.Search.swift; sourceTree = "<group>"; };
+		C61853B62212F1DB005D6250 /* DoorPersonViewController.Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonViewController.Search.swift; sourceTree = "<group>"; };
 		C61853B82212F4C8005D6250 /* TicketTypeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTypeSelectionViewController.swift; sourceTree = "<group>"; };
 		C61853BB2212F6FA005D6250 /* ThreeQuaterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeQuaterPresenter.swift; sourceTree = "<group>"; };
 		C61853BE22140548005D6250 /* TicketTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTypeCell.swift; sourceTree = "<group>"; };
@@ -229,7 +230,7 @@
 		C628B15521FAD76000FCBDC9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C62BC78021CCC3F700830A5F /* Big Neon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Big Neon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C62BC78321CCC3F700830A5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C62BC78521CCC3F700830A5F /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		C62BC78521CCC3F700830A5F /* DoorPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonViewController.swift; sourceTree = "<group>"; };
 		C62BC78A21CCC3FB00830A5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C62BC78D21CCC3FB00830A5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C62BC78F21CCC3FB00830A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -237,6 +238,7 @@
 		C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Big_NeonTests.swift; sourceTree = "<group>"; };
 		C62BC79A21CCC3FB00830A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C62E64EC224E0DC000A1039C /* DoorPersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonCell.swift; sourceTree = "<group>"; };
+		C636C2AB22609DB90046E092 /* DoorPersonViewController.CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonViewController.CoreData.swift; sourceTree = "<group>"; };
 		C63D86BF2231282F003CFAA7 /* DatabaseService.Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Scan.swift; sourceTree = "<group>"; };
 		C63D86C12231414D003CFAA7 /* RedeemedTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemedTicket.swift; sourceTree = "<group>"; };
 		C63D86C522325C8B003CFAA7 /* RedeemKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemKey.swift; sourceTree = "<group>"; };
@@ -244,7 +246,7 @@
 		C64124C921F26D1800233797 /* AuthTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextView.swift; sourceTree = "<group>"; };
 		C644BA2E21F7069D003C188B /* BasicError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicError.swift; sourceTree = "<group>"; };
 		C644BA3321F70C19003C188B /* DatabaseService.Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Users.swift; sourceTree = "<group>"; };
-		C64B0ABA21D0DCC900386000 /* ExploreViewController.CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.CollectionView.swift; sourceTree = "<group>"; };
+		C64B0ABA21D0DCC900386000 /* DoorPersonViewController.CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonViewController.CollectionView.swift; sourceTree = "<group>"; };
 		C64B0ABC21D0DCDB00386000 /* DoorPersonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonViewModel.swift; sourceTree = "<group>"; };
 		C64B0ABF21D0DD1E00386000 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		C64B0AC121D0DD5E00386000 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -661,9 +663,10 @@
 			isa = PBXGroup;
 			children = (
 				C64B0ABC21D0DCDB00386000 /* DoorPersonViewModel.swift */,
-				C62BC78521CCC3F700830A5F /* ExploreViewController.swift */,
-				C61853B62212F1DB005D6250 /* ExploreViewController.Search.swift */,
-				C64B0ABA21D0DCC900386000 /* ExploreViewController.CollectionView.swift */,
+				C62BC78521CCC3F700830A5F /* DoorPersonViewController.swift */,
+				C636C2AB22609DB90046E092 /* DoorPersonViewController.CoreData.swift */,
+				C61853B62212F1DB005D6250 /* DoorPersonViewController.Search.swift */,
+				C64B0ABA21D0DCC900386000 /* DoorPersonViewController.CollectionView.swift */,
 			);
 			path = DoorPersonViewController;
 			sourceTree = "<group>";
@@ -1382,12 +1385,12 @@
 				C623C0752251E3DF0020D0A8 /* ProfileHeaderView.swift in Sources */,
 				C61853B92212F4C8005D6250 /* TicketTypeSelectionViewController.swift in Sources */,
 				C623C0712251E3B20020D0A8 /* SectionHeaderCell.swift in Sources */,
-				C64B0ABB21D0DCC900386000 /* ExploreViewController.CollectionView.swift in Sources */,
+				C64B0ABB21D0DCC900386000 /* DoorPersonViewController.CollectionView.swift in Sources */,
 				C6562F522203286E0020B6D3 /* UtilityConstants.swift in Sources */,
 				C665B6E7224B506900581E2E /* ScannerViewController.Checkin.swift in Sources */,
 				C61853C122140900005D6250 /* TicketTypeViewController.TableView.swift in Sources */,
 				C64B0ADC21D1276100386000 /* ProfileViewController.swift in Sources */,
-				C61853B72212F1DB005D6250 /* ExploreViewController.Search.swift in Sources */,
+				C61853B72212F1DB005D6250 /* DoorPersonViewController.Search.swift in Sources */,
 				C6E6485622423C11000F2DFB /* Big Neon.xcdatamodeld in Sources */,
 				C6AFB78F21DD658800670AC3 /* EventDetailViewController.swift in Sources */,
 				C623C0802251E42C0020D0A8 /* CheckinTagView.swift in Sources */,
@@ -1409,7 +1412,7 @@
 				C623C06A2251E3920020D0A8 /* EventCheckoutDetailCell.swift in Sources */,
 				C623C06C2251E39A0020D0A8 /* SubTotalCell.swift in Sources */,
 				C683232D21FF2D71002342AE /* ProfileEditViewController.TableView.swift in Sources */,
-				C62BC78621CCC3F700830A5F /* ExploreViewController.swift in Sources */,
+				C62BC78621CCC3F700830A5F /* DoorPersonViewController.swift in Sources */,
 				C698AB1021EDE9BC0073F1FB /* CreateAccountViewController.swift in Sources */,
 				C6EC20A122007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift in Sources */,
 				C623C0722251E3C80020D0A8 /* EventDetailCell.swift in Sources */,
@@ -1422,6 +1425,7 @@
 				C6AFB79C21DD76AE00670AC3 /* ExploreDetailViewModel.swift in Sources */,
 				C683232B21FF28CB002342AE /* ProfileEditViewModel.swift in Sources */,
 				C64B0AD821D123F400386000 /* TicketsViewController.swift in Sources */,
+				C636C2AC22609DB90046E092 /* DoorPersonViewController.CoreData.swift in Sources */,
 				C64B0AC221D0DD5E00386000 /* TabBarController.swift in Sources */,
 				C623C0812251E42C0020D0A8 /* LastScannedUserView.swift in Sources */,
 				C6BCBE9E222D06C70026B858 /* ScannerViewModel.swift in Sources */,

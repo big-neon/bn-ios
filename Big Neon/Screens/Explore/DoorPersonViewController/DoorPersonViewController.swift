@@ -17,6 +17,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         flowLayout.minimumLineSpacing = 20.0
         flowLayout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 24.0, right: 0.0)
         collectionView.backgroundColor = UIColor.brandBackground
         collectionView.delegate = self
         collectionView.dataSource = self
