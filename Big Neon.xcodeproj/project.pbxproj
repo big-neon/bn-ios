@@ -72,6 +72,7 @@
 		C665DFE521E87CB800DFB955 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */; };
 		C66C0BA521E337D40066CD0F /* splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C66C0BA421E337D40066CD0F /* splash.mp4 */; };
 		C66C0BA721E339CA0066CD0F /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C0BA621E339CA0066CD0F /* SplashViewController.swift */; };
+		C6825A6C225DF28B003470A5 /* Rechability.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6825A6B225DF28B003470A5 /* Rechability.swift */; };
 		C683232921FF07FE002342AE /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683232821FF07FE002342AE /* ProfileEditViewController.swift */; };
 		C683232B21FF28CB002342AE /* ProfileEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683232A21FF28CB002342AE /* ProfileEditViewModel.swift */; };
 		C683232D21FF2D71002342AE /* ProfileEditViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683232C21FF2D71002342AE /* ProfileEditViewController.TableView.swift */; };
@@ -257,6 +258,7 @@
 		C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C66C0BA421E337D40066CD0F /* splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.mp4; sourceTree = "<group>"; };
 		C66C0BA621E339CA0066CD0F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		C6825A6B225DF28B003470A5 /* Rechability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rechability.swift; sourceTree = "<group>"; };
 		C683232821FF07FE002342AE /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		C683232A21FF28CB002342AE /* ProfileEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewModel.swift; sourceTree = "<group>"; };
 		C683232C21FF2D71002342AE /* ProfileEditViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.TableView.swift; sourceTree = "<group>"; };
@@ -850,6 +852,7 @@
 			children = (
 				C6B88D6621F1C862006394F8 /* DateConfig.swift */,
 				C628B14F21F7B75800FCBDC9 /* Constants.swift */,
+				C6825A6B225DF28B003470A5 /* Rechability.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1483,6 +1486,7 @@
 				C6B88D7921F1C932006394F8 /* Tokens.swift in Sources */,
 				C628B15621FAD76000FCBDC9 /* User.swift in Sources */,
 				C6CEC8A9221ADBCE00F7329D /* TicketTypeStatus.swift in Sources */,
+				C6825A6C225DF28B003470A5 /* Rechability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -61,7 +61,6 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
                 print("Activated Camera")
             }
             return
-            
         }
     }
     
@@ -216,12 +215,20 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         guard let eventID = self.event?.id else {
             return
         }
-        self.scannerViewModel?.fetchGuests(forEventID: eventID, completion: { (completed) in
-            DispatchQueue.main.async {
-                self.guestListView.guests = self.scannerViewModel?.guests
-            }
-        })
-        
+        self.fetchGuests(forEventID: eventID)
+    }
+    
+    private func fetchGuests(forEventID eventID: String) {
+        if Reachability.isConnectedToNetwork() {
+            self.scannerViewModel?.fetchGuests(forEventID: eventID, completion: { [weak self] (completed) in
+                DispatchQueue.main.async {
+                    self?.guestListView.guests = self?.scannerViewModel?.guests
+                }
+            })
+        } else {
+            print("Internet Connection is UnAvaiable")
+            //  Fetch Events Locally
+        }
     }
 }
 
