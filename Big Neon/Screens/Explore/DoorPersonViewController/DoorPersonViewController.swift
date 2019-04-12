@@ -74,6 +74,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
                         return
                     }
                     self?.configureCollectionView()
+                    self?.storeEventsOffline(events: (self?.doorPersonViemodel.events)!)
                 }
             }
         } else {

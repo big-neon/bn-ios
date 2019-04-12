@@ -45,7 +45,7 @@ public struct Event: Codable {
     public let coverImageURL: String?
     public let privateAccessCode: String?
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case id, name
         case organizationID = "organization_id"
         case venueID = "venue_id"
