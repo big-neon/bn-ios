@@ -74,12 +74,17 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
                         return
                     }
                     self?.configureCollectionView()
-                    self?.storeEventsOffline(events: (self?.doorPersonViemodel.events)!)
+//                    self?.storeEventsOffline(events: (self?.doorPersonViemodel.events)!)
                 }
             }
         } else {
-            print("Internet Connection is UnAvaiable")
-            //  Fetch Events Locally
+            self.fetchEventsSaved { [weak self] (events) in
+                guard var events = events else {
+                    return
+                }
+                self?.doorPersonViemodel.events = events
+                self?.configureCollectionView()
+            }
         }
         
     }

@@ -8,7 +8,9 @@ import CoreData
 extension DoorPersonViewController {
 
     internal func storeEventsOffline(events: Events) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
         let context = appDelegate.persistentContainer.viewContext
 
         let entity = NSEntityDescription.entity(forEntityName: "EventsCoreData", in: context)
@@ -54,8 +56,24 @@ extension DoorPersonViewController {
         
     }
     
-    internal func fetchEventsSaved() {
+    internal func fetchEventsSaved(completion: @escaping(Events?) -> Void) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            completion(nil)
+            return
+        }
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "EventsCoreData")
         
+        do {
+            let result = try context.fetch(fetchRequest)
+            for data in result as! [NSManagedObject] {
+                print(data.value(forKey: "name") as! String)
+            }
+            completion(nil)
+        } catch {
+            print("Failed to fetch Events")
+            completion(nil)
+        }
         
     }
 
