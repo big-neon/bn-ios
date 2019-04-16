@@ -2,12 +2,13 @@
 import Foundation
 import Big_Neon_Core
 import SwiftKeychainWrapper
+import CoreDataBC
 
 final class DoorPersonViewModel {
     
     internal var events: Events?
     internal var user: User?
-    private let coreData = CoreDataBC("Tasks", "TLD")
+    private let coreData = CoreDataBC("EventsCoreData", "Big Neon")
     
     internal func fetchEvents(completion: @escaping(Bool) -> Void) {
         self.events = nil

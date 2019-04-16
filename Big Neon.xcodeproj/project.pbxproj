@@ -67,6 +67,8 @@
 		C64B0ADA21D1240700386000 /* TicketsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AD921D1240700386000 /* TicketsViewModel.swift */; };
 		C64B0ADC21D1276100386000 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ADB21D1276100386000 /* ProfileViewController.swift */; };
 		C64B0AE121D1294600386000 /* ProfileViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */; };
+		C6550C792265CFC300F3BF5E /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6550C772265CFC200F3BF5E /* Module.swift */; };
+		C6550C7A2265CFC300F3BF5E /* CoreDataBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6550C782265CFC200F3BF5E /* CoreDataBC.swift */; };
 		C655BD39221D69FD00EB1FDD /* DatabaseService.Checkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = C655BD38221D69FD00EB1FDD /* DatabaseService.Checkins.swift */; };
 		C6562F522203286E0020B6D3 /* UtilityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6562F512203286E0020B6D3 /* UtilityConstants.swift */; };
 		C65B92A22264B743005828E0 /* EventManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B92A12264B743005828E0 /* EventManagedObject.swift */; };
@@ -255,6 +257,8 @@
 		C64B0AD921D1240700386000 /* TicketsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsViewModel.swift; sourceTree = "<group>"; };
 		C64B0ADB21D1276100386000 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.TableView.swift; sourceTree = "<group>"; };
+		C6550C772265CFC200F3BF5E /* Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
+		C6550C782265CFC200F3BF5E /* CoreDataBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataBC.swift; sourceTree = "<group>"; };
 		C655BD38221D69FD00EB1FDD /* DatabaseService.Checkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Checkins.swift; sourceTree = "<group>"; };
 		C6562F512203286E0020B6D3 /* UtilityConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityConstants.swift; sourceTree = "<group>"; };
 		C65B92A12264B743005828E0 /* EventManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManagedObject.swift; sourceTree = "<group>"; };
@@ -583,6 +587,8 @@
 		C64B0AD421D123C300386000 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				C6550C782265CFC200F3BF5E /* CoreDataBC.swift */,
+				C6550C772265CFC200F3BF5E /* Module.swift */,
 				C6AFB78C21DD655900670AC3 /* DoorPersonViewController */,
 				C63D1A152220054700152E83 /* TicketScannerViewController */,
 				C6AFB78D21DD656500670AC3 /* EventDetailViewController */,
@@ -1229,7 +1235,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Big Neon/Pods-Big Neon-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/CoreDataBC/CoreDataBC.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PWSwitch/PWSwitch.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
@@ -1252,7 +1257,6 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CoreDataBC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PWSwitch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
@@ -1417,6 +1421,7 @@
 				C623C06A2251E3920020D0A8 /* EventCheckoutDetailCell.swift in Sources */,
 				C623C06C2251E39A0020D0A8 /* SubTotalCell.swift in Sources */,
 				C683232D21FF2D71002342AE /* ProfileEditViewController.TableView.swift in Sources */,
+				C6550C7A2265CFC300F3BF5E /* CoreDataBC.swift in Sources */,
 				C62BC78621CCC3F700830A5F /* DoorPersonViewController.swift in Sources */,
 				C698AB1021EDE9BC0073F1FB /* CreateAccountViewController.swift in Sources */,
 				C6EC20A122007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift in Sources */,
@@ -1434,6 +1439,7 @@
 				C64B0AC221D0DD5E00386000 /* TabBarController.swift in Sources */,
 				C623C0812251E42C0020D0A8 /* LastScannedUserView.swift in Sources */,
 				C6BCBE9E222D06C70026B858 /* ScannerViewModel.swift in Sources */,
+				C6550C792265CFC300F3BF5E /* Module.swift in Sources */,
 				C623C0762251E3E30020D0A8 /* ProfileTableCell.swift in Sources */,
 				C6AFB79121DD65D200670AC3 /* EventDetailViewController.TableView.swift in Sources */,
 				C6EC209A220063DE00BD10DD /* ProfileImageUploadCell.swift in Sources */,
