@@ -7,6 +7,7 @@ final class DoorPersonViewModel {
     
     internal var events: Events?
     internal var user: User?
+    private let coreData = CoreDataBC("Tasks", "TLD")
     
     internal func fetchEvents(completion: @escaping(Bool) -> Void) {
         self.events = nil

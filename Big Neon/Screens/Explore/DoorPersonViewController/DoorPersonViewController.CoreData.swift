@@ -56,7 +56,7 @@ extension DoorPersonViewController {
         
     }
     
-    internal func fetchEventsSaved(completion: @escaping(Events?) -> Void) {
+    internal func fetchOfflineEventsSaved(completion: @escaping(Events?) -> Void) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             completion(nil)
             return
@@ -64,10 +64,58 @@ extension DoorPersonViewController {
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "EventsCoreData")
         
+        let employeesFetch = NSFetchRequest(entityName: "Employee")
+        
         do {
-            let result = try context.fetch(fetchRequest)
-            for data in result as! [NSManagedObject] {
-                print(data.value(forKey: "name") as! String)
+            let fetchedEmployees = try moc.executeFetchRequest(employeesFetch) as! [EmployeeMO]
+        } catch {
+            fatalError("Failed to fetch employees: \(error)")
+        }
+        
+        do {
+            let eventsFetched = try context.fetch(fetchRequest)
+            print(eventsFetched as! [NSManagedObject])
+            
+//            guard let events = eventsFetched as? Events else {
+//                completion(nil)
+//                return
+//            }
+            for data in eventsFetched as! [NSManagedObject] {
+                
+                
+                let event: Event = Event(id: data.value(forKey: Event.CodingKeys.id) as? String,
+                                         name: data.value(forKey: Event.CodingKeys.name) as? String ?? nil,
+                                         organizationID: data.value(forKey: Event.CodingKeys.organizationID) as? String ?? nil,
+                                         organizationID: data.value(forKey: Event.CodingKeys.organizationID) as? String ?? nil,
+                                         venueID: data.value(forKey: Event.CodingKeys.venueID) as? String ?? nil,
+                                         createdAt: data.value(forKey: Event.CodingKeys.createdAt) as? String ?? nil,
+                                         eventStart: data.value(forKey: Event.CodingKeys.eventStart) as? String ?? nil,
+                                         doorTime: data.value(forKey: Event.CodingKeys.doorTime) as? String ?? nil,
+                                         status: data.value(forKey: Event.CodingKeys.status) as? String ?? nil,
+                                         publishDate: data.value(forKey: Event.CodingKeys.publishDate) as? String ?? nil,
+                                         promoImageURL: data.value(forKey: Event.CodingKeys.promoImageURL) as? String ?? nil,
+                                         additionalInfo: data.value(forKey: Event.CodingKeys.additionalInfo) as? String ?? nil,
+                                         topLineInfo: data.value(forKey: Event.CodingKeys.topLineInfo) as? String ?? nil,
+                                         ageLimit: data.value(forKey: Event.CodingKeys.ageLimit) as? String ?? nil,
+                                         cancelledAt: data.value(forKey: Event.CodingKeys.cancelledAt) as? String ?? nil,
+                                         minTicketPrice: data.value(forKey: Event.CodingKeys.minTicketPrice) as? Int ?? nil,
+                                         maxTicketPrice: data.value(forKey: Event.CodingKeys.maxTicketPrice) as? Int ?? nil,
+                                         externalURL: data.value(forKey: Event.CodingKeys.externalURL) as? String ?? nil,
+                                         userIsInterested: data.value(forKey: Event.CodingKeys.userIsInterested) as? Bool ?? nil,
+                                         redeemDate: data.value(forKey: Event.CodingKeys.redeemDate) as? String ?? nil,
+                                         feeInCents: data.value(forKey: Event.CodingKeys.feeInCents) as? Int ?? nil,
+                                         updatedAt: data.value(forKey: Event.CodingKeys.updatedAt) as? String ?? nil,
+                                         videoURL: data.value(forKey: Event.CodingKeys.videoURL) as? String ?? nil,
+                                         overrideStatus: data.value(forKey: Event.CodingKeys.overrideStatus) as? String ?? nil,
+                                         clientFeeInCents: data.value(forKey: Event.CodingKeys.clientFeeInCents) as? Int ?? nil,
+                                         companyFeeInCents: data.value(forKey: Event.CodingKeys.companyFeeInCents) as? Int ?? nil,
+                                         settlementAmountInCents: data.value(forKey: Event.CodingKeys.settlementAmountInCents) as? Int ?? nil,
+                                         eventEnd: data.value(forKey: Event.CodingKeys.eventEnd) as? String ?? nil,
+                                         sendgridListID: data.value(forKey: Event.CodingKeys.sendgridListID) as? String ?? nil,
+                                         coverImageURL: data.value(forKey: Event.CodingKeys.coverImageURL) as? String ?? nil,
+                                         privateAccessCode: data.value(forKey: Event.CodingKeys.privateAccessCode) as? String ?? nil)
+                
+                print(event)
             }
             completion(nil)
         } catch {
@@ -76,5 +124,4 @@ extension DoorPersonViewController {
         }
         
     }
-
 }

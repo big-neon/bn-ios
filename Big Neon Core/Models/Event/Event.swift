@@ -30,7 +30,7 @@ public struct Event: Codable {
     public let userIsInterested: Bool?
     public let localizedTimes: LocalizedTimes?
     
-    //  Checkins Parameters 
+    //  Checkins Parameters
     public let redeemDate: String?
     public let feeInCents: Int?
     public let updatedAt: String?
@@ -44,6 +44,9 @@ public struct Event: Codable {
     public let eventType: EventType
     public let coverImageURL: String?
     public let privateAccessCode: String?
+}
+
+extension Event {
 
     public enum CodingKeys: String, CodingKey {
         case id, name

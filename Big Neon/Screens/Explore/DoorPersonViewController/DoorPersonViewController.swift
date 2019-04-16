@@ -78,7 +78,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
                 }
             }
         } else {
-            self.fetchEventsSaved { [weak self] (events) in
+            self.fetchOfflineEventsSaved { [weak self] (events) in
                 guard var events = events else {
                     return
                 }

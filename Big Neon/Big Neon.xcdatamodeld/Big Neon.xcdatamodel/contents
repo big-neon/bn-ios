@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.98" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="EventsCoreData" representedClassName="EventsCoreData" syncable="YES" codeGenerationType="class">
+    <entity name="EventsCoreData" representedClassName="EventsManagedObject" syncable="YES">
         <attribute name="additional_info" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="age_limit" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cancelled_at" optional="YES" attributeType="String" syncable="YES"/>
@@ -56,8 +56,8 @@
     </entity>
     <entity name="ScannedUser" representedClassName="ScannedUser" syncable="YES" codeGenerationType="class"/>
     <elements>
-        <element name="EventsCoreData" positionX="-54" positionY="126" width="128" height="510"/>
+        <element name="EventsCoreData" positionX="89.91015625" positionY="-5.078125" width="128" height="508"/>
         <element name="RedeemedTicket" positionX="-54" positionY="-9" width="128" height="330"/>
-        <element name="ScannedUser" positionX="-63" positionY="-18" width="128" height="45"/>
+        <element name="ScannedUser" positionX="-194.48046875" positionY="-8.1796875" width="128" height="45"/>
     </elements>
 </model>

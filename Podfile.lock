@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.0.0.beta.1)
+  - CoreDataBC (1.1)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - DTGradientButton (0.1.1)
@@ -43,6 +44,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0.beta.1)
+  - CoreDataBC
   - Crashlytics
   - DTGradientButton
   - Fabric
@@ -63,6 +65,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - CoreDataBC
     - Crashlytics
     - DTGradientButton
     - Fabric
@@ -84,6 +87,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 2ef6d6c984c5d21c366e9b41a9ae7dfee2b67a44
+  CoreDataBC: 8ab59ece180f7778a3fd8b0f993b859ff38a2e99
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   DTGradientButton: c5e3c76045af259822d9cf4ebbe9805489f2d5df
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
@@ -103,6 +107,6 @@ SPEC CHECKSUMS:
   TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
-PODFILE CHECKSUM: 309ecec5fcbc2bd19f2b24fbb2bf9ebcf3f0c3ae
+PODFILE CHECKSUM: 973e078536f74ddc1da76f1d076f601d132dafb7
 
 COCOAPODS: 1.5.3

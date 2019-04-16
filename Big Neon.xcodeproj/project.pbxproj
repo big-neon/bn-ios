@@ -69,6 +69,7 @@
 		C64B0AE121D1294600386000 /* ProfileViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */; };
 		C655BD39221D69FD00EB1FDD /* DatabaseService.Checkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = C655BD38221D69FD00EB1FDD /* DatabaseService.Checkins.swift */; };
 		C6562F522203286E0020B6D3 /* UtilityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6562F512203286E0020B6D3 /* UtilityConstants.swift */; };
+		C65B92A22264B743005828E0 /* EventManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B92A12264B743005828E0 /* EventManagedObject.swift */; };
 		C665B6E7224B506900581E2E /* ScannerViewController.Checkin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665B6E6224B506900581E2E /* ScannerViewController.Checkin.swift */; };
 		C665DFE521E87CB800DFB955 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */; };
 		C66C0BA521E337D40066CD0F /* splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C66C0BA421E337D40066CD0F /* splash.mp4 */; };
@@ -256,6 +257,7 @@
 		C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.TableView.swift; sourceTree = "<group>"; };
 		C655BD38221D69FD00EB1FDD /* DatabaseService.Checkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Checkins.swift; sourceTree = "<group>"; };
 		C6562F512203286E0020B6D3 /* UtilityConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityConstants.swift; sourceTree = "<group>"; };
+		C65B92A12264B743005828E0 /* EventManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManagedObject.swift; sourceTree = "<group>"; };
 		C665B6E6224B506900581E2E /* ScannerViewController.Checkin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.Checkin.swift; sourceTree = "<group>"; };
 		C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C66C0BA421E337D40066CD0F /* splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.mp4; sourceTree = "<group>"; };
@@ -915,6 +917,7 @@
 				C6B88D7C21F1C93A006394F8 /* LocalizedTimes.swift */,
 				C6B88D7A21F1C93A006394F8 /* Paging.swift */,
 				C6B88D7B21F1C93A006394F8 /* Venue.swift */,
+				C65B92A12264B743005828E0 /* EventManagedObject.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -1226,6 +1229,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Big Neon/Pods-Big Neon-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CoreDataBC/CoreDataBC.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PWSwitch/PWSwitch.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
@@ -1248,6 +1252,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CoreDataBC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PWSwitch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
@@ -1485,6 +1490,7 @@
 				C63D86C22231414D003CFAA7 /* RedeemedTicket.swift in Sources */,
 				C655BD39221D69FD00EB1FDD /* DatabaseService.Checkins.swift in Sources */,
 				C698F6032238F76400977259 /* ScanFeedback.swift in Sources */,
+				C65B92A22264B743005828E0 /* EventManagedObject.swift in Sources */,
 				C644BA2F21F7069D003C188B /* BasicError.swift in Sources */,
 				C60EDC852248E3EE00C9CC27 /* Environment.swift in Sources */,
 				C6B88D7921F1C932006394F8 /* Tokens.swift in Sources */,
