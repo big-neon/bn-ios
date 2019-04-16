@@ -59,7 +59,12 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         self.configureNavBar()
         self.view.backgroundColor = UIColor.white
         self.configureSearch()
-        self.fetchCheckins()
+//        self.fetchCheckins()
+        self.doorPersonViemodel.fetchOfflineEvents { [weak self] (completed) in
+            print(completed)
+            self?.configureCollectionView()
+        }
+        
     }
 
     private func fetchCheckins() {
@@ -74,15 +79,11 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
                         return
                     }
                     self?.configureCollectionView()
-//                    self?.storeEventsOffline(events: (self?.doorPersonViemodel.events)!)
+//                    self?.doorPersonViemodel.saveEventsOffline(events: (self?.doorPersonViemodel.events)!)
                 }
             }
         } else {
-            self.fetchOfflineEventsSaved { [weak self] (events) in
-                guard var events = events else {
-                    return
-                }
-                self?.doorPersonViemodel.events = events
+            self.doorPersonViemodel.fetchOfflineEvents { [weak self] (eventsFetched) in
                 self?.configureCollectionView()
             }
         }

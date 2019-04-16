@@ -56,7 +56,7 @@
     </entity>
     <entity name="ScannedUser" representedClassName="ScannedUser" syncable="YES" codeGenerationType="class"/>
     <elements>
-        <element name="EventsCoreData" positionX="89.91015625" positionY="-5.078125" width="128" height="508"/>
+        <element name="EventsCoreData" positionX="89.91015625" positionY="-5.078125" width="128" height="510"/>
         <element name="RedeemedTicket" positionX="-54" positionY="-9" width="128" height="330"/>
         <element name="ScannedUser" positionX="-194.48046875" positionY="-8.1796875" width="128" height="45"/>
     </elements>
