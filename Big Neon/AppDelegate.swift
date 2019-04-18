@@ -9,6 +9,7 @@ import Big_Neon_Core
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var coreDataStack = CoreDataStack.shared
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 //        Fabric.with([Crashlytics.self])

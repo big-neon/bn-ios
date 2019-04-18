@@ -150,7 +150,7 @@ final class DoorPersonViewModel {
             jsonArray.append(dict)
         }
         return jsonArray
-        
+
         /*
         for item in managedObjectArray {
             var dict: [String: Any] = [:]
