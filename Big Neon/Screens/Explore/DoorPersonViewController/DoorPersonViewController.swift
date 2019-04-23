@@ -14,18 +14,19 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     
     internal var headerLabel: UILabel = {
         let label = UILabel()
-        label.text = "No Active Events"
-        label.textColor = UIColor.brandGrey
+        label.text = "No Published Events"
+        label.textColor = UIColor.brandBlack
         label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     internal var detailLabel: UILabel = {
         let label = UILabel()
-        label.text = "Your published, upcoming events will be found here."
+        label.text = "Your published and upcoming events will be found here."
         label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.regular)
         label.textColor = UIColor.brandGrey
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -98,7 +99,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
                         return
                     }
                     
-                    guard self?.eventDetailViewModel.event else {
+                    guard ((self?.eventDetailViewModel.event) != nil) else {
                         self?.configureEmptyView()
                         return
                     }
@@ -160,8 +161,8 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         self.headerLabel.heightAnchor.constraint(equalToConstant: 24.0).isActive = true
         
         self.detailLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 24).isActive = true
-        self.detailLabel.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        self.detailLabel.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        self.detailLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+        self.detailLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
         self.detailLabel.heightAnchor.constraint(equalToConstant: 24.0).isActive = true
         
     }

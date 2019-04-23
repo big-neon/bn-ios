@@ -155,32 +155,32 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
         self.resignTextFields()
         self.disableView()
         self.loginButton.startAnimation()
-        self.createAccountViewModel.login(email: email, password: password) { (success, errorString) in
+        self.createAccountViewModel.login(email: email, password: password) { [weak self] (success, errorString) in
             DispatchQueue.main.async {
                 if errorString != nil {
-                    self.loginButton.stopAnimation(animationStyle: .shake,
+                    self?.loginButton.stopAnimation(animationStyle: .shake,
                                                   revertAfterDelay: 1.0,
                                                   completion: {
-                                                    self.showFeedback(message: errorString!)
-                                                    self.enableView()
+                                                    self?.showFeedback(message: errorString!)
+                                                    self?.enableView()
                     })
                     return
                 }
                 
                 if success == false {
-                    self.loginButton.stopAnimation(animationStyle: .shake,
+                    self?.loginButton.stopAnimation(animationStyle: .shake,
                                                    revertAfterDelay: 1.0,
                                                    completion: {
-                                                    self.showFeedback(message: errorString!)
-                                                    self.enableView()
+                                                    self?.showFeedback(message: errorString!)
+                                                    self?.enableView()
                     })
                     return
                 }
-                self.loginButton.stopAnimation(animationStyle: .normal,
+                self?.loginButton.stopAnimation(animationStyle: .normal,
                                               revertAfterDelay: 1.0,
                                               completion: {
-                                                self.enableView()
-                                                self.handleShowHome()
+                                                self?.enableView()
+                                                self?.handleShowHome()
                 })
             }
         }
