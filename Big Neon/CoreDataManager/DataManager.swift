@@ -2,32 +2,40 @@
 
 import Foundation
 import CoreData
+import Big_Neon_Core
+
+let dataErrorDomain = "dataErrorDomain"
+
+enum DataErrorCode: NSInteger {
+    case networkUnavailable = 101
+    case wrongDataFormat = 102
+}
 
 class DataManager {
-    
+    /*
     private let persistentContainer: NSPersistentContainer
-    private let repository: ApiRepository
+    private let businessService: BusinessService
     
     var viewContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
     
-    init(persistentContainer: NSPersistentContainer, repository: ApiRepository) {
+    init(persistentContainer: NSPersistentContainer, businessService: BusinessService) {
         self.persistentContainer = persistentContainer
-        self.repository = repository
+        self.businessService = businessService
     }
     
     func fetchFilms(completion: @escaping(Error?) -> Void) {
-        repository.getFilms() { jsonDictionary, error in
+        
+        businessService.database.fetchEvents { (error, events) in
             if let error = error {
                 completion(error)
                 return
             }
             
-            guard let jsonDictionary = jsonDictionary else {
-                //                let error = NSError(domain: dataErrorDomain, code: DataErrorCode.wrongDataFormat.rawValue, userInfo: nil)
-                //                let error = Error(
-                completion(nil)
+            guard let jsonDictionary = events else {
+                let error = NSError(domain: dataErrorDomain, code: DataErrorCode.wrongDataFormat.rawValue, userInfo: nil)
+                completion(error)
                 return
             }
             
@@ -39,6 +47,29 @@ class DataManager {
             
             completion(nil)
         }
+        
+        /*
+        businessService.getFilms() { jsonDictionary, error in
+            if let error = error {
+                completion(error)
+                return
+            }
+            
+            guard let jsonDictionary = jsonDictionary else {
+                let error = NSError(domain: dataErrorDomain, code: DataErrorCode.wrongDataFormat.rawValue, userInfo: nil)
+                completion(error)
+                return
+            }
+            
+            let taskContext = self.persistentContainer.newBackgroundContext()
+            taskContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+            taskContext.undoManager = nil
+            
+            _ = self.syncFilms(jsonDictionary: jsonDictionary, taskContext: taskContext)
+            
+            completion(nil)
+        }
+        */
     }
     
     private func syncFilms(jsonDictionary: [[String: Any]], taskContext: NSManagedObjectContext) -> Bool {
@@ -75,7 +106,7 @@ class DataManager {
                 do {
                     try film.update(with: filmDictionary)
                 } catch {
-                    print("Error: \(error)\nThe film object will be deleted.")
+                    print("Error: \(error)\nThe quake object will be deleted.")
                     taskContext.delete(film)
                 }
             }
@@ -93,4 +124,6 @@ class DataManager {
         }
         return successfull
     }
+     */
 }
+

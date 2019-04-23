@@ -6,6 +6,8 @@ import AVKit
 
 final class SplashViewController: UIViewController {
     
+    internal var coreDataStack = CoreDataStack.shared
+    
     internal var player: AVPlayer = {
         let player = AVPlayer()
         return player
@@ -48,7 +50,9 @@ final class SplashViewController: UIViewController {
     }
     
     private func navigateHome() {
-        let exploreVC = UINavigationController(rootViewController: DoorPersonViewController())
+        let doorPersonVC = DoorPersonViewController()
+//        doorPersonVC.dataManager = DataProvider(persistentContainer: coreDataStack.persistentContainer, repository: ApiRepository.shared)
+        let exploreVC = UINavigationController(rootViewController: doorPersonVC)
         self.present(exploreVC, animated: false, completion: nil)
     }
     

@@ -10,6 +10,7 @@ final class DoorPersonViewModel {
     internal var event: Event?
     internal var user: User?
     private let coreData = CoreDataBC("EventsCoreData", "Big Neon")
+    var dataManager: DataManager?
     
     internal func fetchEvents(completion: @escaping(Bool) -> Void) {
         self.events = nil
@@ -71,10 +72,11 @@ final class DoorPersonViewModel {
                 return
             }
             
-            guard var events = events else {
+            guard let events = events else {
                 completion(false)
                 return
             }
+            
             self?.events = events
             
             self?.fetchUser(completion: { (_) in

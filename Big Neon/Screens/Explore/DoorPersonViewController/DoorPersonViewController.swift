@@ -11,6 +11,26 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         refresher.addTarget(self, action: #selector(reloadEvents), for: .valueChanged)
         return refresher
     }()
+    
+    internal var headerLabel: UILabel = {
+        let label = UILabel()
+        label.text = "No Active Events"
+        label.textColor = UIColor.brandGrey
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    internal var detailLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Your published, upcoming events will be found here."
+        label.textAlignment = .center
+        label.textColor = UIColor.brandGrey
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
     internal lazy var exploreCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -59,17 +79,16 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         self.configureNavBar()
         self.view.backgroundColor = UIColor.white
         self.configureSearch()
-//        self.fetchCheckins()
-        self.doorPersonViemodel.fetchOfflineEvents { [weak self] (completed) in
-            print(completed)
-            self?.configureCollectionView()
-        }
+        self.fetchCheckins()
+//        self.doorPersonViemodel.fetchOfflineEvents { [weak self] (completed) in
+//            print(completed)
+//            self?.configureCollectionView()
+//        }
         
     }
 
     private func fetchCheckins() {
         self.loadingView.startAnimating()
-        //  Check if there is internet connectivity
         if Reachability.isConnectedToNetwork() {
             self.doorPersonViemodel.configureAccessToken { [weak self] (completed) in
                 DispatchQueue.main.async {
@@ -78,6 +97,12 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
                         print(completed)
                         return
                     }
+                    
+                    guard self?.eventDetailViewModel.event else {
+                        self?.configureEmptyView()
+                        return
+                    }
+                    
                     self?.configureCollectionView()
 //                    self?.doorPersonViemodel.saveEventsOffline(events: (self?.doorPersonViemodel.events)!)
                 }
@@ -122,6 +147,23 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         userProfileImageView.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
         userProfileImageView.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: userProfileImageView)
+    }
+    
+    private func configureEmptyView() {
+        self.exploreCollectionView.isHidden = true
+        self.view.addSubview(headerLabel)
+        self.view.addSubview(detailLabel)
+        
+        self.headerLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50).isActive = true
+        self.headerLabel.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        self.headerLabel.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        self.headerLabel.heightAnchor.constraint(equalToConstant: 24.0).isActive = true
+        
+        self.detailLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 24).isActive = true
+        self.detailLabel.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        self.detailLabel.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        self.detailLabel.heightAnchor.constraint(equalToConstant: 24.0).isActive = true
+        
     }
 
     private func configureCollectionView() {
