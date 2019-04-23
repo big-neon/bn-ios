@@ -99,7 +99,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
                         return
                     }
                     
-                    guard ((self?.eventDetailViewModel.event) != nil) else {
+                    guard ((self?.doorPersonViemodel.events?.data) != nil) else {
                         self?.configureEmptyView()
                         return
                     }
