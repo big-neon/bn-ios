@@ -9,8 +9,6 @@ final class DoorPersonViewModel {
     internal var events: Events?
     internal var event: Event?
     internal var user: User?
-    private let coreData = CoreDataBC("EventsCoreData", "Big Neon")
-    var dataManager: DataManager?
     
     internal func fetchEvents(completion: @escaping(Bool) -> Void) {
         self.events = nil
@@ -119,6 +117,7 @@ final class DoorPersonViewModel {
         return
     }
     
+    /*
     //  Saving Events Offline
     internal func saveEventsOffline(events: Events) {
         let eventsToSave = events.data
@@ -127,7 +126,6 @@ final class DoorPersonViewModel {
             self.coreData.pushSingleValue(eventValue)
         }
     }
-    
     
     // Fetch events From Offline
     internal func fetchOfflineEvents(completion: @escaping(Bool) -> Void) {
@@ -141,6 +139,7 @@ final class DoorPersonViewModel {
     }
     
     func convertToJSONArray(managedObjectArray: [NSManagedObject]) -> Any {
+        print(managedObjectArray)
         var jsonArray: [[String: Any]] = []
         for item in managedObjectArray {
             var dict: [String: Any] = [:]
@@ -153,18 +152,15 @@ final class DoorPersonViewModel {
         }
         return jsonArray
 
-        /*
+        
         for item in managedObjectArray {
             var dict: [String: Any] = [:]
             for attribute in item.entity.attributesByName {
                 
-                print(attribute.value)
-                print(attribute.key)
-                
                 if let value = item.value(forKey: attribute.key) {
                     dict[attribute.key] = value
-                    /*
-                    let event: Event = Event(id: dict[Event.CodingKeys.id],
+                    
+                    let event: Event = Event(id: dict[Event.CodingKeys.id.rawValue],
                                              name: dict[Event.CodingKeys.name],
                                              organizationID: dict[Event.CodingKeys.organizationID],
                                              organizationID: dict[Event.CodingKeys.organizationID],
@@ -195,15 +191,14 @@ final class DoorPersonViewModel {
                                              sendgridListID: dict[Event.CodingKeys.sendgridListID],
                                              coverImageURL: dict[Event.CodingKeys.coverImageURL],
                                              privateAccessCode: dict[Event.CodingKeys.privateAccessCode])
-                    */
+                
                 }
                 jsonArray.append(event)
             }
         }
         return jsonArray
-        */
     }
-    
+  
     private func fetchEventValue(fromEvent event: Event) -> [String: Any] {
         return [Event.CodingKeys.id.rawValue: event.id ?? "",
                 Event.CodingKeys.name.rawValue: event.name ?? "",
@@ -240,7 +235,8 @@ final class DoorPersonViewModel {
         //  Localised Time, Venue
         //  Unable to load class named 'EventsManagedObject' for entity 'EventsCoreData'.  Class not found, using default NSManagedObject instead.
     }
-    
+    */
+     
     private func getEventValue(fromEvent event: Event) -> [String: Any] {
         return [Event.CodingKeys.id.rawValue: event.id ?? "",
         Event.CodingKeys.name.rawValue: event.name ?? "",
@@ -277,5 +273,4 @@ final class DoorPersonViewModel {
         //  Localised Time, Venue
         //  Unable to load class named 'EventsManagedObject' for entity 'EventsCoreData'.  Class not found, using default NSManagedObject instead.
     }
-    
 }

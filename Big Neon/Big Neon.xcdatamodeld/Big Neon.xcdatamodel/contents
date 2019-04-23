@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.98" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="EventsCoreData" representedClassName="EventsManagedObject" syncable="YES">
         <attribute name="additional_info" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="age_limit" optional="YES" attributeType="String" syncable="YES"/>
@@ -33,6 +33,14 @@
         <attribute name="venue_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="video_url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Film" representedClassName="Film" syncable="YES" codeGenerationType="class">
+        <attribute name="director" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="episodeId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="openingCrawl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="producer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="releaseDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="RedeemedTicket" representedClassName="RedeemedTicket" syncable="YES" codeGenerationType="class">
         <attribute name="door_time" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
@@ -59,5 +67,6 @@
         <element name="EventsCoreData" positionX="89.91015625" positionY="-5.078125" width="128" height="510"/>
         <element name="RedeemedTicket" positionX="-54" positionY="-9" width="128" height="330"/>
         <element name="ScannedUser" positionX="-194.48046875" positionY="-8.1796875" width="128" height="45"/>
+        <element name="Film" positionX="-54" positionY="144" width="128" height="135"/>
     </elements>
 </model>

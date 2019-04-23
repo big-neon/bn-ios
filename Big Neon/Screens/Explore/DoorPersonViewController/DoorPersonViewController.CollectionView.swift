@@ -6,7 +6,7 @@ import Big_Neon_Core
 extension DoorPersonViewController {
 
     internal func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return self.fetchedResultsController.sections?.count ?? 0   //  2
     }
 
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -14,16 +14,16 @@ extension DoorPersonViewController {
         case 0:
             return 1
         default:
-            guard let total = self.doorPersonViemodel.events?.paging.total else {
-                return 0
-            }
-            guard let limit = self.doorPersonViemodel.events?.paging.limit else {
-                return 0
-            }
-            if total > limit {
-                return limit
-            }
-            return total
+//            guard let total = self.doorPersonViemodel.events?.paging.total else {
+//                return 0
+//            }
+//            guard let limit = self.doorPersonViemodel.events?.paging.limit else {
+//                return 0
+//            }
+//            if total > limit {
+//                return limit
+//            }
+            return  self.fetchedResultsController.sections?[section].numberOfObjects ?? 0 //  total
         }
     }
 
@@ -35,16 +35,20 @@ extension DoorPersonViewController {
             return sectionLabelCell
         case 1:
             let eventCell: DoorPersonCell = collectionView.dequeueReusableCell(withReuseIdentifier: DoorPersonCell.cellID, for: indexPath) as! DoorPersonCell
-            guard let events = self.doorPersonViemodel.events?.data else {
-                return eventCell
-            }
-            let event = events[indexPath.item]
-            eventCell.eventNameLabel.text = event.name
-            let eventImageURL: URL = URL(string: event.compressImage(url: event.promoImageURL!))!;
-            eventCell.eventImageView.pin_setImage(from: eventImageURL, placeholderImage: nil)
-            eventCell.eventDetailsLabel.text = self.configureEventDetails(event: event)
-            eventCell.eventDateLabel.text = self.configureEventDate(event: event)
+            let film = fetchedResultsController.object(at: indexPath)
+            eventCell.eventNameLabel.text = film.title
+            eventCell.eventDetailsLabel.text = film.director
             return eventCell
+//            guard let events = self.doorPersonViemodel.events?.data else {
+//                return eventCell
+//            }
+//            let event = events[indexPath.item]
+//            eventCell.eventNameLabel.text = event.name
+//            let eventImageURL: URL = URL(string: event.compressImage(url: event.promoImageURL!))!;
+//            eventCell.eventImageView.pin_setImage(from: eventImageURL, placeholderImage: nil)
+//            eventCell.eventDetailsLabel.text = self.configureEventDetails(event: event)
+//            eventCell.eventDateLabel.text = self.configureEventDate(event: event)
+//            return eventCell
         default:
             let sectionLabelCell: SectionHeaderCell = collectionView.dequeueReusableCell(withReuseIdentifier: SectionHeaderCell.cellID, for: indexPath) as! SectionHeaderCell
             sectionLabelCell.sectionHeaderLabel.text = "Upcoming"

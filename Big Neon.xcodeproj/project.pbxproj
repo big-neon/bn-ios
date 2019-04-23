@@ -67,11 +67,8 @@
 		C64B0ADA21D1240700386000 /* TicketsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AD921D1240700386000 /* TicketsViewModel.swift */; };
 		C64B0ADC21D1276100386000 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ADB21D1276100386000 /* ProfileViewController.swift */; };
 		C64B0AE121D1294600386000 /* ProfileViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */; };
-		C6550C792265CFC300F3BF5E /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6550C772265CFC200F3BF5E /* Module.swift */; };
-		C6550C7A2265CFC300F3BF5E /* CoreDataBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6550C782265CFC200F3BF5E /* CoreDataBC.swift */; };
 		C655BD39221D69FD00EB1FDD /* DatabaseService.Checkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = C655BD38221D69FD00EB1FDD /* DatabaseService.Checkins.swift */; };
 		C6562F522203286E0020B6D3 /* UtilityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6562F512203286E0020B6D3 /* UtilityConstants.swift */; };
-		C65B92A22264B743005828E0 /* EventManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B92A12264B743005828E0 /* EventManagedObject.swift */; };
 		C665B6E7224B506900581E2E /* ScannerViewController.Checkin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665B6E6224B506900581E2E /* ScannerViewController.Checkin.swift */; };
 		C665DFE521E87CB800DFB955 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */; };
 		C66C0BA521E337D40066CD0F /* splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C66C0BA421E337D40066CD0F /* splash.mp4 */; };
@@ -87,6 +84,8 @@
 		C698AB1621EF1FE00073F1FB /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB1521EF1FE00073F1FB /* CreateAccountViewModel.swift */; };
 		C698F6032238F76400977259 /* ScanFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698F6022238F76400977259 /* ScanFeedback.swift */; };
 		C69E20F9225608600032C5E4 /* GuestView.SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69E20F8225608600032C5E4 /* GuestView.SearchBar.swift */; };
+		C6A6FAA6226F3A6200601AC2 /* EventsApiRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A6FAA4226F396900601AC2 /* EventsApiRepository.swift */; };
+		C6A6FAA7226F468900601AC2 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B92A12264B743005828E0 /* Film.swift */; };
 		C6AFB78B21DD579600670AC3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB78A21DD579600670AC3 /* ProfileViewModel.swift */; };
 		C6AFB78F21DD658800670AC3 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB78E21DD658800670AC3 /* EventDetailViewController.swift */; };
 		C6AFB79121DD65D200670AC3 /* EventDetailViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB79021DD65D200670AC3 /* EventDetailViewController.TableView.swift */; };
@@ -259,11 +258,9 @@
 		C64B0AD921D1240700386000 /* TicketsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsViewModel.swift; sourceTree = "<group>"; };
 		C64B0ADB21D1276100386000 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.TableView.swift; sourceTree = "<group>"; };
-		C6550C772265CFC200F3BF5E /* Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
-		C6550C782265CFC200F3BF5E /* CoreDataBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataBC.swift; sourceTree = "<group>"; };
 		C655BD38221D69FD00EB1FDD /* DatabaseService.Checkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Checkins.swift; sourceTree = "<group>"; };
 		C6562F512203286E0020B6D3 /* UtilityConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityConstants.swift; sourceTree = "<group>"; };
-		C65B92A12264B743005828E0 /* EventManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManagedObject.swift; sourceTree = "<group>"; };
+		C65B92A12264B743005828E0 /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
 		C665B6E6224B506900581E2E /* ScannerViewController.Checkin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.Checkin.swift; sourceTree = "<group>"; };
 		C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C66C0BA421E337D40066CD0F /* splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.mp4; sourceTree = "<group>"; };
@@ -281,6 +278,7 @@
 		C698AB1521EF1FE00073F1FB /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
 		C698F6022238F76400977259 /* ScanFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanFeedback.swift; sourceTree = "<group>"; };
 		C69E20F8225608600032C5E4 /* GuestView.SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestView.SearchBar.swift; sourceTree = "<group>"; };
+		C6A6FAA4226F396900601AC2 /* EventsApiRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsApiRepository.swift; sourceTree = "<group>"; };
 		C6AFB78A21DD579600670AC3 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		C6AFB78E21DD658800670AC3 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		C6AFB79021DD65D200670AC3 /* EventDetailViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.TableView.swift; sourceTree = "<group>"; };
@@ -592,8 +590,6 @@
 		C64B0AD421D123C300386000 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				C6550C782265CFC200F3BF5E /* CoreDataBC.swift */,
-				C6550C772265CFC200F3BF5E /* Module.swift */,
 				C6AFB78C21DD655900670AC3 /* DoorPersonViewController */,
 				C63D1A152220054700152E83 /* TicketScannerViewController */,
 				C6AFB78D21DD656500670AC3 /* EventDetailViewController */,
@@ -928,7 +924,6 @@
 				C6B88D7C21F1C93A006394F8 /* LocalizedTimes.swift */,
 				C6B88D7A21F1C93A006394F8 /* Paging.swift */,
 				C6B88D7B21F1C93A006394F8 /* Venue.swift */,
-				C65B92A12264B743005828E0 /* EventManagedObject.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -979,6 +974,8 @@
 			isa = PBXGroup;
 			children = (
 				C6ED9F07226890950020DFD9 /* CoreDataStack.swift */,
+				C6A6FAA4226F396900601AC2 /* EventsApiRepository.swift */,
+				C65B92A12264B743005828E0 /* Film.swift */,
 				C6ED9F09226890C80020DFD9 /* DataManager.swift */,
 			);
 			path = CoreDataManager;
@@ -1416,7 +1413,6 @@
 				C623C06A2251E3920020D0A8 /* EventCheckoutDetailCell.swift in Sources */,
 				C623C06C2251E39A0020D0A8 /* SubTotalCell.swift in Sources */,
 				C683232D21FF2D71002342AE /* ProfileEditViewController.TableView.swift in Sources */,
-				C6550C7A2265CFC300F3BF5E /* CoreDataBC.swift in Sources */,
 				C62BC78621CCC3F700830A5F /* DoorPersonViewController.swift in Sources */,
 				C698AB1021EDE9BC0073F1FB /* CreateAccountViewController.swift in Sources */,
 				C6ED9F08226890950020DFD9 /* CoreDataStack.swift in Sources */,
@@ -1436,13 +1432,14 @@
 				C64B0AC221D0DD5E00386000 /* TabBarController.swift in Sources */,
 				C623C0812251E42C0020D0A8 /* LastScannedUserView.swift in Sources */,
 				C6BCBE9E222D06C70026B858 /* ScannerViewModel.swift in Sources */,
-				C6550C792265CFC300F3BF5E /* Module.swift in Sources */,
 				C623C0762251E3E30020D0A8 /* ProfileTableCell.swift in Sources */,
 				C6AFB79121DD65D200670AC3 /* EventDetailViewController.TableView.swift in Sources */,
 				C6EC209A220063DE00BD10DD /* ProfileImageUploadCell.swift in Sources */,
 				C623C0792251E4180020D0A8 /* GuestsView.TableView.swift in Sources */,
 				C6D2413421EF53B000FC3E41 /* NamesViewController.swift in Sources */,
+				C6A6FAA7226F468900601AC2 /* Film.swift in Sources */,
 				C61853C3221430A2005D6250 /* TicketTypeViewModel.swift in Sources */,
+				C6A6FAA6226F3A6200601AC2 /* EventsApiRepository.swift in Sources */,
 				C698AB1621EF1FE00073F1FB /* CreateAccountViewModel.swift in Sources */,
 				C62BC78421CCC3F700830A5F /* AppDelegate.swift in Sources */,
 				C623C0692251E38E0020D0A8 /* QuantitySelectionCell.swift in Sources */,
@@ -1493,7 +1490,6 @@
 				C63D86C22231414D003CFAA7 /* RedeemedTicket.swift in Sources */,
 				C655BD39221D69FD00EB1FDD /* DatabaseService.Checkins.swift in Sources */,
 				C698F6032238F76400977259 /* ScanFeedback.swift in Sources */,
-				C65B92A22264B743005828E0 /* EventManagedObject.swift in Sources */,
 				C644BA2F21F7069D003C188B /* BasicError.swift in Sources */,
 				C60EDC852248E3EE00C9CC27 /* Environment.swift in Sources */,
 				C6B88D7921F1C932006394F8 /* Tokens.swift in Sources */,

@@ -1,9 +1,32 @@
 
 import UIKit
+import CoreData
 import Big_Neon_UI
 import Big_Neon_Core
 
-final class DoorPersonViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
+final class DoorPersonViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate, NSFetchedResultsControllerDelegate {
+    
+    
+    internal var dataProvider: DataProvider!
+    
+    lazy var fetchedResultsController: NSFetchedResultsController<Film> = {
+        let fetchRequest = NSFetchRequest<Film>(entityName:"Film")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "episodeId", ascending:true)]
+        
+        let controller = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                                    managedObjectContext: dataProvider.viewContext,
+                                                    sectionNameKeyPath: nil, cacheName: nil)
+        controller.delegate = self
+        
+        do {
+            try controller.performFetch()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+        
+        return controller
+    }()
     
     internal lazy var refresher: UIRefreshControl = {
         let refresher = UIRefreshControl()
@@ -80,13 +103,24 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         self.configureNavBar()
         self.view.backgroundColor = UIColor.white
         self.configureSearch()
-        self.fetchCheckins()
+        
+        dataProvider.fetchFilms { (error) in
+            print(error)
+        }
+        
+//        self.fetchCheckins()
 //        self.doorPersonViemodel.fetchOfflineEvents { [weak self] (completed) in
 //            print(completed)
 //            self?.configureCollectionView()
 //        }
         
     }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        self.exploreCollectionView.reloadData()
+    }
+    
+    
 
     private func fetchCheckins() {
         self.loadingView.startAnimating()
@@ -109,9 +143,9 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
                 }
             }
         } else {
-            self.doorPersonViemodel.fetchOfflineEvents { [weak self] (eventsFetched) in
-                self?.configureCollectionView()
-            }
+//            self.doorPersonViemodel.fetchOfflineEvents { [weak self] (eventsFetched) in
+//                self?.configureCollectionView()
+//            }
         }
         
     }

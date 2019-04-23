@@ -1,7 +1,7 @@
 
 
-import Foundation
 import CoreData
+import Big_Neon_UI
 import Big_Neon_Core
 
 let dataErrorDomain = "dataErrorDomain"
@@ -11,45 +11,22 @@ enum DataErrorCode: NSInteger {
     case wrongDataFormat = 102
 }
 
-class DataManager {
-    /*
+class DataProvider {
+    
     private let persistentContainer: NSPersistentContainer
-    private let businessService: BusinessService
+    private let repository: ApiRepository
     
     var viewContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
     
-    init(persistentContainer: NSPersistentContainer, businessService: BusinessService) {
+    init(persistentContainer: NSPersistentContainer, repository: ApiRepository) {
         self.persistentContainer = persistentContainer
-        self.businessService = businessService
+        self.repository = repository
     }
     
     func fetchFilms(completion: @escaping(Error?) -> Void) {
-        
-        businessService.database.fetchEvents { (error, events) in
-            if let error = error {
-                completion(error)
-                return
-            }
-            
-            guard let jsonDictionary = events else {
-                let error = NSError(domain: dataErrorDomain, code: DataErrorCode.wrongDataFormat.rawValue, userInfo: nil)
-                completion(error)
-                return
-            }
-            
-            let taskContext = self.persistentContainer.newBackgroundContext()
-            taskContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-            taskContext.undoManager = nil
-            
-            _ = self.syncFilms(jsonDictionary: jsonDictionary, taskContext: taskContext)
-            
-            completion(nil)
-        }
-        
-        /*
-        businessService.getFilms() { jsonDictionary, error in
+        repository.getFilms() { jsonDictionary, error in
             if let error = error {
                 completion(error)
                 return
@@ -69,7 +46,6 @@ class DataManager {
             
             completion(nil)
         }
-        */
     }
     
     private func syncFilms(jsonDictionary: [[String: Any]], taskContext: NSManagedObjectContext) -> Bool {
@@ -124,6 +100,4 @@ class DataManager {
         }
         return successfull
     }
-     */
 }
-
