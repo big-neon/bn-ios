@@ -2,6 +2,10 @@
 import Foundation
 import UIKit
 
+
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
 extension UIViewController {
     
     public func setNavigationTitle(withTitle title:String, titleColour: UIColor) {

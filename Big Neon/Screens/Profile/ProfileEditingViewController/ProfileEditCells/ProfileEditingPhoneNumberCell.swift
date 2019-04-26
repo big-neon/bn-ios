@@ -4,10 +4,17 @@ import UIKit
 import PhoneNumberKit
 import Big_Neon_UI
 
+// MARK:  magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
+// MARK: check imports... do we need them all?
+
 final public class ProfileEditPhoneNumberTableCell: UITableViewCell {
     
     public static let cellID = "ProfileEditPhoneNumberTableCellID"
     
+    // lazy?
     public let cellLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandGrey
@@ -16,6 +23,7 @@ final public class ProfileEditPhoneNumberTableCell: UITableViewCell {
         return label
     }()
     
+    // lazy?
     public let entryTextField: PhoneNumberTextField = {
         let textField = PhoneNumberTextField()
         textField.borderStyle = .none

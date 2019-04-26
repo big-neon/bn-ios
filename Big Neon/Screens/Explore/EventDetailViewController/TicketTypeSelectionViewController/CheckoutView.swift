@@ -6,6 +6,9 @@ import UIKit
 import Big_Neon_UI
 import Big_Neon_Core
 
+// MARK: internal is default access level - not need for explicit definition
+
+//MARK: confirm to the protocol in extension
 public class CheckoutView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     internal var event: Event?
@@ -60,6 +63,7 @@ extension CheckoutView {
         return 5
     }
     
+    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
@@ -86,6 +90,8 @@ extension CheckoutView {
         
     }
     
+    
+    // MARK: couild be separate extension
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 2 {
             return 110

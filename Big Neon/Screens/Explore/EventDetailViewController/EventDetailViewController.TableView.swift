@@ -4,6 +4,8 @@ import Foundation
 import UIKit
 import Big_Neon_UI
 
+// MARK: internal is default access level - not need for explicit definition
+
 extension EventDetailViewController {
     
     internal func numberOfSections(in tableView: UITableView) -> Int {
@@ -14,6 +16,10 @@ extension EventDetailViewController {
         return 1
     }
     
+    // MARK: it's hard to read with switch statement
+    // refactor
+    // direct access to the index of an array can be dangerous
+    // lots of repetitive code
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
@@ -61,6 +67,7 @@ extension EventDetailViewController {
         
         
     }
+    
     
     internal func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {

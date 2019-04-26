@@ -25,6 +25,7 @@ final class TicketScannerViewModel {
     }
     
     internal func getRedeemKey(fromStringValue value: String) -> String? {
+        // MARK: use just one guard
         guard let data = try? JSONSerialization.jsonObject(with: Data(value.utf8), options: []) else {
             return nil
         }
@@ -39,6 +40,7 @@ final class TicketScannerViewModel {
     }
     
     internal func getTicketID(fromStringValue value: String) -> String? {
+        // MARK: use just one guard
         guard let data = try? JSONSerialization.jsonObject(with: Data(value.utf8), options: []) else {
             return nil
         }
@@ -122,6 +124,7 @@ final class TicketScannerViewModel {
                     completion(.wrongEvent)
                     return
                 case .validTicketID?:
+                    // one guard?
                     guard let ticket = redeemTicket else {
                         completion(.ticketNotFound)
                         return
@@ -149,6 +152,7 @@ final class TicketScannerViewModel {
 
         BusinessService.shared.database.fetchGuests(forEventID: eventID) { (error, guestsFetched) in
             DispatchQueue.main.async {
+                // one guard?
                 if error != nil {
                     completion(false)
                     return

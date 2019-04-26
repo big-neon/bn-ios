@@ -5,6 +5,11 @@ import UIKit
 import Big_Neon_UI
 import Big_Neon_Core
 
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+// MARK: internal is default access level - not need for explicit definition
+
 extension GuestListView {
     
     func searchBarIsEmpty() -> Bool {
@@ -12,15 +17,18 @@ extension GuestListView {
     }
     
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // guard ?
         if searchText == "" {
             self.guestTableView.reloadData()
             return
         }
         
+        // explicite unwraping - undsafe / app could crash 
         self.filteredSearchResults = (self.guests?.data.filter({( guestTicket : RedeemableTicket) -> Bool in
             return guestTicket.firstName.lowercased().contains(searchText.lowercased()) ||  guestTicket.lastName.lowercased().contains(searchText.lowercased()) ||
                 guestTicket.email.lowercased().contains(searchText.lowercased())
         }))!
+        
         self.guestTableView.reloadData()
     }
     

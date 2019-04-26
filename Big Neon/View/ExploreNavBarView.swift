@@ -3,8 +3,13 @@ import Foundation
 import UIKit
 import Big_Neon_UI
 
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: internal is default access level - not need for explicit definition
+// MARK: use abbreviation / syntax sugar
+
 public class ExploreNavigationView: UIView {
     
+    // lazy?
     internal let headerLabel: BrandTitleLabel = {
         let label = BrandTitleLabel()
         label.text = "Explore"

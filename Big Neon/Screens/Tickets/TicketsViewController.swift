@@ -2,6 +2,11 @@
 import UIKit
 import Big_Neon_UI
 
+// MARK:  magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+// MARK: internal is default access level - not need for explicit definition
+
 final class TicketsViewController: BaseViewController {
     
     internal lazy var noTicketImageView: UIImageView = {
@@ -13,6 +18,7 @@ final class TicketsViewController: BaseViewController {
         return imageView
     }()
     
+    // lazy?
     internal let headerImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "ic_headerLogo")

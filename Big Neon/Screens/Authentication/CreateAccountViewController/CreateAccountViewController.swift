@@ -4,9 +4,18 @@ import Foundation
 import UITextField_Shake
 import Big_Neon_UI
 
+// MARK:  magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+// MARK: internal is default access level - not need for explicit definition
+// MARK: swift support Type Inference
+
 internal class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     fileprivate var welcomeLabelTopConstraint: NSLayoutConstraint?
+    //MARK: type can be infer in swift
+    // this could be:
+    // var showPasswordValue = false
     internal var showPasswordValue: Bool = false
     internal let createAccountViewModel: AccountViewModel = AccountViewModel()
     
@@ -15,6 +24,7 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         return feedback
     }()
     
+    // lazy?
     private var headerLabel: BrandTitleLabel = {
         let label = BrandTitleLabel()
         label.text = "Create your account"
@@ -71,6 +81,10 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     }
     
     private func configureNavBar() {
+        //MARK: better
+//        guard navigationController = navigationController else {
+//            return
+//        }
         self.navigationNoLineBar()
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.navigationBar.tintColor = UIColor.black
@@ -207,6 +221,8 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
                     self.nextButton.stopAnimation(animationStyle: .shake,
                                                   revertAfterDelay: 3.0,
                                                   completion: {
+                                                    //MARK: do not use explicite unwraping,
+                                                    // previous guard is not covering errorString
                                                     self.showFeedback(message: errorString!)
                                                     self.enableView()
                     })
@@ -244,6 +260,10 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     
 }
 
+
+// MARK: setupKeyboardObservers() and handleKeyboardNotification(notification: NSNotification) should be extension of baseViewCOntroller
+// or some other base class (DRY)
+// repetetive code 
 extension CreateAccountViewController {
     
     fileprivate func setupKeyboardObservers() {

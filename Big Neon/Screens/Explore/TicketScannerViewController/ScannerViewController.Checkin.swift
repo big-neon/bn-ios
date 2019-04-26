@@ -27,6 +27,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         
         self.hideScannedUser()
+        //one guard?
         guard let metadataObj = metadataObjects.first as? AVMetadataMachineReadableCodeObject else {
             print("No QR data detected")
             self.scanCompleted = true
@@ -38,6 +39,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         }
         
         if supportedCodeTypes.contains(metadataObj.type) {
+            // one guard
             guard let metaDataString = metadataObj.stringValue else {
                 self.generator.notificationOccurred(.error)
                 self.scanCompleted = true
@@ -67,6 +69,10 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         }
     }
     
+    
+    
+    // seems unnecessary too complicate
+    // too much same code... maybe is better to extract it in function
     private func checkinAutomatically(withTicketID ticketID: String) {
         self.scannerViewModel?.automaticallyChecking(ticketID: ticketID) { (scanFeedback) in
             switch scanFeedback {

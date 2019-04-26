@@ -4,6 +4,13 @@ import UIKit
 import Big_Neon_Core
 import Big_Neon_UI
 
+
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
+// MARK:  remove comments... we are using git not need for saving them for "later"
+
 final public class EventHeaderView: UIView {
     
     public var eventImageTopAnchor: NSLayoutConstraint?
@@ -75,6 +82,8 @@ final public class EventHeaderView: UIView {
         }
     }
     */
+    
+    // lazy?
     public let eventImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.brandBackground
@@ -84,6 +93,7 @@ final public class EventHeaderView: UIView {
         return imageView
     }()
     
+    // lazy?
     public let eventHeader: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 14.0
@@ -92,6 +102,7 @@ final public class EventHeaderView: UIView {
         return view
     }()
     
+    // lazy?
     public let presentLabel: UILabel = {
         let label = UILabel()
         label.text = "-"
@@ -101,6 +112,7 @@ final public class EventHeaderView: UIView {
         return label
     }()
     
+    // lazy?
     public let eventDateView: EventDateView = {
         let view = EventDateView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -117,6 +129,7 @@ final public class EventHeaderView: UIView {
         return label
     }()
     
+
     public lazy var interestedButton: InterestedButtonView = {
         let button = InterestedButtonView()
         button.buttonLabel.text = "I’m Interested"
@@ -125,6 +138,7 @@ final public class EventHeaderView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
     
     public lazy var shareEventButton: InterestedButtonView = {
         let button = InterestedButtonView()

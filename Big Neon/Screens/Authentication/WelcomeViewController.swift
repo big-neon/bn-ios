@@ -4,6 +4,11 @@ import UIKit
 import Big_Neon_UI
 import SafariServices
 
+// MARK:  magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+// MARK: internal is default access level - not need for explicit definition
+
 final class WelcomeViewController: UIViewController {
     
     private var loginButtonBottomConstraint: NSLayoutConstraint?

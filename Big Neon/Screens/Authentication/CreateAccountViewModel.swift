@@ -4,6 +4,10 @@ import Foundation
 import Big_Neon_Core
 import SwiftKeychainWrapper
 
+
+// MARK: internal is default access level - not need for explicit definition
+
+
 final class AccountViewModel {
     
     internal func createAccount(email: String, password: String, completion: @escaping(Bool, String?) -> Void) {

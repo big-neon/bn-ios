@@ -3,10 +3,16 @@
 import Foundation
 import UIKit
 
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
+
 final public class CheckoutTotalCell: UITableViewCell {
     
     public static let cellID = "CheckoutTotalCellID"
     
+    // lazy? 
     public let totalLabel: UILabel = {
         let label = UILabel()
         label.text = "Total"
@@ -16,6 +22,7 @@ final public class CheckoutTotalCell: UITableViewCell {
         return label
     }()
     
+    // lazy?
     public let amountLabel: UILabel = {
         let label = UILabel()
         label.text = "$35.00 USD"

@@ -7,8 +7,13 @@ public protocol ProfileHeaderDelegate {
     func handleShowQRCodeView()
 }
 
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
 final public class ProfileHeaderView: UIView {
     
+    // MARK: should be weak
     public var delegate: ProfileHeaderDelegate?
     
     public var user: User? {
@@ -18,10 +23,12 @@ final public class ProfileHeaderView: UIView {
             }
             
             self.userNameLabel.text = "\(user.firstName ?? "-") \(user.lastName ?? "-")"
+            //MARK: do not use explicite unwraping, guard it
             self.userEmailLabel.text = user.email!.uppercased()
         }
     }
     
+    // lazy?
     public let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "ic_emptyProfileImage")
@@ -48,6 +55,7 @@ final public class ProfileHeaderView: UIView {
         return imageView
     }()
     
+    // lazy
     public let userNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandBlack
@@ -56,6 +64,7 @@ final public class ProfileHeaderView: UIView {
         return label
     }()
     
+    // lazy?
     public let emailIconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "ic_message")
@@ -65,6 +74,7 @@ final public class ProfileHeaderView: UIView {
         return imageView
     }()
     
+    // lazy?
     public let userEmailLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandGrey

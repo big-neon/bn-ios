@@ -3,9 +3,14 @@
 import Foundation
 import UIKit
 
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
 extension GuestListView {
     
     public func numberOfSections(in tableView: UITableView) -> Int {
+        // guard?
         if self.isSearching == true {
             return 1
         }
@@ -13,6 +18,7 @@ extension GuestListView {
     }
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        // guard?
         if self.isSearching == true {
             return nil
         }
@@ -20,6 +26,7 @@ extension GuestListView {
     }
     
     public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        // guard?
         if self.isSearching == true {
             return nil
         }
@@ -27,7 +34,9 @@ extension GuestListView {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // guard?
         if self.isSearching == true {
+            // remove - explicite unwraping
             return self.filteredSearchResults!.count
         }
         let guestKey = guestSectionTitles[section]
@@ -40,11 +49,17 @@ extension GuestListView {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let guestCell: GuestTableViewCell = tableView.dequeueReusableCell(withIdentifier: GuestTableViewCell.cellID, for: indexPath) as! GuestTableViewCell
         
+        // guard?
         if self.isSearching == true {
+            // remove - explicite unwraping
             let searchResult = self.filteredSearchResults![indexPath.row]
             guestCell.guestNameLabel.text = searchResult.firstName
             guestCell.ticketTypeNameLabel.text = searchResult.priceInCents.dollarString + " | " + searchResult.ticketType
             
+            
+            // string comparison? can we do it in some other way?
+            // better: searchResult.status.lowercased() == "Purchased".lowercased()
+            // e.g. status should be enum
             if searchResult.status == "Purchased" {
                 guestCell.ticketStateView.tagLabel.text = "PURCHASED"
                 guestCell.ticketStateView.backgroundColor = UIColor.brandGreen
@@ -61,6 +76,9 @@ extension GuestListView {
             guestCell.guestNameLabel.text = guestValues[indexPath.row].firstName
             guestCell.ticketTypeNameLabel.text = guestValues[indexPath.row].priceInCents.dollarString + " | " + guestValues[indexPath.row].ticketType
             
+            // string comparison? can we do it in some other way?
+            // better: searchResult.status.lowercased() == "Purchased".lowercased()
+            // e.g. status should be enum
             if guestValues[indexPath.row].status == "Purchased" {
                 guestCell.ticketStateView.tagLabel.text = "PURCHASED"
                 guestCell.ticketStateView.backgroundColor = UIColor.brandGreen

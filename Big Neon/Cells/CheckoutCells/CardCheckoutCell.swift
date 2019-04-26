@@ -2,10 +2,17 @@
 import Foundation
 import UIKit
 
+
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
+
 final public class CardCheckoutCell: UITableViewCell {
     
     public static let cellID = "CardCheckoutCellID"
     
+    // public lazy var  ?
     public let paymentLabel: UILabel = {
         let label = UILabel()
         label.text = "Payment"
@@ -15,6 +22,7 @@ final public class CardCheckoutCell: UITableViewCell {
         return label
     }()
     
+    // public lazy var  ?
     public let visaCardView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "ic_visaCard")
@@ -24,6 +32,7 @@ final public class CardCheckoutCell: UITableViewCell {
         return imageView
     }()
     
+    // public lazy var  ?
     public let cardNumberLabel: UILabel = {
         let label = UILabel()
         label.text = "**** **** **** 4455"

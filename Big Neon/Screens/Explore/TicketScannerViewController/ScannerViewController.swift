@@ -5,6 +5,13 @@ import UIKit
 import Big_Neon_UI
 import Big_Neon_Core
 
+// MARK:  magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+// MARK: internal is default access level - not need for explicit definition
+
+
+
 final class ScannerViewController: UIViewController, ScannerModeViewDelegate, GuestListViewProtocol, ManualCheckinModeDelegate {
     
     //  Video Capture Session
@@ -41,6 +48,9 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
     internal var isShowingGuests: Bool = false {
         didSet {
             if isShowingGuests == true {
+                
+                // MARK: we want to be on main thread
+                // seems unnecessary too complicate
                 UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
                     self.cameraTintView.layer.opacity = 0.85
                     self.scannerModeView.layer.opacity = 0.0
