@@ -11,22 +11,115 @@ enum DataErrorCode: NSInteger {
     case wrongDataFormat = 102
 }
 
-class DataProvider {
+//class DataProvider {
+//    
+//    private let persistentContainer: NSPersistentContainer
+//    private let repository: ApiRepository
+//    
+//    var viewContext: NSManagedObjectContext {
+//        return persistentContainer.viewContext
+//    }
+//    
+//    init(persistentContainer: NSPersistentContainer, repository: ApiRepository) {
+//        self.persistentContainer = persistentContainer
+//        self.repository = repository
+//    }
+//    
+//    func fetchFilms(completion: @escaping(Error?) -> Void) {
+//        repository.getFilms() { jsonDictionary, error in
+//            if let error = error {
+//                completion(error)
+//                return
+//            }
+//            
+//            guard let jsonDictionary = jsonDictionary else {
+//                let error = NSError(domain: dataErrorDomain, code: DataErrorCode.wrongDataFormat.rawValue, userInfo: nil)
+//                completion(error)
+//                return
+//            }
+//            
+//            let taskContext = self.persistentContainer.newBackgroundContext()
+//            taskContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+//            taskContext.undoManager = nil
+//            
+//            _ = self.syncFilms(jsonDictionary: jsonDictionary, taskContext: taskContext)
+//            
+//            completion(nil)
+//        }
+//    }
+//    
+//    private func syncFilms(jsonDictionary: [[String: Any]], taskContext: NSManagedObjectContext) -> Bool {
+//        var successfull = false
+//        taskContext.performAndWait {
+//            let matchingEpisodeRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Film")
+//            let episodeIds = jsonDictionary.map { $0["episode_id"] as? Int }.compactMap { $0 }
+//            matchingEpisodeRequest.predicate = NSPredicate(format: "episodeId in %@", argumentArray: [episodeIds])
+//            
+//            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: matchingEpisodeRequest)
+//            batchDeleteRequest.resultType = .resultTypeObjectIDs
+//            
+//            // Execute the request to de batch delete and merge the changes to viewContext, which triggers the UI update
+//            do {
+//                let batchDeleteResult = try taskContext.execute(batchDeleteRequest) as? NSBatchDeleteResult
+//                
+//                if let deletedObjectIDs = batchDeleteResult?.result as? [NSManagedObjectID] {
+//                    NSManagedObjectContext.mergeChanges(fromRemoteContextSave: [NSDeletedObjectsKey: deletedObjectIDs],
+//                                                        into: [self.persistentContainer.viewContext])
+//                }
+//            } catch {
+//                print("Error: \(error)\nCould not batch delete existing records.")
+//                return
+//            }
+//            
+//            // Create new records.
+//            for filmDictionary in jsonDictionary {
+//                
+//                guard let film = NSEntityDescription.insertNewObject(forEntityName: "Film", into: taskContext) as? Film else {
+//                    print("Error: Failed to create a new Film object!")
+//                    return
+//                }
+//                
+//                do {
+//                    try film.update(with: filmDictionary)
+//                } catch {
+//                    print("Error: \(error)\nThe quake object will be deleted.")
+//                    taskContext.delete(film)
+//                }
+//            }
+//            
+//            // Save all the changes just made and reset the taskContext to free the cache.
+//            if taskContext.hasChanges {
+//                do {
+//                    try taskContext.save()
+//                } catch {
+//                    print("Error: \(error)\nCould not save Core Data context.")
+//                }
+//                taskContext.reset() // Reset the context to clean up the cache and low the memory footprint.
+//            }
+//            successfull = true
+//        }
+//        return successfull
+//    }
+//}
+
+
+class DataManager {
     
     private let persistentContainer: NSPersistentContainer
-    private let repository: ApiRepository
+    private let repository: EventsApiRepository
     
     var viewContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
     
-    init(persistentContainer: NSPersistentContainer, repository: ApiRepository) {
+    init(persistentContainer: NSPersistentContainer, repository: EventsApiRepository) {
         self.persistentContainer = persistentContainer
         self.repository = repository
     }
     
     func fetchFilms(completion: @escaping(Error?) -> Void) {
-        repository.getFilms() { jsonDictionary, error in
+        
+        repository.fetchEvents { (jsonDictionary, error) in
             if let error = error {
                 completion(error)
                 return
@@ -42,18 +135,18 @@ class DataProvider {
             taskContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
             taskContext.undoManager = nil
             
-            _ = self.syncFilms(jsonDictionary: jsonDictionary, taskContext: taskContext)
+            _ = self.syncEvents(jsonDictionary: jsonDictionary, taskContext: taskContext)
             
             completion(nil)
         }
     }
     
-    private func syncFilms(jsonDictionary: [[String: Any]], taskContext: NSManagedObjectContext) -> Bool {
+    private func syncEvents(jsonDictionary: [[String: Any]], taskContext: NSManagedObjectContext) -> Bool {
         var successfull = false
         taskContext.performAndWait {
-            let matchingEpisodeRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Film")
-            let episodeIds = jsonDictionary.map { $0["episode_id"] as? Int }.compactMap { $0 }
-            matchingEpisodeRequest.predicate = NSPredicate(format: "episodeId in %@", argumentArray: [episodeIds])
+            let matchingEpisodeRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "EventsData")
+            let eventIds = jsonDictionary.map { $0["id"] as? Int }.compactMap { $0 }
+            matchingEpisodeRequest.predicate = NSPredicate(format: "id in %@", argumentArray: [eventIds])
             
             let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: matchingEpisodeRequest)
             batchDeleteRequest.resultType = .resultTypeObjectIDs
@@ -72,18 +165,18 @@ class DataProvider {
             }
             
             // Create new records.
-            for filmDictionary in jsonDictionary {
+            for eventsDictionary in jsonDictionary {
                 
-                guard let film = NSEntityDescription.insertNewObject(forEntityName: "Film", into: taskContext) as? Film else {
+                guard let event = NSEntityDescription.insertNewObject(forEntityName: "EventsData", into: taskContext) as? EventsData else {
                     print("Error: Failed to create a new Film object!")
                     return
                 }
                 
                 do {
-                    try film.update(with: filmDictionary)
+//                    try event.update(with: eventsDictionary)
                 } catch {
                     print("Error: \(error)\nThe quake object will be deleted.")
-                    taskContext.delete(film)
+                    taskContext.delete(event)
                 }
             }
             

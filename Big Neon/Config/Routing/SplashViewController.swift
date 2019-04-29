@@ -6,7 +6,7 @@ import AVKit
 
 final class SplashViewController: UIViewController {
     
-    internal var coreDataStack = CoreDataStack.shared
+    internal var coreDataStack = CoreDataManagerStack.shared
     
     internal var player: AVPlayer = {
         let player = AVPlayer()

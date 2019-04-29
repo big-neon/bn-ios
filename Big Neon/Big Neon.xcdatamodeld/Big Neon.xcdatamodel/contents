@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="EventsCoreData" representedClassName="EventsManagedObject" syncable="YES">
+    <entity name="EventsData" representedClassName="EventsData" syncable="YES" codeGenerationType="class">
+        <attribute name="additional_info" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="age_limit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cancelled_at" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="client_fee_in_cents" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="company_fee_in_cents" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="cover_image_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created_at" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="door_time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_end" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_start" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="external_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fee_in_cents" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="is_external" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="max_ticket_price" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="EventsDataOld" representedClassName="EventsDataOld" syncable="YES" codeGenerationType="class">
         <attribute name="additional_info" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="age_limit" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cancelled_at" optional="YES" attributeType="String" syncable="YES"/>
@@ -64,9 +81,10 @@
     </entity>
     <entity name="ScannedUser" representedClassName="ScannedUser" syncable="YES" codeGenerationType="class"/>
     <elements>
-        <element name="EventsCoreData" positionX="89.91015625" positionY="-5.078125" width="128" height="510"/>
+        <element name="EventsDataOld" positionX="89.91015625" positionY="-5.078125" width="128" height="30"/>
+        <element name="EventsData" positionX="-54" positionY="144" width="128" height="30"/>
+        <element name="Film" positionX="-54" positionY="144" width="128" height="135"/>
         <element name="RedeemedTicket" positionX="-54" positionY="-9" width="128" height="330"/>
         <element name="ScannedUser" positionX="-194.48046875" positionY="-8.1796875" width="128" height="45"/>
-        <element name="Film" positionX="-54" positionY="144" width="128" height="135"/>
     </elements>
 </model>
