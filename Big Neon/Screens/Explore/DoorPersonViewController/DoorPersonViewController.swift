@@ -6,12 +6,14 @@ import Big_Neon_Core
 
 final class DoorPersonViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate, NSFetchedResultsControllerDelegate {
     
-    
     internal var dataProvider: DataManager!
     
-    lazy var fetchedResultsController: NSFetchedResultsController<Film> = {
-        let fetchRequest = NSFetchRequest<Film>(entityName:"Film")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "episodeId", ascending:true)]
+    lazy var fetchedResultsController: NSFetchedResultsController<EventsData> = {
+        let fetchRequest = NSFetchRequest<EventsData>(entityName:"EventsData")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending:true)]
+        
+        print(fetchRequest)
+        print(dataProvider.viewContext)
         
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                     managedObjectContext: dataProvider.viewContext,
@@ -104,11 +106,11 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         self.view.backgroundColor = UIColor.white
         self.configureSearch()
         
-//        dataProvider.fetchFilms { (error) in
-//            print(error)
-//        }
+        dataProvider.fetchEvents { (error) in
+            print(error)
+        }
         
-        self.fetchCheckins()
+//        self.fetchCheckins()
 //        self.doorPersonViemodel.fetchOfflineEvents { [weak self] (completed) in
 //            print(completed)
 //            self?.configureCollectionView()

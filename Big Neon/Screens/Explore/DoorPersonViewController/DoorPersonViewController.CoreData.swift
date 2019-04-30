@@ -7,6 +7,7 @@ import CoreData
 
 extension DoorPersonViewController {
 
+    /*
     internal func storeEventsOffline(events: Events) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -55,8 +56,8 @@ extension DoorPersonViewController {
         }
         
     }
-    
-    internal func fetchOfflineEventsSaved(completion: @escaping(Events?) -> Void) {
+    */
+//    internal func fetchOfflineEventsSaved(completion: @escaping(Events?) -> Void) {
 //        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
 //            completion(nil)
 //            return
@@ -122,6 +123,6 @@ extension DoorPersonViewController {
 //            print("Failed to fetch Events")
 //            completion(nil)
 //        }
-        
-    }
+//
+//    }
 }

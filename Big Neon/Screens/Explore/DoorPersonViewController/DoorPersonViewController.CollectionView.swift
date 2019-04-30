@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import PINRemoteImage
 import Big_Neon_UI
 import Big_Neon_Core
 
@@ -35,20 +36,20 @@ extension DoorPersonViewController {
             return sectionLabelCell
         case 1:
             let eventCell: DoorPersonCell = collectionView.dequeueReusableCell(withReuseIdentifier: DoorPersonCell.cellID, for: indexPath) as! DoorPersonCell
-            let film = fetchedResultsController.object(at: indexPath)
-            eventCell.eventNameLabel.text = film.title
-            eventCell.eventDetailsLabel.text = film.director
-            return eventCell
+            let event = fetchedResultsController.object(at: indexPath) as? Event
+//            eventCell.eventNameLabel.text = event.name
+//            eventCell.eventDetailsLabel.text = event.director
+//            return eventCell
 //            guard let events = self.doorPersonViemodel.events?.data else {
 //                return eventCell
 //            }
 //            let event = events[indexPath.item]
-//            eventCell.eventNameLabel.text = event.name
+            eventCell.eventNameLabel.text = event?.name
 //            let eventImageURL: URL = URL(string: event.compressImage(url: event.promoImageURL!))!;
-//            eventCell.eventImageView.pin_setImage(from: eventImageURL, placeholderImage: nil)
+//            eventCell.eventImageView.pin_setImage(from: event?.promoImageURL, placeholderImage: nil)
 //            eventCell.eventDetailsLabel.text = self.configureEventDetails(event: event)
 //            eventCell.eventDateLabel.text = self.configureEventDate(event: event)
-//            return eventCell
+            return eventCell
         default:
             let sectionLabelCell: SectionHeaderCell = collectionView.dequeueReusableCell(withReuseIdentifier: SectionHeaderCell.cellID, for: indexPath) as! SectionHeaderCell
             sectionLabelCell.sectionHeaderLabel.text = "Upcoming"

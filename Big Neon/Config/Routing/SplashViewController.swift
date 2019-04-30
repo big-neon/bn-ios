@@ -51,9 +51,11 @@ final class SplashViewController: UIViewController {
     
     private func navigateHome() {
         let doorPersonVC = DoorPersonViewController()
-//        doorPersonVC.dataManager = DataProvider(persistentContainer: coreDataStack.persistentContainer, repository: ApiRepository.shared)
-        let exploreVC = UINavigationController(rootViewController: doorPersonVC)
-        self.present(exploreVC, animated: false, completion: nil)
+        print(coreDataStack)
+        print(coreDataStack.persistentContainer)
+        doorPersonVC.dataProvider = DataManager(persistentContainer: coreDataStack.persistentContainer, repository: EventsApiRepository.shared)
+        let doorPersonNavVC = UINavigationController(rootViewController: doorPersonVC)
+        self.present(doorPersonNavVC, animated: false, completion: nil)
     }
     
 }
