@@ -14,8 +14,6 @@ target 'Big Neon Core' do
   	# Pods for Big Neon
 	target 'Big Neon' do
 		inherit! :search_paths
-        pod 'Crashlytics'
-        pod 'Fabric'
         pod 'QRCodeReader.swift'
         pod 'PresenterKit'
         pod 'pop'
