@@ -92,6 +92,7 @@
 		C6AFB79121DD65D200670AC3 /* EventDetailViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB79021DD65D200670AC3 /* EventDetailViewController.TableView.swift */; };
 		C6AFB79C21DD76AE00670AC3 /* ExploreDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB79B21DD76AE00670AC3 /* ExploreDetailViewModel.swift */; };
 		C6B2AC5E21E4DD3100F996AA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */; };
+		C6B6DEA2227ABE3A003367D7 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B6DEA1227ABE3A003367D7 /* Fetcher.swift */; };
 		C6B88D0821F19FC0006394F8 /* Big_Neon_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B88CFF21F19FC0006394F8 /* Big_Neon_Core.framework */; };
 		C6B88D0F21F19FC0006394F8 /* Big_Neon_CoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D0E21F19FC0006394F8 /* Big_Neon_CoreTests.swift */; };
 		C6B88D1121F19FC0006394F8 /* Big_Neon_Core.h in Headers */ = {isa = PBXBuildFile; fileRef = C6B88D0121F19FC0006394F8 /* Big_Neon_Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -286,6 +287,7 @@
 		C6AFB79021DD65D200670AC3 /* EventDetailViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.TableView.swift; sourceTree = "<group>"; };
 		C6AFB79B21DD76AE00670AC3 /* ExploreDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreDetailViewModel.swift; sourceTree = "<group>"; };
 		C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		C6B6DEA1227ABE3A003367D7 /* Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 		C6B88CFF21F19FC0006394F8 /* Big_Neon_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Big_Neon_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B88D0121F19FC0006394F8 /* Big_Neon_Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Big_Neon_Core.h; sourceTree = "<group>"; };
 		C6B88D0221F19FC0006394F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 				C694D25721D0BFB300B2AE07 /* Config */,
 				C6B88D5821F1C33E006394F8 /* View */,
 				C6B88D2D21F1BBE8006394F8 /* Cells */,
+				C6B6DEA0227ABE06003367D7 /* Fetch */,
 				C64B0AB221D0DC3E00386000 /* Screens */,
 			);
 			path = "Big Neon";
@@ -691,6 +694,14 @@
 				C61853BA2212F4D6005D6250 /* TicketTypeSelectionViewController */,
 			);
 			path = EventDetailViewController;
+			sourceTree = "<group>";
+		};
+		C6B6DEA0227ABE06003367D7 /* Fetch */ = {
+			isa = PBXGroup;
+			children = (
+				C6B6DEA1227ABE3A003367D7 /* Fetcher.swift */,
+			);
+			path = Fetch;
 			sourceTree = "<group>";
 		};
 		C6B88D0021F19FC0006394F8 /* Big Neon Core */ = {
@@ -1249,6 +1260,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Big Neon/Pods-Big Neon-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Sync/Sync.framework",
 				"${BUILT_PRODUCTS_DIR}/PWSwitch/PWSwitch.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 				"${BUILT_PRODUCTS_DIR}/PresenterKit/PresenterKit.framework",
@@ -1271,6 +1283,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sync.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PWSwitch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PresenterKit.framework",
@@ -1429,6 +1442,7 @@
 				C683232F21FF31F5002342AE /* ProfileEditingTableViewCell.swift in Sources */,
 				C6ED9F0A226890C80020DFD9 /* DataManager.swift in Sources */,
 				C6AFB79C21DD76AE00670AC3 /* ExploreDetailViewModel.swift in Sources */,
+				C6B6DEA2227ABE3A003367D7 /* Fetcher.swift in Sources */,
 				C683232B21FF28CB002342AE /* ProfileEditViewModel.swift in Sources */,
 				C64B0AD821D123F400386000 /* TicketsViewController.swift in Sources */,
 				C636C2AC22609DB90046E092 /* DoorPersonViewController.CoreData.swift in Sources */,
@@ -1701,6 +1715,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YVK784K26W;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Big\\ Neon",
+					"$(PROJECT_DIR)/Big\\ Neon",
+				);
 				INFOPLIST_FILE = "Big Neon/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1723,6 +1742,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YVK784K26W;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Big\\ Neon",
+					"$(PROJECT_DIR)/Big\\ Neon",
+				);
 				INFOPLIST_FILE = "Big Neon/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

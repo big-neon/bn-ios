@@ -38,6 +38,7 @@ PODS:
   - QRCodeReader.swift (9.0.1)
   - Stripe (14.0.0)
   - SwiftKeychainWrapper (3.2.0)
+  - Sync (5.1.0)
   - TransitionButton (0.5.2)
   - "UITextField+Shake (1.2.1)"
 
@@ -57,6 +58,7 @@ DEPENDENCIES:
   - QRCodeReader.swift
   - Stripe
   - SwiftKeychainWrapper
+  - Sync (~> 5)
   - TransitionButton
   - "UITextField+Shake"
 
@@ -79,6 +81,7 @@ SPEC REPOS:
     - QRCodeReader.swift
     - Stripe
     - SwiftKeychainWrapper
+    - Sync
     - TransitionButton
     - "UITextField+Shake"
 
@@ -100,9 +103,10 @@ SPEC CHECKSUMS:
   QRCodeReader.swift: 96292a5612fbc2fd9a0b26f93fa5164c8d02f59d
   Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
   SwiftKeychainWrapper: 82c4c02cdc36f9a24f7edfcaab3e336401caa1a1
+  Sync: 0412c2b068eb7cf1a04607e948ef92cbd6114d0f
   TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
-PODFILE CHECKSUM: 309ecec5fcbc2bd19f2b24fbb2bf9ebcf3f0c3ae
+PODFILE CHECKSUM: a5dcbae2359e55c648294447b78494554e05bf8f
 
 COCOAPODS: 1.5.3

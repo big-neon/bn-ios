@@ -12,9 +12,6 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         let fetchRequest = NSFetchRequest<EventsData>(entityName:"EventsData")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending:true)]
         
-        print(fetchRequest)
-        print(dataProvider.viewContext)
-        
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                     managedObjectContext: dataProvider.viewContext,
                                                     sectionNameKeyPath: nil, cacheName: nil)

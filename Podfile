@@ -10,6 +10,7 @@ target 'Big Neon Core' do
     pod 'SwiftKeychainWrapper'
     pod 'JWTDecode', '~> 2.2'
     pod 'PhoneNumberKit', '~> 2.1'
+    pod 'Sync', '~> 5'
 
   	# Pods for Big Neon
 	target 'Big Neon' do
@@ -21,12 +22,14 @@ target 'Big Neon Core' do
         pod 'pop'
         pod 'PWSwitch'
         pod 'SwiftKeychainWrapper'
+        pod 'Sync', '~> 5'
 	end
 end
 
 target 'Big Neon UI' do
     inherit! :search_paths
     pod 'Crashlytics'
+    pod 'Sync', '~> 5'
     pod 'Fabric'
     pod 'TransitionButton' 
 	pod 'pop'
