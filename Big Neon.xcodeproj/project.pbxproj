@@ -51,7 +51,6 @@
 		C62BC78B21CCC3FB00830A5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78A21CCC3FB00830A5F /* Assets.xcassets */; };
 		C62BC78E21CCC3FB00830A5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78C21CCC3FB00830A5F /* LaunchScreen.storyboard */; };
 		C62BC79921CCC3FB00830A5F /* Big_NeonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */; };
-		C636C2AC22609DB90046E092 /* DoorPersonViewController.CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C636C2AB22609DB90046E092 /* DoorPersonViewController.CoreData.swift */; };
 		C63D86C02231282F003CFAA7 /* DatabaseService.Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D86BF2231282F003CFAA7 /* DatabaseService.Scan.swift */; };
 		C63D86C22231414D003CFAA7 /* RedeemedTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D86C12231414D003CFAA7 /* RedeemedTicket.swift */; };
 		C63D86C622325C8B003CFAA7 /* RedeemKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D86C522325C8B003CFAA7 /* RedeemKey.swift */; };
@@ -86,7 +85,6 @@
 		C698F6032238F76400977259 /* ScanFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698F6022238F76400977259 /* ScanFeedback.swift */; };
 		C69E20F9225608600032C5E4 /* GuestView.SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69E20F8225608600032C5E4 /* GuestView.SearchBar.swift */; };
 		C6A6FAA6226F3A6200601AC2 /* EventsApiRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A6FAA4226F396900601AC2 /* EventsApiRepository.swift */; };
-		C6A6FAA7226F468900601AC2 /* EventsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65B92A12264B743005828E0 /* EventsData.swift */; };
 		C6AFB78B21DD579600670AC3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB78A21DD579600670AC3 /* ProfileViewModel.swift */; };
 		C6AFB78F21DD658800670AC3 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB78E21DD658800670AC3 /* EventDetailViewController.swift */; };
 		C6AFB79121DD65D200670AC3 /* EventDetailViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB79021DD65D200670AC3 /* EventDetailViewController.TableView.swift */; };
@@ -142,8 +140,6 @@
 		C6EC209C2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209B2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift */; };
 		C6EC209E220075D100BD10DD /* PhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209D220075D100BD10DD /* PhoneNumberTextField.swift */; };
 		C6EC20A122007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC20A022007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift */; };
-		C6ED9F08226890950020DFD9 /* CoreDataManagerStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ED9F07226890950020DFD9 /* CoreDataManagerStack.swift */; };
-		C6ED9F0A226890C80020DFD9 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ED9F09226890C80020DFD9 /* DataManager.swift */; };
 		EB97F63084A23DBD8F7AB6F2 /* Pods_Big_Neon_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43DCE0B89B35D38187486C08 /* Pods_Big_Neon_Core.framework */; };
 /* End PBXBuildFile section */
 
@@ -244,7 +240,6 @@
 		C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Big_NeonTests.swift; sourceTree = "<group>"; };
 		C62BC79A21CCC3FB00830A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C62E64EC224E0DC000A1039C /* DoorPersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonCell.swift; sourceTree = "<group>"; };
-		C636C2AB22609DB90046E092 /* DoorPersonViewController.CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonViewController.CoreData.swift; sourceTree = "<group>"; };
 		C63D86BF2231282F003CFAA7 /* DatabaseService.Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Scan.swift; sourceTree = "<group>"; };
 		C63D86C12231414D003CFAA7 /* RedeemedTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemedTicket.swift; sourceTree = "<group>"; };
 		C63D86C522325C8B003CFAA7 /* RedeemKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemKey.swift; sourceTree = "<group>"; };
@@ -262,7 +257,6 @@
 		C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.TableView.swift; sourceTree = "<group>"; };
 		C655BD38221D69FD00EB1FDD /* DatabaseService.Checkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Checkins.swift; sourceTree = "<group>"; };
 		C6562F512203286E0020B6D3 /* UtilityConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityConstants.swift; sourceTree = "<group>"; };
-		C65B92A12264B743005828E0 /* EventsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsData.swift; sourceTree = "<group>"; };
 		C665B6E6224B506900581E2E /* ScannerViewController.Checkin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.Checkin.swift; sourceTree = "<group>"; };
 		C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C66C0BA421E337D40066CD0F /* splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.mp4; sourceTree = "<group>"; };
@@ -352,8 +346,6 @@
 		C6EC20A022007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewContorller.ImageUpload.swift; sourceTree = "<group>"; };
 		C6EC4B2B2227BBAD0056CE73 /* GuestsView.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestsView.TableView.swift; sourceTree = "<group>"; };
 		C6EC4B2D2227C1150056CE73 /* GuestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestTableViewCell.swift; sourceTree = "<group>"; };
-		C6ED9F07226890950020DFD9 /* CoreDataManagerStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerStack.swift; sourceTree = "<group>"; };
-		C6ED9F09226890C80020DFD9 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		CF1FA333925A46724CB83E09 /* Pods-Big Neon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Big Neon/Pods-Big Neon.debug.xcconfig"; sourceTree = "<group>"; };
 		FDBD85F3E3097FD16BBAE382 /* Pods-Big Neon Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon Core.release.xcconfig"; path = "Pods/Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -493,7 +485,6 @@
 				C66C0BA421E337D40066CD0F /* splash.mp4 */,
 				C62BC78C21CCC3FB00830A5F /* LaunchScreen.storyboard */,
 				C62BC78F21CCC3FB00830A5F /* Info.plist */,
-				C6ED9F06226890830020DFD9 /* CoreDataManager */,
 				C694D25721D0BFB300B2AE07 /* Config */,
 				C6B88D5821F1C33E006394F8 /* View */,
 				C6B88D2D21F1BBE8006394F8 /* Cells */,
@@ -678,7 +669,6 @@
 			children = (
 				C64B0ABC21D0DCDB00386000 /* DoorPersonViewModel.swift */,
 				C62BC78521CCC3F700830A5F /* DoorPersonViewController.swift */,
-				C636C2AB22609DB90046E092 /* DoorPersonViewController.CoreData.swift */,
 				C61853B62212F1DB005D6250 /* DoorPersonViewController.Search.swift */,
 				C64B0ABA21D0DCC900386000 /* DoorPersonViewController.CollectionView.swift */,
 			);
@@ -699,6 +689,7 @@
 		C6B6DEA0227ABE06003367D7 /* Fetch */ = {
 			isa = PBXGroup;
 			children = (
+				C6A6FAA4226F396900601AC2 /* EventsApiRepository.swift */,
 				C6B6DEA1227ABE3A003367D7 /* Fetcher.swift */,
 			);
 			path = Fetch;
@@ -982,17 +973,6 @@
 				C6EC4B2D2227C1150056CE73 /* GuestTableViewCell.swift */,
 			);
 			path = GuestView;
-			sourceTree = "<group>";
-		};
-		C6ED9F06226890830020DFD9 /* CoreDataManager */ = {
-			isa = PBXGroup;
-			children = (
-				C6ED9F07226890950020DFD9 /* CoreDataManagerStack.swift */,
-				C6A6FAA4226F396900601AC2 /* EventsApiRepository.swift */,
-				C65B92A12264B743005828E0 /* EventsData.swift */,
-				C6ED9F09226890C80020DFD9 /* DataManager.swift */,
-			);
-			path = CoreDataManager;
 			sourceTree = "<group>";
 		};
 		F65EEC9195B9C5AA4DD674D2 /* Pods */ = {
@@ -1431,7 +1411,6 @@
 				C683232D21FF2D71002342AE /* ProfileEditViewController.TableView.swift in Sources */,
 				C62BC78621CCC3F700830A5F /* DoorPersonViewController.swift in Sources */,
 				C698AB1021EDE9BC0073F1FB /* CreateAccountViewController.swift in Sources */,
-				C6ED9F08226890950020DFD9 /* CoreDataManagerStack.swift in Sources */,
 				C6EC20A122007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift in Sources */,
 				C623C0722251E3C80020D0A8 /* EventDetailCell.swift in Sources */,
 				C69E20F9225608600032C5E4 /* GuestView.SearchBar.swift in Sources */,
@@ -1440,12 +1419,10 @@
 				C6E648532240D088000F2DFB /* ScannerViewController.swift in Sources */,
 				C61853C822144869005D6250 /* CheckoutView.swift in Sources */,
 				C683232F21FF31F5002342AE /* ProfileEditingTableViewCell.swift in Sources */,
-				C6ED9F0A226890C80020DFD9 /* DataManager.swift in Sources */,
 				C6AFB79C21DD76AE00670AC3 /* ExploreDetailViewModel.swift in Sources */,
 				C6B6DEA2227ABE3A003367D7 /* Fetcher.swift in Sources */,
 				C683232B21FF28CB002342AE /* ProfileEditViewModel.swift in Sources */,
 				C64B0AD821D123F400386000 /* TicketsViewController.swift in Sources */,
-				C636C2AC22609DB90046E092 /* DoorPersonViewController.CoreData.swift in Sources */,
 				C64B0AC221D0DD5E00386000 /* TabBarController.swift in Sources */,
 				C623C0812251E42C0020D0A8 /* LastScannedUserView.swift in Sources */,
 				C6BCBE9E222D06C70026B858 /* ScannerViewModel.swift in Sources */,
@@ -1454,7 +1431,6 @@
 				C6EC209A220063DE00BD10DD /* ProfileImageUploadCell.swift in Sources */,
 				C623C0792251E4180020D0A8 /* GuestsView.TableView.swift in Sources */,
 				C6D2413421EF53B000FC3E41 /* NamesViewController.swift in Sources */,
-				C6A6FAA7226F468900601AC2 /* EventsData.swift in Sources */,
 				C61853C3221430A2005D6250 /* TicketTypeViewModel.swift in Sources */,
 				C6A6FAA6226F3A6200601AC2 /* EventsApiRepository.swift in Sources */,
 				C698AB1621EF1FE00073F1FB /* CreateAccountViewModel.swift in Sources */,

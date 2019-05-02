@@ -1,31 +1,12 @@
 
 import UIKit
-import CoreData
+import Sync
 import Big_Neon_UI
 import Big_Neon_Core
 
-final class DoorPersonViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate, NSFetchedResultsControllerDelegate {
+final class DoorPersonViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
     
-    internal var dataProvider: DataManager!
-    
-    lazy var fetchedResultsController: NSFetchedResultsController<EventsData> = {
-        let fetchRequest = NSFetchRequest<EventsData>(entityName:"EventsData")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending:true)]
-        
-        let controller = NSFetchedResultsController(fetchRequest: fetchRequest,
-                                                    managedObjectContext: dataProvider.viewContext,
-                                                    sectionNameKeyPath: nil, cacheName: nil)
-        controller.delegate = self
-        
-        do {
-            try controller.performFetch()
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-        }
-        
-        return controller
-    }()
+    var fetcher: Fetcher
     
     internal lazy var refresher: UIRefreshControl = {
         let refresher = UIRefreshControl()
@@ -96,59 +77,43 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+    
+    
+    init(fetcher: Fetcher) {
+        self.fetcher = fetcher
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureNavBar()
         self.view.backgroundColor = UIColor.white
         self.configureSearch()
-        
-        dataProvider.fetchEvents { (error) in
-            print(error)
+        self.configureCollectionView()
+        self.doorPersonViemodel.eventCoreData = self.fetcher.fetchLocalEvents()
+        self.syncEventsData()
+    }
+    
+    @objc func syncEventsData() {
+        self.fetcher.syncUsingNetworking { result in
+            switch result {
+            case .success:
+                self.doorPersonViemodel.eventCoreData = self.fetcher.fetchLocalEvents()
+                self.exploreCollectionView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
         }
-        
-//        self.fetchCheckins()
-//        self.doorPersonViemodel.fetchOfflineEvents { [weak self] (completed) in
-//            print(completed)
-//            self?.configureCollectionView()
-//        }
-        
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         self.exploreCollectionView.reloadData()
     }
     
-    
-
-    private func fetchCheckins() {
-        self.loadingView.startAnimating()
-        if Reachability.isConnectedToNetwork() {
-            self.doorPersonViemodel.configureAccessToken { [weak self] (completed) in
-                DispatchQueue.main.async {
-                    self?.loadingView.stopAnimating()
-                    if completed == false {
-                        print(completed)
-                        return
-                    }
-                    
-                    guard ((self?.doorPersonViemodel.events?.data) != nil) else {
-                        self?.configureEmptyView()
-                        return
-                    }
-                    
-                    self?.configureCollectionView()
-//                    self?.doorPersonViemodel.saveEventsOffline(events: (self?.doorPersonViemodel.events)!)
-                }
-            }
-        } else {
-//            self.doorPersonViemodel.fetchOfflineEvents { [weak self] (eventsFetched) in
-//                self?.configureCollectionView()
-//            }
-        }
-        
-    }
-
     @objc private func reloadEvents() {
         self.doorPersonViemodel.configureAccessToken { [weak self] (completed) in
             DispatchQueue.main.async {

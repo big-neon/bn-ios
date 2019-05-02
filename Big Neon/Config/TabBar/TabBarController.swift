@@ -10,7 +10,7 @@ final class TabBarController: UITabBarController {
     fileprivate let tabBarTitles = ["Doorperson", "My Tickets", "Profile"]
     fileprivate var currentNavigationIndex: Int = 0
     
-    private let doorPersonController  = UINavigationController(rootViewController: DoorPersonViewController())
+    private let doorPersonController  = UINavigationController(rootViewController: TicketsViewController())
     private let ticketsController   = UINavigationController(rootViewController: TicketsViewController())
     private let profileController  = UINavigationController(rootViewController: ProfileViewController())
     

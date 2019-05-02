@@ -5,6 +5,13 @@ import Big_Neon_UI
 import Alamofire
 import SwiftKeychainWrapper
 
+let dataErrorDomain = "dataErrorDomain"
+
+enum DataErrorCode: NSInteger {
+    case networkUnavailable = 101
+    case wrongDataFormat = 102
+}
+
 public class EventsApiRepository {
     
     private init() {}

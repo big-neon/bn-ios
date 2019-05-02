@@ -8,6 +8,7 @@ final class DoorPersonViewModel {
     
     internal var events: Events?
     internal var event: Event?
+    internal var eventCoreData: [EventsData] = []
     internal var user: User?
     
     internal func fetchEvents(completion: @escaping(Bool) -> Void) {

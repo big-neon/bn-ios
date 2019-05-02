@@ -7,7 +7,7 @@ import Big_Neon_Core
 extension DoorPersonViewController {
 
     internal func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.fetchedResultsController.sections?.count ?? 0   //  2
+        return 2
     }
 
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -15,16 +15,7 @@ extension DoorPersonViewController {
         case 0:
             return 1
         default:
-//            guard let total = self.doorPersonViemodel.events?.paging.total else {
-//                return 0
-//            }
-//            guard let limit = self.doorPersonViemodel.events?.paging.limit else {
-//                return 0
-//            }
-//            if total > limit {
-//                return limit
-//            }
-            return  self.fetchedResultsController.sections?[section].numberOfObjects ?? 0 //  total
+            return  self.doorPersonViemodel.eventCoreData.count //.sections?[section].numberOfObjects ?? 0 //  total
         }
     }
 
@@ -36,7 +27,7 @@ extension DoorPersonViewController {
             return sectionLabelCell
         case 1:
             let eventCell: DoorPersonCell = collectionView.dequeueReusableCell(withReuseIdentifier: DoorPersonCell.cellID, for: indexPath) as! DoorPersonCell
-            let event = fetchedResultsController.object(at: indexPath) as? Event
+            let event = self.doorPersonViemodel.eventCoreData[indexPath.item]
 //            eventCell.eventNameLabel.text = event.name
 //            eventCell.eventDetailsLabel.text = event.director
 //            return eventCell
@@ -44,7 +35,7 @@ extension DoorPersonViewController {
 //                return eventCell
 //            }
 //            let event = events[indexPath.item]
-            eventCell.eventNameLabel.text = event?.name
+            eventCell.eventNameLabel.text = event.name
 //            let eventImageURL: URL = URL(string: event.compressImage(url: event.promoImageURL!))!;
 //            eventCell.eventImageView.pin_setImage(from: event?.promoImageURL, placeholderImage: nil)
 //            eventCell.eventDetailsLabel.text = self.configureEventDetails(event: event)

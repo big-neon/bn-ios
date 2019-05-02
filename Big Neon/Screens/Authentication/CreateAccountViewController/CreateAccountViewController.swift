@@ -10,6 +10,11 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     internal var showPasswordValue: Bool = false
     internal let createAccountViewModel: AccountViewModel = AccountViewModel()
     
+    lazy var fetcher: Fetcher = {
+        let fetcher = Fetcher()
+        return fetcher
+    }()
+    
     internal lazy var errorFeedback: FeedbackSystem = {
         let feedback = FeedbackSystem()
         return feedback
@@ -237,7 +242,7 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     }
     
     @objc private func handleShowHome() {
-        let tabBarVC = UINavigationController(rootViewController: DoorPersonViewController())
+        let tabBarVC = UINavigationController(rootViewController: DoorPersonViewController(fetcher: self.fetcher))
         tabBarVC.modalTransitionStyle = .flipHorizontal
         self.present(tabBarVC, animated: false, completion: nil)
     }

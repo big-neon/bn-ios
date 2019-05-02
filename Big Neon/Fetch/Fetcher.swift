@@ -1,63 +1,35 @@
 
 import CoreData
 import Sync
-import Networking
 import Alamofire
+import Big_Neon_Core
 
 class Fetcher {
-    private let dataStack: DataStack
     
-    private lazy var networking: Networking = {
-        Networking(baseURL: "https://jsonplaceholder.typicode.com")
-    }()
+    private let dataStack: DataStack
+    private let repository: EventsApiRepository
     
     init() {
-        self.dataStack = DataStack(modelName: "DataModel")
+        self.dataStack = DataStack(modelName: "Big Neon")
+        self.repository = EventsApiRepository.shared
     }
     
-    func fetchLocalUsers() -> [User] {
-        let request: NSFetchRequest<User> = User.fetchRequest()
-        
+    func fetchLocalEvents() -> [EventsData] {
+        let request: NSFetchRequest<EventsData> = EventsData.fetchRequest()
         return try! self.dataStack.viewContext.fetch(request)
     }
     
     func syncUsingNetworking(completion: @escaping (_ result: VoidResult) -> ()) {
-        self.networking.get("/users") { result in
-            switch result {
-            case .success(let response):
-                let usersJSON = response.arrayBody
-                self.dataStack.sync(usersJSON, inEntityNamed: User.entity().name!) { error in
-                    completion(.success)
-                }
-            case .failure(let response):
-                completion(.failure(response.error))
-            }
-        }
-    }
-    
-    func syncUsingAlamofire(completion: @escaping (_ result: VoidResult) -> ()) {
-        Alamofire.request("https://jsonplaceholder.typicode.com/users").responseJSON { response in
-            if let jsonObject = response.result.value, let usersJSON = jsonObject as? [[String: Any]] {
-                self.dataStack.sync(usersJSON, inEntityNamed: User.entity().name!) { error in
-                    completion(.success)
-                }
-            } else if let error = response.error {
-                completion(.failure(error as NSError))
-            } else {
-                fatalError("No error, no failure")
-            }
-        }
-    }
-    
-    func syncUsingLocalJSON(completion: @escaping (_ result: VoidResult) -> ()) {
-        let fileName = "users.json"
-        guard let url = URL(string: fileName) else { return }
-        guard let filePath = Bundle.main.path(forResource: url.deletingPathExtension().absoluteString, ofType: url.pathExtension) else { return }
-        guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else { return }
-        guard let json = try! JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] else { return }
         
-        self.dataStack.sync(json, inEntityNamed: User.entity().name!) { error in
-            completion(.success)
+        self.repository.fetchEvents { (eventsFetchedDict, error) in
+            if error != nil {
+                completion(.failure(error! as NSError))
+                return
+            }
+            
+            self.dataStack.sync(eventsFetchedDict!, inEntityNamed: EventsData.entity().name!) { error in
+                completion(.success)
+            }
         }
     }
 }
