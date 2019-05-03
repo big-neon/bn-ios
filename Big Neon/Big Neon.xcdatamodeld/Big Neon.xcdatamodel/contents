@@ -78,7 +78,7 @@
     </entity>
     <elements>
         <element name="EventsData" positionX="-54" positionY="144" width="128" height="523"/>
-        <element name="RedeemedTicket" positionX="-54" positionY="-9" width="128" height="330"/>
+        <element name="RedeemedTicket" positionX="258.8125" positionY="-7.7734375" width="128" height="330"/>
         <element name="ScannedUser" positionX="-194.48046875" positionY="-8.1796875" width="128" height="45"/>
         <element name="Venue" positionX="-284.57421875" positionY="281.390625" width="128" height="313"/>
     </elements>
