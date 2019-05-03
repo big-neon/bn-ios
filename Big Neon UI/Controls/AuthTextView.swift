@@ -3,6 +3,10 @@
 import UIKit
 import UITextField_Shake
 
+// MARK:  magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
 public enum TextFieldType {
     case email
     case signUpPassword
@@ -54,6 +58,7 @@ public class AuthenticationTextView: UIView {
             guard let errorType = self.textFieldError else {
                 return
             }
+            // MARK: remove commnets....
             
 //            self.authTextField.layer.borderColor = UIColor.brandError.cgColor
 //            self.authTextField.layer.borderWidth = 1.0
@@ -83,6 +88,7 @@ public class AuthenticationTextView: UIView {
         return textField
     }()
     
+    // lazy?
     private let errorLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandPrimary

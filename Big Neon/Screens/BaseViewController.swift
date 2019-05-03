@@ -1,9 +1,15 @@
 import UIKit
 import Big_Neon_UI
 
+// MARK:  magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+// MARK: internal is default access level - not need for explicit definition
+
 class BaseViewController: UIViewController  {
     
     internal let doorPersonViemodel: DoorPersonViewModel = DoorPersonViewModel()
+    // MARK: eventDetailViewModel should be let?
     internal var eventDetailViewModel: ExploreDetailViewModel = ExploreDetailViewModel()
     internal let ticketsViewModel: TicketsViewModel = TicketsViewModel()
     

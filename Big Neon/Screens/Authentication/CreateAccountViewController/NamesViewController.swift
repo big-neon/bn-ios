@@ -4,9 +4,17 @@ import Foundation
 import UITextField_Shake
 import Big_Neon_UI
 
+
+// MARK:  magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+// MARK: internal is default access level - not need for explicit definition
+// MARK: swift support Type Inference
+
 internal class NamesViewController: UIViewController, UITextFieldDelegate {
     
     fileprivate var headerLabelTopConstraint: NSLayoutConstraint?
+    // MARK: swift support Type Inference
     internal let createAccountViewModel: AccountViewModel = AccountViewModel()
     
     internal lazy var errorFeedback: FeedbackSystem = {
@@ -123,6 +131,7 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
     
     @objc internal func handleDone() {
         
+        //MARK: repetetive code - i saw something simular on several places.... refactor / rethink
         guard let name = self.firstNameTextView.authTextField.text else {
             self.firstNameTextView.textFieldError = TextFieldError.invalidName
             return
@@ -148,6 +157,7 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
         self.disableView()
         self.createAccountViewModel.insert(name: name, lastName: lastName) { (error) in
             DispatchQueue.main.async {
+                // guard?
                 if error != nil {
                     self.doneButton.stopAnimation(animationStyle: .shake,
                                                   revertAfterDelay: 1.0,
@@ -168,6 +178,9 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // MARK: showFeedback() and handleShowHome() can extract in extension or base class and reuse
+    // repetetive code
+    
     private func showFeedback(message: String) {
         if let window = UIApplication.shared.keyWindow {
             self.errorFeedback.showFeedback(backgroundColor: UIColor.brandBlack,
@@ -187,6 +200,9 @@ internal class NamesViewController: UIViewController, UITextFieldDelegate {
     
 }
 
+// MARK: setupKeyboardObservers() and handleKeyboardNotification(notification: NSNotification) should be extension of baseViewCOntroller
+// or some other base class (DRY)
+// repetetive code
 
 extension NamesViewController {
     

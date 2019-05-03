@@ -19,6 +19,7 @@ public class DatabaseService {
         return KeychainWrapper.standard.string(forKey: Constants.keychainAccessToken)
     }
     
+    // MARK add @discardableResult so
     public func fetchRefreshToken() -> String? {
         return KeychainWrapper.standard.string(forKey: Constants.keychainRefreshToken)
     }

@@ -4,17 +4,24 @@ import Sync
 import Big_Neon_UI
 import Big_Neon_Core
 
+// MARK:  magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+// MARK: internal is default access level - not need for explicit definition
+
+// do we need to confirm to all those protocols?
+
 final class DoorPersonViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
     
     var fetcher: Fetcher
-    
+
     internal lazy var refresher: UIRefreshControl = {
         let refresher = UIRefreshControl()
         refresher.tintColor = UIColor.brandGrey
         refresher.addTarget(self, action: #selector(reloadEvents), for: .valueChanged)
         return refresher
     }()
-    
+
     internal var headerLabel: UILabel = {
         let label = UILabel()
         label.text = "No Published Events"
@@ -24,7 +31,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     internal var detailLabel: UILabel = {
         let label = UILabel()
         label.text = "Your published and upcoming events will be found here."
@@ -77,13 +84,13 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
-    
+
+
     init(fetcher: Fetcher) {
         self.fetcher = fetcher
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -97,7 +104,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         self.doorPersonViemodel.eventCoreData = self.fetcher.fetchLocalEvents()
         self.syncEventsData()
     }
-    
+
     @objc func syncEventsData() {
         self.fetcher.syncUsingNetworking { result in
             switch result {
@@ -109,14 +116,15 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
             }
         }
     }
-    
+
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         self.exploreCollectionView.reloadData()
     }
-    
+
     @objc private func reloadEvents() {
         self.doorPersonViemodel.configureAccessToken { [weak self] (completed) in
             DispatchQueue.main.async {
+                // guard self?
                 self?.loadingView.stopAnimating()
                 self?.refresher.endRefreshing()
                 
@@ -133,6 +141,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     
     private func configureSearch() {
 //        self.navigationItem.searchController = searchController   //  TO BE ADDED LATER
+        // beter: add TODO:
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -147,22 +156,22 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         userProfileImageView.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: userProfileImageView)
     }
-    
+
     private func configureEmptyView() {
         self.exploreCollectionView.isHidden = true
         self.view.addSubview(headerLabel)
         self.view.addSubview(detailLabel)
-        
+
         self.headerLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50).isActive = true
         self.headerLabel.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         self.headerLabel.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         self.headerLabel.heightAnchor.constraint(equalToConstant: 24.0).isActive = true
-        
+
         self.detailLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 24).isActive = true
         self.detailLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         self.detailLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
         self.detailLabel.heightAnchor.constraint(equalToConstant: 24.0).isActive = true
-        
+
     }
 
     private func configureCollectionView() {

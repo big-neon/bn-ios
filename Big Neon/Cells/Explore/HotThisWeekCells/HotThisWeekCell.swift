@@ -2,6 +2,12 @@
 import Foundation
 import UIKit
 
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+// MARK: internal is default access level - not need for explicit definition
+
+
 public class HotThisWeekCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     public static let cellID = "HotThisWeekCellID"
@@ -55,6 +61,8 @@ extension HotThisWeekCell {
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        //MARK: guard or if let otervise hotCell is not HotWeekCell app will crash 
         let hotCell: HotWeekCell = collectionView.dequeueReusableCell(withReuseIdentifier: HotWeekCell.cellID, for: indexPath) as! HotWeekCell
         hotCell.eventImageView.image = UIImage(named: "hot")
         return hotCell

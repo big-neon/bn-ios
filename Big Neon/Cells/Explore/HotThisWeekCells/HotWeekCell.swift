@@ -3,6 +3,12 @@ import Foundation
 import UIKit
 import Big_Neon_UI
 
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+// MARK: internal is default access level - not need for explicit definition
+// MARK: all properties should be lazy
+
 public class HotWeekCell: UICollectionViewCell {
     
     public static let cellID = "UpcomingEventCellID"

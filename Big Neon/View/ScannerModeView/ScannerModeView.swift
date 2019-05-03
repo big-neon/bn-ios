@@ -8,9 +8,15 @@ public protocol ScannerModeViewDelegate {
     func scannerSetManual()
 }
 
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: internal is default access level - not need for explicit definition
+// MARK: use abbreviation / syntax sugar
+
 public class ScannerModeView: UIView {
     
     internal var changeModeSwitch: PWSwitch?
+    // MARK: delegate should be weak
     public var delegate: ScannerModeViewDelegate?
     
     public var setAutoMode: Bool = false {
@@ -27,6 +33,7 @@ public class ScannerModeView: UIView {
         }
     }
     
+    // lazy ?
     internal let headerLabel: BrandTitleLabel = {
         let label = BrandTitleLabel()
         label.text = "Check-in Mode:"
@@ -36,6 +43,7 @@ public class ScannerModeView: UIView {
         return label
     }()
     
+     // lazy ?
     internal let modeLabel: BrandTitleLabel = {
         let label = BrandTitleLabel()
         label.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.bold)

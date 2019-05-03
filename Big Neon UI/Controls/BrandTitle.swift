@@ -2,6 +2,10 @@
 import Foundation
 import UIKit
 
+// MARK:  magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
 @IBDesignable public class BrandTitleLabel: UILabel {
     
     required override public init(frame: CGRect) {

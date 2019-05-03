@@ -7,9 +7,15 @@ public protocol ProfileImageUploadDelegate {
     func uploadImage()
 }
 
+// MARK:  magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
+
 final public class ProfileImageUploadCell: UITableViewCell {
     
     public static let cellID = "ProfileImageUploadCellID"
+    // MARK: delegate should be weak
     public var delegate: ProfileImageUploadDelegate?
     
     internal lazy var userImageView: UIImageView = {
@@ -24,6 +30,7 @@ final public class ProfileImageUploadCell: UITableViewCell {
         return imageView
     }()
     
+    // lazy>
     public let cellLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandPrimary

@@ -16,6 +16,9 @@ extension DoorPersonViewController {
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String) {
+        //TODO: or
+        // #warning("filterContentForSearchText not implemented") :)
+        
         //  TO BE ADDED LATER
         /*
         self.passengersViewModel.filteredPassengers = self.passengersViewModel.passengers.filter({( passenger : Passenger) -> Bool in

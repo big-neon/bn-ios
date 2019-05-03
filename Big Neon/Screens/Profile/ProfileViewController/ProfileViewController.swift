@@ -3,6 +3,15 @@
 import UIKit
 import Big_Neon_UI
 
+// MARK:  magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+// MARK: internal is default access level - not need for explicit definition
+
+
+// MARK: check do we really want to confirm to all those protocols
+// if we do... separate them by an extension, one for each
+
 internal class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, TicketQRCodeDelegate, ProfileHeaderDelegate  {
     
     internal var profileHeaderView: ProfileHeaderView = ProfileHeaderView()
@@ -88,6 +97,8 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
 
+    // MARK: As of iOS 9, according to an answer below, observers are automatically removed
+    // for you unless you're using block-based ones
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -180,7 +191,7 @@ extension  ProfileViewController {
         
         if let window = UIApplication.shared.keyWindow {
             self.profileQRCodeBackgroundView.frame = CGRect(x: 0, y: 0, width: window.frame.width, height: window.frame.height)
-            
+            // MARK: we want this on main thread
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                 self.profileQRCodeBackgroundView.layer.opacity = 1.0
                 self.profileQRCodeView.frame = CGRect(x: (window.frame.width * 0.5) - 160, y: (window.frame.height * 0.5) - 250, width: 320.0, height: 500)
@@ -192,10 +203,11 @@ extension  ProfileViewController {
     private func hideQRCode() {
         
         if let window = UIApplication.shared.keyWindow {
+            // MARK: we want this on main thread
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 1.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
                 self.profileQRCodeBackgroundView.layer.opacity = 0.0
                 self.profileQRCodeView.frame = CGRect(x: (window.frame.width * 0.5) - 160, y: window.frame.height + 100, width: 320.0, height: 500)
-            }) { (_) in
+            }) { (_) in // in _
                 self.profileQRCodeView.isHidden = true
                 self.profileQRCodeBackgroundView.isHidden = true
                 self.profileQRCodeBackgroundView.frame = CGRect(x: 0, y: window.frame.height + 100, width: window.frame.width, height: window.frame.height)
