@@ -3,6 +3,13 @@ import UIKit
 import Big_Neon_UI
 import Big_Neon_Core
 
+// MARK:  magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+// MARK: internal is default access level - not need for explicit definition
+
+// do we need to confirm to all those protocols?
+
 final class DoorPersonViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
     
     internal lazy var refresher: UIRefreshControl = {
@@ -67,6 +74,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         if Reachability.isConnectedToNetwork() {
             self.doorPersonViemodel.configureAccessToken { [weak self] (completed) in
                 DispatchQueue.main.async {
+                    // guard self?
                     self?.loadingView.stopAnimating()
                     if completed == false {
                         print(completed)
@@ -85,6 +93,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     @objc private func reloadEvents() {
         self.doorPersonViemodel.configureAccessToken { [weak self] (completed) in
             DispatchQueue.main.async {
+                // guard self?
                 self?.loadingView.stopAnimating()
                 self?.refresher.endRefreshing()
                 
@@ -101,6 +110,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     
     private func configureSearch() {
 //        self.navigationItem.searchController = searchController   //  TO BE ADDED LATER
+        // beter: add TODO: 
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -3,10 +3,16 @@
 import Foundation
 import UIKit
 
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
+
 final public class EventDetailCell: UITableViewCell {
     
     public static let cellID = "EventDetailCellID"
     
+    // lazy?
     public let headerIconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -15,6 +21,7 @@ final public class EventDetailCell: UITableViewCell {
         return imageView
     }()
     
+    // lazy?
     public let headerLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandBlack
@@ -23,6 +30,7 @@ final public class EventDetailCell: UITableViewCell {
         return label
     }()
     
+    // lazy? 
     public let descriptionTextView: UITextView = {
         let textView = UITextView()
         textView.isEditable = false

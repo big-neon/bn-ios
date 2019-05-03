@@ -2,6 +2,7 @@
 
 public class FeedbackSystem: NSObject {
     
+    // lazy?
     public let gradientBackground: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.clear
@@ -9,6 +10,7 @@ public class FeedbackSystem: NSObject {
         return view
     }()
     
+    // lazy?
     public let roundedView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 15.0
@@ -16,6 +18,7 @@ public class FeedbackSystem: NSObject {
         return view
     }()
     
+    // lazy?
     public let informationLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.semibold)
@@ -72,6 +75,7 @@ public class FeedbackSystem: NSObject {
     
     //  Dismiss View
     @objc private func dismissConfimationPopup() {
+        // MARK: we want it on main thread
         UIView.animate(withDuration: 0.6, delay: 0.0, usingSpringWithDamping: 10.0, initialSpringVelocity: 1, options: .curveLinear, animations: {
             if let window = UIApplication.shared.keyWindow {
                 self.gradientBackground.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: 144)

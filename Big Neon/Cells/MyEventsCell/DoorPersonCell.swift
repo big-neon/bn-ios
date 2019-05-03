@@ -4,6 +4,12 @@ import Foundation
 import UIKit
 import PINRemoteImage
 
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+// MARK: internal is default access level - not need for explicit definition
+
+
 public class DoorPersonCell: UICollectionViewCell {
 
     public static let cellID = "DoorPersonCellID"
@@ -11,6 +17,7 @@ public class DoorPersonCell: UICollectionViewCell {
 
     override public var isHighlighted: Bool {
         didSet {
+            //MARK: TODO: we have to make sure that this is happening on main thread
             UIView.animate(withDuration: 0.2, animations: {
                 self.transform = self.isHighlighted ? CGAffineTransform(scaleX: 0.9, y: 0.9) : CGAffineTransform.identity
                 self.layoutIfNeeded()
@@ -20,6 +27,7 @@ public class DoorPersonCell: UICollectionViewCell {
 
     override public var isSelected: Bool {
         didSet {
+            //MARK: TODO:  we have to make sure that this is happening on main thread
             UIView.animate(withDuration: 0.2, animations: {
                 self.transform = self.isSelected ? CGAffineTransform(scaleX: 0.9, y: 0.9) : CGAffineTransform.identity
                 self.layoutIfNeeded()
@@ -27,6 +35,7 @@ public class DoorPersonCell: UICollectionViewCell {
         }
     }
 
+    // lazy?
     public let eventImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.brandBackground
@@ -36,6 +45,7 @@ public class DoorPersonCell: UICollectionViewCell {
         return imageView
     }()
 
+    // lazy?
     public let eventNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandBlack
@@ -44,6 +54,7 @@ public class DoorPersonCell: UICollectionViewCell {
         return label
     }()
 
+    // lazy?
     public let eventDetailsLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandMediumGrey
@@ -52,6 +63,7 @@ public class DoorPersonCell: UICollectionViewCell {
         return label
     }()
     
+    // lazy?
     public let eventDateLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandMediumGrey

@@ -2,8 +2,13 @@
 import Foundation
 import UIKit
 
+// MARK:  magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
 public class EventPriceView: UIView {
     
+    // lazy?
     public let priceLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandPrimary

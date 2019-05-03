@@ -5,12 +5,18 @@ import UIKit
 import Big_Neon_Core
 import Big_Neon_UI
 
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+// MARK: internal is default access level - not need for explicit definition
+
 public protocol TicketTypeDelegate {
     func addTicketType(ticketType: TicketType, numberOfTickets: Int)
 }
 
 final public class TicketTypeCell: UITableViewCell {
     
+    // MARK: delegate should be weak
     public var delegate: TicketTypeDelegate?
     
     public static let cellID = "TicketTypeCellID"
@@ -19,6 +25,7 @@ final public class TicketTypeCell: UITableViewCell {
         didSet {
             self.numberLabel.text = "\(numberOfTickets)"
             
+            // MARK: this can be replaced with guard statement
             if numberOfTickets == 0 {
                 self.subtractTicketButton.setImage(UIImage(named: "ic_subtract_disabled"), for: UIControl.State.normal)
             }
@@ -28,6 +35,7 @@ final public class TicketTypeCell: UITableViewCell {
     
     public var ticketType: TicketType? {
         didSet {
+            // MARK: ticketType.ticketPricing should be in  guard also
             guard let ticketType = self.ticketType else {
                 return
             }
@@ -43,6 +51,8 @@ final public class TicketTypeCell: UITableViewCell {
     
     public var ticketTypeStatus: String? {
         didSet {
+            // MARK: ticketType and ticketType.ticketPricing should be in  guard also
+            // do not use explicite unwraping
             guard let status = self.ticketTypeStatus else {
                 return
             }
@@ -84,6 +94,7 @@ final public class TicketTypeCell: UITableViewCell {
         }
     }
     
+    // lazy?
     public let priceLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandPrimary
@@ -92,6 +103,7 @@ final public class TicketTypeCell: UITableViewCell {
         return label
     }()
     
+    // lazy?
     public let ticketTypeLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandBlack
@@ -100,6 +112,7 @@ final public class TicketTypeCell: UITableViewCell {
         return label
     }()
     
+    // lazy?
     public let ticketTypeDescriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandGrey
@@ -108,6 +121,7 @@ final public class TicketTypeCell: UITableViewCell {
         return label
     }()
     
+    // lazy?
     public let numberLabel: UILabel = {
         let label = UILabel()
         label.text = "0"
@@ -184,12 +198,15 @@ final public class TicketTypeCell: UITableViewCell {
     @objc private func handleAdd() {
         labelShake(labelToAnimate: numberLabel, bounceVelocity: 10.0, springBouncinessEffect: 15.0)
         self.subtractTicketButton.setImage(UIImage(named: "ic_subtract"), for: UIControl.State.normal)
+        // guard?
         if let limit = self.ticketType?.limitPerPerson {
             if numberOfTickets == limit {
                 self.addTicketButton.setImage(UIImage(named: "ic_add_disabled"), for: UIControl.State.normal)
                 return
             }
         }
+        // MARK: ticketType should be in  guard also
+        // do not use explicite unwraping
         self.numberOfTickets += 1
         self.delegate?.addTicketType(ticketType: self.ticketType!, numberOfTickets: self.numberOfTickets)
     }
@@ -198,10 +215,13 @@ final public class TicketTypeCell: UITableViewCell {
         labelShake(labelToAnimate: numberLabel, bounceVelocity: 6.0, springBouncinessEffect: 9.0)
         self.addTicketButton.isEnabled = true
         self.addTicketButton.setImage(UIImage(named: "ic_add"), for: UIControl.State.normal)
+        // guard
         if numberOfTickets == 0 {
             self.subtractTicketButton.setImage(UIImage(named: "ic_subtract_disabled"), for: UIControl.State.normal)
             return
         }
+        // MARK: ticketType should be in  guard also
+        // do not use explicite unwraping
         self.numberOfTickets -= 1
         self.delegate?.addTicketType(ticketType: self.ticketType!, numberOfTickets: self.numberOfTickets)
     }

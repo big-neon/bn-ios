@@ -3,8 +3,13 @@
 import Foundation
 import UIKit
 
+// MARK:  magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
 public class EventDateView: UIView {
     
+    // lazy?
     public let monthLabel: UILabel = {
         let label = UILabel()
         label.text = "jan"
@@ -15,6 +20,7 @@ public class EventDateView: UIView {
         return label
     }()
     
+    // lazy?
     public let dateLabel: UILabel = {
         let label = UILabel()
         label.text = "22"

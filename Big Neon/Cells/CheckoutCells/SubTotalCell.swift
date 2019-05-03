@@ -4,10 +4,15 @@
 import Foundation
 import UIKit
 
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
 final public class SubTotalCell: UITableViewCell {
     
     public static let cellID = "SubTotalCellID"
     
+    // lazy?
     public let subtotalLabel: UILabel = {
         let label = UILabel()
         label.text = "Sub Total"
@@ -17,6 +22,7 @@ final public class SubTotalCell: UITableViewCell {
         return label
     }()
     
+    // lazy?
     public let feesLabel: UILabel = {
         let label = UILabel()
         label.text = "Fees"
@@ -26,6 +32,7 @@ final public class SubTotalCell: UITableViewCell {
         return label
     }()
     
+    // lazy?
     public let codeAppliedLabel: UILabel = {
         let label = UILabel()
         label.text = "Code Applied"
@@ -35,6 +42,7 @@ final public class SubTotalCell: UITableViewCell {
         return label
     }()
     
+    // lazy?
     public let subTotalAmountLabel: UILabel = {
         let label = UILabel()
         label.text = "$30.00 USD"
@@ -45,6 +53,7 @@ final public class SubTotalCell: UITableViewCell {
         return label
     }()
     
+    // lazy?
     public let feesAmountLabel: UILabel = {
         let label = UILabel()
         label.text = "$5.00 USD"
@@ -55,6 +64,7 @@ final public class SubTotalCell: UITableViewCell {
         return label
     }()
     
+    // lazy?
     public let codeLabel: UILabel = {
         let label = UILabel()
         label.text = "NDLKEHDI"

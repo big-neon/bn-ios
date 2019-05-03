@@ -54,6 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                  * The store could not be migrated to the current model version.
                  Check the error message to determine what the actual problem was.
                  */
+                
+                // MARK: are we really want to crash the app - bad user experiance
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
@@ -69,6 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } catch {
                 if Environment.isProduction() == false {
                     let nserror = error as NSError
+                    // MARK: are we really want to crash the app - bad user experiance
                     fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
                 }
                 

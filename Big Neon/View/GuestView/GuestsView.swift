@@ -4,12 +4,19 @@ import Foundation
 import UIKit
 import Big_Neon_Core
 
+
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: internal is default access level - not need for explicit definition
+// MARK: use abbreviation / syntax sugar
+
 public protocol GuestListViewProtocol {
     func showGuestList()
 }
 
 public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
+    // should be weak
     public var delegate: GuestListViewProtocol?
     internal var guestsDictionary = [String: [RedeemableTicket]]()
     internal var guestSectionTitles = [String]()
@@ -18,6 +25,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
     
     public var guests: Guests? {
         didSet {
+            // guard
             if self.guests == nil  {
                 return
             }
@@ -25,6 +33,8 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
             self.configureView()
             
             //  Configuring Alphabetic List
+            // MARK: remove explicite unwrapping - it's not good
+            // simplify 
             for guest in guests!.data {
                 let guestKey = String(guest.firstName.prefix(1))
                 if var guestValues = guestsDictionary[guestKey] {
@@ -43,6 +53,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
     
     internal var isShowingGuests: Bool = false {
         didSet {
+            // guard?
             if isShowingGuests == true {
                 UIView.animate(withDuration: 1.0, delay: 0.5, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.85, options: .curveEaseOut, animations: {
                     self.showGuestButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
@@ -69,6 +80,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         return button
     }()
 
+    // lazy?
     public let allguestsLabel: UILabel = {
         let label = UILabel()
         label.text = "All Guests"
@@ -79,6 +91,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         return label
     }()
     
+    // lazy?
     internal lazy var guestTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: UITableView.Style.plain)
         tableView.backgroundColor = UIColor.white
@@ -90,6 +103,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         return tableView
     }()
     
+    // lazy?
     internal let loadingView: UIActivityIndicatorView = {
         let loader = UIActivityIndicatorView()
         loader.style = UIActivityIndicatorView.Style.gray

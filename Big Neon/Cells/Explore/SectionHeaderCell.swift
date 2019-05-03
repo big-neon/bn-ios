@@ -2,10 +2,16 @@
 import Foundation
 import UIKit
 
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+// MARK: internal is default access level - not need for explicit definition
+
 public class SectionHeaderCell: UICollectionViewCell {
     
     public static let cellID = "SectionHeaderCellID"
     
+    // lazy?
     public let sectionHeaderLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandGrey

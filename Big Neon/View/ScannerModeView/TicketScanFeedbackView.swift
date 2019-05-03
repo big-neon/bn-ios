@@ -5,6 +5,12 @@ import PWSwitch
 import Big_Neon_Core
 import Big_Neon_UI
 
+
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: internal is default access level - not need for explicit definition
+// MARK: use abbreviation / syntax sugar
+
 public class TicketScanFeedbackView: UIView {
     
     public var scanFeedback: ScanFeedback? {
@@ -33,6 +39,7 @@ public class TicketScanFeedbackView: UIView {
         }
     }
     
+     // lazy ?
     internal let feedbackLabel: BrandTitleLabel = {
         let label = BrandTitleLabel()
         label.textColor = UIColor.white
@@ -41,6 +48,7 @@ public class TicketScanFeedbackView: UIView {
         return label
     }()
     
+     // lazy ?
     internal let feedbackImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill

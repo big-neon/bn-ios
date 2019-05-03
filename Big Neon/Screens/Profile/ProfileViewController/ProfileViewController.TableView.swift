@@ -25,7 +25,9 @@ extension ProfileViewController {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        // if ... else...
         switch section {
+            
         case 0:
             return "Account Details"
         default:
@@ -39,6 +41,7 @@ extension ProfileViewController {
     
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
+        // if.. else..
         case 0:
             return self.profileViewModel.sectionOneLabels.count
         default:
@@ -50,6 +53,7 @@ extension ProfileViewController {
         let profileCell: ProfileTableCell = tableView.dequeueReusableCell(withIdentifier: ProfileTableCell.cellID, for: indexPath) as! ProfileTableCell
         
         switch indexPath.section {
+        // if... else
         case 0:
             profileCell.cellLabel.text = self.profileViewModel.sectionOneLabels[indexPath.row]
             profileCell.cellImageView.image = UIImage(named: self.profileViewModel.sectionOneImages[indexPath.row])
@@ -67,7 +71,7 @@ extension ProfileViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+        // if ... else..
         switch indexPath.section {
         case 0:
             if indexPath.row == 0 {

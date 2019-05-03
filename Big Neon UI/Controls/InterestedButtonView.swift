@@ -3,8 +3,14 @@
 import Foundation
 import UIKit
 
+// MARK:  magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
+
 public class InterestedButtonView: UIView {
     
+    // lazy?
     public let buttonLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandMediumGrey
@@ -14,6 +20,7 @@ public class InterestedButtonView: UIView {
         return label
     }()
     
+    // lazy?
     public let buttonIconView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit

@@ -4,6 +4,15 @@
 import UIKit
 import Big_Neon_UI
 
+// MARK:  magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+// MARK: internal is default access level - not need for explicit definition
+
+
+// MARK: check do we really want to confirm to all those protocols
+// if we do... separate them by an extension, one for each
+
 internal class ProfileEditViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, ProfileImageUploadDelegate  {
     
     
