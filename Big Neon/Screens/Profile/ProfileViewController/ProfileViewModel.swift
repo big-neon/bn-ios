@@ -3,6 +3,8 @@ import Foundation
 import Big_Neon_Core
 import SwiftKeychainWrapper
 
+// MARK: internal is default access level - not need for explicit definition
+
 final class ProfileViewModel {
     
     internal let sectionOneLabels = ["Account"]
@@ -72,6 +74,8 @@ final class ProfileViewModel {
         
     }
     
+    //MARK: could  be helper function:
+    // e.g.  func saveTokensInKeychain(token: Tokens, keys: [String])
     private func saveTokensInKeychain(token: Tokens) {
         KeychainWrapper.standard.set(token.accessToken, forKey: "accessToken")
         KeychainWrapper.standard.set(token.refreshToken, forKey: "refreshToken")

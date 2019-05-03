@@ -4,12 +4,18 @@ import Foundation
 import UIKit
 import Big_Neon_Core
 
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
 final public class EventTimeAndLocationCell: UITableViewCell {
     
     public static let cellID = "EventTimeAndLocationCellID"
     
     public var eventDetail: EventDetail? {
         didSet {
+            // group guard statements in one
+            
             guard let eventDetail = self.eventDetail else {
                 return
             }
@@ -31,6 +37,7 @@ final public class EventTimeAndLocationCell: UITableViewCell {
         }
     }
     
+    // lazy ?
     public let headerIconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -40,6 +47,7 @@ final public class EventTimeAndLocationCell: UITableViewCell {
         return imageView
     }()
     
+    // lazy?
     public let headerLabel: UILabel = {
         let label = UILabel()
         label.text = "TIME AND LOCATION"
@@ -49,6 +57,7 @@ final public class EventTimeAndLocationCell: UITableViewCell {
         return label
     }()
     
+    // lazy?
     public let venueLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandPrimary
@@ -57,6 +66,7 @@ final public class EventTimeAndLocationCell: UITableViewCell {
         return label
     }()
     
+    // lazy?
     public let addressLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandMediumGrey
@@ -65,6 +75,7 @@ final public class EventTimeAndLocationCell: UITableViewCell {
         return label
     }()
     
+    // lazy?
     public let dateLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandMediumGrey
@@ -73,6 +84,7 @@ final public class EventTimeAndLocationCell: UITableViewCell {
         return label
     }()
     
+    // lazy?
     public let doorsLabel: UILabel = {
         let label = UILabel()
         label.text = "Doors 7:00 PM PDT  -  Show 8:00 PM PDT"

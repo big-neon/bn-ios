@@ -4,12 +4,17 @@ import Foundation
 import UIKit
 import Big_Neon_UI
 
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
 public protocol TicketQRCodeDelegate {
     func handleDismissQRCodeView()
 }
 
 public class TicketQRCodeView: UIView {
     
+    // weak?
     public var delegate: TicketQRCodeDelegate?
     
     public let qrCodeImage: UIImageView = {
@@ -20,6 +25,8 @@ public class TicketQRCodeView: UIView {
         return imageView
     }()
     
+    
+    // lazy?
     public let detailLabel: UILabel = {
         let label = UILabel()
         label.text = "Share this to accept ticket transfers and invites"

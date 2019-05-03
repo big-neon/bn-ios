@@ -3,10 +3,16 @@
 import Foundation
 import UIKit
 
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
+
 final public class QuantitySelectionCell: UITableViewCell {
     
     public static let cellID = "QuantitySelectionCellID"
     
+   // lazy?
    public let ticketTypeLabel: UILabel = {
         let label = UILabel()
         label.text = "General Admission"
@@ -16,6 +22,7 @@ final public class QuantitySelectionCell: UITableViewCell {
         return label
     }()
     
+    // lazy?
     public let numberOfTicketsLabel: UILabel = {
         let label = UILabel()
         label.text = "1 Ticket"

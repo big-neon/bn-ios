@@ -5,6 +5,13 @@ import Foundation
 import UITextField_Shake
 import Big_Neon_UI
 
+
+// MARK:  magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+// MARK: internal is default access level - not need for explicit definition
+// MARK: swift support Type Inference
+
 internal class LoginViewController: UIViewController, UITextFieldDelegate {
     
     fileprivate var buttonBottomAnchorConstraint: NSLayoutConstraint?
@@ -15,6 +22,7 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
         return feedback
     }()
     
+    // lazy?
     private var headerLabel: BrandTitleLabel = {
         let label = BrandTitleLabel()
         label.text = "Welcome Back!"
@@ -49,6 +57,8 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+
+        // repetetive code ... should be part of base view controller ?
         self.configureNavBar()
         self.setupDelegates()
         self.configureView()
@@ -127,6 +137,8 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @objc internal func handleLogin() {
         
+        //MARK: repetetive code - i saw something simular on several places.... refactor / rethink
+
         guard let email = self.emailTextView.authTextField.text else {
             self.emailTextView.textFieldError = .invalidEmail
             return
@@ -157,6 +169,7 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
         self.loginButton.startAnimation()
         self.createAccountViewModel.login(email: email, password: password) { [weak self] (success, errorString) in
             DispatchQueue.main.async {
+                // guard?
                 if errorString != nil {
                     self?.loginButton.stopAnimation(animationStyle: .shake,
                                                   revertAfterDelay: 1.0,
@@ -171,6 +184,8 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
                     self?.loginButton.stopAnimation(animationStyle: .shake,
                                                    revertAfterDelay: 1.0,
                                                    completion: {
+                                                       //MARK: do not use explicite unwraping,
+                                                       // previous guard is not covering this errorString
                                                     self?.showFeedback(message: errorString!)
                                                     self?.enableView()
                     })
@@ -186,6 +201,9 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // MARK: showFeedback() and handleShowHome() can extract in extension or base class and reuse
+    // repetetive code
+
     private func showFeedback(message: String) {
         if let window = UIApplication.shared.keyWindow {
             self.errorFeedback.showFeedback(backgroundColor: UIColor.brandBlack,
@@ -203,6 +221,7 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
         self.present(splashVC, animated: true, completion: nil)
     }
     
+    // MARK: ... even touchesBegan nad resignTextFields() repets ... a lot
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.resignTextFields()
     }

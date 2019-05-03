@@ -2,10 +2,17 @@
 import Foundation
 import UIKit
 
+
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
+
 final public class EventCheckoutDetailCell: UITableViewCell {
     
     public static let cellID = "EventCheckoutDetailCellID"
     
+    // lazy?
     public let eventLabel: UILabel = {
         let label = UILabel()
         label.text = "Taylor Swift"
@@ -14,6 +21,8 @@ final public class EventCheckoutDetailCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    // lazy?
     
     public let eventDetailLabel: UILabel = {
         let label = UILabel()

@@ -6,6 +6,8 @@ import PresenterKit
 import Big_Neon_UI
 import Big_Neon_Core
 
+// MARK: internal is default access level - not need for explicit definition
+
 extension TicketTypeViewController {
     
     internal func numberOfSections(in tableView: UITableView) -> Int {

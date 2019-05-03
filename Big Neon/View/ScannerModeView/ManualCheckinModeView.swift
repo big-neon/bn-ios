@@ -8,8 +8,14 @@ public protocol ManualCheckinModeDelegate {
     func completeCheckin()
 }
 
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: internal is default access level - not need for explicit definition
+// MARK: use abbreviation / syntax sugar
+
 public class ManualCheckinModeView: UIView {
     
+    // should be weak
     public var delegate: ManualCheckinModeDelegate?
     
     public var redeemableTicket: RedeemableTicket? {
@@ -43,6 +49,7 @@ public class ManualCheckinModeView: UIView {
         return imageView
     }()
     
+    // lazy?
     public let userNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandBlack
@@ -51,6 +58,7 @@ public class ManualCheckinModeView: UIView {
         return label
     }()
     
+    // lazy?
     public let ticketTypeLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandGrey
@@ -59,6 +67,7 @@ public class ManualCheckinModeView: UIView {
         return label
     }()
     
+    // lazy?
     private let lineView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.brandGrey.withAlphaComponent(0.2)
@@ -66,6 +75,7 @@ public class ManualCheckinModeView: UIView {
         return view
     }()
     
+    // lazy?
     private let bannedTagView: CheckinTagView = {
         let view = CheckinTagView()
         view.backgroundColor = UIColor.red
@@ -74,6 +84,7 @@ public class ManualCheckinModeView: UIView {
         return view
     }()
     
+    // lazy?
     private let vipTagView: CheckinTagView = {
         let view = CheckinTagView()
         view.tagLabel.text = "VIP".uppercased()
@@ -81,6 +92,7 @@ public class ManualCheckinModeView: UIView {
         return view
     }()
     
+    // lazy?
     public let birthDateLabel: UILabel = {
         let label = UILabel()
         label.text = "Birth Date"
@@ -90,6 +102,7 @@ public class ManualCheckinModeView: UIView {
         return label
     }()
     
+    // lazy?
     public let birthValueLabel: UILabel = {
         let label = UILabel()
         label.text = "-"
@@ -99,6 +112,7 @@ public class ManualCheckinModeView: UIView {
         return label
     }()
     
+    // lazy?
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white

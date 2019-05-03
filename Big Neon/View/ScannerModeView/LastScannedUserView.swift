@@ -3,6 +3,10 @@
 import UIKit
 import Big_Neon_Core
 
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
 public class LastScannedUserView: UIView {
     
     public var redeemableTicket: RedeemableTicket? {
@@ -26,6 +30,7 @@ public class LastScannedUserView: UIView {
         return imageView
     }()
     
+    // lazy?
     public let userNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Anna Behrensmeyer"
@@ -35,6 +40,7 @@ public class LastScannedUserView: UIView {
         return label
     }()
     
+    // lazy?
     public let ticketTypeLabel: UILabel = {
         let label = UILabel()
         label.text = "General Admission"
@@ -44,8 +50,10 @@ public class LastScannedUserView: UIView {
         return label
     }()
     
+    // lazy?
     public lazy var ticketScanStateImageView: UIImageView = {
         let imageView = UIImageView()
+        // idea: use enum with  all image names ? 
         imageView.image = UIImage(named: "ic_checkedIn_tick")
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true

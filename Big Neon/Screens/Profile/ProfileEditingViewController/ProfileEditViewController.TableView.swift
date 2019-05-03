@@ -29,8 +29,12 @@ extension ProfileEditViewController {
         default:
             return 1
         }
+        
+        //MARK: return section > 1 ? 0 : 3
     }
-    
+    // MARK: it is hard to read with switch statement
+    // refactor
+    //MARK: do not use explicite unwraping can be dangerous
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:

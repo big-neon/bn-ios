@@ -3,10 +3,16 @@
 import Foundation
 import UIKit
 
+// MARK:  magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
+
 final public class LogoutCell: UITableViewCell {
     
     public static let cellID = "LogoutCellID"
     
+    // lazy?
     public let cellLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandPrimary

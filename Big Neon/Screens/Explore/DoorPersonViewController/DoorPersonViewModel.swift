@@ -4,6 +4,11 @@ import Big_Neon_Core
 import SwiftKeychainWrapper
 import CoreData
 
+// MARK: self is not needed
+// MARK: internal is default access level - not need for explicit definition
+
+
+
 final class DoorPersonViewModel {
     
     internal var events: Events?
@@ -14,6 +19,8 @@ final class DoorPersonViewModel {
     internal func fetchEvents(completion: @escaping(Bool) -> Void) {
         self.events = nil
         BusinessService.shared.database.fetchEvents { [weak self](error, eventsFetched) in
+            // guard ?
+            // MARK: put error and events under same guard
             if error != nil {
                 completion(false)
                 return
@@ -33,6 +40,12 @@ final class DoorPersonViewModel {
     internal func configureAccessToken(completion: @escaping(Bool) -> Void) {
         
         BusinessService.shared.database.tokenIsExpired { [weak self] (expired) in
+            // idea:
+//            guard `self` = self else {
+//                completion(false)
+//                return
+//            }
+            
             if expired == true {
                 //  Fetch New Token
                 self?.fetchNewAccessToken(completion: { (completed) in
@@ -66,6 +79,9 @@ final class DoorPersonViewModel {
     internal func fetchCheckins(completion: @escaping(Bool) -> Void) {
         self.events = nil
         BusinessService.shared.database.fetchCheckins { [weak self] (error, events) in
+            
+            // guard ?
+            // MARK: put error and events under same guard
             if error != nil {
                 completion(false)
                 return
@@ -112,6 +128,9 @@ final class DoorPersonViewModel {
         }
     }
     
+    // MARK: idea: saveTokensInKeychain(token: Tokens, forKeys: [String])
+    // make it accessible for other classes to use it
+    // should be part of helper or util class 
     private func saveTokensInKeychain(token: Tokens) {
         KeychainWrapper.standard.set(token.accessToken, forKey: "accessToken")
         KeychainWrapper.standard.set(token.refreshToken, forKey: "refreshToken")

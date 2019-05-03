@@ -2,10 +2,16 @@
 import Foundation
 import UIKit
 
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+// MARK: internal is default access level - not need for explicit definition
+
 final public class GuestTableViewCell: UITableViewCell {
     
     public static let cellID = "GuestTableViewCellID"
     
+    // lazy?
     public let guestNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandBlack
@@ -14,6 +20,7 @@ final public class GuestTableViewCell: UITableViewCell {
         return label
     }()
     
+    // lazy ?
     public let ticketTypeNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandGrey
@@ -22,6 +29,7 @@ final public class GuestTableViewCell: UITableViewCell {
         return label
     }()
     
+    // lazy?
     public let ticketStateView: CheckinTagView = {
         let view = CheckinTagView()
         view.backgroundColor = UIColor.brandBlack

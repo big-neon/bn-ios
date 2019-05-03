@@ -2,6 +2,10 @@
 import Foundation
 import UIKit
 
+// MARK: lots of magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
 final public class ProfileTableCell: UITableViewCell {
     
     public static let cellID = "ProfileTabCellID"

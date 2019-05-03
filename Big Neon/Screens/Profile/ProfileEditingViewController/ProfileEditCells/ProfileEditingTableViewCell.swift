@@ -4,10 +4,16 @@
 import Foundation
 import UIKit
 
+// MARK:  magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+
+
 final public class ProfileEditTableCell: UITableViewCell {
     
     public static let cellID = "ProfileEditTableCell"
     
+    // lazy?
     public let cellLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandGrey
@@ -16,6 +22,7 @@ final public class ProfileEditTableCell: UITableViewCell {
         return label
     }()
     
+    // lazy?
     public let entryTextField: UITextField = {
         let textField = UITextField()
         textField.textColor = UIColor.brandBlack

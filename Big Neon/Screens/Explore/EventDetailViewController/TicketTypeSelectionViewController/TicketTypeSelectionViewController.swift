@@ -6,6 +6,13 @@ import PresenterKit
 import Big_Neon_UI
 import Big_Neon_Core
 
+
+// MARK:  magic numbers... consider using layout/config class/enum
+// MARK: self is not needed
+// MARK: use abbreviation / syntax sugar
+// MARK: internal is default access level - not need for explicit definition
+
+
 final class TicketTypeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TicketTypeDelegate {
     
     internal var modalActive: Bool = false
@@ -18,6 +25,7 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
     internal var backButtonLeftAnchor: NSLayoutConstraint?
     internal var closeButtonRightAnchor: NSLayoutConstraint?
     
+    // lazy?
     internal let headerLabel: BrandTitleLabel = {
         let label = BrandTitleLabel()
         label.text = "Ticket Type"
@@ -180,7 +188,7 @@ final class TicketTypeViewController: UIViewController, UITableViewDelegate, UIT
             self.closeButtonRightAnchor?.constant = 90.0
             self.purchaseTicketButton.setTitle("Purchase Ticket", for: UIControl.State.normal)
             self.view.layoutIfNeeded()
-        }) { (_) in
+        }) { (_) in // _ in
             self.purchaseTicketButton.removeTarget(self, action: #selector(self.moveToCheckout), for: UIControl.Event.touchUpInside)
             self.purchaseTicketButton.addTarget(self, action: #selector(self.confirmPurchase), for: UIControl.Event.touchUpInside)
         }
