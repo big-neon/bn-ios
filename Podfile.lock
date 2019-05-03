@@ -46,7 +46,6 @@ DEPENDENCIES:
   - Alamofire (~> 5.0.0.beta.1)
   - Crashlytics
   - DTGradientButton
-  - Fabric
   - JWTDecode (~> 2.2)
   - Mixpanel
   - PhoneNumberKit (~> 2.1)
@@ -107,6 +106,6 @@ SPEC CHECKSUMS:
   TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
-PODFILE CHECKSUM: a5dcbae2359e55c648294447b78494554e05bf8f
+PODFILE CHECKSUM: f3b3d9489905fbcbaf2c7220242a8a775a71f365
 
 COCOAPODS: 1.5.3

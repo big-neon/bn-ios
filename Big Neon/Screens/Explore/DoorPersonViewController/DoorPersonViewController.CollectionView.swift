@@ -37,8 +37,8 @@ extension DoorPersonViewController {
 //            let event = events[indexPath.item]
             eventCell.eventNameLabel.text = event.name
 //            let eventImageURL: URL = URL(string: event.compressImage(url: event.promoImageURL!))!;
-//            eventCell.eventImageView.pin_setImage(from: event?.promoImageURL, placeholderImage: nil)
-//            eventCell.eventDetailsLabel.text = self.configureEventDetails(event: event)
+//            eventCell.eventImageView.pin_setImage(from: event.promo_image_url, placeholderImage: nil)
+            eventCell.eventDetailsLabel.text = self.configureEventDetails(event: event)
 //            eventCell.eventDateLabel.text = self.configureEventDate(event: event)
             return eventCell
         default:
@@ -48,7 +48,7 @@ extension DoorPersonViewController {
         }
     }
 
-    private func configureEventDetails(event: Event) -> String {
+    private func configureEventDetails(event: EventsData) -> String {
         return event.venue!.name + "   •   " + event.venue!.city + ", " + event.venue!.state
     }
 

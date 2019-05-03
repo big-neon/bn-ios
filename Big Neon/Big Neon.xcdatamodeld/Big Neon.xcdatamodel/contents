@@ -32,6 +32,7 @@
         <attribute name="user_is_interested" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="venue_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="video_url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="venue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Venue" syncable="YES"/>
     </entity>
     <entity name="RedeemedTicket" representedClassName="RedeemedTicket" syncable="YES" codeGenerationType="class">
         <attribute name="door_time" optional="YES" attributeType="String" syncable="YES"/>
@@ -55,9 +56,30 @@
         <attribute name="venue_name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="ScannedUser" representedClassName="ScannedUser" syncable="YES" codeGenerationType="class"/>
+    <entity name="Venue" representedClassName="Venue" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created_at" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="google_place_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="is_private" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="organization_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postal_code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="promo_image_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="region_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timezone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updated_at" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="EventsData" positionX="-54" positionY="144" width="128" height="510"/>
+        <element name="EventsData" positionX="-54" positionY="144" width="128" height="523"/>
         <element name="RedeemedTicket" positionX="-54" positionY="-9" width="128" height="330"/>
         <element name="ScannedUser" positionX="-194.48046875" positionY="-8.1796875" width="128" height="45"/>
+        <element name="Venue" positionX="-284.57421875" positionY="281.390625" width="128" height="313"/>
     </elements>
 </model>

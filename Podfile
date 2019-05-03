@@ -2,8 +2,6 @@ platform :ios, '11.0'
 use_frameworks!
 
 target 'Big Neon Core' do
-    pod 'Crashlytics'
-    pod 'Fabric'
 	pod 'Stripe'
     pod 'Alamofire', '~> 5.0.0.beta.1'
     pod 'Mixpanel'
@@ -15,8 +13,6 @@ target 'Big Neon Core' do
   	# Pods for Big Neon
 	target 'Big Neon' do
 		inherit! :search_paths
-        pod 'Crashlytics'
-        pod 'Fabric'
         pod 'QRCodeReader.swift'
         pod 'PresenterKit'
         pod 'pop'
@@ -30,7 +26,6 @@ target 'Big Neon UI' do
     inherit! :search_paths
     pod 'Crashlytics'
     pod 'Sync', '~> 5'
-    pod 'Fabric'
     pod 'TransitionButton' 
 	pod 'pop'
     pod 'PWSwitch'
