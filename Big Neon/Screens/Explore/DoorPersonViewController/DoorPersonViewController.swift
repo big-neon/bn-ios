@@ -5,24 +5,21 @@ import Big_Neon_UI
 import Big_Neon_Core
 
 // MARK:  magic numbers... consider using layout/config class/enum
-// MARK: self is not needed
 // MARK: use abbreviation / syntax sugar
-// MARK: internal is default access level - not need for explicit definition
-
 // do we need to confirm to all those protocols?
 
 final class DoorPersonViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
     
     var fetcher: Fetcher
 
-    internal lazy var refresher: UIRefreshControl = {
+    lazy var refresher: UIRefreshControl = {
         let refresher = UIRefreshControl()
         refresher.tintColor = UIColor.brandGrey
         refresher.addTarget(self, action: #selector(reloadEvents), for: .valueChanged)
         return refresher
     }()
 
-    internal var headerLabel: UILabel = {
+    var headerLabel: UILabel = {
         let label = UILabel()
         label.text = "No Published Events"
         label.textColor = UIColor.brandBlack
@@ -32,7 +29,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         return label
     }()
 
-    internal var detailLabel: UILabel = {
+    var detailLabel: UILabel = {
         let label = UILabel()
         label.text = "Your published and upcoming events will be found here."
         label.textAlignment = .center
@@ -59,7 +56,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         return collectionView
     }()
     
-    internal lazy var searchController: UISearchController = {
+    lazy var searchController: UISearchController = {
         let search = UISearchController(searchResultsController: nil)
         search.obscuresBackgroundDuringPresentation = false
         search.searchBar.placeholder = "Search artists, shows, venues…"
@@ -74,7 +71,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         return search
     }()
     
-    internal lazy var userProfileImageView: UIImageView = {
+    lazy var userProfileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowProfile)))
         imageView.image = UIImage(named: "ic_profilePicture")
@@ -97,16 +94,16 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureNavBar()
-        self.view.backgroundColor = UIColor.white
-        self.configureSearch()
-        self.configureCollectionView()
-        self.doorPersonViemodel.eventCoreData = self.fetcher.fetchLocalEvents()
-        self.syncEventsData()
+        configureNavBar()
+        view.backgroundColor = UIColor.white
+        configureSearch()
+        configureCollectionView()
+        doorPersonViemodel.eventCoreData = fetcher.fetchLocalEvents()
+        syncEventsData()
     }
 
     @objc func syncEventsData() {
-        self.fetcher.syncUsingNetworking { result in
+        fetcher.syncUsingNetworking { result in
             switch result {
             case .success:
                 self.doorPersonViemodel.eventCoreData = self.fetcher.fetchLocalEvents()
@@ -124,7 +121,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     @objc private func reloadEvents() {
         self.doorPersonViemodel.configureAccessToken { [weak self] (completed) in
             DispatchQueue.main.async {
-                // guard self?
+                
                 self?.loadingView.stopAnimating()
                 self?.refresher.endRefreshing()
                 
@@ -140,8 +137,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     }
     
     private func configureSearch() {
-//        self.navigationItem.searchController = searchController   //  TO BE ADDED LATER
-        // beter: add TODO:
+        //TODO: self.navigationItem.searchController = searchController
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -158,19 +154,19 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     }
 
     private func configureEmptyView() {
-        self.exploreCollectionView.isHidden = true
-        self.view.addSubview(headerLabel)
-        self.view.addSubview(detailLabel)
+        exploreCollectionView.isHidden = true
+        view.addSubview(headerLabel)
+        view.addSubview(detailLabel)
 
-        self.headerLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50).isActive = true
-        self.headerLabel.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        self.headerLabel.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        self.headerLabel.heightAnchor.constraint(equalToConstant: 24.0).isActive = true
+        headerLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50).isActive = true
+        headerLabel.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        headerLabel.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        headerLabel.heightAnchor.constraint(equalToConstant: 24.0).isActive = true
 
-        self.detailLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 24).isActive = true
-        self.detailLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
-        self.detailLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
-        self.detailLabel.heightAnchor.constraint(equalToConstant: 24.0).isActive = true
+        detailLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 24).isActive = true
+        detailLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
+        detailLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
+        detailLabel.heightAnchor.constraint(equalToConstant: 24.0).isActive = true
 
     }
 
@@ -194,25 +190,13 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         self.navigationController?.pushViewController(eventDetailVC, animated: true)
     }
     
-    @objc private func handleLogout() {
-        self.doorPersonViemodel.handleLogout { (_) in
-            let welcomeVC = UINavigationController(rootViewController: WelcomeViewController())
-            welcomeVC.modalTransitionStyle = .flipHorizontal
-            self.present(welcomeVC, animated: true, completion: nil)
-            return
-        }
-    }
-    
     @objc private func handleShowProfile() {
         self.navigationController?.push(ProfileViewController())
     }
     
     internal func showScanner(forTicketIndex ticketIndex: Int) {
-        guard let events = self.doorPersonViemodel.events?.data else {
-            return
-        }
         let scannerVC = ScannerViewController()
-        scannerVC.event = events[ticketIndex]
+        scannerVC.event = self.doorPersonViemodel.eventCoreData[ticketIndex]
         let scannerNavVC = UINavigationController(rootViewController: scannerVC)
         self.present(scannerNavVC, animated: true, completion: nil)
     }
