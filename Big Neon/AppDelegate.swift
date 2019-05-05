@@ -1,7 +1,6 @@
 
 import UIKit
 import CoreData
-import Crashlytics
 import Fabric
 import Big_Neon_Core
 

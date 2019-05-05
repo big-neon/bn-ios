@@ -8,8 +8,7 @@ final class ApplicationRouter {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.tintColor = UIColor.brandPrimary
         window.makeKeyAndVisible()
-        //MARK: use guard instead or !userIsLoggedIn()
-        if userIsLoggedIn() == false {
+        if !userIsLoggedIn() {
             let navController = UINavigationController(rootViewController: WelcomeViewController())
             window.rootViewController = navController
             return window
@@ -21,17 +20,9 @@ final class ApplicationRouter {
     
     
     class func userIsLoggedIn() -> Bool {
-        //MARK: use guard  eg.
-
-//        guard RoutingViewModel().fetchToken() else {
-//            return false
-//        }
-//        return true
-        
-        let routingViewModel: RoutingViewModel = RoutingViewModel()
-        if routingViewModel.fetchToken() == true {
-            return true
+        guard RoutingViewModel().fetchToken() else {
+            return false
         }
-        return false
+        return true
     }
 }
