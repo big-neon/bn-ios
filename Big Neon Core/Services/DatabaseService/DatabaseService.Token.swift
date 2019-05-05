@@ -29,12 +29,50 @@ extension DatabaseService {
             return
         }
         
-        /***
-         To be replaced with Alarmofire later - AF has less code & enables response status checks by default.
-         */
-        
         let authParameters = ["refresh_token": refreshToken]
         let APIURL = APIService.refreshToken()
+        
+        
+        AF.request(APIURL,
+                   method: HTTPMethod.post,
+                   parameters: authParameters,
+                   encoding: JSONEncoding.default,
+                   headers: [:])
+            .validate()
+            .response { (response) in
+                
+                guard response.result.isSuccess else {
+                    completion(response.result.error, nil)
+                    return
+                }
+                
+                guard let data = response.result.value else {
+                    completion(nil, nil)
+                    return
+                }
+                
+                do {
+                    let decoder = JSONDecoder()
+                    let tokens = try decoder.decode(Tokens.self, from: data!)
+                    completion(nil, tokens)
+                    return
+                } catch let error as NSError {
+                    completion(error, nil)
+                }
+                
+//                do {
+//                    let decoder = JSONDecoder()
+//                    let userOrg = try decoder.decode(UserOrg.self, from: data!)
+//                    let user = userOrg.user
+//                    completion(nil, user)
+//                    return
+//                } catch let error as NSError {
+//                    print(error.localizedDescription)
+//                    completion(error, nil)
+//                }
+        }
+        
+        /*
         let jsonData = try? JSONSerialization.data(withJSONObject: authParameters, options: .prettyPrinted)
         let request = NSMutableURLRequest(url: NSURL(string: APIURL)! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
@@ -65,5 +103,6 @@ extension DatabaseService {
             }
 
             }.resume()
+        */
     }
 }

@@ -27,7 +27,11 @@ class Fetcher {
                 return
             }
             
-            self.dataStack.sync(eventsFetchedDict!, inEntityNamed: EventsData.entity().name!) { error in
+            guard let events = eventsFetchedDict else {
+                return
+            }
+            
+            self.dataStack.sync(events, inEntityNamed: EventsData.entity().name!) { error in
                 completion(.success)
             }
         }
