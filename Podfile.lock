@@ -37,7 +37,7 @@ PODS:
   - QRCodeReader.swift (10.0.0)
   - Stripe (14.0.0)
   - SwiftKeychainWrapper (3.2.0)
-  - Sync (5.1.0)
+  - Sync (6.0.0)
   - TransitionButton (0.5.2)
   - "UITextField+Shake (1.2.1)"
 
@@ -55,7 +55,7 @@ DEPENDENCIES:
   - QRCodeReader.swift
   - Stripe
   - SwiftKeychainWrapper
-  - Sync (~> 5)
+  - Sync (from `https://github.com/3lvis/Sync.git`, branch `issue-555`)
   - TransitionButton
   - "UITextField+Shake"
 
@@ -77,9 +77,18 @@ SPEC REPOS:
     - QRCodeReader.swift
     - Stripe
     - SwiftKeychainWrapper
-    - Sync
     - TransitionButton
     - "UITextField+Shake"
+
+EXTERNAL SOURCES:
+  Sync:
+    :branch: issue-555
+    :git: https://github.com/3lvis/Sync.git
+
+CHECKOUT OPTIONS:
+  Sync:
+    :commit: 708e71c8bf384c42437a4bc85ebbd182df0f0d78
+    :git: https://github.com/3lvis/Sync.git
 
 SPEC CHECKSUMS:
   Alamofire: 50d6fa7e8cbe7f84559e86ab641ffd029db655f8
@@ -98,10 +107,10 @@ SPEC CHECKSUMS:
   QRCodeReader.swift: 74d0378eb0c7807828552b49626bbc8307495aee
   Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
   SwiftKeychainWrapper: 82c4c02cdc36f9a24f7edfcaab3e336401caa1a1
-  Sync: 0412c2b068eb7cf1a04607e948ef92cbd6114d0f
+  Sync: a6288926bee65a1ac3c72055446c558776af43f3
   TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
-PODFILE CHECKSUM: aacaee16178a008606b9e00f68e029fbab67deaa
+PODFILE CHECKSUM: 0566368db0ff882bc5dc5d89b914f0e4f14bb4ae
 
 COCOAPODS: 1.6.1

@@ -4,8 +4,6 @@ import PINRemoteImage
 import Big_Neon_UI
 import Big_Neon_Core
 
-
-// MARK: are we need all of those imports ???
 extension DoorPersonViewController {
 
     internal func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -17,7 +15,7 @@ extension DoorPersonViewController {
         case 0:
             return 1
         default:
-            return  self.doorPersonViemodel.eventCoreData.count //.sections?[section].numberOfObjects ?? 0 //  total
+            return  self.doorPersonViemodel.eventCoreData.count
         }
     }
 
@@ -65,39 +63,25 @@ extension DoorPersonViewController {
 
     private func configureEventDate(event: Event) -> String {
         let utcEventStart = event.eventStart
-        // MARK: timezone should be in guard also
-        let timezone = event.venue!.timezone;
-        guard let eventDate = DateConfig.formatServerDate(date: utcEventStart!, timeZone: timezone) else {
+        
+        guard let timezone = event.venue else {
+            return "-"
+        }
+        
+        guard let eventDate = DateConfig.formatServerDate(date: utcEventStart!, timeZone: timezone.timezone) else {
             return "-"
         }
         return DateConfig.dateFormatShort(date: eventDate)
     }
 
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // idea:
-//        let height = indexPath.section == 0 ? 60 : 100
-//        return CGSize(width: UIScreen.main.bounds.width - 40, height: height)
-
-        switch indexPath.section {
-        case 0:
-            return CGSize(width: UIScreen.main.bounds.width - 40, height: 60)
-        default:
-            return CGSize(width: UIScreen.main.bounds.width - 40, height: 100)
-        }
-
+        let height: CGFloat = indexPath.section == 0 ? 60 : 100
+        return CGSize(width: UIScreen.main.bounds.width - 40, height: height)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-
-        // MARK: maybe to use plain old if
-//        if indexPath.section > 0 {
-//            self.showScanner(forTicketIndex: indexPath.item)
-//        }
-        switch indexPath.section {
-        case 0:
-            return
-        default:
+        if indexPath.section > 0 {
             self.showScanner(forTicketIndex: indexPath.item)
         }
     }

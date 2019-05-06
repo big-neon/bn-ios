@@ -19,7 +19,7 @@ extension DoorPersonViewController {
         //TODO: or
         // #warning("filterContentForSearchText not implemented") :)
         
-        //  TO BE ADDED LATER
+        //  TO DO
         /*
         self.passengersViewModel.filteredPassengers = self.passengersViewModel.passengers.filter({( passenger : Passenger) -> Bool in
             return passenger.fullname.lowercased().contains(searchText.lowercased())

@@ -40,7 +40,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         return label
     }()
 
-    internal lazy var exploreCollectionView: UICollectionView = {
+    lazy var exploreCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing = 20.0
         flowLayout.scrollDirection = .vertical
@@ -81,7 +81,6 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-
 
     init(fetcher: Fetcher) {
         self.fetcher = fetcher

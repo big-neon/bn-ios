@@ -31,7 +31,11 @@ class Fetcher {
                 return
             }
             
-            self.dataStack.sync(events, inEntityNamed: EventsData.entity().name!) { error in
+            for eachEvent in events {
+               print(eachEvent["venue"])
+            }
+            
+            self.dataStack.sync(events, inEntityNamed: EventsData.entity().managedObjectClassName) { error in
                 completion(.success)
             }
         }

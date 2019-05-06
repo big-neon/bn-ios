@@ -5,9 +5,9 @@ use_frameworks!
     pod 'Stripe'
     pod 'Alamofire', '~> 5.0.0.beta.1'
     pod 'SwiftKeychainWrapper'
-    pod 'JWTDecode' # '~> 2.2'
+    pod 'JWTDecode'
     pod 'PhoneNumberKit', '~> 2.1'
-    pod 'Sync', '~> 5'
+    pod 'Sync', :git => 'https://github.com/3lvis/Sync.git', :branch => 'issue-555' # '~> 5'
   
     # Pods for Big Neon
     target 'Big Neon' do
@@ -20,14 +20,16 @@ use_frameworks!
         pod 'JWTDecode'
         pod 'PWSwitch'
         pod 'SwiftKeychainWrapper'
-        pod 'Sync', '~> 5'
+        # pod 'Sync', '~> 5'
+        pod 'Sync', :git => 'https://github.com/3lvis/Sync.git', :branch => 'issue-555' # '~> 5'
     end
     
     target 'Big Neon UI' do
       inherit! :search_paths
       pod 'Crashlytics'
       pod 'Stripe'
-      pod 'Sync', '~> 5'
+      # pod 'Sync', '~> 5'
+      pod 'Sync', :git => 'https://github.com/3lvis/Sync.git', :branch => 'issue-555' # '~> 5'
       pod 'Alamofire', '~> 5.0.0.beta.1'
       pod 'TransitionButton'
       pod 'pop'
