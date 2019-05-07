@@ -19,8 +19,8 @@ class Fetcher {
         return try! self.dataStack.viewContext.fetch(request)
     }
     
-    func fetchLocalGuests() -> [EventsData] {
-        let guests: NSFetchRequest<EventsData> = EventsData.fetchRequest()
+    func fetchLocalGuests() -> [RedeemedTicket] {
+        let guests: NSFetchRequest<RedeemedTicket> = RedeemedTicket.fetchRequest()
         return try! self.dataStack.viewContext.fetch(guests)
     }
     

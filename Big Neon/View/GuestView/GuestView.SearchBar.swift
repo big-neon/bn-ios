@@ -24,9 +24,9 @@ extension GuestListView {
         }
         
         // explicite unwraping - undsafe / app could crash 
-        self.filteredSearchResults = (self.guests?.data.filter({( guestTicket : RedeemableTicket) -> Bool in
-            return guestTicket.firstName.lowercased().contains(searchText.lowercased()) ||  guestTicket.lastName.lowercased().contains(searchText.lowercased()) ||
-                guestTicket.email.lowercased().contains(searchText.lowercased())
+        self.filteredSearchResults = (self.guests?.filter({( guestTicket : RedeemedTicket) -> Bool in
+            return guestTicket.first_name!.lowercased().contains(searchText.lowercased()) ||  guestTicket.last_name!.lowercased().contains(searchText.lowercased()) ||
+                guestTicket.email!.lowercased().contains(searchText.lowercased())
         }))!
         
         self.guestTableView.reloadData()

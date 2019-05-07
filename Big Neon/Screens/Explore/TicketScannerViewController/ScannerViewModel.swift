@@ -7,10 +7,11 @@ import Sync
 
 final class TicketScannerViewModel {
     
-    internal var redeemedTicket: RedeemableTicket?
-    internal var scanVC: ScannerViewController?
-    internal var guests: Guests?
-    private var dataStack: DataStack?
+    var redeemedTicket: RedeemableTicket?
+    var scanVC: ScannerViewController?
+    var guests: Guests?
+    var dataStack: DataStack?
+    var guestsCoreData: [RedeemedTicket] = []
 
     internal func setCheckingModeAutomatic() {
         UserDefaults.standard.set(true, forKey: Constants.CheckingMode.scannerCheckinKey)
@@ -166,7 +167,12 @@ final class TicketScannerViewModel {
                     return
                 }
                 
-                self.dataStack?.sync(guests, inEntityNamed: RedeemedTicket.entity().managedObjectClassName) { error in
+                guard let dataStack = self.dataStack else {
+                    completion(false)
+                    return
+                }
+                
+                dataStack.sync(guests, inEntityNamed: RedeemedTicket.entity().managedObjectClassName) { error in
                     completion(true)
                 }
             }

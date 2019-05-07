@@ -15,6 +15,7 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
     var scannedTicket: RedeemableTicket?
     var scannedTicketID: String?
     var event: EventsData?
+    var fetcher: Fetcher
     
     //  Layout
     let generator = UINotificationFeedbackGenerator()
@@ -118,6 +119,15 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         view.layer.opacity = 0.0
         return view
     }()
+    
+    init(fetcher: Fetcher) {
+        self.fetcher = fetcher
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
@@ -226,9 +236,24 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
     private func fetchGuests(forEventID eventID: String) {
         self.scannerViewModel?.fetchGuests(forEventID: eventID, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
-                self?.guestListView.guests = self?.scannerViewModel?.guests
+                self?.scannerViewModel?.guestsCoreData = (self?.fetcher.fetchLocalGuests())!
+                self?.guestListView.guests = self?.scannerViewModel?.guestsCoreData
             }
         })
+    }
+
+//    doorPersonViemodel.eventCoreData = fetcher.fetchLocalEvents()
+//    syncEventsData()
+
+    @objc func syncEventsData() {
+        fetcher.syncCheckins { result in
+            switch result {
+            case .success:
+                self.scannerViewModel?.guestsCoreData = self.fetcher.fetchLocalGuests()
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 

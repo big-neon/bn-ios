@@ -19,15 +19,15 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
     
     // should be weak
     public var delegate: GuestListViewProtocol?
-    internal var guestsDictionary = [String: [RedeemableTicket]]()
+    internal var guestsDictionary = [String: [RedeemedTicket]]()
     internal var guestSectionTitles = [String]()
-    internal var filteredSearchResults: [RedeemableTicket]?
+    internal var filteredSearchResults: [RedeemedTicket]?
     internal var isSearching: Bool = false
     
-    public var guests: Guests? {
+    public var  guests: [RedeemedTicket]? {
         didSet {
             // guard
-            if self.guests == nil  {
+            guard let guests = self.guests else  {
                 return
             }
             
@@ -35,9 +35,10 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
             
             //  Configuring Alphabetic List
             // MARK: remove explicite unwrapping - it's not good
-            // simplify 
-            for guest in guests!.data {
-                let guestKey = String(guest.firstName.prefix(1))
+            // simplify
+            
+            for guest in guests {
+                let guestKey = String(guest.first_name!.prefix(1))
                 if var guestValues = guestsDictionary[guestKey] {
                     guestValues.append(guest)
                     guestsDictionary[guestKey] = guestValues

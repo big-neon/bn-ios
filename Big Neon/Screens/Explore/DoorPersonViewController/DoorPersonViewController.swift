@@ -11,6 +11,11 @@ import Big_Neon_Core
 final class DoorPersonViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
     
     var fetcher: Fetcher
+    
+    lazy var guestsFetcher: Fetcher = {
+        let fetcher = Fetcher()
+        return fetcher
+    }()
 
     lazy var refresher: UIRefreshControl = {
         let refresher = UIRefreshControl()
@@ -194,7 +199,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     }
     
     internal func showScanner(forTicketIndex ticketIndex: Int) {
-        let scannerVC = ScannerViewController()
+        let scannerVC = ScannerViewController(fetcher: self.guestsFetcher)
         scannerVC.event = self.doorPersonViemodel.eventCoreData[ticketIndex]
         let scannerNavVC = UINavigationController(rootViewController: scannerVC)
         self.present(scannerNavVC, animated: true, completion: nil)
