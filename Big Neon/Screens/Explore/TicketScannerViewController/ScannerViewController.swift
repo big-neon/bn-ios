@@ -6,7 +6,6 @@ import Big_Neon_UI
 import Big_Neon_Core
 
 // MARK:  magic numbers... consider using layout/config class/enum
-// MARK: use abbreviation / syntax sugar
 
 final class ScannerViewController: UIViewController, ScannerModeViewDelegate, GuestListViewProtocol, ManualCheckinModeDelegate {
     
@@ -225,16 +224,11 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
     }
     
     private func fetchGuests(forEventID eventID: String) {
-        if Reachability.isConnectedToNetwork() {
-            self.scannerViewModel?.fetchGuests(forEventID: eventID, completion: { [weak self] (completed) in
-                DispatchQueue.main.async {
-                    self?.guestListView.guests = self?.scannerViewModel?.guests
-                }
-            })
-        } else {
-            print("Internet Connection is UnAvaiable")
-            //  Fetch Events Locally
-        }
+        self.scannerViewModel?.fetchGuests(forEventID: eventID, completion: { [weak self] (completed) in
+            DispatchQueue.main.async {
+                self?.guestListView.guests = self?.scannerViewModel?.guests
+            }
+        })
     }
 }
 

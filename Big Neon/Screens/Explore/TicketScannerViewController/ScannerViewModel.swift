@@ -204,7 +204,6 @@ extension TicketScannerViewModel {
         
         let entity = NSEntityDescription.entity(forEntityName: "RedeemedTicket", in: context)
         let newTicket = NSManagedObject(entity: entity!, insertInto: context)
-        print(RedeemableTicket.CodingKeys.id.rawValue)
         newTicket.setValue(ticket.id, forKey: RedeemableTicket.CodingKeys.id.rawValue)
         newTicket.setValue(ticket.ticketType, forKey: RedeemableTicket.CodingKeys.ticketType.rawValue)
         newTicket.setValue(ticket.userID, forKey: RedeemableTicket.CodingKeys.userID.rawValue)

@@ -23,16 +23,15 @@ extension DatabaseService {
     }
     
     public func fetchNewAccessToken(completion: @escaping (Error?, Tokens?) -> Void) {
-       
+
         guard let refreshToken = self.fetchRefreshToken() else {
             completion(nil, nil)
             return
         }
-        
+
         let authParameters = ["refresh_token": refreshToken]
         let APIURL = APIService.refreshToken()
-        
-        
+
         AF.request(APIURL,
                    method: HTTPMethod.post,
                    parameters: authParameters,
@@ -59,6 +58,6 @@ extension DatabaseService {
                 } catch let error as NSError {
                     completion(error, nil)
                 }
-                
+        }
     }
 }
