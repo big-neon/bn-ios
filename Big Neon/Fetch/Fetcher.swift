@@ -36,7 +36,7 @@ class Fetcher {
                 venues.append(eachEvent["venue"] as! [String : Any])
             }
             
-            self.dataStack.sync(venues, inEntityNamed: Venue.entity().name!) { error in
+            self.dataStack.sync(venues, inEntityNamed: Venue.entity().managedObjectClassName) { error in
                 print("Venues Saved")
             }
             
