@@ -17,7 +17,7 @@ public class APIService {
         if isProduction == true {
             return "https://api.production.bigneon.com"
         } else {
-            return "https://api.staging.bigneon.com"
+            return "https://staging.api.bigneon.com"
         }
     }
     
