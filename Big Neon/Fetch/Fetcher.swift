@@ -30,9 +30,14 @@ class Fetcher {
             guard let events = eventsFetchedDict else {
                 return
             }
-            
+    
+            var venues: [[String: Any]] = []
             for eachEvent in events {
-               print(eachEvent["venue"])
+                venues.append(eachEvent["venue"] as! [String : Any])
+            }
+            
+            self.dataStack.sync(venues, inEntityNamed: Venue.entity().name!) { error in
+                print("Venues Saved")
             }
             
             self.dataStack.sync(events, inEntityNamed: EventsData.entity().managedObjectClassName) { error in
