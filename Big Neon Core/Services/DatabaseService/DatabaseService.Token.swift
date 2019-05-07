@@ -60,49 +60,5 @@ extension DatabaseService {
                     completion(error, nil)
                 }
                 
-//                do {
-//                    let decoder = JSONDecoder()
-//                    let userOrg = try decoder.decode(UserOrg.self, from: data!)
-//                    let user = userOrg.user
-//                    completion(nil, user)
-//                    return
-//                } catch let error as NSError {
-//                    print(error.localizedDescription)
-//                    completion(error, nil)
-//                }
-        }
-        
-        /*
-        let jsonData = try? JSONSerialization.data(withJSONObject: authParameters, options: .prettyPrinted)
-        let request = NSMutableURLRequest(url: NSURL(string: APIURL)! as URL,
-                                          cachePolicy: .useProtocolCachePolicy,
-                                          timeoutInterval: 10.0)
-
-        request.setValue(APIParameterKeys.requestSetValue, forHTTPHeaderField: APIParameterKeys.headerField)
-        request.httpMethod = APIParameterKeys.POST
-        request.httpBody = jsonData
-        
-        URLSession.shared.dataTask(with: request as URLRequest){ data, response, error in
-            if error != nil{
-                completion(error, nil)
-                return
-            }
-            
-            guard let data = data else {
-                completion(nil, nil)
-                return
-            }
-
-            do {
-                let decoder = JSONDecoder()
-                let tokens = try decoder.decode(Tokens.self, from: data)
-                completion(nil, tokens)
-                return
-            } catch let error as NSError {
-                completion(error, nil)
-            }
-
-            }.resume()
-        */
     }
 }

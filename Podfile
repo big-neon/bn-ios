@@ -1,6 +1,5 @@
 platform :ios, '11.0'
 use_frameworks!
-
   target 'Big Neon Core' do
     pod 'Stripe'
     pod 'Alamofire', '~> 5.0.0.beta.1'
@@ -20,7 +19,6 @@ use_frameworks!
         pod 'JWTDecode'
         pod 'PWSwitch'
         pod 'SwiftKeychainWrapper'
-        # pod 'Sync', '~> 5'
         pod 'Sync', :git => 'https://github.com/3lvis/Sync.git', :branch => 'issue-555' # '~> 5'
     end
     
@@ -28,7 +26,6 @@ use_frameworks!
       inherit! :search_paths
       pod 'Crashlytics'
       pod 'Stripe'
-      # pod 'Sync', '~> 5'
       pod 'Sync', :git => 'https://github.com/3lvis/Sync.git', :branch => 'issue-555' # '~> 5'
       pod 'Alamofire', '~> 5.0.0.beta.1'
       pod 'TransitionButton'
