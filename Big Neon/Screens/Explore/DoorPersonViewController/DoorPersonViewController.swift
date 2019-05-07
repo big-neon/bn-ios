@@ -102,7 +102,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     }
 
     @objc func syncEventsData() {
-        fetcher.syncUsingNetworking { result in
+        fetcher.syncCheckins { result in
             switch result {
             case .success:
                 self.doorPersonViemodel.eventCoreData = self.fetcher.fetchLocalEvents()

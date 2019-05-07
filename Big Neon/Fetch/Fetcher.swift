@@ -19,7 +19,12 @@ class Fetcher {
         return try! self.dataStack.viewContext.fetch(request)
     }
     
-    func syncUsingNetworking(completion: @escaping (_ result: VoidResult) -> ()) {
+    func fetchLocalGuests() -> [EventsData] {
+        let guests: NSFetchRequest<EventsData> = EventsData.fetchRequest()
+        return try! self.dataStack.viewContext.fetch(guests)
+    }
+    
+    func syncCheckins(completion: @escaping (_ result: VoidResult) -> ()) {
         
         self.repository.fetchEvents { (eventsFetchedDict, error) in
             if error != nil {

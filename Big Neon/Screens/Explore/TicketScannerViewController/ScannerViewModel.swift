@@ -3,12 +3,14 @@
 import Foundation
 import Big_Neon_Core
 import CoreData
+import Sync
 
 final class TicketScannerViewModel {
     
     internal var redeemedTicket: RedeemableTicket?
     internal var scanVC: ScannerViewController?
     internal var guests: Guests?
+    private var dataStack: DataStack?
 
     internal func setCheckingModeAutomatic() {
         UserDefaults.standard.set(true, forKey: Constants.CheckingMode.scannerCheckinKey)
@@ -150,6 +152,7 @@ final class TicketScannerViewModel {
     
     internal func fetchGuests(forEventID eventID: String, completion: @escaping(Bool) -> Void) {
 
+        self.dataStack = DataStack(modelName: "Big Neon")
         BusinessService.shared.database.fetchGuests(forEventID: eventID) { (error, guestsFetched) in
             DispatchQueue.main.async {
                 // one guard?
@@ -163,9 +166,9 @@ final class TicketScannerViewModel {
                     return
                 }
                 
-                self.guests = guests
-                completion(true)
-                return
+                self.dataStack?.sync(guests, inEntityNamed: RedeemedTicket.entity().managedObjectClassName) { error in
+                    completion(true)
+                }
             }
         }
     }
