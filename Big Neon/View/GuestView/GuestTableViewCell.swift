@@ -59,7 +59,7 @@ final public class GuestTableViewCell: UITableViewCell {
         self.ticketTypeNameLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
         
         self.ticketStateView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        self.ticketStateView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -30).isActive = true
+        self.ticketStateView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
         self.ticketStateView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
         self.ticketStateView.widthAnchor.constraint(equalToConstant: 100.0).isActive = true
     }

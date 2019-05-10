@@ -11,7 +11,7 @@ import Big_Neon_UI
 // MARK: internal is default access level - not need for explicit definition
 // MARK: use abbreviation / syntax sugar
 
-public protocol GuestListViewProtocol {
+public protocol GuestListViewProtocol: class {
     func showGuestList()
     func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool)
 //    func reloadGuests(tableIndex: IndexPath)
@@ -20,8 +20,7 @@ public protocol GuestListViewProtocol {
 
 public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
-    // should be weak
-    public var delegate: GuestListViewProtocol?
+    weak var delegate: GuestListViewProtocol?
     internal var guestsDictionary = [String: [RedeemableTicket]]()
     internal var guestSectionTitles = [String]()
     internal var filteredSearchResults: [RedeemableTicket] = []
@@ -155,21 +154,20 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         self.layer.shadowRadius = 16.0
         self.layer.shadowOpacity = 0.32
         self.loadingAnimation()
-        searchBar.frame = CGRect(x: 16.0, y: 0.0, width: UIScreen.main.bounds.width - 32, height: 60.0)
+        searchBar.frame = CGRect(x: 16.0, y: 60.0, width: UIScreen.main.bounds.width - 32, height: 60.0)
         
         if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
             textfield.backgroundColor = UIColor.brandBackground
             textfield.background = UIImage(named: "search_box")
             textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.brandGrey])
         }
-        
-        self.guestTableView.tableHeaderView = searchBar
     }
     
     private func configureView() {
         self.loadingView.stopAnimating()
         self.addSubview(allguestsLabel)
         self.addSubview(showGuestButton)
+        self.addSubview(searchBar)
         self.addSubview(guestTableView)
 
         self.guestTableView.refreshControl = self.refresher
@@ -185,7 +183,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         showGuestButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
         showGuestButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
         
-        guestTableView.topAnchor.constraint(equalTo: allguestsLabel.bottomAnchor, constant: 20).isActive = true
+        guestTableView.topAnchor.constraint(equalTo: showGuestButton.bottomAnchor, constant: 80).isActive = true
         guestTableView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         guestTableView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         guestTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
