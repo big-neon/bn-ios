@@ -53,10 +53,11 @@ extension GuestListView {
             guestValues = guestsDictionary[guestKey]![indexPath.row]
         }
 
-        guard guestValues != nil else {
+        if guestValues == nil {
             return guestCell
         }
 
+        print(guestValues!.lastName)
         guestCell.guestNameLabel.text = guestValues!.lastName + ", " + guestValues!.firstName
         let price = Int(guestValues!.priceInCents)
         let ticketID = "#" + guestValues!.id.suffix(8).uppercased()
