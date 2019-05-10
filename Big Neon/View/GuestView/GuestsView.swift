@@ -112,8 +112,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         return tableView
     }()
     
-    // lazy?
-    internal let loadingView: UIActivityIndicatorView = {
+    lazy var loadingView: UIActivityIndicatorView = {
         let loader = UIActivityIndicatorView()
         loader.style = UIActivityIndicatorView.Style.gray
         loader.hidesWhenStopped = true
@@ -155,7 +154,6 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         self.layer.shadowOpacity = 0.32
         self.loadingAnimation()
         searchBar.frame = CGRect(x: 16.0, y: 60.0, width: UIScreen.main.bounds.width - 32, height: 60.0)
-        
         if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
             textfield.backgroundColor = UIColor.brandBackground
             textfield.background = UIImage(named: "search_box")
