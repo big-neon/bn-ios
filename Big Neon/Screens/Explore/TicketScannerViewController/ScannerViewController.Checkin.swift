@@ -10,6 +10,9 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @objc internal func handleNothing() {
+    }
+    
     func showGuestList() {
         self.isShowingGuests = !self.isShowingGuests
     }

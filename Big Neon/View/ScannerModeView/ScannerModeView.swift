@@ -3,7 +3,7 @@ import UIKit
 import PWSwitch
 import Big_Neon_UI
 
-public protocol ScannerModeViewDelegate {
+public protocol ScannerModeViewDelegate: class {
     func scannerSetAutomatic()
     func scannerSetManual()
 }
@@ -17,7 +17,7 @@ public class ScannerModeView: UIView {
     
     internal var changeModeSwitch: PWSwitch?
     // MARK: delegate should be weak
-    public var delegate: ScannerModeViewDelegate?
+    weak var delegate: ScannerModeViewDelegate?
     
     public var setAutoMode: Bool = false {
         didSet {
