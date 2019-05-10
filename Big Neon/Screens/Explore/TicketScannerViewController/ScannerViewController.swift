@@ -50,7 +50,8 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
                 UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
                     self.cameraTintView.layer.opacity = 0.85
                     self.scannerModeView.layer.opacity = 0.0
-                    self.guestListTopAnchor?.constant = UIScreen.main.bounds.height - 560.0
+                    self.guestListTopAnchor?.constant = UIScreen.main.bounds.height - 560
+                    self.navigationController?.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.handleNothing))
                     self.view.layoutIfNeeded()
                 }) { (complete) in
                     print("De-Activated Camera")
@@ -62,6 +63,7 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
                 self.cameraTintView.layer.opacity = 0.0
                 self.scannerModeView.layer.opacity = 1.0
                 self.guestListTopAnchor?.constant = UIScreen.main.bounds.height - 80.0
+                self.navigationController?.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_close"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.handleClose))
                 self.view.layoutIfNeeded()
             }) { (complete) in
                 print("Activated Camera")
