@@ -13,18 +13,20 @@ import Big_Neon_UI
 
 public protocol GuestListViewProtocol {
     func showGuestList()
+    func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool)
+//    func reloadGuests(tableIndex: IndexPath)
 }
 
 public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     // should be weak
     public var delegate: GuestListViewProtocol?
-    internal var guestsDictionary = [String: [RedeemedTicket]]()
+    internal var guestsDictionary = [String: [RedeemableTicket]]()
     internal var guestSectionTitles = [String]()
-    internal var filteredSearchResults: [RedeemedTicket]?
+    internal var filteredSearchResults: [RedeemableTicket]?
     internal var isSearching: Bool = false
     
-    public var  guests: [RedeemedTicket]? {
+    public var  guests: [RedeemableTicket]? {
         didSet {
             // guard
             guard let guests = self.guests else  {
@@ -38,7 +40,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
             // simplify
             
             for guest in guests {
-                let guestKey = String(guest.first_name!.prefix(1))
+                let guestKey = String(guest.firstName.prefix(1))
                 if var guestValues = guestsDictionary[guestKey] {
                     guestValues.append(guest)
                     guestsDictionary[guestKey] = guestValues
@@ -82,8 +84,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         return button
     }()
 
-    // lazy?
-    public let allguestsLabel: UILabel = {
+    public lazy var allguestsLabel: UILabel = {
         let label = UILabel()
         label.text = "All Guests"
         label.textColor = UIColor.brandBlack
@@ -93,8 +94,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         return label
     }()
     
-    // lazy?
-    internal lazy var guestTableView: UITableView = {
+    lazy var guestTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: UITableView.Style.plain)
         tableView.backgroundColor = UIColor.white
         tableView.delegate = self

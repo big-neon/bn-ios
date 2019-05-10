@@ -106,7 +106,7 @@ extension DatabaseService {
         }
     }
     
-    public func fetchGuests(forEventID eventID: String, completion: @escaping (_ error: Error?, _ fetchedGuestsDict: [[String: Any]]?) -> Void) {
+    public func fetchGuests(forEventID eventID: String, completion: @escaping (_ error: Error?, _ fetchedGuestsDict: [[String: Any]]?, _ serverGuests: Guests?) -> Void) {
         
         let apiURL = APIService.fetchEvents(eventID: eventID)
         let accessToken = self.fetchAcessToken()
@@ -120,12 +120,12 @@ extension DatabaseService {
             .response { (response) in
                 
                 guard response.result.isSuccess else {
-                    completion(response.result.error, nil)
+                    completion(response.result.error, nil, nil)
                     return
                 }
                 
                 guard let data = response.result.value else {
-                    completion(nil, nil)
+                    completion(nil, nil, nil)
                     return
                 }
                 
@@ -137,11 +137,14 @@ extension DatabaseService {
                             throw NSError(domain: dataErrorDomain, code: DataErrorCode.wrongDataFormat.rawValue, userInfo: nil)
                     }
                     
-                    completion(nil, result)
+                    let decoder = JSONDecoder()
+                    let guests = try decoder.decode(Guests.self, from: data!)
+                    
+                    completion(nil, result, guests)
                     return
                 } catch let error as NSError {
                     print(error)
-                    completion(error, nil)
+                    completion(error, nil, nil)
                 }
         }
     }

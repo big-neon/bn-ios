@@ -61,7 +61,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             
             if self.scannerViewModel?.scannerMode() == true {
                 self.generator.notificationOccurred(.success)
-                self.checkinAutomatically(withTicketID: ticketID)
+                self.checkinAutomatically(withTicketID: ticketID, fromGuestTableView: false)
             } else {
                 self.checkinManually(withTicketID: ticketID)
             }
@@ -73,7 +73,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     
     // seems unnecessary too complicate
     // too much same code... maybe is better to extract it in function
-    private func checkinAutomatically(withTicketID ticketID: String) {
+    func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool) {
         self.scannerViewModel?.automaticallyChecking(ticketID: ticketID) { (scanFeedback) in
             switch scanFeedback {
             case .alreadyRedeemed:
@@ -126,6 +126,12 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                 })
                 return
             default:
+                if fromGuestTableView == true {
+                    self.reloadGuests()
+                    self.generator.notificationOccurred(.success)
+                    return
+                }
+                
                 UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                     self.blurView?.layer.opacity = 1.0
                     self.feedbackView.layer.opacity = 1.0
@@ -141,7 +147,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         }
     }
     
-    private func checkinManually(withTicketID ticketID: String) {
+    internal func checkinManually(withTicketID ticketID: String) {
         self.scannerViewModel?.getRedeemTicket(ticketID: ticketID) { (scanFeedback) in
             switch scanFeedback {
             case .alreadyRedeemed?:

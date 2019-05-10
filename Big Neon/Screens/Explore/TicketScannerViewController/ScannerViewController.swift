@@ -236,20 +236,31 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
     private func fetchGuests(forEventID eventID: String) {
         self.scannerViewModel?.fetchGuests(forEventID: eventID, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
-                self?.scannerViewModel?.guestsCoreData = (self?.fetcher.fetchLocalGuests())!
-                self?.guestListView.guests = self?.scannerViewModel?.guestsCoreData
+//                self?.scannerViewModel?.guestsCoreData = (self?.fetcher.fetchLocalGuests())!
+                self?.guestListView.guests = self?.scannerViewModel?.ticketsFetched //    self?.scannerViewModel?.guestsCoreData
             }
         })
     }
-
-//    doorPersonViemodel.eventCoreData = fetcher.fetchLocalEvents()
-//    syncEventsData()
+    
+    func reloadGuests() {
+        guard let eventID = self.event?.id else {
+            return
+        }
+        self.scannerViewModel?.fetchGuests(forEventID: eventID, completion: { [weak self] (completed) in
+            DispatchQueue.main.async {
+                self?.guestListView.guests = self?.scannerViewModel?.ticketsFetched
+//                self?.guestListView.guestTableView.reloadData()
+//                self?.guestListView.guestTableView.reloadRows(at: [tableIndex], with: UITableView.RowAnimation.fade)
+            }
+        })
+    }
 
     @objc func syncEventsData() {
         fetcher.syncCheckins { result in
             switch result {
             case .success:
-                self.scannerViewModel?.guestsCoreData = self.fetcher.fetchLocalGuests()
+                print("Syncing Data")
+//                self.scannerViewModel?.guestsCoreData = self.fetcher.fetchLocalGuests()
             case .failure(let error):
                 print(error)
             }

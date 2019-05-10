@@ -46,14 +46,11 @@ extension GuestListView {
         if self.isSearching == true {
             // remove - explicite unwraping
             let searchResult = self.filteredSearchResults![indexPath.row]
-            guestCell.guestNameLabel.text = searchResult.first_name
-            let price = Int(searchResult.price_in_cents)
-            guestCell.ticketTypeNameLabel.text = price.dollarString + " | " + searchResult.ticket_type!
+            guestCell.guestNameLabel.text = searchResult.lastName + ", " + searchResult.firstName
+            let price = Int(searchResult.priceInCents)
+            guestCell.ticketTypeNameLabel.text = price.dollarString + " | " + searchResult.ticketType
             
-            // string comparison? can we do it in some other way?
-            // better: searchResult.status.lowercased() == "Purchased".lowercased()
-            // e.g. status should be enum
-            if searchResult.status?.lowercased() == "Purchased".lowercased() {
+            if searchResult.status.lowercased() == "Purchased".lowercased() {
                 guestCell.ticketStateView.tagLabel.text = "PURCHASED"
                 guestCell.ticketStateView.backgroundColor = UIColor.brandGreen
             } else {
@@ -65,12 +62,12 @@ extension GuestListView {
         
         let guestKey = guestSectionTitles[indexPath.section]
         if let guestValues = guestsDictionary[guestKey] {
-            guestCell.guestNameLabel.text = guestValues[indexPath.row].last_name! + ", " + guestValues[indexPath.row].first_name!
-            let price = Int(guestValues[indexPath.row].price_in_cents)
-            let ticketID = guestValues[indexPath.row].id?.suffix(8).uppercased()
-            guestCell.ticketTypeNameLabel.text = price.dollarString + " | " + guestValues[indexPath.row].ticket_type! + " | " + ticketID!
+            guestCell.guestNameLabel.text = guestValues[indexPath.row].lastName + ", " + guestValues[indexPath.row].firstName
+            let price = Int(guestValues[indexPath.row].priceInCents)
+            let ticketID = guestValues[indexPath.row].id.suffix(8).uppercased()
+            guestCell.ticketTypeNameLabel.text = price.dollarString + " | " + guestValues[indexPath.row].ticketType + " | " + ticketID
             
-            if guestValues[indexPath.row].status?.lowercased()
+            if guestValues[indexPath.row].status.lowercased()
                 == "Purchased".lowercased() {
                 guestCell.ticketStateView.tagLabel.text = "PURCHASED"
                 guestCell.ticketStateView.backgroundColor = UIColor.brandGreen
@@ -90,11 +87,35 @@ extension GuestListView {
     }
     
     public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteButton = UITableViewRowAction(style: .default, title: "Checkin") { (action, indexPath) in
-            return
+        
+        let guestKey = guestSectionTitles[indexPath.section]
+        if let guestValues = guestsDictionary[guestKey] {
+            
+            if guestValues[indexPath.row].status.lowercased() == "Purchased".lowercased() {
+                let deleteButton = UITableViewRowAction(style: .default, title: "Checkin") { (action, indexPath) in
+                    let ticketID = guestValues[indexPath.row].id
+                    self.checkinTicket(ticketID: ticketID, atIndex: indexPath)
+                    return
+                }
+                deleteButton.backgroundColor = UIColor.brandPrimary
+                return [deleteButton]
+            } else {
+                let deleteButton = UITableViewRowAction(style: .default, title: "Already Redeemed") { (action, indexPath) in
+                    return
+                }
+                deleteButton.backgroundColor = UIColor.brandLightGrey
+                return [deleteButton]
+                
+            }
+        } else {
+            return nil
         }
-        deleteButton.backgroundColor = UIColor.black
-        return [deleteButton]
+    }
+    
+    private func checkinTicket(ticketID: String?, atIndex index: IndexPath) {
+        if let id = ticketID {
+            self.delegate?.checkinAutomatically(withTicketID: id, fromGuestTableView: true)
+        }
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
