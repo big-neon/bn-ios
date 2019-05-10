@@ -24,7 +24,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
     public var delegate: GuestListViewProtocol?
     internal var guestsDictionary = [String: [RedeemableTicket]]()
     internal var guestSectionTitles = [String]()
-    internal var filteredSearchResults: [RedeemableTicket]?
+    internal var filteredSearchResults: [RedeemableTicket] = []
     internal var isSearching: Bool = false
     
     lazy var refresher: UIRefreshControl = {

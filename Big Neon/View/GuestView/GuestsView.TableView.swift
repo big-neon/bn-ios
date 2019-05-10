@@ -2,6 +2,7 @@
 
 import Foundation
 import UIKit
+import Big_Neon_Core
 
 extension GuestListView {
     
@@ -29,10 +30,8 @@ extension GuestListView {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if self.isSearching == true {
-            guard let searchResults = self.filteredSearchResults else {
-                return 0
-            }
-            return searchResults.count
+            return self.filteredSearchResults.count
+            
         }
         let guestKey = guestSectionTitles[section]
         if let guestValues = guestsDictionary[guestKey] {
@@ -45,42 +44,33 @@ extension GuestListView {
         let guestCell: GuestTableViewCell = tableView.dequeueReusableCell(withIdentifier: GuestTableViewCell.cellID, for: indexPath) as! GuestTableViewCell
         
         // guard?
-        if self.isSearching == true {
-            guard let searchResults = self.filteredSearchResults else {
-                return guestCell
-            }
-            let searchResult = searchResults[indexPath.row]
-            guestCell.guestNameLabel.text = searchResult.lastName + ", " + searchResult.firstName
-            let price = Int(searchResult.priceInCents)
-            let ticketID = searchResult.id.suffix(8).uppercased()
-            guestCell.ticketTypeNameLabel.text = price.dollarString + " | " + searchResult.ticketType + " | " + ticketID
-            
-            if searchResult.status.lowercased() == "Purchased".lowercased() {
-                guestCell.ticketStateView.tagLabel.text = "PURCHASED"
-                guestCell.ticketStateView.backgroundColor = UIColor.brandGreen
-            } else {
-                guestCell.ticketStateView.tagLabel.text = "REDEEMED"
-                guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
-            }
+        var guestValues: RedeemableTicket?
+
+        if self.isSearching == true && !self.filteredSearchResults.isEmpty {
+            guestValues = self.filteredSearchResults[indexPath.row]
+        } else {
+            let guestKey = guestSectionTitles[indexPath.section]
+            guestValues = guestsDictionary[guestKey]![indexPath.row]
+        }
+
+        guard guestValues != nil else {
             return guestCell
         }
-        
-        let guestKey = guestSectionTitles[indexPath.section]
-        if let guestValues = guestsDictionary[guestKey] {
-            guestCell.guestNameLabel.text = guestValues[indexPath.row].lastName + ", " + guestValues[indexPath.row].firstName
-            let price = Int(guestValues[indexPath.row].priceInCents)
-            let ticketID = guestValues[indexPath.row].id.suffix(8).uppercased()
-            guestCell.ticketTypeNameLabel.text = price.dollarString + " | " + guestValues[indexPath.row].ticketType + " | " + ticketID
-            
-            if guestValues[indexPath.row].status.lowercased()
-                == "Purchased".lowercased() {
-                guestCell.ticketStateView.tagLabel.text = "PURCHASED"
-                guestCell.ticketStateView.backgroundColor = UIColor.brandGreen
-            } else {
-                guestCell.ticketStateView.tagLabel.text = "REDEEMED"
-                guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
-            }
+
+        guestCell.guestNameLabel.text = guestValues!.lastName + ", " + guestValues!.firstName
+        let price = Int(guestValues!.priceInCents)
+        let ticketID = "#" + guestValues!.id.suffix(8).uppercased()
+        guestCell.ticketTypeNameLabel.text = price.dollarString + " | " + guestValues!.ticketType + " | " + ticketID
+
+        if guestValues!.status.lowercased()
+                   == "Purchased".lowercased() {
+            guestCell.ticketStateView.tagLabel.text = "PURCHASED"
+            guestCell.ticketStateView.backgroundColor = UIColor.brandGreen
+        } else {
+            guestCell.ticketStateView.tagLabel.text = "REDEEMED"
+            guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
         }
+
         return guestCell
     }
     
