@@ -15,6 +15,7 @@ public protocol GuestListViewProtocol {
     func showGuestList()
     func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool)
 //    func reloadGuests(tableIndex: IndexPath)
+    func reloadGuests()
 }
 
 public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
@@ -25,6 +26,13 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
     internal var guestSectionTitles = [String]()
     internal var filteredSearchResults: [RedeemableTicket]?
     internal var isSearching: Bool = false
+    
+    lazy var refresher: UIRefreshControl = {
+        let refresher = UIRefreshControl()
+        refresher.tintColor = UIColor.brandGrey
+        refresher.addTarget(self, action: #selector(reloadGuests), for: .valueChanged)
+        return refresher
+    }()
     
     public var  guests: [RedeemableTicket]? {
         didSet {
@@ -164,6 +172,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         self.addSubview(showGuestButton)
         self.addSubview(guestTableView)
 
+        self.guestTableView.refreshControl = self.refresher
         self.guestTableView.register(GuestTableViewCell.self, forCellReuseIdentifier: GuestTableViewCell.cellID)
 
         allguestsLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 25).isActive = true
@@ -180,6 +189,10 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         guestTableView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         guestTableView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         guestTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+    }
+    
+    @objc private func reloadGuests() {
+        self.delegate?.reloadGuests()
     }
     
     @objc private func showGuest() {
