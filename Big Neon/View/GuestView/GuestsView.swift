@@ -56,6 +56,12 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
                 }
             }
             
+            if guests.count == 1 {
+               self.allguestsLabel.text = "\(guests.count) Guest"
+            } else {
+                self.allguestsLabel.text = "\(guests.count) Guests"
+            }
+            
             self.guestSectionTitles = [String](guestsDictionary.keys)
             self.guestSectionTitles = guestSectionTitles.sorted(by: { $0 < $1 })
             self.guestTableView.reloadData()
