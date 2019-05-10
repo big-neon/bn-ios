@@ -57,8 +57,8 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        
-        // repetetive code ... should be part of base view controller ? 
+
+        // repetetive code ... should be part of base view controller ?
         self.configureNavBar()
         self.setupDelegates()
         self.configureView()
@@ -138,7 +138,7 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     @objc internal func handleLogin() {
         
         //MARK: repetetive code - i saw something simular on several places.... refactor / rethink
-        
+
         guard let email = self.emailTextView.authTextField.text else {
             self.emailTextView.textFieldError = .invalidEmail
             return
@@ -167,35 +167,35 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
         self.resignTextFields()
         self.disableView()
         self.loginButton.startAnimation()
-        self.createAccountViewModel.login(email: email, password: password) { (success, errorString) in
+        self.createAccountViewModel.login(email: email, password: password) { [weak self] (success, errorString) in
             DispatchQueue.main.async {
                 // guard?
                 if errorString != nil {
-                    self.loginButton.stopAnimation(animationStyle: .shake,
+                    self?.loginButton.stopAnimation(animationStyle: .shake,
                                                   revertAfterDelay: 1.0,
                                                   completion: {
-                                                    self.showFeedback(message: errorString!)
-                                                    self.enableView()
+                                                    self?.showFeedback(message: errorString!)
+                                                    self?.enableView()
                     })
                     return
                 }
                 
                 if success == false {
-                    self.loginButton.stopAnimation(animationStyle: .shake,
+                    self?.loginButton.stopAnimation(animationStyle: .shake,
                                                    revertAfterDelay: 1.0,
                                                    completion: {
-                                                    //MARK: do not use explicite unwraping,
-                                                    // previous guard is not covering this errorString
-                                                    self.showFeedback(message: errorString!)
-                                                    self.enableView()
+                                                       //MARK: do not use explicite unwraping,
+                                                       // previous guard is not covering this errorString
+                                                    self?.showFeedback(message: errorString!)
+                                                    self?.enableView()
                     })
                     return
                 }
-                self.loginButton.stopAnimation(animationStyle: .normal,
+                self?.loginButton.stopAnimation(animationStyle: .normal,
                                               revertAfterDelay: 1.0,
                                               completion: {
-                                                self.enableView()
-                                                self.handleShowHome()
+                                                self?.enableView()
+                                                self?.handleShowHome()
                 })
             }
         }
@@ -203,7 +203,7 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: showFeedback() and handleShowHome() can extract in extension or base class and reuse
     // repetetive code
-    
+
     private func showFeedback(message: String) {
         if let window = UIApplication.shared.keyWindow {
             self.errorFeedback.showFeedback(backgroundColor: UIColor.brandBlack,

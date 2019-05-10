@@ -17,7 +17,7 @@ public class APIService {
         if isProduction == true {
             return "https://api.production.bigneon.com"
         } else {
-            return "https://api.staging.bigneon.com"
+            return "https://staging.api.bigneon.com"
         }
     }
     
@@ -31,7 +31,7 @@ public class APIService {
     /**
      URL: /events/{event_id}/guests
      */
-    class func fetchEvents(eventID: String) -> String {
+    public class func fetchEvents(eventID: String) -> String {
         return self.baseURL() + "/events/\(eventID)/guests"
     }
     
@@ -45,7 +45,7 @@ public class APIService {
     /**
      - Retrieves Events from the Database
      */
-    class func getEvents(eventID: String?) -> String {
+    public class func getEvents(eventID: String?) -> String {
         if eventID == nil {
            return self.baseURL() + "/events"
         }
@@ -55,35 +55,35 @@ public class APIService {
     /**
      - Retrieves all the Checkin Events
      */
-    class func getCheckins() -> String {
+    public class func getCheckins() -> String {
         return self.baseURL() + "/events/checkins"
     }
     
     /**
      - Retrieves all the Checkin Events
      */
-    class func users() -> String {
+    public class func users() -> String {
         return self.baseURL() + "/users"
     }
     
     /**
      - Logs in the Users
      */
-    class func login() -> String {
+    public class func login() -> String {
         return self.baseURL() + "/auth/token"
     }
     
     /**
      - Updates the User Details
      */
-    class func updateUser() -> String {
+    public class func updateUser() -> String {
         return self.baseURL() + "/users/me"
     }
     
     /**
      - Retrieves an Access Token using the Refresh Token
      */
-    class func refreshToken() -> String {
+    public class func refreshToken() -> String {
         return self.baseURL() + "/auth/token/refresh"
     }
     

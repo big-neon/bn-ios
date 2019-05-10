@@ -3,12 +3,16 @@
 import Foundation
 import Big_Neon_Core
 import CoreData
+import Sync
 
 final class TicketScannerViewModel {
     
-    internal var redeemedTicket: RedeemableTicket?
-    internal var scanVC: ScannerViewController?
-    internal var guests: Guests?
+    var redeemedTicket: RedeemableTicket?
+    var scanVC: ScannerViewController?
+    var guests: Guests?
+    var dataStack: DataStack?
+//    var guestsCoreData: [RedeemedTicket] = []
+    var ticketsFetched: [RedeemableTicket] = []
 
     internal func setCheckingModeAutomatic() {
         UserDefaults.standard.set(true, forKey: Constants.CheckingMode.scannerCheckinKey)
@@ -64,6 +68,7 @@ final class TicketScannerViewModel {
                 case .issueFound?:
                     completion(.issueFound)
                     return
+                    
                 case .wrongEvent?:
                     completion(.wrongEvent)
                     return
@@ -150,7 +155,8 @@ final class TicketScannerViewModel {
     
     internal func fetchGuests(forEventID eventID: String, completion: @escaping(Bool) -> Void) {
 
-        BusinessService.shared.database.fetchGuests(forEventID: eventID) { (error, guestsFetched) in
+        self.dataStack = DataStack(modelName: "Big Neon")
+        BusinessService.shared.database.fetchGuests(forEventID: eventID) { (error, guestsFetched, serverGuests) in
             DispatchQueue.main.async {
                 // one guard?
                 if error != nil {
@@ -158,14 +164,21 @@ final class TicketScannerViewModel {
                     return
                 }
                 
-                guard let guests = guestsFetched else {
+                guard let coreDataGuests = guestsFetched else {
                     completion(false)
                     return
                 }
                 
-                self.guests = guests
+                guard let guests = serverGuests else {
+                    completion(false)
+                    return
+                }
+                
+                self.ticketsFetched = guests.data
                 completion(true)
-                return
+//                self.dataStack?.sync(coreDataGuests, inEntityNamed: RedeemedTicket.entity().managedObjectClassName) { error in
+//                    completion(true)
+//                }
             }
         }
     }
@@ -204,7 +217,6 @@ extension TicketScannerViewModel {
         
         let entity = NSEntityDescription.entity(forEntityName: "RedeemedTicket", in: context)
         let newTicket = NSManagedObject(entity: entity!, insertInto: context)
-        print(RedeemableTicket.CodingKeys.id.rawValue)
         newTicket.setValue(ticket.id, forKey: RedeemableTicket.CodingKeys.id.rawValue)
         newTicket.setValue(ticket.ticketType, forKey: RedeemableTicket.CodingKeys.ticketType.rawValue)
         newTicket.setValue(ticket.userID, forKey: RedeemableTicket.CodingKeys.userID.rawValue)

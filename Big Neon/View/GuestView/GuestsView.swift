@@ -3,6 +3,7 @@
 import Foundation
 import UIKit
 import Big_Neon_Core
+import Big_Neon_UI
 
 
 // MARK: lots of magic numbers... consider using layout/config class/enum
@@ -12,6 +13,8 @@ import Big_Neon_Core
 
 public protocol GuestListViewProtocol {
     func showGuestList()
+    func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool)
+//    func reloadGuests(tableIndex: IndexPath)
 }
 
 public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
@@ -23,10 +26,10 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
     internal var filteredSearchResults: [RedeemableTicket]?
     internal var isSearching: Bool = false
     
-    public var guests: Guests? {
+    public var  guests: [RedeemableTicket]? {
         didSet {
             // guard
-            if self.guests == nil  {
+            guard let guests = self.guests else  {
                 return
             }
             
@@ -34,8 +37,9 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
             
             //  Configuring Alphabetic List
             // MARK: remove explicite unwrapping - it's not good
-            // simplify 
-            for guest in guests!.data {
+            // simplify
+            
+            for guest in guests {
                 let guestKey = String(guest.firstName.prefix(1))
                 if var guestValues = guestsDictionary[guestKey] {
                     guestValues.append(guest)
@@ -80,8 +84,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         return button
     }()
 
-    // lazy?
-    public let allguestsLabel: UILabel = {
+    public lazy var allguestsLabel: UILabel = {
         let label = UILabel()
         label.text = "All Guests"
         label.textColor = UIColor.brandBlack
@@ -91,8 +94,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         return label
     }()
     
-    // lazy?
-    internal lazy var guestTableView: UITableView = {
+    lazy var guestTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: UITableView.Style.plain)
         tableView.backgroundColor = UIColor.white
         tableView.delegate = self

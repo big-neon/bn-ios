@@ -2,56 +2,44 @@
 import Foundation
 import Big_Neon_Core
 import SwiftKeychainWrapper
-
-// MARK: self is not needed
-// MARK: internal is default access level - not need for explicit definition
-
-
+import CoreData
 
 final class DoorPersonViewModel {
     
-    internal var events: Events?
-    internal var user: User?
+    var events: Events?
+    var event: Event?
+    var eventCoreData: [EventsData] = []
+    var user: User?
     
-    internal func fetchEvents(completion: @escaping(Bool) -> Void) {
+    func fetchEvents(completion: @escaping(Bool) -> Void) {
         self.events = nil
         BusinessService.shared.database.fetchEvents { [weak self](error, eventsFetched) in
-            // guard ?
-            // MARK: put error and events under same guard
-            if error != nil {
-                completion(false)
-                return
-            }
-
-            guard let events = eventsFetched else {
+            guard error != nil, let events = eventsFetched, let self = self else {
                 completion(false)
                 return
             }
             
-            self?.events = events
+            self.events = events
             completion(true)
             return
         }
-        
     }
     
-    internal func configureAccessToken(completion: @escaping(Bool) -> Void) {
+    func configureAccessToken(completion: @escaping(Bool) -> Void) {
         
         BusinessService.shared.database.tokenIsExpired { [weak self] (expired) in
-            // idea:
-//            guard `self` = self else {
-//                completion(false)
-//                return
-//            }
+            guard let self = self else {
+                completion(false)
+                return
+            }
             
             if expired == true {
-                //  Fetch New Token
-                self?.fetchNewAccessToken(completion: { (completed) in
+                self.fetchNewAccessToken(completion: { (completed) in
                     completion(completed)
                     return
                 })
             } else {
-                self?.fetchCheckins(completion: { (completed) in
+                self.fetchCheckins(completion: { (completed) in
                     completion(completed)
                     return
                 })
@@ -59,44 +47,37 @@ final class DoorPersonViewModel {
         }
     }
     
-    internal func fetchNewAccessToken(completion: @escaping(Bool) -> Void) {
+    func fetchNewAccessToken(completion: @escaping(Bool) -> Void) {
         BusinessService.shared.database.fetchNewAccessToken { [weak self] (error, tokens) in
-            guard let tokens = tokens else {
+            
+            guard let self = self, let tokens = tokens else {
                 completion(false)
                 return
             }
             
-            self?.saveTokensInKeychain(token: tokens)
-            self?.fetchCheckins(completion: { (completed) in
+            self.saveTokensInKeychain(token: tokens)
+            self.fetchCheckins(completion: { (completed) in
                 completion(completed)
                 return
             })
         }
     }
     
-    internal func fetchCheckins(completion: @escaping(Bool) -> Void) {
+    func fetchCheckins(completion: @escaping(Bool) -> Void) {
         self.events = nil
         BusinessService.shared.database.fetchCheckins { [weak self] (error, events) in
             
-            // guard ?
-            // MARK: put error and events under same guard
-            if error != nil {
+            guard let self = self, error != nil , let events = events else {
                 completion(false)
                 return
             }
             
-            guard var events = events else {
-                completion(false)
-                return
-            }
-            self?.events = events
-            
-            self?.fetchUser(completion: { (_) in
+            self.events = events
+            self.fetchUser(completion: { (_) in
                 completion(true)
                 return
             })
         }
-        
     }
     
     private func fetchUser(completion: @escaping(Bool) -> Void) {
@@ -119,7 +100,7 @@ final class DoorPersonViewModel {
         
     }
     
-    internal func handleLogout(completion: @escaping (Bool) -> Void) {
+   func handleLogout(completion: @escaping (Bool) -> Void) {
         BusinessService.shared.database.logout { (completed) in
             completion(completed)
         }
@@ -133,5 +114,4 @@ final class DoorPersonViewModel {
         KeychainWrapper.standard.set(token.refreshToken, forKey: "refreshToken")
         return
     }
-    
 }

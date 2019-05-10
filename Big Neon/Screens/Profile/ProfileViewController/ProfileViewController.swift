@@ -21,6 +21,7 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
     
     internal lazy var refresher: UIRefreshControl = {
         let refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(reloadProfile), for: UIControl.Event.valueChanged)
         refresher.tintColor = UIColor.brandGrey
         refresher.addTarget(self, action: #selector(fetchUser), for: .valueChanged)
         return refresher
@@ -108,10 +109,10 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
     }
 
     @objc func reloadProfile() {
-        self.profileViewModel.configureAccessToken(completion: ) { (completed) in
+        self.profileViewModel.configureAccessToken(completion: ) { [weak self] (completed) in
             DispatchQueue.main.async {
-                self.refresher.endRefreshing()
-                self.profileTableView.reloadData()
+                self?.refresher.endRefreshing()
+                self?.profileTableView.reloadData()
             }
         }
     }

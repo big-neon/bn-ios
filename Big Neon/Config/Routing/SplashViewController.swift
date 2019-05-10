@@ -6,6 +6,11 @@ import AVKit
 
 final class SplashViewController: UIViewController {
     
+    lazy var fetcher: Fetcher = {
+        let fetcher = Fetcher()
+        return fetcher
+    }()
+
     // MARK: internal is default access level - not need for explicit definition
     internal var player: AVPlayer = {
         let player = AVPlayer()
@@ -33,7 +38,6 @@ final class SplashViewController: UIViewController {
         self.view.layer.addSublayer(playerLayer)
         player.play()
         player.isMuted = true
-        
     }
     
     deinit {
@@ -58,8 +62,10 @@ final class SplashViewController: UIViewController {
     
     private func navigateHome() {
         // MARK: self is not needed
-        let exploreVC = UINavigationController(rootViewController: DoorPersonViewController())
-        self.present(exploreVC, animated: false, completion: nil)
+        let doorPersonVC = DoorPersonViewController(fetcher: self.fetcher)
+//        doorPersonVC.dataProvider = DataManager(persistentContainer: coreDataStack.persistentContainer, repository: EventsApiRepository.shared)
+        let doorPersonNavVC = UINavigationController(rootViewController: doorPersonVC)
+        self.present(doorPersonNavVC, animated: false, completion: nil)
     }
     
 }

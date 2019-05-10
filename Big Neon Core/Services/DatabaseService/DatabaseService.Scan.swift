@@ -3,6 +3,13 @@
 import Foundation
 import Alamofire
 
+let dataErrorDomain = "dataErrorDomain"
+
+enum DataErrorCode: NSInteger {
+    case networkUnavailable = 101
+    case wrongDataFormat = 102
+}
+
 extension DatabaseService {
     
     public func getRedeemTicket(forTicketID ticketID: String, completion: @escaping (ScanFeedback?, RedeemableTicket?) -> Void) {
@@ -10,9 +17,6 @@ extension DatabaseService {
         let APIURL = APIService.getRedeemableTicket(ticketID: ticketID)
         let accessToken = self.fetchAcessToken()
 
-        print(APIURL)
-        print(accessToken!)
-        
         AF.request(APIURL,
                    method: HTTPMethod.get,
                    parameters: nil,
@@ -102,7 +106,7 @@ extension DatabaseService {
         }
     }
     
-    public func fetchGuests(forEventID eventID: String, completion: @escaping (Error?, Guests?) -> Void) {
+    public func fetchGuests(forEventID eventID: String, completion: @escaping (_ error: Error?, _ fetchedGuestsDict: [[String: Any]]?, _ serverGuests: Guests?) -> Void) {
         
         let apiURL = APIService.fetchEvents(eventID: eventID)
         let accessToken = self.fetchAcessToken()
@@ -116,23 +120,31 @@ extension DatabaseService {
             .response { (response) in
                 
                 guard response.result.isSuccess else {
-                    completion(response.result.error, nil)
+                    completion(response.result.error, nil, nil)
                     return
                 }
                 
                 guard let data = response.result.value else {
-                    completion(nil, nil)
+                    completion(nil, nil, nil)
                     return
                 }
                 
                 do {
+                    let jsonObject = try JSONSerialization.jsonObject(with: data!, options: [])
+                    
+                    guard let jsonDictionary = jsonObject as? [String: Any],
+                        let result = jsonDictionary["data"] as? [[String: Any]] else {
+                            throw NSError(domain: dataErrorDomain, code: DataErrorCode.wrongDataFormat.rawValue, userInfo: nil)
+                    }
+                    
                     let decoder = JSONDecoder()
-                    let ticket = try decoder.decode(Guests.self, from: data!)
-                    completion(nil, ticket)
+                    let guests = try decoder.decode(Guests.self, from: data!)
+                    
+                    completion(nil, result, guests)
                     return
                 } catch let error as NSError {
                     print(error)
-                    completion(error, nil)
+                    completion(error, nil, nil)
                 }
         }
     }

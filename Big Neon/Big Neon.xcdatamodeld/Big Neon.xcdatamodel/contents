@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.98" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Events" representedClassName="Events" syncable="YES" codeGenerationType="class">
-        <attribute name="additionalInfo" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="ageLimit" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="cancelledAt" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="clientFeeInCents" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="companyFeeInCents" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="coverImageURL" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="createdAt" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="doorTime" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="eventEnd" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="externalURL" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="feeInCents" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="EventsData" representedClassName="EventsData" syncable="YES" codeGenerationType="class">
+        <attribute name="additional_info" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="age_limit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cancelled_at" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="client_fee_in_cents" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="company_fee_in_cents" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="cover_image_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created_at" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="door_time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_end" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_start" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="external_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fee_in_cents" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isExternal" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="maxTicketPrice" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="minTicketPrice" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="is_external" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="max_ticket_price" optional="YES" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="min_ticket_price" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="organizationID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="overrideStatus" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="privateAccessCode" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="promoImageURL" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="publishDate" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="redeemDate" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="sendgridListID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="settlementAmountInCents" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="organization_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="override_status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="private_access_code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="promo_image_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publish_date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="redeem_date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sendgrid_list_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="settlement_amount_in_cents" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="topLineInfo" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="updatedAt" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="userIsInterested" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="venueID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="videoURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="top_line_info" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updated_at" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_is_interested" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="venue_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="video_url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="venue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Venue" syncable="YES"/>
     </entity>
     <entity name="RedeemedTicket" representedClassName="RedeemedTicket" syncable="YES" codeGenerationType="class">
         <attribute name="door_time" optional="YES" attributeType="String" syncable="YES"/>
@@ -54,9 +56,30 @@
         <attribute name="venue_name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="ScannedUser" representedClassName="ScannedUser" syncable="YES" codeGenerationType="class"/>
+    <entity name="Venue" representedClassName="Venue" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created_at" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="google_place_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="is_private" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="organization_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postal_code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="promo_image_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="region_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timezone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updated_at" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Events" positionX="-54" positionY="126" width="128" height="495"/>
-        <element name="RedeemedTicket" positionX="-54" positionY="-9" width="128" height="330"/>
-        <element name="ScannedUser" positionX="-63" positionY="-18" width="128" height="45"/>
+        <element name="EventsData" positionX="-54" positionY="144" width="128" height="525"/>
+        <element name="RedeemedTicket" positionX="258.8125" positionY="-7.7734375" width="128" height="330"/>
+        <element name="ScannedUser" positionX="-194.48046875" positionY="-8.1796875" width="128" height="45"/>
+        <element name="Venue" positionX="-284.57421875" positionY="281.390625" width="128" height="315"/>
     </elements>
 </model>

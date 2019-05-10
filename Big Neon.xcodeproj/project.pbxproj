@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E27D0CC64E689F1613EDE42 /* Pods_Big_Neon_UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C5FE81A672933D9E6C36212 /* Pods_Big_Neon_UI.framework */; };
-		3AD04FED44A9DBAF9C541482 /* Pods_Big_Neon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78310A7CD778655F8A9FC77B /* Pods_Big_Neon.framework */; };
+		3761B944BCAD328BA221B2DA /* Pods_Big_Neon_UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 341E3BB334D759BEA31DC6E2 /* Pods_Big_Neon_UI.framework */; };
+		6CFD25CA24C8C41F43DD860C /* Pods_Big_Neon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 465C6F10B28F5D3A8C77DC7C /* Pods_Big_Neon.framework */; };
+		82440D91D23AF737DB34B959 /* Pods_Big_Neon_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58804A3D6C2FB1A6BD559FD5 /* Pods_Big_Neon_Core.framework */; };
 		C60EDC852248E3EE00C9CC27 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EDC842248E3EE00C9CC27 /* Environment.swift */; };
-		C61853B72212F1DB005D6250 /* ExploreViewController.Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853B62212F1DB005D6250 /* ExploreViewController.Search.swift */; };
+		C61853B72212F1DB005D6250 /* DoorPersonViewController.Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853B62212F1DB005D6250 /* DoorPersonViewController.Search.swift */; };
 		C61853B92212F4C8005D6250 /* TicketTypeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853B82212F4C8005D6250 /* TicketTypeSelectionViewController.swift */; };
 		C61853BC2212F6FA005D6250 /* ThreeQuaterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853BB2212F6FA005D6250 /* ThreeQuaterPresenter.swift */; };
 		C61853C122140900005D6250 /* TicketTypeViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853C022140900005D6250 /* TicketTypeViewController.TableView.swift */; };
@@ -47,7 +48,7 @@
 		C628B15421F9E35700FCBDC9 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C628B15321F9E35700FCBDC9 /* SplashViewModel.swift */; };
 		C628B15621FAD76000FCBDC9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C628B15521FAD76000FCBDC9 /* User.swift */; };
 		C62BC78421CCC3F700830A5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC78321CCC3F700830A5F /* AppDelegate.swift */; };
-		C62BC78621CCC3F700830A5F /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC78521CCC3F700830A5F /* ExploreViewController.swift */; };
+		C62BC78621CCC3F700830A5F /* DoorPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC78521CCC3F700830A5F /* DoorPersonViewController.swift */; };
 		C62BC78B21CCC3FB00830A5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78A21CCC3FB00830A5F /* Assets.xcassets */; };
 		C62BC78E21CCC3FB00830A5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78C21CCC3FB00830A5F /* LaunchScreen.storyboard */; };
 		C62BC79921CCC3FB00830A5F /* Big_NeonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */; };
@@ -58,7 +59,7 @@
 		C64124CA21F26D1800233797 /* AuthTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64124C921F26D1800233797 /* AuthTextView.swift */; };
 		C644BA2F21F7069D003C188B /* BasicError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C644BA2E21F7069D003C188B /* BasicError.swift */; };
 		C644BA3421F70C19003C188B /* DatabaseService.Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = C644BA3321F70C19003C188B /* DatabaseService.Users.swift */; };
-		C64B0ABB21D0DCC900386000 /* ExploreViewController.CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABA21D0DCC900386000 /* ExploreViewController.CollectionView.swift */; };
+		C64B0ABB21D0DCC900386000 /* DoorPersonViewController.CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABA21D0DCC900386000 /* DoorPersonViewController.CollectionView.swift */; };
 		C64B0ABD21D0DCDB00386000 /* DoorPersonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABC21D0DCDB00386000 /* DoorPersonViewModel.swift */; };
 		C64B0AC021D0DD1E00386000 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABF21D0DD1E00386000 /* Utils.swift */; };
 		C64B0AC221D0DD5E00386000 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AC121D0DD5E00386000 /* TabBarController.swift */; };
@@ -72,6 +73,7 @@
 		C665DFE521E87CB800DFB955 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */; };
 		C66C0BA521E337D40066CD0F /* splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C66C0BA421E337D40066CD0F /* splash.mp4 */; };
 		C66C0BA721E339CA0066CD0F /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C0BA621E339CA0066CD0F /* SplashViewController.swift */; };
+		C678C17F2276FABD0069A2DF /* ObjectAddingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C678C17E2276FABD0069A2DF /* ObjectAddingUtils.swift */; };
 		C6825A6C225DF28B003470A5 /* Rechability.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6825A6B225DF28B003470A5 /* Rechability.swift */; };
 		C683232921FF07FE002342AE /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683232821FF07FE002342AE /* ProfileEditViewController.swift */; };
 		C683232B21FF28CB002342AE /* ProfileEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683232A21FF28CB002342AE /* ProfileEditViewModel.swift */; };
@@ -83,11 +85,13 @@
 		C698AB1621EF1FE00073F1FB /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB1521EF1FE00073F1FB /* CreateAccountViewModel.swift */; };
 		C698F6032238F76400977259 /* ScanFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698F6022238F76400977259 /* ScanFeedback.swift */; };
 		C69E20F9225608600032C5E4 /* GuestView.SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69E20F8225608600032C5E4 /* GuestView.SearchBar.swift */; };
+		C6A6FAA6226F3A6200601AC2 /* EventsApiRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A6FAA4226F396900601AC2 /* EventsApiRepository.swift */; };
 		C6AFB78B21DD579600670AC3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB78A21DD579600670AC3 /* ProfileViewModel.swift */; };
 		C6AFB78F21DD658800670AC3 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB78E21DD658800670AC3 /* EventDetailViewController.swift */; };
 		C6AFB79121DD65D200670AC3 /* EventDetailViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB79021DD65D200670AC3 /* EventDetailViewController.TableView.swift */; };
 		C6AFB79C21DD76AE00670AC3 /* ExploreDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB79B21DD76AE00670AC3 /* ExploreDetailViewModel.swift */; };
 		C6B2AC5E21E4DD3100F996AA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */; };
+		C6B6DEA2227ABE3A003367D7 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B6DEA1227ABE3A003367D7 /* Fetcher.swift */; };
 		C6B88D0821F19FC0006394F8 /* Big_Neon_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B88CFF21F19FC0006394F8 /* Big_Neon_Core.framework */; };
 		C6B88D0F21F19FC0006394F8 /* Big_Neon_CoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D0E21F19FC0006394F8 /* Big_Neon_CoreTests.swift */; };
 		C6B88D1121F19FC0006394F8 /* Big_Neon_Core.h in Headers */ = {isa = PBXBuildFile; fileRef = C6B88D0121F19FC0006394F8 /* Big_Neon_Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -137,7 +141,6 @@
 		C6EC209C2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209B2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift */; };
 		C6EC209E220075D100BD10DD /* PhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209D220075D100BD10DD /* PhoneNumberTextField.swift */; };
 		C6EC20A122007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC20A022007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift */; };
-		EB97F63084A23DBD8F7AB6F2 /* Pods_Big_Neon_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43DCE0B89B35D38187486C08 /* Pods_Big_Neon_Core.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,26 +197,21 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2C5FE81A672933D9E6C36212 /* Pods_Big_Neon_UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big_Neon_UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C6EEF4B027329FAE820B874 /* Pods-BigNeonUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigNeonUI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BigNeonUI/Pods-BigNeonUI.debug.xcconfig"; sourceTree = "<group>"; };
-		3E79034B835677C6F76F5533 /* Pods_BigNeonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BigNeonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		43DCE0B89B35D38187486C08 /* Pods_Big_Neon_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big_Neon_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4CD7091C5F5E53BFE54F25FD /* Pods_BigNeonCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BigNeonCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		56C0DDAA8B689110877807F2 /* Pods-Big Neon UI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon UI.release.xcconfig"; path = "Pods/Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.release.xcconfig"; sourceTree = "<group>"; };
-		68F6ECD566A631F3FF5C699A /* Pods-BigNeonUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigNeonUI.release.xcconfig"; path = "Pods/Target Support Files/Pods-BigNeonUI/Pods-BigNeonUI.release.xcconfig"; sourceTree = "<group>"; };
-		6CC758E69ED3F7507F39BB91 /* Pods-Big Neon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.release.xcconfig"; path = "Pods/Target Support Files/Pods-Big Neon/Pods-Big Neon.release.xcconfig"; sourceTree = "<group>"; };
-		78310A7CD778655F8A9FC77B /* Pods_Big_Neon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big_Neon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8F4C62095E82A146C94BB4B4 /* Pods-Big Neon Core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon Core.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.debug.xcconfig"; sourceTree = "<group>"; };
-		A647816EE3AC8ECF4BBCAED8 /* Pods-Big Neon UI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon UI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.debug.xcconfig"; sourceTree = "<group>"; };
-		AB883EFDAE7FEF2892885C4C /* Pods-BigNeonCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigNeonCore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BigNeonCore/Pods-BigNeonCore.debug.xcconfig"; sourceTree = "<group>"; };
-		C5C35E86CF6274D746DC2A17 /* Pods-BigNeonCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigNeonCore.release.xcconfig"; path = "Pods/Target Support Files/Pods-BigNeonCore/Pods-BigNeonCore.release.xcconfig"; sourceTree = "<group>"; };
+		1C4E4FA5E939F582BAA1457E /* Pods-Big Neon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug.xcconfig"; path = "Target Support Files/Pods-Big Neon/Pods-Big Neon.debug.xcconfig"; sourceTree = "<group>"; };
+		341E3BB334D759BEA31DC6E2 /* Pods_Big_Neon_UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big_Neon_UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		465C6F10B28F5D3A8C77DC7C /* Pods_Big_Neon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big_Neon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4926F0DEA6692EA1B2BCFB44 /* Pods-Big Neon UI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon UI.debug.xcconfig"; path = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.debug.xcconfig"; sourceTree = "<group>"; };
+		54F111152EB597A1C281ACE9 /* Pods-Big Neon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.release.xcconfig"; path = "Target Support Files/Pods-Big Neon/Pods-Big Neon.release.xcconfig"; sourceTree = "<group>"; };
+		58804A3D6C2FB1A6BD559FD5 /* Pods_Big_Neon_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big_Neon_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AE8B9AAD0C4247CE7226D76 /* Pods-Big Neon Core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon Core.debug.xcconfig"; path = "Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.debug.xcconfig"; sourceTree = "<group>"; };
+		7AE55D7CFD5B5B532A9617AF /* Pods-Big Neon UI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon UI.release.xcconfig"; path = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.release.xcconfig"; sourceTree = "<group>"; };
 		C603E49C221581B20079ED73 /* EventCheckoutDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCheckoutDetailCell.swift; sourceTree = "<group>"; };
 		C603E49E221583940079ED73 /* CheckoutTotalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutTotalCell.swift; sourceTree = "<group>"; };
 		C603E4A0221586040079ED73 /* SubTotalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTotalCell.swift; sourceTree = "<group>"; };
 		C603E4A2221589B80079ED73 /* CardCheckoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCheckoutCell.swift; sourceTree = "<group>"; };
 		C6058DE02229520D00BDF397 /* ScannerModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerModeView.swift; sourceTree = "<group>"; };
 		C60EDC842248E3EE00C9CC27 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
-		C61853B62212F1DB005D6250 /* ExploreViewController.Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.Search.swift; sourceTree = "<group>"; };
+		C61853B62212F1DB005D6250 /* DoorPersonViewController.Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonViewController.Search.swift; sourceTree = "<group>"; };
 		C61853B82212F4C8005D6250 /* TicketTypeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTypeSelectionViewController.swift; sourceTree = "<group>"; };
 		C61853BB2212F6FA005D6250 /* ThreeQuaterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeQuaterPresenter.swift; sourceTree = "<group>"; };
 		C61853BE22140548005D6250 /* TicketTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTypeCell.swift; sourceTree = "<group>"; };
@@ -229,7 +227,7 @@
 		C628B15521FAD76000FCBDC9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C62BC78021CCC3F700830A5F /* Big Neon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Big Neon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C62BC78321CCC3F700830A5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C62BC78521CCC3F700830A5F /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		C62BC78521CCC3F700830A5F /* DoorPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonViewController.swift; sourceTree = "<group>"; };
 		C62BC78A21CCC3FB00830A5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C62BC78D21CCC3FB00830A5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C62BC78F21CCC3FB00830A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -244,7 +242,7 @@
 		C64124C921F26D1800233797 /* AuthTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextView.swift; sourceTree = "<group>"; };
 		C644BA2E21F7069D003C188B /* BasicError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicError.swift; sourceTree = "<group>"; };
 		C644BA3321F70C19003C188B /* DatabaseService.Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Users.swift; sourceTree = "<group>"; };
-		C64B0ABA21D0DCC900386000 /* ExploreViewController.CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.CollectionView.swift; sourceTree = "<group>"; };
+		C64B0ABA21D0DCC900386000 /* DoorPersonViewController.CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonViewController.CollectionView.swift; sourceTree = "<group>"; };
 		C64B0ABC21D0DCDB00386000 /* DoorPersonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonViewModel.swift; sourceTree = "<group>"; };
 		C64B0ABF21D0DD1E00386000 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		C64B0AC121D0DD5E00386000 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -258,6 +256,7 @@
 		C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C66C0BA421E337D40066CD0F /* splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.mp4; sourceTree = "<group>"; };
 		C66C0BA621E339CA0066CD0F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		C678C17E2276FABD0069A2DF /* ObjectAddingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectAddingUtils.swift; sourceTree = "<group>"; };
 		C6825A6B225DF28B003470A5 /* Rechability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rechability.swift; sourceTree = "<group>"; };
 		C683232821FF07FE002342AE /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		C683232A21FF28CB002342AE /* ProfileEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewModel.swift; sourceTree = "<group>"; };
@@ -271,11 +270,13 @@
 		C698AB1521EF1FE00073F1FB /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
 		C698F6022238F76400977259 /* ScanFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanFeedback.swift; sourceTree = "<group>"; };
 		C69E20F8225608600032C5E4 /* GuestView.SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestView.SearchBar.swift; sourceTree = "<group>"; };
+		C6A6FAA4226F396900601AC2 /* EventsApiRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsApiRepository.swift; sourceTree = "<group>"; };
 		C6AFB78A21DD579600670AC3 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		C6AFB78E21DD658800670AC3 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		C6AFB79021DD65D200670AC3 /* EventDetailViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.TableView.swift; sourceTree = "<group>"; };
 		C6AFB79B21DD76AE00670AC3 /* ExploreDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreDetailViewModel.swift; sourceTree = "<group>"; };
 		C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		C6B6DEA1227ABE3A003367D7 /* Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 		C6B88CFF21F19FC0006394F8 /* Big_Neon_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Big_Neon_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B88D0121F19FC0006394F8 /* Big_Neon_Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Big_Neon_Core.h; sourceTree = "<group>"; };
 		C6B88D0221F19FC0006394F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -340,8 +341,7 @@
 		C6EC20A022007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewContorller.ImageUpload.swift; sourceTree = "<group>"; };
 		C6EC4B2B2227BBAD0056CE73 /* GuestsView.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestsView.TableView.swift; sourceTree = "<group>"; };
 		C6EC4B2D2227C1150056CE73 /* GuestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestTableViewCell.swift; sourceTree = "<group>"; };
-		CF1FA333925A46724CB83E09 /* Pods-Big Neon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Big Neon/Pods-Big Neon.debug.xcconfig"; sourceTree = "<group>"; };
-		FDBD85F3E3097FD16BBAE382 /* Pods-Big Neon Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon Core.release.xcconfig"; path = "Pods/Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.release.xcconfig"; sourceTree = "<group>"; };
+		F53CD102EDCF0164A543ADDD /* Pods-Big Neon Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon Core.release.xcconfig"; path = "Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -351,7 +351,7 @@
 			files = (
 				C6B88D1421F19FC0006394F8 /* Big_Neon_Core.framework in Frameworks */,
 				C6B88D2821F19FD4006394F8 /* Big_Neon_UI.framework in Frameworks */,
-				3AD04FED44A9DBAF9C541482 /* Pods_Big_Neon.framework in Frameworks */,
+				6CFD25CA24C8C41F43DD860C /* Pods_Big_Neon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,7 +366,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB97F63084A23DBD8F7AB6F2 /* Pods_Big_Neon_Core.framework in Frameworks */,
+				82440D91D23AF737DB34B959 /* Pods_Big_Neon_Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,23 +382,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E27D0CC64E689F1613EDE42 /* Pods_Big_Neon_UI.framework in Frameworks */,
+				3761B944BCAD328BA221B2DA /* Pods_Big_Neon_UI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		923E270B89A42E8117A7D434 /* Frameworks */ = {
+		1BD706CD83513345E9320BDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				78310A7CD778655F8A9FC77B /* Pods_Big_Neon.framework */,
-				4CD7091C5F5E53BFE54F25FD /* Pods_BigNeonCore.framework */,
-				3E79034B835677C6F76F5533 /* Pods_BigNeonUI.framework */,
-				43DCE0B89B35D38187486C08 /* Pods_Big_Neon_Core.framework */,
-				2C5FE81A672933D9E6C36212 /* Pods_Big_Neon_UI.framework */,
+				465C6F10B28F5D3A8C77DC7C /* Pods_Big_Neon.framework */,
+				58804A3D6C2FB1A6BD559FD5 /* Pods_Big_Neon_Core.framework */,
+				341E3BB334D759BEA31DC6E2 /* Pods_Big_Neon_UI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7B3E96A75988802AD92E269E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1C4E4FA5E939F582BAA1457E /* Pods-Big Neon.debug.xcconfig */,
+				54F111152EB597A1C281ACE9 /* Pods-Big Neon.release.xcconfig */,
+				5AE8B9AAD0C4247CE7226D76 /* Pods-Big Neon Core.debug.xcconfig */,
+				F53CD102EDCF0164A543ADDD /* Pods-Big Neon Core.release.xcconfig */,
+				4926F0DEA6692EA1B2BCFB44 /* Pods-Big Neon UI.debug.xcconfig */,
+				7AE55D7CFD5B5B532A9617AF /* Pods-Big Neon UI.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		C6058DDF222951E400BDF397 /* ScannerModeView */ = {
@@ -453,8 +465,8 @@
 				C62BC79721CCC3FB00830A5F /* Big NeonTests */,
 				C6B88D0D21F19FC0006394F8 /* Big Neon CoreTests */,
 				C62BC78121CCC3F700830A5F /* Products */,
-				F65EEC9195B9C5AA4DD674D2 /* Pods */,
-				923E270B89A42E8117A7D434 /* Frameworks */,
+				7B3E96A75988802AD92E269E /* Pods */,
+				1BD706CD83513345E9320BDB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -482,6 +494,7 @@
 				C694D25721D0BFB300B2AE07 /* Config */,
 				C6B88D5821F1C33E006394F8 /* View */,
 				C6B88D2D21F1BBE8006394F8 /* Cells */,
+				C6B6DEA0227ABE06003367D7 /* Fetch */,
 				C64B0AB221D0DC3E00386000 /* Screens */,
 			);
 			path = "Big Neon";
@@ -661,9 +674,9 @@
 			isa = PBXGroup;
 			children = (
 				C64B0ABC21D0DCDB00386000 /* DoorPersonViewModel.swift */,
-				C62BC78521CCC3F700830A5F /* ExploreViewController.swift */,
-				C61853B62212F1DB005D6250 /* ExploreViewController.Search.swift */,
-				C64B0ABA21D0DCC900386000 /* ExploreViewController.CollectionView.swift */,
+				C62BC78521CCC3F700830A5F /* DoorPersonViewController.swift */,
+				C61853B62212F1DB005D6250 /* DoorPersonViewController.Search.swift */,
+				C64B0ABA21D0DCC900386000 /* DoorPersonViewController.CollectionView.swift */,
 			);
 			path = DoorPersonViewController;
 			sourceTree = "<group>";
@@ -677,6 +690,15 @@
 				C61853BA2212F4D6005D6250 /* TicketTypeSelectionViewController */,
 			);
 			path = EventDetailViewController;
+			sourceTree = "<group>";
+		};
+		C6B6DEA0227ABE06003367D7 /* Fetch */ = {
+			isa = PBXGroup;
+			children = (
+				C6A6FAA4226F396900601AC2 /* EventsApiRepository.swift */,
+				C6B6DEA1227ABE3A003367D7 /* Fetcher.swift */,
+			);
+			path = Fetch;
 			sourceTree = "<group>";
 		};
 		C6B88D0021F19FC0006394F8 /* Big Neon Core */ = {
@@ -853,6 +875,7 @@
 				C6B88D6621F1C862006394F8 /* DateConfig.swift */,
 				C628B14F21F7B75800FCBDC9 /* Constants.swift */,
 				C6825A6B225DF28B003470A5 /* Rechability.swift */,
+				C678C17E2276FABD0069A2DF /* ObjectAddingUtils.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -958,23 +981,6 @@
 			path = GuestView;
 			sourceTree = "<group>";
 		};
-		F65EEC9195B9C5AA4DD674D2 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				CF1FA333925A46724CB83E09 /* Pods-Big Neon.debug.xcconfig */,
-				6CC758E69ED3F7507F39BB91 /* Pods-Big Neon.release.xcconfig */,
-				AB883EFDAE7FEF2892885C4C /* Pods-BigNeonCore.debug.xcconfig */,
-				C5C35E86CF6274D746DC2A17 /* Pods-BigNeonCore.release.xcconfig */,
-				2C6EEF4B027329FAE820B874 /* Pods-BigNeonUI.debug.xcconfig */,
-				68F6ECD566A631F3FF5C699A /* Pods-BigNeonUI.release.xcconfig */,
-				8F4C62095E82A146C94BB4B4 /* Pods-Big Neon Core.debug.xcconfig */,
-				FDBD85F3E3097FD16BBAE382 /* Pods-Big Neon Core.release.xcconfig */,
-				A647816EE3AC8ECF4BBCAED8 /* Pods-Big Neon UI.debug.xcconfig */,
-				56C0DDAA8B689110877807F2 /* Pods-Big Neon UI.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1001,13 +1007,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C62BC7A821CCC3FB00830A5F /* Build configuration list for PBXNativeTarget "Big Neon" */;
 			buildPhases = (
-				2E74AE6097BD3B7E726A3E2E /* [CP] Check Pods Manifest.lock */,
+				D6758ACFF600C1DF4AAC986B /* [CP] Check Pods Manifest.lock */,
 				C62BC77C21CCC3F700830A5F /* Sources */,
 				C62BC77D21CCC3F700830A5F /* Frameworks */,
 				C62BC77E21CCC3F700830A5F /* Resources */,
 				C694D23321D0BBFF00B2AE07 /* Embed Frameworks */,
-				38CC1584353202938BF8C806 /* [CP] Embed Pods Frameworks */,
-				C6DE2F802254D34E00ECF7D7 /* Fabric Script */,
+				778108FF93811D59365A186E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1042,7 +1047,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6B88D1621F19FC0006394F8 /* Build configuration list for PBXNativeTarget "Big Neon Core" */;
 			buildPhases = (
-				6B04D6BB667468B77D79D00A /* [CP] Check Pods Manifest.lock */,
+				96B36469E9C3B030EFB62998 /* [CP] Check Pods Manifest.lock */,
 				C6B88CFA21F19FC0006394F8 /* Headers */,
 				C6B88CFB21F19FC0006394F8 /* Sources */,
 				C6B88CFC21F19FC0006394F8 /* Frameworks */,
@@ -1081,7 +1086,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6B88D2A21F19FD4006394F8 /* Build configuration list for PBXNativeTarget "Big Neon UI" */;
 			buildPhases = (
-				AF5F115E748D46231EAFB79F /* [CP] Check Pods Manifest.lock */,
+				583A1D597C25813803F7BAB9 /* [CP] Check Pods Manifest.lock */,
 				C6B88D1C21F19FD4006394F8 /* Headers */,
 				C6B88D1D21F19FD4006394F8 /* Sources */,
 				C6B88D1E21F19FD4006394F8 /* Frameworks */,
@@ -1192,97 +1197,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2E74AE6097BD3B7E726A3E2E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Big Neon-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		38CC1584353202938BF8C806 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Big Neon/Pods-Big Neon-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
-				"${BUILT_PRODUCTS_DIR}/PWSwitch/PWSwitch.framework",
-				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
-				"${BUILT_PRODUCTS_DIR}/PresenterKit/PresenterKit.framework",
-				"${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework",
-				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
-				"${BUILT_PRODUCTS_DIR}/DTGradientButton/DTGradientButton.framework",
-				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
-				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
-				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
-				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
-				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
-				"${BUILT_PRODUCTS_DIR}/UITextField+Shake/UITextField_Shake.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PWSwitch.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PresenterKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCodeReader.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DTGradientButton.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextField_Shake.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Big Neon/Pods-Big Neon-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6B04D6BB667468B77D79D00A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Big Neon Core-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AF5F115E748D46231EAFB79F /* [CP] Check Pods Manifest.lock */ = {
+		583A1D597C25813803F7BAB9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1298,6 +1213,82 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Big Neon UI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		778108FF93811D59365A186E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Big Neon/Pods-Big Neon-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
+				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Sync/Sync.framework",
+				"${BUILT_PRODUCTS_DIR}/PWSwitch/PWSwitch.framework",
+				"${BUILT_PRODUCTS_DIR}/PresenterKit/PresenterKit.framework",
+				"${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework",
+				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
+				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
+				"${BUILT_PRODUCTS_DIR}/DTGradientButton/DTGradientButton.framework",
+				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
+				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
+				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
+				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
+				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
+				"${BUILT_PRODUCTS_DIR}/UITextField+Shake/UITextField_Shake.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sync.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PWSwitch.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PresenterKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCodeReader.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DTGradientButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextField_Shake.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Big Neon/Pods-Big Neon-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		96B36469E9C3B030EFB62998 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Big Neon Core-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1320,7 +1311,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run aa0b5f33b3ba00e613962388fc955505c3fe52d3 51cf5667ff9acebe5ac2c48a9dc25e7f40b2664198eca7fa1836fa11074469b6\n";
+			shellScript = "\n";
 		};
 		C60602592254D6D000C5C066 /* Fabric Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1338,9 +1329,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run aa0b5f33b3ba00e613962388fc955505c3fe52d3 51cf5667ff9acebe5ac2c48a9dc25e7f40b2664198eca7fa1836fa11074469b6\n";
+			shellScript = "\n";
 		};
-		C6DE2F802254D34E00ECF7D7 /* Fabric Script */ = {
+		D6758ACFF600C1DF4AAC986B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1348,15 +1339,19 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "Fabric Script";
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Big Neon-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run aa0b5f33b3ba00e613962388fc955505c3fe52d3 51cf5667ff9acebe5ac2c48a9dc25e7f40b2664198eca7fa1836fa11074469b6\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1374,12 +1369,12 @@
 				C623C0752251E3DF0020D0A8 /* ProfileHeaderView.swift in Sources */,
 				C61853B92212F4C8005D6250 /* TicketTypeSelectionViewController.swift in Sources */,
 				C623C0712251E3B20020D0A8 /* SectionHeaderCell.swift in Sources */,
-				C64B0ABB21D0DCC900386000 /* ExploreViewController.CollectionView.swift in Sources */,
+				C64B0ABB21D0DCC900386000 /* DoorPersonViewController.CollectionView.swift in Sources */,
 				C6562F522203286E0020B6D3 /* UtilityConstants.swift in Sources */,
 				C665B6E7224B506900581E2E /* ScannerViewController.Checkin.swift in Sources */,
 				C61853C122140900005D6250 /* TicketTypeViewController.TableView.swift in Sources */,
 				C64B0ADC21D1276100386000 /* ProfileViewController.swift in Sources */,
-				C61853B72212F1DB005D6250 /* ExploreViewController.Search.swift in Sources */,
+				C61853B72212F1DB005D6250 /* DoorPersonViewController.Search.swift in Sources */,
 				C6E6485622423C11000F2DFB /* Big Neon.xcdatamodeld in Sources */,
 				C6AFB78F21DD658800670AC3 /* EventDetailViewController.swift in Sources */,
 				C623C0802251E42C0020D0A8 /* CheckinTagView.swift in Sources */,
@@ -1401,7 +1396,7 @@
 				C623C06A2251E3920020D0A8 /* EventCheckoutDetailCell.swift in Sources */,
 				C623C06C2251E39A0020D0A8 /* SubTotalCell.swift in Sources */,
 				C683232D21FF2D71002342AE /* ProfileEditViewController.TableView.swift in Sources */,
-				C62BC78621CCC3F700830A5F /* ExploreViewController.swift in Sources */,
+				C62BC78621CCC3F700830A5F /* DoorPersonViewController.swift in Sources */,
 				C698AB1021EDE9BC0073F1FB /* CreateAccountViewController.swift in Sources */,
 				C6EC20A122007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift in Sources */,
 				C623C0722251E3C80020D0A8 /* EventDetailCell.swift in Sources */,
@@ -1412,6 +1407,7 @@
 				C61853C822144869005D6250 /* CheckoutView.swift in Sources */,
 				C683232F21FF31F5002342AE /* ProfileEditingTableViewCell.swift in Sources */,
 				C6AFB79C21DD76AE00670AC3 /* ExploreDetailViewModel.swift in Sources */,
+				C6B6DEA2227ABE3A003367D7 /* Fetcher.swift in Sources */,
 				C683232B21FF28CB002342AE /* ProfileEditViewModel.swift in Sources */,
 				C64B0AD821D123F400386000 /* TicketsViewController.swift in Sources */,
 				C64B0AC221D0DD5E00386000 /* TabBarController.swift in Sources */,
@@ -1423,6 +1419,7 @@
 				C623C0792251E4180020D0A8 /* GuestsView.TableView.swift in Sources */,
 				C6D2413421EF53B000FC3E41 /* NamesViewController.swift in Sources */,
 				C61853C3221430A2005D6250 /* TicketTypeViewModel.swift in Sources */,
+				C6A6FAA6226F3A6200601AC2 /* EventsApiRepository.swift in Sources */,
 				C698AB1621EF1FE00073F1FB /* CreateAccountViewModel.swift in Sources */,
 				C62BC78421CCC3F700830A5F /* AppDelegate.swift in Sources */,
 				C623C0692251E38E0020D0A8 /* QuantitySelectionCell.swift in Sources */,
@@ -1449,6 +1446,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C644BA3421F70C19003C188B /* DatabaseService.Users.swift in Sources */,
+				C678C17F2276FABD0069A2DF /* ObjectAddingUtils.swift in Sources */,
 				C6B88D8F21F1C94E006394F8 /* Organisation.swift in Sources */,
 				C628B15221F9C89200FCBDC9 /* DatabaseService.Token.swift in Sources */,
 				C6B88D8121F1C93A006394F8 /* LocalizedTimes.swift in Sources */,
@@ -1674,12 +1672,17 @@
 		};
 		C62BC7A921CCC3FB00830A5F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF1FA333925A46724CB83E09 /* Pods-Big Neon.debug.xcconfig */;
+			baseConfigurationReference = 1C4E4FA5E939F582BAA1457E /* Pods-Big Neon.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YVK784K26W;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Big\\ Neon",
+					"$(PROJECT_DIR)/Big\\ Neon",
+				);
 				INFOPLIST_FILE = "Big Neon/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1696,12 +1699,17 @@
 		};
 		C62BC7AA21CCC3FB00830A5F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6CC758E69ED3F7507F39BB91 /* Pods-Big Neon.release.xcconfig */;
+			baseConfigurationReference = 54F111152EB597A1C281ACE9 /* Pods-Big Neon.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YVK784K26W;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Big\\ Neon",
+					"$(PROJECT_DIR)/Big\\ Neon",
+				);
 				INFOPLIST_FILE = "Big Neon/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1759,7 +1767,7 @@
 		};
 		C6B88D1721F19FC0006394F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8F4C62095E82A146C94BB4B4 /* Pods-Big Neon Core.debug.xcconfig */;
+			baseConfigurationReference = 5AE8B9AAD0C4247CE7226D76 /* Pods-Big Neon Core.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
@@ -1792,7 +1800,7 @@
 		};
 		C6B88D1821F19FC0006394F8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FDBD85F3E3097FD16BBAE382 /* Pods-Big Neon Core.release.xcconfig */;
+			baseConfigurationReference = F53CD102EDCF0164A543ADDD /* Pods-Big Neon Core.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
@@ -1866,7 +1874,7 @@
 		};
 		C6B88D2B21F19FD4006394F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A647816EE3AC8ECF4BBCAED8 /* Pods-Big Neon UI.debug.xcconfig */;
+			baseConfigurationReference = 4926F0DEA6692EA1B2BCFB44 /* Pods-Big Neon UI.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
@@ -1899,7 +1907,7 @@
 		};
 		C6B88D2C21F19FD4006394F8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 56C0DDAA8B689110877807F2 /* Pods-Big Neon UI.release.xcconfig */;
+			baseConfigurationReference = 7AE55D7CFD5B5B532A9617AF /* Pods-Big Neon UI.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;

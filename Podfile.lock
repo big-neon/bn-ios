@@ -1,17 +1,16 @@
 PODS:
-  - Alamofire (5.0.0.beta.1)
+  - Alamofire (5.0.0-beta.3)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - DTGradientButton (0.1.1)
   - Fabric (1.9.0)
   - FLAnimatedImage (1.0.12)
   - JWTDecode (2.2.0)
-  - Mixpanel (3.3.7)
-  - PhoneNumberKit (2.5.0):
-    - PhoneNumberKit/PhoneNumberKitCore (= 2.5.0)
-    - PhoneNumberKit/UIKit (= 2.5.0)
-  - PhoneNumberKit/PhoneNumberKitCore (2.5.0)
-  - PhoneNumberKit/UIKit (2.5.0):
+  - PhoneNumberKit (2.6.0):
+    - PhoneNumberKit/PhoneNumberKitCore (= 2.6.0)
+    - PhoneNumberKit/UIKit (= 2.6.0)
+  - PhoneNumberKit/PhoneNumberKitCore (2.6.0)
+  - PhoneNumberKit/UIKit (2.6.0):
     - PhoneNumberKit/PhoneNumberKitCore
   - PINCache (3.0.1-beta.6):
     - PINCache/Arc-exception-safe (= 3.0.1-beta.6)
@@ -35,9 +34,10 @@ PODS:
   - pop (1.0.12)
   - PresenterKit (5.1.0)
   - PWSwitch (1.1.2)
-  - QRCodeReader.swift (9.0.1)
+  - QRCodeReader.swift (10.0.0)
   - Stripe (14.0.0)
   - SwiftKeychainWrapper (3.2.0)
+  - Sync (6.0.0)
   - TransitionButton (0.5.2)
   - "UITextField+Shake (1.2.1)"
 
@@ -45,9 +45,7 @@ DEPENDENCIES:
   - Alamofire (~> 5.0.0.beta.1)
   - Crashlytics
   - DTGradientButton
-  - Fabric
-  - JWTDecode (~> 2.2)
-  - Mixpanel
+  - JWTDecode
   - PhoneNumberKit (~> 2.1)
   - PINCache (= 3.0.1-beta.6)
   - PINRemoteImage (= 3.0.0-beta.13)
@@ -57,6 +55,7 @@ DEPENDENCIES:
   - QRCodeReader.swift
   - Stripe
   - SwiftKeychainWrapper
+  - Sync (from `https://github.com/3lvis/Sync.git`, branch `issue-555`)
   - TransitionButton
   - "UITextField+Shake"
 
@@ -68,7 +67,6 @@ SPEC REPOS:
     - Fabric
     - FLAnimatedImage
     - JWTDecode
-    - Mixpanel
     - PhoneNumberKit
     - PINCache
     - PINOperation
@@ -82,27 +80,37 @@ SPEC REPOS:
     - TransitionButton
     - "UITextField+Shake"
 
+EXTERNAL SOURCES:
+  Sync:
+    :branch: issue-555
+    :git: https://github.com/3lvis/Sync.git
+
+CHECKOUT OPTIONS:
+  Sync:
+    :commit: 708e71c8bf384c42437a4bc85ebbd182df0f0d78
+    :git: https://github.com/3lvis/Sync.git
+
 SPEC CHECKSUMS:
-  Alamofire: 2ef6d6c984c5d21c366e9b41a9ae7dfee2b67a44
+  Alamofire: 50d6fa7e8cbe7f84559e86ab641ffd029db655f8
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   DTGradientButton: c5e3c76045af259822d9cf4ebbe9805489f2d5df
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   JWTDecode: 85a405ab16d5473e99bd89ded1d535090ebd6a0e
-  Mixpanel: 1e94d1d29dfc3d3c66f734d10e29ad86420889fe
-  PhoneNumberKit: 32a1cd1e0aa9e950feb01886a22fd7386b8cf903
+  PhoneNumberKit: 167ee1f0bbb6efce7c62559e620eae745595532f
   PINCache: d195fdba255283f7e9900a55e3cced377f431f9b
   PINOperation: a6219e6fc9db9c269eb7a7b871ac193bcf400aac
   PINRemoteImage: d6d51c5d2adda55f1ce30c96e850b6c4ebd2856a
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   PresenterKit: ebb82bda6b161c720db9b5346cb593b9b00e0ed5
   PWSwitch: 399db6ef5dd8417f9a1e9f82cb70602f10a6c38f
-  QRCodeReader.swift: 96292a5612fbc2fd9a0b26f93fa5164c8d02f59d
+  QRCodeReader.swift: 74d0378eb0c7807828552b49626bbc8307495aee
   Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
   SwiftKeychainWrapper: 82c4c02cdc36f9a24f7edfcaab3e336401caa1a1
+  Sync: a6288926bee65a1ac3c72055446c558776af43f3
   TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
-PODFILE CHECKSUM: 309ecec5fcbc2bd19f2b24fbb2bf9ebcf3f0c3ae
+PODFILE CHECKSUM: 0566368db0ff882bc5dc5d89b914f0e4f14bb4ae
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.6.1

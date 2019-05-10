@@ -12,7 +12,7 @@ final class TabBarController: UITabBarController {
     // UITabBarCOntroller has selectedIndex propery
     fileprivate var currentNavigationIndex: Int = 0
     
-    private let doorPersonController  = UINavigationController(rootViewController: DoorPersonViewController())
+    private let doorPersonController  = UINavigationController(rootViewController: TicketsViewController())
     private let ticketsController   = UINavigationController(rootViewController: TicketsViewController())
     private let profileController  = UINavigationController(rootViewController: ProfileViewController())
     
