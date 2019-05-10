@@ -48,7 +48,8 @@ extension GuestListView {
             let searchResult = self.filteredSearchResults![indexPath.row]
             guestCell.guestNameLabel.text = searchResult.lastName + ", " + searchResult.firstName
             let price = Int(searchResult.priceInCents)
-            guestCell.ticketTypeNameLabel.text = price.dollarString + " | " + searchResult.ticketType
+            let ticketID = searchResult.id.suffix(8).uppercased()
+            guestCell.ticketTypeNameLabel.text = price.dollarString + " | " + searchResult.ticketType + " | " + ticketID
             
             if searchResult.status.lowercased() == "Purchased".lowercased() {
                 guestCell.ticketStateView.tagLabel.text = "PURCHASED"
