@@ -46,7 +46,6 @@ extension GuestListView {
         
         // guard?
         if self.isSearching == true {
-            // remove - explicite unwraping
             guard let searchResults = self.filteredSearchResults else {
                 return guestCell
             }
