@@ -17,13 +17,14 @@ extension GuestListView {
     }
     
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // guard ?
+        
         if searchText == "" {
+            self.isSearching = false
             self.guestTableView.reloadData()
             return
         }
         
-        // explicite unwraping - undsafe / app could crash 
+        self.isSearching = true
         self.filteredSearchResults = (self.guests?.filter({( guestTicket : RedeemableTicket) -> Bool in
             return guestTicket.firstName.lowercased().contains(searchText.lowercased()) ||  guestTicket.lastName.lowercased().contains(searchText.lowercased()) ||
                 guestTicket.id.lowercased().contains(searchText.lowercased()) ||

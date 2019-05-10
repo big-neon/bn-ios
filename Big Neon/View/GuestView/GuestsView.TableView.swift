@@ -27,10 +27,12 @@ extension GuestListView {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // guard?
+        
         if self.isSearching == true {
-            // remove - explicite unwraping
-            return self.filteredSearchResults!.count
+            guard let searchResults = self.filteredSearchResults else {
+                return 0
+            }
+            return searchResults.count
         }
         let guestKey = guestSectionTitles[section]
         if let guestValues = guestsDictionary[guestKey] {
@@ -45,7 +47,10 @@ extension GuestListView {
         // guard?
         if self.isSearching == true {
             // remove - explicite unwraping
-            let searchResult = self.filteredSearchResults![indexPath.row]
+            guard let searchResults = self.filteredSearchResults else {
+                return guestCell
+            }
+            let searchResult = searchResults[indexPath.row]
             guestCell.guestNameLabel.text = searchResult.lastName + ", " + searchResult.firstName
             let price = Int(searchResult.priceInCents)
             let ticketID = searchResult.id.suffix(8).uppercased()
