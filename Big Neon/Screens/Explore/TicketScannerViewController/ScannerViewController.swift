@@ -248,11 +248,13 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         guard let eventID = self.event?.id else {
             return
         }
+        
         self.scannerViewModel?.fetchGuests(forEventID: eventID, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
-                self?.guestListView.guests?.removeAll()
+                self?.guestListView.guests = nil
                 self?.guestListView.guests = self?.scannerViewModel?.ticketsFetched
                 self?.guestListView.refresher.endRefreshing()
+                return
 //                self?.guestListView.guestTableView.reloadData()
 //                self?.guestListView.guestTableView.reloadRows(at: [tableIndex], with: UITableView.RowAnimation.fade)
             }
