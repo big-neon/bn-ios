@@ -40,7 +40,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
             }
             
             self.configureView()
-            
+            guestsDictionary.removeAll()
             for guest in guests {
                 let guestKey = String(guest.firstName.prefix(1))
                 if var guestValues = guestsDictionary[guestKey] {
@@ -188,6 +188,8 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
     }
     
     @objc private func reloadGuests() {
+        self.guests?.removeAll()
+        self.guestTableView.reloadData()
         self.delegate?.reloadGuests()
     }
     

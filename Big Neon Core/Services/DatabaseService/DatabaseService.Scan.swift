@@ -131,7 +131,6 @@ extension DatabaseService {
                 
                 do {
                     let jsonObject = try JSONSerialization.jsonObject(with: data!, options: [])
-                    
                     guard let jsonDictionary = jsonObject as? [String: Any],
                         let result = jsonDictionary["data"] as? [[String: Any]] else {
                             throw NSError(domain: dataErrorDomain, code: DataErrorCode.wrongDataFormat.rawValue, userInfo: nil)
@@ -139,9 +138,8 @@ extension DatabaseService {
                     
                     let decoder = JSONDecoder()
                     let guests = try decoder.decode(Guests.self, from: data!)
-                    
                     completion(nil, result, guests)
-                    return
+                    
                 } catch let error as NSError {
                     print(error)
                     completion(error, nil, nil)

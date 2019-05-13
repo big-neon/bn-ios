@@ -35,7 +35,6 @@ extension GuestListView {
         }
         let guestKey = guestSectionTitles[section]
         if let guestValues = guestsDictionary[guestKey] {
-            print(guestValues.count)
             return guestValues.count
         }
         return 0

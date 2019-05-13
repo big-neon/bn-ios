@@ -158,24 +158,22 @@ final class TicketScannerViewModel {
         self.dataStack = DataStack(modelName: "Big Neon")
         BusinessService.shared.database.fetchGuests(forEventID: eventID) { (error, guestsFetched, serverGuests) in
             DispatchQueue.main.async {
-                // one guard?
-                if error != nil {
-                    completion(false)
-                    return
-                }
                 
-                guard let coreDataGuests = guestsFetched else {
+                //  Core Data Checks
+                /*
+                guard let _ = guestsFetched, error != nil else {
                     completion(false)
                     return
                 }
+                */
                 
                 guard let guests = serverGuests else {
                     completion(false)
                     return
                 }
-                
                 self.ticketsFetched = guests.data
                 completion(true)
+                return
 //                self.dataStack?.sync(coreDataGuests, inEntityNamed: RedeemedTicket.entity().managedObjectClassName) { error in
 //                    completion(true)
 //                }
