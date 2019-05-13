@@ -35,6 +35,7 @@ extension GuestListView {
         }
         let guestKey = guestSectionTitles[section]
         if let guestValues = guestsDictionary[guestKey] {
+            print(guestValues.count)
             return guestValues.count
         }
         return 0
@@ -56,7 +57,6 @@ extension GuestListView {
             return guestCell
         }
 
-        print(guestValues!.lastName)
         guestCell.guestNameLabel.text = guestValues!.lastName + ", " + guestValues!.firstName
         let price = Int(guestValues!.priceInCents)
         let ticketID = "#" + guestValues!.id.suffix(8).uppercased()

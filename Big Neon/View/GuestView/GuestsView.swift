@@ -35,16 +35,11 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
     
     public var  guests: [RedeemableTicket]? {
         didSet {
-            // guard
             guard let guests = self.guests else  {
                 return
             }
             
             self.configureView()
-            
-            //  Configuring Alphabetic List
-            // MARK: remove explicite unwrapping - it's not good
-            // simplify
             
             for guest in guests {
                 let guestKey = String(guest.firstName.prefix(1))
@@ -70,7 +65,6 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
     
     internal var isShowingGuests: Bool = false {
         didSet {
-            // guard?
             if isShowingGuests == true {
                 UIView.animate(withDuration: 1.0, delay: 0.5, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.85, options: .curveEaseOut, animations: {
                     self.showGuestButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
