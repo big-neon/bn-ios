@@ -21,7 +21,7 @@ public protocol GuestListViewProtocol: class {
 public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     weak var delegate: GuestListViewProtocol?
-    internal var guestsDictionary = [String: [RedeemableTicket]]()
+    internal var guestsDictionary: [String: [RedeemableTicket]] = [:]
     internal var guestSectionTitles = [String]()
     internal var filteredSearchResults: [RedeemableTicket] = []
     internal var isSearching: Bool = false
@@ -39,7 +39,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
                 return
             }
             
-            self.configureView()
+            configureView()
             guestsDictionary.removeAll()
             for guest in guests {
                 let guestKey = String(guest.firstName.prefix(1))
