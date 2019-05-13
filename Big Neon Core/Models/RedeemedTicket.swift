@@ -5,7 +5,8 @@ public struct RedeemableTicket: Codable {
     public let id, ticketType, userID, orderID: String
     public let orderItemID: String
     public let priceInCents: Int
-    public let firstName, lastName, email: String
+    public let firstName, lastName: String
+    public let email: String?
     public let phone: String?
     public let redeemKey: String
     public let redeemDate: String?

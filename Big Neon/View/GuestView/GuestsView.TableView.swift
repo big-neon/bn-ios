@@ -43,7 +43,6 @@ extension GuestListView {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let guestCell: GuestTableViewCell = tableView.dequeueReusableCell(withIdentifier: GuestTableViewCell.cellID, for: indexPath) as! GuestTableViewCell
         
-        // guard?
         var guestValues: RedeemableTicket?
 
         if self.isSearching == true && !self.filteredSearchResults.isEmpty {
@@ -53,7 +52,7 @@ extension GuestListView {
             guestValues = guestsDictionary[guestKey]![indexPath.row]
         }
 
-        guard guestValues != nil else {
+        if guestValues == nil {
             return guestCell
         }
 

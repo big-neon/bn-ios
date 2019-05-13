@@ -2,17 +2,11 @@
 import Foundation
 import UIKit
 
-// MARK: lots of magic numbers... consider using layout/config class/enum
-// MARK: self is not needed
-// MARK: use abbreviation / syntax sugar
-// MARK: internal is default access level - not need for explicit definition
-
 final public class GuestTableViewCell: UITableViewCell {
     
     public static let cellID = "GuestTableViewCellID"
     
-    // lazy?
-    public let guestNameLabel: UILabel = {
+    public lazy var guestNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandBlack
         label.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.bold)
@@ -20,8 +14,7 @@ final public class GuestTableViewCell: UITableViewCell {
         return label
     }()
     
-    // lazy ?
-    public let ticketTypeNameLabel: UILabel = {
+    public lazy var ticketTypeNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandGrey
         label.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium)
@@ -29,8 +22,7 @@ final public class GuestTableViewCell: UITableViewCell {
         return label
     }()
     
-    // lazy?
-    public let ticketStateView: CheckinTagView = {
+    public lazy var ticketStateView: CheckinTagView = {
         let view = CheckinTagView()
         view.backgroundColor = UIColor.brandBlack
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -39,29 +31,29 @@ final public class GuestTableViewCell: UITableViewCell {
     
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: UITableViewCell.CellStyle.default, reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = UIColor.white
-        self.configureView()
+        backgroundColor = UIColor.white
+        configureView()
     }
     
     private func configureView() {
-        self.addSubview(guestNameLabel)
-        self.addSubview(ticketTypeNameLabel)
-        self.addSubview(ticketStateView)
+        addSubview(guestNameLabel)
+        addSubview(ticketTypeNameLabel)
+        addSubview(ticketStateView)
     
-        self.guestNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
-        self.guestNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 12).isActive = true
-        self.guestNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -30).isActive = true
-        self.guestNameLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        guestNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
+        guestNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 12).isActive = true
+        guestNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -30).isActive = true
+        guestNameLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         
-        self.ticketTypeNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
-        self.ticketTypeNameLabel.topAnchor.constraint(equalTo: guestNameLabel.bottomAnchor, constant: 12).isActive = true
-        self.ticketTypeNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -30).isActive = true
-        self.ticketTypeNameLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        ticketTypeNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
+        ticketTypeNameLabel.topAnchor.constraint(equalTo: guestNameLabel.bottomAnchor, constant: 12).isActive = true
+        ticketTypeNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -30).isActive = true
+        ticketTypeNameLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
         
-        self.ticketStateView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        self.ticketStateView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -30).isActive = true
-        self.ticketStateView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
-        self.ticketStateView.widthAnchor.constraint(equalToConstant: 100.0).isActive = true
+        ticketStateView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        ticketStateView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+        ticketStateView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
+        ticketStateView.widthAnchor.constraint(equalToConstant: 100.0).isActive = true
     }
     
     required public init?(coder aDecoder: NSCoder) {
