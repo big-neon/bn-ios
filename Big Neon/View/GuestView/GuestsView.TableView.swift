@@ -57,7 +57,7 @@ extension GuestListView {
         }
         
         if guestValues!.lastName == "" && guestValues!.firstName  == ""{
-            guestCell.guestNameLabel.text = "Guest (No Details Provided)"
+            guestCell.guestNameLabel.text = "No Details Provided"
         } else {
             guestCell.guestNameLabel.text = guestValues!.lastName + ", " + guestValues!.firstName
         }
@@ -113,7 +113,7 @@ extension GuestListView {
     
     private func checkinTicket(ticketID: String?, atIndex index: IndexPath) {
         if let id = ticketID {
-            self.delegate?.checkinAutomatically(withTicketID: id, fromGuestTableView: true)
+            self.delegate?.checkinAutomatically(withTicketID: id, fromGuestTableView: true, atIndexPath: index)
         }
     }
     
