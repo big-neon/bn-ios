@@ -11,15 +11,9 @@ import Big_Neon_UI
 // MARK: internal is default access level - not need for explicit definition
 // MARK: use abbreviation / syntax sugar
 
-public protocol GuestListViewProtocol: class {
-    func showGuestList()
-    func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath: IndexPath?)
-    func reloadGuests()
-}
-
 public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
-    weak var delegate: GuestListViewProtocol?
+    weak var delegate: ScannerViewDelegate?
     internal var guestsDictionary: [String: [RedeemableTicket]] = [:]
     internal var guestSectionTitles = [String]()
     internal var filteredSearchResults: [RedeemableTicket] = []

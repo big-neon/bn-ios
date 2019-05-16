@@ -3,18 +3,9 @@ import UIKit
 import PINRemoteImage
 import Big_Neon_Core
 
-public protocol ProfileHeaderDelegate {
-    func handleShowQRCodeView()
-}
-
-// MARK: lots of magic numbers... consider using layout/config class/enum
-// MARK: self is not needed
-// MARK: use abbreviation / syntax sugar
-
 final public class ProfileHeaderView: UIView {
     
-    // MARK: should be weak
-    public var delegate: ProfileHeaderDelegate?
+    weak var delegate: ProfileViewDelegate?
     
     public var user: User? {
         didSet {
@@ -25,14 +16,18 @@ final public class ProfileHeaderView: UIView {
             self.userNameLabel.text = "\(user.firstName ?? "-") \(user.lastName ?? "-")"
             //MARK: do not use explicite unwraping, guard it
             self.userEmailLabel.text = user.email!.uppercased()
+            
+            if let profilePicURL = user.profilePicURL   {
+                profileImageView.pin_setImage(from: URL(string: profilePicURL), placeholderImage: UIImage(named: "ic_emptyProfileImage"))
+            }
         }
     }
     
-    // lazy?
-    public let profileImageView: UIImageView = {
+    public lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "ic_emptyProfileImage")
         imageView.contentMode = .scaleAspectFill
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(uploadProfileImage)))
         imageView.layer.masksToBounds = true
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 2.0
@@ -44,7 +39,7 @@ final public class ProfileHeaderView: UIView {
     public lazy var qrCodeImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showQRCode)))
+        
         imageView.image = UIImage(named: "ic_QRCode")
         imageView.contentMode = .scaleAspectFit
         imageView.layer.shadowColor = UIColor.black.cgColor
@@ -55,8 +50,7 @@ final public class ProfileHeaderView: UIView {
         return imageView
     }()
     
-    // lazy
-    public let userNameLabel: UILabel = {
+    public lazy var userNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandBlack
         label.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.semibold)
@@ -64,8 +58,7 @@ final public class ProfileHeaderView: UIView {
         return label
     }()
     
-    // lazy?
-    public let emailIconImageView: UIImageView = {
+    public lazy var emailIconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "ic_message")
         imageView.contentMode = .scaleAspectFit
@@ -74,8 +67,7 @@ final public class ProfileHeaderView: UIView {
         return imageView
     }()
     
-    // lazy?
-    public let userEmailLabel: UILabel = {
+    public lazy var userEmailLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandGrey
         label.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.semibold)
@@ -96,40 +88,34 @@ final public class ProfileHeaderView: UIView {
     }
     
     private func configureView() {
-        self.addSubview(profileImageView)
-        self.addSubview(qrCodeImageView)
-        self.addSubview(userNameLabel)
-        self.addSubview(emailIconImageView)
-        self.addSubview(userEmailLabel)
+        addSubview(profileImageView)
+        addSubview(userNameLabel)
+        addSubview(emailIconImageView)
+        addSubview(userEmailLabel)
         
-        self.profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-        self.profileImageView.bottomAnchor.constraint(equalTo: self.topAnchor, constant: 210).isActive = true
-        self.profileImageView.heightAnchor.constraint(equalToConstant: 58).isActive = true
-        self.profileImageView.widthAnchor.constraint(equalToConstant: 58).isActive = true
+        profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
+        profileImageView.bottomAnchor.constraint(equalTo: self.topAnchor, constant: 210).isActive = true
+        profileImageView.heightAnchor.constraint(equalToConstant: 58).isActive = true
+        profileImageView.widthAnchor.constraint(equalToConstant: 58).isActive = true
         
-        self.qrCodeImageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -18).isActive = true
-        self.qrCodeImageView.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 10).isActive = true
-        self.qrCodeImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        self.qrCodeImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
-
-        self.userNameLabel.leftAnchor.constraint(equalTo: profileImageView.leftAnchor).isActive = true
-        self.userNameLabel.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 9).isActive = true
-        self.userNameLabel.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        self.userNameLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        userNameLabel.leftAnchor.constraint(equalTo: profileImageView.leftAnchor).isActive = true
+        userNameLabel.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 9).isActive = true
+        userNameLabel.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        userNameLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         
-        self.emailIconImageView.leftAnchor.constraint(equalTo: userNameLabel.leftAnchor).isActive = true
-        self.emailIconImageView.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 10).isActive = true
-        self.emailIconImageView.widthAnchor.constraint(equalToConstant: 12).isActive = true
-        self.emailIconImageView.heightAnchor.constraint(equalToConstant: 8).isActive = true
+        emailIconImageView.leftAnchor.constraint(equalTo: userNameLabel.leftAnchor).isActive = true
+        emailIconImageView.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 10).isActive = true
+        emailIconImageView.widthAnchor.constraint(equalToConstant: 12).isActive = true
+        emailIconImageView.heightAnchor.constraint(equalToConstant: 8).isActive = true
         
-        self.userEmailLabel.leftAnchor.constraint(equalTo: emailIconImageView.rightAnchor, constant: 10).isActive = true
-        self.userEmailLabel.rightAnchor.constraint(equalTo: userNameLabel.rightAnchor).isActive = true
-        self.userEmailLabel.centerYAnchor.constraint(equalTo: emailIconImageView.centerYAnchor).isActive = true
-        self.userEmailLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+        userEmailLabel.leftAnchor.constraint(equalTo: emailIconImageView.rightAnchor, constant: 10).isActive = true
+        userEmailLabel.rightAnchor.constraint(equalTo: userNameLabel.rightAnchor).isActive = true
+        userEmailLabel.centerYAnchor.constraint(equalTo: emailIconImageView.centerYAnchor).isActive = true
+        userEmailLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
     }
     
-    @objc private func showQRCode() {
-        self.delegate?.handleShowQRCodeView()
+    @objc private func uploadProfileImage() {
+        self.delegate?.handleUploadImage()
     }
     
     required public init?(coder aDecoder: NSCoder) {

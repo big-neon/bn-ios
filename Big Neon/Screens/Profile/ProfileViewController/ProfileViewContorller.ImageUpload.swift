@@ -1,14 +1,9 @@
-// MARK: remove this file.....
 
 import UIKit
 
 extension ProfileViewController {
     
-    /*
-     These are future functions for profile image capturing
-     **/
-    /*
-    @objc internal func handleUploadImage() {
+    func handleUploadImage() {
         let alertController = UIAlertController(title: "Upload a Profile Picture",
                                                 message: nil, preferredStyle: .actionSheet)
 
@@ -46,20 +41,21 @@ extension ProfileViewController {
         picker.dismiss(animated: true, completion: nil)
     }
 
+    /*
     internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         var imageToUpload: UIImage?
         if let chosenImage = info[UIImagePickerControllerEditedImage] as? UIImage {
-            self.profileHeaderView.userImageView.contentMode = .scaleAspectFill
-            self.profileHeaderView.userImageView.image = chosenImage
+            self.profileHeaderView.profileImageView.contentMode = .scaleAspectFill
+            self.profileHeaderView.profileImageView.image = chosenImage
             imageToUpload = chosenImage
         } else if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            self.profileHeaderView.userImageView.contentMode = .scaleAspectFill
-            self.profileHeaderView.userImageView.image = chosenImage
+            self.profileHeaderView.profileImageView.contentMode = .scaleAspectFill
+            self.profileHeaderView.profileImageView.image = chosenImage
             imageToUpload = chosenImage
         }
         dismiss(animated: true) {
             //  Set the image in the viewModel to the image here
         }
     }
-    */
+ */
 }

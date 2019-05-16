@@ -7,7 +7,16 @@ import Big_Neon_Core
 
 // MARK:  magic numbers... consider using layout/config class/enum
 
-final class ScannerViewController: UIViewController, ScannerModeViewDelegate, GuestListViewProtocol, ManualCheckinModeDelegate {
+public protocol ScannerViewDelegate: class {
+    func completeCheckin()
+    func scannerSetAutomatic()
+    func scannerSetManual()
+    func showGuestList()
+    func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath: IndexPath?)
+    func reloadGuests()
+}
+
+final class ScannerViewController: UIViewController, ScannerViewDelegate {
     
     //  Video Capture Session
     var captureSession = AVCaptureSession()

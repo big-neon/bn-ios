@@ -4,10 +4,6 @@ import Foundation
 import UIKit
 import Big_Neon_Core
 
-public protocol ManualCheckinModeDelegate {
-    func completeCheckin()
-}
-
 // MARK: lots of magic numbers... consider using layout/config class/enum
 // MARK: self is not needed
 // MARK: internal is default access level - not need for explicit definition
@@ -15,8 +11,7 @@ public protocol ManualCheckinModeDelegate {
 
 public class ManualCheckinModeView: UIView {
     
-    // should be weak
-    public var delegate: ManualCheckinModeDelegate?
+    weak var delegate: ScannerViewDelegate?
     
     public var redeemableTicket: RedeemableTicket? {
         didSet {
@@ -49,8 +44,7 @@ public class ManualCheckinModeView: UIView {
         return imageView
     }()
     
-    // lazy?
-    public let userNameLabel: UILabel = {
+    public lazy var userNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandBlack
         label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.bold)
@@ -58,8 +52,7 @@ public class ManualCheckinModeView: UIView {
         return label
     }()
     
-    // lazy?
-    public let ticketTypeLabel: UILabel = {
+    public lazy var ticketTypeLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandGrey
         label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
@@ -67,16 +60,14 @@ public class ManualCheckinModeView: UIView {
         return label
     }()
     
-    // lazy?
-    private let lineView: UIView = {
+    private lazy var lineView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.brandGrey.withAlphaComponent(0.2)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    // lazy?
-    private let bannedTagView: CheckinTagView = {
+    private lazy var bannedTagView: CheckinTagView = {
         let view = CheckinTagView()
         view.backgroundColor = UIColor.red
         view.tagLabel.text = "BANNED".uppercased()
@@ -84,16 +75,14 @@ public class ManualCheckinModeView: UIView {
         return view
     }()
     
-    // lazy?
-    private let vipTagView: CheckinTagView = {
+    private lazy var vipTagView: CheckinTagView = {
         let view = CheckinTagView()
         view.tagLabel.text = "VIP".uppercased()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    // lazy?
-    public let birthDateLabel: UILabel = {
+    public lazy var birthDateLabel: UILabel = {
         let label = UILabel()
         label.text = "Birth Date"
         label.textColor = UIColor.brandBlack
@@ -102,8 +91,7 @@ public class ManualCheckinModeView: UIView {
         return label
     }()
     
-    // lazy?
-    public let birthValueLabel: UILabel = {
+    public lazy var birthValueLabel: UILabel = {
         let label = UILabel()
         label.text = "-"
         label.textColor = UIColor.brandGrey
@@ -112,7 +100,6 @@ public class ManualCheckinModeView: UIView {
         return label
     }()
     
-    // lazy?
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white
@@ -125,15 +112,15 @@ public class ManualCheckinModeView: UIView {
     }
     
     private func configureView() {
-        self.addSubview(userImageView)
-        self.addSubview(userNameLabel)
-        self.addSubview(ticketTypeLabel)
-        self.addSubview(lineView)
-        self.addSubview(bannedTagView)
-        self.addSubview(vipTagView)
-        self.addSubview(birthDateLabel)
-        self.addSubview(birthValueLabel)
-        self.addSubview(completeCheckinButton)
+        addSubview(userImageView)
+        addSubview(userNameLabel)
+        addSubview(ticketTypeLabel)
+        addSubview(lineView)
+        addSubview(bannedTagView)
+        addSubview(vipTagView)
+        addSubview(birthDateLabel)
+        addSubview(birthValueLabel)
+        addSubview(completeCheckinButton)
         
         userImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 22).isActive = true
         userImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
