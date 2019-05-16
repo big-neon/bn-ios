@@ -139,7 +139,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.navigationNoLineBar()
+        self.navigationLineBar()
     }
 
     private func configureNavBar() {
