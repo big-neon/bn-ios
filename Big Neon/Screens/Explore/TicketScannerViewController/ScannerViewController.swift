@@ -5,8 +5,6 @@ import UIKit
 import Big_Neon_UI
 import Big_Neon_Core
 
-// MARK:  magic numbers... consider using layout/config class/enum
-
 public protocol ScannerViewDelegate: class {
     func completeCheckin()
     func scannerSetAutomatic()

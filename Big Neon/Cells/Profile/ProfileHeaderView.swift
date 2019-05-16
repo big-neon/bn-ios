@@ -14,8 +14,9 @@ final public class ProfileHeaderView: UIView {
             }
             
             self.userNameLabel.text = "\(user.firstName ?? "-") \(user.lastName ?? "-")"
-            //MARK: do not use explicite unwraping, guard it
-            self.userEmailLabel.text = user.email!.uppercased()
+            if let email = user.email {
+                self.userEmailLabel.text = email.uppercased()
+            }
             
             if let profilePicURL = user.profilePicURL   {
                 profileImageView.pin_setImage(from: URL(string: profilePicURL), placeholderImage: UIImage(named: "ic_emptyProfileImage"))

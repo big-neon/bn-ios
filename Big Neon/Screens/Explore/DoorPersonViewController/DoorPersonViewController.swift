@@ -79,9 +79,9 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     lazy var userProfileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowProfile)))
-        imageView.image = UIImage(named: "ic_profilePicture")
         imageView.isUserInteractionEnabled = true
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 15.0
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -131,7 +131,6 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
                 
                 if completed == false {
                     self?.exploreCollectionView.reloadData()
-                    print("Failed to Reload View")
                     return
                 }
                 self?.exploreCollectionView.reloadData()
@@ -155,6 +154,12 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         userProfileImageView.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
         userProfileImageView.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: userProfileImageView)
+        
+        self.doorPersonViemodel.fetchUser { [weak self] (_) in
+            if let profilePicURL = self?.doorPersonViemodel.user?.profilePicURL   {
+                self?.userProfileImageView.pin_setImage(from: URL(string: profilePicURL), placeholderImage: UIImage(named: "ic_profilePicture"))
+            }
+        }
     }
 
     private func configureEmptyView() {
