@@ -6,17 +6,11 @@ import Big_Neon_Core
 
 // MARK:  magic numbers... consider using layout/config class/enum
 // MARK: use abbreviation / syntax sugar
-// do we need to confirm to all those protocols?
 
 final class DoorPersonViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
-    
-    var fetcher: Fetcher
-    
-    lazy var guestsFetcher: Fetcher = {
-        let fetcher = Fetcher()
-        return fetcher
-    }()
 
+    var guestFetcher: Fetcher
+    
     lazy var refresher: UIRefreshControl = {
         let refresher = UIRefreshControl()
         refresher.tintColor = UIColor.brandGrey
@@ -88,7 +82,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     }()
 
     init(fetcher: Fetcher) {
-        self.fetcher = fetcher
+        self.guestFetcher = fetcher
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -204,7 +198,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     }
     
     internal func showScanner(forTicketIndex ticketIndex: Int) {
-        let scannerVC = ScannerViewController(fetcher: self.guestsFetcher)
+        let scannerVC = ScannerViewController(fetcher: guestFetcher)
         scannerVC.event = self.doorPersonViemodel.eventCoreData[ticketIndex]
         let scannerNavVC = UINavigationController(rootViewController: scannerVC)
         self.present(scannerNavVC, animated: true, completion: nil)

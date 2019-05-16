@@ -5,32 +5,15 @@ import UITextField_Shake
 import Big_Neon_UI
 
 // MARK:  magic numbers... consider using layout/config class/enum
-// MARK: self is not needed
 // MARK: use abbreviation / syntax sugar
-// MARK: internal is default access level - not need for explicit definition
-// MARK: swift support Type Inference
 
-internal class CreateAccountViewController: UIViewController, UITextFieldDelegate {
+internal class CreateAccountViewController: BaseViewController, UITextFieldDelegate {
     
-    fileprivate var welcomeLabelTopConstraint: NSLayoutConstraint?
-    //MARK: type can be infer in swift
-    // this could be:
-    // var showPasswordValue = false
-    internal var showPasswordValue: Bool = false
-    internal let createAccountViewModel: AccountViewModel = AccountViewModel()
+    var welcomeLabelTopConstraint: NSLayoutConstraint?
+    var showPasswordValue = false
+    let createAccountViewModel: AccountViewModel = AccountViewModel()
     
-    lazy var fetcher: Fetcher = {
-        let fetcher = Fetcher()
-        return fetcher
-    }()
-    
-    internal lazy var errorFeedback: FeedbackSystem = {
-        let feedback = FeedbackSystem()
-        return feedback
-    }()
-    
-    // lazy?
-    private var headerLabel: BrandTitleLabel = {
+    lazy var headerLabel: BrandTitleLabel = {
         let label = BrandTitleLabel()
         label.text = "Create your account"
         label.textAlignment = .center
@@ -38,21 +21,21 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         return label
     }()
 
-    private lazy var emailTextView: AuthenticationTextView = {
+    lazy var emailTextView: AuthenticationTextView = {
         let textField = AuthenticationTextView()
         textField.textFieldType = .email
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
-    fileprivate lazy var passwordTextView: AuthenticationTextView = {
+    lazy var passwordTextView: AuthenticationTextView = {
         let textField = AuthenticationTextView()
         textField.textFieldType = .signUpPassword
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
-    fileprivate lazy var nextButton: BrandButton = {
+    lazy var nextButton: BrandButton = {
         let button = BrandButton()
         button.spinnerColor = .white
         button.setTitle("Let's do this", for: UIControl.State.normal)
@@ -61,7 +44,7 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
         return button
     }()
     
-    fileprivate lazy var showPassword: UIButton = {
+    lazy var showPassword: UIButton = {
         let button = UIButton()
         button.setTitleColor(UIColor.brandPrimary, for: UIControl.State.normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.bold)
@@ -74,10 +57,10 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        self.configureNavBar()
-        self.setupDelegates()
-        self.configureView()
-        self.setupKeyboardObservers()
+        configureNavBar()
+        setupDelegates()
+        configureView()
+        setupKeyboardObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,21 +69,16 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
     }
     
     private func configureNavBar() {
-        //MARK: better
-//        guard navigationController = navigationController else {
-//            return
-//        }
+        guard let navigationController = self.navigationController else {
+            return
+        }
         self.navigationNoLineBar()
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationController?.navigationBar.tintColor = UIColor.black
-        self.navigationController?.navigationBar.barTintColor = UIColor.white
-        self.navigationController?.navigationBar.backgroundColor = UIColor.white
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_back"), style: UIBarButtonItem.Style.done, target: self, action: #selector(handleBack))
-    }
-    
-    @objc private func handleBack() {
-        self.navigationController?.popViewController(animated: true)
+        navigationController.setNavigationBarHidden(false, animated: true)
+        navigationController.navigationBar.tintColor = UIColor.black
+        navigationController.navigationBar.barTintColor = UIColor.white
+        navigationController.navigationBar.backgroundColor = UIColor.white
+        navigationController.interactivePopGestureRecognizer?.isEnabled = true
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_back"), style: UIBarButtonItem.Style.done, target: self, action: #selector(handleBack))
     }
     
     private func configureView() {
@@ -243,24 +221,6 @@ internal class CreateAccountViewController: UIViewController, UITextFieldDelegat
                 
             }
         }
-    }
-    
-    private func showFeedback(message: String) {
-        if let window = UIApplication.shared.keyWindow {
-            self.errorFeedback.showFeedback(backgroundColor: UIColor.brandBlack,
-                                            feedbackLabel: message,
-                                            feedbackLabelColor: UIColor.white,
-                                            durationOnScreen: 3.0,
-                                            currentView: window,
-                                            showsBackgroundGradient: true,
-                                            isAboveTabBar: false)
-        }
-    }
-    
-    @objc private func handleShowHome() {
-        let tabBarVC = UINavigationController(rootViewController: DoorPersonViewController(fetcher: self.fetcher))
-        tabBarVC.modalTransitionStyle = .flipHorizontal
-        self.present(tabBarVC, animated: false, completion: nil)
     }
     
 }

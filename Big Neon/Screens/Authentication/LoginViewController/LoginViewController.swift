@@ -5,25 +5,15 @@ import Foundation
 import UITextField_Shake
 import Big_Neon_UI
 
-
 // MARK:  magic numbers... consider using layout/config class/enum
-// MARK: self is not needed
 // MARK: use abbreviation / syntax sugar
-// MARK: internal is default access level - not need for explicit definition
-// MARK: swift support Type Inference
 
-internal class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: BaseViewController, UITextFieldDelegate {
     
-    fileprivate var buttonBottomAnchorConstraint: NSLayoutConstraint?
-    internal let createAccountViewModel: AccountViewModel = AccountViewModel()
+    var buttonBottomAnchorConstraint: NSLayoutConstraint?
+    let createAccountViewModel: AccountViewModel = AccountViewModel()
     
-    internal lazy var errorFeedback: FeedbackSystem = {
-        let feedback = FeedbackSystem()
-        return feedback
-    }()
-    
-    // lazy?
-    private var headerLabel: BrandTitleLabel = {
+    lazy var headerLabel: BrandTitleLabel = {
         let label = BrandTitleLabel()
         label.text = "Welcome Back!"
         label.textAlignment = .center
@@ -31,21 +21,21 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
         return label
     }()
     
-    private lazy var emailTextView: AuthenticationTextView = {
+    lazy var emailTextView: AuthenticationTextView = {
         let textField = AuthenticationTextView()
         textField.textFieldType = .email
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
-    fileprivate lazy var passwordTextView: AuthenticationTextView = {
+    lazy var passwordTextView: AuthenticationTextView = {
         let textField = AuthenticationTextView()
         textField.textFieldType = .loginPassword
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
-    fileprivate lazy var loginButton: BrandButton = {
+    lazy var loginButton: BrandButton = {
         let button = BrandButton()
         button.spinnerColor = .white
         button.setTitle("Login to your account", for: UIControl.State.normal)
@@ -57,8 +47,6 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-
-        // repetetive code ... should be part of base view controller ?
         self.configureNavBar()
         self.setupDelegates()
         self.configureView()
@@ -77,10 +65,6 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_back"), style: UIBarButtonItem.Style.done, target: self, action: #selector(handleBack))
-    }
-    
-    @objc private func handleBack() {
-        self.navigationController?.popViewController(animated: true)
     }
     
     private func configureView() {
@@ -136,8 +120,6 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc internal func handleLogin() {
-        
-        //MARK: repetetive code - i saw something simular on several places.... refactor / rethink
 
         guard let email = self.emailTextView.authTextField.text else {
             self.emailTextView.textFieldError = .invalidEmail
@@ -164,13 +146,12 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        self.resignTextFields()
-        self.disableView()
-        self.loginButton.startAnimation()
-        self.createAccountViewModel.login(email: email, password: password) { [weak self] (success, errorString) in
+        resignTextFields()
+        disableView()
+        loginButton.startAnimation()
+        createAccountViewModel.login(email: email, password: password) { [weak self] (success, errorString) in
             DispatchQueue.main.async {
-                // guard?
-                if errorString != nil {
+                guard (errorString != nil) else {
                     self?.loginButton.stopAnimation(animationStyle: .shake,
                                                   revertAfterDelay: 1.0,
                                                   completion: {
@@ -201,27 +182,7 @@ internal class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // MARK: showFeedback() and handleShowHome() can extract in extension or base class and reuse
-    // repetetive code
-
-    private func showFeedback(message: String) {
-        if let window = UIApplication.shared.keyWindow {
-            self.errorFeedback.showFeedback(backgroundColor: UIColor.brandBlack,
-                                            feedbackLabel: message,
-                                            feedbackLabelColor: UIColor.white,
-                                            durationOnScreen: 3.0,
-                                            currentView: window,
-                                            showsBackgroundGradient: true,
-                                            isAboveTabBar: false)
-        }
-    }
-    
-    @objc private func handleShowHome() {
-        let splashVC = UINavigationController(rootViewController: SplashViewController())
-        self.present(splashVC, animated: true, completion: nil)
-    }
-    
-    // MARK: ... even touchesBegan nad resignTextFields() repets ... a lot
+    // MARK: ... even touchesBegan and resignTextFields() repets ... a lot
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.resignTextFields()
     }

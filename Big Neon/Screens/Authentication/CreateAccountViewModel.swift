@@ -33,7 +33,7 @@ final class AccountViewModel {
         BusinessService.shared.database.loginToAccount(withEmail: email, password: password) { (error, tokens) in
             
             if error != nil {
-                completion(false, error?.localizedDescription)
+                completion(false, error)
                 return
             }
             
