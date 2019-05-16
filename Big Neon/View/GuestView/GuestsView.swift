@@ -13,8 +13,7 @@ import Big_Neon_UI
 
 public protocol GuestListViewProtocol: class {
     func showGuestList()
-    func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool)
-//    func reloadGuests(tableIndex: IndexPath)
+    func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath: IndexPath?)
     func reloadGuests()
 }
 
@@ -59,7 +58,6 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
             
             self.guestSectionTitles = [String](guestsDictionary.keys)
             self.guestSectionTitles = guestSectionTitles.sorted(by: { $0 < $1 })
-            self.guestTableView.reloadData()
         }
     }
     

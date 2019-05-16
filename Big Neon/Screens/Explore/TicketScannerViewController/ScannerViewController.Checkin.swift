@@ -62,7 +62,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             
             if self.scannerViewModel?.scannerMode() == true {
                 self.generator.notificationOccurred(.success)
-                self.checkinAutomatically(withTicketID: ticketID, fromGuestTableView: false)
+                self.checkinAutomatically(withTicketID: ticketID, fromGuestTableView: false, atIndexPath: nil)
             } else {
                 self.checkinManually(withTicketID: ticketID)
             }
@@ -74,7 +74,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     
     // seems unnecessary too complicate
     // too much same code... maybe is better to extract it in function
-    func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool) {
+    func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath: IndexPath?) {
         self.scannerViewModel?.automaticallyChecking(ticketID: ticketID) { (scanFeedback) in
             switch scanFeedback {
             case .alreadyRedeemed:
@@ -128,7 +128,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                 return
             default:
                 if fromGuestTableView == true {
-                    self.reloadGuests()
+                    self.reloadGuests(atIndex: atIndexPath!)
                     self.generator.notificationOccurred(.success)
                     return
                 }

@@ -55,14 +55,19 @@ extension GuestListView {
         if guestValues == nil {
             return guestCell
         }
+        
+        if guestValues!.lastName == "" && guestValues!.firstName  == ""{
+            guestCell.guestNameLabel.text = "No Details Provided"
+        } else {
+            guestCell.guestNameLabel.text = guestValues!.lastName + ", " + guestValues!.firstName
+        }
 
-        guestCell.guestNameLabel.text = guestValues!.lastName + ", " + guestValues!.firstName
+        
         let price = Int(guestValues!.priceInCents)
         let ticketID = "#" + guestValues!.id.suffix(8).uppercased()
         guestCell.ticketTypeNameLabel.text = price.dollarString + " | " + guestValues!.ticketType + " | " + ticketID
 
-        if guestValues!.status.lowercased()
-                   == "Purchased".lowercased() {
+        if guestValues!.status.lowercased() == "Purchased".lowercased() {
             guestCell.ticketStateView.tagLabel.text = "PURCHASED"
             guestCell.ticketStateView.backgroundColor = UIColor.brandGreen
         } else {
@@ -108,7 +113,7 @@ extension GuestListView {
     
     private func checkinTicket(ticketID: String?, atIndex index: IndexPath) {
         if let id = ticketID {
-            self.delegate?.checkinAutomatically(withTicketID: id, fromGuestTableView: true)
+            self.delegate?.checkinAutomatically(withTicketID: id, fromGuestTableView: true, atIndexPath: index)
         }
     }
     
