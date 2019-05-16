@@ -62,14 +62,19 @@ extension DatabaseService {
         
 
                 do {
+                    
                     let jsonObject = try JSONSerialization.jsonObject(with: response.data!, options: [])
                     guard let jsonDictionary = jsonObject as? [String: Any] else {
                             throw NSError(domain: dataErrorDomain, code: DataErrorCode.wrongDataFormat.rawValue, userInfo: nil)
                     }
-                    let error = jsonDictionary["error"] as! String
-                    completion(error, nil)
+                    
+                    if let error = jsonDictionary["error"] as? String {
+                        completion(error, nil)
+                    }
                 } catch {
-                    completion(nil, nil)
+                    print("No Error Found")
+//                    let error = error.localizedDescription as String
+//                    completion(error, nil)
                 }
                 
                 guard let data = response.result.value else {
@@ -77,7 +82,7 @@ extension DatabaseService {
                     completion(nil, nil)
                     return
                 }
-                
+
                 do {
                     let decoder = JSONDecoder()
                     let tokens = try decoder.decode(Tokens.self, from: data!)

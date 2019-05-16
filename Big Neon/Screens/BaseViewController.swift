@@ -6,6 +6,7 @@ class BaseViewController: UIViewController  {
     let doorPersonViemodel: DoorPersonViewModel = DoorPersonViewModel()
     let eventDetailViewModel: ExploreDetailViewModel = ExploreDetailViewModel()
     let ticketsViewModel: TicketsViewModel = TicketsViewModel()
+    let generator = UINotificationFeedbackGenerator()
     
     lazy var errorFeedback: FeedbackSystem = {
         let feedback = FeedbackSystem()
@@ -39,6 +40,7 @@ class BaseViewController: UIViewController  {
     }
     
     func showFeedback(message: String) {
+        self.generator.notificationOccurred(.error)
         if let window = UIApplication.shared.keyWindow {
             self.errorFeedback.showFeedback(backgroundColor: UIColor.brandBlack,
                                             feedbackLabel: message,

@@ -13,6 +13,11 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     var buttonBottomAnchorConstraint: NSLayoutConstraint?
     let createAccountViewModel: AccountViewModel = AccountViewModel()
     
+    lazy var loginFetcher: Fetcher = {
+        let fetcher = Fetcher()
+        return fetcher
+    }()
+    
     lazy var headerLabel: BrandTitleLabel = {
         let label = BrandTitleLabel()
         label.text = "Welcome Back!"
@@ -151,7 +156,8 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         loginButton.startAnimation()
         createAccountViewModel.login(email: email, password: password) { [weak self] (success, errorString) in
             DispatchQueue.main.async {
-                guard (errorString != nil) else {
+                
+                if errorString != nil {
                     self?.loginButton.stopAnimation(animationStyle: .shake,
                                                   revertAfterDelay: 1.0,
                                                   completion: {
@@ -172,14 +178,20 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
                     })
                     return
                 }
+                
                 self?.loginButton.stopAnimation(animationStyle: .normal,
                                               revertAfterDelay: 1.0,
                                               completion: {
                                                 self?.enableView()
-                                                self?.handleShowHome()
+                                                self?.navToHome()
                 })
             }
         }
+    }
+    
+    @objc private func navToHome() {
+        let splashVC = UINavigationController(rootViewController: SplashViewController())
+        self.present(splashVC, animated: true, completion: nil)
     }
     
     // MARK: ... even touchesBegan and resignTextFields() repets ... a lot
