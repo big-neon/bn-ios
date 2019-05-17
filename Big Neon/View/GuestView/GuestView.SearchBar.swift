@@ -3,11 +3,6 @@ import UIKit
 import Big_Neon_UI
 import Big_Neon_Core
 
-// MARK: lots of magic numbers... consider using layout/config class/enum
-// MARK: self is not needed
-// MARK: use abbreviation / syntax sugar
-// MARK: internal is default access level - not need for explicit definition
-
 extension GuestListView {
 
     func searchBarIsEmpty() -> Bool {

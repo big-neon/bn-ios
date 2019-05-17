@@ -1,19 +1,13 @@
 import UIKit
 
-// MARK: lots of magic numbers... consider using layout/config class/enum
-// MARK: self is not needed
-// MARK: use abbreviation / syntax sugar
-
 public class CheckinTagView: UIView {
     
-    // lazy?
-    public let tagLabel: UILabel = {
+    lazy var tagLabel: UILabel = {
         let label = UILabel()
         label.text = "BANNED".uppercased()
         label.textColor = UIColor.brandWhite
         label.textAlignment = .center
-        // idea: add font extension for all used fonts and sizes in project
-        label.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.bold)
+        label.font = UIFont.systemFont(ofSize: 10, weight: UIFont.Weight.bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

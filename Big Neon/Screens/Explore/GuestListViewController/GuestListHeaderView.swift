@@ -44,12 +44,12 @@ class GuestListHeaderView: UIView {
         let label = UILabel()
         label.numberOfLines = 2
         label.textColor = UIColor.brandGrey
-        label.font = UIFont.systemFont(ofSize: 15.0, weight: UIFont.Weight.regular)
+        label.font = UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.medium)
         return label
     }()
     
     lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
+        let stackView = UIStackView(arrangedSubviews: [subtitleLabel])
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.spacing = 4.0
