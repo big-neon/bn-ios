@@ -80,6 +80,10 @@
 		C683232D21FF2D71002342AE /* ProfileEditViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683232C21FF2D71002342AE /* ProfileEditViewController.TableView.swift */; };
 		C683232F21FF31F5002342AE /* ProfileEditingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683232E21FF31F5002342AE /* ProfileEditingTableViewCell.swift */; };
 		C683233121FF34DF002342AE /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683233021FF34DF002342AE /* LogoutCell.swift */; };
+		C69370FB228F06D2004EBC12 /* GuestListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69370FA228F06D2004EBC12 /* GuestListViewController.swift */; };
+		C69370FD228F3570004EBC12 /* GuestListViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69370FC228F3570004EBC12 /* GuestListViewController.TableView.swift */; };
+		C6937100228F411B004EBC12 /* GuestListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69370FF228F411B004EBC12 /* GuestListHeaderView.swift */; };
+		C6937102228F4BDA004EBC12 /* GuestListNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6937101228F4BDA004EBC12 /* GuestListNavigationController.swift */; };
 		C694D25A21D0BFE600B2AE07 /* ApplicationRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */; };
 		C698AB1021EDE9BC0073F1FB /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB0F21EDE9BC0073F1FB /* CreateAccountViewController.swift */; };
 		C698AB1621EF1FE00073F1FB /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB1521EF1FE00073F1FB /* CreateAccountViewModel.swift */; };
@@ -265,6 +269,10 @@
 		C683233021FF34DF002342AE /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		C68A4220222FE65F002789E6 /* ManualCheckinModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualCheckinModeView.swift; sourceTree = "<group>"; };
 		C68A422222304D9F002789E6 /* CheckinTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinTagView.swift; sourceTree = "<group>"; };
+		C69370FA228F06D2004EBC12 /* GuestListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListViewController.swift; sourceTree = "<group>"; };
+		C69370FC228F3570004EBC12 /* GuestListViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListViewController.TableView.swift; sourceTree = "<group>"; };
+		C69370FF228F411B004EBC12 /* GuestListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListHeaderView.swift; sourceTree = "<group>"; };
+		C6937101228F4BDA004EBC12 /* GuestListNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListNavigationController.swift; sourceTree = "<group>"; };
 		C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouting.swift; sourceTree = "<group>"; };
 		C698AB0F21EDE9BC0073F1FB /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		C698AB1521EF1FE00073F1FB /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
@@ -409,7 +417,6 @@
 				4926F0DEA6692EA1B2BCFB44 /* Pods-Big Neon UI.debug.xcconfig */,
 				7AE55D7CFD5B5B532A9617AF /* Pods-Big Neon UI.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -594,6 +601,7 @@
 			children = (
 				C6AFB78C21DD655900670AC3 /* DoorPersonViewController */,
 				C63D1A152220054700152E83 /* TicketScannerViewController */,
+				C69370FE228F3EB9004EBC12 /* GuestListViewController */,
 				C6AFB78D21DD656500670AC3 /* EventDetailViewController */,
 			);
 			path = Explore;
@@ -648,6 +656,18 @@
 				C6EC209F220079ED00BD10DD /* ProfileEditCells */,
 			);
 			path = ProfileEditingViewController;
+			sourceTree = "<group>";
+		};
+		C69370FE228F3EB9004EBC12 /* GuestListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C69370FF228F411B004EBC12 /* GuestListHeaderView.swift */,
+				C69370FA228F06D2004EBC12 /* GuestListViewController.swift */,
+				C6937101228F4BDA004EBC12 /* GuestListNavigationController.swift */,
+				C69370FC228F3570004EBC12 /* GuestListViewController.TableView.swift */,
+				C6EC4B2D2227C1150056CE73 /* GuestTableViewCell.swift */,
+			);
+			path = GuestListViewController;
 			sourceTree = "<group>";
 		};
 		C694D25721D0BFB300B2AE07 /* Config */ = {
@@ -976,7 +996,6 @@
 				C626B6C922254A9A00EB3150 /* GuestsView.swift */,
 				C6EC4B2B2227BBAD0056CE73 /* GuestsView.TableView.swift */,
 				C69E20F8225608600032C5E4 /* GuestView.SearchBar.swift */,
-				C6EC4B2D2227C1150056CE73 /* GuestTableViewCell.swift */,
 			);
 			path = GuestView;
 			sourceTree = "<group>";
@@ -1313,7 +1332,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		C60602592254D6D000C5C066 /* Fabric Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1331,7 +1351,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		D6758ACFF600C1DF4AAC986B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1396,6 +1417,7 @@
 				C6EC209C2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift in Sources */,
 				C623C07B2251E41F0020D0A8 /* TicketQRCodeView.swift in Sources */,
 				C623C06A2251E3920020D0A8 /* EventCheckoutDetailCell.swift in Sources */,
+				C69370FB228F06D2004EBC12 /* GuestListViewController.swift in Sources */,
 				C623C06C2251E39A0020D0A8 /* SubTotalCell.swift in Sources */,
 				C683232D21FF2D71002342AE /* ProfileEditViewController.TableView.swift in Sources */,
 				C62BC78621CCC3F700830A5F /* DoorPersonViewController.swift in Sources */,
@@ -1405,14 +1427,17 @@
 				C69E20F9225608600032C5E4 /* GuestView.SearchBar.swift in Sources */,
 				C683232921FF07FE002342AE /* ProfileEditViewController.swift in Sources */,
 				C623C06F2251E3A90020D0A8 /* HotWeekCell.swift in Sources */,
+				C6937102228F4BDA004EBC12 /* GuestListNavigationController.swift in Sources */,
 				C6E648532240D088000F2DFB /* ScannerViewController.swift in Sources */,
 				C61853C822144869005D6250 /* CheckoutView.swift in Sources */,
 				C683232F21FF31F5002342AE /* ProfileEditingTableViewCell.swift in Sources */,
+				C69370FD228F3570004EBC12 /* GuestListViewController.TableView.swift in Sources */,
 				C6AFB79C21DD76AE00670AC3 /* ExploreDetailViewModel.swift in Sources */,
 				C6B6DEA2227ABE3A003367D7 /* Fetcher.swift in Sources */,
 				C683232B21FF28CB002342AE /* ProfileEditViewModel.swift in Sources */,
 				C64B0AD821D123F400386000 /* TicketsViewController.swift in Sources */,
 				C64B0AC221D0DD5E00386000 /* TabBarController.swift in Sources */,
+				C6937100228F411B004EBC12 /* GuestListHeaderView.swift in Sources */,
 				C623C0812251E42C0020D0A8 /* LastScannedUserView.swift in Sources */,
 				C6BCBE9E222D06C70026B858 /* ScannerViewModel.swift in Sources */,
 				C623C0762251E3E30020D0A8 /* ProfileTableCell.swift in Sources */,

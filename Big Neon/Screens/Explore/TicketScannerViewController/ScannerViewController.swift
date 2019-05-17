@@ -4,6 +4,7 @@ import AVFoundation
 import UIKit
 import Big_Neon_UI
 import Big_Neon_Core
+import PanModal
 
 public protocol ScannerViewDelegate: class {
     func completeCheckin()
@@ -84,6 +85,8 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    var guestListVC = GuestListViewController()
     
     lazy var guestListView: GuestListView = {
         let view =  GuestListView()
@@ -229,24 +232,21 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     }
     
     private func configureGuestList() {
-        view.addSubview(guestListView)
-        guestListView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        guestListView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        guestListTopAnchor = guestListView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UIScreen.main.bounds.height - 64.0)
-        guestListTopAnchor?.isActive = true
-        guestListView.heightAnchor.constraint(equalToConstant: 560.0).isActive = true
-        
         guard let eventID = self.event?.id else {
             return
         }
-        self.fetchGuests(forEventID: eventID)
+        self.fetchGuests(forEventID: eventID, event: self.event!)
     }
     
-    private func fetchGuests(forEventID eventID: String) {
+    private func fetchGuests(forEventID eventID: String, event: EventsData) {
         self.scannerViewModel?.fetchGuests(forEventID: eventID, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
-//                self?.scannerViewModel?.guestsCoreData = (self?.fetcher.fetchLocalGuests())!
-                self?.guestListView.guests = self?.scannerViewModel?.ticketsFetched //    self?.scannerViewModel?.guestsCoreData
+                guard let self = self else {return}
+                let navGuestVC = GuestListNavigationController(rootViewController: self.guestListVC)
+                self.guestListVC.event = event
+                self.guestListVC.delegate = self
+                self.guestListVC.guests = self.scannerViewModel?.ticketsFetched
+                self.presentPanModal(navGuestVC)
             }
         })
     }
@@ -274,8 +274,8 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         
         self.scannerViewModel?.fetchGuests(forEventID: eventID, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
-                self?.guestListView.guests = self?.scannerViewModel?.ticketsFetched
-                self?.guestListView.guestTableView.reloadRows(at: [index], with: UITableView.RowAnimation.fade)
+                self?.guestListVC.guests = self?.scannerViewModel?.ticketsFetched
+                self?.guestListVC.guestTableView.reloadRows(at: [index], with: UITableView.RowAnimation.fade)
                 return
             }
         })

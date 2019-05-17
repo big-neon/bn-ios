@@ -49,7 +49,7 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
     private func configureNavBar() {
         self.navigationLineBar()
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationController?.setNavigationTitle(withTitle: "Account", titleColour: UIColor.brandBlack)
+        self.navigationController?.setNavigationTitle(withTitle: "Account")
         self.navigationController?.navigationBar.tintColor = UIColor.brandPrimary
         self.navigationController?.navigationBar.barTintColor = UIColor.white
         self.navigationController?.navigationBar.backgroundColor = UIColor.white

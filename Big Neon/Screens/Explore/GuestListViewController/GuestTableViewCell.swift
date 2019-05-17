@@ -9,7 +9,7 @@ final public class GuestTableViewCell: UITableViewCell {
     public lazy var guestNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandBlack
-        label.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.bold)
+        label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

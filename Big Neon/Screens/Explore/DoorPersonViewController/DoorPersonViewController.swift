@@ -139,12 +139,15 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.navigationLineBar()
+        self.configureNavBar()
     }
 
     private func configureNavBar() {
         self.navigationNoLineBar()
-        self.navigationItem.title = "My Events"
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
+        self.navigationController?.navigationBar.tintColor = UIColor.brandBlack
+        self.setNavigationTitle(withTitle: "My Events")
+        
         userProfileImageView.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
         userProfileImageView.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: userProfileImageView)
