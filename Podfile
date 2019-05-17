@@ -1,8 +1,6 @@
 platform :ios, '11.0'
 use_frameworks!
   target 'Big Neon Core' do
-    pod 'Cloudinary'
-    pod 'PanModal'
     pod 'Stripe'
     pod 'Alamofire', '~> 5.0.0.beta.1'
     pod 'SwiftKeychainWrapper'

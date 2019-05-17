@@ -1,7 +1,6 @@
 
 import Foundation
 import Alamofire
-import Cloudinary
 
 extension DatabaseService {
 
@@ -89,6 +88,7 @@ extension DatabaseService {
         
     }
     
+    /*
     public func updateUserImage(image: UIImage, lastName: String, email: String, completion: @escaping(Error?) -> Void) {
         
         case profilePicURL = "profile_pic_url"
@@ -134,8 +134,8 @@ extension DatabaseService {
                     completion(error, nil)
                 }
         }
-        
     }
+    */
     
     public func fetchUser(withAccessToken accessToken: String, completion: @escaping(Error?, User?) -> Void) {
         

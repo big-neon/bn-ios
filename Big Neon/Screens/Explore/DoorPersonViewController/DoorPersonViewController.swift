@@ -152,6 +152,8 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         self.doorPersonViemodel.fetchUser { [weak self] (_) in
             if let profilePicURL = self?.doorPersonViemodel.user?.profilePicURL   {
                 self?.userProfileImageView.pin_setImage(from: URL(string: profilePicURL), placeholderImage: UIImage(named: "ic_profilePicture"))
+            } else {
+                self?.userProfileImageView.pin_setPlaceholder(with: UIImage(named: "ic_profilePicture"))
             }
         }
     }
