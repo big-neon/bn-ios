@@ -6,17 +6,6 @@ import AVFoundation
 
 extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     
-    @objc internal func handleClose() {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @objc internal func handleNothing() {
-    }
-    
-    func showGuestList() {
-        self.isShowingGuests = !self.isShowingGuests
-    }
-    
     func scannerSetAutomatic() {
         self.hideScannedUser()
         self.scannerViewModel?.setCheckingModeAutomatic()

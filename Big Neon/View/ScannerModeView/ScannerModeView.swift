@@ -3,27 +3,32 @@ import UIKit
 import PWSwitch
 import Big_Neon_UI
 
-// MARK: lots of magic numbers... consider using layout/config class/enum
-// MARK: use abbreviation / syntax sugar
-
 public class ScannerModeView: UIView {
     
-    internal var changeModeSwitch: PWSwitch?
     weak var delegate: ScannerViewDelegate?
     
-    public var setAutoMode: Bool = false {
+    var setAutoMode: Bool = false {
         didSet {
             if setAutoMode == false {
-                self.changeModeSwitch?.setOn(false, animated: true)
+                self.changeModeSwitch.setOn(false, animated: true)
                 self.modeLabel.text = "Manual"
-                self.modeLabel.textColor = UIColor.brandGreen
+                self.modeLabel.textColor = UIColor.brandPrimary
                 return
             }
-            self.changeModeSwitch?.setOn(true, animated: true)
+            self.changeModeSwitch.setOn(true, animated: true)
             self.modeLabel.text = "Auto"
-            self.modeLabel.textColor = UIColor.brandPrimary
+            self.modeLabel.textColor = UIColor.brandGreen
         }
     }
+    
+    lazy var changeModeSwitch: UISwitch = {
+        let modeSwitch = UISwitch()
+        modeSwitch.thumbTintColor = UIColor.white
+        modeSwitch.tintColor = UIColor.brandPrimary
+        modeSwitch.addTarget(self, action: #selector(stateChanged), for: UIControl.Event.valueChanged)
+        modeSwitch.translatesAutoresizingMaskIntoConstraints = false
+        return modeSwitch
+    }()
     
     lazy var headerLabel: BrandTitleLabel = {
         let label = BrandTitleLabel()
@@ -42,58 +47,31 @@ public class ScannerModeView: UIView {
         return label
     }()
     
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [headerLabel, modeLabel, changeModeSwitch])
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.spacing = 3.0
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.black.withAlphaComponent(0.7)
-        self.layer.cornerRadius = 20.0
-        self.configurePWSwitch()
         self.configureCellView()
     }
     
-    private func configurePWSwitch() {
-        changeModeSwitch = PWSwitch(frame: CGRect(x: UIScreen.main.bounds.width - 160, y: 6, width: 60, height: 30))
-        changeModeSwitch?.shouldFillOnPush = true
-        changeModeSwitch?.cornerRadius = 15
-        changeModeSwitch?.thumbDiameter = 24.0
-        
-        //    Off State
-        changeModeSwitch?.trackOffBorderColor = UIColor.brandGreen
-        changeModeSwitch?.trackOffFillColor = UIColor.brandGreen
-        changeModeSwitch?.thumbOffBorderColor = UIColor.white
-        changeModeSwitch?.thumbOffFillColor = UIColor.white
-        
-        //    Pressed State
-        changeModeSwitch?.trackOffPushBorderColor = UIColor.brandLightGrey
-        changeModeSwitch?.thumbOffPushBorderColor = UIColor.white
-        
-        //    On State
-        changeModeSwitch?.trackOnFillColor = UIColor.brandPrimary
-        changeModeSwitch?.trackOnBorderColor = UIColor.brandPrimary
-        changeModeSwitch?.thumbOnFillColor = UIColor.white
-        changeModeSwitch?.thumbOnBorderColor = UIColor.white
-        
-        changeModeSwitch?.addTarget(self, action: #selector(stateChanged), for: UIControl.Event.valueChanged)
-        addSubview(changeModeSwitch!)
-    }
-    
     private func configureCellView() {
-        addSubview(headerLabel)
-        addSubview(modeLabel)
-        
-        headerLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 24).isActive  = true
-        headerLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        headerLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        headerLabel.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        
-        modeLabel.leftAnchor.constraint(equalTo: headerLabel.rightAnchor, constant: 2.0).isActive  = true
-        modeLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        modeLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        modeLabel.widthAnchor.constraint(equalToConstant: 60).isActive = true
-    
+        addSubview(stackView)
+        stackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive  = true
+        stackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive  = true
+        stackView.topAnchor.constraint(equalTo: topAnchor).isActive  = true
+        stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive  = true
     }
     
-    @objc private func stateChanged(switchState: PWSwitch) {
-        if switchState.on {
+    @objc private func stateChanged(switchState: UISwitch) {
+        if switchState.isOn {
             self.setAutoMode = true
             self.delegate?.scannerSetAutomatic()
         } else {

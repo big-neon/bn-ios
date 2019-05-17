@@ -187,7 +187,7 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
     
     @objc private func showGuest() {
         self.isShowingGuests = !self.isShowingGuests
-        self.delegate?.showGuestList()
+//        self.delegate?.showGuestList()
     }
     
     required public init?(coder aDecoder: NSCoder) {

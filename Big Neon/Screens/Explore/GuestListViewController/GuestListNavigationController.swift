@@ -8,12 +8,9 @@ class GuestListNavigationController: UINavigationController, PanModalPresentable
         return (topViewController as? PanModalPresentable)?.panScrollable
     }
     
-    var longFormHeight: PanModalHeight {
-        return .maxHeight
+    var shortFormHeight: PanModalHeight {
+        return .contentHeight(200)
     }
     
-    var shortFormHeight: PanModalHeight {
-        return longFormHeight
-    }
 }
 

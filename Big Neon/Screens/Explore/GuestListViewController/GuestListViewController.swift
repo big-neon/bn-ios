@@ -128,29 +128,30 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     }
     
     var shortFormHeight: PanModalHeight {
-        return isShortFormEnabled ? .contentHeight(300.0) : longFormHeight
+        return .contentHeight(200)
+//        return isShortFormEnabled ? .contentHeight(300.0) : longFormHeight
     }
     
-    var scrollIndicatorInsets: UIEdgeInsets {
-        let bottomOffset = presentingViewController?.bottomLayoutGuide.length ?? 0
-        return UIEdgeInsets(top: headerView.frame.size.height, left: 0, bottom: bottomOffset, right: 0)
-    }
-    
-    var anchorModalToLongForm: Bool {
-        return false
-    }
-    
-    func shouldPrioritize(panModalGestureRecognizer: UIPanGestureRecognizer) -> Bool {
-        let location = panModalGestureRecognizer.location(in: view)
-        return headerView.frame.contains(location)
-    }
-    
-    func willTransition(to state: PanModalPresentationController.PresentationState) {
-        guard isShortFormEnabled, case .longForm = state
-            else { return }
-        
-        isShortFormEnabled = false
-        panModalSetNeedsLayoutUpdate()
-    }
+//    var scrollIndicatorInsets: UIEdgeInsets {
+//        let bottomOffset = presentingViewController?.bottomLayoutGuide.length ?? 0
+//        return UIEdgeInsets(top: headerView.frame.size.height, left: 0, bottom: bottomOffset, right: 0)
+//    }
+//
+//    var anchorModalToLongForm: Bool {
+//        return false
+//    }
+//
+//    func shouldPrioritize(panModalGestureRecognizer: UIPanGestureRecognizer) -> Bool {
+//        let location = panModalGestureRecognizer.location(in: view)
+//        return headerView.frame.contains(location)
+//    }
+//
+//    func willTransition(to state: PanModalPresentationController.PresentationState) {
+//        guard isShortFormEnabled, case .longForm = state
+//            else { return }
+//
+//        isShortFormEnabled = false
+//        panModalSetNeedsLayoutUpdate()
+//    }
 
 }
