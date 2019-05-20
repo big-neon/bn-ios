@@ -105,13 +105,13 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         self.view.addSubview(self.blurView!)
     }
     
-    lazy var feedbackView: TicketScanFeedbackView = {
-        let view =  TicketScanFeedbackView()
-        view.layer.opacity = 0.0
-        view.layer.contentsScale = 0.0
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+//    lazy var feedbackView: TicketScanFeedbackView = {
+//        let view =  TicketScanFeedbackView()
+//        view.layer.opacity = 0.0
+//        view.layer.contentsScale = 0.0
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        return view
+//    }()
     
     lazy var scannedUserView: LastScannedUserView = {
         let view =  LastScannedUserView()
@@ -191,7 +191,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     private func configureScanner() {
         
         guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else {
-            print("Video Failed to Run: Possibly running on a simulator with no video")
             configureScannedUserView()
             configureGuestList()
             return
@@ -217,7 +216,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         captureSession.startRunning()
         configureBlur()
         configureScannedUserView()
-        configureGuestList()
     }
     
     
@@ -240,20 +238,20 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     }
     
     private func configureScanFeedbackView() {
-        view.addSubview(feedbackView)
-        feedbackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        feedbackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -20.0).isActive = true
-        feedbackView.heightAnchor.constraint(equalToConstant: 150.0).isActive = true
-        feedbackView.widthAnchor.constraint(equalToConstant: 290.0).isActive = true
+//        view.addSubview(feedbackView)
+//        feedbackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+//        feedbackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -20.0).isActive = true
+//        feedbackView.heightAnchor.constraint(equalToConstant: 150.0).isActive = true
+//        feedbackView.widthAnchor.constraint(equalToConstant: 290.0).isActive = true
     }
     
     private func configureScannedUserView() {
         view.addSubview(scannedUserView)
-        scannedUserView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40.0).isActive = true
-        scannedUserView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40.0).isActive = true
-        scannedUserBottomAnchor = scannedUserView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 160.0)
+        scannedUserView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20.0).isActive = true
+        scannedUserView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20.0).isActive = true
+        scannedUserBottomAnchor = scannedUserView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 200.0) //   160.0
         scannedUserBottomAnchor?.isActive = true
-        scannedUserView.heightAnchor.constraint(equalToConstant: 64.0).isActive = true
+        scannedUserView.heightAnchor.constraint(equalToConstant: 76.0).isActive = true
     }
     
     @objc func showGuestList() {

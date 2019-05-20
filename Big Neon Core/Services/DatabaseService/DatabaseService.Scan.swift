@@ -34,6 +34,7 @@ extension DatabaseService {
                         completion(.wrongEvent, "Check to Make sure you are scanning the correct event ticket", nil)
                         return
                     default:
+                        print(response.result.error?.localizedDescription)
                         completion(.issueFound, response.result.error?.localizedDescription, nil)
                         return
                     }

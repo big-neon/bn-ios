@@ -52,6 +52,8 @@
 		C62BC78B21CCC3FB00830A5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78A21CCC3FB00830A5F /* Assets.xcassets */; };
 		C62BC78E21CCC3FB00830A5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78C21CCC3FB00830A5F /* LaunchScreen.storyboard */; };
 		C62BC79921CCC3FB00830A5F /* Big_NeonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */; };
+		C636674422935CE000A356F9 /* scannerViewController.ManualScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C636674322935CE000A356F9 /* scannerViewController.ManualScan.swift */; };
+		C636674622935D4E00A356F9 /* ScannerViewController.AutoScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C636674522935D4E00A356F9 /* ScannerViewController.AutoScan.swift */; };
 		C63D86C02231282F003CFAA7 /* DatabaseService.Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D86BF2231282F003CFAA7 /* DatabaseService.Scan.swift */; };
 		C63D86C22231414D003CFAA7 /* RedeemedTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D86C12231414D003CFAA7 /* RedeemedTicket.swift */; };
 		C63D86C622325C8B003CFAA7 /* RedeemKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D86C522325C8B003CFAA7 /* RedeemKey.swift */; };
@@ -69,7 +71,7 @@
 		C64B0AE121D1294600386000 /* ProfileViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */; };
 		C655BD39221D69FD00EB1FDD /* DatabaseService.Checkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = C655BD38221D69FD00EB1FDD /* DatabaseService.Checkins.swift */; };
 		C6562F522203286E0020B6D3 /* UtilityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6562F512203286E0020B6D3 /* UtilityConstants.swift */; };
-		C665B6E7224B506900581E2E /* ScannerViewController.Checkin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665B6E6224B506900581E2E /* ScannerViewController.Checkin.swift */; };
+		C665B6E7224B506900581E2E /* ScannerViewController.ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665B6E6224B506900581E2E /* ScannerViewController.ScannerView.swift */; };
 		C665DFE521E87CB800DFB955 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */; };
 		C66C0BA521E337D40066CD0F /* splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C66C0BA421E337D40066CD0F /* splash.mp4 */; };
 		C66C0BA721E339CA0066CD0F /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C0BA621E339CA0066CD0F /* SplashViewController.swift */; };
@@ -241,6 +243,8 @@
 		C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Big_NeonTests.swift; sourceTree = "<group>"; };
 		C62BC79A21CCC3FB00830A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C62E64EC224E0DC000A1039C /* DoorPersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonCell.swift; sourceTree = "<group>"; };
+		C636674322935CE000A356F9 /* scannerViewController.ManualScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scannerViewController.ManualScan.swift; sourceTree = "<group>"; };
+		C636674522935D4E00A356F9 /* ScannerViewController.AutoScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.AutoScan.swift; sourceTree = "<group>"; };
 		C63D86BF2231282F003CFAA7 /* DatabaseService.Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Scan.swift; sourceTree = "<group>"; };
 		C63D86C12231414D003CFAA7 /* RedeemedTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemedTicket.swift; sourceTree = "<group>"; };
 		C63D86C522325C8B003CFAA7 /* RedeemKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemKey.swift; sourceTree = "<group>"; };
@@ -258,7 +262,7 @@
 		C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.TableView.swift; sourceTree = "<group>"; };
 		C655BD38221D69FD00EB1FDD /* DatabaseService.Checkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Checkins.swift; sourceTree = "<group>"; };
 		C6562F512203286E0020B6D3 /* UtilityConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityConstants.swift; sourceTree = "<group>"; };
-		C665B6E6224B506900581E2E /* ScannerViewController.Checkin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.Checkin.swift; sourceTree = "<group>"; };
+		C665B6E6224B506900581E2E /* ScannerViewController.ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.ScannerView.swift; sourceTree = "<group>"; };
 		C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C66C0BA421E337D40066CD0F /* splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.mp4; sourceTree = "<group>"; };
 		C66C0BA621E339CA0066CD0F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -542,7 +546,9 @@
 			children = (
 				C6BCBE9D222D06C70026B858 /* ScannerViewModel.swift */,
 				C6E648522240D088000F2DFB /* ScannerViewController.swift */,
-				C665B6E6224B506900581E2E /* ScannerViewController.Checkin.swift */,
+				C665B6E6224B506900581E2E /* ScannerViewController.ScannerView.swift */,
+				C636674522935D4E00A356F9 /* ScannerViewController.AutoScan.swift */,
+				C636674322935CE000A356F9 /* scannerViewController.ManualScan.swift */,
 			);
 			path = TicketScannerViewController;
 			sourceTree = "<group>";
@@ -1399,8 +1405,9 @@
 				C61853B92212F4C8005D6250 /* TicketTypeSelectionViewController.swift in Sources */,
 				C623C0712251E3B20020D0A8 /* SectionHeaderCell.swift in Sources */,
 				C64B0ABB21D0DCC900386000 /* DoorPersonViewController.CollectionView.swift in Sources */,
+				C636674622935D4E00A356F9 /* ScannerViewController.AutoScan.swift in Sources */,
 				C6562F522203286E0020B6D3 /* UtilityConstants.swift in Sources */,
-				C665B6E7224B506900581E2E /* ScannerViewController.Checkin.swift in Sources */,
+				C665B6E7224B506900581E2E /* ScannerViewController.ScannerView.swift in Sources */,
 				C61853C122140900005D6250 /* TicketTypeViewController.TableView.swift in Sources */,
 				C64B0ADC21D1276100386000 /* ProfileViewController.swift in Sources */,
 				C61853B72212F1DB005D6250 /* DoorPersonViewController.Search.swift in Sources */,
@@ -1450,6 +1457,7 @@
 				C623C0762251E3E30020D0A8 /* ProfileTableCell.swift in Sources */,
 				C6AFB79121DD65D200670AC3 /* EventDetailViewController.TableView.swift in Sources */,
 				C6EC209A220063DE00BD10DD /* ProfileImageUploadCell.swift in Sources */,
+				C636674422935CE000A356F9 /* scannerViewController.ManualScan.swift in Sources */,
 				C623C0792251E4180020D0A8 /* GuestsView.TableView.swift in Sources */,
 				C6D2413421EF53B000FC3E41 /* NamesViewController.swift in Sources */,
 				C61853C3221430A2005D6250 /* TicketTypeViewModel.swift in Sources */,

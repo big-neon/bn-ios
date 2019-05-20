@@ -94,6 +94,12 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
         self.scanVC?.stopScanning = false
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.configureNavBar()
+        self.configureSearch()
+    }
+    
     func configureNavBar() {
         navigationNoLineBar()
         navigationController?.navigationBar.barTintColor = UIColor.white
