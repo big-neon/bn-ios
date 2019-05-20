@@ -15,7 +15,7 @@ public struct RedeemableTicket: Codable {
     public let phone: String?
     public let redeemKey: String
     public let redeemDate: String?
-    public let status: TicketStatus
+    public let status: TicketStatus.RawValue
     public let eventID, eventName, doorTime: String
     public let eventStart, venueID, venueName: String
     public let refundSupported: Bool?

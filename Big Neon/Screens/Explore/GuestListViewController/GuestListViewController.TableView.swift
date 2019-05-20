@@ -67,7 +67,7 @@ extension GuestListViewController {
         let ticketID = "#" + guestValues!.id.suffix(8).uppercased()
         guestCell.ticketTypeNameLabel.text = price.dollarString + " | " + guestValues!.ticketType + " | " + ticketID
         
-        if guestValues!.status == TicketStatus.purchased {
+        if guestValues!.status == TicketStatus.purchased.rawValue {
             guestCell.ticketStateView.tagLabel.text = "PURCHASED"
             guestCell.ticketStateView.backgroundColor = UIColor.brandGreen
         } else {
@@ -90,7 +90,7 @@ extension GuestListViewController {
         let guestKey = guestSectionTitles[indexPath.section]
         if let guestValues = guestsDictionary[guestKey] {
             
-            if guestValues[indexPath.row].status == TicketStatus.purchased {
+            if guestValues[indexPath.row].status == TicketStatus.purchased.rawValue {
                 let deleteButton = UITableViewRowAction(style: .default, title: "Checkin") { (action, indexPath) in
                     let ticketID = guestValues[indexPath.row].id
                     self.checkinTicket(ticketID: ticketID, atIndex: indexPath)
