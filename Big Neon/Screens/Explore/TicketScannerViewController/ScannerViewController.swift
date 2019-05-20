@@ -176,6 +176,9 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         configureManualCheckinView()
         configureScanFeedbackView()
         configureHeader()
+        self.feedbackView.layer.opacity = 1.0
+        self.feedbackView.layer.contentsScale = 1.0
+        self.feedbackView.scanFeedback = ScanFeedback.issueFound
     }
     
 
@@ -271,8 +274,8 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         view.addSubview(feedbackView)
         feedbackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         feedbackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -20.0).isActive = true
-        feedbackView.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
-        feedbackView.widthAnchor.constraint(equalToConstant: 220.0).isActive = true
+        feedbackView.heightAnchor.constraint(equalToConstant: 150.0).isActive = true
+        feedbackView.widthAnchor.constraint(equalToConstant: 250.0).isActive = true
     }
     
     private func configureScannedUserView() {

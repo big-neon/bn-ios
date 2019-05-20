@@ -61,7 +61,7 @@ public class TicketScanFeedbackView: UIView {
         label.textColor = UIColor.white
         label.text = "No Network Connection"
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.medium)
+        label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -76,8 +76,8 @@ public class TicketScanFeedbackView: UIView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        
+        self.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        self.layer.cornerRadius = 10.0
         self.configureView()
     }
     
@@ -88,17 +88,17 @@ public class TicketScanFeedbackView: UIView {
         
         feedbackImageView.topAnchor.constraint(equalTo: topAnchor, constant: 10.0).isActive  = true
         feedbackImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        feedbackImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        feedbackImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        feedbackImageView.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        feedbackImageView.widthAnchor.constraint(equalToConstant: 32).isActive = true
         
         feedbackLabel.leftAnchor.constraint(equalTo: leftAnchor).isActive  = true
         feedbackLabel.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        feedbackLabel.topAnchor.constraint(equalTo: feedbackImageView.bottomAnchor, constant: 16.0).isActive = true
+        feedbackLabel.topAnchor.constraint(equalTo: feedbackImageView.bottomAnchor, constant: 20.0).isActive = true
         feedbackLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         
         feedbackDetailLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive  = true
-        feedbackDetailLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: 16).isActive = true
-        feedbackDetailLabel.topAnchor.constraint(equalTo: feedbackLabel.bottomAnchor, constant: 16.0).isActive = true
+        feedbackDetailLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -16).isActive = true
+        feedbackDetailLabel.topAnchor.constraint(equalTo: feedbackLabel.bottomAnchor, constant: 12.0).isActive = true
         feedbackDetailLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
     }
     
