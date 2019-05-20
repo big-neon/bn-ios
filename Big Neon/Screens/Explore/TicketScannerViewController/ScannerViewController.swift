@@ -148,9 +148,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         configureManualCheckinView()
         configureScanFeedbackView()
         configureHeader()
-//        self.feedbackView.layer.opacity = 1.0
-//        self.feedbackView.layer.contentsScale = 1.0
-//        self.feedbackView.scanFeedback = ScanFeedback.issueFound
     }
     
 
@@ -181,7 +178,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         closeButton.heightAnchor.constraint(equalToConstant: 48.0).isActive = true
         
         showGuestView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18).isActive = true
-        showGuestView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -12).isActive = true
+        showGuestView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         showGuestView.widthAnchor.constraint(equalToConstant: 160.0).isActive = true
         showGuestView.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
         

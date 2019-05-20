@@ -129,7 +129,6 @@ final class TicketScannerViewModel {
                     completion(.wrongEvent, errorString)
                     return
                 case .validTicketID?:
-                    // one guard?
                     guard let ticket = redeemTicket else {
                         completion(.ticketNotFound, errorString)
                         return

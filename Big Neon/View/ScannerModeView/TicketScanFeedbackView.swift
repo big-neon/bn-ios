@@ -59,7 +59,6 @@ public class TicketScanFeedbackView: UIView {
     let feedbackDetailLabel: BrandTitleLabel = {
         let label = BrandTitleLabel()
         label.textColor = UIColor.white
-        label.text = "No Network Connection"
         label.numberOfLines = 0
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
