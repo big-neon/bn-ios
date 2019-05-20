@@ -91,9 +91,9 @@ final class TicketScannerViewModel {
             return
         }
         
-        BusinessService.shared.database.redeemTicket(forTicketID: ticket.id, eventID: eventID, redeemKey: ticket.redeemKey) { (scanFeedback, ticket) in
+        BusinessService.shared.database.redeemTicket(forTicketID: ticket.id, eventID: eventID, redeemKey: ticket.redeemKey) { [weak self] (scanFeedback, ticket) in
             DispatchQueue.main.async {
-                self.redeemedTicket = ticket!
+                self?.redeemedTicket = ticket
                 completion(scanFeedback)
             }
         }
@@ -129,7 +129,7 @@ final class TicketScannerViewModel {
     internal func completeAutoCheckin(eventID: String, ticket: RedeemableTicket, completion: @escaping(ScanFeedback) -> Void) {
         BusinessService.shared.database.redeemTicket(forTicketID: ticket.id, eventID: eventID, redeemKey: ticket.redeemKey) { [weak self] (scanFeedback, ticket) in
             DispatchQueue.main.async {
-                self?.redeemedTicket = ticket!
+                self?.redeemedTicket = ticket
                 completion(scanFeedback)
             }
         }
@@ -139,7 +139,7 @@ final class TicketScannerViewModel {
     internal func fetchGuests(forEventID eventID: String, completion: @escaping(Bool) -> Void) {
 
         self.dataStack = DataStack(modelName: "Big Neon")
-        BusinessService.shared.database.fetchGuests(forEventID: eventID) { (error, guestsFetched, serverGuests) in
+        BusinessService.shared.database.fetchGuests(forEventID: eventID) { [weak self] (error, guestsFetched, serverGuests) in
             DispatchQueue.main.async {
                 
                 //  Core Data Checks
@@ -154,7 +154,7 @@ final class TicketScannerViewModel {
                     completion(false)
                     return
                 }
-                self.ticketsFetched = guests.data
+                self?.ticketsFetched = guests.data
                 completion(true)
                 return
 //                self.dataStack?.sync(coreDataGuests, inEntityNamed: RedeemedTicket.entity().managedObjectClassName) { error in
