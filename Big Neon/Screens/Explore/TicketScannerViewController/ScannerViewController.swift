@@ -12,6 +12,7 @@ public protocol ScannerViewDelegate: class {
     func scannerSetManual()
     func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath: IndexPath?)
     func reloadGuests()
+    func dismissScannedUserView()
 }
 
 final class ScannerViewController: UIViewController, ScannerViewDelegate {
@@ -29,7 +30,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     var guestListTopAnchor: NSLayoutConstraint?
     var manualCheckingTopAnchor: NSLayoutConstraint?
     var scannedUserBottomAnchor: NSLayoutConstraint?
-    var scanCompleted: Bool?
+    var stopScanning: Bool?
     var scannerViewModel : TicketScannerViewModel?
     let blurEffect = UIBlurEffect(style: .dark)
     var blurView: UIVisualEffectView?
@@ -94,6 +95,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     lazy var scanningBoarderView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "ic_scsnner_view")
+        imageView.layer.opacity = 0.5
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -175,6 +177,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         configureScanFeedbackView()
         configureHeader()
     }
+    
 
     private func configureViewModel() {
         scannerViewModel = TicketScannerViewModel()
@@ -245,6 +248,11 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         configureGuestList()
     }
     
+    
+    func dismissScannedUserView() {
+        self.dismissFeedbackView(feedback: nil)
+    }
+    
     @objc func dismissView() {
         dismiss(animated: true, completion: nil)
     }
@@ -276,7 +284,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         scannedUserView.heightAnchor.constraint(equalToConstant: 64.0).isActive = true
     }
     
-    func showGuestList() {
+    @objc func showGuestList() {
         viewAnimationBounce(viewSelected: showGuestView,
                             bounceVelocity: 10.0,
                             springBouncinessEffect: 3.0)
@@ -294,8 +302,10 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         self.scannerViewModel?.fetchGuests(forEventID: eventID, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
                 guard let self = self else {return}
+                self.stopScanning = true
                 let navGuestVC = GuestListNavigationController(rootViewController: self.guestListVC)
                 self.guestListVC.event = event
+                self.guestListVC.scanVC = self
                 self.guestListVC.delegate = self
                 self.guestListVC.guests = self.scannerViewModel?.ticketsFetched
                 self.presentPanModal(navGuestVC)

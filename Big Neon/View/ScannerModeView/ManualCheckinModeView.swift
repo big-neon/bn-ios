@@ -13,7 +13,7 @@ public class ManualCheckinModeView: UIView {
     
     weak var delegate: ScannerViewDelegate?
     
-    public var redeemableTicket: RedeemableTicket? {
+    var redeemableTicket: RedeemableTicket? {
         didSet {
             guard let ticket = self.redeemableTicket else {
                 return
@@ -21,15 +21,34 @@ public class ManualCheckinModeView: UIView {
             
             self.userNameLabel.text = ticket.firstName
             self.ticketTypeLabel.text = ticket.ticketType
+            
+            if ticket.status == TicketStatus.purchased {
+                self.bannedTagView.backgroundColor = UIColor.brandGreen
+                self.bannedTagView.tagLabel.text = "PURCHASED"
+            } else {
+                self.bannedTagView.backgroundColor = UIColor.brandBlack
+                self.bannedTagView.tagLabel.text = "REDEEMED"
+            }
+            
         }
     }
     
-    public lazy var completeCheckinButton: UIButton = {
+    lazy var completeCheckinButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(handleCompleteCheckin), for: UIControl.Event.touchUpInside)
         button.setTitle("Complete Check-in", for: UIControl.State.normal)
         button.backgroundColor = UIColor.brandPrimary
         button.setTitleColor(UIColor.brandWhite, for: UIControl.State.normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    lazy var dismissView: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(cancelChecking), for: UIControl.Event.touchUpInside)
+        button.setImage(#imageLiteral(resourceName: "ic_dismissButton").withRenderingMode(.alwaysTemplate), for: UIControl.State.normal)
+        button.tintColor = UIColor.brandGrey
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -113,6 +132,7 @@ public class ManualCheckinModeView: UIView {
     
     private func configureView() {
         addSubview(userImageView)
+        addSubview(dismissView)
         addSubview(userNameLabel)
         addSubview(ticketTypeLabel)
         addSubview(lineView)
@@ -122,10 +142,18 @@ public class ManualCheckinModeView: UIView {
         addSubview(birthValueLabel)
         addSubview(completeCheckinButton)
         
+        
+        vipTagView.isHidden = true
+        
         userImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 22).isActive = true
         userImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
         userImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         userImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        
+        dismissView.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor).isActive = true
+        dismissView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
+        dismissView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        dismissView.widthAnchor.constraint(equalToConstant: 30).isActive = true
         
         userNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 22).isActive = true
         userNameLabel.leftAnchor.constraint(equalTo: userImageView.rightAnchor, constant: 15).isActive = true
@@ -170,6 +198,10 @@ public class ManualCheckinModeView: UIView {
     
     @objc private func handleCompleteCheckin() {
         self.delegate?.completeCheckin()
+    }
+    
+    @objc private func cancelChecking() {
+        self.delegate?.dismissScannedUserView()
     }
     
     required public init?(coder aDecoder: NSCoder) {

@@ -13,6 +13,15 @@ import Big_Neon_UI
 
 public class TicketScanFeedbackView: UIView {
     
+    var errorDetail: String? {
+        didSet {
+            guard let errorDetail = self.errorDetail else {
+                return
+            }
+            feedbackDetailLabel.text = errorDetail
+        }
+    }
+    
     public var scanFeedback: ScanFeedback? {
         didSet {
             guard let feedback = self.scanFeedback else {
@@ -39,8 +48,7 @@ public class TicketScanFeedbackView: UIView {
         }
     }
     
-     // lazy ?
-    internal let feedbackLabel: BrandTitleLabel = {
+    let feedbackLabel: BrandTitleLabel = {
         let label = BrandTitleLabel()
         label.textColor = UIColor.white
         label.textAlignment = .center
@@ -48,8 +56,17 @@ public class TicketScanFeedbackView: UIView {
         return label
     }()
     
-     // lazy ?
-    internal let feedbackImageView: UIImageView = {
+    let feedbackDetailLabel: BrandTitleLabel = {
+        let label = BrandTitleLabel()
+        label.textColor = UIColor.white
+        label.text = "No Network Connection"
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.medium)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let feedbackImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
         imageView.layer.masksToBounds = true
@@ -59,13 +76,15 @@ public class TicketScanFeedbackView: UIView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.clear
+        self.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        
         self.configureView()
     }
     
     private func configureView() {
-        self.addSubview(feedbackImageView)
-        self.addSubview(feedbackLabel)
+        addSubview(feedbackImageView)
+        addSubview(feedbackLabel)
+        addSubview(feedbackDetailLabel)
         
         feedbackImageView.topAnchor.constraint(equalTo: topAnchor, constant: 10.0).isActive  = true
         feedbackImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
@@ -76,6 +95,11 @@ public class TicketScanFeedbackView: UIView {
         feedbackLabel.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         feedbackLabel.topAnchor.constraint(equalTo: feedbackImageView.bottomAnchor, constant: 16.0).isActive = true
         feedbackLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        
+        feedbackDetailLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive  = true
+        feedbackDetailLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: 16).isActive = true
+        feedbackDetailLabel.topAnchor.constraint(equalTo: feedbackLabel.bottomAnchor, constant: 16.0).isActive = true
+        feedbackDetailLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -20,32 +20,31 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         
         self.hideScannedUser()
         guard let metadataObj = metadataObjects.first as? AVMetadataMachineReadableCodeObject else {
-            print("No QR data detected")
-            self.scanCompleted = true
+            self.stopScanning = true
             return
         }
         
-        if self.scanCompleted == true {
+        if self.stopScanning == true {
             return
         }
         
         if supportedCodeTypes.contains(metadataObj.type) {
             guard let metaDataString = metadataObj.stringValue else {
                 self.generator.notificationOccurred(.error)
-                self.scanCompleted = true
+                self.stopScanning = true
                 return
             }
             
             guard self.scannerViewModel?.getRedeemKey(fromStringValue: metaDataString) != nil else {
                 self.generator.notificationOccurred(.error)
                 Utils.showAlert(presenter: self, title: "No Redeem Key Found", message: "The ticket does not contain a redeem key. Check the guest in from the guest list")
-                self.scanCompleted = true
+                self.stopScanning = true
                 return
             }
             
             guard let ticketID = self.scannerViewModel?.getTicketID(fromStringValue: metaDataString) else {
                 self.generator.notificationOccurred(.error)
-                self.scanCompleted = true
+                self.stopScanning = true
                 return
             }
             
@@ -142,61 +141,70 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             switch scanFeedback {
             case .alreadyRedeemed?:
                 UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    self.scanningBoarderView.layer.opacity = 0.0
+                    self.showGuestView.layer.opacity = 0.0
                     self.blurView?.layer.opacity = 1.0
                     self.feedbackView.layer.opacity = 1.0
                     self.feedbackView.scanFeedback = .alreadyRedeemed
                     self.scannerModeView.layer.opacity = 0.0
                     self.view.layoutIfNeeded()
                 }, completion: { (completed) in
-                    self.scanCompleted = true
+                    self.stopScanning = true
                 })
             case .issueFound?:
                 UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    self.scanningBoarderView.layer.opacity = 0.0
+                    self.showGuestView.layer.opacity = 0.0
                     self.blurView?.layer.opacity = 1.0
                     self.feedbackView.layer.opacity = 1.0
                     self.feedbackView.scanFeedback = .issueFound
                     self.scannerModeView.layer.opacity = 0.0
                     self.view.layoutIfNeeded()
                 }, completion: { (completed) in
-                    self.scanCompleted = true
+                    self.stopScanning = true
                 })
             case .wrongEvent?:
                 UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    self.scanningBoarderView.layer.opacity = 0.0
+                    self.showGuestView.layer.opacity = 0.0
                     self.blurView?.layer.opacity = 1.0
                     self.feedbackView.layer.opacity = 1.0
                     self.feedbackView.scanFeedback = .wrongEvent
                     self.scannerModeView.layer.opacity = 0.0
                     self.view.layoutIfNeeded()
                 }, completion: { (completed) in
-                    self.scanCompleted = true
+                    self.stopScanning = true
                 })
             case .validTicketID?:
-                self.scanCompleted = false
+                self.stopScanning = false
                 self.showRedeemedTicket()
             default:
                 print("No Ticket Data")
-                self.scanCompleted = true
+                self.stopScanning = true
                 return
             }
         }
     }
     
     private func showRedeemedTicket() {
-        if self.scanCompleted == true {
+        if self.stopScanning == true {
             return
         }
-        self.scanCompleted = true
+        self.stopScanning = true
         self.generator.notificationOccurred(.success)
         self.scannedTicketID = self.scannedTicket?.id
         self.manualUserCheckinView.redeemableTicket = self.scannedTicket
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.scanningBoarderView.layer.opacity = 0.0
+            self.showGuestView.layer.opacity = 0.0
+            self.closeButton.layer.opacity = 0.0
             self.feedbackView.layer.contentsScale = 1.0
             self.blurView?.layer.opacity = 1.0
             self.scannerModeView.layer.opacity = 0.0
             self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height - 250.0
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
-            self.scanCompleted = true
+            self.stopScanning = true
         })
     }
     
@@ -261,9 +269,12 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         }
     }
     
-    private func dismissFeedbackView(feedback: ScanFeedback) {
+    func dismissFeedbackView(feedback: ScanFeedback?) {
         UIView.animate(withDuration: 0.8, delay: 1.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.blurView?.layer.opacity = 0.0
+            self.closeButton.layer.opacity = 1.0
+            self.scanningBoarderView.layer.opacity = 1.0
+            self.showGuestView.layer.opacity = 1.0
             self.feedbackView.layer.opacity = 0.0
             self.scannerModeView.layer.opacity = 1.0
             self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
@@ -272,7 +283,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             if feedback == .valid {
                 self.presentScannedUser()
             } else {
-                self.scanCompleted = true
+                self.stopScanning = false
             }
             
         })
@@ -285,18 +296,18 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             self.scannedUserBottomAnchor?.constant = -40.0
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
-            self.scanCompleted = true
+            self.stopScanning = true
         })
     }
     
-    private func hideScannedUser() {
+    func hideScannedUser() {
         self.manualUserCheckinView.redeemableTicket = nil
         self.scannedTicket = nil
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.scannedUserBottomAnchor?.constant = 150.0
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
-            self.scanCompleted = true
+            self.stopScanning = true
         })
     }
     

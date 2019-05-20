@@ -13,8 +13,8 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     var guestSectionTitles = [String]()
     var filteredSearchResults: [RedeemableTicket] = []
     var isSearching: Bool = false
-    
     var isShortFormEnabled = true
+    var scanVC: ScannerViewController?
     
     public var event: EventsData? {
         didSet {
@@ -87,6 +87,11 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
         configureView()
         configureNavBar()
         configureSearch()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.scanVC?.stopScanning = false
     }
     
     func configureNavBar() {
