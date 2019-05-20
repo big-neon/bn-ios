@@ -93,42 +93,18 @@ final class TicketScannerViewModel {
         
         BusinessService.shared.database.redeemTicket(forTicketID: ticket.id, eventID: eventID, redeemKey: ticket.redeemKey) { (scanFeedback, ticket) in
             DispatchQueue.main.async {
-                switch scanFeedback {
-                case .alreadyRedeemed:
-                    completion(.alreadyRedeemed)
-                    return
-                case .issueFound:
-                    completion(.issueFound)
-                    return
-                case .wrongEvent:
-                    completion(.wrongEvent)
-                    return
-                default:
-                    self.saveRedeemedTicket(ticket: ticket!, completion: { (completed) in
-                        self.redeemedTicket = ticket!
-                        completion(.valid)
-                        return
-                    })
-                }
+                self.redeemedTicket = ticket!
+                completion(scanFeedback)
             }
         }
     }
     
-    internal func automaticallyCheckin(ticketID: String, completion: @escaping(ScanFeedback, String?, RedeemableTicket?) -> Void) {
+    internal func automaticallyCheckin(ticketID: String, completion: @escaping(ScanFeedback?, String?, RedeemableTicket?) -> Void) {
         
         BusinessService.shared.database.getRedeemTicket(forTicketID: ticketID) { (scanFeedback, errorString, redeemTicket) in
             DispatchQueue.main.async {
-                switch scanFeedback {
-                case .alreadyRedeemed?:
-                    completion(.alreadyRedeemed, errorString, redeemTicket)
-                    return
-                case .issueFound?:
-                    completion(.issueFound, errorString, redeemTicket)
-                    return
-                case .wrongEvent?:
-                    completion(.wrongEvent, errorString, redeemTicket)
-                    return
-                case .validTicketID?:
+                
+                if scanFeedback == .validTicketID {
                     guard let ticket = redeemTicket else {
                         completion(.ticketNotFound, errorString, redeemTicket)
                         return
@@ -140,17 +116,25 @@ final class TicketScannerViewModel {
                     }
                     
                     self.completeAutoCheckin(eventID: eventID, ticket: ticket, completion: { (scanFeedback) in
-                        completion(ScanFeedback(rawValue: scanFeedback.rawValue)!, errorString, redeemTicket)
+                        completion(scanFeedback, errorString, redeemTicket)
                         return
                     })
-                    
-                default:
-                    print("No Data Returned")
-                    return
+                } else {
+                    completion(scanFeedback, errorString, redeemTicket)
                 }
             }
         }
     }
+    
+    internal func completeAutoCheckin(eventID: String, ticket: RedeemableTicket, completion: @escaping(ScanFeedback) -> Void) {
+        BusinessService.shared.database.redeemTicket(forTicketID: ticket.id, eventID: eventID, redeemKey: ticket.redeemKey) { [weak self] (scanFeedback, ticket) in
+            DispatchQueue.main.async {
+                self?.redeemedTicket = ticket!
+                completion(scanFeedback)
+            }
+        }
+    }
+
     
     internal func fetchGuests(forEventID eventID: String, completion: @escaping(Bool) -> Void) {
 
@@ -179,33 +163,6 @@ final class TicketScannerViewModel {
             }
         }
     }
-    
-    internal func completeAutoCheckin(eventID: String, ticket: RedeemableTicket, completion: @escaping(ScanFeedback) -> Void) {
-        BusinessService.shared.database.redeemTicket(forTicketID: ticket.id, eventID: eventID, redeemKey: ticket.redeemKey) { (scanFeedback, ticket) in
-            DispatchQueue.main.async {
-                switch scanFeedback {
-                case .alreadyRedeemed:
-                    completion(.alreadyRedeemed)
-                    return
-                case .issueFound:
-                    completion(.issueFound)
-                    return
-                case .wrongEvent:
-                    completion(.wrongEvent)
-                    return
-                default:
-//                    self.saveRedeemedTicket(ticket: ticket!, completion: { (completed) in
-//                        self.redeemedTicket = ticket!
-//                        completion(.valid)
-//                        return
-//                    })
-                    self.redeemedTicket = ticket!
-                    completion(.valid)
-                }
-            }
-        }
-    }
-
 }
 
 extension TicketScannerViewModel {

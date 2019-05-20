@@ -59,13 +59,16 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         }
     }
     
+    func dismissScannedUserView() {
+        self.dismissFeedbackView(feedback: nil)
+    }
+    
     func dismissFeedbackView(feedback: ScanFeedback?) {
         UIView.animate(withDuration: 0.8, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.blurView?.layer.opacity = 0.0
             self.closeButton.layer.opacity = 1.0
             self.scanningBoarderView.layer.opacity = 1.0
             self.showGuestView.layer.opacity = 1.0
-//            self.feedbackView.layer.opacity = 0.0
             self.scannerModeView.layer.opacity = 1.0
             self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
             self.view.layoutIfNeeded()
@@ -75,7 +78,6 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             } else {
                 self.stopScanning = false
             }
-            
         })
     }
     
@@ -95,11 +97,9 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         self.scannedTicket = nil
         self.stopScanning = true
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
-            self.scannedUserBottomAnchor?.constant = 150.0
+            self.scannedUserBottomAnchor?.constant = 250.0
             self.view.layoutIfNeeded()
-        }, completion: { (completed) in
-            //            self.stopScanning = false
-        })
+        }, completion: nil)
     }
     
 }

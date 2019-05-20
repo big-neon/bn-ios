@@ -218,11 +218,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         configureScannedUserView()
     }
     
-    
-    func dismissScannedUserView() {
-        self.dismissFeedbackView(feedback: nil)
-    }
-    
     @objc func dismissView() {
         dismiss(animated: true, completion: nil)
     }

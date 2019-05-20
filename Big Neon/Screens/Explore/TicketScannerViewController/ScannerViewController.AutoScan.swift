@@ -15,7 +15,8 @@ extension ScannerViewController {
         }
         
         self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID) { (scanFeedback, errorString, ticket) in
-            UIView.animate(withDuration: 0.8, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
+            print(errorString)
+            UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
                 self.showScannedUser(feedback: scanFeedback, ticket: ticket)
                 self.view.layoutIfNeeded()
             }, completion: { (completed) in
@@ -24,7 +25,7 @@ extension ScannerViewController {
         }
     }
     
-    func showScannedUser(feedback: ScanFeedback, ticket: RedeemableTicket?) {
+    func showScannedUser(feedback: ScanFeedback?, ticket: RedeemableTicket?) {
         self.scannedUserView.redeemableTicket = ticket
         self.scannedUserView.scanFeedback = feedback
         self.blurView?.layer.opacity = 0.0
