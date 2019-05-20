@@ -302,7 +302,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         self.manualUserCheckinView.redeemableTicket = self.scannedTicket
         
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.scannedUserBottomAnchor?.constant = -40.0
+            self.scannedUserBottomAnchor?.constant = -100.0
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
             self.stopScanning = true

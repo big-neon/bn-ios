@@ -20,18 +20,20 @@ public class ManualCheckinModeView: UIView {
             }
             
             self.userNameLabel.text = ticket.firstName
-            self.ticketTypeLabel.text = ticket.ticketType
+            self.ticketTypeLabel.text = ticket.eventName
             
             if ticket.status == TicketStatus.purchased.rawValue {
                 bannedTagView.backgroundColor = UIColor.brandGreen
                 bannedTagView.tagLabel.text = "PURCHASED"
                 completeCheckinButton.backgroundColor = .brandPrimary
                 completeCheckinButton.setTitle("Complete Check-in", for: UIControl.State.normal)
+                completeCheckinButton.addTarget(self, action: #selector(handleCompleteCheckin), for: UIControl.Event.touchUpInside)
             } else {
                 bannedTagView.backgroundColor = UIColor.brandBlack
                 bannedTagView.tagLabel.text = "REDEEMED"
                 completeCheckinButton.backgroundColor = .brandBlack
                 completeCheckinButton.setTitle("Already Redemeemed", for: UIControl.State.normal)
+                completeCheckinButton.addTarget(self, action: #selector(cancelChecking), for: UIControl.Event.touchUpInside)
             }
             
             let price = Int(ticket.priceInCents)
@@ -43,7 +45,6 @@ public class ManualCheckinModeView: UIView {
     
     lazy var completeCheckinButton: UIButton = {
         let button = UIButton()
-        button.addTarget(self, action: #selector(handleCompleteCheckin), for: UIControl.Event.touchUpInside)
         button.setTitleColor(UIColor.brandWhite, for: UIControl.State.normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -80,7 +81,7 @@ public class ManualCheckinModeView: UIView {
     lazy var ticketTypeLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandGrey
-        label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
+        label.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -120,7 +121,7 @@ public class ManualCheckinModeView: UIView {
         let label = UILabel()
         label.text = "-"
         label.textColor = UIColor.brandGrey
-        label.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)
+        label.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -189,12 +190,12 @@ public class ManualCheckinModeView: UIView {
         birthDateLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 20).isActive = true
         birthDateLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20.0).isActive = true
         birthDateLabel.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
-        birthDateLabel.widthAnchor.constraint(equalToConstant: 80.0).isActive = true
+        birthDateLabel.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
         
         birthValueLabel.topAnchor.constraint(equalTo: birthDateLabel.bottomAnchor, constant: 2.0).isActive = true
         birthValueLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20.0).isActive = true
         birthValueLabel.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
-        birthValueLabel.widthAnchor.constraint(equalToConstant: 80.0).isActive = true
+        birthValueLabel.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
         
         completeCheckinButton.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         completeCheckinButton.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
@@ -203,16 +204,7 @@ public class ManualCheckinModeView: UIView {
     }
     
     @objc func handleCompleteCheckin() {
-        
-        guard let ticket = self.redeemableTicket else {
-            return
-        }
-        
-        if ticket.status == TicketStatus.purchased.rawValue {
-            self.delegate?.completeCheckin()
-        } else {
-            self.delegate?.dismissScannedUserView()
-        }
+        self.delegate?.completeCheckin()
     }
     
     @objc private func cancelChecking() {
