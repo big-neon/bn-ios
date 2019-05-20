@@ -9,7 +9,7 @@ class GuestListNavigationController: UINavigationController, PanModalPresentable
     }
     
     var shortFormHeight: PanModalHeight {
-        return .contentHeight(200)
+        return .contentHeight(600)
     }
     
 }

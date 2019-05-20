@@ -128,7 +128,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     }
     
     var shortFormHeight: PanModalHeight {
-        return .contentHeight(200)
+        return .contentHeight(600)
 //        return isShortFormEnabled ? .contentHeight(300.0) : longFormHeight
     }
     

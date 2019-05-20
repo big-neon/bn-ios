@@ -49,36 +49,33 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
                               AVMetadataObject.ObjectType.interleaved2of5,
                               AVMetadataObject.ObjectType.qr]
     
-    var isShowingGuests: Bool = false {
-        didSet {
-            if isShowingGuests == true {
-                
-                // MARK: we want to be on main thread
-                // seems unnecessary too complicate
-                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
-                    self.cameraTintView.layer.opacity = 0.85
-                    self.scannerModeView.layer.opacity = 0.0
-                    self.guestListTopAnchor?.constant = UIScreen.main.bounds.height - 560
-                    self.navigationItem.leftBarButtonItem = nil
-                    self.view.layoutIfNeeded()
-                }) { (complete) in
-                    print("De-Activated Camera")
-                }
-                return
-            }
-            
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
-                self.cameraTintView.layer.opacity = 0.0
-                self.scannerModeView.layer.opacity = 1.0
-                self.guestListTopAnchor?.constant = UIScreen.main.bounds.height - 80.0
-//                self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_close"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.handleClose))
-                self.view.layoutIfNeeded()
-            }) { (complete) in
-                print("Activated Camera")
-            }
-            return
-        }
-    }
+//    var isShowingGuests: Bool = false {
+//        didSet {
+//            if isShowingGuests == true {
+//
+//                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
+//                    self.cameraTintView.layer.opacity = 0.85
+//                    self.scannerModeView.layer.opacity = 0.0
+//                    self.guestListTopAnchor?.constant = UIScreen.main.bounds.height - 560
+//                    self.navigationItem.leftBarButtonItem = nil
+//                    self.view.layoutIfNeeded()
+//                }) { (complete) in
+//                    print("De-Activated Camera")
+//                }
+//                return
+//            }
+//
+//            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
+//                self.cameraTintView.layer.opacity = 0.0
+//                self.scannerModeView.layer.opacity = 1.0
+//                self.guestListTopAnchor?.constant = UIScreen.main.bounds.height - 80.0
+//                self.view.layoutIfNeeded()
+//            }) { (complete) in
+//                print("Activated Camera")
+//            }
+//            return
+//        }
+//    }
     
     lazy var scannerModeView: ScannerModeView = {
         let view =  ScannerModeView()
@@ -106,7 +103,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     lazy var showGuestView: ShowGuestListView = {
         let view =  ShowGuestListView()
         view.isUserInteractionEnabled = true
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(configureGuestList)))
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showGuestList)))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -277,6 +274,13 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         scannedUserBottomAnchor = scannedUserView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 160.0)
         scannedUserBottomAnchor?.isActive = true
         scannedUserView.heightAnchor.constraint(equalToConstant: 64.0).isActive = true
+    }
+    
+    func showGuestList() {
+        viewAnimationBounce(viewSelected: showGuestView,
+                            bounceVelocity: 10.0,
+                            springBouncinessEffect: 3.0)
+        configureGuestList()
     }
     
     @objc func configureGuestList() {
