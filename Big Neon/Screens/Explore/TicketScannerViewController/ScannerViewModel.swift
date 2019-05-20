@@ -58,23 +58,23 @@ final class TicketScannerViewModel {
         return redeemKeyData["id"]
     }
 
-    internal func getRedeemTicket(ticketID: String, completion: @escaping(ScanFeedback?) -> Void) {
-        BusinessService.shared.database.getRedeemTicket(forTicketID: ticketID) { (scanFeedback, redeemTicket) in
+    internal func getRedeemTicket(ticketID: String, completion: @escaping(ScanFeedback?, String?) -> Void) {
+        BusinessService.shared.database.getRedeemTicket(forTicketID: ticketID) { (scanFeedback, errorString, redeemTicket) in
             DispatchQueue.main.async {
                 switch scanFeedback {
                 case .alreadyRedeemed?:
-                    completion(.alreadyRedeemed)
+                    completion(.alreadyRedeemed, errorString)
                     return
                 case .issueFound?:
-                    completion(.issueFound)
+                    completion(.issueFound, errorString)
                     return
                     
                 case .wrongEvent?:
-                    completion(.wrongEvent)
+                    completion(.wrongEvent, errorString)
                     return
                 case .validTicketID?:
                     self.scanVC?.scannedTicket = redeemTicket
-                    completion(.validTicketID)
+                    completion(.validTicketID, errorString)
                     return
                 default:
                     print("No Data Returned")
@@ -114,34 +114,34 @@ final class TicketScannerViewModel {
         }
     }
     
-    internal func automaticallyChecking(ticketID: String, completion: @escaping(ScanFeedback) -> Void) {
+    internal func automaticallyChecking(ticketID: String, completion: @escaping(ScanFeedback, String?) -> Void) {
         
-        BusinessService.shared.database.getRedeemTicket(forTicketID: ticketID) { (scanFeedback, redeemTicket) in
+        BusinessService.shared.database.getRedeemTicket(forTicketID: ticketID) { (scanFeedback, errorString, redeemTicket) in
             DispatchQueue.main.async {
                 switch scanFeedback {
                 case .alreadyRedeemed?:
-                    completion(.alreadyRedeemed)
+                    completion(.alreadyRedeemed, errorString)
                     return
                 case .issueFound?:
-                    completion(.issueFound)
+                    completion(.issueFound, errorString)
                     return
                 case .wrongEvent?:
-                    completion(.wrongEvent)
+                    completion(.wrongEvent, errorString)
                     return
                 case .validTicketID?:
                     // one guard?
                     guard let ticket = redeemTicket else {
-                        completion(.ticketNotFound)
+                        completion(.ticketNotFound, errorString)
                         return
                     }
                     
                     guard let eventID = self.scanVC?.event?.id else {
-                        completion(.issueFound)
+                        completion(.issueFound, errorString)
                         return
                     }
                     
                     self.completeAutoCheckin(eventID: eventID, ticket: ticket, completion: { (scanFeedback) in
-                        completion(ScanFeedback(rawValue: scanFeedback.rawValue)!)
+                        completion(ScanFeedback(rawValue: scanFeedback.rawValue)!, errorString)
                         return
                     })
                     

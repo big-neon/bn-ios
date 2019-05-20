@@ -50,34 +50,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
                               AVMetadataObject.ObjectType.interleaved2of5,
                               AVMetadataObject.ObjectType.qr]
     
-//    var isShowingGuests: Bool = false {
-//        didSet {
-//            if isShowingGuests == true {
-//
-//                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
-//                    self.cameraTintView.layer.opacity = 0.85
-//                    self.scannerModeView.layer.opacity = 0.0
-//                    self.guestListTopAnchor?.constant = UIScreen.main.bounds.height - 560
-//                    self.navigationItem.leftBarButtonItem = nil
-//                    self.view.layoutIfNeeded()
-//                }) { (complete) in
-//                    print("De-Activated Camera")
-//                }
-//                return
-//            }
-//
-//            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
-//                self.cameraTintView.layer.opacity = 0.0
-//                self.scannerModeView.layer.opacity = 1.0
-//                self.guestListTopAnchor?.constant = UIScreen.main.bounds.height - 80.0
-//                self.view.layoutIfNeeded()
-//            }) { (complete) in
-//                print("Activated Camera")
-//            }
-//            return
-//        }
-//    }
-    
     lazy var scannerModeView: ScannerModeView = {
         let view =  ScannerModeView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -176,9 +148,9 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         configureManualCheckinView()
         configureScanFeedbackView()
         configureHeader()
-        self.feedbackView.layer.opacity = 1.0
-        self.feedbackView.layer.contentsScale = 1.0
-        self.feedbackView.scanFeedback = ScanFeedback.issueFound
+//        self.feedbackView.layer.opacity = 1.0
+//        self.feedbackView.layer.contentsScale = 1.0
+//        self.feedbackView.scanFeedback = ScanFeedback.issueFound
     }
     
 
@@ -275,7 +247,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         feedbackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         feedbackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -20.0).isActive = true
         feedbackView.heightAnchor.constraint(equalToConstant: 150.0).isActive = true
-        feedbackView.widthAnchor.constraint(equalToConstant: 250.0).isActive = true
+        feedbackView.widthAnchor.constraint(equalToConstant: 290.0).isActive = true
     }
     
     private func configureScannedUserView() {

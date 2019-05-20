@@ -60,6 +60,7 @@ public class TicketScanFeedbackView: UIView {
         let label = BrandTitleLabel()
         label.textColor = UIColor.white
         label.text = "No Network Connection"
+        label.numberOfLines = 0
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -86,7 +87,7 @@ public class TicketScanFeedbackView: UIView {
         addSubview(feedbackLabel)
         addSubview(feedbackDetailLabel)
         
-        feedbackImageView.topAnchor.constraint(equalTo: topAnchor, constant: 10.0).isActive  = true
+        feedbackImageView.topAnchor.constraint(equalTo: topAnchor, constant: 16.0).isActive  = true
         feedbackImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         feedbackImageView.heightAnchor.constraint(equalToConstant: 32).isActive = true
         feedbackImageView.widthAnchor.constraint(equalToConstant: 32).isActive = true
@@ -98,8 +99,8 @@ public class TicketScanFeedbackView: UIView {
         
         feedbackDetailLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16).isActive  = true
         feedbackDetailLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -16).isActive = true
-        feedbackDetailLabel.topAnchor.constraint(equalTo: feedbackLabel.bottomAnchor, constant: 12.0).isActive = true
-        feedbackDetailLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        feedbackDetailLabel.topAnchor.constraint(equalTo: feedbackLabel.bottomAnchor, constant: 10.0).isActive = true
+        feedbackDetailLabel.heightAnchor.constraint(equalToConstant: 32).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {

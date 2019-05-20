@@ -23,11 +23,15 @@ public class ManualCheckinModeView: UIView {
             self.ticketTypeLabel.text = ticket.ticketType
             
             if ticket.status == TicketStatus.purchased {
-                self.bannedTagView.backgroundColor = UIColor.brandGreen
-                self.bannedTagView.tagLabel.text = "PURCHASED"
+                bannedTagView.backgroundColor = UIColor.brandGreen
+                bannedTagView.tagLabel.text = "PURCHASED"
+                completeCheckinButton.backgroundColor = .brandPrimary
+                completeCheckinButton.setTitle("Complete Check-in", for: UIControl.State.normal)
             } else {
-                self.bannedTagView.backgroundColor = UIColor.brandBlack
-                self.bannedTagView.tagLabel.text = "REDEEMED"
+                bannedTagView.backgroundColor = UIColor.brandBlack
+                bannedTagView.tagLabel.text = "REDEEMED"
+                completeCheckinButton.backgroundColor = .brandBlack
+                completeCheckinButton.setTitle("Already Redemeemed", for: UIControl.State.normal)
             }
             
         }
@@ -36,8 +40,6 @@ public class ManualCheckinModeView: UIView {
     lazy var completeCheckinButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(handleCompleteCheckin), for: UIControl.Event.touchUpInside)
-        button.setTitle("Complete Check-in", for: UIControl.State.normal)
-        button.backgroundColor = UIColor.brandPrimary
         button.setTitleColor(UIColor.brandWhite, for: UIControl.State.normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -197,7 +199,12 @@ public class ManualCheckinModeView: UIView {
     }
     
     @objc private func handleCompleteCheckin() {
-        self.delegate?.completeCheckin()
+        
+        if self.redeemableTicket?.status == TicketStatus.purchased {
+            self.delegate?.completeCheckin()
+        } else {
+            self.delegate?.dismissScannedUserView()
+        }
     }
     
     @objc private func cancelChecking() {

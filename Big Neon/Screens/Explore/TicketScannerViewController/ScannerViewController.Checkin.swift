@@ -63,13 +63,14 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     // seems unnecessary too complicate
     // too much same code... maybe is better to extract it in function
     func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath: IndexPath?) {
-        self.scannerViewModel?.automaticallyChecking(ticketID: ticketID) { (scanFeedback) in
+        self.scannerViewModel?.automaticallyChecking(ticketID: ticketID) { (scanFeedback, errorString) in
             switch scanFeedback {
             case .alreadyRedeemed:
                 UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                     self.blurView?.layer.opacity = 1.0
                     self.feedbackView.layer.opacity = 1.0
                     self.feedbackView.scanFeedback = .alreadyRedeemed
+                    self.feedbackView.errorDetail = errorString
                     self.scannerModeView.layer.opacity = 0.0
                     self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
                     self.view.layoutIfNeeded()
@@ -82,6 +83,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                     self.blurView?.layer.opacity = 1.0
                     self.feedbackView.layer.opacity = 1.0
                     self.feedbackView.scanFeedback = .issueFound
+                    self.feedbackView.errorDetail = errorString
                     self.scannerModeView.layer.opacity = 0.0
                     self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
                     self.view.layoutIfNeeded()
@@ -94,6 +96,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                     self.blurView?.layer.opacity = 1.0
                     self.feedbackView.layer.opacity = 1.0
                     self.feedbackView.scanFeedback = .ticketNotFound
+                    self.feedbackView.errorDetail = errorString
                     self.scannerModeView.layer.opacity = 0.0
                     self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
                     self.view.layoutIfNeeded()
@@ -107,6 +110,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                     self.blurView?.layer.opacity = 1.0
                     self.feedbackView.layer.opacity = 1.0
                     self.feedbackView.scanFeedback = .wrongEvent
+                    self.feedbackView.errorDetail = errorString
                     self.scannerModeView.layer.opacity = 0.0
                     self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
                     self.view.layoutIfNeeded()
@@ -137,7 +141,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     }
     
     internal func checkinManually(withTicketID ticketID: String) {
-        self.scannerViewModel?.getRedeemTicket(ticketID: ticketID) { (scanFeedback) in
+        self.scannerViewModel?.getRedeemTicket(ticketID: ticketID) { (scanFeedback, errorString) in
             switch scanFeedback {
             case .alreadyRedeemed?:
                 UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
@@ -158,6 +162,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                     self.blurView?.layer.opacity = 1.0
                     self.feedbackView.layer.opacity = 1.0
                     self.feedbackView.scanFeedback = .issueFound
+                    self.feedbackView.errorDetail = errorString
                     self.scannerModeView.layer.opacity = 0.0
                     self.view.layoutIfNeeded()
                 }, completion: { (completed) in
@@ -170,6 +175,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                     self.blurView?.layer.opacity = 1.0
                     self.feedbackView.layer.opacity = 1.0
                     self.feedbackView.scanFeedback = .wrongEvent
+                    self.feedbackView.errorDetail = errorString
                     self.scannerModeView.layer.opacity = 0.0
                     self.view.layoutIfNeeded()
                 }, completion: { (completed) in
@@ -214,13 +220,14 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             return
         }
         
-        self.scannerViewModel?.automaticallyChecking(ticketID: ticketID) { (scanFeedback) in
+        self.scannerViewModel?.automaticallyChecking(ticketID: ticketID) { (scanFeedback, errorString) in
             switch scanFeedback {
             case .alreadyRedeemed:
                 UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                     self.blurView?.layer.opacity = 1.0
                     self.feedbackView.layer.opacity = 1.0
                     self.feedbackView.scanFeedback = .alreadyRedeemed
+                    self.feedbackView.errorDetail = errorString
                     self.scannerModeView.layer.opacity = 0.0
                     self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
                     self.view.layoutIfNeeded()
@@ -233,6 +240,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                     self.blurView?.layer.opacity = 1.0
                     self.feedbackView.layer.opacity = 1.0
                     self.feedbackView.scanFeedback = .issueFound
+                    self.feedbackView.errorDetail = errorString
                     self.scannerModeView.layer.opacity = 0.0
                     self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
                     self.view.layoutIfNeeded()
@@ -246,6 +254,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                     self.blurView?.layer.opacity = 1.0
                     self.feedbackView.layer.opacity = 1.0
                     self.feedbackView.scanFeedback = .wrongEvent
+                    self.feedbackView.errorDetail = errorString
                     self.scannerModeView.layer.opacity = 0.0
                     self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
                     self.view.layoutIfNeeded()
