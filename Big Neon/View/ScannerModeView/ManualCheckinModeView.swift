@@ -12,6 +12,7 @@ import Big_Neon_Core
 public class ManualCheckinModeView: UIView {
     
     weak var delegate: ScannerViewDelegate?
+    var event: EventsData?
     
     var redeemableTicket: RedeemableTicket? {
         didSet {
@@ -21,24 +22,57 @@ public class ManualCheckinModeView: UIView {
             
             self.userNameLabel.text = ticket.firstName
             self.ticketTypeLabel.text = ticket.eventName
+            let price = Int(ticket.priceInCents)
+            let ticketID = "#" + ticket.id.suffix(8).uppercased()
+            birthValueLabel.text = price.dollarString + " | " + ticket.ticketType + " | " + ticketID
+            
+            //  Wrong Event Check
+            print(self.event?.name)
+            print(ticket.eventName)
+            
+            if self.event?.name != ticket.eventName {
+                bannedTagView.isHidden = false
+                bannedTagView.backgroundColor = UIColor.brandError
+                bannedTagView.tagLabel.text = "WRONG EVENT"
+                completeCheckinButton.backgroundColor = .brandBlack
+                completeCheckinButton.setTitle("Ok", for: UIControl.State.normal)
+                completeCheckinButton.addTarget(self, action: #selector(cancelChecking), for: UIControl.Event.touchUpInside)
+                return
+            }
+            
             
             if ticket.status == TicketStatus.purchased.rawValue {
+                bannedTagView.isHidden = false
                 bannedTagView.backgroundColor = UIColor.brandGreen
                 bannedTagView.tagLabel.text = "PURCHASED"
                 completeCheckinButton.backgroundColor = .brandPrimary
                 completeCheckinButton.setTitle("Complete Check-in", for: UIControl.State.normal)
                 completeCheckinButton.addTarget(self, action: #selector(handleCompleteCheckin), for: UIControl.Event.touchUpInside)
+                
             } else {
-                bannedTagView.backgroundColor = UIColor.brandBlack
-                bannedTagView.tagLabel.text = "REDEEMED"
+                bannedTagView.isHidden = true
                 completeCheckinButton.backgroundColor = .brandBlack
-                completeCheckinButton.setTitle("Already Redemeemed", for: UIControl.State.normal)
+                completeCheckinButton.setTitle("Already Redeemed", for: UIControl.State.normal)
                 completeCheckinButton.addTarget(self, action: #selector(doNothing), for: UIControl.Event.touchUpInside)
+                
+                
+                eventDetailsLabel.text = "Redeemed by: \(ticket.redeemedBy)"
+                birthValueLabel.text = "Redeem Date: \(ticket.redeemedAt)"
+                ticketTypeLabel.text = price.dollarString + " | " + ticket.ticketType + " | " + ticketID
+                
+                guard let timezone = event?.venue, let redeemDate = ticket.redeemedAt else {
+                    birthValueLabel.text = "No Date Captured"
+                    return
+                }
+                
+                guard let eventDate = DateConfig.formatServerDate(date: redeemDate, timeZone: timezone.timezone!) else {
+                    birthValueLabel.text = "No Date Captured"
+                    return
+                }
+                
+                birthValueLabel.text = "On: " + DateConfig.fullDateFormat(date: eventDate)
+                
             }
-            
-            let price = Int(ticket.priceInCents)
-            let ticketID = "#" + ticket.id.suffix(8).uppercased()
-            birthValueLabel.text = price.dollarString + " | " + ticket.ticketType + " | " + ticketID
             
         }
     }
@@ -96,19 +130,17 @@ public class ManualCheckinModeView: UIView {
     lazy var bannedTagView: CheckinTagView = {
         let view = CheckinTagView()
         view.backgroundColor = UIColor.red
-        view.tagLabel.text = "BANNED".uppercased()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     lazy var vipTagView: CheckinTagView = {
         let view = CheckinTagView()
-        view.tagLabel.text = "VIP".uppercased()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var birthDateLabel: UILabel = {
+    lazy var eventDetailsLabel: UILabel = {
         let label = UILabel()
         label.text = "Event Details"
         label.textColor = UIColor.brandBlack
@@ -145,7 +177,7 @@ public class ManualCheckinModeView: UIView {
         addSubview(lineView)
         addSubview(bannedTagView)
         addSubview(vipTagView)
-        addSubview(birthDateLabel)
+        addSubview(eventDetailsLabel)
         addSubview(birthValueLabel)
         addSubview(completeCheckinButton)
         
@@ -180,19 +212,19 @@ public class ManualCheckinModeView: UIView {
         bannedTagView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 28).isActive = true
         bannedTagView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
         bannedTagView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
-        bannedTagView.widthAnchor.constraint(equalToConstant: 80.0).isActive = true
+        bannedTagView.widthAnchor.constraint(equalToConstant: 88.0).isActive = true
         
         vipTagView.centerYAnchor.constraint(equalTo: bannedTagView.centerYAnchor).isActive = true
         vipTagView.rightAnchor.constraint(equalTo: bannedTagView.leftAnchor, constant: -10.0).isActive = true
         vipTagView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
         vipTagView.widthAnchor.constraint(equalToConstant: 55.0).isActive = true
         
-        birthDateLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 20).isActive = true
-        birthDateLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20.0).isActive = true
-        birthDateLabel.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
-        birthDateLabel.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
+        eventDetailsLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 20).isActive = true
+        eventDetailsLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20.0).isActive = true
+        eventDetailsLabel.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
+        eventDetailsLabel.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
         
-        birthValueLabel.topAnchor.constraint(equalTo: birthDateLabel.bottomAnchor, constant: 2.0).isActive = true
+        birthValueLabel.topAnchor.constraint(equalTo: eventDetailsLabel.bottomAnchor, constant: 2.0).isActive = true
         birthValueLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20.0).isActive = true
         birthValueLabel.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
         birthValueLabel.widthAnchor.constraint(equalToConstant: 300.0).isActive = true

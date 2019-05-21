@@ -77,6 +77,13 @@ final public class DateConfig {
         return dateFormatter.string(from: date)
     }
     
+    public class  func fullDateFormat(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.dateFormat = "EEEE dd MMMM - HH:mm"
+        return dateFormatter.string(from: date)
+    }
+    
    
 }
 
