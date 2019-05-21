@@ -21,7 +21,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         
         guard let metadataObj = metadataObjects.first as? AVMetadataMachineReadableCodeObject else {
-            self.stopScanning = true
+            self.stopScanning = false
             return
         }
         
@@ -50,13 +50,9 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             }
             
             //  Last Ticket and Latest Ticket are the same - don't rescan.
-            print(self.scannerViewModel?.redeemedTicket?.id)
-            print(ticketID)
-            
             if let scannedTicketID = self.scannerViewModel?.redeemedTicket?.id {
                 if ticketID == scannedTicketID {
                     self.stopScanning = false
-                    print(self.stopScanning)
                     return
                 }
             }
