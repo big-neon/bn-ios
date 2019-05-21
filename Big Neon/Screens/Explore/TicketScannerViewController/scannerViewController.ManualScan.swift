@@ -10,7 +10,9 @@ extension ScannerViewController {
         self.scannerViewModel?.getRedeemTicket(ticketID: ticketID) { [weak self] (scanFeedback, errorString) in
             if scanFeedback == .validTicketID {
                 self?.stopScanning = false
-                self?.showRedeemedTicket()
+                if let ticket = self?.scannedTicket {
+                  self?.showRedeemedTicket(forTicket: ticket)
+                }
                 return
             }
             self?.manualCheckinFeedback(scanFeedback: scanFeedback)
@@ -29,10 +31,10 @@ extension ScannerViewController {
         })
     }
     
-    func showRedeemedTicket() {
+    func showRedeemedTicket(forTicket ticket: RedeemableTicket) {
         self.manualUserCheckinView.event = self.event
-        self.scannedTicketID = self.scannedTicket?.id
-        self.manualUserCheckinView.redeemableTicket = self.scannedTicket
+        self.scannedTicketID = ticket.id    //  self.scannedTicket?.id
+        self.manualUserCheckinView.redeemableTicket = ticket //self.scannedTicket
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.scanningBoarderView.layer.opacity = 0.0

@@ -26,10 +26,6 @@ public class ManualCheckinModeView: UIView {
             let ticketID = "#" + ticket.id.suffix(8).uppercased()
             birthValueLabel.text = price.dollarString + " | " + ticket.ticketType + " | " + ticketID
             
-            //  Wrong Event Check
-            print(self.event?.name)
-            print(ticket.eventName)
-            
             if self.event?.name != ticket.eventName {
                 bannedTagView.isHidden = false
                 bannedTagView.backgroundColor = UIColor.brandError
@@ -55,9 +51,10 @@ public class ManualCheckinModeView: UIView {
                 completeCheckinButton.setTitle("Already Redeemed", for: UIControl.State.normal)
                 completeCheckinButton.addTarget(self, action: #selector(doNothing), for: UIControl.Event.touchUpInside)
                 
+                if let redemeedBy = ticket.redeemedBy {
+                  eventDetailsLabel.text = "Redeemed by: \(redemeedBy)"
+                }
                 
-                eventDetailsLabel.text = "Redeemed by: \(ticket.redeemedBy)"
-                birthValueLabel.text = "Redeem Date: \(ticket.redeemedAt)"
                 ticketTypeLabel.text = price.dollarString + " | " + ticket.ticketType + " | " + ticketID
                 
                 guard let timezone = event?.venue, let redeemDate = ticket.redeemedAt else {
@@ -71,7 +68,6 @@ public class ManualCheckinModeView: UIView {
                 }
                 
                 birthValueLabel.text = "On: " + DateConfig.fullDateFormat(date: eventDate)
-                
             }
             
         }
