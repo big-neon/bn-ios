@@ -208,6 +208,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         captureSession.startRunning()
         configureBlur()
         configureScannedUserView()
+        
     }
     
     @objc func dismissView() {
