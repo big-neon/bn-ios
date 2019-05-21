@@ -55,7 +55,6 @@ public class EventsApiRepository {
         
         self.configureAccessToken { (completed) in
             if completed == false {
-                print("Failed to get a new token in the EventsApiRepository")
                 completion(nil, nil)
                 return
             }
@@ -80,6 +79,7 @@ public class EventsApiRepository {
                         completion(nil, error)
                         return
                     }
+                    
                     do {
                         let jsonObject = try JSONSerialization.jsonObject(with: data!, options: [])
                         

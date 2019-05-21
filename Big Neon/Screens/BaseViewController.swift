@@ -1,14 +1,22 @@
 import UIKit
 import Big_Neon_UI
 
-// MARK:  magic numbers... consider using layout/config class/enum
-// MARK: use abbreviation / syntax sugar
-
 class BaseViewController: UIViewController  {
     
     let doorPersonViemodel: DoorPersonViewModel = DoorPersonViewModel()
     let eventDetailViewModel: ExploreDetailViewModel = ExploreDetailViewModel()
     let ticketsViewModel: TicketsViewModel = TicketsViewModel()
+    let generator = UINotificationFeedbackGenerator()
+    
+    lazy var errorFeedback: FeedbackSystem = {
+        let feedback = FeedbackSystem()
+        return feedback
+    }()
+    
+    lazy var fetcher: Fetcher = {
+        let fetcher = Fetcher()
+        return fetcher
+    }()
     
     let loadingView: UIActivityIndicatorView = {
         let loader = UIActivityIndicatorView()
@@ -29,6 +37,29 @@ class BaseViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadingAnimation()
+    }
+    
+    func showFeedback(message: String) {
+        self.generator.notificationOccurred(.error)
+        if let window = UIApplication.shared.keyWindow {
+            self.errorFeedback.showFeedback(backgroundColor: UIColor.brandBlack,
+                                            feedbackLabel: message,
+                                            feedbackLabelColor: UIColor.white,
+                                            durationOnScreen: 3.0,
+                                            currentView: window,
+                                            showsBackgroundGradient: true,
+                                            isAboveTabBar: false)
+        }
+    }
+    
+    func handleShowHome() {
+        let tabBarVC = UINavigationController(rootViewController: DoorPersonViewController(fetcher: self.fetcher))
+        tabBarVC.modalTransitionStyle = .flipHorizontal
+        self.present(tabBarVC, animated: false, completion: nil)
+    }
+    
+    @objc func handleBack() {
+        self.navigationController?.popViewController(animated: true)
     }
     
 }

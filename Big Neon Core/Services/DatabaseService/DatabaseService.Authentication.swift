@@ -45,7 +45,8 @@ extension DatabaseService {
     }
     
     
-    public func loginToAccount(withEmail email: String, password: String, completion: @escaping (Error?, Tokens?) -> Void) {
+//    fetchEvents(completion: @escaping (_ fetchedEventsDict: [[String: Any]]?, _ error: Error?) -> ())
+    public func loginToAccount(withEmail email: String, password: String, completion: @escaping (_ error: String?, _ tokens: Tokens?) -> Void) {
         
         let parameters = ["email": email,
                           "password": password]
@@ -58,11 +59,22 @@ extension DatabaseService {
                    headers: [:])
             .validate()
             .response { (response) in
-                
-                guard response.result.isSuccess else {
-                    print(response.result.error)
-                    completion(response.result.error, nil)
-                    return
+        
+
+                do {
+                    
+                    let jsonObject = try JSONSerialization.jsonObject(with: response.data!, options: [])
+                    guard let jsonDictionary = jsonObject as? [String: Any] else {
+                            throw NSError(domain: dataErrorDomain, code: DataErrorCode.wrongDataFormat.rawValue, userInfo: nil)
+                    }
+                    
+                    if let error = jsonDictionary["error"] as? String {
+                        completion(error, nil)
+                    }
+                } catch {
+                    print("No Error Found")
+//                    let error = error.localizedDescription as String
+//                    completion(error, nil)
                 }
                 
                 guard let data = response.result.value else {
@@ -70,14 +82,14 @@ extension DatabaseService {
                     completion(nil, nil)
                     return
                 }
-                
+
                 do {
                     let decoder = JSONDecoder()
                     let tokens = try decoder.decode(Tokens.self, from: data!)
                     completion(nil, tokens)
                     return
                 } catch let error as NSError {
-                    print(error.localizedDescription)
+                    let error = error.localizedDescription as String
                     completion(error, nil)
                 }
         }

@@ -21,16 +21,7 @@ extension ProfileEditViewController {
     }
     
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 3
-        case 1:
-            return 3
-        default:
-            return 1
-        }
-        
-        //MARK: return section > 1 ? 0 : 3
+        return section > 1 ? 1 : 3
     }
     // MARK: it is hard to read with switch statement
     // refactor

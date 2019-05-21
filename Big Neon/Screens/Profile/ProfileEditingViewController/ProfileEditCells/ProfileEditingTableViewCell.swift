@@ -4,17 +4,11 @@
 import Foundation
 import UIKit
 
-// MARK:  magic numbers... consider using layout/config class/enum
-// MARK: self is not needed
-// MARK: use abbreviation / syntax sugar
-
-
 final public class ProfileEditTableCell: UITableViewCell {
     
     public static let cellID = "ProfileEditTableCell"
     
-    // lazy?
-    public let cellLabel: UILabel = {
+    public lazy var cellLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandGrey
         label.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium)
@@ -22,8 +16,7 @@ final public class ProfileEditTableCell: UITableViewCell {
         return label
     }()
     
-    // lazy?
-    public let entryTextField: UITextField = {
+    public lazy var entryTextField: UITextField = {
         let textField = UITextField()
         textField.textColor = UIColor.brandBlack
         textField.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.semibold)
@@ -33,24 +26,24 @@ final public class ProfileEditTableCell: UITableViewCell {
     
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: UITableViewCell.CellStyle.default, reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = UIColor.white
-        self.accessoryType = .none
-        self.configureView()
+        backgroundColor = UIColor.white
+        accessoryType = .none
+        configureView()
     }
     
     private func configureView() {
-        self.addSubview(cellLabel)
-        self.addSubview(entryTextField)
+        addSubview(cellLabel)
+        addSubview(entryTextField)
         
-        self.cellLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
-        self.cellLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        self.cellLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        self.cellLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        cellLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
+        cellLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        cellLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        cellLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
         
-        self.entryTextField.leftAnchor.constraint(equalTo: cellLabel.rightAnchor, constant: 16).isActive = true
-        self.entryTextField.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        self.entryTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
-        self.entryTextField.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        entryTextField.leftAnchor.constraint(equalTo: cellLabel.rightAnchor, constant: 16).isActive = true
+        entryTextField.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        entryTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
+        entryTextField.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
     
     required public init?(coder aDecoder: NSCoder) {

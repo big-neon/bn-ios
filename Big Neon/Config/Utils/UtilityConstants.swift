@@ -12,7 +12,11 @@ public enum Constants {
         static let scannerCheckinKey     = "com.BigNeon.scannerCheckinModeKey"
     }
     
-    
+    public enum Cloudinary {
+        static let cloudinaryName           = "dyro9cwim"
+        static let cloudinaryUploadPreset   = "qzcwneon"
+        static let cloudinaryAPIKey         = "585921537719581"
+    }
     
 }
 

@@ -80,20 +80,20 @@ final class DoorPersonViewModel {
         }
     }
     
-    private func fetchUser(completion: @escaping(Bool) -> Void) {
+    func fetchUser(completion: @escaping(Bool) -> Void) {
         
         guard let accessToken = BusinessService.shared.database.fetchAcessToken() else {
             completion(false)
             return
         }
         
-        BusinessService.shared.database.fetchUser(withAccessToken: accessToken) { [weak self] (error, userFound) in
+        BusinessService.shared.database.fetchUser(withAccessToken: accessToken) { (error, userFound) in
             guard let user = userFound else {
                 completion(false)
                 return
             }
             
-            self?.user = user
+            self.user = user
             completion(true)
             return
         }

@@ -6,17 +6,11 @@ import Big_Neon_Core
 
 // MARK:  magic numbers... consider using layout/config class/enum
 // MARK: use abbreviation / syntax sugar
-// do we need to confirm to all those protocols?
 
 final class DoorPersonViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
-    
-    var fetcher: Fetcher
-    
-    lazy var guestsFetcher: Fetcher = {
-        let fetcher = Fetcher()
-        return fetcher
-    }()
 
+    var guestFetcher: Fetcher
+    
     lazy var refresher: UIRefreshControl = {
         let refresher = UIRefreshControl()
         refresher.tintColor = UIColor.brandGrey
@@ -79,16 +73,16 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     lazy var userProfileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowProfile)))
-        imageView.image = UIImage(named: "ic_profilePicture")
         imageView.isUserInteractionEnabled = true
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 15.0
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
     init(fetcher: Fetcher) {
-        self.fetcher = fetcher
+        self.guestFetcher = fetcher
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -131,7 +125,6 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
                 
                 if completed == false {
                     self?.exploreCollectionView.reloadData()
-                    print("Failed to Reload View")
                     return
                 }
                 self?.exploreCollectionView.reloadData()
@@ -146,15 +139,26 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.navigationNoLineBar()
+        self.configureNavBar()
     }
 
     private func configureNavBar() {
         self.navigationNoLineBar()
-        self.navigationItem.title = "My Events"
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
+        self.navigationController?.navigationBar.tintColor = UIColor.brandBlack
+        self.setNavigationTitle(withTitle: "My Events")
+        
         userProfileImageView.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
         userProfileImageView.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: userProfileImageView)
+        
+        self.doorPersonViemodel.fetchUser { [weak self] (_) in
+            if let profilePicURL = self?.doorPersonViemodel.user?.profilePicURL   {
+                self?.userProfileImageView.pin_setImage(from: URL(string: profilePicURL), placeholderImage: UIImage(named: "ic_profilePicture"))
+            } else {
+                self?.userProfileImageView.pin_setPlaceholder(with: UIImage(named: "ic_profilePicture"))
+            }
+        }
     }
 
     private func configureEmptyView() {
@@ -199,7 +203,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     }
     
     internal func showScanner(forTicketIndex ticketIndex: Int) {
-        let scannerVC = ScannerViewController(fetcher: self.guestsFetcher)
+        let scannerVC = ScannerViewController(fetcher: guestFetcher)
         scannerVC.event = self.doorPersonViemodel.eventCoreData[ticketIndex]
         let scannerNavVC = UINavigationController(rootViewController: scannerVC)
         self.present(scannerNavVC, animated: true, completion: nil)

@@ -12,7 +12,7 @@ enum DataErrorCode: NSInteger {
 
 extension DatabaseService {
     
-    public func getRedeemTicket(forTicketID ticketID: String, completion: @escaping (ScanFeedback?, RedeemableTicket?) -> Void) {
+    public func getRedeemTicket(forTicketID ticketID: String, completion: @escaping (ScanFeedback?, String?, RedeemableTicket?) -> Void) {
         
         let APIURL = APIService.getRedeemableTicket(ticketID: ticketID)
         let accessToken = self.fetchAcessToken()
@@ -28,19 +28,20 @@ extension DatabaseService {
                 guard response.result.isSuccess else {
                     switch response.result.error?.asAFError?.responseCode {
                     case 409:
-                        completion(.alreadyRedeemed, nil)
+                        completion(.alreadyRedeemed, nil, nil)
                         return
                     case 404:
-                        completion(.wrongEvent, nil)
+                        completion(.wrongEvent, "Check to Make sure you are scanning the correct event ticket", nil)
                         return
                     default:
-                        completion(.issueFound, nil)
+                        print(response.result.error?.localizedDescription)
+                        completion(.issueFound, response.result.error?.localizedDescription, nil)
                         return
                     }
                 }
                 
                 guard let data = response.result.value else {
-                    completion(.issueFound, nil)
+                    completion(.issueFound, nil, nil)
                     return
                 }
                 
@@ -48,11 +49,11 @@ extension DatabaseService {
                     let decoder = JSONDecoder()
                     let redeemableTicket = try decoder.decode(RedeemableTicket.self, from: data!)
                     print(redeemableTicket)
-                    completion(.validTicketID, redeemableTicket)
+                    completion(.validTicketID, nil, redeemableTicket)
                     return
                 } catch let error as NSError {
                     print(error)
-                    completion(.issueFound, nil)
+                    completion(.issueFound, error.localizedDescription, nil)
                 }
         }
     }

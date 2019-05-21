@@ -9,7 +9,7 @@ final public class GuestTableViewCell: UITableViewCell {
     public lazy var guestNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandBlack
-        label.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.bold)
+        label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -53,7 +53,7 @@ final public class GuestTableViewCell: UITableViewCell {
         ticketStateView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         ticketStateView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
         ticketStateView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
-        ticketStateView.widthAnchor.constraint(equalToConstant: 100.0).isActive = true
+        ticketStateView.widthAnchor.constraint(equalToConstant: 88.0).isActive = true
     }
     
     required public init?(coder aDecoder: NSCoder) {

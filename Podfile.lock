@@ -6,6 +6,7 @@ PODS:
   - Fabric (1.9.0)
   - FLAnimatedImage (1.0.12)
   - JWTDecode (2.2.0)
+  - PanModal (1.2.2)
   - PhoneNumberKit (2.6.0):
     - PhoneNumberKit/PhoneNumberKitCore (= 2.6.0)
     - PhoneNumberKit/UIKit (= 2.6.0)
@@ -46,6 +47,7 @@ DEPENDENCIES:
   - Crashlytics
   - DTGradientButton
   - JWTDecode
+  - PanModal
   - PhoneNumberKit (~> 2.1)
   - PINCache (= 3.0.1-beta.6)
   - PINRemoteImage (= 3.0.0-beta.13)
@@ -67,6 +69,7 @@ SPEC REPOS:
     - Fabric
     - FLAnimatedImage
     - JWTDecode
+    - PanModal
     - PhoneNumberKit
     - PINCache
     - PINOperation
@@ -97,6 +100,7 @@ SPEC CHECKSUMS:
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   JWTDecode: 85a405ab16d5473e99bd89ded1d535090ebd6a0e
+  PanModal: db200380a267634f746f8dea550dc3d1df017fc0
   PhoneNumberKit: 167ee1f0bbb6efce7c62559e620eae745595532f
   PINCache: d195fdba255283f7e9900a55e3cced377f431f9b
   PINOperation: a6219e6fc9db9c269eb7a7b871ac193bcf400aac
@@ -111,6 +115,6 @@ SPEC CHECKSUMS:
   TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
-PODFILE CHECKSUM: 0566368db0ff882bc5dc5d89b914f0e4f14bb4ae
+PODFILE CHECKSUM: 73fd303d3f152f7c93bf9e36748357e6bb552068
 
 COCOAPODS: 1.6.1

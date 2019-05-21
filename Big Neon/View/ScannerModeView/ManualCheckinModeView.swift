@@ -4,10 +4,6 @@ import Foundation
 import UIKit
 import Big_Neon_Core
 
-public protocol ManualCheckinModeDelegate {
-    func completeCheckin()
-}
-
 // MARK: lots of magic numbers... consider using layout/config class/enum
 // MARK: self is not needed
 // MARK: internal is default access level - not need for explicit definition
@@ -15,26 +11,51 @@ public protocol ManualCheckinModeDelegate {
 
 public class ManualCheckinModeView: UIView {
     
-    // should be weak
-    public var delegate: ManualCheckinModeDelegate?
+    weak var delegate: ScannerViewDelegate?
     
-    public var redeemableTicket: RedeemableTicket? {
+    var redeemableTicket: RedeemableTicket? {
         didSet {
             guard let ticket = self.redeemableTicket else {
                 return
             }
             
             self.userNameLabel.text = ticket.firstName
-            self.ticketTypeLabel.text = ticket.ticketType
+            self.ticketTypeLabel.text = ticket.eventName
+            
+            if ticket.status == TicketStatus.purchased.rawValue {
+                bannedTagView.backgroundColor = UIColor.brandGreen
+                bannedTagView.tagLabel.text = "PURCHASED"
+                completeCheckinButton.backgroundColor = .brandPrimary
+                completeCheckinButton.setTitle("Complete Check-in", for: UIControl.State.normal)
+                completeCheckinButton.addTarget(self, action: #selector(handleCompleteCheckin), for: UIControl.Event.touchUpInside)
+            } else {
+                bannedTagView.backgroundColor = UIColor.brandBlack
+                bannedTagView.tagLabel.text = "REDEEMED"
+                completeCheckinButton.backgroundColor = .brandBlack
+                completeCheckinButton.setTitle("Already Redemeemed", for: UIControl.State.normal)
+                completeCheckinButton.addTarget(self, action: #selector(doNothing), for: UIControl.Event.touchUpInside)
+            }
+            
+            let price = Int(ticket.priceInCents)
+            let ticketID = "#" + ticket.id.suffix(8).uppercased()
+            birthValueLabel.text = price.dollarString + " | " + ticket.ticketType + " | " + ticketID
+            
         }
     }
     
-    public lazy var completeCheckinButton: UIButton = {
+    lazy var completeCheckinButton: UIButton = {
         let button = UIButton()
-        button.addTarget(self, action: #selector(handleCompleteCheckin), for: UIControl.Event.touchUpInside)
-        button.setTitle("Complete Check-in", for: UIControl.State.normal)
-        button.backgroundColor = UIColor.brandPrimary
         button.setTitleColor(UIColor.brandWhite, for: UIControl.State.normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    lazy var dismissView: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(cancelChecking), for: UIControl.Event.touchUpInside)
+        button.setImage(#imageLiteral(resourceName: "ic_dismissButton").withRenderingMode(.alwaysTemplate), for: UIControl.State.normal)
+        button.tintColor = UIColor.brandGrey
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -49,8 +70,7 @@ public class ManualCheckinModeView: UIView {
         return imageView
     }()
     
-    // lazy?
-    public let userNameLabel: UILabel = {
+    lazy var userNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandBlack
         label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.bold)
@@ -58,25 +78,22 @@ public class ManualCheckinModeView: UIView {
         return label
     }()
     
-    // lazy?
-    public let ticketTypeLabel: UILabel = {
+    lazy var ticketTypeLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandGrey
-        label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
+        label.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    // lazy?
-    private let lineView: UIView = {
+    lazy var lineView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.brandGrey.withAlphaComponent(0.2)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    // lazy?
-    private let bannedTagView: CheckinTagView = {
+    lazy var bannedTagView: CheckinTagView = {
         let view = CheckinTagView()
         view.backgroundColor = UIColor.red
         view.tagLabel.text = "BANNED".uppercased()
@@ -84,36 +101,32 @@ public class ManualCheckinModeView: UIView {
         return view
     }()
     
-    // lazy?
-    private let vipTagView: CheckinTagView = {
+    lazy var vipTagView: CheckinTagView = {
         let view = CheckinTagView()
         view.tagLabel.text = "VIP".uppercased()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    // lazy?
-    public let birthDateLabel: UILabel = {
+    lazy var birthDateLabel: UILabel = {
         let label = UILabel()
-        label.text = "Birth Date"
+        label.text = "Event Details"
         label.textColor = UIColor.brandBlack
         label.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    // lazy?
-    public let birthValueLabel: UILabel = {
+    lazy var birthValueLabel: UILabel = {
         let label = UILabel()
         label.text = "-"
         label.textColor = UIColor.brandGrey
-        label.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)
+        label.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    // lazy?
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white
         self.layer.cornerRadius = 12.0
@@ -125,20 +138,29 @@ public class ManualCheckinModeView: UIView {
     }
     
     private func configureView() {
-        self.addSubview(userImageView)
-        self.addSubview(userNameLabel)
-        self.addSubview(ticketTypeLabel)
-        self.addSubview(lineView)
-        self.addSubview(bannedTagView)
-        self.addSubview(vipTagView)
-        self.addSubview(birthDateLabel)
-        self.addSubview(birthValueLabel)
-        self.addSubview(completeCheckinButton)
+        addSubview(userImageView)
+        addSubview(dismissView)
+        addSubview(userNameLabel)
+        addSubview(ticketTypeLabel)
+        addSubview(lineView)
+        addSubview(bannedTagView)
+        addSubview(vipTagView)
+        addSubview(birthDateLabel)
+        addSubview(birthValueLabel)
+        addSubview(completeCheckinButton)
+        
+        
+        vipTagView.isHidden = true
         
         userImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 22).isActive = true
         userImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
         userImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         userImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        
+        dismissView.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor).isActive = true
+        dismissView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
+        dismissView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        dismissView.widthAnchor.constraint(equalToConstant: 30).isActive = true
         
         userNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 22).isActive = true
         userNameLabel.leftAnchor.constraint(equalTo: userImageView.rightAnchor, constant: 15).isActive = true
@@ -168,12 +190,12 @@ public class ManualCheckinModeView: UIView {
         birthDateLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 20).isActive = true
         birthDateLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20.0).isActive = true
         birthDateLabel.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
-        birthDateLabel.widthAnchor.constraint(equalToConstant: 80.0).isActive = true
+        birthDateLabel.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
         
         birthValueLabel.topAnchor.constraint(equalTo: birthDateLabel.bottomAnchor, constant: 2.0).isActive = true
         birthValueLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20.0).isActive = true
         birthValueLabel.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
-        birthValueLabel.widthAnchor.constraint(equalToConstant: 80.0).isActive = true
+        birthValueLabel.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
         
         completeCheckinButton.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         completeCheckinButton.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
@@ -181,8 +203,16 @@ public class ManualCheckinModeView: UIView {
         completeCheckinButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
     }
     
-    @objc private func handleCompleteCheckin() {
+    @objc func handleCompleteCheckin() {
         self.delegate?.completeCheckin()
+    }
+    
+    @objc func doNothing() {
+        print("Already Redeemed")
+    }
+    
+    @objc private func cancelChecking() {
+        self.delegate?.dismissScannedUserView()
     }
     
     required public init?(coder aDecoder: NSCoder) {

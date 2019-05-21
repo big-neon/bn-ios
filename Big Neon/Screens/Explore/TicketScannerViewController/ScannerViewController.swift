@@ -4,15 +4,24 @@ import AVFoundation
 import UIKit
 import Big_Neon_UI
 import Big_Neon_Core
+import PanModal
 
-// MARK:  magic numbers... consider using layout/config class/enum
+public protocol ScannerViewDelegate: class {
+    func completeCheckin()
+    func scannerSetAutomatic()
+    func scannerSetManual()
+    func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath: IndexPath?)
+    func reloadGuests()
+    func dismissScannedUserView()
+}
 
-final class ScannerViewController: UIViewController, ScannerModeViewDelegate, GuestListViewProtocol, ManualCheckinModeDelegate {
+final class ScannerViewController: UIViewController, ScannerViewDelegate {
     
     //  Video Capture Session
     var captureSession = AVCaptureSession()
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var scannedTicket: RedeemableTicket?
+    var lastScannedTicket: RedeemableTicket?
     var scannedTicketID: String?
     var event: EventsData?
     var fetcher: Fetcher
@@ -22,10 +31,11 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
     var guestListTopAnchor: NSLayoutConstraint?
     var manualCheckingTopAnchor: NSLayoutConstraint?
     var scannedUserBottomAnchor: NSLayoutConstraint?
-    var scanCompleted: Bool?
+    var stopScanning: Bool?
     var scannerViewModel : TicketScannerViewModel?
     let blurEffect = UIBlurEffect(style: .dark)
     var blurView: UIVisualEffectView?
+    var guestListVC = GuestListViewController()
     
     let supportedCodeTypes = [AVMetadataObject.ObjectType.upce,
                               AVMetadataObject.ObjectType.code39,
@@ -41,39 +51,34 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
                               AVMetadataObject.ObjectType.interleaved2of5,
                               AVMetadataObject.ObjectType.qr]
     
-    var isShowingGuests: Bool = false {
-        didSet {
-            if isShowingGuests == true {
-                
-                // MARK: we want to be on main thread
-                // seems unnecessary too complicate
-                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
-                    self.cameraTintView.layer.opacity = 0.85
-                    self.scannerModeView.layer.opacity = 0.0
-                    self.guestListTopAnchor?.constant = UIScreen.main.bounds.height - 560
-                    self.navigationItem.leftBarButtonItem = nil
-                    self.view.layoutIfNeeded()
-                }) { (complete) in
-                    print("De-Activated Camera")
-                }
-                return
-            }
-            
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
-                self.cameraTintView.layer.opacity = 0.0
-                self.scannerModeView.layer.opacity = 1.0
-                self.guestListTopAnchor?.constant = UIScreen.main.bounds.height - 80.0
-                self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_close"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.handleClose))
-                self.view.layoutIfNeeded()
-            }) { (complete) in
-                print("Activated Camera")
-            }
-            return
-        }
-    }
-    
     lazy var scannerModeView: ScannerModeView = {
         let view =  ScannerModeView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var closeButton: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(dismissView), for: UIControl.Event.touchUpInside)
+        button.setImage(#imageLiteral(resourceName: "ic_closeBUtton"), for: UIControl.State.normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    lazy var scanningBoarderView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = #imageLiteral(resourceName: "ic_scsnner_view")
+        imageView.layer.opacity = 0.5
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    lazy var showGuestView: ShowGuestListView = {
+        let view =  ShowGuestListView()
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showGuestList)))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -100,14 +105,6 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         self.blurView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.addSubview(self.blurView!)
     }
-    
-    lazy var feedbackView: TicketScanFeedbackView = {
-        let view =  TicketScanFeedbackView()
-        view.layer.opacity = 0.0
-        view.layer.contentsScale = 0.0
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
     
     lazy var scannedUserView: LastScannedUserView = {
         let view =  LastScannedUserView()
@@ -139,11 +136,13 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         super.viewDidLoad()
         configureViewModel()
         view.backgroundColor = UIColor.black
-        configureNavBar()
+        hideNavBar()
         configureScanner()
         configureManualCheckinView()
         configureScanFeedbackView()
+        configureHeader()
     }
+    
 
     private func configureViewModel() {
         scannerViewModel = TicketScannerViewModel()
@@ -151,21 +150,40 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         scannerModeView.setAutoMode = scannerViewModel!.scannerMode()
     }
 
-    private func configureNavBar() {
-        navigationClearBar()
-        navigationController?.navigationBar.tintColor = UIColor.white
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_close"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(handleClose))
+    private func configureHeader() {
+        view.addSubview(scannerModeView)
+        view.addSubview(closeButton)
+        view.addSubview(showGuestView)
+        view.addSubview(scanningBoarderView)
         
         scannerModeView.delegate = self
-        scannerModeView.widthAnchor.constraint(equalToConstant: 290.0).isActive = true
+        scannerModeView.layer.cornerRadius = 24.0
+        showGuestView.layer.cornerRadius = 20.0
+        
+        scannerModeView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 12).isActive = true
+        scannerModeView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -12).isActive = true
+        scannerModeView.widthAnchor.constraint(equalToConstant: 280.0).isActive = true
         scannerModeView.heightAnchor.constraint(equalToConstant: 48.0).isActive = true
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: scannerModeView)
+        
+        closeButton.centerYAnchor.constraint(equalTo: scannerModeView.centerYAnchor).isActive = true
+        closeButton.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 12).isActive = true
+        closeButton.widthAnchor.constraint(equalToConstant: 48.0).isActive = true
+        closeButton.heightAnchor.constraint(equalToConstant: 48.0).isActive = true
+        
+        showGuestView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18).isActive = true
+        showGuestView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        showGuestView.widthAnchor.constraint(equalToConstant: 160.0).isActive = true
+        showGuestView.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
+        
+        scanningBoarderView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        scanningBoarderView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        scanningBoarderView.widthAnchor.constraint(equalToConstant: 200.0).isActive = true
+        scanningBoarderView.heightAnchor.constraint(equalToConstant: 200.0).isActive = true
     }
 
     private func configureScanner() {
         
         guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else {
-            print("Video Failed to Run: Possibly running on a simulator with no video")
             configureScannedUserView()
             configureGuestList()
             return
@@ -191,7 +209,10 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         captureSession.startRunning()
         configureBlur()
         configureScannedUserView()
-        configureGuestList()
+    }
+    
+    @objc func dismissView() {
+        dismiss(animated: true, completion: nil)
     }
 
     private func configureManualCheckinView() {
@@ -205,41 +226,47 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
     }
     
     private func configureScanFeedbackView() {
-        view.addSubview(feedbackView)
-        feedbackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        feedbackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -20.0).isActive = true
-        feedbackView.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
-        feedbackView.widthAnchor.constraint(equalToConstant: 220.0).isActive = true
+//        view.addSubview(feedbackView)
+//        feedbackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+//        feedbackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -20.0).isActive = true
+//        feedbackView.heightAnchor.constraint(equalToConstant: 150.0).isActive = true
+//        feedbackView.widthAnchor.constraint(equalToConstant: 290.0).isActive = true
     }
     
     private func configureScannedUserView() {
         view.addSubview(scannedUserView)
-        scannedUserView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40.0).isActive = true
-        scannedUserView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40.0).isActive = true
-        scannedUserBottomAnchor = scannedUserView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 160.0)
+        scannedUserView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20.0).isActive = true
+        scannedUserView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20.0).isActive = true
+        scannedUserBottomAnchor = scannedUserView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 200.0) //   160.0
         scannedUserBottomAnchor?.isActive = true
-        scannedUserView.heightAnchor.constraint(equalToConstant: 64.0).isActive = true
+        scannedUserView.heightAnchor.constraint(equalToConstant: 76.0).isActive = true
     }
     
-    private func configureGuestList() {
-        view.addSubview(guestListView)
-        guestListView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        guestListView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        guestListTopAnchor = guestListView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UIScreen.main.bounds.height - 64.0)
-        guestListTopAnchor?.isActive = true
-        guestListView.heightAnchor.constraint(equalToConstant: 560.0).isActive = true
-        
+    @objc func showGuestList() {
+        viewAnimationBounce(viewSelected: showGuestView,
+                            bounceVelocity: 10.0,
+                            springBouncinessEffect: 3.0)
+        configureGuestList()
+    }
+    
+    @objc func configureGuestList() {
         guard let eventID = self.event?.id else {
             return
         }
-        self.fetchGuests(forEventID: eventID)
+        self.fetchGuests(forEventID: eventID, event: self.event!)
     }
     
-    private func fetchGuests(forEventID eventID: String) {
+    func fetchGuests(forEventID eventID: String, event: EventsData) {
         self.scannerViewModel?.fetchGuests(forEventID: eventID, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
-//                self?.scannerViewModel?.guestsCoreData = (self?.fetcher.fetchLocalGuests())!
-                self?.guestListView.guests = self?.scannerViewModel?.ticketsFetched //    self?.scannerViewModel?.guestsCoreData
+                guard let self = self else {return}
+                self.stopScanning = true
+                let navGuestVC = GuestListNavigationController(rootViewController: self.guestListVC)
+                self.guestListVC.event = event
+                self.guestListVC.scanVC = self
+                self.guestListVC.delegate = self
+                self.guestListVC.guests = self.scannerViewModel?.ticketsFetched
+                self.presentPanModal(navGuestVC)
             }
         })
     }
@@ -267,8 +294,8 @@ final class ScannerViewController: UIViewController, ScannerModeViewDelegate, Gu
         
         self.scannerViewModel?.fetchGuests(forEventID: eventID, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
-                self?.guestListView.guests = self?.scannerViewModel?.ticketsFetched
-                self?.guestListView.guestTableView.reloadRows(at: [index], with: UITableView.RowAnimation.fade)
+                self?.guestListVC.guests = self?.scannerViewModel?.ticketsFetched
+                self?.guestListVC.guestTableView.reloadRows(at: [index], with: UITableView.RowAnimation.fade)
                 return
             }
         })
