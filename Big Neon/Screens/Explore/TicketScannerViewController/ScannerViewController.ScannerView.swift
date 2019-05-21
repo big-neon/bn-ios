@@ -50,6 +50,9 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             }
             
             //  Last Ticket and Latest Ticket are the same - don't rescan.
+            print(self.scannerViewModel?.redeemedTicket?.id)
+            print(ticketID)
+            
             if let scannedTicketID = self.scannerViewModel?.redeemedTicket?.id {
                 if ticketID == scannedTicketID {
                     self.stopScanning = false
