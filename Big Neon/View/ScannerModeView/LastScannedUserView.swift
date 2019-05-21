@@ -34,6 +34,9 @@ public class LastScannedUserView: UIView {
             case .alreadyRedeemed:
                 ticketScanStateTagView.backgroundColor = UIColor.brandBlack
                 ticketScanStateTagView.tagLabel.text = "REDEEMED"
+            case .wrongEvent:
+                ticketScanStateTagView.backgroundColor = UIColor.brandBlack
+                ticketScanStateTagView.tagLabel.text = "WRONG EVENT"
             default:
                 ticketScanStateTagView.backgroundColor = UIColor.brandError
                 ticketScanStateTagView.tagLabel.text = "-"

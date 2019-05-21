@@ -25,8 +25,12 @@ extension ScannerViewController {
     }
     
     func showScannedUser(feedback: ScanFeedback?, ticket: RedeemableTicket?) {
+        var feedFound = feedback
+        if ticket?.eventName != self.event?.name {
+            feedFound = .wrongEvent
+        }
         self.scannedUserView.redeemableTicket = ticket
-        self.scannedUserView.scanFeedback = feedback
+        self.scannedUserView.scanFeedback = feedFound
         self.scannerViewModel?.redeemedTicket = ticket
         self.blurView?.layer.opacity = 0.0
         self.scannerModeView.layer.opacity = 1.0
