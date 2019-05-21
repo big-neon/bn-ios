@@ -49,6 +49,15 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                 return
             }
             
+            //  Last Ticket and Latest Ticket are the same - don't rescan.
+            if let scannedTicketID = self.scannerViewModel?.redeemedTicket?.id {
+                if ticketID == scannedTicketID {
+                    self.stopScanning = false
+                    print(self.stopScanning)
+                    return
+                }
+            }
+            
             self.hideScannedUser()
             self.stopScanning = true
             if self.scannerViewModel?.scannerMode() == true {
@@ -94,6 +103,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     
     func hideScannedUser() {
         self.manualUserCheckinView.redeemableTicket = nil
+        self.lastScannedTicket = self.scannedTicket
         self.scannedTicket = nil
         self.stopScanning = true
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {

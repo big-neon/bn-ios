@@ -8,6 +8,7 @@ import Sync
 final class TicketScannerViewModel {
     
     var redeemedTicket: RedeemableTicket?
+    var lastRedeemedTicket: RedeemableTicket?
     var scanVC: ScannerViewController?
     var guests: Guests?
     var dataStack: DataStack?
@@ -127,6 +128,7 @@ final class TicketScannerViewModel {
     }
     
     internal func completeAutoCheckin(eventID: String, ticket: RedeemableTicket, completion: @escaping(ScanFeedback) -> Void) {
+        
         BusinessService.shared.database.redeemTicket(forTicketID: ticket.id, eventID: eventID, redeemKey: ticket.redeemKey) { [weak self] (scanFeedback, ticket) in
             DispatchQueue.main.async {
                 self?.redeemedTicket = ticket

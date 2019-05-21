@@ -21,6 +21,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     var captureSession = AVCaptureSession()
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var scannedTicket: RedeemableTicket?
+    var lastScannedTicket: RedeemableTicket?
     var scannedTicketID: String?
     var event: EventsData?
     var fetcher: Fetcher
@@ -104,14 +105,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         self.blurView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.addSubview(self.blurView!)
     }
-    
-//    lazy var feedbackView: TicketScanFeedbackView = {
-//        let view =  TicketScanFeedbackView()
-//        view.layer.opacity = 0.0
-//        view.layer.contentsScale = 0.0
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        return view
-//    }()
     
     lazy var scannedUserView: LastScannedUserView = {
         let view =  LastScannedUserView()
