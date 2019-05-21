@@ -33,7 +33,7 @@ public class ManualCheckinModeView: UIView {
                 bannedTagView.tagLabel.text = "REDEEMED"
                 completeCheckinButton.backgroundColor = .brandBlack
                 completeCheckinButton.setTitle("Already Redemeemed", for: UIControl.State.normal)
-                completeCheckinButton.addTarget(self, action: #selector(cancelChecking), for: UIControl.Event.touchUpInside)
+                completeCheckinButton.addTarget(self, action: #selector(doNothing), for: UIControl.Event.touchUpInside)
             }
             
             let price = Int(ticket.priceInCents)
@@ -205,6 +205,10 @@ public class ManualCheckinModeView: UIView {
     
     @objc func handleCompleteCheckin() {
         self.delegate?.completeCheckin()
+    }
+    
+    @objc func doNothing() {
+        print("Already Redeemed")
     }
     
     @objc private func cancelChecking() {

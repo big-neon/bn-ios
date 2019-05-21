@@ -35,11 +35,11 @@ public class LastScannedUserView: UIView {
                 ticketScanStateTagView.backgroundColor = UIColor.brandBlack
                 ticketScanStateTagView.tagLabel.text = "REDEEMED"
             case .wrongEvent:
-                ticketScanStateTagView.backgroundColor = UIColor.brandBlack
+                ticketScanStateTagView.backgroundColor = UIColor.brandError
                 ticketScanStateTagView.tagLabel.text = "WRONG EVENT"
             default:
                 ticketScanStateTagView.backgroundColor = UIColor.brandError
-                ticketScanStateTagView.tagLabel.text = "-"
+                ticketScanStateTagView.tagLabel.text = "ERROR"
             }
         }
     }
@@ -97,7 +97,7 @@ public class LastScannedUserView: UIView {
         ticketScanStateTagView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         ticketScanStateTagView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
         ticketScanStateTagView.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        ticketScanStateTagView.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        ticketScanStateTagView.widthAnchor.constraint(equalToConstant: 88).isActive = true
 
         userNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 16).isActive = true
         userNameLabel.leftAnchor.constraint(equalTo: userImageView.rightAnchor, constant: 10).isActive = true
