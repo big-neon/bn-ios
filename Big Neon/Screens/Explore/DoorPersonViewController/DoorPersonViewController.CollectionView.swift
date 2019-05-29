@@ -67,7 +67,7 @@ extension DoorPersonViewController {
     }
 
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height: CGFloat = indexPath.section == 0 ? 120 : 100
+        let height: CGFloat = indexPath.section == 0 ? 140 : 100
         let width: CGFloat = indexPath.section == 0 ? UIScreen.main.bounds.width : UIScreen.main.bounds.width - 40
         return CGSize(width: width, height: height)
     }

@@ -59,8 +59,8 @@ public class SectionHeaderCell: UICollectionViewCell {
         self.addSubview(userImageView)
         self.addSubview(detailLabel)
         
-        userImageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        userImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
+        userImageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
+        userImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 40).isActive = true
         userImageView.widthAnchor.constraint(equalToConstant: 32.0).isActive = true
         userImageView.heightAnchor.constraint(equalToConstant: 32.0).isActive = true
 

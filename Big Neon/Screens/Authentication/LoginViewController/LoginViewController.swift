@@ -5,13 +5,17 @@ import Foundation
 import UITextField_Shake
 import Big_Neon_UI
 
-// MARK:  magic numbers... consider using layout/config class/enum
-// MARK: use abbreviation / syntax sugar
-
 class LoginViewController: BaseViewController, UITextFieldDelegate {
     
     var buttonBottomAnchorConstraint: NSLayoutConstraint?
     let createAccountViewModel: AccountViewModel = AccountViewModel()
+    var isShowingPassword: Bool = false {
+        didSet {
+            self.passwordTextView.authTextField.isSecureTextEntry = !isShowingPassword
+            let buttonTitle: String = isShowingPassword ? "HIDE" : "SHOW"
+            self.showPasswordButton.setTitle(buttonTitle, for: UIControl.State.normal)
+        }
+    }
     
     lazy var loginFetcher: Fetcher = {
         let fetcher = Fetcher()
@@ -38,6 +42,16 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         textField.textFieldType = .loginPassword
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
+    }()
+    
+    lazy var showPasswordButton: UIButton = {
+        let button = UIButton()
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.bold)
+        button.setTitleColor(UIColor.brandPrimary, for: UIControl.State.normal)
+        button.setTitle("SHOW", for: UIControl.State.normal)
+        button.addTarget(self, action: #selector(showPassword), for: UIControl.Event.touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     lazy var loginButton: BrandButton = {
@@ -76,6 +90,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         view.addSubview(headerLabel)
         view.addSubview(emailTextView)
         view.addSubview(passwordTextView)
+        passwordTextView.addSubview(showPasswordButton)
         view.addSubview(loginButton)
         
         headerLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
@@ -92,6 +107,11 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         passwordTextView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         passwordTextView.topAnchor.constraint(equalTo: emailTextView.bottomAnchor, constant: 12).isActive = true
         passwordTextView.heightAnchor.constraint(equalToConstant: 75).isActive = true
+        
+        showPasswordButton.rightAnchor.constraint(equalTo: passwordTextView.rightAnchor, constant: -10).isActive = true
+        showPasswordButton.centerYAnchor.constraint(equalTo: passwordTextView.centerYAnchor, constant: -8).isActive = true
+        showPasswordButton.heightAnchor.constraint(equalToConstant: 75).isActive = true
+        showPasswordButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         
         loginButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 26).isActive = true
         loginButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -26).isActive = true
@@ -122,6 +142,11 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         self.loginButton.isEnabled = true
         self.loginButton.setTitle("Login to your account", for: UIControl.State.normal)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    }
+    
+    @objc internal func showPassword() {
+        buttonBounceAnimation(buttonPressed: showPasswordButton)
+        isShowingPassword = !isShowingPassword
     }
     
     @objc internal func handleLogin() {
