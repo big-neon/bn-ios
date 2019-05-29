@@ -22,17 +22,21 @@ extension DoorPersonViewController {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let sectionLabelCell: SectionHeaderCell = collectionView.dequeueReusableCell(withReuseIdentifier: SectionHeaderCell.cellID, for: indexPath) as! SectionHeaderCell
-            sectionLabelCell.sectionHeaderLabel.text = "Upcoming"
+            sectionLabelCell.delegate = self
+            sectionLabelCell.sectionHeaderLabel.text = "My Events"
+            self.doorPersonViemodel.fetchUser { [weak self] (_) in
+                DispatchQueue.main.async {
+                    sectionLabelCell.user = self?.doorPersonViemodel.user
+                }
+            }
             return sectionLabelCell
         }
         let eventCell: DoorPersonCell = collectionView.dequeueReusableCell(withReuseIdentifier: DoorPersonCell.cellID, for: indexPath) as! DoorPersonCell
         let event = self.doorPersonViemodel.eventCoreData[indexPath.item]
         eventCell.eventNameLabel.text = event.name
-        //MARK: do not use explicite unwraping can be dangerous
         if let eventImageURL: URL = URL(string: event.promo_image_url!) {
             eventCell.eventImageView.pin_setImage(from: eventImageURL, placeholderImage: #imageLiteral(resourceName: "ic_placeholder_image"))
         }
-        
         eventCell.eventDetailsLabel.text = self.configureEventDetails(event: event)
         eventCell.eventDateLabel.text = self.configureEventDate(event: event)
         return eventCell
@@ -63,8 +67,9 @@ extension DoorPersonViewController {
     }
 
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height: CGFloat = indexPath.section == 0 ? 60 : 100
-        return CGSize(width: UIScreen.main.bounds.width - 40, height: height)
+        let height: CGFloat = indexPath.section == 0 ? 140 : 100
+        let width: CGFloat = indexPath.section == 0 ? UIScreen.main.bounds.width : UIScreen.main.bounds.width - 40
+        return CGSize(width: width, height: height)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

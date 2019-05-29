@@ -15,6 +15,13 @@ extension ScannerViewController {
         }
         
         self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID) { (scanFeedback, errorString, ticket) in
+            if scanFeedback == .alreadyRedeemed {
+                if let ticket = ticket {
+                    self.showRedeemedTicket(forTicket: ticket)
+                }
+                return
+            }
+            
             UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
                 self.showScannedUser(feedback: scanFeedback, ticket: ticket)
                 self.view.layoutIfNeeded()

@@ -56,16 +56,13 @@ final class SplashViewController: UIViewController {
     }
     
     @objc internal func playerDidFinishPlaying() {
-        // MARK: self is not needed
-        self.navigateHome()
+        navigateHome()
     }
     
     private func navigateHome() {
-        // MARK: self is not needed
-        let doorPersonVC = DoorPersonViewController(fetcher: self.fetcher)
-//        doorPersonVC.dataProvider = DataManager(persistentContainer: coreDataStack.persistentContainer, repository: EventsApiRepository.shared)
+        let doorPersonVC = DoorPersonViewController(fetcher: fetcher)
         let doorPersonNavVC = UINavigationController(rootViewController: doorPersonVC)
-        self.present(doorPersonNavVC, animated: false, completion: nil)
+        present(doorPersonNavVC, animated: false, completion: nil)
     }
     
 }

@@ -10,7 +10,9 @@ extension ScannerViewController {
         self.scannerViewModel?.getRedeemTicket(ticketID: ticketID) { [weak self] (scanFeedback, errorString) in
             if scanFeedback == .validTicketID {
                 self?.stopScanning = false
-                self?.showRedeemedTicket()
+                if let ticket = self?.scannedTicket {
+                  self?.showRedeemedTicket(forTicket: ticket)
+                }
                 return
             }
             self?.manualCheckinFeedback(scanFeedback: scanFeedback)
@@ -29,9 +31,11 @@ extension ScannerViewController {
         })
     }
     
-    func showRedeemedTicket() {
-        self.scannedTicketID = self.scannedTicket?.id
-        self.manualUserCheckinView.redeemableTicket = self.scannedTicket
+    func showRedeemedTicket(forTicket ticket: RedeemableTicket) {
+        self.manualUserCheckinView.event = self.event
+        self.scannedTicketID = ticket.id    //  self.scannedTicket?.id
+        self.manualUserCheckinView.redeemableTicket = ticket //self.scannedTicket
+        
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.scanningBoarderView.layer.opacity = 0.0
             self.showGuestView.layer.opacity = 0.0
@@ -70,6 +74,8 @@ extension ScannerViewController {
         self.scannedUserView.scanFeedback = feedFound
         self.blurView?.layer.opacity = 0.0
         self.scannerModeView.layer.opacity = 1.0
+        self.showGuestView.layer.opacity = 1.0
+        self.closeButton.layer.opacity = 1.0
         self.scannedUserBottomAnchor?.constant = -100.0
         self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
         self.generator.notificationOccurred(.success)

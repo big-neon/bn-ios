@@ -139,7 +139,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         hideNavBar()
         configureScanner()
         configureManualCheckinView()
-        configureScanFeedbackView()
         configureHeader()
     }
     
@@ -209,6 +208,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         captureSession.startRunning()
         configureBlur()
         configureScannedUserView()
+        
     }
     
     @objc func dismissView() {
@@ -225,19 +225,11 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         manualUserCheckinView.heightAnchor.constraint(equalToConstant: 250.0).isActive = true
     }
     
-    private func configureScanFeedbackView() {
-//        view.addSubview(feedbackView)
-//        feedbackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-//        feedbackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -20.0).isActive = true
-//        feedbackView.heightAnchor.constraint(equalToConstant: 150.0).isActive = true
-//        feedbackView.widthAnchor.constraint(equalToConstant: 290.0).isActive = true
-    }
-    
     private func configureScannedUserView() {
         view.addSubview(scannedUserView)
         scannedUserView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20.0).isActive = true
         scannedUserView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20.0).isActive = true
-        scannedUserBottomAnchor = scannedUserView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 200.0) //   160.0
+        scannedUserBottomAnchor = scannedUserView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 200.0)
         scannedUserBottomAnchor?.isActive = true
         scannedUserView.heightAnchor.constraint(equalToConstant: 76.0).isActive = true
     }

@@ -67,12 +67,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             do {
                 try context.save()
             } catch {
-                if Environment.isProduction() == false {
-                    let nserror = error as NSError
-                    // MARK: are we really want to crash the app - bad user experiance
-                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-                }
-                
+//                if Environment.isProduction() == false {
+//                    let nserror = error as NSError
+//                    // MARK: are we really want to crash the app - bad user experiance
+//                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+//                }
+                print("Failed to save Data in Core Data")
                 
             }
         }

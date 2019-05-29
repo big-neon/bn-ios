@@ -4,10 +4,14 @@ import Sync
 import Big_Neon_UI
 import Big_Neon_Core
 
+protocol DoorPersonViewDelegate: class {
+    func handleShowProfile()
+}
+
 // MARK:  magic numbers... consider using layout/config class/enum
 // MARK: use abbreviation / syntax sugar
 
-final class DoorPersonViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate {
+final class DoorPersonViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate, DoorPersonViewDelegate {
 
     var guestFetcher: Fetcher
     
@@ -70,17 +74,6 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         return search
     }()
     
-    lazy var userProfileImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleShowProfile)))
-        imageView.isUserInteractionEnabled = true
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 15.0
-        imageView.clipsToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-
     init(fetcher: Fetcher) {
         self.guestFetcher = fetcher
         super.init(nibName: nil, bundle: nil)
@@ -143,22 +136,22 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     }
 
     private func configureNavBar() {
-        self.navigationNoLineBar()
-        self.navigationController?.navigationBar.barTintColor = UIColor.white
-        self.navigationController?.navigationBar.tintColor = UIColor.brandBlack
-        self.setNavigationTitle(withTitle: "My Events")
-        
-        userProfileImageView.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
-        userProfileImageView.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: userProfileImageView)
-        
-        self.doorPersonViemodel.fetchUser { [weak self] (_) in
-            if let profilePicURL = self?.doorPersonViemodel.user?.profilePicURL   {
-                self?.userProfileImageView.pin_setImage(from: URL(string: profilePicURL), placeholderImage: UIImage(named: "ic_profilePicture"))
-            } else {
-                self?.userProfileImageView.pin_setPlaceholder(with: UIImage(named: "ic_profilePicture"))
-            }
-        }
+        self.hideNavBar()
+//        self.navigationController?.navigationBar.barTintColor = UIColor.white
+//        self.navigationController?.navigationBar.tintColor = UIColor.brandBlack
+//        self.setNavigationTitle(withTitle: "My Events")
+//
+//        userProfileImageView.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
+//        userProfileImageView.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: userProfileImageView)
+//
+//        self.doorPersonViemodel.fetchUser { [weak self] (_) in
+//            if let profilePicURL = self?.doorPersonViemodel.user?.profilePicURL   {
+//                self?.userProfileImageView.pin_setImage(from: URL(string: profilePicURL), placeholderImage: UIImage(named: "ic_profilePicture"))
+//            } else {
+//                self?.userProfileImageView.pin_setPlaceholder(with: UIImage(named: "ic_profilePicture"))
+//            }
+//        }
     }
 
     private func configureEmptyView() {
@@ -198,7 +191,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         self.navigationController?.pushViewController(eventDetailVC, animated: true)
     }
     
-    @objc private func handleShowProfile() {
+    func handleShowProfile() {
         self.navigationController?.push(ProfileViewController())
     }
     

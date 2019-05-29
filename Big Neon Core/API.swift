@@ -13,12 +13,9 @@ public enum APIParameterKeys {
 public class APIService {
     
     private class func baseURL() -> String {
-        let isProduction = Environment.isProduction()
-        if isProduction == true {
-            return "https://api.production.bigneon.com"
-        } else {
-            return "https://staging.api.bigneon.com"
-        }
+        let serverURL = Environment().configuration(PlistKey.ServerURL)
+        let connectionProtocol = Environment().configuration(PlistKey.ConnectionProtocol)
+        return "\(connectionProtocol)://\(serverURL)"
     }
     
     /**
