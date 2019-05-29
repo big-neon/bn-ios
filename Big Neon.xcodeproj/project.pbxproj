@@ -12,6 +12,7 @@
 		82440D91D23AF737DB34B959 /* Pods_Big_Neon_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58804A3D6C2FB1A6BD559FD5 /* Pods_Big_Neon_Core.framework */; };
 		C60BDEBE229EC03F00E54456 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60BDEB9229EB4B600E54456 /* Environment.swift */; };
 		C60BDEBF229EC03F00E54456 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D37B3421F1CD8200C616D0 /* API.swift */; };
+		C60BDEC1229EE27A00E54456 /* Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = C60BDEC0229EE27A00E54456 /* Production.plist */; };
 		C60EDC852248E3EE00C9CC27 /* Environment-Old.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EDC842248E3EE00C9CC27 /* Environment-Old.swift */; };
 		C61853B72212F1DB005D6250 /* DoorPersonViewController.Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853B62212F1DB005D6250 /* DoorPersonViewController.Search.swift */; };
 		C61853B92212F4C8005D6250 /* TicketTypeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853B82212F4C8005D6250 /* TicketTypeSelectionViewController.swift */; };
@@ -232,6 +233,7 @@
 		C60BDEB7229EAACA00E54456 /* Beta.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		C60BDEB8229EAAD800E54456 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		C60BDEB9229EB4B600E54456 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		C60BDEC0229EE27A00E54456 /* Production.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Production.plist; sourceTree = "<group>"; };
 		C60EDC842248E3EE00C9CC27 /* Environment-Old.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment-Old.swift"; sourceTree = "<group>"; };
 		C61853B62212F1DB005D6250 /* DoorPersonViewController.Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonViewController.Search.swift; sourceTree = "<group>"; };
 		C61853B82212F4C8005D6250 /* TicketTypeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTypeSelectionViewController.swift; sourceTree = "<group>"; };
@@ -533,6 +535,7 @@
 				C60BDEB6229EAAB100E54456 /* Development.xcconfig */,
 				C62BC78F21CCC3FB00830A5F /* Development.plist */,
 				C60BDEB8229EAAD800E54456 /* Production.xcconfig */,
+				C60BDEC0229EE27A00E54456 /* Production.plist */,
 				C60BDEB7229EAACA00E54456 /* Beta.xcconfig */,
 				C62BC78321CCC3F700830A5F /* AppDelegate.swift */,
 				C6E6485422423C11000F2DFB /* Big Neon.xcdatamodeld */,
@@ -1217,6 +1220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C66C0BA521E337D40066CD0F /* splash.mp4 in Resources */,
+				C60BDEC1229EE27A00E54456 /* Production.plist in Resources */,
 				C62BC78E21CCC3FB00830A5F /* LaunchScreen.storyboard in Resources */,
 				C62BC78B21CCC3FB00830A5F /* Assets.xcassets in Resources */,
 			);
@@ -1694,7 +1698,7 @@
 					"$(PROJECT_DIR)/Big\\ Neon",
 					"$(PROJECT_DIR)/Big\\ Neon",
 				);
-				INFOPLIST_FILE = "Big Neon/Info.plist";
+				INFOPLIST_FILE = "Big Neon/Production.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1881,7 +1885,7 @@
 			baseConfigurationReference = 3EB98C832DD1AD952F30AF11 /* Pods-Big Neon.debug (beta).xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = BetaIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YVK784K26W;
@@ -2138,7 +2142,7 @@
 			baseConfigurationReference = E2FA0916D7BB58AD30E251C0 /* Pods-Big Neon.debug (development).xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = DevIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YVK784K26W;
@@ -2167,7 +2171,7 @@
 			baseConfigurationReference = 5C78351A5C87795AEF5484B1 /* Pods-Big Neon.release (development).xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = BetaIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YVK784K26W;
