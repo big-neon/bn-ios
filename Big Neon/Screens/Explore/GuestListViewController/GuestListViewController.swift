@@ -78,6 +78,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
         definesPresentationContext = true
         search.searchBar.delegate = self
         search.searchResultsUpdater = self
+        search.hidesNavigationBarDuringPresentation = false
         return search
     }()
     
@@ -86,7 +87,6 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
         view.backgroundColor = UIColor.white
         configureView()
         configureNavBar()
-        configureSearch()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -94,20 +94,20 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
         self.scanVC?.stopScanning = false
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.configureNavBar()
-        self.configureSearch()
+        self.navigationItem.titleView = self.searchController.searchBar
     }
     
     func configureNavBar() {
         navigationNoLineBar()
-        navigationController?.navigationBar.barTintColor = UIColor.white
+        navigationController?.navigationBar.barTintColor = UIColor.brandBackground
         navigationController?.navigationBar.tintColor = UIColor.brandBlack
     }
     
     private func configureSearch() {
-        self.navigationItem.searchController = searchController
+        navigationItem.searchController = searchController
     }
     
     private func configureView() {
