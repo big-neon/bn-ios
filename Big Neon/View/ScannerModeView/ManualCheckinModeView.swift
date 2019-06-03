@@ -62,12 +62,12 @@ public class ManualCheckinModeView: UIView {
                     return
                 }
                 
-                guard let eventDate = DateConfig.formatServerDate(date: redeemDate, timeZone: timezone.timezone!) else {
+                guard let redeemedDate = DateConfig.formatServerDate(date: redeemDate, timeZone: timezone.timezone!) else {
                     dateValueLabel.text = "No Date Captured"
                     return
                 }
                 
-                dateValueLabel.text = "On: " + DateConfig.fullDateFormat(date: eventDate)
+                dateValueLabel.text = "Redeemed: " + redeemedDate.getElapsed() //"On: " + DateConfig.fullDateFormat(date: redeemedDate)
             }
             
         }
