@@ -2,11 +2,11 @@
 import Foundation
 import UIKit
 
-final public class GuestTableViewCell: UITableViewCell {
+final class GuestTableViewCell: UITableViewCell {
     
-    public static let cellID = "GuestTableViewCellID"
+    static let cellID = "GuestTableViewCellID"
     
-    public lazy var guestNameLabel: UILabel = {
+    lazy var guestNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandBlack
         label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.bold)
@@ -14,7 +14,7 @@ final public class GuestTableViewCell: UITableViewCell {
         return label
     }()
     
-    public lazy var ticketTypeNameLabel: UILabel = {
+    lazy var ticketTypeNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandGrey
         label.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium)
@@ -22,14 +22,14 @@ final public class GuestTableViewCell: UITableViewCell {
         return label
     }()
     
-    public lazy var ticketStateView: CheckinTagView = {
+    lazy var ticketStateView: CheckinTagView = {
         let view = CheckinTagView()
         view.backgroundColor = UIColor.brandBlack
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: UITableViewCell.CellStyle.default, reuseIdentifier: reuseIdentifier)
         backgroundColor = UIColor.white
         configureView()

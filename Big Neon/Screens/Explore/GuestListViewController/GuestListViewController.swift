@@ -6,7 +6,10 @@ import Big_Neon_Core
 import Big_Neon_UI
 import PanModal
 
-final class GuestListViewController: UIViewController, PanModalPresentable, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate {
+protocol GuestListViewDelegate: class {
+    func reloadGuests()
+}
+final class GuestListViewController: UIViewController, PanModalPresentable, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, GuestListViewDelegate {
 
     weak var delegate: ScannerViewDelegate?
     var guestsDictionary: [String: [RedeemableTicket]] = [:]
@@ -21,7 +24,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
             guard let event = self.event else  {
                 return
             }
-            self.setNavigationTitle(withTitle: event.name!)
+            headerView.event = event
         }
     }
     
@@ -42,7 +45,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
                     guestsDictionary[guestKey] = [guest]
                 }
             }
-
+            
             headerView.guests = guests
             self.guestSectionTitles = [String](guestsDictionary.keys)
             self.guestSectionTitles = guestSectionTitles.sorted(by: { $0 < $1 })
@@ -51,6 +54,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     
     lazy var headerView: GuestListHeaderView = {
         let view = GuestListHeaderView()
+        view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -119,7 +123,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
         headerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         headerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         headerView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        headerView.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+        headerView.heightAnchor.constraint(equalToConstant: 64.0).isActive = true
         
         guestTableView.topAnchor.constraint(equalTo: headerView.bottomAnchor).isActive = true
         guestTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -127,7 +131,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
         guestTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
-    @objc private func reloadGuests() {
+    func reloadGuests() {
         self.guests?.removeAll()
         self.guestTableView.reloadData()
         self.delegate?.reloadGuests()
