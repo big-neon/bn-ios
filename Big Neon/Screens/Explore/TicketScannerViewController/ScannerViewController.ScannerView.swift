@@ -52,6 +52,9 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             //  Last Ticket and Latest Ticket are the same - don't rescan.
             if let scannedTicketID = self.scannerViewModel?.redeemedTicket?.id {
                 if ticketID == scannedTicketID {
+                    
+                    //  Show Redemeed Ticket View
+                    self.checkinAutomatically(withTicketID: scannedTicketID, fromGuestTableView: false, atIndexPath: nil)
                     self.stopScanning = false
                     return
                 }

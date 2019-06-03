@@ -32,12 +32,13 @@ extension ScannerViewController {
             }
         }
     }
-    
+
     func showScannedUser(feedback: ScanFeedback?, ticket: RedeemableTicket?) {
         var feedFound = feedback
         if ticket?.eventName != self.event?.name {
             feedFound = .wrongEvent
         }
+        
         self.scannedUserView.redeemableTicket = ticket
         self.scannedUserView.scanFeedback = feedFound
         self.scannerViewModel?.redeemedTicket = ticket
