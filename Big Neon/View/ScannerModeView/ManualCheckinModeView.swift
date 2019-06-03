@@ -24,7 +24,7 @@ public class ManualCheckinModeView: UIView {
             self.ticketTypeLabel.text = ticket.eventName
             let price = Int(ticket.priceInCents)
             let ticketID = "#" + ticket.id.suffix(8).uppercased()
-            birthValueLabel.text = price.dollarString + " | " + ticket.ticketType + " | " + ticketID
+            dateValueLabel.text = price.dollarString + " | " + ticket.ticketType + " | " + ticketID
             
             if self.event?.name != ticket.eventName {
                 bannedTagView.isHidden = false
@@ -58,16 +58,16 @@ public class ManualCheckinModeView: UIView {
                 ticketTypeLabel.text = price.dollarString + " | " + ticket.ticketType + " | " + ticketID
                 
                 guard let timezone = event?.venue, let redeemDate = ticket.redeemedAt else {
-                    birthValueLabel.text = "No Date Captured"
+                    dateValueLabel.text = "No Date Captured"
                     return
                 }
                 
-                guard let eventDate = DateConfig.formatServerDate(date: redeemDate, timeZone: timezone.timezone!) else {
-                    birthValueLabel.text = "No Date Captured"
+                guard let redeemedDate = DateConfig.formatServerDate(date: redeemDate, timeZone: timezone.timezone!) else {
+                    dateValueLabel.text = "No Date Captured"
                     return
                 }
                 
-                birthValueLabel.text = "On: " + DateConfig.fullDateFormat(date: eventDate)
+                dateValueLabel.text = "Redeemed: " + redeemedDate.getElapsed() //"On: " + DateConfig.fullDateFormat(date: redeemedDate)
             }
             
         }
@@ -145,7 +145,7 @@ public class ManualCheckinModeView: UIView {
         return label
     }()
     
-    lazy var birthValueLabel: UILabel = {
+    lazy var dateValueLabel: UILabel = {
         let label = UILabel()
         label.text = "-"
         label.textColor = UIColor.brandGrey
@@ -174,7 +174,7 @@ public class ManualCheckinModeView: UIView {
         addSubview(bannedTagView)
         addSubview(vipTagView)
         addSubview(eventDetailsLabel)
-        addSubview(birthValueLabel)
+        addSubview(dateValueLabel)
         addSubview(completeCheckinButton)
         
         
@@ -220,10 +220,10 @@ public class ManualCheckinModeView: UIView {
         eventDetailsLabel.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
         eventDetailsLabel.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
         
-        birthValueLabel.topAnchor.constraint(equalTo: eventDetailsLabel.bottomAnchor, constant: 2.0).isActive = true
-        birthValueLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20.0).isActive = true
-        birthValueLabel.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
-        birthValueLabel.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
+        dateValueLabel.topAnchor.constraint(equalTo: eventDetailsLabel.bottomAnchor, constant: 2.0).isActive = true
+        dateValueLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20.0).isActive = true
+        dateValueLabel.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
+        dateValueLabel.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
         
         completeCheckinButton.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         completeCheckinButton.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true

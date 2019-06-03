@@ -8,34 +8,37 @@ extension ScannerViewController {
     
     func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath: IndexPath?) {
         
-        if fromGuestTableView == true {
-            self.reloadGuests(atIndex: atIndexPath!)
-            self.generator.notificationOccurred(.success)
-            return
-        }
-        
-        self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID) { (scanFeedback, errorString, ticket) in
-            if scanFeedback == .alreadyRedeemed {
-                if let ticket = ticket {
-                    self.showRedeemedTicket(forTicket: ticket)
+        self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID) { [weak self] (scanFeedback, errorString, ticket) in
+            DispatchQueue.main.async {
+                if fromGuestTableView == true {
+                    self?.reloadGuests(atIndex: atIndexPath!)
+                    self?.generator.notificationOccurred(.success)
+                    return
                 }
-                return
-            }
             
-            UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
-                self.showScannedUser(feedback: scanFeedback, ticket: ticket)
-                self.view.layoutIfNeeded()
-            }, completion: { (completed) in
-                self.stopScanning = false
-            })
+                if scanFeedback == .alreadyRedeemed {
+                    if let ticket = ticket {
+                        self?.showRedeemedTicket(forTicket: ticket)
+                    }
+                    return
+                }
+                
+                UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
+                    self?.showScannedUser(feedback: scanFeedback, ticket: ticket)
+                    self?.view.layoutIfNeeded()
+                }, completion: { (completed) in
+                    self?.stopScanning = false
+                })
+            }
         }
     }
-    
+
     func showScannedUser(feedback: ScanFeedback?, ticket: RedeemableTicket?) {
         var feedFound = feedback
         if ticket?.eventName != self.event?.name {
             feedFound = .wrongEvent
         }
+        
         self.scannedUserView.redeemableTicket = ticket
         self.scannedUserView.scanFeedback = feedFound
         self.scannerViewModel?.redeemedTicket = ticket
