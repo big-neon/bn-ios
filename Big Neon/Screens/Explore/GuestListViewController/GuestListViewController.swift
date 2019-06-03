@@ -9,6 +9,7 @@ import PanModal
 protocol GuestListViewDelegate: class {
     func reloadGuests()
 }
+
 final class GuestListViewController: UIViewController, PanModalPresentable, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, GuestListViewDelegate {
 
     weak var delegate: ScannerViewDelegate?
@@ -132,8 +133,8 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     }
     
     func reloadGuests() {
-        self.guests?.removeAll()
-        self.guestTableView.reloadData()
+//        self.guests?.removeAll()
+//        self.guestTableView.reloadData()
         self.delegate?.reloadGuests()
     }
     

@@ -2,6 +2,7 @@
 import UIKit
 import Big_Neon_UI
 import Big_Neon_Core
+import TransitionButton
 
 class GuestListHeaderView: UIView {
     
@@ -10,6 +11,19 @@ class GuestListHeaderView: UIView {
     }
     
     weak var delegate: GuestListViewDelegate?
+    
+    var isRefreshing: Bool = false  {
+        didSet {
+            if isRefreshing == true {
+                self.refreshButton.startAnimation()
+                return
+            }
+
+            self.refreshButton.stopAnimation(animationStyle: .normal, revertAfterDelay:0.0) {
+                self.refreshButton.layer.cornerRadius = 4.0
+            }
+        }
+    }
     
     var event: EventsData? {
         didSet {
@@ -52,9 +66,13 @@ class GuestListHeaderView: UIView {
         return label
     }()
     
-    lazy var refreshButton: UIButton = {
-        let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "ic_refresh"), for: UIControl.State.normal)
+    lazy var refreshButton: TransitionButton = {
+        let button = TransitionButton()
+        button.layer.cornerRadius = 4.0
+        button.backgroundColor = UIColor.brandPrimary
+        button.setTitleColor(UIColor.white, for: UIControl.State.normal)
+        button.setTitle("Refresh", for: UIControl.State.normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.semibold)
         button.addTarget(self, action: #selector(handleReloadGuest), for: UIControl.Event.touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -80,14 +98,14 @@ class GuestListHeaderView: UIView {
         subtitleLabel.widthAnchor.constraint(equalToConstant: 200.0).isActive = true
         
         refreshButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        refreshButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.contentInsets.left).isActive = true
-        refreshButton.heightAnchor.constraint(equalToConstant: 24.0).isActive = true
-        refreshButton.widthAnchor.constraint(equalToConstant: 28.0).isActive = true
+        refreshButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20.0).isActive = true
+        refreshButton.heightAnchor.constraint(equalToConstant: 32.0).isActive = true
+        refreshButton.widthAnchor.constraint(equalToConstant: 80.0).isActive = true
     }
     
     @objc func handleReloadGuest() {
+        self.isRefreshing = true
         self.delegate?.reloadGuests()
     }
-    
     
 }

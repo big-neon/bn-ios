@@ -271,9 +271,9 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         self.scannerViewModel?.fetchGuests(forEventID: eventID, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
                 self?.guestListView.guests = nil
-                self?.guestListView.guests = self?.scannerViewModel?.ticketsFetched
-                self?.guestListView.refresher.endRefreshing()
-                self?.guestListView.guestTableView.reloadData()
+                self?.guestListVC.guests = self?.scannerViewModel?.ticketsFetched
+                self?.guestListVC.guestTableView.reloadData()
+                self?.guestListVC.headerView.isRefreshing = false
                 return
             }
         })
