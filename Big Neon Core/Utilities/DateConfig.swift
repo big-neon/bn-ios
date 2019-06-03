@@ -167,8 +167,8 @@ final internal class DayTimeHelper {
 
 public extension Date {
     
-    public func getElapsed() -> String {
-        let interval = Calendar.current.dateComponents([.year, .month, .day], from: self, to: Date())
+    func getElapsed() -> String {
+        let interval = Calendar.current.dateComponents([.year, .month, .day, .minute], from: self, to: Date())
         if let year = interval.year, year > 0 {
             return year == 1 ? "\(year)" + " " + "year ago" :
                 "\(year)" + " " + "years ago"
@@ -178,6 +178,9 @@ public extension Date {
         } else if let day = interval.day, day > 0 {
             return day == 1 ? "\(day)" + " " + "day ago" :
                 "\(day)" + " " + "days ago"
+        } else if let minutes = interval.minute, minutes > 0 {
+            return minutes == 1 ? "\(minutes)" + " " + "minute ago" :
+                "\(minutes)" + " " + "minutes ago"
         } else {
             return "A moment ago"
             
