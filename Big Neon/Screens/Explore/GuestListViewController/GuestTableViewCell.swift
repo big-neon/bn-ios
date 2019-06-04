@@ -36,13 +36,18 @@ final class GuestTableViewCell: UITableViewCell {
     }
     
     private func configureView() {
+        addSubview(ticketStateView)
         addSubview(guestNameLabel)
         addSubview(ticketTypeNameLabel)
-        addSubview(ticketStateView)
+        
+        ticketStateView.topAnchor.constraint(equalTo: self.topAnchor, constant: 12).isActive = true
+        ticketStateView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+        ticketStateView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
+        ticketStateView.widthAnchor.constraint(equalToConstant: 88.0).isActive = true
     
         guestNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
-        guestNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 12).isActive = true
-        guestNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -30).isActive = true
+        guestNameLabel.centerYAnchor.constraint(equalTo: ticketStateView.centerYAnchor).isActive = true
+        guestNameLabel.rightAnchor.constraint(equalTo: ticketStateView.leftAnchor, constant: -30).isActive = true
         guestNameLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         
         ticketTypeNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
@@ -50,10 +55,7 @@ final class GuestTableViewCell: UITableViewCell {
         ticketTypeNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -30).isActive = true
         ticketTypeNameLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
         
-        ticketStateView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        ticketStateView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        ticketStateView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
-        ticketStateView.widthAnchor.constraint(equalToConstant: 88.0).isActive = true
+        
     }
     
     required public init?(coder aDecoder: NSCoder) {

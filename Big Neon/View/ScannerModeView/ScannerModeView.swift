@@ -11,12 +11,12 @@ public class ScannerModeView: UIView {
         didSet {
             if setAutoMode == false {
                 self.changeModeSwitch.setOn(false, animated: true)
-                self.modeLabel.text = "Manual"
+                self.modeLabel.text = "Manual Mode"
                 self.modeLabel.textColor = UIColor.brandPrimary
                 return
             }
             self.changeModeSwitch.setOn(true, animated: true)
-            self.modeLabel.text = "Auto"
+            self.modeLabel.text = "Auto Mode"
             self.modeLabel.textColor = UIColor.brandGreen
         }
     }
@@ -48,7 +48,7 @@ public class ScannerModeView: UIView {
     }()
     
     lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [headerLabel, modeLabel, changeModeSwitch])
+        let stackView = UIStackView(arrangedSubviews: [modeLabel, changeModeSwitch])
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.spacing = 3.0

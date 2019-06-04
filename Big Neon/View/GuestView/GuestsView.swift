@@ -182,7 +182,6 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
     @objc private func reloadGuests() {
         self.guests?.removeAll()
         self.guestTableView.reloadData()
-        self.delegate?.reloadGuests()
     }
     
     @objc private func showGuest() {
