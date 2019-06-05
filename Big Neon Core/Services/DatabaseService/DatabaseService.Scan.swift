@@ -109,7 +109,7 @@ extension DatabaseService {
     
     public func fetchGuests(forEventID eventID: String, completion: @escaping (_ error: Error?, _ fetchedGuestsDict: [[String: Any]]?, _ serverGuests: Guests?) -> Void) {
         
-        let apiURL = APIService.fetchEvents(eventID: eventID)
+        let apiURL = APIService.fetchEvents(eventID: eventID, changesSince: nil, page: nil, limit: 9999999)
         let accessToken = self.fetchAcessToken()
     
         AF.request(apiURL,
