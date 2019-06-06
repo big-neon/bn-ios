@@ -170,11 +170,11 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     }
     
     func reloadGuests() {
-//        guard let eventID = self.event?.id else {
-//            return
-//        }
+        guard let eventID = self.event?.id else {
+            return
+        }
         
-        self.scannerViewModel.fetchGuests(forEventID: eventID!, completion: { [weak self] (completed) in
+        self.scannerViewModel.fetchGuests(forEventID: eventID, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
                 self?.guests = (self?.scannerViewModel.ticketsFetched)!
                 self?.guestTableView.reloadData()

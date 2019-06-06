@@ -16,6 +16,8 @@ public class ShowGuestListView: UIView {
         return label
     }()
     
+    lazy var loading: UIActivity
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white
