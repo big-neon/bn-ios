@@ -9,7 +9,6 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-
 //  Server UR;s and Other Configuration Keys
-server_url              = staging.api.bigneon.com
+server_url              = dev.api.bigneon.com
 protocol                = https

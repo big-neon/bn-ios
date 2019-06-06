@@ -53,7 +53,8 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     
     var guests: [RedeemableTicket]? {
         didSet {
-            showGuestView.layer.opacity = guests != nil ? 1.0 : 0.0
+            showGuestView.loadingView.stopAnimating()
+            showGuestView.isUserInteractionEnabled = guests != nil ? true : false
         }
     }
     
@@ -83,8 +84,8 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     
     lazy var showGuestView: ShowGuestListView = {
         let view =  ShowGuestListView()
-        view.layer.opacity = 0.0
-        view.isUserInteractionEnabled = true
+        view.loadingView.startAnimating()
+        view.isUserInteractionEnabled = false
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showGuestList)))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -191,7 +192,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         
         showGuestView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18).isActive = true
         showGuestView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        showGuestView.widthAnchor.constraint(equalToConstant: 160.0).isActive = true
+        showGuestView.widthAnchor.constraint(equalToConstant: 180.0).isActive = true
         showGuestView.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
         
         scanningBoarderView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

@@ -92,6 +92,7 @@
 		C6937104228F52E7004EBC12 /* GuestListViewController.SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6937103228F52E7004EBC12 /* GuestListViewController.SearchController.swift */; };
 		C6937106228F6DF3004EBC12 /* ShowGuestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6937105228F6DF3004EBC12 /* ShowGuestListView.swift */; };
 		C694D25A21D0BFE600B2AE07 /* ApplicationRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */; };
+		C69572C322A93A0800F0381D /* LayoutSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69572C222A93A0800F0381D /* LayoutSpec.swift */; };
 		C698AB1021EDE9BC0073F1FB /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB0F21EDE9BC0073F1FB /* CreateAccountViewController.swift */; };
 		C698AB1621EF1FE00073F1FB /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB1521EF1FE00073F1FB /* CreateAccountViewModel.swift */; };
 		C698F6032238F76400977259 /* ScanFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698F6022238F76400977259 /* ScanFeedback.swift */; };
@@ -299,6 +300,7 @@
 		C6937103228F52E7004EBC12 /* GuestListViewController.SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListViewController.SearchController.swift; sourceTree = "<group>"; };
 		C6937105228F6DF3004EBC12 /* ShowGuestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowGuestListView.swift; sourceTree = "<group>"; };
 		C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouting.swift; sourceTree = "<group>"; };
+		C69572C222A93A0800F0381D /* LayoutSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSpec.swift; sourceTree = "<group>"; };
 		C698AB0F21EDE9BC0073F1FB /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		C698AB1521EF1FE00073F1FB /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
 		C698F6022238F76400977259 /* ScanFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanFeedback.swift; sourceTree = "<group>"; };
@@ -897,6 +899,7 @@
 				C6C45D6B21F5CEC000D2F602 /* Feedbacksystem.swift */,
 				C6C49DA42209A77E0087AE16 /* DollarString.swift */,
 				C61853BB2212F6FA005D6250 /* ThreeQuaterPresenter.swift */,
+				C69572C222A93A0800F0381D /* LayoutSpec.swift */,
 			);
 			path = UIUtilities;
 			sourceTree = "<group>";
@@ -1579,6 +1582,7 @@
 				C6C45D6A21F5CDCD00D2F602 /* PopAnimations.swift in Sources */,
 				C64124CA21F26D1800233797 /* AuthTextView.swift in Sources */,
 				C6EC209E220075D100BD10DD /* PhoneNumberTextField.swift in Sources */,
+				C69572C322A93A0800F0381D /* LayoutSpec.swift in Sources */,
 				C6B88D5E21F1C359006394F8 /* StatusBarView.swift in Sources */,
 				C6C49DA52209A77E0087AE16 /* DollarString.swift in Sources */,
 				C6B88D5421F1C323006394F8 /* BrandTextField.swift in Sources */,
