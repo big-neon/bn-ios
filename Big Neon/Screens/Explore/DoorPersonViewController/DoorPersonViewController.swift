@@ -8,7 +8,6 @@ protocol DoorPersonViewDelegate: class {
     func handleShowProfile()
 }
 
-
 final class DoorPersonViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate, DoorPersonViewDelegate {
 
     var guestFetcher: Fetcher
@@ -110,7 +109,6 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     @objc private func reloadEvents() {
         self.doorPersonViemodel.configureAccessToken { [weak self] (completed) in
             DispatchQueue.main.async {
-                
                 self?.loadingView.stopAnimating()
                 self?.refresher.endRefreshing()
                 

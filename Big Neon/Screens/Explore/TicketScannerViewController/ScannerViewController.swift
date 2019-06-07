@@ -54,7 +54,9 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     var guests: [RedeemableTicket]? {
         didSet {
             showGuestView.loadingView.stopAnimating()
-            showGuestView.isUserInteractionEnabled = guests != nil ? true : false
+            if guests != nil {
+                showGuestView.isUserInteractionEnabled = true
+            }
         }
     }
     
@@ -264,6 +266,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         }
         guestListVC = GuestListViewController()
         guestListVC!.guests = guests
+        guestListVC!.totalGuests = self.scannerViewModel?.totalGuests
         guestListVC!.event = self.event
         guestListVC!.scanVC = self
         guestListVC!.delegate = self

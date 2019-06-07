@@ -33,6 +33,15 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
         }
     }
     
+    var totalGuests: Int? {
+        didSet {
+            guard let totalGuests = self.totalGuests else {
+                return
+            }
+            headerView.totalGuests = totalGuests
+        }
+    }
+    
     public var  guests: [RedeemableTicket]? {
         didSet {
             guard let guests = self.guests else {
@@ -51,7 +60,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
                 }
             }
             
-            headerView.guests = guests
+//            headerView.guests = guests
             self.guestSectionTitles = [String](guestsDictionary.keys)
             self.guestSectionTitles = guestSectionTitles.sorted(by: { $0 < $1 })
         }

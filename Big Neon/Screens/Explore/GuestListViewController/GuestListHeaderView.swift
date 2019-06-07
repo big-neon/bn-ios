@@ -34,17 +34,17 @@ class GuestListHeaderView: UIView {
         }
     }
     
-    var guests: [RedeemableTicket]? {
+    var totalGuests: Int? {
         didSet {
             
-            guard let guests = self.guests else  {
+            guard let totalGuests = self.totalGuests else  {
                 return
             }
             
-            if guests.count == 1 {
-                subtitleLabel.text = "\(guests.count) guest"
+            if totalGuests == 1 {
+                subtitleLabel.text = "\(totalGuests) guest"
             } else {
-                subtitleLabel.text = "\(guests.count) guests"
+                subtitleLabel.text = "\(totalGuests) guests"
             }
         }
     }

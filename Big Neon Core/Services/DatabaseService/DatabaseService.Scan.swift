@@ -107,9 +107,9 @@ extension DatabaseService {
         }
     }
     
-    public func fetchGuests(forEventID eventID: String, completion: @escaping (_ error: Error?, _ fetchedGuestsDict: [[String: Any]]?, _ serverGuests: Guests?) -> Void) {
+    public func fetchGuests(forEventID eventID: String, limit: Int, page: Int, completion: @escaping (_ error: Error?, _ fetchedGuestsDict: [[String: Any]]?, _ serverGuests: Guests?, _ totalGuests: Int) -> Void) {
         
-        let apiURL = APIService.fetchEvents(eventID: eventID, changesSince: nil, page: nil, limit: 9999999)
+        let apiURL = APIService.fetchEvents(eventID: eventID, changesSince: nil, page: page, limit: limit)
         let accessToken = self.fetchAcessToken()
     
         AF.request(apiURL,
@@ -121,12 +121,12 @@ extension DatabaseService {
             .response { (response) in
                 
                 guard response.result.isSuccess else {
-                    completion(response.result.error, nil, nil)
+                    completion(response.result.error, nil, nil, 0)
                     return
                 }
                 
                 guard let data = response.result.value else {
-                    completion(nil, nil, nil)
+                    completion(nil, nil, nil, 0)
                     return
                 }
                 
@@ -137,13 +137,15 @@ extension DatabaseService {
                             throw NSError(domain: dataErrorDomain, code: DataErrorCode.wrongDataFormat.rawValue, userInfo: nil)
                     }
                     
+                    let pagingDictionary = jsonDictionary["paging"] as? [String: Any]
+                    let totalGuests = pagingDictionary!["total"] as! Int
                     let decoder = JSONDecoder()
                     let guests = try decoder.decode(Guests.self, from: data!)
-                    completion(nil, result, guests)
+                    completion(nil, result, guests, totalGuests)
                     
                 } catch let error as NSError {
                     print(error)
-                    completion(error, nil, nil)
+                    completion(error, nil, nil, 0)
                 }
         }
     }
