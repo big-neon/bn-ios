@@ -143,6 +143,8 @@
 		C6C45D6A21F5CDCD00D2F602 /* PopAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C45D6921F5CDCD00D2F602 /* PopAnimations.swift */; };
 		C6C45D6C21F5CEC000D2F602 /* Feedbacksystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C45D6B21F5CEC000D2F602 /* Feedbacksystem.swift */; };
 		C6C49DA52209A77E0087AE16 /* DollarString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C49DA42209A77E0087AE16 /* DollarString.swift */; };
+		C6CD1C2022AA8991009D7510 /* GuestListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CD1C1F22AA8991009D7510 /* GuestListViewModel.swift */; };
+		C6CD1C2222AA89BA009D7510 /* GuestsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CD1C2122AA89BA009D7510 /* GuestsListViewModel.swift */; };
 		C6CEC8A9221ADBCE00F7329D /* TicketTypeStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CEC8A8221ADBCE00F7329D /* TicketTypeStatus.swift */; };
 		C6D2413421EF53B000FC3E41 /* NamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2413321EF53B000FC3E41 /* NamesViewController.swift */; };
 		C6DE2F7A225360BA00ECF7D7 /* EventGuests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DE2F79225360BA00ECF7D7 /* EventGuests.swift */; };
@@ -364,6 +366,8 @@
 		C6C45D6B21F5CEC000D2F602 /* Feedbacksystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedbacksystem.swift; sourceTree = "<group>"; };
 		C6C49DA42209A77E0087AE16 /* DollarString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarString.swift; sourceTree = "<group>"; };
 		C6C689AE223A74AC00004593 /* LastScannedUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastScannedUserView.swift; sourceTree = "<group>"; };
+		C6CD1C1F22AA8991009D7510 /* GuestListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListViewModel.swift; sourceTree = "<group>"; };
+		C6CD1C2122AA89BA009D7510 /* GuestsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestsListViewModel.swift; sourceTree = "<group>"; };
 		C6CEC8A8221ADBCE00F7329D /* TicketTypeStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTypeStatus.swift; sourceTree = "<group>"; };
 		C6D2413321EF53B000FC3E41 /* NamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesViewController.swift; sourceTree = "<group>"; };
 		C6D37B3421F1CD8200C616D0 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -709,12 +713,14 @@
 		C69370FE228F3EB9004EBC12 /* GuestListViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C6CD1C2122AA89BA009D7510 /* GuestsListViewModel.swift */,
 				C69370FF228F411B004EBC12 /* GuestListHeaderView.swift */,
 				C6937101228F4BDA004EBC12 /* GuestListNavigationController.swift */,
 				C69370FA228F06D2004EBC12 /* GuestListViewController.swift */,
 				C6937103228F52E7004EBC12 /* GuestListViewController.SearchController.swift */,
 				C69370FC228F3570004EBC12 /* GuestListViewController.TableView.swift */,
 				C6EC4B2D2227C1150056CE73 /* GuestTableViewCell.swift */,
+				C6CD1C1F22AA8991009D7510 /* GuestListViewModel.swift */,
 			);
 			path = GuestListViewController;
 			sourceTree = "<group>";
@@ -1430,6 +1436,7 @@
 				C623C07E2251E42C0020D0A8 /* TicketScanFeedbackView.swift in Sources */,
 				C623C07C2251E4230020D0A8 /* ExploreNavBarView.swift in Sources */,
 				C623C06D2251E39E0020D0A8 /* CheckoutTotalCell.swift in Sources */,
+				C6CD1C2022AA8991009D7510 /* GuestListViewModel.swift in Sources */,
 				C623C07D2251E42C0020D0A8 /* ScannerModeView.swift in Sources */,
 				C623C0772251E3F50020D0A8 /* DoorPersonCell.swift in Sources */,
 				C64B0ADA21D1240700386000 /* TicketsViewModel.swift in Sources */,
@@ -1449,6 +1456,7 @@
 				C64B0ABD21D0DCDB00386000 /* DoorPersonViewModel.swift in Sources */,
 				C623C06B2251E3970020D0A8 /* CardCheckoutCell.swift in Sources */,
 				C683233121FF34DF002342AE /* LogoutCell.swift in Sources */,
+				C6CD1C2222AA89BA009D7510 /* GuestsListViewModel.swift in Sources */,
 				C64B0AE121D1294600386000 /* ProfileViewController.TableView.swift in Sources */,
 				C694D25A21D0BFE600B2AE07 /* ApplicationRouting.swift in Sources */,
 				C6B2AC5E21E4DD3100F996AA /* BaseViewController.swift in Sources */,

@@ -10,7 +10,7 @@ protocol GuestListViewDelegate: class {
     func reloadGuests()
 }
 
-final class GuestListViewController: UIViewController, PanModalPresentable, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, GuestListViewDelegate {
+final class GuestListViewController: UIViewController, PanModalPresentable, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, GuestListViewDelegate, UITableViewDataSourcePrefetching {
 
     weak var delegate: ScannerViewDelegate?
     var guestsDictionary: [String: [RedeemableTicket]] = [:]
@@ -78,6 +78,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
         tableView.backgroundColor = UIColor.white
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.prefetchDataSource = self
         tableView.separatorColor = UIColor.brandGrey.withAlphaComponent(0.3)
         tableView.showsVerticalScrollIndicator = false
         tableView.translatesAutoresizingMaskIntoConstraints = false

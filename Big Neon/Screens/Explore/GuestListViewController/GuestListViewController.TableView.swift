@@ -125,4 +125,32 @@ extension GuestListViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        print(indexPaths)
+        if indexPaths.contains(where: isLoadingCell) {
+            //  Fetch New
+            if let id = self.event?.id {
+                self.scannerViewModel.fetchGuests(forEventID: id, completion: { (_) in
+                    DispatchQueue.main.async {
+                        tableView.reloadRows(at: indexPaths, with: UITableView.RowAnimation.fade)
+                    }
+                    
+                })
+            }
+        }
+    }
+    
+    func isLoadingCell(for indexPath: IndexPath) -> Bool {
+        print("IndexPath: \(indexPath.row)")
+        print("Total Guests: \(self.scannerViewModel.currentTotalGuests)")
+        print("Current Page: \(self.scannerViewModel.currentPage)")
+        return indexPath.row >= self.scannerViewModel.currentTotalGuests
+    }
+    
+//    func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
+//        let indexPathsForVisibleRows = guestTableView.indexPathsForVisibleRows ?? []
+//        let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
+//        return Array(indexPathsIntersection)
+//    }
+    
 }
