@@ -11,7 +11,6 @@ public protocol ScannerViewDelegate: class {
     func scannerSetAutomatic()
     func scannerSetManual()
     func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath: IndexPath?)
-//    func reloadGuests()
     func dismissScannedUserView()
 }
 

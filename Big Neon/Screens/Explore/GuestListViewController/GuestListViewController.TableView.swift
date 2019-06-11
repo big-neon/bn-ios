@@ -125,6 +125,7 @@ extension GuestListViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    //  Prefetching Rows in TableView
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         let guests = guestViewModel.currentTotalGuests
         let needsFetch = indexPaths.contains { $0.row >= guests - 15 }

@@ -178,17 +178,8 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     }
     
     func reloadGuests(atIndex index: IndexPath) {
-        guard let eventID = self.event?.id else {
-            return
-        }
-        
-        self.scannerViewModel.fetchGuests(forEventID: eventID, page: guestViewModel.currentPage, completion: { [weak self] (completed) in
-            DispatchQueue.main.async {
-                self?.guests = (self?.scannerViewModel.ticketsFetched)!
-                self?.guestTableView.reloadRows(at: [index], with: UITableView.RowAnimation.fade)
-                return
-            }
-        })
+        let redeemedCell: GuestTableViewCell = guestTableView.cellForRow(at: index) as! GuestTableViewCell
+        redeemedCell.ticketStateView.tagLabel.text = "REDEEMED"
+        redeemedCell.ticketStateView.backgroundColor = UIColor.brandBlack
     }
-
 }
