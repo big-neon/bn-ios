@@ -11,10 +11,13 @@ final class TicketScannerViewModel {
     var lastRedeemedTicket: RedeemableTicket?
     var scanVC: ScannerViewController?
     var guests: Guests?
+    var dataStack: DataStack?
+    
+    
     var totalGuests: Int?
     var currentTotalGuests: Int = 0
-    var dataStack: DataStack?
     var currentPage: Int = 0
+    let limit = 100
 //    var guestsCoreData: [RedeemedTicket] = []
     var ticketsFetched: [RedeemableTicket] = []
 
@@ -141,10 +144,10 @@ final class TicketScannerViewModel {
     }
 
     
-    internal func fetchGuests(forEventID eventID: String, completion: @escaping(Bool) -> Void) {
+    internal func fetchGuests(forEventID eventID: String, page: Int, completion: @escaping(Bool) -> Void) {
         
-        self.dataStack = DataStack(modelName: "Big Neon")
-        BusinessService.shared.database.fetchGuests(forEventID: eventID, limit: 100, page: self.currentPage) { [weak self] (error, guestsFetched, serverGuests, totalGuests) in
+//        self.dataStack = DataStack(modelName: "Big Neon")
+        BusinessService.shared.database.fetchGuests(forEventID: eventID, limit: limit, page: page) { [weak self] (error, guestsFetched, serverGuests, totalGuests) in
             DispatchQueue.main.async {
                 
                 //  Core Data Checks

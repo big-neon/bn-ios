@@ -19,10 +19,10 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     var isSearching: Bool = false
     var isShortFormEnabled = true
     var scanVC: ScannerViewController?
+    var isFetchingNextPage = false
     
-    
-    var eventID: String?
     var scannerViewModel = TicketScannerViewModel()
+    var guestViewModel = GuestsListViewModel()
     
     var event: EventsData? {
         didSet {
@@ -60,7 +60,6 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
                 }
             }
             
-//            headerView.guests = guests
             self.guestSectionTitles = [String](guestsDictionary.keys)
             self.guestSectionTitles = guestSectionTitles.sorted(by: { $0 < $1 })
         }
@@ -99,27 +98,17 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
         return search
     }()
     
-//    init(guests: [RedeemableTicket]) {
-//        self.guests = guests
-////        self.eventID = eventID
-//        super.init(nibName: nil, bundle: nil)
-//        headerView.event = event
-//        configureView()
-//        configureNavBar()
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        
     }
     
     func fetchGuests() {
-        self.scannerViewModel.fetchGuests(forEventID: eventID!, completion: { [weak self] (completed) in
+        guard let eventID = event?.id else {
+            return
+        }
+        
+        self.scannerViewModel.fetchGuests(forEventID: eventID, page: 0, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
                 guard let self = self else {return}
                 self.guests = self.scannerViewModel.ticketsFetched
@@ -165,12 +154,6 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
         guestTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
-//    func reloadGuests() {
-//        self.guests?.removeAll()
-//        self.guestTableView.reloadData()
-//        self.delegate?.reloadGuests()
-//    }
-    
     var panScrollable: UIScrollView? {
         return guestTableView
     }
@@ -184,7 +167,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
             return
         }
         
-        self.scannerViewModel.fetchGuests(forEventID: eventID, completion: { [weak self] (completed) in
+        self.scannerViewModel.fetchGuests(forEventID: eventID, page: guestViewModel.currentPage, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
                 self?.guests = (self?.scannerViewModel.ticketsFetched)!
                 self?.guestTableView.reloadData()
@@ -199,7 +182,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
             return
         }
         
-        self.scannerViewModel.fetchGuests(forEventID: eventID, completion: { [weak self] (completed) in
+        self.scannerViewModel.fetchGuests(forEventID: eventID, page: guestViewModel.currentPage, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
                 self?.guests = (self?.scannerViewModel.ticketsFetched)!
                 self?.guestTableView.reloadRows(at: [index], with: UITableView.RowAnimation.fade)

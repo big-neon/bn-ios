@@ -31,8 +31,8 @@ extension GuestListViewController {
         
         if self.isSearching == true {
             return self.filteredSearchResults.count
-            
         }
+        
         let guestKey = guestSectionTitles[section]
         if let guestValues = guestsDictionary[guestKey] {
             return guestValues.count
@@ -126,31 +126,27 @@ extension GuestListViewController {
     }
     
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        print(indexPaths)
-        if indexPaths.contains(where: isLoadingCell) {
-            //  Fetch New
-            if let id = self.event?.id {
-                self.scannerViewModel.fetchGuests(forEventID: id, completion: { (_) in
-                    DispatchQueue.main.async {
-                        tableView.reloadRows(at: indexPaths, with: UITableView.RowAnimation.fade)
-                    }
-                    
-                })
-            }
+        let guests = guestViewModel.currentTotalGuests
+        let needsFetch = indexPaths.contains { $0.row >= guests - 15 }
+        if needsFetch {
+            fetchNextPage(withIndexPaths: indexPaths)
         }
     }
     
-    func isLoadingCell(for indexPath: IndexPath) -> Bool {
-        print("IndexPath: \(indexPath.row)")
-        print("Total Guests: \(self.scannerViewModel.currentTotalGuests)")
-        print("Current Page: \(self.scannerViewModel.currentPage)")
-        return indexPath.row >= self.scannerViewModel.currentTotalGuests
+    func fetchNextPage(withIndexPaths indexPaths: [IndexPath]) {
+        guard !isFetchingNextPage else {
+            return
+        }
+        if let id = self.event?.id {
+            self.isFetchingNextPage = true
+            self.guestViewModel.fetchGuests(forEventID: id, page: guestViewModel.currentPage, completion: { [unowned self] (_) in
+                DispatchQueue.main.async {
+                    self.isFetchingNextPage = false
+                    self.guests = self.guestViewModel.ticketsFetched
+                    self.guestTableView.reloadData()
+                    return
+                }
+            })
+        }
     }
-    
-//    func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
-//        let indexPathsForVisibleRows = guestTableView.indexPathsForVisibleRows ?? []
-//        let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
-//        return Array(indexPathsIntersection)
-//    }
-    
 }

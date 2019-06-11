@@ -158,7 +158,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
             return
         }
         
-        self.scannerViewModel?.fetchGuests(forEventID: eventID, completion: { [weak self] (completed) in
+        self.scannerViewModel?.fetchGuests(forEventID: eventID, page: 0, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
                 guard let self = self else {return}
                 self.guests = self.scannerViewModel?.ticketsFetched
@@ -266,6 +266,10 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         }
         guestListVC = GuestListViewController()
         guestListVC!.guests = guests
+        guestListVC!.guestViewModel.totalGuests = self.scannerViewModel?.totalGuests
+        guestListVC!.guestViewModel.currentTotalGuests = self.scannerViewModel!.currentTotalGuests
+        guestListVC!.guestViewModel.currentPage = self.scannerViewModel!.currentPage
+        guestListVC!.guestViewModel.ticketsFetched = guests
         guestListVC!.totalGuests = self.scannerViewModel?.totalGuests
         guestListVC!.event = self.event
         guestListVC!.scanVC = self
@@ -279,7 +283,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
             switch result {
             case .success:
                 print("Syncing Data")
-//                self.scannerViewModel?.guestsCoreData = self.fetcher.fetchLocalGuests()
             case .failure(let error):
                 print(error)
             }

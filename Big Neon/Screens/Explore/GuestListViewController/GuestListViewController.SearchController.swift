@@ -50,16 +50,4 @@ extension GuestListViewController {
         filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
     }
     
-//    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        self.isSearching = false
-//        self.searchBar.text = "";
-//        self.searchBar.setShowsCancelButton(false, animated: true)
-//        self.searchBar.endEditing(true)
-//        self.guestTableView.reloadData()
-//    }
-//
-//    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        self.searchBar.endEditing(true)
-//    }
-    
 }
