@@ -42,7 +42,6 @@ class Fetcher {
             }
             
             self.dataStack.sync(venues, inEntityNamed: Venue.entity().managedObjectClassName) { error in
-                print("Venues Saved")
             }
             
             self.dataStack.sync(events, inEntityNamed: EventsData.entity().managedObjectClassName) { error in

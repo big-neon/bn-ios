@@ -30,6 +30,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
                 return
             }
             headerView.event = event
+            fetchUpdatedGuests()
         }
     }
     
@@ -112,6 +113,18 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
             DispatchQueue.main.async {
                 guard let self = self else {return}
                 self.guests = self.scannerViewModel.ticketsFetched
+            }
+        })
+    }
+    
+    func fetchUpdatedGuests() {
+        guard let eventID = event?.id, let eventTimeZone = event?.venue?.timezone else {
+            return
+        }
+        
+        self.guestViewModel.fetchNewTicketUpdates(forEventID: eventID, eventTimeZone: eventTimeZone, completion: { [weak self] (completed) in
+            DispatchQueue.main.async {
+                
             }
         })
     }

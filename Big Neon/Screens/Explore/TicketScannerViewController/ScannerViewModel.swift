@@ -13,7 +13,6 @@ final class TicketScannerViewModel {
     var guests: Guests?
     var dataStack: DataStack?
     
-    
     var totalGuests: Int?
     var currentTotalGuests: Int = 0
     var currentPage: Int = 0

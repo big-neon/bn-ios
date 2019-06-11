@@ -10,9 +10,6 @@ extension DatabaseService {
         
         
         let APIURL = APIService.getCheckins()
-        
-        print(APIURL)
-        
         let accessToken = self.fetchAcessToken()
         
         AF.request(APIURL,

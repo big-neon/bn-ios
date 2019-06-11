@@ -149,5 +149,43 @@ extension DatabaseService {
                 }
         }
     }
+    
+    public func fetchUpdatedGuests(forEventID eventID: String, changeSince: String?, completion: @escaping (_ error: Error?, _ updatedGuestsDict: [[String: Any]]?) -> Void) {
+        
+        let apiURL = APIService.fetchEvents(eventID: eventID, changesSince: changeSince, page: nil, limit: nil)
+        let accessToken = self.fetchAcessToken()
+        
+        AF.request(apiURL,
+                   method: HTTPMethod.get,
+                   parameters: nil,
+                   encoding: JSONEncoding.default,
+                   headers: [APIParameterKeys.authorization :"Bearer \(accessToken!)"])
+            .validate(statusCode: 200..<300)
+            .response { (response) in
+                
+                guard response.result.isSuccess else {
+                    print(response.result.error)
+                    completion(response.result.error, nil)
+                    return
+                }
+                
+                guard let data = response.result.value else {
+                    completion(nil, nil)
+                    return
+                }
+                
+                do {
+                    let jsonObject = try JSONSerialization.jsonObject(with: data!, options: [])
+                    guard let jsonDictionary = jsonObject as? [String: Any],
+                        let result = jsonDictionary["data"] as? [[String: Any]] else {
+                            throw NSError(domain: dataErrorDomain, code: DataErrorCode.wrongDataFormat.rawValue, userInfo: nil)
+                    }
+                    completion(nil, result)
+                    
+                } catch let error as NSError {
+                    completion(error, nil)
+                }
+        }
+    }
 }
 
