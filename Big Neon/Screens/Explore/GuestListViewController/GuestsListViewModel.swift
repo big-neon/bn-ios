@@ -58,7 +58,6 @@ final class GuestsListViewModel {
                 
                 if isSearching == true {
                     self?.guestSearchResults = guests.data
-                    print(guests.data)
                     completion(true)
                     return
                 }

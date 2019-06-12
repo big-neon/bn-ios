@@ -44,11 +44,11 @@ public class APIService {
         var queryString = ""
         if queryParams.count > 0 {
             queryString = "?\(queryParams.joined(separator: "&"))"
-        } else {
-            queryString = "query=" + (query ?? "")
         }
         
-        
+        if let query = query {
+           queryString += ("&query=" + query)
+        }
         
         return self.baseURL() + "/events/\(eventID)/guests\(queryString)"
     }

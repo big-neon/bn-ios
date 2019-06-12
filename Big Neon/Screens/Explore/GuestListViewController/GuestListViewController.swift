@@ -15,7 +15,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     weak var delegate: ScannerViewDelegate?
     var guestsDictionary: [String: [RedeemableTicket]] = [:]
     var guestSectionTitles = [String]()
-    var filteredSearchResults: [RedeemableTicket] = []
+//    var filteredSearchResults: [RedeemableTicket] = []
     var isSearching: Bool = false
     var isShortFormEnabled = true
     var scanVC: ScannerViewController?

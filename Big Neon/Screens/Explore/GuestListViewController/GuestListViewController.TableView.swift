@@ -30,7 +30,7 @@ extension GuestListViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if self.isSearching == true {
-            return self.filteredSearchResults.count
+            return self.guestViewModel.guestSearchResults.count
         }
         
         let guestKey = guestSectionTitles[section]
@@ -45,8 +45,8 @@ extension GuestListViewController {
         
         var guestValues: RedeemableTicket?
         
-        if self.isSearching == true && !self.filteredSearchResults.isEmpty {
-            guestValues = self.filteredSearchResults[indexPath.row]
+        if self.isSearching == true && !self.guestViewModel.guestSearchResults.isEmpty {
+            guestValues = self.guestViewModel.guestSearchResults[indexPath.row]
         } else {
             let guestKey = guestSectionTitles[indexPath.section]
             guestValues = guestsDictionary[guestKey]![indexPath.row]

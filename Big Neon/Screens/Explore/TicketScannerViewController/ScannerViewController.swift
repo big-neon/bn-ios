@@ -269,6 +269,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         guestListVC!.guestViewModel.currentTotalGuests = self.scannerViewModel!.currentTotalGuests
         guestListVC!.guestViewModel.currentPage = self.scannerViewModel!.currentPage
         guestListVC!.guestViewModel.ticketsFetched = guests
+        guestListVC!.guestViewModel.eventID = self.event?.id
         guestListVC!.totalGuests = self.scannerViewModel?.totalGuests
         guestListVC!.event = self.event
         guestListVC!.scanVC = self
