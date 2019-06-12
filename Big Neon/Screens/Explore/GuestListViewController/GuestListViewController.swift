@@ -71,7 +71,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     lazy var guestTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: UITableView.Style.plain)
         tableView.backgroundColor = UIColor.white
@@ -83,7 +83,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-    
+
     lazy var searchController: UISearchController = {
         let search = UISearchController(searchResultsController: nil)
         search.searchBar.placeholder = "Search for guests"
@@ -94,6 +94,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
         search.searchBar.barStyle = .default
         search.searchBar.delegate = self
         search.searchResultsUpdater = self
+        search.dimsBackgroundDuringPresentation = false
         search.hidesNavigationBarDuringPresentation = false
         return search
     }()
