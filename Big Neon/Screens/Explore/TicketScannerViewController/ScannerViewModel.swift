@@ -144,7 +144,7 @@ final class TicketScannerViewModel {
     
     internal func fetchGuests(forEventID eventID: String, page: Int, completion: @escaping(Bool) -> Void) {
         
-        BusinessService.shared.database.fetchGuests(forEventID: eventID, limit: limit, page: page) { [weak self] (error, guestsFetched, serverGuests, totalGuests) in
+        BusinessService.shared.database.fetchGuests(forEventID: eventID, limit: limit, page: page, guestQuery: nil) { [weak self] (error, guestsFetched, serverGuests, totalGuests) in
             DispatchQueue.main.async {
                 
                 //  Core Data Checks

@@ -15,7 +15,7 @@ extension GuestListViewController {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard self.isSearching else {
-            return guestSectionTitles[section]
+            return guestSectionTitles[section].uppercased()
         }
         return nil
     }

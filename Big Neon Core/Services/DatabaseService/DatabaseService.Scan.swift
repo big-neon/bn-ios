@@ -107,9 +107,9 @@ extension DatabaseService {
         }
     }
     
-    public func fetchGuests(forEventID eventID: String, limit: Int, page: Int, completion: @escaping (_ error: Error?, _ fetchedGuestsDict: [[String: Any]]?, _ serverGuests: Guests?, _ totalGuests: Int) -> Void) {
+    public func fetchGuests(forEventID eventID: String, limit: Int, page: Int?, guestQuery: String?, completion: @escaping (_ error: Error?, _ fetchedGuestsDict: [[String: Any]]?, _ serverGuests: Guests?, _ totalGuests: Int) -> Void) {
         
-        let apiURL = APIService.fetchEvents(eventID: eventID, changesSince: nil, page: page, limit: limit)
+        let apiURL = APIService.fetchEvents(eventID: eventID, changesSince: nil, page: page, limit: limit, query: guestQuery)
         let accessToken = self.fetchAcessToken()
     
         AF.request(apiURL,
@@ -152,7 +152,7 @@ extension DatabaseService {
     
     public func fetchUpdatedGuests(forEventID eventID: String, changeSince: String?, completion: @escaping (_ error: Error?, _ updatedGuestsDict: [[String: Any]]?) -> Void) {
         
-        let apiURL = APIService.fetchEvents(eventID: eventID, changesSince: changeSince, page: nil, limit: nil)
+        let apiURL = APIService.fetchEvents(eventID: eventID, changesSince: changeSince, page: nil, limit: nil, query: nil)
         let accessToken = self.fetchAcessToken()
         
         AF.request(apiURL,

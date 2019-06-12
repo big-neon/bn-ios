@@ -28,13 +28,9 @@ public class APIService {
     /**
      URL: /events/{event_id}/guests
      */
-    public class func fetchEvents(eventID: String, changesSince: String?, page: Int?, limit: Int?) -> String {
+    public class func fetchEvents(eventID: String, changesSince: String?, page: Int?, limit: Int?, query: String?) -> String {
         var queryParams:[String] = []
         if let value = changesSince {
-//            if let date = DateConfig.serverDateFromDate(stringDate: value) {
-//                let dateValue = "2019-06-11T2:39:00"
-//
-//            }
             queryParams.append("changes_since=" + value)
             
         }
@@ -44,10 +40,15 @@ public class APIService {
         if let value = page {
             queryParams.append("page=\(value)")
         }
+        
         var queryString = ""
         if queryParams.count > 0 {
             queryString = "?\(queryParams.joined(separator: "&"))"
+        } else {
+            queryString = "query=" + (query ?? "")
         }
+        
+        
         
         return self.baseURL() + "/events/\(eventID)/guests\(queryString)"
     }

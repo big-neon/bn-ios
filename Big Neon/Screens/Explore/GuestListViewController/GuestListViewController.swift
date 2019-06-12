@@ -51,7 +51,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
             configureView()
             guestsDictionary.removeAll()
             for guest in guests {
-                let guestKey = String(guest.firstName.prefix(1))
+                let guestKey = String(guest.firstName.prefix(1).uppercased())
                 if var guestValues = guestsDictionary[guestKey] {
                     guestValues.append(guest)
                     guestsDictionary[guestKey] = guestValues
