@@ -30,7 +30,6 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
                 return
             }
             headerView.event = event
-            fetchUpdatedGuests()
         }
     }
     
@@ -102,6 +101,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+//        fetchUpdatedGuests()
     }
     
     func fetchGuests() {
@@ -121,10 +121,10 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
         guard let eventID = event?.id, let eventTimeZone = event?.venue?.timezone else {
             return
         }
-        
+
         self.guestViewModel.fetchNewTicketUpdates(forEventID: eventID, eventTimeZone: eventTimeZone, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
-                
+               return
             }
         })
     }
