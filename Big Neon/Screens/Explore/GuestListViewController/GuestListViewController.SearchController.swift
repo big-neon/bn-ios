@@ -27,18 +27,27 @@ extension GuestListViewController {
         
         self.isSearching = true
         
-        self.filteredSearchResults = ((self.guests?.filter({ (guestTicket: RedeemableTicket) -> Bool in
-            
+        // Ping Database for information
+        self.guestViewModel.fetchGuests(andQuery: searchText, page: nil, isSearching: true) { [weak self] (_) in
+            DispatchQueue.main.async {
+                self?.guestTableView.reloadData()
+            }
+        }
+        
+        /*
+        self.filteredSearchResults = (self.guests!.filter({ (guestTicket: RedeemableTicket) -> Bool in
+
             guard let email = guestTicket.email else {
                 return false
             }
-            
+
             return guestTicket.firstName.lowercased().contains(searchText.lowercased()) || guestTicket.lastName.lowercased().contains(searchText.lowercased()) ||
                 guestTicket.id.suffix(8).lowercased().contains(searchText.lowercased()) ||
                 email.lowercased().contains(searchText.lowercased())
-        }))!)
-        
+        }))
+
         self.guestTableView.reloadData()
+        */
         
     }
     
@@ -49,17 +58,5 @@ extension GuestListViewController {
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
     }
-    
-//    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        self.isSearching = false
-//        self.searchBar.text = "";
-//        self.searchBar.setShowsCancelButton(false, animated: true)
-//        self.searchBar.endEditing(true)
-//        self.guestTableView.reloadData()
-//    }
-//
-//    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        self.searchBar.endEditing(true)
-//    }
     
 }

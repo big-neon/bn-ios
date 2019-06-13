@@ -9,8 +9,7 @@ final public class DateConfig {
     public class func formatServerDate(date: String, timeZone: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        var dateFetched = self.dropMilliseconds(date: date)
-
+        let dateFetched = self.dropMilliseconds(date: date)
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         let utcDate = dateFormatter.date(from: dateFetched)
         let tz = TimeZone(identifier: timeZone)!
@@ -56,6 +55,12 @@ final public class DateConfig {
         return dateFormatter.date(from: stringDate)
     }
     
+    public class func serverDateFromDate(stringDate: Date) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        return dateFormatter.string(from: stringDate)
+    }
+    
     public class  func localTime(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.current
@@ -83,13 +88,10 @@ final public class DateConfig {
         dateFormatter.dateFormat = "EEEE dd MMMM - HH:mm"
         return dateFormatter.string(from: date)
     }
-    
    
 }
 
 final internal class DayTimeHelper {
-    
-    // Adapted from "Time ago" - https://gist.github.com/minorbug/468790060810e0d29545
     
     class func getDayString(forDate date: Date, numericDates: Bool) -> String {
         let calendar = Calendar.current

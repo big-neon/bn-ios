@@ -15,7 +15,7 @@ extension GuestListViewController {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard self.isSearching else {
-            return guestSectionTitles[section]
+            return guestSectionTitles[section].uppercased()
         }
         return nil
     }
@@ -30,9 +30,9 @@ extension GuestListViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if self.isSearching == true {
-            return self.filteredSearchResults.count
-            
+            return self.guestViewModel.guestSearchResults.count
         }
+        
         let guestKey = guestSectionTitles[section]
         if let guestValues = guestsDictionary[guestKey] {
             return guestValues.count
@@ -45,8 +45,8 @@ extension GuestListViewController {
         
         var guestValues: RedeemableTicket?
         
-        if self.isSearching == true && !self.filteredSearchResults.isEmpty {
-            guestValues = self.filteredSearchResults[indexPath.row]
+        if self.isSearching == true && !self.guestViewModel.guestSearchResults.isEmpty {
+            guestValues = self.guestViewModel.guestSearchResults[indexPath.row]
         } else {
             let guestKey = guestSectionTitles[indexPath.section]
             guestValues = guestsDictionary[guestKey]![indexPath.row]
@@ -77,11 +77,11 @@ extension GuestListViewController {
         
         return guestCell
     }
-    
+
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
+
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     }
     
@@ -125,4 +125,29 @@ extension GuestListViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    //  Prefetching Rows in TableView
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        let guests = guestViewModel.currentTotalGuests
+        let needsFetch = indexPaths.contains { $0.row >= guests - 15 }
+        if needsFetch {
+            fetchNextPage(withIndexPaths: indexPaths)
+        }
+    }
+    
+    func fetchNextPage(withIndexPaths indexPaths: [IndexPath]) {
+        guard !isFetchingNextPage else {
+            return
+        }
+        if let id = self.guestViewModel.eventID {
+            self.isFetchingNextPage = true
+            self.guestViewModel.fetchGuests(forEventID: id, page: guestViewModel.currentPage, completion: { [unowned self] (_) in
+                DispatchQueue.main.async {
+                    self.isFetchingNextPage = false
+                    self.guests = self.guestViewModel.ticketsFetched
+                    self.guestTableView.reloadData()
+                    return
+                }
+            })
+        }
+    }
 }

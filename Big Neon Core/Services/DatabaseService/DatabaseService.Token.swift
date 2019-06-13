@@ -30,6 +30,8 @@ extension DatabaseService {
         let authParameters = ["refresh_token": refreshToken]
         let APIURL = APIService.refreshToken()
         
+        print(APIURL)
+        
         AF.request(APIURL,
                         method: HTTPMethod.post,
                         parameters: authParameters,

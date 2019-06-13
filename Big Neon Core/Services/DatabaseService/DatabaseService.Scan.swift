@@ -107,9 +107,9 @@ extension DatabaseService {
         }
     }
     
-    public func fetchGuests(forEventID eventID: String, completion: @escaping (_ error: Error?, _ fetchedGuestsDict: [[String: Any]]?, _ serverGuests: Guests?) -> Void) {
+    public func fetchGuests(forEventID eventID: String, limit: Int, page: Int?, guestQuery: String?, completion: @escaping (_ error: Error?, _ fetchedGuestsDict: [[String: Any]]?, _ serverGuests: Guests?, _ totalGuests: Int) -> Void) {
         
-        let apiURL = APIService.fetchEvents(eventID: eventID)
+        let apiURL = APIService.fetchEvents(eventID: eventID, changesSince: nil, page: page, limit: limit, query: guestQuery)
         let accessToken = self.fetchAcessToken()
     
         AF.request(apiURL,
@@ -121,12 +121,12 @@ extension DatabaseService {
             .response { (response) in
                 
                 guard response.result.isSuccess else {
-                    completion(response.result.error, nil, nil)
+                    completion(response.result.error, nil, nil, 0)
                     return
                 }
                 
                 guard let data = response.result.value else {
-                    completion(nil, nil, nil)
+                    completion(nil, nil, nil, 0)
                     return
                 }
                 
@@ -137,13 +137,54 @@ extension DatabaseService {
                             throw NSError(domain: dataErrorDomain, code: DataErrorCode.wrongDataFormat.rawValue, userInfo: nil)
                     }
                     
+                    let pagingDictionary = jsonDictionary["paging"] as? [String: Any]
+                    let totalGuests = pagingDictionary!["total"] as! Int
                     let decoder = JSONDecoder()
                     let guests = try decoder.decode(Guests.self, from: data!)
-                    completion(nil, result, guests)
+                    completion(nil, result, guests, totalGuests)
                     
                 } catch let error as NSError {
                     print(error)
-                    completion(error, nil, nil)
+                    completion(error, nil, nil, 0)
+                }
+        }
+    }
+    
+    public func fetchUpdatedGuests(forEventID eventID: String, changeSince: String?, completion: @escaping (_ error: Error?, _ updatedGuestsDict: [[String: Any]]?) -> Void) {
+        
+        
+        let apiURL = APIService.fetchEvents(eventID: eventID, changesSince: changeSince, page: nil, limit: nil, query: nil)
+        let accessToken = self.fetchAcessToken()
+        
+        AF.request(apiURL,
+                   method: HTTPMethod.get,
+                   parameters: nil,
+                   encoding: JSONEncoding.default,
+                   headers: [APIParameterKeys.authorization :"Bearer \(accessToken!)"])
+            .validate(statusCode: 200..<300)
+            .response { (response) in
+                
+                guard response.result.isSuccess else {
+                    print(response.result.error)
+                    completion(response.result.error, nil)
+                    return
+                }
+                
+                guard let data = response.result.value else {
+                    completion(nil, nil)
+                    return
+                }
+                
+                do {
+                    let jsonObject = try JSONSerialization.jsonObject(with: data!, options: [])
+                    guard let jsonDictionary = jsonObject as? [String: Any],
+                        let result = jsonDictionary["data"] as? [[String: Any]] else {
+                            throw NSError(domain: dataErrorDomain, code: DataErrorCode.wrongDataFormat.rawValue, userInfo: nil)
+                    }
+                    completion(nil, result)
+                    
+                } catch let error as NSError {
+                    completion(error, nil)
                 }
         }
     }

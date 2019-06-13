@@ -21,6 +21,7 @@ public struct RedeemableTicket: Codable {
     public let refundSupported: Bool?
     public let redeemedAt: String?
     public let redeemedBy: String?
+    public let changesSince: String?
     
     public enum CodingKeys: String, CodingKey {
         case id
@@ -45,6 +46,7 @@ public struct RedeemableTicket: Codable {
         case refundSupported = "refund_supported"
         case redeemedAt      = "redeemed_at"
         case redeemedBy     = "redeemed_by"
+        case changesSince   = "changes_since"
     }
 }
 

@@ -10,35 +10,40 @@ protocol GuestListViewDelegate: class {
     func reloadGuests()
 }
 
-final class GuestListViewController: UIViewController, PanModalPresentable, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, GuestListViewDelegate {
+final class GuestListViewController: UIViewController, PanModalPresentable, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, GuestListViewDelegate, UITableViewDataSourcePrefetching {
 
     weak var delegate: ScannerViewDelegate?
     var guestsDictionary: [String: [RedeemableTicket]] = [:]
     var guestSectionTitles = [String]()
-    var filteredSearchResults: [RedeemableTicket] = []
+    var filteredLocalSearchResults: [RedeemableTicket] = []
     var isSearching: Bool = false
     var isShortFormEnabled = true
     var scanVC: ScannerViewController?
+    var isFetchingNextPage = false
+    var scannerViewModel = TicketScannerViewModel()
+    var guestViewModel = GuestsListViewModel()
     
-    public var event: EventsData? {
+    var totalGuests: Int? {
         didSet {
-            guard let event = self.event else  {
+            guard let totalGuests = self.totalGuests else {
                 return
             }
-            headerView.event = event
+            headerView.totalGuests = totalGuests
         }
     }
     
     public var  guests: [RedeemableTicket]? {
         didSet {
-            guard let guests = self.guests else  {
+            guard let guests = self.guests else {
                 return
             }
             
+            configureNavBar()
             configureView()
             guestsDictionary.removeAll()
+            
             for guest in guests {
-                let guestKey = String(guest.firstName.prefix(1))
+                let guestKey = String(guest.firstName.prefix(1).uppercased())
                 if var guestValues = guestsDictionary[guestKey] {
                     guestValues.append(guest)
                     guestsDictionary[guestKey] = guestValues
@@ -47,51 +52,85 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
                 }
             }
             
-            headerView.guests = guests
             self.guestSectionTitles = [String](guestsDictionary.keys)
             self.guestSectionTitles = guestSectionTitles.sorted(by: { $0 < $1 })
         }
     }
-    
+
     lazy var headerView: GuestListHeaderView = {
         let view = GuestListHeaderView()
         view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     lazy var guestTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: UITableView.Style.plain)
         tableView.backgroundColor = UIColor.white
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.prefetchDataSource = self
         tableView.separatorColor = UIColor.brandGrey.withAlphaComponent(0.3)
         tableView.showsVerticalScrollIndicator = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-    
+
     lazy var searchController: UISearchController = {
         let search = UISearchController(searchResultsController: nil)
-        search.obscuresBackgroundDuringPresentation = false
         search.searchBar.placeholder = "Search for guests"
         search.searchBar.scopeButtonTitles = nil
         search.searchBar.scopeBarBackgroundImage = nil
         search.searchBar.backgroundImage = UIImage()
         search.searchBar.setBackgroundImage(UIImage(named: "search_box"), for: UIBarPosition.bottom, barMetrics: UIBarMetrics.default)
         search.searchBar.barStyle = .default
-        definesPresentationContext = true
         search.searchBar.delegate = self
         search.searchResultsUpdater = self
+        search.dimsBackgroundDuringPresentation = false
         search.hidesNavigationBarDuringPresentation = false
         return search
     }()
     
+    init(eventID: String, eventTimeZone: String) {
+        guestViewModel.eventID = eventID
+        guestViewModel.eventTimeZone = eventTimeZone
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        configureView()
-        configureNavBar()
+        //  perform(#selector(fetchUpdatedGuests), with: self, afterDelay: 1.0)
+    }
+
+    func fetchGuests() {
+        guard let eventID = guestViewModel.eventID else {
+            return
+        }
+
+        self.scannerViewModel.fetchGuests(forEventID: eventID, page: 0, completion: { [weak self] (completed) in
+            DispatchQueue.main.async {
+                guard let self = self else {return}
+                self.guests = self.scannerViewModel.ticketsFetched
+            }
+        })
+    }
+
+    @objc func fetchUpdatedGuests() {
+
+        guard let eventID = guestViewModel.eventID, let timeZone = guestViewModel.eventTimeZone else {
+            return
+        }
+
+        self.guestViewModel.fetchNewTicketUpdates(forEventID: eventID, eventTimeZone: timeZone, completion: { [weak self] (completed) in
+            DispatchQueue.main.async {
+               return
+            }
+        })
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -132,12 +171,6 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
         guestTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
-    func reloadGuests() {
-//        self.guests?.removeAll()
-//        self.guestTableView.reloadData()
-        self.delegate?.reloadGuests()
-    }
-    
     var panScrollable: UIScrollView? {
         return guestTableView
     }
@@ -145,5 +178,25 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     var shortFormHeight: PanModalHeight {
         return .contentHeight(600)
     }
-
+    
+    func reloadGuests() {
+        guard let eventID = self.guestViewModel.eventID else {
+            return
+        }
+        
+        self.scannerViewModel.fetchGuests(forEventID: eventID, page: guestViewModel.currentPage, completion: { [weak self] (completed) in
+            DispatchQueue.main.async {
+                self?.guests = (self?.scannerViewModel.ticketsFetched)!
+                self?.guestTableView.reloadData()
+                self?.headerView.isRefreshing = false
+                return
+            }
+        })
+    }
+    
+    func reloadGuests(atIndex index: IndexPath) {
+        let redeemedCell: GuestTableViewCell = guestTableView.cellForRow(at: index) as! GuestTableViewCell
+        redeemedCell.ticketStateView.tagLabel.text = "REDEEMED"
+        redeemedCell.ticketStateView.backgroundColor = UIColor.brandBlack
+    }
 }

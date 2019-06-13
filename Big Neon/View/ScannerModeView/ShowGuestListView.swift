@@ -16,18 +16,39 @@ public class ShowGuestListView: UIView {
         return label
     }()
     
+    lazy var loadingView: UIActivityIndicatorView = {
+        let loader = UIActivityIndicatorView()
+        loader.style = UIActivityIndicatorView.Style.gray
+        loader.tintColor = UIColor.brandPrimary
+        loader.hidesWhenStopped = true
+        loader.translatesAutoresizingMaskIntoConstraints = false
+        return loader
+    }()
+    
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [headerLabel, loadingView])
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .equalSpacing
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white
+        self.loadingView.startAnimating()
         self.configureView()
     }
     
     private func configureView() {
-        addSubview(headerLabel)
-        headerLabel.leftAnchor.constraint(equalTo: leftAnchor).isActive  = true
-        headerLabel.rightAnchor.constraint(equalTo: rightAnchor).isActive  = true
-        headerLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive  = true
-        headerLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        addSubview(stackView)
+    
+        stackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: LayoutSpec.Spacing.screenEdgeSpacing).isActive = true
+        stackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -LayoutSpec.Spacing.screenEdgeSpacing).isActive = true
+        stackView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+
     }
     
     required init?(coder aDecoder: NSCoder) {

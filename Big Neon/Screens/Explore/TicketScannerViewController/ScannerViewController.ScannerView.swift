@@ -52,7 +52,6 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             //  Last Ticket and Latest Ticket are the same - don't rescan.
             if let scannedTicketID = self.scannerViewModel?.redeemedTicket?.id {
                 if ticketID == scannedTicketID {
-                    
                     //  Show Redemeed Ticket View
                     self.checkinAutomatically(withTicketID: scannedTicketID, fromGuestTableView: false, atIndexPath: nil)
                     self.stopScanning = false
@@ -92,7 +91,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         })
     }
     
-    private func presentScannedUser() {
+    func presentScannedUser() {
         self.manualUserCheckinView.redeemableTicket = self.scannedTicket
         self.generator.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.success)
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {

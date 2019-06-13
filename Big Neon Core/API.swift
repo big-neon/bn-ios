@@ -28,8 +28,29 @@ public class APIService {
     /**
      URL: /events/{event_id}/guests
      */
-    public class func fetchEvents(eventID: String) -> String {
-        return self.baseURL() + "/events/\(eventID)/guests"
+    public class func fetchEvents(eventID: String, changesSince: String?, page: Int?, limit: Int?, query: String?) -> String {
+        var queryParams:[String] = []
+        if let value = changesSince {
+            queryParams.append("changes_since=" + value)
+        }
+        
+        if let value = limit {
+            queryParams.append("limit=\(value)")
+        }
+        if let value = page {
+            queryParams.append("page=\(value)")
+        }
+        
+        var queryString = ""
+        if queryParams.count > 0 {
+            queryString = "?\(queryParams.joined(separator: "&"))"
+        }
+        
+        if let query = query {
+           queryString += ("&query=" + query)
+        }
+        
+        return self.baseURL() + "/events/\(eventID)/guests\(queryString)"
     }
     
     /**

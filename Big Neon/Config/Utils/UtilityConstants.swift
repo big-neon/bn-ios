@@ -6,6 +6,7 @@ public enum Constants {
     
     public enum AppActionKeys {
         static let profileUpdateKey     = "com.BigNeon.profileUpdateKey"
+        static let changeSinceKey     = "com.BigNeon.changeSinceKey"
     }
     
     public enum CheckingMode {

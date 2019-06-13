@@ -8,9 +8,6 @@ protocol DoorPersonViewDelegate: class {
     func handleShowProfile()
 }
 
-// MARK:  magic numbers... consider using layout/config class/enum
-// MARK: use abbreviation / syntax sugar
-
 final class DoorPersonViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate, DoorPersonViewDelegate {
 
     var guestFetcher: Fetcher
@@ -112,7 +109,6 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     @objc private func reloadEvents() {
         self.doorPersonViemodel.configureAccessToken { [weak self] (completed) in
             DispatchQueue.main.async {
-                
                 self?.loadingView.stopAnimating()
                 self?.refresher.endRefreshing()
                 
@@ -137,21 +133,6 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
 
     private func configureNavBar() {
         self.hideNavBar()
-//        self.navigationController?.navigationBar.barTintColor = UIColor.white
-//        self.navigationController?.navigationBar.tintColor = UIColor.brandBlack
-//        self.setNavigationTitle(withTitle: "My Events")
-//
-//        userProfileImageView.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
-//        userProfileImageView.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: userProfileImageView)
-//
-//        self.doorPersonViemodel.fetchUser { [weak self] (_) in
-//            if let profilePicURL = self?.doorPersonViemodel.user?.profilePicURL   {
-//                self?.userProfileImageView.pin_setImage(from: URL(string: profilePicURL), placeholderImage: UIImage(named: "ic_profilePicture"))
-//            } else {
-//                self?.userProfileImageView.pin_setPlaceholder(with: UIImage(named: "ic_profilePicture"))
-//            }
-//        }
     }
 
     private func configureEmptyView() {

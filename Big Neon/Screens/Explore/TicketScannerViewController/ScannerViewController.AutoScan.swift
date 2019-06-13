@@ -11,7 +11,7 @@ extension ScannerViewController {
         self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID) { [weak self] (scanFeedback, errorString, ticket) in
             DispatchQueue.main.async {
                 if fromGuestTableView == true {
-                    self?.reloadGuests(atIndex: atIndexPath!)
+                    self?.guestListVC?.reloadGuests(atIndex: atIndexPath!)
                     self?.generator.notificationOccurred(.success)
                     return
                 }
