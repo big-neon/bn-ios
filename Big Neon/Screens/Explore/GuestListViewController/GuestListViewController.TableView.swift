@@ -77,11 +77,11 @@ extension GuestListViewController {
         
         return guestCell
     }
-    
+
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
+
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     }
     
@@ -138,7 +138,7 @@ extension GuestListViewController {
         guard !isFetchingNextPage else {
             return
         }
-        if let id = self.event?.id {
+        if let id = self.guestViewModel.eventID {
             self.isFetchingNextPage = true
             self.guestViewModel.fetchGuests(forEventID: id, page: guestViewModel.currentPage, completion: { [unowned self] (_) in
                 DispatchQueue.main.async {

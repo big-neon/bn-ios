@@ -18,6 +18,9 @@ final class TicketScannerViewModel {
     var currentPage: Int = 0
     let limit = 100
     var ticketsFetched: [RedeemableTicket] = []
+    
+    //  Event Infor
+    var eventID: String?
 
     internal func setCheckingModeAutomatic() {
         UserDefaults.standard.set(true, forKey: Constants.CheckingMode.scannerCheckinKey)
@@ -148,13 +151,6 @@ final class TicketScannerViewModel {
             DispatchQueue.main.async {
                 
                 //  Core Data Checks
-                /*
-                guard let _ = guestsFetched, error != nil else {
-                    completion(false)
-                    return
-                }
-                */
-                
                 guard let guests = serverGuests else {
                     completion(false)
                     return

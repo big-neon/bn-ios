@@ -25,15 +25,6 @@ class GuestListHeaderView: UIView {
         }
     }
     
-    var event: EventsData? {
-        didSet {
-            guard let event = self.event else  {
-                return
-            }
-            titleLabel.text = event.name
-        }
-    }
-    
     var totalGuests: Int? {
         didSet {
             

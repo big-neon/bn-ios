@@ -32,8 +32,8 @@ public class APIService {
         var queryParams:[String] = []
         if let value = changesSince {
             queryParams.append("changes_since=" + value)
-            
         }
+        
         if let value = limit {
             queryParams.append("limit=\(value)")
         }

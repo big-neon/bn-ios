@@ -149,14 +149,14 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         configureScanner()
         configureManualCheckinView()
         configureHeader()
-        self.fetchGuests()
+        fetchGuests()
     }
     
     func fetchGuests() {
         guard let eventID = self.event?.id else {
             return
         }
-        
+
         self.scannerViewModel?.fetchGuests(forEventID: eventID, page: 0, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
                 guard let self = self else {return}
@@ -229,7 +229,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         captureSession.startRunning()
         configureBlur()
         configureScannedUserView()
-        
     }
     
     @objc func dismissView() {
@@ -263,15 +262,14 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         guard let guests = self.guests else {
             return
         }
-        guestListVC = GuestListViewController()
+        
+        guestListVC = GuestListViewController(eventID: (self.event?.id)!, eventTimeZone: (event?.venue?.timezone)!)
         guestListVC!.guests = guests
         guestListVC!.guestViewModel.totalGuests = self.scannerViewModel?.totalGuests
         guestListVC!.guestViewModel.currentTotalGuests = self.scannerViewModel!.currentTotalGuests
         guestListVC!.guestViewModel.currentPage = self.scannerViewModel!.currentPage
         guestListVC!.guestViewModel.ticketsFetched = guests
-        guestListVC!.guestViewModel.eventID = self.event?.id
         guestListVC!.totalGuests = self.scannerViewModel?.totalGuests
-        guestListVC!.event = self.event
         guestListVC!.scanVC = self
         guestListVC!.delegate = self
         let navGuestVC = GuestListNavigationController(rootViewController: guestListVC!)

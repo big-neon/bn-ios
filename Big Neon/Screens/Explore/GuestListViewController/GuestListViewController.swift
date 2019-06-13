@@ -15,23 +15,13 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     weak var delegate: ScannerViewDelegate?
     var guestsDictionary: [String: [RedeemableTicket]] = [:]
     var guestSectionTitles = [String]()
-//    var filteredSearchResults: [RedeemableTicket] = []
+    var filteredLocalSearchResults: [RedeemableTicket] = []
     var isSearching: Bool = false
     var isShortFormEnabled = true
     var scanVC: ScannerViewController?
     var isFetchingNextPage = false
-    
     var scannerViewModel = TicketScannerViewModel()
     var guestViewModel = GuestsListViewModel()
-    
-    var event: EventsData? {
-        didSet {
-            guard let event = self.event else {
-                return
-            }
-            headerView.event = event
-        }
-    }
     
     var totalGuests: Int? {
         didSet {
@@ -47,9 +37,11 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
             guard let guests = self.guests else {
                 return
             }
+            
             configureNavBar()
             configureView()
             guestsDictionary.removeAll()
+            
             for guest in guests {
                 let guestKey = String(guest.firstName.prefix(1).uppercased())
                 if var guestValues = guestsDictionary[guestKey] {
@@ -64,7 +56,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
             self.guestSectionTitles = guestSectionTitles.sorted(by: { $0 < $1 })
         }
     }
-    
+
     lazy var headerView: GuestListHeaderView = {
         let view = GuestListHeaderView()
         view.delegate = self
@@ -99,17 +91,27 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
         return search
     }()
     
+    init(eventID: String, eventTimeZone: String) {
+        guestViewModel.eventID = eventID
+        guestViewModel.eventTimeZone = eventTimeZone
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-//        fetchUpdatedGuests()
+        //  perform(#selector(fetchUpdatedGuests), with: self, afterDelay: 1.0)
     }
-    
+
     func fetchGuests() {
-        guard let eventID = event?.id else {
+        guard let eventID = guestViewModel.eventID else {
             return
         }
-        
+
         self.scannerViewModel.fetchGuests(forEventID: eventID, page: 0, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
                 guard let self = self else {return}
@@ -117,13 +119,14 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
             }
         })
     }
-    
-    func fetchUpdatedGuests() {
-        guard let eventID = event?.id, let eventTimeZone = event?.venue?.timezone else {
+
+    @objc func fetchUpdatedGuests() {
+
+        guard let eventID = guestViewModel.eventID, let timeZone = guestViewModel.eventTimeZone else {
             return
         }
 
-        self.guestViewModel.fetchNewTicketUpdates(forEventID: eventID, eventTimeZone: eventTimeZone, completion: { [weak self] (completed) in
+        self.guestViewModel.fetchNewTicketUpdates(forEventID: eventID, eventTimeZone: timeZone, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
                return
             }
@@ -177,7 +180,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     }
     
     func reloadGuests() {
-        guard let eventID = self.event?.id else {
+        guard let eventID = self.guestViewModel.eventID else {
             return
         }
         

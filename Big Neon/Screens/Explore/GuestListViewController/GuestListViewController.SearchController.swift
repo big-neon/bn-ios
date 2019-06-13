@@ -34,18 +34,20 @@ extension GuestListViewController {
             }
         }
         
-//        self.filteredSearchResults = (self.guests!.filter({ (guestTicket: RedeemableTicket) -> Bool in
-//
-//            guard let email = guestTicket.email else {
-//                return false
-//            }
-//
-//            return guestTicket.firstName.lowercased().contains(searchText.lowercased()) || guestTicket.lastName.lowercased().contains(searchText.lowercased()) ||
-//                guestTicket.id.suffix(8).lowercased().contains(searchText.lowercased()) ||
-//                email.lowercased().contains(searchText.lowercased())
-//        }))
-//
-//        self.guestTableView.reloadData()
+        /*
+        self.filteredSearchResults = (self.guests!.filter({ (guestTicket: RedeemableTicket) -> Bool in
+
+            guard let email = guestTicket.email else {
+                return false
+            }
+
+            return guestTicket.firstName.lowercased().contains(searchText.lowercased()) || guestTicket.lastName.lowercased().contains(searchText.lowercased()) ||
+                guestTicket.id.suffix(8).lowercased().contains(searchText.lowercased()) ||
+                email.lowercased().contains(searchText.lowercased())
+        }))
+
+        self.guestTableView.reloadData()
+        */
         
     }
     

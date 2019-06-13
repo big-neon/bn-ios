@@ -152,6 +152,7 @@ extension DatabaseService {
     
     public func fetchUpdatedGuests(forEventID eventID: String, changeSince: String?, completion: @escaping (_ error: Error?, _ updatedGuestsDict: [[String: Any]]?) -> Void) {
         
+        
         let apiURL = APIService.fetchEvents(eventID: eventID, changesSince: changeSince, page: nil, limit: nil, query: nil)
         let accessToken = self.fetchAcessToken()
         

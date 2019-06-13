@@ -12,6 +12,7 @@ final class GuestsListViewModel {
     let limit = 100
     var ticketsFetched: [RedeemableTicket] = []
     var eventID: String?
+    var eventTimeZone: String?
     var ticketsUpdated: [RedeemableTicket] = []
     var guestSearchResults: [RedeemableTicket] = []
 
@@ -35,7 +36,7 @@ final class GuestsListViewModel {
     
     func fetchGuests(andQuery query: String?, page: Int?, isSearching: Bool, completion: @escaping(Bool) -> Void) {
         
-        guard let eventID = self.eventID else {
+        guard let eventID = eventID else {
             completion(false)
             return
         }
@@ -46,8 +47,8 @@ final class GuestsListViewModel {
                 //  Core Data Checks
                 /*
                  guard let _ = guestsFetched, error != nil else {
-                 completion(false)
-                 return
+                     completion(false)
+                     return
                  }
                  */
                 
@@ -73,18 +74,31 @@ final class GuestsListViewModel {
     }
     
     func fetchNewTicketUpdates(forEventID eventID: String, eventTimeZone: String, completion: @escaping(Bool) -> Void) {
+        
+        var date = ""
         let changeSince = UserDefaults.standard.value(forKey: Constants.AppActionKeys.changeSinceKey) as? String
-        BusinessService.shared.database.fetchUpdatedGuests(forEventID: eventID, changeSince: changeSince) { [weak self] (error, guestsFetched) in
+
+        if changeSince == nil {
+            date = DateConfig.serverDateFromDate(stringDate: Date())!
+//            date = DateConfig.formatServerDate(date: date, timeZone: eventTimeZone)
+        } else {
+            date = changeSince!
+        }
+        
+        BusinessService.shared.database.fetchUpdatedGuests(forEventID: eventID, changeSince: date) { [weak self] (error, guestsFetched) in
             DispatchQueue.main.async {
                 guard var guests = guestsFetched else {
                     completion(false)
                     return
                 }
-                guests.sort(by: {DateConfig.formatServerDate(date: ($0["updated_at"] as! String), timeZone: eventTimeZone)! > DateConfig.formatServerDate(date: ($1["updated_at"] as! String), timeZone: eventTimeZone)! })
-                let lastUpdateValue = guests.first!["updated_at"] as! String
-                UserDefaults.standard.set(lastUpdateValue, forKey: Constants.AppActionKeys.changeSinceKey)
-                completion(true)
-                return
+                
+                guests.sort(by: {DateConfig.formatServerDate(date: ($0["updated_at"] as! String), timeZone: eventTimeZone)! > DateConfig.formatServerDate(date: ($1["updated_at"] as! String), timeZone: eventTimeZone)!})
+                
+                if let lastUpdateValue = guests.first {
+                    UserDefaults.standard.set(lastUpdateValue["updated_at"] as! String, forKey: Constants.AppActionKeys.changeSinceKey)
+                    completion(true)
+                    return
+                }
             }
         }
     }
