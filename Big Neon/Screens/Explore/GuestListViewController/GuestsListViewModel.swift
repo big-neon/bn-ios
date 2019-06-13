@@ -77,13 +77,16 @@ final class GuestsListViewModel {
         
         var date = ""
         let changeSince = UserDefaults.standard.value(forKey: Constants.AppActionKeys.changeSinceKey) as? String
-
+        
         if changeSince == nil {
             date = DateConfig.serverDateFromDate(stringDate: Date())!
-//            date = DateConfig.formatServerDate(date: date, timeZone: eventTimeZone)
+            let serverDate = DateConfig.formatServerDate(date: date, timeZone: eventTimeZone)
+            date = DateConfig.serverDateFromDate(stringDate: serverDate!)!
         } else {
             date = changeSince!
         }
+        
+        print(date)
         
         BusinessService.shared.database.fetchUpdatedGuests(forEventID: eventID, changeSince: date) { [weak self] (error, guestsFetched) in
             DispatchQueue.main.async {
