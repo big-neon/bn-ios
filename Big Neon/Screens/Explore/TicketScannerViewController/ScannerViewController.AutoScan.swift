@@ -6,12 +6,18 @@ import AVFoundation
 
 extension ScannerViewController {
     
-    func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath: IndexPath?) {
+    func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath indexPath: IndexPath?) {
         
         self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID) { [weak self] (scanFeedback, errorString, ticket) in
             DispatchQueue.main.async {
                 if fromGuestTableView == true {
-                    self?.guestListVC?.reloadGuests(atIndex: atIndexPath!)
+                    if self?.guestListVC?.isSearching == true {
+                        self?.guestListVC?.guestViewModel.guestSearchResults.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
+                        self?.guestListVC?.guestTableView.reloadRows(at: [indexPath!], with: UITableView.RowAnimation.automatic)
+                    } else {
+                        self?.guestListVC?.guestViewModel.ticketsFetched.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
+                        self?.guestListVC?.guestTableView.reloadRows(at: [indexPath!], with: UITableView.RowAnimation.automatic)
+                    }
                     self?.generator.notificationOccurred(.success)
                     return
                 }

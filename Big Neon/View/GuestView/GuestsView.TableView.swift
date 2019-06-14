@@ -93,7 +93,7 @@ extension GuestListView {
             if guestValues[indexPath.row].status == TicketStatus.purchased.rawValue {
                 let deleteButton = UITableViewRowAction(style: .default, title: "Checkin") { (action, indexPath) in
                     let ticketID = guestValues[indexPath.row].id
-                    self.checkinTicket(ticketID: ticketID, atIndex: indexPath)
+//                    self.checkinTicket(ticketID: ticketID, atIndex: indexPath)
                     return
                 }
                 deleteButton.backgroundColor = UIColor.brandPrimary
@@ -111,11 +111,11 @@ extension GuestListView {
         }
     }
     
-    private func checkinTicket(ticketID: String?, atIndex index: IndexPath) {
-        if let id = ticketID {
-            self.delegate?.checkinAutomatically(withTicketID: id, fromGuestTableView: true, atIndexPath: index)
-        }
-    }
+//    private func checkinTicket(ticketID: String?, atIndex index: IndexPath) {
+//        if let id = ticketID {
+//            self.delegate?.checkinAutomatically(withTicketID: id, fromGuestTableView: true, atIndexPath: index, inLeftDirection: <#Bool#>)
+//        }
+//    }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0

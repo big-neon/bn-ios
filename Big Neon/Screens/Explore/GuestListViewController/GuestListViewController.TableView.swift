@@ -84,34 +84,35 @@ extension GuestListViewController {
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     }
-    
+
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let guestKey = guestSectionTitles[indexPath.section]
-        if let guestValues = guestsDictionary[guestKey] {
-            
-            if guestValues[indexPath.row].status == TicketStatus.purchased.rawValue {
-                let deleteButton = UITableViewRowAction(style: .default, title: "Checkin") { (action, indexPath) in
-                    let ticketID = guestValues[indexPath.row].id
-                    self.checkinTicket(ticketID: ticketID, atIndex: indexPath)
-                    return
-                }
-                deleteButton.backgroundColor = UIColor.brandPrimary
-                return [deleteButton]
-            } else {
-                let deleteButton = UITableViewRowAction(style: .default, title: "Already Redeemed") { (action, indexPath) in
-                    return
-                }
-                deleteButton.backgroundColor = UIColor.brandLightGrey
-                return [deleteButton]
-                
-            }
+        var guestValues: [RedeemableTicket]?
+        if self.isSearching == true {
+            guestValues = self.guestViewModel.guestSearchResults
         } else {
-            return nil
+            guestValues = guestsDictionary[guestKey]
+        }
+        
+        if guestValues![indexPath.row].status == TicketStatus.purchased.rawValue {
+            let checkinAction = UITableViewRowAction(style: .default, title: "Checkin") { (action, indexPath) in
+                let ticketID = guestValues![indexPath.row].id
+                self.checkinTicket(ticketID: ticketID, atIndex: indexPath, direction: false)
+                return
+            }
+            checkinAction.backgroundColor = UIColor.brandPrimary
+            return [checkinAction]
+        } else {
+            let alreadyRedeemedAction = UITableViewRowAction(style: .default, title: "Already Redeemed") { (action, indexPath) in
+                return
+            }
+            alreadyRedeemedAction.backgroundColor = UIColor.brandLightGrey
+            return [alreadyRedeemedAction]
         }
     }
     
-    func checkinTicket(ticketID: String?, atIndex index: IndexPath) {
+    func checkinTicket(ticketID: String?, atIndex index: IndexPath, direction: Bool) {
         if let id = ticketID {
             self.delegate?.checkinAutomatically(withTicketID: id, fromGuestTableView: true, atIndexPath: index)
         }
@@ -125,31 +126,61 @@ extension GuestListViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let guestKey = guestSectionTitles[indexPath.section]
+        var guestValues: [RedeemableTicket]?
+        if self.isSearching == true {
+            guestValues = self.guestViewModel.guestSearchResults
+        } else {
+            guestValues = guestsDictionary[guestKey]
+        }
+        
+        if guestValues![indexPath.row].status == TicketStatus.purchased.rawValue {
+            let checkinAction = UIContextualAction(style: .destructive, title: "Checkin") { (action, view, handler) in
+                let ticketID = guestValues![indexPath.row].id
+                self.checkinTicket(ticketID: ticketID, atIndex: indexPath, direction: true)
+                return
+            }
+            checkinAction.backgroundColor = .brandPrimary
+            let configuration = UISwipeActionsConfiguration(actions: [checkinAction])
+            return configuration
+        } else {
+            let alreadyRedeemedAction = UIContextualAction(style: .destructive, title: "Already Redeemed") { (action, view, handler) in
+                print("Already Redeemed")
+            }
+            alreadyRedeemedAction.backgroundColor = .brandLightGrey
+            let configuration = UISwipeActionsConfiguration(actions: [alreadyRedeemedAction])
+            return configuration
+        }
+    }
+    
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let guestKey = guestSectionTitles[indexPath.section]
-        if let guestValues = guestsDictionary[guestKey] {
-            
-            if guestValues[indexPath.row].status == TicketStatus.purchased.rawValue {
-                let checkinAction = UIContextualAction(style: .destructive, title: "Checkin") { (action, view, handler) in
-                    let ticketID = guestValues[indexPath.row].id
-                    self.checkinTicket(ticketID: ticketID, atIndex: indexPath)
-                    return
-                }
-                checkinAction.backgroundColor = .brandPrimary
-                let configuration = UISwipeActionsConfiguration(actions: [checkinAction])
-                return configuration
-            } else {
-                let deleteAction = UIContextualAction(style: .destructive, title: "Already Redeemed") { (action, view, handler) in
-                    print("Already Redeemed")
-                }
-                deleteAction.backgroundColor = .brandLightGrey
-                let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-                return configuration
-                
-            }
+        var guestValues: [RedeemableTicket]?
+        if self.isSearching == true {
+            guestValues = self.guestViewModel.guestSearchResults
         } else {
-            return nil
+            guestValues = guestsDictionary[guestKey]
+        }
+        
+        if guestValues![indexPath.row].status == TicketStatus.purchased.rawValue {
+            let checkinAction = UIContextualAction(style: .destructive, title: "Checkin") { (action, view, handler) in
+                let ticketID = guestValues![indexPath.row].id
+                self.checkinTicket(ticketID: ticketID, atIndex: indexPath, direction: true)
+                return
+            }
+            checkinAction.backgroundColor = .brandPrimary
+            let configuration = UISwipeActionsConfiguration(actions: [checkinAction])
+            return configuration
+        } else {
+            let alreadyRedeemedAction = UIContextualAction(style: .destructive, title: "Already Redeemed") { (action, view, handler) in
+                print("Already Redeemed")
+            }
+            alreadyRedeemedAction.backgroundColor = .brandLightGrey
+            let configuration = UISwipeActionsConfiguration(actions: [alreadyRedeemedAction])
+            return configuration
         }
         
     }
