@@ -125,6 +125,35 @@ extension GuestListViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let guestKey = guestSectionTitles[indexPath.section]
+        if let guestValues = guestsDictionary[guestKey] {
+            
+            if guestValues[indexPath.row].status == TicketStatus.purchased.rawValue {
+                let checkinAction = UIContextualAction(style: .destructive, title: "Checkin") { (action, view, handler) in
+                    let ticketID = guestValues[indexPath.row].id
+                    self.checkinTicket(ticketID: ticketID, atIndex: indexPath)
+                    return
+                }
+                checkinAction.backgroundColor = .brandPrimary
+                let configuration = UISwipeActionsConfiguration(actions: [checkinAction])
+                return configuration
+            } else {
+                let deleteAction = UIContextualAction(style: .destructive, title: "Already Redeemed") { (action, view, handler) in
+                    print("Already Redeemed")
+                }
+                deleteAction.backgroundColor = .brandLightGrey
+                let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+                return configuration
+                
+            }
+        } else {
+            return nil
+        }
+        
+    }
+    
     //  Prefetching Rows in TableView
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         let guests = guestViewModel.currentTotalGuests

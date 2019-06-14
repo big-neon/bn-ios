@@ -104,7 +104,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        //  perform(#selector(fetchUpdatedGuests), with: self, afterDelay: 1.0)
+        //perform(#selector(fetchUpdatedGuests), with: self, afterDelay: 1.0)
     }
 
     func fetchGuests() {

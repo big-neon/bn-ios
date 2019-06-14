@@ -152,8 +152,8 @@ extension DatabaseService {
     
     public func fetchUpdatedGuests(forEventID eventID: String, changeSince: String?, completion: @escaping (_ error: Error?, _ updatedGuestsDict: [[String: Any]]?) -> Void) {
         
-        
         let apiURL = APIService.fetchEvents(eventID: eventID, changesSince: changeSince, page: nil, limit: nil, query: nil)
+        print(apiURL)
         let accessToken = self.fetchAcessToken()
         
         AF.request(apiURL,
@@ -165,7 +165,6 @@ extension DatabaseService {
             .response { (response) in
                 
                 guard response.result.isSuccess else {
-                    print(response.result.error)
                     completion(response.result.error, nil)
                     return
                 }
