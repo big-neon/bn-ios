@@ -176,7 +176,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     }
     
     var shortFormHeight: PanModalHeight {
-        return .contentHeight(600)
+        return .contentHeight(700)
     }
     
     func reloadGuests() {
@@ -192,39 +192,5 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
                 return
             }
         })
-    }
-    
-    func reloadGuests(atIndex index: IndexPath) {
-        
-        let currentPage = self.guestViewModel.currentPage
-        guard let eventID = self.guestViewModel.eventID else {
-            return
-        }
-        
-        let redeemedCell: GuestTableViewCell = guestTableView.cellForRow(at: index) as! GuestTableViewCell
-        redeemedCell.ticketStateView.tagLabel.text = "REDEEMED"
-        redeemedCell.ticketStateView.backgroundColor = UIColor.brandBlack
-        
-        
-        print(index.row)
-        print(index)
-        print(currentPage)
-
-        self.guestViewModel.fetchGuests(forEventID: eventID, page: currentPage - 1, completion: { [unowned self] (_) in
-            DispatchQueue.main.async {
-                self.isFetchingNextPage = false
-                self.guestTableView.reloadData()
-                return
-            }
-        })
-        
-        
-//        let checkinAction = UIContextualAction(style: .destructive, title: "Checkin") { (action, view, handler) in
-//            return
-//        }
-//        checkinAction.backgroundColor = .brandLightGrey
-//        let configuration = UISwipeActionsConfiguration(actions: [checkinAction])
-//        return configuration
-        
     }
 }

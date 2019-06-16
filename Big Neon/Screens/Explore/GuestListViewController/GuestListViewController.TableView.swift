@@ -99,19 +99,18 @@ extension GuestListViewController {
             let checkinAction = UITableViewRowAction(style: .default, title: "Checkin") { (action, indexPath) in
                 let ticketID = guestValues![indexPath.row].id
                 self.checkinTicket(ticketID: ticketID, atIndex: indexPath, direction: false)
-                return
             }
             checkinAction.backgroundColor = UIColor.brandPrimary
             return [checkinAction]
         } else {
             let alreadyRedeemedAction = UITableViewRowAction(style: .default, title: "Already Redeemed") { (action, indexPath) in
-                return
+                print("Already Redeemed")
             }
             alreadyRedeemedAction.backgroundColor = UIColor.brandLightGrey
             return [alreadyRedeemedAction]
         }
     }
-    
+
     func checkinTicket(ticketID: String?, atIndex index: IndexPath, direction: Bool) {
         if let id = ticketID {
             self.delegate?.checkinAutomatically(withTicketID: id, fromGuestTableView: true, atIndexPath: index)
@@ -140,7 +139,6 @@ extension GuestListViewController {
             let checkinAction = UIContextualAction(style: .destructive, title: "Checkin") { (action, view, handler) in
                 let ticketID = guestValues![indexPath.row].id
                 self.checkinTicket(ticketID: ticketID, atIndex: indexPath, direction: true)
-                return
             }
             checkinAction.backgroundColor = .brandPrimary
             let configuration = UISwipeActionsConfiguration(actions: [checkinAction])
@@ -169,7 +167,6 @@ extension GuestListViewController {
             let checkinAction = UIContextualAction(style: .destructive, title: "Checkin") { (action, view, handler) in
                 let ticketID = guestValues![indexPath.row].id
                 self.checkinTicket(ticketID: ticketID, atIndex: indexPath, direction: true)
-                return
             }
             checkinAction.backgroundColor = .brandPrimary
             let configuration = UISwipeActionsConfiguration(actions: [checkinAction])
