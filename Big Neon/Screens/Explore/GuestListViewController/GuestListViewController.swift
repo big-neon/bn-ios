@@ -18,9 +18,10 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     var filteredLocalSearchResults: [RedeemableTicket] = []
     var isSearching: Bool = false
     var isShortFormEnabled = true
-    var scanVC: ScannerViewController?
     var isFetchingNextPage = false
-    var scannerViewModel = TicketScannerViewModel()
+    
+    var scanVC: ScannerViewController
+    var scannerViewModel: TicketScannerViewModel
     var guestViewModel = GuestsListViewModel()
     
     var totalGuests: Int? {
@@ -91,9 +92,23 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
         return search
     }()
     
-    init(eventID: String, eventTimeZone: String) {
+    init(eventID: String, guestsFetched: [RedeemableTicket], eventTimeZone: String, scannerVC: ScannerViewController, scannerVM: TicketScannerViewModel) {
+        
+        scannerViewModel = scannerVM
+
         guestViewModel.eventID = eventID
         guestViewModel.eventTimeZone = eventTimeZone
+        scanVC = scannerVC
+        guests = guestsFetched
+        guestViewModel.totalGuests = scannerVM.totalGuests
+
+        guestViewModel.currentTotalGuests = scannerVM.currentTotalGuests
+        guestViewModel.currentPage = scannerVM.currentPage
+        guestViewModel.ticketsFetched = guestsFetched
+        totalGuests = scannerVM.totalGuests
+        
+        print(totalGuests)
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -135,7 +150,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.scanVC?.stopScanning = false
+        self.scanVC.stopScanning = false
     }
     
     override func viewWillAppear(_ animated: Bool) {

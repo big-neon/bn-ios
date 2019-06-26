@@ -24,7 +24,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     var scannedTicketID: String?
     var event: EventsData?
     var fetcher: Fetcher
-    var guestListVC: GuestListViewController
+    var guestListVC: GuestListViewController?
     
     //  Layout
     let generator = UINotificationFeedbackGenerator()
@@ -263,7 +263,12 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
             return
         }
         
-        guestListVC = GuestListViewController(eventID: (self.event?.id)!, eventTimeZone: (event?.venue?.timezone)!)
+        guestListVC = GuestListViewController(eventID: (self.event?.id)!,
+                                              guestsFetched: guests,
+                                              eventTimeZone: (event?.venue?.timezone)!,
+                                              scannerVC: self,
+                                              scannerVM: self.scannerViewModel!)
+        
         guestListVC!.guests = guests
         guestListVC!.guestViewModel.totalGuests = self.scannerViewModel?.totalGuests
         guestListVC!.guestViewModel.currentTotalGuests = self.scannerViewModel!.currentTotalGuests
@@ -271,7 +276,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         guestListVC!.guestViewModel.ticketsFetched = guests
         guestListVC!.totalGuests = self.scannerViewModel?.totalGuests
         guestListVC!.scanVC = self
-        guestListVC!.delegate = self
+
         let navGuestVC = GuestListNavigationController(rootViewController: guestListVC!)
         self.presentPanModal(navGuestVC)
     }
