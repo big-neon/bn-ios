@@ -9,8 +9,14 @@ extension ScannerViewController {
     func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath indexPath: IndexPath?) {
         
         guard let indexPath = indexPath else { return }
-        self.guestListVC?.guestTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.bottom)
+        self.guestListVC?.guestTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         let guestCell: GuestTableViewCell = self.guestListVC?.guestTableView.cellForRow(at: indexPath) as! GuestTableViewCell
+        guestCell.ticketStateView.tagLabel.text = "REDEEMED"
+        guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
+        
+        let guestKey = self.guestListVC?.guestSectionTitles[indexPath.section]
+        let guestValues = self.guestListVC?.isSearching == true ? self.guestListVC?.guestViewModel.guestSearchResults :  self.guestListVC?.guestsDictionary[guestKey!]
+        guestValues![indexPath.row].status = TicketStatus.Redeemed.rawValue
         
         /*
         self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID) { [weak self] (scanFeedback, errorString, ticket) in

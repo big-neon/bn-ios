@@ -5,12 +5,13 @@ import UIKit
 import Big_Neon_Core
 import Big_Neon_UI
 import PanModal
+import SwipeCellKit
 
 protocol GuestListViewDelegate: class {
     func reloadGuests()
 }
 
-final class GuestListViewController: UIViewController, PanModalPresentable, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, GuestListViewDelegate, UITableViewDataSourcePrefetching {
+final class GuestListViewController: UIViewController, PanModalPresentable, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, GuestListViewDelegate, UITableViewDataSourcePrefetching, SwipeTableViewCellDelegate {
 
     weak var delegate: ScannerViewDelegate?
     var guestsDictionary: [String: [RedeemableTicket]] = [:]

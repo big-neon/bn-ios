@@ -1,7 +1,7 @@
 
 import Foundation
 import UIKit
-import SwipeTable
+import SwipeCellKit
 
 final class GuestTableViewCell: SwipeTableViewCell {
     

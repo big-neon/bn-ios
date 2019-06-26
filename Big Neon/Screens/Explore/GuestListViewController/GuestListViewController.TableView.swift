@@ -2,6 +2,7 @@
 
 import Foundation
 import UIKit
+import SwipeCellKit
 import Big_Neon_Core
 
 extension GuestListViewController {
@@ -42,6 +43,7 @@ extension GuestListViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let guestCell: GuestTableViewCell = tableView.dequeueReusableCell(withIdentifier: GuestTableViewCell.cellID, for: indexPath) as! GuestTableViewCell
+        guestCell.delegate = self
         
         var guestValues: RedeemableTicket?
         
@@ -86,45 +88,51 @@ extension GuestListViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+//        guard orientation == .right else { return nil }
         let guestKey = guestSectionTitles[indexPath.section]
         let guestValues = self.isSearching == true ? self.guestViewModel.guestSearchResults :  guestsDictionary[guestKey]
-        return swipeAction(forGuestValues: guestValues!, indexPath)
+        return [swipeCellAction(forGuestValues: guestValues!, indexPath)]
     }
     
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
-        let guestKey = guestSectionTitles[indexPath.section]
-        let guestValues = self.isSearching == true ? self.guestViewModel.guestSearchResults :  guestsDictionary[guestKey]
-        return swipeAction(forGuestValues: guestValues!, indexPath)
+    func swipeCellAction(forGuestValues guestValues: [RedeemableTicket],_ indexPath: IndexPath) -> SwipeAction {
+        let action = guestValues[indexPath.row].status == TicketStatus.purchased.rawValue ? checkAction(atIndexPath: indexPath, guestValues: guestValues) : redeemAction()
+        return action
     }
     
-    func swipeAction(forGuestValues guestValues: [RedeemableTicket],_ indexPath: IndexPath) -> UISwipeActionsConfiguration {
+    func checkAction(atIndexPath indexPath: IndexPath, guestValues: [RedeemableTicket]) -> SwipeAction {
         
-        let action = guestValues[indexPath.row].status == TicketStatus.purchased.rawValue ? checkinAction(atIndexPath: indexPath, guestValues: guestValues) : alreadyRedeemedAction()
-        let configuration = UISwipeActionsConfiguration(actions: [action])
-        configuration.performsFirstActionWithFullSwipe = guestValues[indexPath.row].status == TicketStatus.purchased.rawValue ? true : false
-        return configuration
-        
-    }
-    
-    func checkinAction(atIndexPath indexPath: IndexPath, guestValues: [RedeemableTicket]) -> UIContextualAction {
-        
-        let checkinAction = UIContextualAction(style: .destructive, title: "Checkin") { (action, view, handler) in
+        let checkinAction = SwipeAction(style: .destructive, title: "Checkin") { action, indexPath in
             let ticketID = guestValues[indexPath.row].id
             self.checkinTicket(ticketID: ticketID, atIndex: indexPath, direction: true)
         }
-        checkinAction.backgroundColor = .brandPrimary
+        
+        checkinAction.title = "Checkin"
+        checkinAction.backgroundColor = UIColor.brandPrimary
         return checkinAction
     }
     
-    func alreadyRedeemedAction() -> UIContextualAction {
-        let alreadyRedeemedAction = UIContextualAction(style: .destructive, title: "Already Redeemed") { (action, view, handler) in
+    func redeemAction() -> SwipeAction {
+        let redeemAction = SwipeAction(style: .destructive, title: "Redeemed") { action, indexPath in
             print("Already Redeemed")
         }
-        alreadyRedeemedAction.backgroundColor = .brandLightGrey
-        return alreadyRedeemedAction
+        redeemAction.backgroundColor = UIColor.brandLightGrey
+        return redeemAction
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        
+        var options = SwipeOptions()
+        options.transitionStyle = .reveal
+        
+        let guestKey = guestSectionTitles[indexPath.section]
+        let guestValues = self.isSearching == true ? self.guestViewModel.guestSearchResults :  guestsDictionary[guestKey]
+        if guestValues![indexPath.row].status == TicketStatus.purchased.rawValue {
+            options.expansionStyle = .selection
+            return options
+        }
+        options.expansionStyle = .none
+        return options
     }
     
     func checkinTicket(ticketID: String?, atIndex index: IndexPath, direction: Bool) {
