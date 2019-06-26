@@ -107,8 +107,6 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
         guestViewModel.ticketsFetched = guestsFetched
         totalGuests = scannerVM.totalGuests
         
-        print(totalGuests)
-        
         super.init(nibName: nil, bundle: nil)
     }
     

@@ -78,44 +78,41 @@ extension GuestListViewController {
         return guestCell
     }
 
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    }
-
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-        let guestKey = guestSectionTitles[indexPath.section]
-        var guestValues: [RedeemableTicket]?
-        if self.isSearching == true {
-            guestValues = self.guestViewModel.guestSearchResults
-        } else {
-            guestValues = guestsDictionary[guestKey]
-        }
-        
-        if guestValues![indexPath.row].status == TicketStatus.purchased.rawValue {
-            let checkinAction = UITableViewRowAction(style: .default, title: "Checkin") { (action, indexPath) in
-                let ticketID = guestValues![indexPath.row].id
-                self.checkinTicket(ticketID: ticketID, atIndex: indexPath, direction: false)
-            }
-            checkinAction.backgroundColor = UIColor.brandPrimary
-            return [checkinAction]
-        } else {
-            let alreadyRedeemedAction = UITableViewRowAction(style: .default, title: "Already Redeemed") { (action, indexPath) in
-                print("Already Redeemed")
-            }
-            alreadyRedeemedAction.backgroundColor = UIColor.brandLightGrey
-            return [alreadyRedeemedAction]
-        }
-    }
-
-    func checkinTicket(ticketID: String?, atIndex index: IndexPath, direction: Bool) {
-        if let id = ticketID {
-            self.delegate?.checkinAutomatically(withTicketID: id, fromGuestTableView: true, atIndexPath: index)
-        }
-    }
+//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//        return true
+//    }
+//
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//    }
+//
+//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//
+//        let guestKey = guestSectionTitles[indexPath.section]
+//        var guestValues: [RedeemableTicket]?
+//        if self.isSearching == true {
+//            guestValues = self.guestViewModel.guestSearchResults
+//        } else {
+//            guestValues = guestsDictionary[guestKey]
+//        }
+//
+//        if guestValues![indexPath.row].status == TicketStatus.purchased.rawValue {
+//            let checkinAction = UITableViewRowAction(style: .default, title: "Checkin") { (action, indexPath) in
+//                let ticketID = guestValues![indexPath.row].id
+//                print(guestValues![indexPath.row].id)
+//
+//                //  self.checkinTicket(ticketID: ticketID, atIndex: indexPath, direction: false)
+//            }
+//
+//            checkinAction.backgroundColor = UIColor.brandPrimary
+//            return [checkinAction]
+//        } else {
+//            let alreadyRedeemedAction = UITableViewRowAction(style: .default, title: "Already Redeemed") { (action, indexPath) in
+//                print("Already Redeemed")
+//            }
+//            alreadyRedeemedAction.backgroundColor = UIColor.brandLightGrey
+//            return [alreadyRedeemedAction]
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0
@@ -142,6 +139,7 @@ extension GuestListViewController {
             }
             checkinAction.backgroundColor = .brandPrimary
             let configuration = UISwipeActionsConfiguration(actions: [checkinAction])
+            configuration.performsFirstActionWithFullSwipe = true
             return configuration
         } else {
             let alreadyRedeemedAction = UIContextualAction(style: .destructive, title: "Already Redeemed") { (action, view, handler) in
@@ -149,6 +147,7 @@ extension GuestListViewController {
             }
             alreadyRedeemedAction.backgroundColor = .brandLightGrey
             let configuration = UISwipeActionsConfiguration(actions: [alreadyRedeemedAction])
+            configuration.performsFirstActionWithFullSwipe = false
             return configuration
         }
     }
@@ -163,23 +162,54 @@ extension GuestListViewController {
             guestValues = guestsDictionary[guestKey]
         }
         
-        if guestValues![indexPath.row].status == TicketStatus.purchased.rawValue {
-            let checkinAction = UIContextualAction(style: .destructive, title: "Checkin") { (action, view, handler) in
-                let ticketID = guestValues![indexPath.row].id
-                self.checkinTicket(ticketID: ticketID, atIndex: indexPath, direction: true)
-            }
-            checkinAction.backgroundColor = .brandPrimary
-            let configuration = UISwipeActionsConfiguration(actions: [checkinAction])
-            return configuration
-        } else {
-            let alreadyRedeemedAction = UIContextualAction(style: .destructive, title: "Already Redeemed") { (action, view, handler) in
-                print("Already Redeemed")
-            }
-            alreadyRedeemedAction.backgroundColor = .brandLightGrey
-            let configuration = UISwipeActionsConfiguration(actions: [alreadyRedeemedAction])
-            return configuration
-        }
+//        if guestValues![indexPath.row].status == TicketStatus.purchased.rawValue {
+//            let checkinAction = UIContextualAction(style: .destructive, title: "Checkin") { (action, view, handler) in
+//                let ticketID = guestValues![indexPath.row].id
+//                self.checkinTicket(ticketID: ticketID, atIndex: indexPath, direction: true)
+//            }
+//            checkinAction.backgroundColor = .brandPrimary
+//            let configuration = UISwipeActionsConfiguration(actions: [checkinAction])
+//            configuration.performsFirstActionWithFullSwipe = true
+//            return configuration
+            
+//            let checkin = checkinAction(atIndexPath: indexPath, guestValues: guestValues!)
+//            let configuration = UISwipeActionsConfiguration(actions: [checkin])
+//            return configuration
+//        } else {
+//            let configuration = UISwipeActionsConfiguration(actions: [alreadyRedeemedAction()])
+//            configuration.performsFirstActionWithFullSwipe = false
+//            return configuration
+//        }
         
+        let action = guestValues![indexPath.row].status == TicketStatus.purchased.rawValue ? checkinAction(atIndexPath: indexPath, guestValues: guestValues!) : alreadyRedeemedAction()
+        let configuration = UISwipeActionsConfiguration(actions: [action])
+        configuration.performsFirstActionWithFullSwipe = guestValues![indexPath.row].status == TicketStatus.purchased.rawValue ? true : false
+        return configuration
+        
+    }
+    
+    func checkinAction(atIndexPath indexPath: IndexPath, guestValues: [RedeemableTicket]) -> UIContextualAction {
+        
+        let checkinAction = UIContextualAction(style: .destructive, title: "Checkin") { (action, view, handler) in
+            let ticketID = guestValues[indexPath.row].id
+            self.checkinTicket(ticketID: ticketID, atIndex: indexPath, direction: true)
+        }
+        checkinAction.backgroundColor = .brandPrimary
+        return checkinAction
+    }
+    
+    func alreadyRedeemedAction() -> UIContextualAction {
+        let alreadyRedeemedAction = UIContextualAction(style: .destructive, title: "Already Redeemed") { (action, view, handler) in
+            print("Already Redeemed")
+        }
+        alreadyRedeemedAction.backgroundColor = .brandLightGrey
+        return alreadyRedeemedAction
+    }
+    
+    func checkinTicket(ticketID: String?, atIndex index: IndexPath, direction: Bool) {
+        if let id = ticketID {
+            self.delegate?.checkinAutomatically(withTicketID: id, fromGuestTableView: true, atIndexPath: index)
+        }
     }
     
     //  Prefetching Rows in TableView
@@ -207,4 +237,5 @@ extension GuestListViewController {
             })
         }
     }
+    
 }

@@ -268,7 +268,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
                                               eventTimeZone: (event?.venue?.timezone)!,
                                               scannerVC: self,
                                               scannerVM: self.scannerViewModel!)
-        
+        guestListVC!.delegate = self
         guestListVC!.guests = guests
         guestListVC!.guestViewModel.totalGuests = self.scannerViewModel?.totalGuests
         guestListVC!.guestViewModel.currentTotalGuests = self.scannerViewModel!.currentTotalGuests

@@ -8,6 +8,10 @@ extension ScannerViewController {
     
     func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath indexPath: IndexPath?) {
         
+        print(indexPath!)
+        self.guestListVC?.guestTableView.reloadRows(at: [indexPath!], with: UITableView.RowAnimation.fade)
+        
+        /*
         self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID) { [weak self] (scanFeedback, errorString, ticket) in
             DispatchQueue.main.async {
                 if fromGuestTableView == true {
@@ -37,6 +41,7 @@ extension ScannerViewController {
                 })
             }
         }
+        */
     }
 
     func showScannedUser(feedback: ScanFeedback?, ticket: RedeemableTicket?) {
