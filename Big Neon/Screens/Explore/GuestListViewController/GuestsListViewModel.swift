@@ -74,8 +74,6 @@ final class GuestsListViewModel {
             date = changeSince!
         }
         
-        print(date)
-        
         BusinessService.shared.database.fetchUpdatedGuests(forEventID: eventID, changeSince: date) { (error, guestsFetched) in
             DispatchQueue.main.async {
                 guard var guests = guestsFetched else {

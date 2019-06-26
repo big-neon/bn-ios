@@ -24,7 +24,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     var scannedTicketID: String?
     var event: EventsData?
     var fetcher: Fetcher
-    var guestListVC: GuestListViewController?
+    var guestListVC: GuestListViewController
     
     //  Layout
     let generator = UINotificationFeedbackGenerator()

@@ -11,12 +11,12 @@ extension ScannerViewController {
         self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID) { [weak self] (scanFeedback, errorString, ticket) in
             DispatchQueue.main.async {
                 if fromGuestTableView == true {
-                    if self?.guestListVC?.isSearching == true {
-                        self?.guestListVC?.guestViewModel.guestSearchResults.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
-                        self?.guestListVC?.guestTableView.reloadRows(at: [indexPath!], with: UITableView.RowAnimation.automatic)
+                    if self?.guestListVC.isSearching == true {
+                        self?.guestListVC.guestViewModel.guestSearchResults.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
+                        self?.guestListVC.guestTableView.reloadRows(at: [indexPath!], with: UITableView.RowAnimation.automatic)
                     } else {
-                        self?.guestListVC?.guestViewModel.ticketsFetched.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
-                        self?.guestListVC?.guestTableView.reloadRows(at: [indexPath!], with: UITableView.RowAnimation.automatic)
+                        self?.guestListVC.guestViewModel.ticketsFetched.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
+                        self?.guestListVC.guestTableView.reloadRows(at: [indexPath!], with: UITableView.RowAnimation.automatic)
                     }
                     self?.generator.notificationOccurred(.success)
                     return
