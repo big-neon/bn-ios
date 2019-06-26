@@ -8,8 +8,9 @@ extension ScannerViewController {
     
     func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath indexPath: IndexPath?) {
         
-        print(indexPath!)
-        self.guestListVC?.guestTableView.reloadRows(at: [indexPath!], with: UITableView.RowAnimation.fade)
+        guard let indexPath = indexPath else { return }
+        self.guestListVC?.guestTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.bottom)
+        let guestCell: GuestTableViewCell = self.guestListVC?.guestTableView.cellForRow(at: indexPath) as! GuestTableViewCell
         
         /*
         self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID) { [weak self] (scanFeedback, errorString, ticket) in

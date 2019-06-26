@@ -12,6 +12,7 @@ use_frameworks!
     # Pods for Big Neon
     target 'Big Neon' do
       inherit! :search_paths
+        pod 'SwipeCellKit'
         pod 'PanModal'
         pod 'Alamofire', '~> 5.0.0.beta.1'
         pod 'Stripe'
@@ -26,6 +27,7 @@ use_frameworks!
     
     target 'Big Neon UI' do
       inherit! :search_paths
+      pod 'SwipeCellKit'
       pod 'Crashlytics'
       pod 'Stripe'
       pod 'PanModal'
