@@ -6,10 +6,8 @@ import AVFoundation
 
 extension ScannerViewController {
     
-    func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath indexPath: IndexPath?) {
-        
+    func reloadGuestCells(atIndexPath indexPath: IndexPath?) {
         guard let indexPath = indexPath else { return }
-        self.guestListVC?.guestTableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         let guestCell: GuestTableViewCell = self.guestListVC?.guestTableView.cellForRow(at: indexPath) as! GuestTableViewCell
         guestCell.ticketStateView.tagLabel.text = "REDEEMED"
         guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
@@ -17,17 +15,20 @@ extension ScannerViewController {
         let guestKey = self.guestListVC?.guestSectionTitles[indexPath.section]
         let guestValues = self.guestListVC?.isSearching == true ? self.guestListVC?.guestViewModel.guestSearchResults :  self.guestListVC?.guestsDictionary[guestKey!]
         guestValues![indexPath.row].status = TicketStatus.Redeemed.rawValue
+    }
+    
+    func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath indexPath: IndexPath?) {
         
-        /*
+        guard let indexPath = indexPath else { return }
         self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID) { [weak self] (scanFeedback, errorString, ticket) in
             DispatchQueue.main.async {
                 if fromGuestTableView == true {
                     if self?.guestListVC?.isSearching == true {
                         self?.guestListVC?.guestViewModel.guestSearchResults.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
-                        self?.guestListVC?.guestTableView.reloadRows(at: [indexPath!], with: UITableView.RowAnimation.automatic)
+                        self?.reloadGuestCells(atIndexPath: indexPath)
                     } else {
                         self?.guestListVC?.guestViewModel.ticketsFetched.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
-                        self?.guestListVC?.guestTableView.reloadRows(at: [indexPath!], with: UITableView.RowAnimation.automatic)
+                        self?.reloadGuestCells(atIndexPath: indexPath)
                     }
                     self?.generator.notificationOccurred(.success)
                     return
@@ -48,7 +49,6 @@ extension ScannerViewController {
                 })
             }
         }
-        */
     }
 
     func showScannedUser(feedback: ScanFeedback?, ticket: RedeemableTicket?) {

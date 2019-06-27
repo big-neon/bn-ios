@@ -89,7 +89,6 @@ extension GuestListViewController {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-//        guard orientation == .right else { return nil }
         let guestKey = guestSectionTitles[indexPath.section]
         let guestValues = self.isSearching == true ? self.guestViewModel.guestSearchResults :  guestsDictionary[guestKey]
         return [swipeCellAction(forGuestValues: guestValues!, indexPath)]
