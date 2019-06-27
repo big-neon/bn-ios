@@ -186,11 +186,11 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     }
     
     var panScrollable: UIScrollView? {
-        return guestTableView
+        return nil
     }
     
     var shortFormHeight: PanModalHeight {
-        return .contentHeight(700)
+        return .contentHeight(900)
     }
     
     func reloadGuests() {
