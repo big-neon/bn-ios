@@ -186,7 +186,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     }
     
     var panScrollable: UIScrollView? {
-        return nil
+        return guestTableView
     }
     
     var shortFormHeight: PanModalHeight {
