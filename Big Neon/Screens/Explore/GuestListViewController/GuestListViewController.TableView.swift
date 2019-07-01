@@ -2,6 +2,7 @@
 
 import Foundation
 import UIKit
+import SwipeCellKit
 import Big_Neon_Core
 
 extension GuestListViewController {
@@ -42,6 +43,7 @@ extension GuestListViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let guestCell: GuestTableViewCell = tableView.dequeueReusableCell(withIdentifier: GuestTableViewCell.cellID, for: indexPath) as! GuestTableViewCell
+        guestCell.delegate = self
         
         var guestValues: RedeemableTicket?
         
@@ -77,45 +79,6 @@ extension GuestListViewController {
         
         return guestCell
     }
-
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    }
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-        let guestKey = guestSectionTitles[indexPath.section]
-        if let guestValues = guestsDictionary[guestKey] {
-            
-            if guestValues[indexPath.row].status == TicketStatus.purchased.rawValue {
-                let deleteButton = UITableViewRowAction(style: .default, title: "Checkin") { (action, indexPath) in
-                    let ticketID = guestValues[indexPath.row].id
-                    self.checkinTicket(ticketID: ticketID, atIndex: indexPath)
-                    return
-                }
-                deleteButton.backgroundColor = UIColor.brandPrimary
-                return [deleteButton]
-            } else {
-                let deleteButton = UITableViewRowAction(style: .default, title: "Already Redeemed") { (action, indexPath) in
-                    return
-                }
-                deleteButton.backgroundColor = UIColor.brandLightGrey
-                return [deleteButton]
-                
-            }
-        } else {
-            return nil
-        }
-    }
-    
-    func checkinTicket(ticketID: String?, atIndex index: IndexPath) {
-        if let id = ticketID {
-            self.delegate?.checkinAutomatically(withTicketID: id, fromGuestTableView: true, atIndexPath: index)
-        }
-    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0
@@ -123,6 +86,58 @@ extension GuestListViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        let guestKey = guestSectionTitles[indexPath.section]
+        let guestValues = self.isSearching == true ? self.guestViewModel.guestSearchResults :  guestsDictionary[guestKey]
+        return [swipeCellAction(forGuestValues: guestValues!, indexPath)]
+    }
+    
+    func swipeCellAction(forGuestValues guestValues: [RedeemableTicket],_ indexPath: IndexPath) -> SwipeAction {
+        let action = guestValues[indexPath.row].status == TicketStatus.purchased.rawValue ? checkAction(atIndexPath: indexPath, guestValues: guestValues) : redeemAction()
+        return action
+    }
+    
+    func checkAction(atIndexPath indexPath: IndexPath, guestValues: [RedeemableTicket]) -> SwipeAction {
+        
+        let checkinAction = SwipeAction(style: .destructive, title: "Checkin") { action, indexPath in
+            let ticketID = guestValues[indexPath.row].id
+            self.checkinTicket(ticketID: ticketID, atIndex: indexPath, direction: true)
+        }
+        
+        checkinAction.title = "Checkin"
+        checkinAction.backgroundColor = UIColor.brandPrimary
+        return checkinAction
+    }
+    
+    func redeemAction() -> SwipeAction {
+        let redeemAction = SwipeAction(style: .destructive, title: "Redeemed") { action, indexPath in
+            print("Already Redeemed")
+        }
+        redeemAction.backgroundColor = UIColor.brandLightGrey
+        return redeemAction
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        
+        var options = SwipeOptions()
+        options.transitionStyle = .reveal
+        
+        let guestKey = guestSectionTitles[indexPath.section]
+        let guestValues = self.isSearching == true ? self.guestViewModel.guestSearchResults :  guestsDictionary[guestKey]
+        if guestValues![indexPath.row].status == TicketStatus.purchased.rawValue {
+            options.expansionStyle = .selection
+            return options
+        }
+        options.expansionStyle = .none
+        return options
+    }
+    
+    func checkinTicket(ticketID: String?, atIndex index: IndexPath, direction: Bool) {
+        if let id = ticketID {
+            self.delegate?.checkinAutomatically(withTicketID: id, fromGuestTableView: true, atIndexPath: index)
+        }
     }
     
     //  Prefetching Rows in TableView
@@ -150,4 +165,5 @@ extension GuestListViewController {
             })
         }
     }
+    
 }

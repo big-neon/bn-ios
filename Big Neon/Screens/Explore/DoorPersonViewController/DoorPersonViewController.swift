@@ -177,7 +177,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     }
     
     internal func showScanner(forTicketIndex ticketIndex: Int) {
-        let scannerVC = ScannerViewController(fetcher: guestFetcher)
+        let scannerVC = ScannerViewController(fetcher: fetcher)
         scannerVC.event = self.doorPersonViemodel.eventCoreData[ticketIndex]
         let scannerNavVC = UINavigationController(rootViewController: scannerVC)
         self.present(scannerNavVC, animated: true, completion: nil)

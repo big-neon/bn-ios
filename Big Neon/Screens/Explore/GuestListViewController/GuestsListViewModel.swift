@@ -43,15 +43,6 @@ final class GuestsListViewModel {
         
         BusinessService.shared.database.fetchGuests(forEventID: eventID, limit: limit, page: page, guestQuery: query) { [weak self] (error, guestsFetched, serverGuests, totalGuests) in
             DispatchQueue.main.async {
-                
-                //  Core Data Checks
-                /*
-                 guard let _ = guestsFetched, error != nil else {
-                     completion(false)
-                     return
-                 }
-                 */
-                
                 guard let guests = serverGuests else {
                     completion(false)
                     return
@@ -77,20 +68,20 @@ final class GuestsListViewModel {
         
         var date = ""
         let changeSince = UserDefaults.standard.value(forKey: Constants.AppActionKeys.changeSinceKey) as? String
-
         if changeSince == nil {
-            date = DateConfig.serverDateFromDate(stringDate: Date())!
-//            date = DateConfig.formatServerDate(date: date, timeZone: eventTimeZone)
+            date = DateConfig.stringFromDate(date: Date())
         } else {
             date = changeSince!
         }
         
-        BusinessService.shared.database.fetchUpdatedGuests(forEventID: eventID, changeSince: date) { [weak self] (error, guestsFetched) in
+        BusinessService.shared.database.fetchUpdatedGuests(forEventID: eventID, changeSince: date) { (error, guestsFetched) in
             DispatchQueue.main.async {
                 guard var guests = guestsFetched else {
                     completion(false)
                     return
                 }
+                
+                print(guests)
                 
                 guests.sort(by: {DateConfig.formatServerDate(date: ($0["updated_at"] as! String), timeZone: eventTimeZone)! > DateConfig.formatServerDate(date: ($1["updated_at"] as! String), timeZone: eventTimeZone)!})
                 

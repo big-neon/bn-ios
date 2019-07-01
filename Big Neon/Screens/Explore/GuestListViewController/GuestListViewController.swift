@@ -5,12 +5,13 @@ import UIKit
 import Big_Neon_Core
 import Big_Neon_UI
 import PanModal
+import SwipeCellKit
 
 protocol GuestListViewDelegate: class {
     func reloadGuests()
 }
 
-final class GuestListViewController: UIViewController, PanModalPresentable, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, GuestListViewDelegate, UITableViewDataSourcePrefetching {
+final class GuestListViewController: UIViewController, PanModalPresentable, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, GuestListViewDelegate, UITableViewDataSourcePrefetching, SwipeTableViewCellDelegate {
 
     weak var delegate: ScannerViewDelegate?
     var guestsDictionary: [String: [RedeemableTicket]] = [:]
@@ -18,9 +19,10 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     var filteredLocalSearchResults: [RedeemableTicket] = []
     var isSearching: Bool = false
     var isShortFormEnabled = true
-    var scanVC: ScannerViewController?
     var isFetchingNextPage = false
-    var scannerViewModel = TicketScannerViewModel()
+    
+    var scanVC: ScannerViewController
+    var scannerViewModel: TicketScannerViewModel
     var guestViewModel = GuestsListViewModel()
     
     var totalGuests: Int? {
@@ -91,9 +93,21 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
         return search
     }()
     
-    init(eventID: String, eventTimeZone: String) {
+    init(eventID: String, guestsFetched: [RedeemableTicket], eventTimeZone: String, scannerVC: ScannerViewController, scannerVM: TicketScannerViewModel) {
+        
+        scannerViewModel = scannerVM
+
         guestViewModel.eventID = eventID
         guestViewModel.eventTimeZone = eventTimeZone
+        scanVC = scannerVC
+        guests = guestsFetched
+        guestViewModel.totalGuests = scannerVM.totalGuests
+
+        guestViewModel.currentTotalGuests = scannerVM.currentTotalGuests
+        guestViewModel.currentPage = scannerVM.currentPage
+        guestViewModel.ticketsFetched = guestsFetched
+        totalGuests = scannerVM.totalGuests
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -104,7 +118,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        //  perform(#selector(fetchUpdatedGuests), with: self, afterDelay: 1.0)
+        //perform(#selector(fetchUpdatedGuests), with: self, afterDelay: 1.0)
     }
 
     func fetchGuests() {
@@ -135,7 +149,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.scanVC?.stopScanning = false
+        self.scanVC.stopScanning = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -176,7 +190,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     }
     
     var shortFormHeight: PanModalHeight {
-        return .contentHeight(600)
+        return .contentHeight(900)
     }
     
     func reloadGuests() {
@@ -192,11 +206,5 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
                 return
             }
         })
-    }
-    
-    func reloadGuests(atIndex index: IndexPath) {
-        let redeemedCell: GuestTableViewCell = guestTableView.cellForRow(at: index) as! GuestTableViewCell
-        redeemedCell.ticketStateView.tagLabel.text = "REDEEMED"
-        redeemedCell.ticketStateView.backgroundColor = UIColor.brandBlack
     }
 }

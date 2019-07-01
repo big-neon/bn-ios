@@ -55,9 +55,15 @@ final public class DateConfig {
         return dateFormatter.date(from: stringDate)
     }
     
+    public class func stringFromDate(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return dateFormatter.string(from: date)
+    }
+    
     public class func serverDateFromDate(stringDate: Date) -> String? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM-dd'UTC'HH:mm:ss"
         return dateFormatter.string(from: stringDate)
     }
     

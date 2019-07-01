@@ -6,7 +6,7 @@ public enum TicketStatus: String, Codable {
     case Redeemed  = "Redeemed"
 }
 
-public struct RedeemableTicket: Codable {
+public class RedeemableTicket: Codable {
     public let id, ticketType, userID, orderID: String
     public let orderItemID: String
     public let priceInCents: Int
@@ -15,7 +15,7 @@ public struct RedeemableTicket: Codable {
     public let phone: String?
     public let redeemKey: String
     public let redeemDate: String?
-    public let status: TicketStatus.RawValue
+    public var status: TicketStatus.RawValue
     public let eventID, eventName, doorTime: String
     public let eventStart, venueID, venueName: String
     public let refundSupported: Bool?

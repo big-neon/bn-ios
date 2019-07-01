@@ -20,6 +20,8 @@ final public class ProfileHeaderView: UIView {
             
             if let profilePicURL = user.profilePicURL   {
                 profileImageView.pin_setImage(from: URL(string: profilePicURL), placeholderImage: UIImage(named: "ic_emptyProfileImage"))
+            } else {
+                profileImageView.pin_setPlaceholder(with: UIImage(named: "ic_emptyProfileImage"))
             }
         }
     }

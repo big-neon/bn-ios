@@ -2,6 +2,8 @@ platform :ios, '11.0'
 use_frameworks!
   target 'Big Neon Core' do
     pod 'Stripe'
+    pod 'Crashlytics'
+    pod 'Fabric'
     pod 'PanModal'
     pod 'Alamofire', '~> 5.0.0.beta.1'
     pod 'SwiftKeychainWrapper'
@@ -12,7 +14,10 @@ use_frameworks!
     # Pods for Big Neon
     target 'Big Neon' do
       inherit! :search_paths
+        pod 'SwipeCellKit', '2.5.4'
         pod 'PanModal'
+        pod 'Crashlytics'
+        pod 'Fabric'
         pod 'Alamofire', '~> 5.0.0.beta.1'
         pod 'Stripe'
         pod 'QRCodeReader.swift'
@@ -26,7 +31,9 @@ use_frameworks!
     
     target 'Big Neon UI' do
       inherit! :search_paths
+      pod 'SwipeCellKit', '2.5.4'
       pod 'Crashlytics'
+      pod 'Fabric'
       pod 'Stripe'
       pod 'PanModal'
       pod 'Sync', :git => 'https://github.com/3lvis/Sync.git', :branch => 'issue-555' # '~> 5'

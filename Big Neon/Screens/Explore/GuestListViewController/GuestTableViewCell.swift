@@ -1,8 +1,9 @@
 
 import Foundation
 import UIKit
+import SwipeCellKit
 
-final class GuestTableViewCell: UITableViewCell {
+final class GuestTableViewCell: SwipeTableViewCell {
     
     static let cellID = "GuestTableViewCellID"
     

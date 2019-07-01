@@ -537,10 +537,10 @@
 			isa = PBXGroup;
 			children = (
 				C60BDEB6229EAAB100E54456 /* Development.xcconfig */,
-				C62BC78F21CCC3FB00830A5F /* Development.plist */,
 				C60BDEB8229EAAD800E54456 /* Production.xcconfig */,
-				C60BDEC0229EE27A00E54456 /* Production.plist */,
 				C60BDEB7229EAACA00E54456 /* Beta.xcconfig */,
+				C62BC78F21CCC3FB00830A5F /* Development.plist */,
+				C60BDEC0229EE27A00E54456 /* Production.plist */,
 				C62BC78321CCC3F700830A5F /* AppDelegate.swift */,
 				C6E6485422423C11000F2DFB /* Big Neon.xcdatamodeld */,
 				C62BC78A21CCC3FB00830A5F /* Assets.xcassets */,
@@ -1078,6 +1078,7 @@
 				C62BC77E21CCC3F700830A5F /* Resources */,
 				C694D23321D0BBFF00B2AE07 /* Embed Frameworks */,
 				778108FF93811D59365A186E /* [CP] Embed Pods Frameworks */,
+				C62C824F22C4AED400D30E07 /* Fabric Run Script */,
 			);
 			buildRules = (
 			);
@@ -1303,6 +1304,7 @@
 				"${BUILT_PRODUCTS_DIR}/PWSwitch/PWSwitch.framework",
 				"${BUILT_PRODUCTS_DIR}/PresenterKit/PresenterKit.framework",
 				"${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
 				"${BUILT_PRODUCTS_DIR}/DTGradientButton/DTGradientButton.framework",
@@ -1326,6 +1328,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PWSwitch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PresenterKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCodeReader.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DTGradientButton.framework",
@@ -1400,6 +1403,24 @@
 			shellPath = /bin/sh;
 			shellScript = "
 ";
+		};
+		C62C824F22C4AED400D30E07 /* Fabric Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Fabric Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run aa0b5f33b3ba00e613962388fc955505c3fe52d3 51cf5667ff9acebe5ac2c48a9dc25e7f40b2664198eca7fa1836fa11074469b6\n";
 		};
 		D6758ACFF600C1DF4AAC986B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
