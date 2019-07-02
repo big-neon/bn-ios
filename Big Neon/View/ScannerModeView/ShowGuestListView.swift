@@ -10,7 +10,7 @@ public class ShowGuestListView: UIView {
         let label = BrandTitleLabel()
         label.text = "Show Guest List"
         label.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.bold)
-        label.textColor = UIColor.brandPrimary
+        label.textColor = UIColor.brandGrey
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

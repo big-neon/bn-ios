@@ -5,7 +5,7 @@ import UIKit
 import SwipeCellKit
 import Big_Neon_Core
 
-extension GuestListViewController {
+extension GuestListViewController: SwipeActionTransitioning {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         guard self.isSearching else {
@@ -101,14 +101,31 @@ extension GuestListViewController {
     
     func checkAction(atIndexPath indexPath: IndexPath, guestValues: [RedeemableTicket]) -> SwipeAction {
         
-        let checkinAction = SwipeAction(style: .destructive, title: "Checkin") { action, indexPath in
+        let checkinAction = SwipeAction(style: .default, title: "Checkin") { action, indexPath in
             let ticketID = guestValues[indexPath.row].id
             self.checkinTicket(ticketID: ticketID, atIndex: indexPath, direction: true)
         }
-        
+        checkinAction.highlightedBackgroundColor = UIColor.brandPrimary
+        checkinAction.transitionDelegate = self
         checkinAction.title = "Checkin"
+        checkinAction.image = #imageLiteral(resourceName: "ic_checkin_check")
+        checkinAction.hidesWhenSelected = true
+        checkinAction.font = .systemFont(ofSize: 13)
         checkinAction.backgroundColor = UIColor.brandPrimary
         return checkinAction
+    }
+    
+    func didTransition(with context: SwipeActionTransitioningContext) {
+        if context.newPercentVisible > 2.66 {
+            context.button.setImage(UIImage(named: "ic_checkin_check"), for: UIControl.State.normal)
+            context.button.setTitle("Redeemed", for: UIControl.State.normal)
+        } else if context.newPercentVisible > 2.2 {
+            context.button.setImage(UIImage(named: "ic_checkin_check"), for: UIControl.State.normal)
+            context.button.setTitle("Checking In...", for: UIControl.State.normal)
+        } else  {
+            context.button.setImage(UIImage(named: "ic_checkin_check"), for: UIControl.State.normal)
+            context.button.setTitle("Checkin", for: UIControl.State.normal)
+        }
     }
     
     func redeemAction() -> SwipeAction {
@@ -121,15 +138,18 @@ extension GuestListViewController {
     
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
         
-        var options = SwipeOptions()
-        options.transitionStyle = .reveal
-        
         let guestKey = guestSectionTitles[indexPath.section]
         let guestValues = self.isSearching == true ? self.guestViewModel.guestSearchResults :  guestsDictionary[guestKey]
         if guestValues![indexPath.row].status == TicketStatus.purchased.rawValue {
+            var options = SwipeOptions()
+            options.backgroundColor = UIColor.brandPrimary
+            options.transitionStyle = .border
+            options.minimumButtonWidth = UIScreen.main.bounds.width * 0.3
             options.expansionStyle = .selection
             return options
         }
+        var options = SwipeOptions()
+        options.transitionStyle = .drag
         options.expansionStyle = .none
         return options
     }

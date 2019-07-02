@@ -17,13 +17,23 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     var guestsDictionary: [String: [RedeemableTicket]] = [:]
     var guestSectionTitles = [String]()
     var filteredLocalSearchResults: [RedeemableTicket] = []
-    var isSearching: Bool = false
+    
     var isShortFormEnabled = true
     var isFetchingNextPage = false
+    var defaultOptions = SwipeOptions()
     
     var scanVC: ScannerViewController
     var scannerViewModel: TicketScannerViewModel
     var guestViewModel = GuestsListViewModel()
+    
+    var isSearching: Bool = false {
+        didSet {
+            if isSearching == false {
+                headerView.totalGuests = totalGuests
+            }
+        }
+    }
+    
     
     var totalGuests: Int? {
         didSet {
