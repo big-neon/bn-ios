@@ -20,6 +20,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     var isSearching: Bool = false
     var isShortFormEnabled = true
     var isFetchingNextPage = false
+    var defaultOptions = SwipeOptions()
     
     var scanVC: ScannerViewController
     var scannerViewModel: TicketScannerViewModel

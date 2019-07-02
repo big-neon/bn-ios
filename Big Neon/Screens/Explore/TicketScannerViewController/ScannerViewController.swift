@@ -52,9 +52,19 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     
     var guests: [RedeemableTicket]? {
         didSet {
+            
             showGuestView.loadingView.stopAnimating()
-            if guests != nil {
+            
+            guard let guestsFetched = guests else {
+                return
+            }
+            
+            if !guestsFetched.isEmpty {
                 showGuestView.isUserInteractionEnabled = true
+                showGuestView.headerLabel.textColor = UIColor.brandPrimary
+            } else {
+                showGuestView.isUserInteractionEnabled = true
+                showGuestView.headerLabel.textColor = UIColor.brandPrimary
             }
         }
     }
@@ -160,6 +170,10 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         self.scannerViewModel?.fetchGuests(forEventID: eventID, page: 0, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
                 guard let self = self else {return}
+                if completed == false {
+                    
+                    return
+                }
                 self.guests = self.scannerViewModel?.ticketsFetched
             }
         })
@@ -263,20 +277,27 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
             return
         }
         
-        guestListVC = GuestListViewController(eventID: (self.event?.id)!,
+        guard let event = self.event, let eventID = event.id, let eventTimeZone = event.venue?.timezone else {
+            return
+        }
+        
+        guard let scannerViewModel = self.scannerViewModel else {
+            return
+        }
+        
+        guestListVC = GuestListViewController(eventID: eventID,
                                               guestsFetched: guests,
-                                              eventTimeZone: (event?.venue?.timezone)!,
+                                              eventTimeZone: eventTimeZone,
                                               scannerVC: self,
-                                              scannerVM: self.scannerViewModel!)
+                                              scannerVM: scannerViewModel)
         guestListVC!.delegate = self
         guestListVC!.guests = guests
-        guestListVC!.guestViewModel.totalGuests = self.scannerViewModel?.totalGuests
-        guestListVC!.guestViewModel.currentTotalGuests = self.scannerViewModel!.currentTotalGuests
-        guestListVC!.guestViewModel.currentPage = self.scannerViewModel!.currentPage
+        guestListVC!.guestViewModel.totalGuests = scannerViewModel.totalGuests
+        guestListVC!.guestViewModel.currentTotalGuests = scannerViewModel.currentTotalGuests
+        guestListVC!.guestViewModel.currentPage = scannerViewModel.currentPage
         guestListVC!.guestViewModel.ticketsFetched = guests
-        guestListVC!.totalGuests = self.scannerViewModel?.totalGuests
+        guestListVC!.totalGuests = scannerViewModel.totalGuests
         guestListVC!.scanVC = self
-
         let navGuestVC = GuestListNavigationController(rootViewController: guestListVC!)
         self.presentPanModal(navGuestVC)
     }
