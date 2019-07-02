@@ -25,18 +25,22 @@ class GuestListHeaderView: UIView {
         }
     }
     
+    var searchResults: Int? {
+        didSet {
+            guard let results = self.searchResults else  {
+                return
+            }
+            subtitleLabel.text = results == 1 ? "\(results) result" : "\(results) results"
+        }
+    }
+    
     var totalGuests: Int? {
         didSet {
-            
             guard let totalGuests = self.totalGuests else  {
                 return
             }
             
-            if totalGuests == 1 {
-                subtitleLabel.text = "\(totalGuests) guest"
-            } else {
-                subtitleLabel.text = "\(totalGuests) guests"
-            }
+            subtitleLabel.text = totalGuests == 1 ? "\(totalGuests) guest" : "\(totalGuests) guests"
         }
     }
     
