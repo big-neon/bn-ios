@@ -4,6 +4,7 @@ import Foundation
 import UIKit
 import SwipeCellKit
 import Big_Neon_Core
+import AudioToolbox
 
 extension GuestListViewController: SwipeActionTransitioning {
     
@@ -116,10 +117,12 @@ extension GuestListViewController: SwipeActionTransitioning {
     }
     
     func didTransition(with context: SwipeActionTransitioningContext) {
-        if context.newPercentVisible > 1.8 {   //  2.66
+        print(context.newPercentVisible)
+        if context.newPercentVisible > 1.19 {   //  2.66
             context.button.setImage(UIImage(named: "ic_checkin_check"), for: UIControl.State.normal)
             context.button.setTitle("Redeemed", for: UIControl.State.normal)
-        } else if context.newPercentVisible > 1.5 { //2.2
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+        } else if context.newPercentVisible > 0.8 { //2.2
             context.button.setImage(UIImage(named: "ic_checkin_check"), for: UIControl.State.normal)
             context.button.setTitle("Checking In...", for: UIControl.State.normal)
         } else  {
@@ -144,7 +147,7 @@ extension GuestListViewController: SwipeActionTransitioning {
             var options = SwipeOptions()
             options.backgroundColor = UIColor.brandPrimary
             options.transitionStyle = .border
-            options.minimumButtonWidth = UIScreen.main.bounds.width * 0.3
+            options.minimumButtonWidth = UIScreen.main.bounds.width * 0.4
             options.expansionStyle = .selection
             return options
         }
