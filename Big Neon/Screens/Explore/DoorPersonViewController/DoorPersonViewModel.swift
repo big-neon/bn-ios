@@ -50,6 +50,8 @@ final class DoorPersonViewModel {
     func fetchNewAccessToken(completion: @escaping(Bool) -> Void) {
         BusinessService.shared.database.fetchNewAccessToken { [weak self] (error, tokens) in
             
+            AnalyticsService.shared.reportError(errorType: ErrorType.eventFetching, error: error?.localizedDescription ?? "")
+            
             guard let self = self, let tokens = tokens else {
                 completion(false)
                 return
@@ -68,6 +70,7 @@ final class DoorPersonViewModel {
         BusinessService.shared.database.fetchCheckins { [weak self] (error, events) in
             
             guard let self = self, error != nil , let events = events else {
+                AnalyticsService.shared.reportError(errorType: ErrorType.eventFetching, error: error?.localizedDescription ?? "")
                 completion(false)
                 return
             }

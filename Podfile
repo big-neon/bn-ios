@@ -18,6 +18,7 @@ use_frameworks!
         pod 'PanModal'
         pod 'Crashlytics'
         pod 'Fabric'
+        pod 'Answers'
         pod 'Alamofire', '~> 5.0.0.beta.1'
         pod 'Stripe'
         pod 'QRCodeReader.swift'
