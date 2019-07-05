@@ -79,7 +79,9 @@
 		C665DFE521E87CB800DFB955 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */; };
 		C66923B622CF416200A162A6 /* LayoutSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66923B422CF415800A162A6 /* LayoutSpec.swift */; };
 		C66923B822CF436100A162A6 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66923B722CF436100A162A6 /* ScreenSize.swift */; };
-		C66923BA22CF5FB000A162A6 /* PaymentSuccess.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C66923B922CF5FAF00A162A6 /* PaymentSuccess.m4a */; };
+		C66923BA22CF5FB000A162A6 /* Valid.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C66923B922CF5FAF00A162A6 /* Valid.m4a */; };
+		C66923BC22CF6C2300A162A6 /* Beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C66923BB22CF6C2300A162A6 /* Beep.mp3 */; };
+		C66923BE22CF6C6D00A162A6 /* Redeemed.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C66923BD22CF6C6C00A162A6 /* Redeemed.m4a */; };
 		C66C0BA521E337D40066CD0F /* splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C66C0BA421E337D40066CD0F /* splash.mp4 */; };
 		C66C0BA721E339CA0066CD0F /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C0BA621E339CA0066CD0F /* SplashViewController.swift */; };
 		C678C17F2276FABD0069A2DF /* ObjectAddingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C678C17E2276FABD0069A2DF /* ObjectAddingUtils.swift */; };
@@ -289,7 +291,9 @@
 		C665DFE421E87CB800DFB955 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C66923B422CF415800A162A6 /* LayoutSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSpec.swift; sourceTree = "<group>"; };
 		C66923B722CF436100A162A6 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
-		C66923B922CF5FAF00A162A6 /* PaymentSuccess.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = PaymentSuccess.m4a; sourceTree = "<group>"; };
+		C66923B922CF5FAF00A162A6 /* Valid.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Valid.m4a; sourceTree = "<group>"; };
+		C66923BB22CF6C2300A162A6 /* Beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Beep.mp3; sourceTree = "<group>"; };
+		C66923BD22CF6C6C00A162A6 /* Redeemed.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Redeemed.m4a; sourceTree = "<group>"; };
 		C66C0BA421E337D40066CD0F /* splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.mp4; sourceTree = "<group>"; };
 		C66C0BA621E339CA0066CD0F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		C678C17E2276FABD0069A2DF /* ObjectAddingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectAddingUtils.swift; sourceTree = "<group>"; };
@@ -547,7 +551,9 @@
 				C60BDEB7229EAACA00E54456 /* Beta.xcconfig */,
 				C62BC78F21CCC3FB00830A5F /* Development.plist */,
 				C60BDEC0229EE27A00E54456 /* Production.plist */,
-				C66923B922CF5FAF00A162A6 /* PaymentSuccess.m4a */,
+				C66923BD22CF6C6C00A162A6 /* Redeemed.m4a */,
+				C66923BB22CF6C2300A162A6 /* Beep.mp3 */,
+				C66923B922CF5FAF00A162A6 /* Valid.m4a */,
 				C62BC78321CCC3F700830A5F /* AppDelegate.swift */,
 				C6E6485422423C11000F2DFB /* Big Neon.xcdatamodeld */,
 				C62BC78A21CCC3FB00830A5F /* Assets.xcassets */,
@@ -1235,11 +1241,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C66923BC22CF6C2300A162A6 /* Beep.mp3 in Resources */,
 				C66C0BA521E337D40066CD0F /* splash.mp4 in Resources */,
 				C60BDEC1229EE27A00E54456 /* Production.plist in Resources */,
 				C62BC78E21CCC3FB00830A5F /* LaunchScreen.storyboard in Resources */,
 				C62BC78B21CCC3FB00830A5F /* Assets.xcassets in Resources */,
-				C66923BA22CF5FB000A162A6 /* PaymentSuccess.m4a in Resources */,
+				C66923BA22CF5FB000A162A6 /* Valid.m4a in Resources */,
+				C66923BE22CF6C6D00A162A6 /* Redeemed.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

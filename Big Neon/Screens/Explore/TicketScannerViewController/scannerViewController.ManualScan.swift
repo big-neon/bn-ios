@@ -35,6 +35,7 @@ extension ScannerViewController {
         self.manualUserCheckinView.event = self.event
         self.scannedTicketID = ticket.id    //  self.scannedTicket?.id
         self.manualUserCheckinView.redeemableTicket = ticket //self.scannedTicket
+        playSuccessSound(forValidTicket: false)
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.scanningBoarderView.layer.opacity = 0.0

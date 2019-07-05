@@ -64,16 +64,15 @@ extension ScannerViewController {
         scannedUserBottomAnchor?.constant = -90.0
         manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
         generator.notificationOccurred(.success)
-        playSuccessSound()
-        
-        
+        playSuccessSound(forValidTicket: true)
         
         //  Start Timer
     }
     
-    func playSuccessSound() {
+    func playSuccessSound(forValidTicket valid: Bool) {
         
-        if let resourcePath =  Bundle.main.path(forResource: "PaymentSuccess", ofType: "m4a") {
+        let sound = valid == true ? "Valid" : "Redeemed"
+        if let resourcePath =  Bundle.main.path(forResource: sound, ofType: "m4a") {
             let url = URL(fileURLWithPath: resourcePath)
             audioPlayer = try? AVAudioPlayer(contentsOf: url)
             audioPlayer?.prepareToPlay()
