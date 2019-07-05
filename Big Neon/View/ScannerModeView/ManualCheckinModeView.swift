@@ -222,8 +222,8 @@ public class ManualCheckinModeView: UIView {
         
         dateValueLabel.topAnchor.constraint(equalTo: redeemedByLabel.bottomAnchor, constant: 2.0).isActive = true
         dateValueLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: LayoutSpec.Spacing.twenty).isActive = true
+        dateValueLabel.rightAnchor.constraint(equalTo: bannedTagView.rightAnchor).isActive = true
         dateValueLabel.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
-        dateValueLabel.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
         
         //  Completed
         completeCheckinButton.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
