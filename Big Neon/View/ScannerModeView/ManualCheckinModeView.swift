@@ -48,7 +48,7 @@ public class ManualCheckinModeView: UIView {
                 completeCheckinButton.addTarget(self, action: #selector(doNothing), for: UIControl.Event.touchUpInside)
                 
                 if let redemeedBy = ticket.redeemedBy {
-                  redeemedByLabel.text = "Redeemed by: \(redemeedBy)"
+                  redeemedByLabel.text = redemeedBy
                 }
                 
                 ticketTypeLabel.text = price.dollarString + " | " + ticket.ticketType + " | " + ticketID
@@ -176,6 +176,7 @@ public class ManualCheckinModeView: UIView {
         
         vipTagView.isHidden = true
         
+        //  Top Area
         userImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 22).isActive = true
         userImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
         userImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
@@ -188,14 +189,20 @@ public class ManualCheckinModeView: UIView {
         
         userNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 22).isActive = true
         userNameLabel.leftAnchor.constraint(equalTo: userImageView.rightAnchor, constant: 15).isActive = true
-        userNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+        userNameLabel.rightAnchor.constraint(equalTo: dismissView.leftAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
         userNameLabel.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        
+        ticketTypeLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 2).isActive = true
+        ticketTypeLabel.leftAnchor.constraint(equalTo: userNameLabel.leftAnchor).isActive = true
+        ticketTypeLabel.rightAnchor.constraint(equalTo: userNameLabel.rightAnchor).isActive = true
+        ticketTypeLabel.heightAnchor.constraint(equalToConstant: 22).isActive = true
         
         lineView.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 16).isActive = true
         lineView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         lineView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         lineView.heightAnchor.constraint(equalToConstant: 0.9).isActive = true
         
+        //  Tags
         bannedTagView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 28).isActive = true
         bannedTagView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
         bannedTagView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
@@ -206,21 +213,19 @@ public class ManualCheckinModeView: UIView {
         vipTagView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
         vipTagView.widthAnchor.constraint(equalToConstant: 55.0).isActive = true
         
+        
+        //  Redeeemed By
         redeemedByLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 20).isActive = true
         redeemedByLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20.0).isActive = true
         redeemedByLabel.rightAnchor.constraint(equalTo: bannedTagView.leftAnchor, constant: -16).isActive = true
         redeemedByLabel.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
-        
-        ticketTypeLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 2).isActive = true
-        ticketTypeLabel.leftAnchor.constraint(equalTo: userImageView.rightAnchor, constant: 15).isActive = true
-        ticketTypeLabel.rightAnchor.constraint(equalTo: bannedTagView.leftAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
-        ticketTypeLabel.heightAnchor.constraint(equalToConstant: 22).isActive = true
         
         dateValueLabel.topAnchor.constraint(equalTo: redeemedByLabel.bottomAnchor, constant: 2.0).isActive = true
         dateValueLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20.0).isActive = true
         dateValueLabel.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
         dateValueLabel.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
         
+        //  Completed
         completeCheckinButton.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         completeCheckinButton.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         completeCheckinButton.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
