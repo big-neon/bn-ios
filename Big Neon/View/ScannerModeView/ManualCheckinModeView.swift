@@ -2,12 +2,8 @@
 
 import Foundation
 import UIKit
+import Big_Neon_UI
 import Big_Neon_Core
-
-// MARK: lots of magic numbers... consider using layout/config class/enum
-// MARK: self is not needed
-// MARK: internal is default access level - not need for explicit definition
-// MARK: use abbreviation / syntax sugar
 
 public class ManualCheckinModeView: UIView {
     
@@ -52,7 +48,7 @@ public class ManualCheckinModeView: UIView {
                 completeCheckinButton.addTarget(self, action: #selector(doNothing), for: UIControl.Event.touchUpInside)
                 
                 if let redemeedBy = ticket.redeemedBy {
-                  eventDetailsLabel.text = "Redeemed by: \(redemeedBy)"
+                  redeemedByLabel.text = "Redeemed by: \(redemeedBy)"
                 }
                 
                 ticketTypeLabel.text = price.dollarString + " | " + ticket.ticketType + " | " + ticketID
@@ -136,7 +132,7 @@ public class ManualCheckinModeView: UIView {
         return view
     }()
     
-    lazy var eventDetailsLabel: UILabel = {
+    lazy var redeemedByLabel: UILabel = {
         let label = UILabel()
         label.text = "Event Details"
         label.textColor = UIColor.brandBlack
@@ -173,7 +169,7 @@ public class ManualCheckinModeView: UIView {
         addSubview(lineView)
         addSubview(bannedTagView)
         addSubview(vipTagView)
-        addSubview(eventDetailsLabel)
+        addSubview(redeemedByLabel)
         addSubview(dateValueLabel)
         addSubview(completeCheckinButton)
         
@@ -195,11 +191,6 @@ public class ManualCheckinModeView: UIView {
         userNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
         userNameLabel.heightAnchor.constraint(equalToConstant: 28).isActive = true
         
-        ticketTypeLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 2).isActive = true
-        ticketTypeLabel.leftAnchor.constraint(equalTo: userImageView.rightAnchor, constant: 15).isActive = true
-        ticketTypeLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        ticketTypeLabel.heightAnchor.constraint(equalToConstant: 22).isActive = true
-        
         lineView.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 16).isActive = true
         lineView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         lineView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
@@ -215,12 +206,17 @@ public class ManualCheckinModeView: UIView {
         vipTagView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
         vipTagView.widthAnchor.constraint(equalToConstant: 55.0).isActive = true
         
-        eventDetailsLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 20).isActive = true
-        eventDetailsLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20.0).isActive = true
-        eventDetailsLabel.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
-        eventDetailsLabel.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
+        redeemedByLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 20).isActive = true
+        redeemedByLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20.0).isActive = true
+        redeemedByLabel.rightAnchor.constraint(equalTo: bannedTagView.leftAnchor, constant: -16).isActive = true
+        redeemedByLabel.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
         
-        dateValueLabel.topAnchor.constraint(equalTo: eventDetailsLabel.bottomAnchor, constant: 2.0).isActive = true
+        ticketTypeLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 2).isActive = true
+        ticketTypeLabel.leftAnchor.constraint(equalTo: userImageView.rightAnchor, constant: 15).isActive = true
+        ticketTypeLabel.rightAnchor.constraint(equalTo: bannedTagView.leftAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
+        ticketTypeLabel.heightAnchor.constraint(equalToConstant: 22).isActive = true
+        
+        dateValueLabel.topAnchor.constraint(equalTo: redeemedByLabel.bottomAnchor, constant: 2.0).isActive = true
         dateValueLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20.0).isActive = true
         dateValueLabel.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
         dateValueLabel.widthAnchor.constraint(equalToConstant: 300.0).isActive = true

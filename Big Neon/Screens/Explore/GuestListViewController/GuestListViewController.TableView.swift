@@ -117,11 +117,10 @@ extension GuestListViewController: SwipeActionTransitioning {
     }
     
     func didTransition(with context: SwipeActionTransitioningContext) {
-        print(context.newPercentVisible)
         if context.newPercentVisible > 1.19 {   //  2.66
             context.button.setImage(UIImage(named: "ic_checkin_check"), for: UIControl.State.normal)
             context.button.setTitle("Redeemed", for: UIControl.State.normal)
-            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+//            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         } else if context.newPercentVisible > 0.8 { //2.2
             context.button.setImage(UIImage(named: "ic_checkin_check"), for: UIControl.State.normal)
             context.button.setTitle("Checking In...", for: UIControl.State.normal)

@@ -61,7 +61,7 @@ extension ScannerViewController {
         self.scannerViewModel?.redeemedTicket = ticket
         self.blurView?.layer.opacity = 0.0
         self.scannerModeView.layer.opacity = 1.0
-        self.scannedUserBottomAnchor?.constant = -100.0
+        self.scannedUserBottomAnchor?.constant = -90.0
         self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
         self.generator.notificationOccurred(.success)
     }

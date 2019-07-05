@@ -261,8 +261,16 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     
     private func configureScannedUserView() {
         view.addSubview(scannedUserView)
-        scannedUserView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20.0).isActive = true
-        scannedUserView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20.0).isActive = true
+        
+        if self.isiPhoneSE() == true {
+            scannedUserView.layer.cornerRadius = 0.0
+            scannedUserView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+            scannedUserView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        } else {
+            scannedUserView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20.0).isActive = true
+            scannedUserView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20.0).isActive = true
+        }
+        
         scannedUserBottomAnchor = scannedUserView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 200.0)
         scannedUserBottomAnchor?.isActive = true
         scannedUserView.heightAnchor.constraint(equalToConstant: 76.0).isActive = true

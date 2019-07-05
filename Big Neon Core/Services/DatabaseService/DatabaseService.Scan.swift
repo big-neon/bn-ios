@@ -48,7 +48,6 @@ extension DatabaseService {
                 do {
                     let decoder = JSONDecoder()
                     let redeemableTicket = try decoder.decode(RedeemableTicket.self, from: data!)
-                    print(redeemableTicket)
                     completion(.validTicketID, nil, redeemableTicket)
                     return
                 } catch let error as NSError {
