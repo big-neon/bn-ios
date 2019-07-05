@@ -28,6 +28,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     
     //  Layout
     let generator = UINotificationFeedbackGenerator()
+    var audioPlayer: AVAudioPlayer?
     var guestListTopAnchor: NSLayoutConstraint?
     var manualCheckingTopAnchor: NSLayoutConstraint?
     var scannedUserBottomAnchor: NSLayoutConstraint?

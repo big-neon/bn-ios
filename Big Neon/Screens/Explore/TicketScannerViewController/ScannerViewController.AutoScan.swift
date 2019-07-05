@@ -56,14 +56,30 @@ extension ScannerViewController {
             feedFound = .wrongEvent
         }
         
-        self.scannedUserView.redeemableTicket = ticket
-        self.scannedUserView.scanFeedback = feedFound
-        self.scannerViewModel?.redeemedTicket = ticket
-        self.blurView?.layer.opacity = 0.0
-        self.scannerModeView.layer.opacity = 1.0
-        self.scannedUserBottomAnchor?.constant = -90.0
-        self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
-        self.generator.notificationOccurred(.success)
+        scannedUserView.redeemableTicket = ticket
+        scannedUserView.scanFeedback = feedFound
+        scannerViewModel?.redeemedTicket = ticket
+        blurView?.layer.opacity = 0.0
+        scannerModeView.layer.opacity = 1.0
+        scannedUserBottomAnchor?.constant = -90.0
+        manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+        generator.notificationOccurred(.success)
+        playSuccessSound()
+        
+        
+        
+        //  Start Timer
+    }
+    
+    func playSuccessSound() {
+        
+        if let resourcePath =  Bundle.main.path(forResource: "PaymentSuccess", ofType: "m4a") {
+            let url = URL(fileURLWithPath: resourcePath)
+            audioPlayer = try? AVAudioPlayer(contentsOf: url)
+            audioPlayer?.prepareToPlay()
+            audioPlayer?.play()
+        }
+        
     }
     
 }

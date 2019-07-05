@@ -62,7 +62,7 @@ extension GuestListViewController: SwipeActionTransitioning {
         if guestValues!.lastName == "" && guestValues!.firstName  == ""{
             guestCell.guestNameLabel.text = "No Details Provided"
         } else {
-            guestCell.guestNameLabel.text = guestValues!.lastName + ", " + guestValues!.firstName
+            guestCell.guestNameLabel.text = guestValues!.firstName + ", " + guestValues!.lastName
         }
         
         
@@ -120,7 +120,6 @@ extension GuestListViewController: SwipeActionTransitioning {
         if context.newPercentVisible > 1.19 {   //  2.66
             context.button.setImage(UIImage(named: "ic_checkin_check"), for: UIControl.State.normal)
             context.button.setTitle("Redeemed", for: UIControl.State.normal)
-//            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         } else if context.newPercentVisible > 0.8 { //2.2
             context.button.setImage(UIImage(named: "ic_checkin_check"), for: UIControl.State.normal)
             context.button.setTitle("Checking In...", for: UIControl.State.normal)
