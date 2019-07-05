@@ -37,6 +37,10 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     let blurEffect = UIBlurEffect(style: .dark)
     var blurView: UIVisualEffectView?
     
+    //  Count Down Timer
+    var timer: Timer?
+    var scanSeconds = 10
+    
     let supportedCodeTypes = [AVMetadataObject.ObjectType.upce,
                               AVMetadataObject.ObjectType.code39,
                               AVMetadataObject.ObjectType.code39Mod43,
@@ -161,6 +165,10 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         configureManualCheckinView()
         configureHeader()
         fetchGuests()
+    }
+    
+    deinit {
+        timer?.invalidate()
     }
     
     func fetchGuests() {

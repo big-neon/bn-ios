@@ -18,7 +18,7 @@ extension ScannerViewController {
     }
     
     func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath indexPath: IndexPath?) {
-        
+        self.stopScanning = true
         self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID) { [weak self] (scanFeedback, errorString, ticket) in
             DispatchQueue.main.async {
                 if fromGuestTableView == true {
@@ -65,12 +65,22 @@ extension ScannerViewController {
         manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
         generator.notificationOccurred(.success)
         playSuccessSound(forValidTicket: true)
-        
-        //  Start Timer
+        runCountDownTimer()
+    }
+    
+    func runCountDownTimer() {
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTimer() {
+        self.scanSeconds -= 1
+        if self.scanSeconds == 0 {
+            self.timer?.invalidate()
+            self.scanSeconds = 10
+        }
     }
     
     func playSuccessSound(forValidTicket valid: Bool) {
-        
         let sound = valid == true ? "Valid" : "Redeemed"
         if let resourcePath =  Bundle.main.path(forResource: sound, ofType: "m4a") {
             let url = URL(fileURLWithPath: resourcePath)
