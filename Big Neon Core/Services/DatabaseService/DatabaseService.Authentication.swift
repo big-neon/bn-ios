@@ -62,7 +62,6 @@ extension DatabaseService {
         
 
                 do {
-                    
                     let jsonObject = try JSONSerialization.jsonObject(with: response.data!, options: [])
                     guard let jsonDictionary = jsonObject as? [String: Any] else {
                             throw NSError(domain: dataErrorDomain, code: DataErrorCode.wrongDataFormat.rawValue, userInfo: nil)

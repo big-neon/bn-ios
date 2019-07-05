@@ -41,6 +41,7 @@ extension ScannerViewController {
                 }
                 
                 UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
+                    
                     self?.showScannedUser(feedback: scanFeedback, ticket: ticket)
                     self?.view.layoutIfNeeded()
                 }, completion: { (completed) in
@@ -52,8 +53,12 @@ extension ScannerViewController {
 
     func showScannedUser(feedback: ScanFeedback?, ticket: RedeemableTicket?) {
         var feedFound = feedback
+        runCountDownTimer()
         if ticket?.eventName != self.event?.name {
+            self.playSuccessSound(forValidTicket: false)
             feedFound = .wrongEvent
+        } else {
+            self.playSuccessSound(forValidTicket: true)
         }
         
         scannedUserView.redeemableTicket = ticket
@@ -64,11 +69,12 @@ extension ScannerViewController {
         scannedUserBottomAnchor?.constant = -90.0
         manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
         generator.notificationOccurred(.success)
-        playSuccessSound(forValidTicket: true)
-        runCountDownTimer()
+        
+        
     }
     
     func runCountDownTimer() {
+        self.scanSeconds = 10
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
     }
     

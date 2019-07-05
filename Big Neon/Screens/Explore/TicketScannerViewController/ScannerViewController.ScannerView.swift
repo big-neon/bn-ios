@@ -62,8 +62,6 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                         return
                     }
                 }
-                
-                
             }
             
             self.hideScannedUser()

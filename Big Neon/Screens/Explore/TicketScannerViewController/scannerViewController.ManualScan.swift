@@ -8,14 +8,16 @@ extension ScannerViewController {
     
     func checkinManually(withTicketID ticketID: String) {
         self.scannerViewModel?.getRedeemTicket(ticketID: ticketID) { [weak self] (scanFeedback, errorString) in
-            if scanFeedback == .validTicketID {
-                self?.stopScanning = false
-                if let ticket = self?.scannedTicket {
-                  self?.showRedeemedTicket(forTicket: ticket)
+            DispatchQueue.main.async {
+                if scanFeedback == .validTicketID {
+                    self?.stopScanning = false
+                    if let ticket = self?.scannedTicket {
+                        self?.showRedeemedTicket(forTicket: ticket)
+                    }
+                    return
                 }
-                return
+                self?.manualCheckinFeedback(scanFeedback: scanFeedback)
             }
-            self?.manualCheckinFeedback(scanFeedback: scanFeedback)
         }
     }
     
@@ -27,16 +29,16 @@ extension ScannerViewController {
             self.scannerModeView.layer.opacity = 0.0
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
-            self.stopScanning = false
+            self.stopScanning = true
         })
     }
     
     func showRedeemedTicket(forTicket ticket: RedeemableTicket) {
+        self.stopScanning = true
         self.manualUserCheckinView.event = self.event
         self.scannedTicketID = ticket.id    //  self.scannedTicket?.id
         self.manualUserCheckinView.redeemableTicket = ticket //self.scannedTicket
-        playSuccessSound(forValidTicket: false)
-        
+        self.playSuccessSound(forValidTicket: false)
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.scanningBoarderView.layer.opacity = 0.0
             self.showGuestView.layer.opacity = 0.0

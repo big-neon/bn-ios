@@ -197,14 +197,14 @@ public class ManualCheckinModeView: UIView {
         ticketTypeLabel.rightAnchor.constraint(equalTo: userNameLabel.rightAnchor).isActive = true
         ticketTypeLabel.heightAnchor.constraint(equalToConstant: 22).isActive = true
         
-        lineView.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 16).isActive = true
+        lineView.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
         lineView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         lineView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         lineView.heightAnchor.constraint(equalToConstant: 0.9).isActive = true
         
         //  Tags
-        bannedTagView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 28).isActive = true
-        bannedTagView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+        bannedTagView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 18).isActive = true
+        bannedTagView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -LayoutSpec.Spacing.twenty).isActive = true
         bannedTagView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
         bannedTagView.widthAnchor.constraint(equalToConstant: 88.0).isActive = true
         
@@ -215,13 +215,13 @@ public class ManualCheckinModeView: UIView {
         
         
         //  Redeeemed By
-        redeemedByLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 20).isActive = true
-        redeemedByLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20.0).isActive = true
-        redeemedByLabel.rightAnchor.constraint(equalTo: bannedTagView.leftAnchor, constant: -16).isActive = true
+        redeemedByLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: LayoutSpec.Spacing.twenty).isActive = true
+        redeemedByLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: LayoutSpec.Spacing.twenty).isActive = true
+        redeemedByLabel.rightAnchor.constraint(equalTo: bannedTagView.leftAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
         redeemedByLabel.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
         
         dateValueLabel.topAnchor.constraint(equalTo: redeemedByLabel.bottomAnchor, constant: 2.0).isActive = true
-        dateValueLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20.0).isActive = true
+        dateValueLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: LayoutSpec.Spacing.twenty).isActive = true
         dateValueLabel.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
         dateValueLabel.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
         
