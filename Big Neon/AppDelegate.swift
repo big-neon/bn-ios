@@ -2,6 +2,7 @@
 import UIKit
 import CoreData
 import Fabric
+import Answers
 import Crashlytics
 import Big_Neon_Core
 
@@ -11,8 +12,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        self.window = ApplicationRouter.setupBaseRouting()
-        Fabric.with([Crashlytics.self])
+        window = ApplicationRouter.setupBaseRouting()
+        Fabric.with([Crashlytics.self, Answers.self])
         return true
     }
 
