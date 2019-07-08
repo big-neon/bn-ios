@@ -23,7 +23,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     var lastScannedTicket: RedeemableTicket?
     var scannedTicketID: String?
     var event: EventsData?
-    var fetcher: Fetcher
+    var fetcher: EventsFetcher
     var guestListVC: GuestListViewController?
     
     //  Layout
@@ -143,7 +143,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         return view
     }()
     
-    init(fetcher: Fetcher) {
+    init(fetcher: EventsFetcher) {
         self.fetcher = fetcher
         super.init(nibName: nil, bundle: nil)
     }

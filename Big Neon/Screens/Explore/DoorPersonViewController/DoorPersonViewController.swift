@@ -10,7 +10,7 @@ protocol DoorPersonViewDelegate: class {
 
 final class DoorPersonViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate, DoorPersonViewDelegate {
 
-    var eventsFetcher: Fetcher
+    var eventsFetcher: EventsFetcher
     
     lazy var refresher: UIRefreshControl = {
         let refresher = UIRefreshControl()
@@ -71,7 +71,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         return search
     }()
     
-    init(fetcher: Fetcher) {
+    init(fetcher: EventsFetcher) {
         self.eventsFetcher = fetcher
         super.init(nibName: nil, bundle: nil)
     }

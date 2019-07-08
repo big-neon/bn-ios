@@ -27,7 +27,7 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     var scannerViewModel: TicketScannerViewModel
     var guestViewModel = GuestsListViewModel()
     
-    var guestsFetcher: Fetcher?  // Fetching guests Offline
+    var guestsFetcher: GuestsFetcher?  // Fetching guests Offline
     
     var isSearching: Bool = false {
         didSet {

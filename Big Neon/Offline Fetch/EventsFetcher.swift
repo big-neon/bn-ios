@@ -4,7 +4,13 @@ import Sync
 import Alamofire
 import Big_Neon_Core
 
-class Fetcher {
+
+enum VoidResult {
+    case success
+    case failure(NSError)
+}
+
+class EventsFetcher {
     
     private let dataStack: DataStack
     private let repository: EventsApiRepository
@@ -49,9 +55,4 @@ class Fetcher {
             }
         }
     }
-}
-
-enum VoidResult {
-    case success
-    case failure(NSError)
 }

@@ -6,7 +6,6 @@ import Big_Neon_Core
 
 extension GuestListViewController {
     
-    //  TO DO: Offline Update to Guest List
     /*
     @objc func syncGuestsData() {
         guestsFetcher?.syncCheckins { result in
@@ -41,5 +40,6 @@ extension GuestListViewController {
             }
         }
     }
+ 
     */
 }
