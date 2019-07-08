@@ -142,12 +142,12 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         view.layer.opacity = 0.0
         return view
     }()
-    
+
     init(fetcher: EventsFetcher) {
         self.fetcher = fetcher
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

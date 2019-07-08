@@ -18,25 +18,25 @@ final class TicketScannerViewModel {
     var currentPage: Int = 0
     let limit = 100
     var ticketsFetched: [RedeemableTicket] = []
-    
+
     //  Event Infor
     var eventID: String?
 
-    internal func setCheckingModeAutomatic() {
+    func setCheckingModeAutomatic() {
         UserDefaults.standard.set(true, forKey: Constants.CheckingMode.scannerCheckinKey)
         UserDefaults.standard.synchronize()
     }
 
-    internal func setCheckingModeManual() {
+    func setCheckingModeManual() {
         UserDefaults.standard.set(false, forKey: Constants.CheckingMode.scannerCheckinKey)
         UserDefaults.standard.synchronize()
     }
 
-    internal func scannerMode() -> Bool {
+    func scannerMode() -> Bool {
         return UserDefaults.standard.bool(forKey: Constants.CheckingMode.scannerCheckinKey)
     }
-    
-    internal func getRedeemKey(fromStringValue value: String) -> String? {
+
+    func getRedeemKey(fromStringValue value: String) -> String? {
         // MARK: use just one guard
         guard let data = try? JSONSerialization.jsonObject(with: Data(value.utf8), options: []) else {
             return nil
@@ -51,7 +51,7 @@ final class TicketScannerViewModel {
         return redeemKeyData["redeem_key"]
     }
     
-    internal func getTicketID(fromStringValue value: String) -> String? {
+    func getTicketID(fromStringValue value: String) -> String? {
         // MARK: use just one guard
         guard let data = try? JSONSerialization.jsonObject(with: Data(value.utf8), options: []) else {
             return nil
@@ -66,7 +66,7 @@ final class TicketScannerViewModel {
         return redeemKeyData["id"]
     }
 
-    internal func getRedeemTicket(ticketID: String, completion: @escaping(ScanFeedback?, String?) -> Void) {
+    func getRedeemTicket(ticketID: String, completion: @escaping(ScanFeedback?, String?) -> Void) {
         BusinessService.shared.database.getRedeemTicket(forTicketID: ticketID) { (scanFeedback, errorString, redeemTicket) in
             DispatchQueue.main.async {
                 switch scanFeedback {
@@ -92,7 +92,7 @@ final class TicketScannerViewModel {
         }
     }
     
-    internal func completeCheckin(ticket: RedeemableTicket,completion: @escaping(ScanFeedback) -> Void) {
+    func completeCheckin(ticket: RedeemableTicket,completion: @escaping(ScanFeedback) -> Void) {
         
         guard let eventID = self.scanVC?.event?.id else {
             completion(.issueFound)
@@ -107,8 +107,7 @@ final class TicketScannerViewModel {
         }
     }
     
-    internal func automaticallyCheckin(ticketID: String, completion: @escaping(ScanFeedback?, String?, RedeemableTicket?) -> Void) {
-        
+    func automaticallyCheckin(ticketID: String, completion: @escaping(ScanFeedback?, String?, RedeemableTicket?) -> Void) {
         BusinessService.shared.database.getRedeemTicket(forTicketID: ticketID) { (scanFeedback, errorString, redeemTicket) in
             DispatchQueue.main.async {
                 
@@ -136,8 +135,8 @@ final class TicketScannerViewModel {
             }
         }
     }
-    
-    internal func completeAutoCheckin(eventID: String, ticket: RedeemableTicket, completion: @escaping(ScanFeedback) -> Void) {
+
+    func completeAutoCheckin(eventID: String, ticket: RedeemableTicket, completion: @escaping(ScanFeedback) -> Void) {
         
         BusinessService.shared.database.redeemTicket(forTicketID: ticket.id, eventID: eventID, redeemKey: ticket.redeemKey) { [weak self] (scanFeedback, ticket) in
             DispatchQueue.main.async {
@@ -147,8 +146,7 @@ final class TicketScannerViewModel {
         }
     }
 
-    
-    internal func fetchGuests(forEventID eventID: String, page: Int, completion: @escaping(Bool) -> Void) {
+    func fetchGuests(forEventID eventID: String, page: Int, completion: @escaping(Bool) -> Void) {
         
         BusinessService.shared.database.fetchGuests(forEventID: eventID, limit: limit, page: page, guestQuery: nil) { [weak self] (error, guestsFetched, serverGuests, totalGuests) in
             DispatchQueue.main.async {

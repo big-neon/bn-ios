@@ -19,15 +19,15 @@ public class APIService {
     }
     
     /**
-     URL: /events/{event_id}/redeem/{ticket_id}
-     */
+        URL: /events/{event_id}/redeem/{ticket_id}
+        */
     class func redeemTicket(eventID: String, ticketID: String) -> String {
         return self.baseURL() + "/events/\(eventID)/redeem/\(ticketID)"
     }
     
     /**
-     URL: /events/{event_id}/guests
-     */
+        URL: /events/{event_id}/guests
+        */
     public class func fetchEvents(eventID: String, changesSince: String?, page: Int?, limit: Int?, query: String?) -> String {
         var queryParams:[String] = []
         if let value = changesSince {
@@ -54,15 +54,15 @@ public class APIService {
     }
     
     /**
-     URL: "/tickets/{ticketID}/redeem
-     */
+        URL: "/tickets/{ticketID}/redeem
+        */
     class func getRedeemableTicket(ticketID: String) -> String {
         return self.baseURL() + "/tickets/\(ticketID)/redeem"
     }
     
     /**
-     - Retrieves Events from the Database
-     */
+        - Retrieves Events from the Database
+        */
     public class func getEvents(eventID: String?) -> String {
         if eventID == nil {
            return self.baseURL() + "/events"
@@ -71,15 +71,15 @@ public class APIService {
     }
     
     /**
-     - Retrieves all the Checkin Events
-     */
+        - Retrieves all the Checkin Events
+        */
     public class func getCheckins() -> String {
         return self.baseURL() + "/events/checkins"
     }
     
     /**
-     - Retrieves all the Checkin Events
-     */
+        - Retrieves all the Checkin Events
+        */
     public class func users() -> String {
         return self.baseURL() + "/users"
     }
