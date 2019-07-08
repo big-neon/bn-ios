@@ -91,6 +91,8 @@
 		C683232D21FF2D71002342AE /* ProfileEditViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683232C21FF2D71002342AE /* ProfileEditViewController.TableView.swift */; };
 		C683232F21FF31F5002342AE /* ProfileEditingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683232E21FF31F5002342AE /* ProfileEditingTableViewCell.swift */; };
 		C683233121FF34DF002342AE /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683233021FF34DF002342AE /* LogoutCell.swift */; };
+		C68A9FD722D3414E006535B8 /* DoorPersonViewController.Offline.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A9FD622D3414E006535B8 /* DoorPersonViewController.Offline.swift */; };
+		C68A9FD922D34995006535B8 /* GuestListViewController.Offline.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A9FD822D34995006535B8 /* GuestListViewController.Offline.swift */; };
 		C69370FB228F06D2004EBC12 /* GuestListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69370FA228F06D2004EBC12 /* GuestListViewController.swift */; };
 		C69370FD228F3570004EBC12 /* GuestListViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69370FC228F3570004EBC12 /* GuestListViewController.TableView.swift */; };
 		C6937100228F411B004EBC12 /* GuestListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69370FF228F411B004EBC12 /* GuestListHeaderView.swift */; };
@@ -305,6 +307,8 @@
 		C683233021FF34DF002342AE /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		C68A4220222FE65F002789E6 /* ManualCheckinModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualCheckinModeView.swift; sourceTree = "<group>"; };
 		C68A422222304D9F002789E6 /* CheckinTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinTagView.swift; sourceTree = "<group>"; };
+		C68A9FD622D3414E006535B8 /* DoorPersonViewController.Offline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonViewController.Offline.swift; sourceTree = "<group>"; };
+		C68A9FD822D34995006535B8 /* GuestListViewController.Offline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListViewController.Offline.swift; sourceTree = "<group>"; };
 		C69370FA228F06D2004EBC12 /* GuestListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListViewController.swift; sourceTree = "<group>"; };
 		C69370FC228F3570004EBC12 /* GuestListViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListViewController.TableView.swift; sourceTree = "<group>"; };
 		C69370FF228F411B004EBC12 /* GuestListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListHeaderView.swift; sourceTree = "<group>"; };
@@ -728,6 +732,7 @@
 				C69370FF228F411B004EBC12 /* GuestListHeaderView.swift */,
 				C6937101228F4BDA004EBC12 /* GuestListNavigationController.swift */,
 				C69370FA228F06D2004EBC12 /* GuestListViewController.swift */,
+				C68A9FD822D34995006535B8 /* GuestListViewController.Offline.swift */,
 				C6937103228F52E7004EBC12 /* GuestListViewController.SearchController.swift */,
 				C69370FC228F3570004EBC12 /* GuestListViewController.TableView.swift */,
 				C6EC4B2D2227C1150056CE73 /* GuestTableViewCell.swift */,
@@ -761,6 +766,7 @@
 			children = (
 				C64B0ABC21D0DCDB00386000 /* DoorPersonViewModel.swift */,
 				C62BC78521CCC3F700830A5F /* DoorPersonViewController.swift */,
+				C68A9FD622D3414E006535B8 /* DoorPersonViewController.Offline.swift */,
 				C61853B62212F1DB005D6250 /* DoorPersonViewController.Search.swift */,
 				C64B0ABA21D0DCC900386000 /* DoorPersonViewController.CollectionView.swift */,
 			);
@@ -1485,6 +1491,7 @@
 				C61853C122140900005D6250 /* TicketTypeViewController.TableView.swift in Sources */,
 				C64B0ADC21D1276100386000 /* ProfileViewController.swift in Sources */,
 				C61853B72212F1DB005D6250 /* DoorPersonViewController.Search.swift in Sources */,
+				C68A9FD722D3414E006535B8 /* DoorPersonViewController.Offline.swift in Sources */,
 				C6E6485622423C11000F2DFB /* Big Neon.xcdatamodeld in Sources */,
 				C6AFB78F21DD658800670AC3 /* EventDetailViewController.swift in Sources */,
 				C623C0802251E42C0020D0A8 /* CheckinTagView.swift in Sources */,
@@ -1498,6 +1505,7 @@
 				C6436CE722CE0CE000A20FEC /* AnalyticsService.swift in Sources */,
 				C623C0702251E3AE0020D0A8 /* ExploreUpcomingCell.swift in Sources */,
 				C623C07A2251E41B0020D0A8 /* GuestsView.swift in Sources */,
+				C68A9FD922D34995006535B8 /* GuestListViewController.Offline.swift in Sources */,
 				C6AFB78B21DD579600670AC3 /* ProfileViewModel.swift in Sources */,
 				C623C0732251E3D70020D0A8 /* EventHeaderView.swift in Sources */,
 				C665DFE521E87CB800DFB955 /* WelcomeViewController.swift in Sources */,

@@ -6,6 +6,7 @@ import Big_Neon_Core
 import Big_Neon_UI
 import PanModal
 import SwipeCellKit
+import Sync
 
 protocol GuestListViewDelegate: class {
     func reloadGuests()
@@ -25,6 +26,8 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     var scanVC: ScannerViewController
     var scannerViewModel: TicketScannerViewModel
     var guestViewModel = GuestsListViewModel()
+    
+    var guestsFetcher: Fetcher?  // Fetching guests Offline
     
     var isSearching: Bool = false {
         didSet {

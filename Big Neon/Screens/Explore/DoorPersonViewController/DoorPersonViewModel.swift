@@ -50,14 +50,14 @@ final class DoorPersonViewModel {
     func fetchNewAccessToken(completion: @escaping(Bool) -> Void) {
         BusinessService.shared.database.fetchNewAccessToken { [weak self] (error, tokens) in
             
-            AnalyticsService.shared.reportError(errorType: ErrorType.eventFetching, error: error?.localizedDescription ?? "")
+            AnalyticsService.reportError(errorType: ErrorType.eventFetching, error: error?.localizedDescription ?? "")
             
             guard let self = self, let tokens = tokens else {
                 completion(false)
                 return
             }
             
-            self.saveTokensInKeychain(token: tokens)
+            Utils.saveTokensInKeychain(token: tokens)
             self.fetchCheckins(completion: { (completed) in
                 completion(completed)
                 return
@@ -70,7 +70,7 @@ final class DoorPersonViewModel {
         BusinessService.shared.database.fetchCheckins { [weak self] (error, events) in
             
             guard let self = self, error != nil , let events = events else {
-                AnalyticsService.shared.reportError(errorType: ErrorType.eventFetching, error: error?.localizedDescription ?? "")
+                AnalyticsService.reportError(errorType: ErrorType.eventFetching, error: error?.localizedDescription ?? "")
                 completion(false)
                 return
             }
@@ -109,12 +109,4 @@ final class DoorPersonViewModel {
         }
     }
     
-    // MARK: idea: saveTokensInKeychain(token: Tokens, forKeys: [String])
-    // make it accessible for other classes to use it
-    // should be part of helper or util class 
-    private func saveTokensInKeychain(token: Tokens) {
-        KeychainWrapper.standard.set(token.accessToken, forKey: "accessToken")
-        KeychainWrapper.standard.set(token.refreshToken, forKey: "refreshToken")
-        return
-    }
 }

@@ -10,7 +10,7 @@ protocol DoorPersonViewDelegate: class {
 
 final class DoorPersonViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate, DoorPersonViewDelegate {
 
-    var guestFetcher: Fetcher
+    var eventsFetcher: Fetcher
     
     lazy var refresher: UIRefreshControl = {
         let refresher = UIRefreshControl()
@@ -72,7 +72,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     }()
     
     init(fetcher: Fetcher) {
-        self.guestFetcher = fetcher
+        self.eventsFetcher = fetcher
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -90,37 +90,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         syncEventsData()
     }
 
-    @objc func syncEventsData() {
-        fetcher.syncCheckins { result in
-            switch result {
-            case .success:
-                self.doorPersonViemodel.eventCoreData = self.fetcher.fetchLocalEvents()
-                self.exploreCollectionView.reloadData()
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        self.exploreCollectionView.reloadData()
-    }
-
-    @objc private func reloadEvents() {
-        self.doorPersonViemodel.configureAccessToken { [weak self] (completed) in
-            DispatchQueue.main.async {
-                self?.loadingView.stopAnimating()
-                self?.refresher.endRefreshing()
-                
-                if completed == false {
-                    self?.exploreCollectionView.reloadData()
-                    return
-                }
-                self?.exploreCollectionView.reloadData()
-                return
-            }
-        }
-    }
+    
     
     private func configureSearch() {
         //TODO: self.navigationItem.searchController = searchController
@@ -143,12 +113,12 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         headerLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50).isActive = true
         headerLabel.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         headerLabel.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        headerLabel.heightAnchor.constraint(equalToConstant: 24.0).isActive = true
+        headerLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twentyFour).isActive = true
 
-        detailLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 24).isActive = true
-        detailLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
-        detailLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
-        detailLabel.heightAnchor.constraint(equalToConstant: 24.0).isActive = true
+        detailLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: LayoutSpec.Spacing.twentyFour).isActive = true
+        detailLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
+        detailLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
+        detailLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twentyFour).isActive = true
 
     }
 

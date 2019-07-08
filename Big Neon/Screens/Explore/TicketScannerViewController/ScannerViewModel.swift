@@ -114,19 +114,19 @@ final class TicketScannerViewModel {
                 
                 if scanFeedback == .validTicketID {
                     guard let ticket = redeemTicket else {
-                        AnalyticsService.shared.reportError(errorType: ErrorType.scanning, error: errorString ?? "")
+                        AnalyticsService.reportError(errorType: ErrorType.scanning, error: errorString ?? "")
                         completion(.ticketNotFound, errorString, redeemTicket)
                         return
                     }
                     
                     guard let eventID = self.scanVC?.event?.id else {
-                        AnalyticsService.shared.reportError(errorType: ErrorType.scanning, error: errorString ?? "")
+                        AnalyticsService.reportError(errorType: ErrorType.scanning, error: errorString ?? "")
                         completion(.issueFound, errorString, redeemTicket)
                         return
                     }
                     
                     self.completeAutoCheckin(eventID: eventID, ticket: ticket, completion: { (scanFeedback) in
-                        AnalyticsService.shared.reportError(errorType: ErrorType.scanning, error: errorString ?? "")
+                        AnalyticsService.reportError(errorType: ErrorType.scanning, error: errorString ?? "")
                         completion(scanFeedback, errorString, redeemTicket)
                         return
                     })

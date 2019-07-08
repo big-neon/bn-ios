@@ -1,6 +1,8 @@
 
 import Foundation
 import UIKit
+import Big_Neon_Core
+import SwiftKeychainWrapper
 
 public class Utils: NSObject {
     
@@ -20,5 +22,11 @@ public class Utils: NSObject {
         alert.addAction(UIAlertAction(title: "Confirm", style: UIAlertAction.Style.default, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         presenter.present(alert, animated: true, completion: nil)
+    }
+    
+    static func saveTokensInKeychain(token: Tokens) {
+        KeychainWrapper.standard.set(token.accessToken, forKey: "accessToken")
+        KeychainWrapper.standard.set(token.refreshToken, forKey: "refreshToken")
+        return
     }
 }

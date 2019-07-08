@@ -34,7 +34,7 @@ final class AccountViewModel {
             
             if error != nil {
                 print(error)
-                AnalyticsService.shared.reportError(errorType: ErrorType.authentication, error: error ?? "")
+                AnalyticsService.reportError(errorType: ErrorType.authentication, error: error ?? "")
                 completion(false, error)
                 return
             }
