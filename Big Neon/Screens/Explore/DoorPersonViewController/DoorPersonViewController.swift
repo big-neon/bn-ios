@@ -11,6 +11,10 @@ protocol DoorPersonViewDelegate: class {
 final class DoorPersonViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate, DoorPersonViewDelegate {
 
     var eventsFetcher: EventsFetcher
+    lazy var guestsFetcher: GuestsFetcher = {
+        let fetcher = GuestsFetcher()
+        return fetcher
+    }()
     
     lazy var refresher: UIRefreshControl = {
         let refresher = UIRefreshControl()
@@ -90,8 +94,6 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         syncEventsData()
     }
 
-    
-    
     private func configureSearch() {
         //TODO: self.navigationItem.searchController = searchController
     }
@@ -147,7 +149,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     }
     
     internal func showScanner(forTicketIndex ticketIndex: Int) {
-        let scannerVC = ScannerViewController(fetcher: fetcher)
+        let scannerVC = ScannerViewController(fetcher: guestsFetcher)
         scannerVC.event = self.doorPersonViemodel.eventCoreData[ticketIndex]
         let scannerNavVC = UINavigationController(rootViewController: scannerVC)
         self.present(scannerNavVC, animated: true, completion: nil)

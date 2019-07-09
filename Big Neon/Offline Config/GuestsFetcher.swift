@@ -6,46 +6,42 @@ import Alamofire
 import Big_Neon_Core
 
 class GuestsFetcher {
-    
+
     private let dataStack: DataStack
-    private let repository: EventsApiRepository
-    
+    private let repository: GuestsApiRepository
+
     init() {
         self.dataStack = DataStack(modelName: "Big Neon")
-        self.repository = EventsApiRepository.shared
+        self.repository = GuestsApiRepository.shared
     }
-    
-    func fetchLocalEvents() -> [EventsData] {
-        let request: NSFetchRequest<EventsData> = EventsData.fetchRequest()
-        return try! self.dataStack.viewContext.fetch(request)
-    }
-    
+
     func fetchLocalGuests() -> [RedeemedTicket] {
-        let guests: NSFetchRequest<RedeemedTicket> = RedeemedTicket.fetchRequest()
+        let guests: NSFetchRequest<RedeemedTicket> = RedeemedTicket.fetchRequest()  //  Fetching Local Guests
         return try! self.dataStack.viewContext.fetch(guests)
     }
     
-    func syncCheckins(completion: @escaping (_ result: VoidResult) -> ()) {
-        
-        self.repository.fetchEvents { (eventsFetchedDict, error) in
+    func syncGuestsData(withEventID eventID: String, completion: @escaping (_ result: VoidResult) -> ()) {
+        print(eventID)
+        self.repository.fetchGuests(forEventID: eventID) { (guestsFetchedDict, error) in
             if error != nil {
                 completion(.failure(error! as NSError))
                 return
             }
             
-            guard let events = eventsFetchedDict else {
+            guard let guests = guestsFetchedDict else {
                 return
             }
             
-            var venues: [[String: Any]] = []
-            for eachEvent in events {
-                venues.append(eachEvent["venue"] as! [String : Any])
-            }
+            print(guests)
+//            var venues: [[String: Any]] = []
+//            for eachEvent in guests {
+//                venues.append(eachEvent["venue"] as! [String : Any])
+//            }
+//
+//            self.dataStack.sync(venues, inEntityNamed: Venue.entity().managedObjectClassName) { error in
+//            }
             
-            self.dataStack.sync(venues, inEntityNamed: Venue.entity().managedObjectClassName) { error in
-            }
-            
-            self.dataStack.sync(events, inEntityNamed: EventsData.entity().managedObjectClassName) { error in
+            self.dataStack.sync(guests, inEntityNamed: RedeemedTicket.entity().managedObjectClassName) { error in
                 completion(.success)
             }
         }

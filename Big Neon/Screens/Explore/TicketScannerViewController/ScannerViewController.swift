@@ -23,7 +23,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     var lastScannedTicket: RedeemableTicket?
     var scannedTicketID: String?
     var event: EventsData?
-    var fetcher: EventsFetcher
+    var fetcher: GuestsFetcher
     var guestListVC: GuestListViewController?
     
     //  Layout
@@ -143,7 +143,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         return view
     }()
 
-    init(fetcher: EventsFetcher) {
+    init(fetcher: GuestsFetcher) {
         self.fetcher = fetcher
         super.init(nibName: nil, bundle: nil)
     }
@@ -164,13 +164,32 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         configureScanner()
         configureManualCheckinView()
         configureHeader()
-        fetchGuests()
+//        fetchGuests()
+        syncGuestsData()
     }
     
     deinit {
         timer?.invalidate()
     }
     
+    @objc func syncGuestsData() {
+        guard let eventID = self.event?.id else {
+            return
+        }
+        
+        self.fetcher.syncGuestsData(withEventID: eventID) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    self.scannerViewModel?.ticketsCoreData = self.fetcher.fetchLocalGuests()
+//                    self.guests = self.scannerViewModel?.ticketsCoreData
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
+
     func fetchGuests() {
         guard let eventID = self.event?.id else {
             return
@@ -180,7 +199,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
             DispatchQueue.main.async {
                 guard let self = self else {return}
                 if completed == false {
-                    
+
                     return
                 }
                 self.guests = self.scannerViewModel?.ticketsFetched
@@ -270,7 +289,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     
     private func configureScannedUserView() {
         view.addSubview(scannedUserView)
-        
+
         if self.isiPhoneSE() == true {
             scannedUserView.layer.cornerRadius = 0.0
             scannedUserView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -279,7 +298,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
             scannedUserView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20.0).isActive = true
             scannedUserView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20.0).isActive = true
         }
-        
+
         scannedUserBottomAnchor = scannedUserView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 200.0)
         scannedUserBottomAnchor?.isActive = true
         scannedUserView.heightAnchor.constraint(equalToConstant: 76.0).isActive = true
@@ -317,17 +336,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         guestListVC!.scanVC = self
         let navGuestVC = GuestListNavigationController(rootViewController: guestListVC!)
         self.presentPanModal(navGuestVC)
-    }
-
-    @objc func syncEventsData() {
-        fetcher.syncCheckins { result in
-            switch result {
-            case .success:
-                print("Syncing Data")
-            case .failure(let error):
-                print(error)
-            }
-        }
     }
 }
 

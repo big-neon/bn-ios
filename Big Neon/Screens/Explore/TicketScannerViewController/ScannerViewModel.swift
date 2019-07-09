@@ -18,6 +18,7 @@ final class TicketScannerViewModel {
     var currentPage: Int = 0
     let limit = 100
     var ticketsFetched: [RedeemableTicket] = []
+    var ticketsCoreData: [RedeemedTicket] = []
 
     //  Event Infor
     var eventID: String?
