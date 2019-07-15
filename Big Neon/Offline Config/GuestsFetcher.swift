@@ -32,14 +32,14 @@ class GuestsFetcher {
                 return
             }
             
-            print(guests)
-//            var venues: [[String: Any]] = []
-//            for eachEvent in guests {
-//                venues.append(eachEvent["venue"] as! [String : Any])
-//            }
-//
-//            self.dataStack.sync(venues, inEntityNamed: Venue.entity().managedObjectClassName) { error in
-//            }
+//            print(guests)
+            var venues: [[String: Any]] = []
+            for eachEvent in guests {
+                venues.append(eachEvent["venue"] as! [String : Any])
+            }
+
+            self.dataStack.sync(venues, inEntityNamed: Venue.entity().managedObjectClassName) { error in
+            }
             
             self.dataStack.sync(guests, inEntityNamed: RedeemedTicket.entity().managedObjectClassName) { error in
                 completion(.success)
