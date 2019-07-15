@@ -55,9 +55,26 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
                               AVMetadataObject.ObjectType.interleaved2of5,
                               AVMetadataObject.ObjectType.qr]
     
+    var guestsCoreData: [RedeemedTicket]? {
+        didSet {
+            showGuestView.loadingView.stopAnimating()
+            
+            guard let guestsFetched = guestsCoreData else {
+                return
+            }
+            
+            if !guestsFetched.isEmpty {
+                showGuestView.isUserInteractionEnabled = true
+                showGuestView.headerLabel.textColor = UIColor.brandPrimary
+            } else {
+                showGuestView.isUserInteractionEnabled = true
+                showGuestView.headerLabel.textColor = UIColor.brandPrimary
+            }
+        }
+    }
+    
     var guests: [RedeemableTicket]? {
         didSet {
-            
             showGuestView.loadingView.stopAnimating()
             
             guard let guestsFetched = guests else {
@@ -164,7 +181,9 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         configureScanner()
         configureManualCheckinView()
         configureHeader()
-//        fetchGuests()
+        
+        //  Ticket Fetching
+        // fetchGuests()
         syncGuestsData()
     }
     
@@ -177,12 +196,12 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
             return
         }
         
-        self.fetcher.syncGuestsData(withEventID: eventID) { (result) in
+        self.fetcher.syncGuestData(withEventID: eventID) { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success:
                     self.scannerViewModel?.ticketsCoreData = self.fetcher.fetchLocalGuests()
-//                    self.guests = self.scannerViewModel?.ticketsCoreData
+                    self.guestsCoreData = self.fetcher.fetchLocalGuests()
                 case .failure(let error):
                     print(error)
                 }

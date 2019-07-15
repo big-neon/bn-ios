@@ -20,7 +20,7 @@ class GuestsFetcher {
         return try! self.dataStack.viewContext.fetch(guests)
     }
     
-    func syncGuestsData(withEventID eventID: String, completion: @escaping (_ result: VoidResult) -> ()) {
+    func syncGuestData(withEventID eventID: String, completion: @escaping (_ result: VoidResult) -> ()) {
         print(eventID)
         self.repository.fetchGuests(forEventID: eventID) { (guestsFetchedDict, error) in
             if error != nil {
@@ -32,14 +32,16 @@ class GuestsFetcher {
                 return
             }
             
+//            print(guests.first)
+            
 //            print(guests)
             var venues: [[String: Any]] = []
-            for eachEvent in guests {
-                venues.append(eachEvent["venue"] as! [String : Any])
-            }
+//            for eachEvent in guests {
+//                venues.append(eachEvent["venue"] as! [String : Any])
+//            }
 
-            self.dataStack.sync(venues, inEntityNamed: Venue.entity().managedObjectClassName) { error in
-            }
+//            self.dataStack.sync(venues, inEntityNamed: Venue.entity().managedObjectClassName) { error in
+//            }
             
             self.dataStack.sync(guests, inEntityNamed: RedeemedTicket.entity().managedObjectClassName) { error in
                 completion(.success)
