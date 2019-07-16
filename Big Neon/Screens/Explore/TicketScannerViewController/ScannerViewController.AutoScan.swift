@@ -21,6 +21,9 @@ extension ScannerViewController {
         self.stopScanning = true
         self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID) { [weak self] (scanFeedback, errorString, ticket) in
             DispatchQueue.main.async {
+                
+                
+                //  Checking from Guestlist
                 if fromGuestTableView == true {
                     if self?.guestListVC?.isSearching == true {
                         self?.guestListVC?.guestViewModel.guestSearchResults.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
@@ -56,12 +59,14 @@ extension ScannerViewController {
         runCountDownTimer()
         if ticket?.eventName != self.event?.name {
             self.playSuccessSound(forValidTicket: false)
+            self.scannedTicketID = ticket?.id
             feedFound = .wrongEvent
         } else {
             self.playSuccessSound(forValidTicket: true)
         }
         
-        scannedUserView.redeemableTicket = ticket
+        scannedUserView.userNameLabel.text = ticket?.eventName
+        scannedUserView.ticketTypeLabel.text = "-"
         scannedUserView.scanFeedback = feedFound
         scannerViewModel?.redeemedTicket = ticket
         blurView?.layer.opacity = 0.0

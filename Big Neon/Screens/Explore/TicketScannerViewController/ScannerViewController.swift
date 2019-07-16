@@ -274,11 +274,10 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         if videoCaptureDevice.isAutoFocusRangeRestrictionSupported == true {
             do {
                 try videoCaptureDevice.lockForConfiguration()
-                videoCaptureDevice.autoFocusRangeRestriction = .none
+                videoCaptureDevice.autoFocusRangeRestriction = .near
                 videoCaptureDevice.focusPointOfInterest = CGPoint(x: 0.5, y: 0.5)
-                videoCaptureDevice.unlockForConfiguration()
             } catch {
-                print(error)
+                AnalyticsService.reportError(errorType: ErrorType.scanning, error: error.localizedDescription)
             }
         }
 
@@ -290,7 +289,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
             captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             captureMetadataOutput.metadataObjectTypes = supportedCodeTypes
         } catch {
-            print(error)
+            AnalyticsService.reportError(errorType: ErrorType.scanning, error: error.localizedDescription)
             return
         }
 

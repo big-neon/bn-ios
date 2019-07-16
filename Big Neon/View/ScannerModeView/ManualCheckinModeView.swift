@@ -44,7 +44,8 @@ public class ManualCheckinModeView: UIView {
                 
             } else {
                 bannedTagView.isHidden = true
-                completeCheckinButton.backgroundColor = .brandBlack
+                completeCheckinButton.backgroundColor = .brandBackground
+                completeCheckinButton.setTitleColor(UIColor.brandLightGrey, for: UIControl.State.normal)
                 completeCheckinButton.setTitle("Already Redeemed", for: UIControl.State.normal)
                 completeCheckinButton.addTarget(self, action: #selector(doNothing), for: UIControl.Event.touchUpInside)
                 
@@ -64,7 +65,7 @@ public class ManualCheckinModeView: UIView {
                     return
                 }
                 
-                dateValueLabel.text = "Redeemed: " + redeemedDate.getElapsed() //"On: " + DateConfig.fullDateFormat(date: redeemedDate)
+                dateValueLabel.text = "Redeemed: " + redeemedDate.getElapsed()
             }
         }
     }
