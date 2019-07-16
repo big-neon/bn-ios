@@ -76,11 +76,11 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     var guests: [RedeemableTicket]? {
         didSet {
             showGuestView.loadingView.stopAnimating()
-            
+
             guard let guestsFetched = guests else {
                 return
             }
-            
+
             if !guestsFetched.isEmpty {
                 showGuestView.isUserInteractionEnabled = true
                 showGuestView.headerLabel.textColor = UIColor.brandPrimary
@@ -183,8 +183,8 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         configureHeader()
         
         //  Ticket Fetching
-        // fetchGuests()
-        syncGuestsData()
+        fetchGuests()
+        //  syncGuestsData()
     }
     
     deinit {
@@ -269,6 +269,17 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
             configureScannedUserView()
             return
         }
+        
+        //  Configuring the camera to focus on near objects
+        if videoCaptureDevice.isAutoFocusRangeRestrictionSupported == true {
+            do {
+                try videoCaptureDevice.lockForConfiguration()
+                videoCaptureDevice.autoFocusRangeRestriction = .near
+                videoCaptureDevice.unlockForConfiguration()
+            } catch {
+                print(error)
+            }
+        }
 
         do {
             let input = try AVCaptureDeviceInput(device: videoCaptureDevice)
@@ -323,6 +334,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         scannedUserView.heightAnchor.constraint(equalToConstant: 76.0).isActive = true
     }
     
+    
     @objc func showGuestList() {
         viewAnimationBounce(viewSelected: showGuestView,
                             bounceVelocity: 10.0,
@@ -353,9 +365,46 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         guestListVC!.guestViewModel.ticketsFetched = guests
         guestListVC!.totalGuests = scannerViewModel.totalGuests
         guestListVC!.scanVC = self
+        let navGuestVC = UINavigationController(rootViewController: guestListVC!)
+        self.present(navGuestVC, animated: true, completion: nil)
+    }
+    
+    /*
+    @objc func showGuestList() {
+        viewAnimationBounce(viewSelected: showGuestView,
+                            bounceVelocity: 10.0,
+                            springBouncinessEffect: 3.0)
+        self.stopScanning = true
+        
+        guard let guests = self.guestsCoreData else {
+            return
+        }
+        
+        guard let event = self.event, let eventID = event.id, let eventTimeZone = event.venue?.timezone else {
+            return
+        }
+        
+        guard let scannerViewModel = self.scannerViewModel else {
+            return
+        }
+        
+        guestListVC = GuestListViewController(eventID: eventID,
+                                              guestsFetched: guests,
+                                              eventTimeZone: eventTimeZone,
+                                              scannerVC: self,
+                                              scannerVM: scannerViewModel)
+        guestListVC!.delegate = self
+        guestListVC!.guestsCoreData = guests
+        guestListVC!.guestViewModel.totalGuests = scannerViewModel.totalGuests
+        guestListVC!.guestViewModel.currentTotalGuests = scannerViewModel.currentTotalGuests
+        guestListVC!.guestViewModel.currentPage = scannerViewModel.currentPage
+        guestListVC!.guestViewModel.ticketsFetched = guests
+        guestListVC!.totalGuests = scannerViewModel.totalGuests
+        guestListVC!.scanVC = self
         let navGuestVC = GuestListNavigationController(rootViewController: guestListVC!)
         self.presentPanModal(navGuestVC)
     }
+    */
 }
 
 

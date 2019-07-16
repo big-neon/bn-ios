@@ -71,6 +71,31 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
             self.guestSectionTitles = guestSectionTitles.sorted(by: { $0 < $1 })
         }
     }
+    
+    public var  guestsCoreData: [RedeemedTicket]? {
+        didSet {
+            guard let guests = self.guestsCoreData else {
+                return
+            }
+            
+            configureNavBar()
+            configureView()
+            guestsDictionary.removeAll()
+            
+//            for guest in guests {
+//                let guestKey = String(guest.first_name!.prefix(1).uppercased())
+//                if var guestValues = guestsDictionary[guestKey] {
+//                    guestValues.append(guest)
+//                    guestsDictionary[guestKey] = guestValues
+//                } else {
+//                    guestsDictionary[guestKey] = [guest]
+//                }
+//            }
+            
+            self.guestSectionTitles = [String](guestsDictionary.keys)
+            self.guestSectionTitles = guestSectionTitles.sorted(by: { $0 < $1 })
+        }
+    }
 
     lazy var headerView: GuestListHeaderView = {
         let view = GuestListHeaderView()
@@ -169,6 +194,11 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
         super.viewWillAppear(animated)
         self.configureNavBar()
         self.navigationItem.titleView = self.searchController.searchBar
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDimiss))
+    }
+    
+    @objc func handleDimiss() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     func configureNavBar() {
