@@ -23,20 +23,23 @@ final class TicketScannerViewModel {
     //  Event Infor
     var eventID: String?
     
-    func setScannerModeFirstTime() {
+    func setScannerModeFirstTime() -> Bool {
         if UserDefaults.standard.bool(forKey: Constants.CheckingMode.scannerCheckinConfiguredKey) == false {
            UserDefaults.standard.set(true, forKey: Constants.CheckingMode.scannerCheckinKey)
             UserDefaults.standard.set(true, forKey: Constants.CheckingMode.scannerCheckinConfiguredKey)
             UserDefaults.standard.synchronize()
+            return true
+        } else {
+            return false
         }
     }
 
-    func setCheckingMModeAutomatic() {
+    func setCheckingModeAutomatic() {
         UserDefaults.standard.set(true, forKey: Constants.CheckingMode.scannerCheckinKey)
         UserDefaults.standard.synchronize()
     }
 
-    func setCheckingMModeManual() {
+    func setCheckingModeManual() {
         UserDefaults.standard.set(false, forKey: Constants.CheckingMode.scannerCheckinKey)
         UserDefaults.standard.synchronize()
     }

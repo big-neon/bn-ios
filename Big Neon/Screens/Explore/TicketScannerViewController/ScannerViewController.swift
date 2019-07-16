@@ -178,7 +178,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         configureViewModel()
         view.backgroundColor = UIColor.black
         hideNavBar()
-        scannerViewModel?.setScannerModeFirstTime()
+        configureAutoMode()
         configureScanner()
         configureManualCheckinView()
         configureHeader()
@@ -190,6 +190,12 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     
     deinit {
         timer?.invalidate()
+    }
+    
+    func configureAutoMode() {
+        if scannerViewModel?.setScannerModeFirstTime() == true {
+            self.scannerModeView.setAutoMode = true
+        }
     }
     
     @objc func syncGuestsData() {
