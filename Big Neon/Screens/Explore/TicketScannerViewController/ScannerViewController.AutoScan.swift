@@ -22,7 +22,6 @@ extension ScannerViewController {
         self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID) { [weak self] (scanFeedback, errorString, ticket) in
             DispatchQueue.main.async {
                 
-                
                 //  Checking from Guestlist
                 if fromGuestTableView == true {
                     if self?.guestListVC?.isSearching == true {
@@ -74,7 +73,6 @@ extension ScannerViewController {
         scannedUserBottomAnchor?.constant = -90.0
         manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
         generator.notificationOccurred(.success)
-        
         
     }
     

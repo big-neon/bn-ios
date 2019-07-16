@@ -178,6 +178,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         configureViewModel()
         view.backgroundColor = UIColor.black
         hideNavBar()
+        scannerViewModel?.setScannerModeFirstTime()
         configureScanner()
         configureManualCheckinView()
         configureHeader()
