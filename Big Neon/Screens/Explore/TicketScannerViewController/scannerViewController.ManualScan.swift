@@ -35,12 +35,14 @@ extension ScannerViewController {
     
     func showRedeemedTicket(forTicket ticket: RedeemableTicket) {
         self.stopScanning = true
+        self.isShowingScannedUser = true
         self.manualUserCheckinView.event = self.event
-        self.scannedTicketID = ticket.id    //  self.scannedTicket?.id
-        self.manualUserCheckinView.redeemableTicket = ticket //self.scannedTicket
+        self.scannedTicketID = ticket.id
+        self.manualUserCheckinView.redeemableTicket = ticket
         self.playSuccessSound(forValidTicket: false)
+        
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.scanningBoarderView.layer.opacity = 0.0
+            self.scanningBoarderView.layer.opacity = 1.0
             self.showGuestView.layer.opacity = 0.0
             self.closeButton.layer.opacity = 0.0
             self.blurView?.layer.opacity = 1.0
@@ -58,6 +60,7 @@ extension ScannerViewController {
             return
         }
         
+        self.isShowingScannedUser = false
         self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID) { (scanFeedback, errorString, ticket) in
             DispatchQueue.main.async {
                 self.manualUserCheckinView.completeCheckinButton.stopAnimation()

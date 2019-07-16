@@ -43,9 +43,8 @@ public class LastScannedUserView: UIView {
     
     public lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = UIImage(named: "empty_profile")
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 20.0
-        imageView.backgroundColor = UIColor.brandBackground
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView

@@ -64,6 +64,10 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                 }
             }
             
+            //  Check if a Scanned User
+            if self.isShowingScannedUser == true {
+                return
+            }
             self.hideScannedUser()
             self.stopScanning = true
             if self.scannerViewModel?.scannerMode() == true {

@@ -33,6 +33,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     var manualCheckingTopAnchor: NSLayoutConstraint?
     var scannedUserBottomAnchor: NSLayoutConstraint?
     var stopScanning: Bool?
+    var isShowingScannedUser: Bool?
     var scannerViewModel : TicketScannerViewModel?
     let blurEffect = UIBlurEffect(style: .dark)
     var blurView: UIVisualEffectView?

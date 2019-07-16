@@ -27,6 +27,7 @@ public class ManualCheckinModeView: UIView {
                 bannedTagView.isHidden = false
                 bannedTagView.backgroundColor = UIColor.brandError
                 bannedTagView.tagLabel.text = "WRONG EVENT"
+                completeCheckinButton.setTitleColor(UIColor.brandBackground, for: UIControl.State.normal)
                 completeCheckinButton.backgroundColor = .brandBlack
                 completeCheckinButton.setTitle("Ok", for: UIControl.State.normal)
                 completeCheckinButton.addTarget(self, action: #selector(cancelChecking), for: UIControl.Event.touchUpInside)
@@ -38,6 +39,7 @@ public class ManualCheckinModeView: UIView {
                 bannedTagView.isHidden = false
                 bannedTagView.backgroundColor = UIColor.brandGreen
                 bannedTagView.tagLabel.text = "PURCHASED"
+                completeCheckinButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
                 completeCheckinButton.backgroundColor = .brandPrimary
                 completeCheckinButton.setTitle("Complete Check-in", for: UIControl.State.normal)
                 completeCheckinButton.addTarget(self, action: #selector(handleCompleteCheckin), for: UIControl.Event.touchUpInside)
