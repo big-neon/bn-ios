@@ -45,7 +45,7 @@ extension ScannerViewController {
             self.closeButton.layer.opacity = 0.0
             self.blurView?.layer.opacity = 1.0
             self.scannerModeView.layer.opacity = 0.0
-            self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height - 250.0
+            self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height - 272.0
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
             self.stopScanning = true
@@ -59,12 +59,16 @@ extension ScannerViewController {
         }
         
         self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID) { (scanFeedback, errorString, ticket) in
-            UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
-                self.showManuallyScannedUser(feedback: scanFeedback, ticket: ticket)
-                self.view.layoutIfNeeded()
-            }, completion: { (completed) in
-                self.stopScanning = false
-            })
+            DispatchQueue.main.async {
+                self.manualUserCheckinView.completeCheckinButton.stopAnimation()
+                UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
+                    self.showManuallyScannedUser(feedback: scanFeedback, ticket: ticket)
+                    self.view.layoutIfNeeded()
+                }, completion: { (completed) in
+                    self.stopScanning = false
+                })
+            }
+            
         }
     }
     

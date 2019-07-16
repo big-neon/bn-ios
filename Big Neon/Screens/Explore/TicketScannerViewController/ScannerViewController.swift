@@ -274,7 +274,8 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         if videoCaptureDevice.isAutoFocusRangeRestrictionSupported == true {
             do {
                 try videoCaptureDevice.lockForConfiguration()
-                videoCaptureDevice.autoFocusRangeRestriction = .near
+                videoCaptureDevice.autoFocusRangeRestriction = .none
+                videoCaptureDevice.focusPointOfInterest = CGPoint(x: 0.5, y: 0.5)
                 videoCaptureDevice.unlockForConfiguration()
             } catch {
                 print(error)
@@ -314,7 +315,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         manualUserCheckinView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         manualCheckingTopAnchor = manualUserCheckinView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UIScreen.main.bounds.height + 50.0)
         manualCheckingTopAnchor?.isActive = true
-        manualUserCheckinView.heightAnchor.constraint(equalToConstant: 250.0).isActive = true
+        manualUserCheckinView.heightAnchor.constraint(equalToConstant: 264.0).isActive = true
     }
     
     private func configureScannedUserView() {
