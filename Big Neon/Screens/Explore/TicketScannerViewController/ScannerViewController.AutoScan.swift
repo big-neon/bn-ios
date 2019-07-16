@@ -60,14 +60,16 @@ extension ScannerViewController {
             self.playSuccessSound(forValidTicket: false)
             self.scannedTicketID = ticket?.id
             feedFound = .wrongEvent
+            scannedUserView.userNameLabel.text = ticket?.eventName
+            scannedUserView.ticketTypeLabel.text = "-"
         } else {
-            self.playSuccessSound(forValidTicket: true)
+            playSuccessSound(forValidTicket: true)
+            scannerViewModel?.redeemedTicket = ticket
+            scannedUserView.redeemableTicket = ticket
         }
         
-        scannedUserView.userNameLabel.text = ticket?.eventName
-        scannedUserView.ticketTypeLabel.text = "-"
+        
         scannedUserView.scanFeedback = feedFound
-        scannerViewModel?.redeemedTicket = ticket
         blurView?.layer.opacity = 0.0
         scannerModeView.layer.opacity = 1.0
         scannedUserBottomAnchor?.constant = -90.0

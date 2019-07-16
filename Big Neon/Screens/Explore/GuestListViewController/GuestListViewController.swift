@@ -193,8 +193,6 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.configureNavBar()
-        self.navigationItem.titleView = self.searchController.searchBar
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDimiss))
     }
     
     @objc func handleDimiss() {
@@ -205,6 +203,11 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
         navigationNoLineBar()
         navigationController?.navigationBar.barTintColor = UIColor.brandBackground
         navigationController?.navigationBar.tintColor = UIColor.brandBlack
+        if let eventName = self.scanVC.event!.name {
+            self.setNavigationTitle(withTitle: eventName)
+        }
+        self.navigationItem.searchController = searchController
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDimiss))
     }
     
     private func configureSearch() {
