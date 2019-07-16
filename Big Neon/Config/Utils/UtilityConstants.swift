@@ -11,6 +11,7 @@ public enum Constants {
     
     public enum CheckingMode {
         static let scannerCheckinKey     = "com.BigNeon.scannerCheckinModeKey"
+        static let scannerCheckinConfiguredKey = "com.BigNeon.scannerCheckinConfiguredKey"
     }
     
     public enum Cloudinary {
