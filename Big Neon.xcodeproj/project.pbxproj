@@ -12,7 +12,6 @@
 		82440D91D23AF737DB34B959 /* Pods_Big_Neon_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58804A3D6C2FB1A6BD559FD5 /* Pods_Big_Neon_Core.framework */; };
 		C60BDEBE229EC03F00E54456 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60BDEB9229EB4B600E54456 /* Environment.swift */; };
 		C60BDEBF229EC03F00E54456 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D37B3421F1CD8200C616D0 /* API.swift */; };
-		C60BDEC1229EE27A00E54456 /* Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = C60BDEC0229EE27A00E54456 /* Production.plist */; };
 		C60EDC852248E3EE00C9CC27 /* Environment-Old.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EDC842248E3EE00C9CC27 /* Environment-Old.swift */; };
 		C61853B72212F1DB005D6250 /* DoorPersonViewController.Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853B62212F1DB005D6250 /* DoorPersonViewController.Search.swift */; };
 		C61853B92212F4C8005D6250 /* TicketTypeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853B82212F4C8005D6250 /* TicketTypeSelectionViewController.swift */; };
@@ -1202,7 +1201,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = "Big Neon Inc";
 				TargetAttributes = {
 					C62BC77F21CCC3F700830A5F = {
@@ -1255,7 +1254,6 @@
 			files = (
 				C66923BC22CF6C2300A162A6 /* Beep.mp3 in Resources */,
 				C66C0BA521E337D40066CD0F /* splash.mp4 in Resources */,
-				C60BDEC1229EE27A00E54456 /* Production.plist in Resources */,
 				C62BC78E21CCC3FB00830A5F /* LaunchScreen.storyboard in Resources */,
 				C62BC78B21CCC3FB00830A5F /* Assets.xcassets in Resources */,
 				C66923BA22CF5FB000A162A6 /* Valid.m4a in Resources */,

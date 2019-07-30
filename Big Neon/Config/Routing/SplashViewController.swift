@@ -61,8 +61,8 @@ final class SplashViewController: UIViewController {
     
     private func navigateHome() {
         let doorPersonVC = DoorPersonViewController(fetcher: fetcher)
-        doorPersonVC.modalPresentationStyle = .fullScreen
         let doorPersonNavVC = UINavigationController(rootViewController: doorPersonVC)
+        doorPersonNavVC.modalPresentationStyle = .fullScreen
         present(doorPersonNavVC, animated: false, completion: nil)
     }
     
