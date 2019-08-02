@@ -22,10 +22,12 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         
         guard let metadataObj = metadataObjects.first as? AVMetadataMachineReadableCodeObject else {
             self.stopScanning = false
+            print("No Meta Data")
             return
         }
         
         if self.stopScanning == true {
+            print("Scanning Stopped")
             return
         }
         
@@ -51,12 +53,18 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             
             //  Last Ticket and Latest Ticket are the same - don't rescan.
             if let scannedTicketID = self.scannerViewModel?.redeemedTicket?.id {
+                
+                if ticketID == scannedTicketID {
+                    print("Scanning the same ticket")
+                    return
+                }
+                
                 if let timer = self.timer {
                     if timer.isValid == true {
                        return
                     }
                 } else {
-                    if ticketID == scannedTicketID {
+                    if ticketID != scannedTicketID {
                         self.checkinAutomatically(withTicketID: scannedTicketID, fromGuestTableView: false, atIndexPath: nil)
                         self.stopScanning = false
                         return
@@ -66,8 +74,10 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             
             //  Check if a Scanned User
             if self.isShowingScannedUser == true {
+                print("Scanner is still showing a user")
                 return
             }
+            
             self.hideScannedUser()
             self.stopScanning = true
             if self.scannerViewModel?.scannerMode() == true {
