@@ -46,7 +46,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             }
             
             guard let ticketID = self.scannerViewModel?.getTicketID(fromStringValue: metaDataString) else {
-                self.generator.notificationOccurred(.error)
+                self.generator.notificationOccurred(.error) 
                 self.stopScanning = true
                 return
             }
@@ -54,17 +54,20 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             //  Last Ticket and Latest Ticket are the same - don't rescan.
             if let scannedTicketID = self.scannerViewModel?.redeemedTicket?.id {
                 
-                if ticketID == scannedTicketID {
-                    print("Scanning the same ticket")
+                if ticketID != scannedTicketID {
+                    self.checkinAutomatically(withTicketID: scannedTicketID, fromGuestTableView: false, atIndexPath: nil)
+                    self.stopScanning = false
+                    self.timer?.invalidate()
+                    self.timer = nil
                     return
                 }
-                
+
                 if let timer = self.timer {
                     if timer.isValid == true {
                        return
                     }
                 } else {
-                    if ticketID != scannedTicketID {
+                    if ticketID == scannedTicketID {
                         self.checkinAutomatically(withTicketID: scannedTicketID, fromGuestTableView: false, atIndexPath: nil)
                         self.stopScanning = false
                         return
@@ -89,6 +92,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     }
     
     func dismissScannedUserView() {
+        self.isShowingScannedUser = false
         self.dismissFeedbackView(feedback: nil)
     }
     
