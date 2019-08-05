@@ -41,6 +41,11 @@ playground.xcworkspace
 # Package.resolved
 .build/
 
+# Plist Configuration Files
+Plist/
+./Production.plist
+./Development.plist
+
 # CocoaPods
 #
 # We recommend against adding the Pods directory to your .gitignore. However
