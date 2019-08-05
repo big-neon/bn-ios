@@ -59,13 +59,13 @@ public class GuestsApiRepository {
                 
                 guard response.result.isSuccess else {
                     completion(nil, response.result.error)
-                    AnalyticsService.reportError(errorType: ErrorType.guestlistFetch, error: response.result.error!.localizedDescription)
+                    AnalyticsService.reportError(errorType: ErrorType.guestsFetch, error: response.result.error!.localizedDescription)
                     return
                 }
                 
                 guard let data = response.result.value else {
                     let error = NSError(domain: dataErrorDomain, code: DataErrorCode.networkUnavailable.rawValue, userInfo: nil)
-                    AnalyticsService.reportError(errorType: ErrorType.guestlistFetch, error: error.localizedDescription)
+                    AnalyticsService.reportError(errorType: ErrorType.guestsFetch, error: error.localizedDescription)
                     completion(nil, nil)
                     return
                 }
@@ -85,7 +85,7 @@ public class GuestsApiRepository {
                     completion(result, nil)
                     
                 } catch let error as NSError {
-                    AnalyticsService.reportError(errorType: ErrorType.guestlistFetch, error: error.localizedDescription)
+                    AnalyticsService.reportError(errorType: ErrorType.guestsFetch, error: error.localizedDescription)
                     completion(nil, error)
                 }
         }
