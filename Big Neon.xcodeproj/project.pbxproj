@@ -10,6 +10,7 @@
 		3761B944BCAD328BA221B2DA /* Pods_Big_Neon_UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 341E3BB334D759BEA31DC6E2 /* Pods_Big_Neon_UI.framework */; };
 		6CFD25CA24C8C41F43DD860C /* Pods_Big_Neon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 465C6F10B28F5D3A8C77DC7C /* Pods_Big_Neon.framework */; };
 		82440D91D23AF737DB34B959 /* Pods_Big_Neon_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58804A3D6C2FB1A6BD559FD5 /* Pods_Big_Neon_Core.framework */; };
+		C60793452302B777006B7A80 /* Source in Resources */ = {isa = PBXBuildFile; fileRef = C60793442302B777006B7A80 /* Source */; };
 		C60BDEBE229EC03F00E54456 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60BDEB9229EB4B600E54456 /* Environment.swift */; };
 		C60BDEBF229EC03F00E54456 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D37B3421F1CD8200C616D0 /* API.swift */; };
 		C60EDC852248E3EE00C9CC27 /* Environment-Old.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EDC842248E3EE00C9CC27 /* Environment-Old.swift */; };
@@ -239,6 +240,7 @@
 		C603E4A0221586040079ED73 /* SubTotalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTotalCell.swift; sourceTree = "<group>"; };
 		C603E4A2221589B80079ED73 /* CardCheckoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCheckoutCell.swift; sourceTree = "<group>"; };
 		C6058DE02229520D00BDF397 /* ScannerModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerModeView.swift; sourceTree = "<group>"; };
+		C60793442302B777006B7A80 /* Source */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Source; sourceTree = "<group>"; };
 		C60BDEB6229EAAB100E54456 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		C60BDEB7229EAACA00E54456 /* Beta.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		C60BDEB8229EAAD800E54456 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
@@ -566,6 +568,7 @@
 				C62BC78A21CCC3FB00830A5F /* Assets.xcassets */,
 				C66C0BA421E337D40066CD0F /* splash.mp4 */,
 				C62BC78C21CCC3FB00830A5F /* LaunchScreen.storyboard */,
+				C60793442302B777006B7A80 /* Source */,
 				C694D25721D0BFB300B2AE07 /* Config */,
 				C6B88D5821F1C33E006394F8 /* View */,
 				C6B88D2D21F1BBE8006394F8 /* Cells */,
@@ -1252,6 +1255,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C60793452302B777006B7A80 /* Source in Resources */,
 				C66923BC22CF6C2300A162A6 /* Beep.mp3 in Resources */,
 				C66C0BA521E337D40066CD0F /* splash.mp4 in Resources */,
 				C62BC78E21CCC3FB00830A5F /* LaunchScreen.storyboard in Resources */,
