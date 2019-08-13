@@ -5,7 +5,7 @@ import UIKit
 import Big_Neon_Core
 import Big_Neon_UI
 import PanModal
-import SwipeCellKit
+//import SwipeCellKit
 import Sync
 
 protocol GuestListViewDelegate: class {

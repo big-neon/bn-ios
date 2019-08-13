@@ -26,6 +26,19 @@ public struct SwipeExpansionStyle {
     public static var fill: SwipeExpansionStyle { return SwipeExpansionStyle(target: .edgeInset(30),
                                                                              additionalTriggers: [.overscroll(30)],
                                                                              completionAnimation: .fill(.manual(timing: .after))) }
+    
+    /*  Custom Swipe Animation with Fill and Reset */
+    
+    public static var resetAfterFill: SwipeExpansionStyle {
+        return .fillReset(timing: SwipeExpansionStyle.FillOptions.HandlerInvocationTiming.with)
+    }
+    
+    public static func fillReset(timing: FillOptions.HandlerInvocationTiming = .with) -> SwipeExpansionStyle {
+        return SwipeExpansionStyle(target: .edgeInset(-10),
+                                   additionalTriggers: [.touchThreshold(0.8)],
+                                   completionAnimation: .fill(.automatic(ExpansionFulfillmentStyle.reset,
+                                                                         timing: .after)))
+    }
 
     /**
      Returns a `SwipeExpansionStyle` instance for the default action which peforms destructive behavior with the specified options.
