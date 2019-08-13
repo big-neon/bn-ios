@@ -14,7 +14,7 @@ use_frameworks!
     # Pods for Big Neon
     target 'Big Neon' do
       inherit! :search_paths
-        pod 'SwipeCellKit', '2.5.4'
+#        pod 'SwipeCellKit', '2.5.4'
         pod 'PanModal'
         pod 'Crashlytics'
         pod 'Fabric'
@@ -32,7 +32,7 @@ use_frameworks!
     
     target 'Big Neon UI' do
       inherit! :search_paths
-      pod 'SwipeCellKit', '2.5.4'
+#      pod 'SwipeCellKit', '2.5.4'
       pod 'Crashlytics'
       pod 'Fabric'
       pod 'Stripe'
