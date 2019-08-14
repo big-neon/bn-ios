@@ -6,8 +6,8 @@ import AVKit
 
 final class SplashViewController: UIViewController {
     
-    lazy var fetcher: Fetcher = {
-        let fetcher = Fetcher()
+    lazy var fetcher: EventsFetcher = {
+        let fetcher = EventsFetcher()
         return fetcher
     }()
 
@@ -62,6 +62,7 @@ final class SplashViewController: UIViewController {
     private func navigateHome() {
         let doorPersonVC = DoorPersonViewController(fetcher: fetcher)
         let doorPersonNavVC = UINavigationController(rootViewController: doorPersonVC)
+        doorPersonNavVC.modalPresentationStyle = .fullScreen
         present(doorPersonNavVC, animated: false, completion: nil)
     }
     

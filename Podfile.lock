@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (5.0.0-beta.3)
+  - Answers (1.0.0):
+    - Fabric
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - DTGradientButton (0.1.1)
@@ -38,13 +40,13 @@ PODS:
   - QRCodeReader.swift (10.0.0)
   - Stripe (14.0.0)
   - SwiftKeychainWrapper (3.2.0)
-  - SwipeCellKit (2.5.4)
   - Sync (6.0.0)
   - TransitionButton (0.5.2)
   - "UITextField+Shake (1.2.1)"
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0.beta.1)
+  - Answers
   - Crashlytics
   - DTGradientButton
   - Fabric
@@ -59,7 +61,6 @@ DEPENDENCIES:
   - QRCodeReader.swift
   - Stripe
   - SwiftKeychainWrapper
-  - SwipeCellKit (= 2.5.4)
   - Sync (from `https://github.com/3lvis/Sync.git`, branch `issue-555`)
   - TransitionButton
   - "UITextField+Shake"
@@ -67,6 +68,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - Answers
     - Crashlytics
     - DTGradientButton
     - Fabric
@@ -83,7 +85,6 @@ SPEC REPOS:
     - QRCodeReader.swift
     - Stripe
     - SwiftKeychainWrapper
-    - SwipeCellKit
     - TransitionButton
     - "UITextField+Shake"
 
@@ -99,6 +100,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 50d6fa7e8cbe7f84559e86ab641ffd029db655f8
+  Answers: 25f0d740e3e4384ed0d97a8bda6b5eea1842c3d3
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   DTGradientButton: c5e3c76045af259822d9cf4ebbe9805489f2d5df
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
@@ -115,11 +117,10 @@ SPEC CHECKSUMS:
   QRCodeReader.swift: 74d0378eb0c7807828552b49626bbc8307495aee
   Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
   SwiftKeychainWrapper: 82c4c02cdc36f9a24f7edfcaab3e336401caa1a1
-  SwipeCellKit: 4eada3884ab1bbae5e8d2fb9030c242aa23d7f42
   Sync: a6288926bee65a1ac3c72055446c558776af43f3
   TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
-PODFILE CHECKSUM: 3f794dd40bde038c5c8dc8d0b7cf116e1e7d5454
+PODFILE CHECKSUM: 0b2cd6b868166125857a45468a3cfa820beeed9d
 
 COCOAPODS: 1.6.2

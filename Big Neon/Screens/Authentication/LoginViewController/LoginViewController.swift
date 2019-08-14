@@ -17,8 +17,8 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         }
     }
     
-    lazy var loginFetcher: Fetcher = {
-        let fetcher = Fetcher()
+    lazy var loginFetcher: EventsFetcher = {
+        let fetcher = EventsFetcher()
         return fetcher
     }()
     

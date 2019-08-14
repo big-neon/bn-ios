@@ -44,8 +44,8 @@ public class ShowGuestListView: UIView {
     private func configureView() {
         addSubview(stackView)
     
-        stackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: LayoutSpec.Spacing.screenEdgeSpacing).isActive = true
-        stackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -LayoutSpec.Spacing.screenEdgeSpacing).isActive = true
+        stackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
+        stackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
         stackView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
 

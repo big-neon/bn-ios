@@ -33,6 +33,8 @@ final class AccountViewModel {
         BusinessService.shared.database.loginToAccount(withEmail: email, password: password) { (error, tokens) in
             
             if error != nil {
+                print(error)
+                AnalyticsService.reportError(errorType: ErrorType.authentication, error: error ?? "")
                 completion(false, error)
                 return
             }

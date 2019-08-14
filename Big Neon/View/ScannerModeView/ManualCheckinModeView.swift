@@ -2,12 +2,9 @@
 
 import Foundation
 import UIKit
+import Big_Neon_UI
 import Big_Neon_Core
-
-// MARK: lots of magic numbers... consider using layout/config class/enum
-// MARK: self is not needed
-// MARK: internal is default access level - not need for explicit definition
-// MARK: use abbreviation / syntax sugar
+import TransitionButton
 
 public class ManualCheckinModeView: UIView {
     
@@ -30,6 +27,7 @@ public class ManualCheckinModeView: UIView {
                 bannedTagView.isHidden = false
                 bannedTagView.backgroundColor = UIColor.brandError
                 bannedTagView.tagLabel.text = "WRONG EVENT"
+                completeCheckinButton.setTitleColor(UIColor.brandBackground, for: UIControl.State.normal)
                 completeCheckinButton.backgroundColor = .brandBlack
                 completeCheckinButton.setTitle("Ok", for: UIControl.State.normal)
                 completeCheckinButton.addTarget(self, action: #selector(cancelChecking), for: UIControl.Event.touchUpInside)
@@ -41,18 +39,20 @@ public class ManualCheckinModeView: UIView {
                 bannedTagView.isHidden = false
                 bannedTagView.backgroundColor = UIColor.brandGreen
                 bannedTagView.tagLabel.text = "PURCHASED"
+                completeCheckinButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
                 completeCheckinButton.backgroundColor = .brandPrimary
                 completeCheckinButton.setTitle("Complete Check-in", for: UIControl.State.normal)
                 completeCheckinButton.addTarget(self, action: #selector(handleCompleteCheckin), for: UIControl.Event.touchUpInside)
                 
             } else {
                 bannedTagView.isHidden = true
-                completeCheckinButton.backgroundColor = .brandBlack
+                completeCheckinButton.backgroundColor = .brandBackground
+                completeCheckinButton.setTitleColor(UIColor.brandLightGrey, for: UIControl.State.normal)
                 completeCheckinButton.setTitle("Already Redeemed", for: UIControl.State.normal)
                 completeCheckinButton.addTarget(self, action: #selector(doNothing), for: UIControl.Event.touchUpInside)
                 
                 if let redemeedBy = ticket.redeemedBy {
-                  eventDetailsLabel.text = "Redeemed by: \(redemeedBy)"
+                  redeemedByLabel.text = redemeedBy
                 }
                 
                 ticketTypeLabel.text = price.dollarString + " | " + ticket.ticketType + " | " + ticketID
@@ -67,14 +67,14 @@ public class ManualCheckinModeView: UIView {
                     return
                 }
                 
-                dateValueLabel.text = "Redeemed: " + redeemedDate.getElapsed() //"On: " + DateConfig.fullDateFormat(date: redeemedDate)
+                dateValueLabel.text = "Redeemed: " + redeemedDate.getElapsed()
             }
-            
         }
     }
     
-    lazy var completeCheckinButton: UIButton = {
-        let button = UIButton()
+    lazy var completeCheckinButton: TransitionButton = {
+        let button = TransitionButton()
+        button.layer.cornerRadius = 4.0
         button.setTitleColor(UIColor.brandWhite, for: UIControl.State.normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -136,7 +136,7 @@ public class ManualCheckinModeView: UIView {
         return view
     }()
     
-    lazy var eventDetailsLabel: UILabel = {
+    lazy var redeemedByLabel: UILabel = {
         let label = UILabel()
         label.text = "Event Details"
         label.textColor = UIColor.brandBlack
@@ -173,40 +173,42 @@ public class ManualCheckinModeView: UIView {
         addSubview(lineView)
         addSubview(bannedTagView)
         addSubview(vipTagView)
-        addSubview(eventDetailsLabel)
+        addSubview(redeemedByLabel)
         addSubview(dateValueLabel)
         addSubview(completeCheckinButton)
         
         
         vipTagView.isHidden = true
         
+        //  Top Area
         userImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 22).isActive = true
-        userImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
+        userImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
         userImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         userImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
         
         dismissView.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor).isActive = true
-        dismissView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
+        dismissView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
         dismissView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         dismissView.widthAnchor.constraint(equalToConstant: 30).isActive = true
         
         userNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 22).isActive = true
-        userNameLabel.leftAnchor.constraint(equalTo: userImageView.rightAnchor, constant: 15).isActive = true
-        userNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+        userNameLabel.leftAnchor.constraint(equalTo: userImageView.rightAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
+        userNameLabel.rightAnchor.constraint(equalTo: dismissView.leftAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
         userNameLabel.heightAnchor.constraint(equalToConstant: 28).isActive = true
         
         ticketTypeLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 2).isActive = true
-        ticketTypeLabel.leftAnchor.constraint(equalTo: userImageView.rightAnchor, constant: 15).isActive = true
-        ticketTypeLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+        ticketTypeLabel.leftAnchor.constraint(equalTo: userNameLabel.leftAnchor).isActive = true
+        ticketTypeLabel.rightAnchor.constraint(equalTo: userNameLabel.rightAnchor).isActive = true
         ticketTypeLabel.heightAnchor.constraint(equalToConstant: 22).isActive = true
         
-        lineView.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 16).isActive = true
+        lineView.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
         lineView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         lineView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         lineView.heightAnchor.constraint(equalToConstant: 0.9).isActive = true
         
-        bannedTagView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 28).isActive = true
-        bannedTagView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+        //  Tags
+        bannedTagView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 18).isActive = true
+        bannedTagView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -LayoutSpec.Spacing.twenty).isActive = true
         bannedTagView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
         bannedTagView.widthAnchor.constraint(equalToConstant: 88.0).isActive = true
         
@@ -215,23 +217,27 @@ public class ManualCheckinModeView: UIView {
         vipTagView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
         vipTagView.widthAnchor.constraint(equalToConstant: 55.0).isActive = true
         
-        eventDetailsLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 20).isActive = true
-        eventDetailsLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20.0).isActive = true
-        eventDetailsLabel.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
-        eventDetailsLabel.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
         
-        dateValueLabel.topAnchor.constraint(equalTo: eventDetailsLabel.bottomAnchor, constant: 2.0).isActive = true
-        dateValueLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20.0).isActive = true
+        //  Redeeemed By
+        redeemedByLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: LayoutSpec.Spacing.twenty).isActive = true
+        redeemedByLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
+        redeemedByLabel.rightAnchor.constraint(equalTo: bannedTagView.leftAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
+        redeemedByLabel.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
+        
+        dateValueLabel.topAnchor.constraint(equalTo: redeemedByLabel.bottomAnchor, constant: 2.0).isActive = true
+        dateValueLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
+        dateValueLabel.rightAnchor.constraint(equalTo: bannedTagView.rightAnchor).isActive = true
         dateValueLabel.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
-        dateValueLabel.widthAnchor.constraint(equalToConstant: 300.0).isActive = true
         
-        completeCheckinButton.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        completeCheckinButton.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        completeCheckinButton.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        completeCheckinButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        //  Completed
+        completeCheckinButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
+        completeCheckinButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
+        completeCheckinButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
+        completeCheckinButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
     }
     
     @objc func handleCompleteCheckin() {
+        self.completeCheckinButton.startAnimation()
         self.delegate?.completeCheckin()
     }
     

@@ -18,9 +18,11 @@ extension ScannerViewController {
     }
     
     func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath indexPath: IndexPath?) {
-        
+        self.stopScanning = true
         self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID) { [weak self] (scanFeedback, errorString, ticket) in
             DispatchQueue.main.async {
+                
+                //  Checking from Guestlist
                 if fromGuestTableView == true {
                     if self?.guestListVC?.isSearching == true {
                         self?.guestListVC?.guestViewModel.guestSearchResults.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
@@ -41,6 +43,7 @@ extension ScannerViewController {
                 }
                 
                 UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
+                    
                     self?.showScannedUser(feedback: scanFeedback, ticket: ticket)
                     self?.view.layoutIfNeeded()
                 }, completion: { (completed) in
@@ -52,18 +55,51 @@ extension ScannerViewController {
 
     func showScannedUser(feedback: ScanFeedback?, ticket: RedeemableTicket?) {
         var feedFound = feedback
+        runCountDownTimer()
         if ticket?.eventName != self.event?.name {
+            self.playSuccessSound(forValidTicket: false)
+            self.scannedTicketID = ticket?.id
             feedFound = .wrongEvent
+            scannedUserView.userNameLabel.text = ticket?.eventName
+            scannedUserView.ticketTypeLabel.text = "-"
+        } else {
+            playSuccessSound(forValidTicket: true)
+            scannerViewModel?.redeemedTicket = ticket
+            scannedUserView.redeemableTicket = ticket
         }
         
-        self.scannedUserView.redeemableTicket = ticket
-        self.scannedUserView.scanFeedback = feedFound
-        self.scannerViewModel?.redeemedTicket = ticket
-        self.blurView?.layer.opacity = 0.0
-        self.scannerModeView.layer.opacity = 1.0
-        self.scannedUserBottomAnchor?.constant = -100.0
-        self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
-        self.generator.notificationOccurred(.success)
+        
+        scannedUserView.scanFeedback = feedFound
+        blurView?.layer.opacity = 0.0
+        scannerModeView.layer.opacity = 1.0
+        scannedUserBottomAnchor?.constant = -90.0
+        manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+        generator.notificationOccurred(.success)
+        
+    }
+    
+    func runCountDownTimer() {
+        self.scanSeconds = 10
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTimer() {
+        self.scanSeconds -= 1
+        if self.scanSeconds == 0 {
+            self.timer?.invalidate()
+            self.scanSeconds = 10
+        }
+    }
+    
+    func playSuccessSound(forValidTicket valid: Bool) {
+        let sound = valid == true ? "Valid" : "Redeemed"
+        if let resourcePath =  Bundle.main.path(forResource: sound, ofType: "m4a") {
+            let url = URL(fileURLWithPath: resourcePath)
+            audioPlayer = try? AVAudioPlayer(contentsOf: url)
+            audioPlayer?.prepareToPlay()
+            audioPlayer?.play()
+        }
+        
     }
     
 }

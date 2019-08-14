@@ -8,14 +8,16 @@ extension ScannerViewController {
     
     func checkinManually(withTicketID ticketID: String) {
         self.scannerViewModel?.getRedeemTicket(ticketID: ticketID) { [weak self] (scanFeedback, errorString) in
-            if scanFeedback == .validTicketID {
-                self?.stopScanning = false
-                if let ticket = self?.scannedTicket {
-                  self?.showRedeemedTicket(forTicket: ticket)
+            DispatchQueue.main.async {
+                if scanFeedback == .validTicketID {
+                    self?.stopScanning = false
+                    if let ticket = self?.scannedTicket {
+                        self?.showRedeemedTicket(forTicket: ticket)
+                    }
+                    return
                 }
-                return
+                self?.manualCheckinFeedback(scanFeedback: scanFeedback)
             }
-            self?.manualCheckinFeedback(scanFeedback: scanFeedback)
         }
     }
     
@@ -27,22 +29,25 @@ extension ScannerViewController {
             self.scannerModeView.layer.opacity = 0.0
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
-            self.stopScanning = false
+            self.stopScanning = true
         })
     }
     
     func showRedeemedTicket(forTicket ticket: RedeemableTicket) {
+        self.stopScanning = true
+        self.isShowingScannedUser = true
         self.manualUserCheckinView.event = self.event
-        self.scannedTicketID = ticket.id    //  self.scannedTicket?.id
-        self.manualUserCheckinView.redeemableTicket = ticket //self.scannedTicket
+        self.scannedTicketID = ticket.id
+        self.manualUserCheckinView.redeemableTicket = ticket
+        self.playSuccessSound(forValidTicket: false)
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.scanningBoarderView.layer.opacity = 0.0
+            self.scanningBoarderView.layer.opacity = 1.0
             self.showGuestView.layer.opacity = 0.0
             self.closeButton.layer.opacity = 0.0
             self.blurView?.layer.opacity = 1.0
             self.scannerModeView.layer.opacity = 0.0
-            self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height - 250.0
+            self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height - 272.0
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
             self.stopScanning = true
@@ -55,13 +60,18 @@ extension ScannerViewController {
             return
         }
         
+        self.isShowingScannedUser = false
         self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID) { (scanFeedback, errorString, ticket) in
-            UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
-                self.showManuallyScannedUser(feedback: scanFeedback, ticket: ticket)
-                self.view.layoutIfNeeded()
-            }, completion: { (completed) in
-                self.stopScanning = false
-            })
+            DispatchQueue.main.async {
+                self.manualUserCheckinView.completeCheckinButton.stopAnimation()
+                UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
+                    self.showManuallyScannedUser(feedback: scanFeedback, ticket: ticket)
+                    self.view.layoutIfNeeded()
+                }, completion: { (completed) in
+                    self.stopScanning = false
+                })
+            }
+            
         }
     }
     

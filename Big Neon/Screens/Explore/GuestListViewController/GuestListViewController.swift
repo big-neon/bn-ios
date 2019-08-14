@@ -5,7 +5,8 @@ import UIKit
 import Big_Neon_Core
 import Big_Neon_UI
 import PanModal
-import SwipeCellKit
+//import SwipeCellKit
+import Sync
 
 protocol GuestListViewDelegate: class {
     func reloadGuests()
@@ -25,6 +26,8 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     var scanVC: ScannerViewController
     var scannerViewModel: TicketScannerViewModel
     var guestViewModel = GuestsListViewModel()
+    
+    var guestsFetcher: GuestsFetcher?  // Fetching guests Offline
     
     var isSearching: Bool = false {
         didSet {
@@ -63,6 +66,31 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
                     guestsDictionary[guestKey] = [guest]
                 }
             }
+            
+            self.guestSectionTitles = [String](guestsDictionary.keys)
+            self.guestSectionTitles = guestSectionTitles.sorted(by: { $0 < $1 })
+        }
+    }
+    
+    public var  guestsCoreData: [RedeemedTicket]? {
+        didSet {
+            guard let guests = self.guestsCoreData else {
+                return
+            }
+            
+            configureNavBar()
+            configureView()
+            guestsDictionary.removeAll()
+            
+//            for guest in guests {
+//                let guestKey = String(guest.first_name!.prefix(1).uppercased())
+//                if var guestValues = guestsDictionary[guestKey] {
+//                    guestValues.append(guest)
+//                    guestsDictionary[guestKey] = guestValues
+//                } else {
+//                    guestsDictionary[guestKey] = [guest]
+//                }
+//            }
             
             self.guestSectionTitles = [String](guestsDictionary.keys)
             self.guestSectionTitles = guestSectionTitles.sorted(by: { $0 < $1 })
@@ -165,13 +193,21 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.configureNavBar()
-        self.navigationItem.titleView = self.searchController.searchBar
+    }
+    
+    @objc func handleDimiss() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     func configureNavBar() {
         navigationNoLineBar()
         navigationController?.navigationBar.barTintColor = UIColor.brandBackground
         navigationController?.navigationBar.tintColor = UIColor.brandBlack
+        if let eventName = self.scanVC.event!.name {
+            self.setNavigationTitle(withTitle: eventName)
+        }
+        self.navigationItem.searchController = searchController
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDimiss))
     }
     
     private func configureSearch() {

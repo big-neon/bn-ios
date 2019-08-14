@@ -23,18 +23,24 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     var lastScannedTicket: RedeemableTicket?
     var scannedTicketID: String?
     var event: EventsData?
-    var fetcher: Fetcher
+    var fetcher: GuestsFetcher
     var guestListVC: GuestListViewController?
     
     //  Layout
     let generator = UINotificationFeedbackGenerator()
+    var audioPlayer: AVAudioPlayer?
     var guestListTopAnchor: NSLayoutConstraint?
     var manualCheckingTopAnchor: NSLayoutConstraint?
     var scannedUserBottomAnchor: NSLayoutConstraint?
     var stopScanning: Bool?
+    var isShowingScannedUser: Bool?
     var scannerViewModel : TicketScannerViewModel?
     let blurEffect = UIBlurEffect(style: .dark)
     var blurView: UIVisualEffectView?
+    
+    //  Count Down Timer
+    var timer: Timer?
+    var scanSeconds = 10
     
     let supportedCodeTypes = [AVMetadataObject.ObjectType.upce,
                               AVMetadataObject.ObjectType.code39,
@@ -50,15 +56,32 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
                               AVMetadataObject.ObjectType.interleaved2of5,
                               AVMetadataObject.ObjectType.qr]
     
-    var guests: [RedeemableTicket]? {
+    var guestsCoreData: [RedeemedTicket]? {
         didSet {
-            
             showGuestView.loadingView.stopAnimating()
             
-            guard let guestsFetched = guests else {
+            guard let guestsFetched = guestsCoreData else {
                 return
             }
             
+            if !guestsFetched.isEmpty {
+                showGuestView.isUserInteractionEnabled = true
+                showGuestView.headerLabel.textColor = UIColor.brandPrimary
+            } else {
+                showGuestView.isUserInteractionEnabled = true
+                showGuestView.headerLabel.textColor = UIColor.brandPrimary
+            }
+        }
+    }
+    
+    var guests: [RedeemableTicket]? {
+        didSet {
+            showGuestView.loadingView.stopAnimating()
+
+            guard let guestsFetched = guests else {
+                return
+            }
+
             if !guestsFetched.isEmpty {
                 showGuestView.isUserInteractionEnabled = true
                 showGuestView.headerLabel.textColor = UIColor.brandPrimary
@@ -137,12 +160,12 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         view.layer.opacity = 0.0
         return view
     }()
-    
-    init(fetcher: Fetcher) {
+
+    init(fetcher: GuestsFetcher) {
         self.fetcher = fetcher
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -156,12 +179,44 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         configureViewModel()
         view.backgroundColor = UIColor.black
         hideNavBar()
+        configureAutoMode()
         configureScanner()
         configureManualCheckinView()
         configureHeader()
+        
+        //  Ticket Fetching
         fetchGuests()
+        //  syncGuestsData()
     }
     
+    deinit {
+        timer?.invalidate()
+    }
+    
+    func configureAutoMode() {
+        if scannerViewModel?.setScannerModeFirstTime() == true {
+            self.scannerModeView.setAutoMode = true
+        }
+    }
+    
+    @objc func syncGuestsData() {
+        guard let eventID = self.event?.id else {
+            return
+        }
+        
+        self.fetcher.syncGuestData(withEventID: eventID) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    self.scannerViewModel?.ticketsCoreData = self.fetcher.fetchLocalGuests()
+                    self.guestsCoreData = self.fetcher.fetchLocalGuests()
+                case .failure(let error):
+                    AnalyticsService.reportError(errorType: ErrorType.guestsFetch, error: error.localizedDescription)
+                }
+            }
+        }
+    }
+
     func fetchGuests() {
         guard let eventID = self.event?.id else {
             return
@@ -171,7 +226,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
             DispatchQueue.main.async {
                 guard let self = self else {return}
                 if completed == false {
-                    
+
                     return
                 }
                 self.guests = self.scannerViewModel?.ticketsFetched
@@ -222,6 +277,17 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
             configureScannedUserView()
             return
         }
+        
+        //  Configuring the camera to focus on near objects
+        if videoCaptureDevice.isAutoFocusRangeRestrictionSupported == true {
+            do {
+                try videoCaptureDevice.lockForConfiguration()
+                videoCaptureDevice.autoFocusRangeRestriction = .near
+                videoCaptureDevice.focusPointOfInterest = CGPoint(x: 0.5, y: 0.5)
+            } catch {
+                AnalyticsService.reportError(errorType: ErrorType.scanning, error: error.localizedDescription)
+            }
+        }
 
         do {
             let input = try AVCaptureDeviceInput(device: videoCaptureDevice)
@@ -231,7 +297,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
             captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             captureMetadataOutput.metadataObjectTypes = supportedCodeTypes
         } catch {
-            print(error)
+            AnalyticsService.reportError(errorType: ErrorType.scanning, error: error.localizedDescription)
             return
         }
 
@@ -256,17 +322,26 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         manualUserCheckinView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         manualCheckingTopAnchor = manualUserCheckinView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UIScreen.main.bounds.height + 50.0)
         manualCheckingTopAnchor?.isActive = true
-        manualUserCheckinView.heightAnchor.constraint(equalToConstant: 250.0).isActive = true
+        manualUserCheckinView.heightAnchor.constraint(equalToConstant: 264.0).isActive = true
     }
     
     private func configureScannedUserView() {
         view.addSubview(scannedUserView)
-        scannedUserView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20.0).isActive = true
-        scannedUserView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20.0).isActive = true
+
+        if self.isiPhoneSE() == true {
+            scannedUserView.layer.cornerRadius = 0.0
+            scannedUserView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+            scannedUserView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        } else {
+            scannedUserView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20.0).isActive = true
+            scannedUserView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20.0).isActive = true
+        }
+
         scannedUserBottomAnchor = scannedUserView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 200.0)
         scannedUserBottomAnchor?.isActive = true
         scannedUserView.heightAnchor.constraint(equalToConstant: 76.0).isActive = true
     }
+    
     
     @objc func showGuestList() {
         viewAnimationBounce(viewSelected: showGuestView,
@@ -298,20 +373,46 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         guestListVC!.guestViewModel.ticketsFetched = guests
         guestListVC!.totalGuests = scannerViewModel.totalGuests
         guestListVC!.scanVC = self
+        let navGuestVC = UINavigationController(rootViewController: guestListVC!)
+        self.present(navGuestVC, animated: true, completion: nil)
+    }
+    
+    /*
+    @objc func showGuestList() {
+        viewAnimationBounce(viewSelected: showGuestView,
+                            bounceVelocity: 10.0,
+                            springBouncinessEffect: 3.0)
+        self.stopScanning = true
+        
+        guard let guests = self.guestsCoreData else {
+            return
+        }
+        
+        guard let event = self.event, let eventID = event.id, let eventTimeZone = event.venue?.timezone else {
+            return
+        }
+        
+        guard let scannerViewModel = self.scannerViewModel else {
+            return
+        }
+        
+        guestListVC = GuestListViewController(eventID: eventID,
+                                              guestsFetched: guests,
+                                              eventTimeZone: eventTimeZone,
+                                              scannerVC: self,
+                                              scannerVM: scannerViewModel)
+        guestListVC!.delegate = self
+        guestListVC!.guestsCoreData = guests
+        guestListVC!.guestViewModel.totalGuests = scannerViewModel.totalGuests
+        guestListVC!.guestViewModel.currentTotalGuests = scannerViewModel.currentTotalGuests
+        guestListVC!.guestViewModel.currentPage = scannerViewModel.currentPage
+        guestListVC!.guestViewModel.ticketsFetched = guests
+        guestListVC!.totalGuests = scannerViewModel.totalGuests
+        guestListVC!.scanVC = self
         let navGuestVC = GuestListNavigationController(rootViewController: guestListVC!)
         self.presentPanModal(navGuestVC)
     }
-
-    @objc func syncEventsData() {
-        fetcher.syncCheckins { result in
-            switch result {
-            case .success:
-                print("Syncing Data")
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
+    */
 }
 
 

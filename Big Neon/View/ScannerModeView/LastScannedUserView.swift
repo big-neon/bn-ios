@@ -2,10 +2,7 @@
 
 import UIKit
 import Big_Neon_Core
-
-// MARK: lots of magic numbers... consider using layout/config class/enum
-// MARK: self is not needed
-// MARK: use abbreviation / syntax sugar
+import Big_Neon_UI
 
 public class LastScannedUserView: UIView {
     
@@ -46,9 +43,8 @@ public class LastScannedUserView: UIView {
     
     public lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = UIImage(named: "empty_profile")
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 20.0
-        imageView.backgroundColor = UIColor.brandBackground
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -90,24 +86,24 @@ public class LastScannedUserView: UIView {
         self.addSubview(ticketScanStateTagView)
         
         userImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        userImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15).isActive = true
+        userImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
         userImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         userImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
         
         ticketScanStateTagView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        ticketScanStateTagView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
-        ticketScanStateTagView.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        ticketScanStateTagView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
+        ticketScanStateTagView.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twentyFour).isActive = true
         ticketScanStateTagView.widthAnchor.constraint(equalToConstant: 88).isActive = true
 
-        userNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 16).isActive = true
+        userNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
         userNameLabel.leftAnchor.constraint(equalTo: userImageView.rightAnchor, constant: 10).isActive = true
-        userNameLabel.rightAnchor.constraint(equalTo: ticketScanStateTagView.leftAnchor, constant: -12).isActive = true
-        userNameLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        userNameLabel.rightAnchor.constraint(equalTo: ticketScanStateTagView.leftAnchor, constant: -LayoutSpec.Spacing.twelve).isActive = true
+        userNameLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twentyFour).isActive = true
 
         ticketTypeLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 2).isActive = true
         ticketTypeLabel.leftAnchor.constraint(equalTo: userImageView.rightAnchor, constant: 10).isActive = true
-        ticketTypeLabel.rightAnchor.constraint(equalTo: ticketScanStateTagView.leftAnchor, constant: -12).isActive = true
-        ticketTypeLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+        ticketTypeLabel.rightAnchor.constraint(equalTo: ticketScanStateTagView.leftAnchor, constant: -LayoutSpec.Spacing.twelve).isActive = true
+        ticketTypeLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.sixteen).isActive = true
         
     }
     

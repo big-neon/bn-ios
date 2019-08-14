@@ -41,10 +41,10 @@ public class AuthenticationTextView: UIView {
                 self.authTextField.placeholder = "Email Address"
             case .signUpPassword:
                 self.authTextField.isSecureTextEntry = true
-                self.authTextField.placeholder = "Password (atleast 6 characters)"
+                self.authTextField.placeholder = "Password (+6 characters)"
             case .loginPassword:
                 self.authTextField.isSecureTextEntry = true
-                self.authTextField.placeholder = "Enter Password)"
+                self.authTextField.placeholder = "Enter Password"
             case .firstName:
                 self.authTextField.placeholder = "First Name"
             case .lastName:
