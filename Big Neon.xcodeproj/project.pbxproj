@@ -176,6 +176,7 @@
 		C6CD1C2222AA89BA009D7510 /* GuestsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CD1C2122AA89BA009D7510 /* GuestsListViewModel.swift */; };
 		C6CEC8A9221ADBCE00F7329D /* TicketTypeStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CEC8A8221ADBCE00F7329D /* TicketTypeStatus.swift */; };
 		C6D2413421EF53B000FC3E41 /* NamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2413321EF53B000FC3E41 /* NamesViewController.swift */; };
+		C6DBF0AD2305739800911392 /* GuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DBF0AC2305739800911392 /* GuestViewController.swift */; };
 		C6DE2F7A225360BA00ECF7D7 /* EventGuests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DE2F79225360BA00ECF7D7 /* EventGuests.swift */; };
 		C6E648532240D088000F2DFB /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E648522240D088000F2DFB /* ScannerViewController.swift */; };
 		C6E6485622423C11000F2DFB /* Big Neon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C6E6485422423C11000F2DFB /* Big Neon.xcdatamodeld */; };
@@ -431,6 +432,7 @@
 		C6CEC8A8221ADBCE00F7329D /* TicketTypeStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTypeStatus.swift; sourceTree = "<group>"; };
 		C6D2413321EF53B000FC3E41 /* NamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesViewController.swift; sourceTree = "<group>"; };
 		C6D37B3421F1CD8200C616D0 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		C6DBF0AC2305739800911392 /* GuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestViewController.swift; sourceTree = "<group>"; };
 		C6DE2F79225360BA00ECF7D7 /* EventGuests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventGuests.swift; sourceTree = "<group>"; };
 		C6E648522240D088000F2DFB /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		C6E6485522423C11000F2DFB /* Big Neon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Big Neon.xcdatamodel"; sourceTree = "<group>"; };
@@ -718,6 +720,7 @@
 				C6AFB78C21DD655900670AC3 /* DoorPersonViewController */,
 				C63D1A152220054700152E83 /* TicketScannerViewController */,
 				C69370FE228F3EB9004EBC12 /* GuestListViewController */,
+				C6DBF0AB2305738800911392 /* GuestViewController */,
 				C6AFB78D21DD656500670AC3 /* EventDetailViewController */,
 			);
 			path = Explore;
@@ -1125,6 +1128,14 @@
 				C6CEC8A8221ADBCE00F7329D /* TicketTypeStatus.swift */,
 			);
 			path = TicketTypeStatus;
+			sourceTree = "<group>";
+		};
+		C6DBF0AB2305738800911392 /* GuestViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C6DBF0AC2305739800911392 /* GuestViewController.swift */,
+			);
+			path = GuestViewController;
 			sourceTree = "<group>";
 		};
 		C6EC209F220079ED00BD10DD /* ProfileEditCells */ = {
@@ -1624,6 +1635,7 @@
 				C69370FD228F3570004EBC12 /* GuestListViewController.TableView.swift in Sources */,
 				C6C4E9AC2302D2810040C258 /* SwipeAccessibilityCustomAction.swift in Sources */,
 				C6AFB79C21DD76AE00670AC3 /* ExploreDetailViewModel.swift in Sources */,
+				C6DBF0AD2305739800911392 /* GuestViewController.swift in Sources */,
 				C6B6DEA2227ABE3A003367D7 /* EventsFetcher.swift in Sources */,
 				C6C4E9B12302D2810040C258 /* SwipeTransitionLayout.swift in Sources */,
 				C683232B21FF28CB002342AE /* ProfileEditViewModel.swift in Sources */,

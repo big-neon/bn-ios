@@ -253,4 +253,9 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
             }
         })
     }
+    
+    func showGuest() {
+        let guestVC = GuestViewController()
+        self.presentPanModal(guestVC)
+    }
 }
