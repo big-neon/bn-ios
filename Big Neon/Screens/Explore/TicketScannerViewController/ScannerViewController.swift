@@ -125,12 +125,14 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         return view
     }()
     
+    /*
     lazy var guestListView: GuestListView = {
         let view =  GuestListView()
         view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    */
     
     lazy var manualUserCheckinView: ManualCheckinModeView = {
         let view =  ManualCheckinModeView()

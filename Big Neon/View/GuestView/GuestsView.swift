@@ -11,6 +11,7 @@ import Big_Neon_UI
 // MARK: internal is default access level - not need for explicit definition
 // MARK: use abbreviation / syntax sugar
 
+/*
 public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     weak var delegate: ScannerViewDelegate?
@@ -193,3 +194,5 @@ public class GuestListView: UIView, UITableViewDataSource, UITableViewDelegate, 
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+ */

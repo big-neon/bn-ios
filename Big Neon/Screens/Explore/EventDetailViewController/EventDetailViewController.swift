@@ -66,7 +66,7 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
         self.navigationController?.navigationBar.tintColor = UIColor(white: 1.0, alpha: 1.0)
         self.navigationController?.navigationBar.barTintColor = UIColor(white: 1.0, alpha: 0.0)
         self.navigationController?.navigationBar.backgroundColor = UIColor(white: 1.0, alpha: 0.0)
-        UIApplication.shared.statusBarView?.backgroundColor = UIColor(white: 1.0, alpha: 0.0)
+//        UIApplication.shared.statusBarView?.backgroundColor = UIColor(white: 1.0, alpha: 0.0)
     }
     
     override func viewDidLayoutSubviews() {
@@ -163,12 +163,12 @@ internal class EventDetailViewController: BaseViewController, UITableViewDelegat
             self.navigationController?.navigationBar.tintColor = UIColor(white: offSet - 1, alpha: 1.0)
             self.navigationController?.navigationBar.barTintColor = UIColor(white: 1.0, alpha: offSet)
             self.navigationController?.navigationBar.backgroundColor = UIColor(white: 1.0, alpha: offSet)
-            UIApplication.shared.statusBarView?.backgroundColor = UIColor(white: 1.0, alpha: offSet)
+//            UIApplication.shared.statusBarView?.backgroundColor = UIColor(white: 1.0, alpha: offSet)
         } else {
             self.navigationController?.navigationBar.tintColor = UIColor(white: 1.0 - offSet, alpha: 1.0)
             self.navigationController?.navigationBar.barTintColor = UIColor(white: 1.0, alpha: offSet)
             self.navigationController?.navigationBar.backgroundColor = UIColor(white: 1.0, alpha: offSet)
-            UIApplication.shared.statusBarView?.backgroundColor = UIColor(white: 1.0, alpha: offSet)
+//            UIApplication.shared.statusBarView?.backgroundColor = UIColor(white: 1.0, alpha: offSet)
         }
     }
 

@@ -78,8 +78,8 @@ final class WelcomeViewController: UIViewController {
         self.navigationClearBar()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.navigationController?.navigationBar.tintColor = UIColor.brandPrimary
-        UIApplication.shared.statusBarView?.backgroundColor = UIColor.clear
-        UIApplication.shared.statusBarView?.tintColor = UIColor.white
+//        UIApplication.shared.statusBarView?.backgroundColor = UIColor.clear
+//        UIApplication.shared.statusBarView?.tintColor = UIColor.white
     }
     
     private func configureView() {

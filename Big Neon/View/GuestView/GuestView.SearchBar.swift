@@ -3,6 +3,7 @@ import UIKit
 import Big_Neon_UI
 import Big_Neon_Core
 
+/*
 extension GuestListView {
 
     func searchBarIsEmpty() -> Bool {
@@ -54,3 +55,4 @@ extension GuestListView {
     }
 
 }
+ */

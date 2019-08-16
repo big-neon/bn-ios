@@ -4,6 +4,7 @@ import Foundation
 import UIKit
 import Big_Neon_Core
 
+/*
 extension GuestListView {
     
     public func numberOfSections(in tableView: UITableView) -> Int {
@@ -126,3 +127,4 @@ extension GuestListView {
     }
     
 }
+*/
