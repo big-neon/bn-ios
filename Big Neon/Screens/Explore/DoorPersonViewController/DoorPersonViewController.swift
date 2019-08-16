@@ -15,14 +15,6 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         let fetcher = GuestsFetcher()
         return fetcher
     }()
-    
-    lazy var refresher: UIRefreshControl = {
-        let refresher = UIRefreshControl()
-        refresher.tintColor = UIColor.brandGrey
-        refresher.addTarget(self, action: #selector(reloadEvents), for: .valueChanged)
-        return refresher
-    }()
-
     var headerLabel: UILabel = {
         let label = UILabel()
         label.text = "No Published Events"
@@ -86,6 +78,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.refresher.addTarget(self, action: #selector(reloadEvents), for: .valueChanged)
         configureNavBar()
         view.backgroundColor = UIColor.white
         configureSearch()

@@ -9,7 +9,10 @@ extension ScannerViewController {
     func reloadGuestCells(atIndexPath indexPath: IndexPath?) {
         guard let indexPath = indexPath else { return }
         let guestCell: GuestTableViewCell = self.guestListVC?.guestTableView.cellForRow(at: indexPath) as! GuestTableViewCell
-        guestCell.ticketStateView.tagLabel.text = "REDEEMED"
+//        guestCell.ticketStateView.tagLabel.text = "REDEEMED"
+        guestCell.ticketStateView.stopAnimation()
+        guestCell.ticketStateView.layer.cornerRadius = 3.0
+        guestCell.ticketStateView.setTitle("REDEEMED", for: UIControl.State.normal)
         guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
         
         let guestKey = self.guestListVC?.guestSectionTitles[indexPath.section]

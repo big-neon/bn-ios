@@ -376,6 +376,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         guestListVC!.totalGuests = scannerViewModel.totalGuests
         guestListVC!.scanVC = self
         let navGuestVC = UINavigationController(rootViewController: guestListVC!)
+        navGuestVC.modalPresentationStyle = .fullScreen
         self.present(navGuestVC, animated: true, completion: nil)
     }
     

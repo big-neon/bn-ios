@@ -12,7 +12,7 @@ protocol GuestListViewDelegate: class {
     func reloadGuests()
 }
 
-final class GuestListViewController: UIViewController, PanModalPresentable, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, GuestListViewDelegate, UITableViewDataSourcePrefetching, SwipeTableViewCellDelegate {
+final class GuestListViewController: BaseViewController, PanModalPresentable, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, GuestListViewDelegate, UITableViewDataSourcePrefetching, SwipeTableViewCellDelegate {
 
     weak var delegate: ScannerViewDelegate?
     var guestsDictionary: [String: [RedeemableTicket]] = [:]
@@ -36,7 +36,6 @@ final class GuestListViewController: UIViewController, PanModalPresentable, UITa
             }
         }
     }
-    
     
     var totalGuests: Int? {
         didSet {

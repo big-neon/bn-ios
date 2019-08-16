@@ -35,7 +35,7 @@ public struct SwipeExpansionStyle {
     
     public static func fillReset(timing: FillOptions.HandlerInvocationTiming = .with) -> SwipeExpansionStyle {
         return SwipeExpansionStyle(target: .edgeInset(-10),
-                                   additionalTriggers: [.touchThreshold(0.8)],
+                                   additionalTriggers: [.touchThreshold(0.7)],
                                    completionAnimation: .fill(.automatic(ExpansionFulfillmentStyle.reset,
                                                                          timing: .after)))
     }

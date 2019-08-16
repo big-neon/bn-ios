@@ -28,6 +28,7 @@ final class GuestViewController: UIViewController {
         imageView.backgroundColor = UIColor.brandPrimary
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 60.0
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -61,13 +62,18 @@ final class GuestViewController: UIViewController {
     
     private func configureImageView() {
         view.addSubview(guestProfileImageView)
-//        view.addSubview(guestNameLabel)
+        view.addSubview(guestNameLabel)
 //        view.addSubview(guestProfileImageView)
         
         guestProfileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         guestProfileImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         guestProfileImageView.heightAnchor.constraint(equalToConstant: 120).isActive = true
         guestProfileImageView.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        
+        guestNameLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
+        guestNameLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
+        guestNameLabel.topAnchor.constraint(equalTo: guestProfileImageView.bottomAnchor, constant: LayoutSpec.Spacing.twentyFour).isActive = true
+        guestNameLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twenty).isActive = true
 
     }
     

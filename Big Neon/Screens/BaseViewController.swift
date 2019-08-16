@@ -34,6 +34,12 @@ class BaseViewController: UIViewController  {
         loadingView.widthAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
+    lazy var refresher: UIRefreshControl = {
+        let refresher = UIRefreshControl()
+        refresher.tintColor = UIColor.brandGrey
+        return refresher
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadingAnimation()
