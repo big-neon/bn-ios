@@ -217,6 +217,9 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
         
         view.addSubview(headerView)
         view.addSubview(guestTableView)
+        
+        self.refresher.addTarget(self, action: #selector(reloadGuests), for: .valueChanged)
+        guestTableView.refreshControl = self.refresher
         guestTableView.register(GuestTableViewCell.self, forCellReuseIdentifier: GuestTableViewCell.cellID)
         
         headerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -238,7 +241,8 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
         return .contentHeight(900)
     }
     
-    func reloadGuests() {
+    @objc func reloadGuests() {
+        
         guard let eventID = self.guestViewModel.eventID else {
             return
         }
@@ -247,7 +251,7 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
             DispatchQueue.main.async {
                 self?.guests = (self?.scannerViewModel.ticketsFetched)!
                 self?.guestTableView.reloadData()
-                self?.headerView.isRefreshing = false
+                self?.refresher.endRefreshing()
                 return
             }
         })

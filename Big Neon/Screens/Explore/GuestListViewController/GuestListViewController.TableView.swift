@@ -2,7 +2,6 @@
 
 import Foundation
 import UIKit
-//import SwipeCellKit
 import Big_Neon_Core
 import AudioToolbox
 
@@ -87,7 +86,7 @@ extension GuestListViewController: SwipeActionTransitioning {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        self.showGuest()
+        //  self.showGuest() - To be added later. A way to select and show the guest list.
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
@@ -145,7 +144,7 @@ extension GuestListViewController: SwipeActionTransitioning {
             var options = SwipeOptions()
             options.backgroundColor = UIColor.brandPrimary
             options.transitionStyle = .reveal
-            options.expansionStyle = .fillReset(timing: .with)
+            options.expansionStyle = .fillReset(timing: .after)
             return options
         }
         var options = SwipeOptions()
