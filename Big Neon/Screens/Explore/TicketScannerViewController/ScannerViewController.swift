@@ -228,7 +228,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
             DispatchQueue.main.async {
                 guard let self = self else {return}
                 if completed == false {
-
                     return
                 }
                 self.guests = self.scannerViewModel?.ticketsFetched

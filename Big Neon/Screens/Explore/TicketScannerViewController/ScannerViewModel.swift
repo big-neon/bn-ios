@@ -157,8 +157,48 @@ final class TicketScannerViewModel {
             }
         }
     }
+    
+    func configureAccessToken(forEventID eventID: String, page: Int, completion: @escaping(Bool) -> Void) {
+        
+        BusinessService.shared.database.tokenIsExpired { [weak self] (expired) in
+            guard let self = self else {
+                completion(false)
+                return
+            }
+            
+            if expired == true {
+                self.fetchNewAccessToken(forEventID: eventID, page: page, completion: { (completed) in
+                    self.fetchGuests(forEventID: eventID, page: page) { (completed) in
+                        completion(completed)
+                        return
+                    }
+                })
+            } else {
+                self.fetchGuests(forEventID: eventID, page: page) { (completed) in
+                    completion(completed)
+                    return
+                }
+            }
+        }
+    }
+    
+    func fetchNewAccessToken(forEventID eventID: String, page: Int, completion: @escaping(Bool) -> Void) {
+        BusinessService.shared.database.fetchNewAccessToken { (error, tokens) in
+            
+            AnalyticsService.reportError(errorType: ErrorType.eventFetching, error: error?.localizedDescription ?? "")
+            if let tokens = tokens {
+                Utils.saveTokensInKeychain(token: tokens)
+            }
+            
+            //  Fetch Guests
+            self.fetchGuests(forEventID: eventID, page: page) { (completed) in
+                completion(completed)
+                return
+            }
+        }
+    }
 
-    func fetchGuests(forEventID eventID: String, page: Int, completion: @escaping(Bool) -> Void) {
+    private func fetchGuests(forEventID eventID: String, page: Int, completion: @escaping(Bool) -> Void) {
         
         BusinessService.shared.database.fetchGuests(forEventID: eventID, limit: limit, page: page, guestQuery: nil) { [weak self] (error, guestsFetched, serverGuests, totalGuests) in
             DispatchQueue.main.async {

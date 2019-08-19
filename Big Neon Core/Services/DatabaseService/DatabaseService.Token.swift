@@ -13,6 +13,20 @@ extension DatabaseService {
         do {
             let jwt = try decode(jwt: accessToken)
             let expired = jwt.expired
+            let tokenExpiryDate = jwt.expiresAt
+            
+            print(Date.init(timeInterval: 60, since: Date()))
+            print(tokenExpiryDate)
+            
+        
+            
+            if tokenExpiryDate! > Date.init(timeInterval: 60, since: Date()) {
+                print("Token has expired")
+            }
+            
+            print(expired)
+            
+            
             completion(expired)
             return
         } catch {
@@ -29,8 +43,6 @@ extension DatabaseService {
 
         let authParameters = ["refresh_token": refreshToken]
         let APIURL = APIService.refreshToken()
-        
-        print(APIURL)
         
         AF.request(APIURL,
                         method: HTTPMethod.post,

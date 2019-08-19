@@ -63,6 +63,20 @@ extension DatabaseService {
         let apiURL = APIService.redeemTicket(eventID: eventID, ticketID: ticketID)
         let accessToken = self.fetchAcessToken()
         
+//        self.tokenIsExpired { (expired) in
+//            if expired == true {
+//                self.fetchNewAccessToken(completion: { (completed) in
+//                    completion(completed)
+//                    return
+//                })
+//            } else {
+//                self.fetchCheckins(completion: { (completed) in
+//                    completion(completed)
+//                    return
+//                })
+//            }
+//        }
+        
         let parameters = ["ticket_id": ticketID,
                           "event_id": eventID,
                           "redeem_key": redeemKey]
@@ -110,7 +124,7 @@ extension DatabaseService {
         
         let apiURL = APIService.fetchEvents(eventID: eventID, changesSince: nil, page: page, limit: limit, query: guestQuery)
         let accessToken = self.fetchAcessToken()
-    
+        
         AF.request(apiURL,
                    method: HTTPMethod.get,
                    parameters: nil,
