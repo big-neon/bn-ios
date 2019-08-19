@@ -47,7 +47,7 @@ class GuestListHeaderView: UIView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20.0, weight: UIFont.Weight.bold)
-        label.textColor = UIColor.brandPrimary
+        label.textColor = UIColor.brandGrey
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -55,7 +55,7 @@ class GuestListHeaderView: UIView {
     let subtitleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
-        label.textColor = UIColor.brandPrimary
+        label.textColor = UIColor.brandGrey
         label.font = UIFont.systemFont(ofSize: 16.0, weight: UIFont.Weight.semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

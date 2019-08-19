@@ -224,7 +224,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
             return
         }
 
-        self.scannerViewModel?.configureAccessToken(forEventID: eventID, page: 0, completion: { [weak self] (completed) in
+        self.scannerViewModel?.fetchEventGuests(forEventID: eventID, page: 0, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
                 guard let self = self else {return}
                 if completed == false {

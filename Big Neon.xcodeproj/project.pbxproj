@@ -184,8 +184,6 @@
 		C6EC209C2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209B2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift */; };
 		C6EC209E220075D100BD10DD /* PhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209D220075D100BD10DD /* PhoneNumberTextField.swift */; };
 		C6EC20A122007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC20A022007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift */; };
-		C6F6D68D230AEDD90082CD15 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABF21D0DD1E00386000 /* Utils.swift */; };
-		C6F6D68E230AEDF20082CD15 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABF21D0DD1E00386000 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1697,7 +1695,6 @@
 				C6B88D8E21F1C94E006394F8 /* TicketType.swift in Sources */,
 				C6B88D8B21F1C94E006394F8 /* EventDetail.swift in Sources */,
 				C6B88D8321F1C93A006394F8 /* Event.swift in Sources */,
-				C6F6D68D230AEDD90082CD15 /* Utils.swift in Sources */,
 				C6B88D7021F1C88A006394F8 /* DatabaseService.Events.swift in Sources */,
 				C6B88D8C21F1C94E006394F8 /* TicketPricing.swift in Sources */,
 				C6B88D8021F1C93A006394F8 /* Venue.swift in Sources */,
@@ -1752,7 +1749,6 @@
 				C6C45D6A21F5CDCD00D2F602 /* PopAnimations.swift in Sources */,
 				C64124CA21F26D1800233797 /* AuthTextView.swift in Sources */,
 				C6EC209E220075D100BD10DD /* PhoneNumberTextField.swift in Sources */,
-				C6F6D68E230AEDF20082CD15 /* Utils.swift in Sources */,
 				C6B88D5E21F1C359006394F8 /* StatusBarView.swift in Sources */,
 				C6C49DA52209A77E0087AE16 /* DollarString.swift in Sources */,
 				C6B88D5421F1C323006394F8 /* BrandTextField.swift in Sources */,
@@ -1867,6 +1863,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 190;
 				DEVELOPMENT_TEAM = YVK784K26W;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2063,6 +2060,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = BetaIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 190;
 				DEVELOPMENT_TEAM = YVK784K26W;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2320,6 +2318,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = DevIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 190;
 				DEVELOPMENT_TEAM = YVK784K26W;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2349,6 +2348,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = BetaIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 190;
 				DEVELOPMENT_TEAM = YVK784K26W;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

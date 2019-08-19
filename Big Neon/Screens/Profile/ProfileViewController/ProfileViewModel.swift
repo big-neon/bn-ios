@@ -31,10 +31,10 @@ final class ProfileViewModel {
             }
             
             switch tokenResult {
-            case .noAccessToken:
+            case .noAccessToken?:
                print("No Access Token Found")
                completion(false)
-            case .tokenExpired:
+            case .tokenExpired?:
                 print("Token has expired")
                 completion(false)
             default:
