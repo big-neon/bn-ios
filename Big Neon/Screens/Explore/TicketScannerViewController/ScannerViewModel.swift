@@ -160,11 +160,7 @@ final class TicketScannerViewModel {
     
     func configureAccessToken(forEventID eventID: String, page: Int, completion: @escaping(Bool) -> Void) {
         
-        BusinessService.shared.database.tokenIsExpired { [weak self] (expired) in
-            guard let self = self else {
-                completion(false)
-                return
-            }
+        BusinessService.shared.database.tokenIsExpired { (expired) in
             
             if expired == true {
                 self.fetchNewAccessToken(forEventID: eventID, page: page, completion: { (completed) in
@@ -190,7 +186,8 @@ final class TicketScannerViewModel {
                 Utils.saveTokensInKeychain(token: tokens)
             }
             
-            //  Fetch Guests
+             
+            // Fetch Guests
             self.fetchGuests(forEventID: eventID, page: page) { (completed) in
                 completion(completed)
                 return
@@ -198,7 +195,7 @@ final class TicketScannerViewModel {
         }
     }
 
-    private func fetchGuests(forEventID eventID: String, page: Int, completion: @escaping(Bool) -> Void) {
+    func fetchGuests(forEventID eventID: String, page: Int, completion: @escaping(Bool) -> Void) {
         
         BusinessService.shared.database.fetchGuests(forEventID: eventID, limit: limit, page: page, guestQuery: nil) { [weak self] (error, guestsFetched, serverGuests, totalGuests) in
             DispatchQueue.main.async {

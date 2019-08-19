@@ -163,7 +163,7 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
             return
         }
 
-        self.scannerViewModel.fetchGuests(forEventID: eventID, page: 0, completion: { [weak self] (completed) in
+        self.scannerViewModel.configureAccessToken(forEventID: eventID, page: 0, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
                 guard let self = self else {return}
                 self.guests = self.scannerViewModel.ticketsFetched
@@ -247,7 +247,7 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
             return
         }
         
-        self.scannerViewModel.fetchGuests(forEventID: eventID, page: guestViewModel.currentPage, completion: { [weak self] (completed) in
+        self.scannerViewModel.configureAccessToken(forEventID: eventID, page: guestViewModel.currentPage, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
                 self?.guests = (self?.scannerViewModel.ticketsFetched)!
                 self?.guestTableView.reloadData()

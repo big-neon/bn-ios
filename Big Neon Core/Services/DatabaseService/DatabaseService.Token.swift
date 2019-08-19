@@ -12,22 +12,15 @@ extension DatabaseService {
 
         do {
             let jwt = try decode(jwt: accessToken)
-            let expired = jwt.expired
+            let _ = jwt.expired
             let tokenExpiryDate = jwt.expiresAt
-            
-            print(Date.init(timeInterval: 60, since: Date()))
-            print(tokenExpiryDate)
-            
-        
-            
+
             if tokenExpiryDate! > Date.init(timeInterval: 60, since: Date()) {
-                print("Token has expired")
+                completion(true)
+                return
             }
             
-            print(expired)
-            
-            
-            completion(expired)
+            completion(false)
             return
         } catch {
             completion(false)
