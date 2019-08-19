@@ -22,7 +22,8 @@ final class AccountViewModel {
             guard let tokens = tokens else {
                 return
             }
-            self.saveTokensInKeychain(token: tokens)
+            
+            BusinessService.shared.database.saveTokensInKeychain(token: tokens)
             
             completion(true, nil)
             return
@@ -42,8 +43,7 @@ final class AccountViewModel {
             guard let tokens = tokens else {
                 return
             }
-            
-            self.saveTokensInKeychain(token: tokens)
+            BusinessService.shared.database.saveTokensInKeychain(token: tokens)
             
             completion(true, nil)
             return
@@ -64,9 +64,4 @@ final class AccountViewModel {
         
     }
     
-    private func saveTokensInKeychain(token: Tokens) {
-        KeychainWrapper.standard.set(token.accessToken, forKey: "accessToken")
-        KeychainWrapper.standard.set(token.refreshToken, forKey: "refreshToken")
-        return
-    }
 }

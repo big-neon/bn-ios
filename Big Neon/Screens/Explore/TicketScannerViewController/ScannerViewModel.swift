@@ -160,16 +160,38 @@ final class TicketScannerViewModel {
     
     func configureAccessToken(forEventID eventID: String, page: Int, completion: @escaping(Bool) -> Void) {
         
-        BusinessService.shared.database.tokenIsExpired { (expired) in
+//        BusinessService.shared.database.tokenIsExpired { (expired) in
+//
+//            if expired == true {
+//                self.fetchNewAccessToken(forEventID: eventID, page: page, completion: { (completed) in
+//                    self.fetchGuests(forEventID: eventID, page: page) { (completed) in
+//                        completion(completed)
+//                        return
+//                    }
+//                })
+//            } else {
+//                self.fetchGuests(forEventID: eventID, page: page) { (completed) in
+//                    completion(completed)
+//                    return
+//                }
+//            }
+//        }
+        
+        BusinessService.shared.database.checkTokenExpirationAndUpdate { (tokenResult, error) in
+            if error != nil {
+                print(error)
+                completion(false)
+                return
+            }
             
-            if expired == true {
-                self.fetchNewAccessToken(forEventID: eventID, page: page, completion: { (completed) in
-                    self.fetchGuests(forEventID: eventID, page: page) { (completed) in
-                        completion(completed)
-                        return
-                    }
-                })
-            } else {
+            switch tokenResult {
+            case .noAccessToken:
+               print("No Access Token Found")
+               completion(false)
+            case .tokenExpired:
+                print("Token has expired")
+                completion(false)
+            default:
                 self.fetchGuests(forEventID: eventID, page: page) { (completed) in
                     completion(completed)
                     return
@@ -178,22 +200,22 @@ final class TicketScannerViewModel {
         }
     }
     
-    func fetchNewAccessToken(forEventID eventID: String, page: Int, completion: @escaping(Bool) -> Void) {
-        BusinessService.shared.database.fetchNewAccessToken { (error, tokens) in
-            
-            AnalyticsService.reportError(errorType: ErrorType.eventFetching, error: error?.localizedDescription ?? "")
-            if let tokens = tokens {
-                Utils.saveTokensInKeychain(token: tokens)
-            }
-            
-             
-            // Fetch Guests
-            self.fetchGuests(forEventID: eventID, page: page) { (completed) in
-                completion(completed)
-                return
-            }
-        }
-    }
+//    func fetchNewAccessToken(forEventID eventID: String, page: Int, completion: @escaping(Bool) -> Void) {
+//        BusinessService.shared.database.fetchNewAccessToken { (error, tokens) in
+//
+//            AnalyticsService.reportError(errorType: ErrorType.eventFetching, error: error?.localizedDescription ?? "")
+//            if let tokens = tokens {
+//                Utils.saveTokensInKeychain(token: tokens)
+//            }
+//
+//
+//            // Fetch Guests
+//            self.fetchGuests(forEventID: eventID, page: page) { (completed) in
+//                completion(completed)
+//                return
+//            }
+//        }
+//    }
 
     func fetchGuests(forEventID eventID: String, page: Int, completion: @escaping(Bool) -> Void) {
         

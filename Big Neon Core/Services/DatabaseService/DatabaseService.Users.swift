@@ -137,19 +137,21 @@ extension DatabaseService {
     }
     */
     
-    public func fetchUser(withAccessToken accessToken: String, completion: @escaping(Error?, User?) -> Void) {
+    public func fetchUser(completion: @escaping(Error?, User?) -> Void) {
         
         let APIURL = APIService.updateUser()
+        let accessToken = self.fetchAcessToken()!
+        
         AF.request(APIURL,
             method: HTTPMethod.get,
             parameters: nil,
             encoding: JSONEncoding.default,
-            headers: [APIParameterKeys.authorization :"Bearer \(accessToken)"])
+            headers: [APIParameterKeys.authorization: "Bearer \(accessToken)"])
             .validate()
             .response { (response) in
                 
                 guard response.result.isSuccess else {
-                    print("Error while fetching tags: \(response.result.error)")
+                    print("Error while fetching user: \(response.result.error)")
                     completion(nil, nil)
                     return
                 }

@@ -1,29 +1,68 @@
 import Foundation
 import Alamofire
 import JWTDecode
+import SwiftKeychainWrapper
+
+public enum TokenExpResult {
+    case noAccessToken
+    case tokenExpired
+    case tokenRefreshed
+    case tokenNotExpired
+}
 
 extension DatabaseService {
-
-    public func tokenIsExpired(completion: @escaping (Bool) -> Void) {
+    
+    public func checkTokenExpirationAndUpdate(completion: @escaping (TokenExpResult?, Error?) -> Void) {
+        
         guard let accessToken = self.fetchAcessToken() else {
-            completion(false)
+            
+            self.updateAccessToken { (error) in
+                if let err = error {
+                    completion(nil, err)
+                    return
+                }
+                completion(.tokenRefreshed, nil)
+            }
             return
         }
-
+        
         do {
             let jwt = try decode(jwt: accessToken)
             let _ = jwt.expired
             let tokenExpiryDate = jwt.expiresAt
 
-            if tokenExpiryDate! > Date.init(timeInterval: 60, since: Date()) {
-                completion(true)
+            if tokenExpiryDate! < Date.init(timeInterval: 60, since: Date()) {
+                self.updateAccessToken { (error) in
+                    if let err = error {
+                        completion(nil, err)
+                        return
+                    }
+                    completion(.tokenRefreshed, nil)
+                    return
+                }
+            } else {
+                completion(.tokenNotExpired, nil)
                 return
             }
             
-            completion(false)
-            return
-        } catch {
-            completion(false)
+        } catch let error as NSError {
+            print(error)
+            completion(.noAccessToken, error)
+        }
+    }
+    
+    public func updateAccessToken(completion: @escaping(Error?) -> Void) {
+        self.fetchNewAccessToken { (error, tokens) in
+            if let err = error {
+                completion(err)
+                return
+            }
+            
+            if let tokens = tokens {
+                self.saveTokensInKeychain(token: tokens)
+                print(tokens)
+            }
+            completion(nil)
         }
     }
 

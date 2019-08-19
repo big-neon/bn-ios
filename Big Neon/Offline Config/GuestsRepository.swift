@@ -14,13 +14,33 @@ public class GuestsApiRepository {
     
     private func configureAccessToken(completion: @escaping(Bool) -> Void) {
         
-        BusinessService.shared.database.tokenIsExpired { [weak self] (expired) in
-            if expired == true {
-                self?.fetchNewAccessToken(completion: { (completed) in
-                    completion(completed)
-                    return
-                })
-            } else {
+//        BusinessService.shared.database.tokenIsExpired { [weak self] (expired) in
+//            if expired == true {
+//                self?.fetchNewAccessToken(completion: { (completed) in
+//                    completion(completed)
+//                    return
+//                })
+//            } else {
+//                completion(true)
+//                return
+//            }
+//        }
+        
+        BusinessService.shared.database.checkTokenExpirationAndUpdate { (tokenResult, error) in
+            if error != nil {
+                print(error)
+                completion(false)
+                return
+            }
+            
+            switch tokenResult {
+            case .noAccessToken:
+               print("No Access Token Found")
+               completion(false)
+            case .tokenExpired:
+                print("Token has expired")
+                completion(false)
+            default:
                 completion(true)
                 return
             }

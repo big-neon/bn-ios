@@ -20,5 +20,10 @@ public enum Constants {
         static let cloudinaryAPIKey         = "585921537719581"
     }
     
+    public enum Tokens {
+        static let keychainAccessToken       = "accessToken"
+        static let keychainRefreshToken      = "refreshToken"
+    }
+    
 }
 

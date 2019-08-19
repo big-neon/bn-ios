@@ -156,6 +156,7 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
     func navigateToWelcome() {
         let welcomeVC = UINavigationController(rootViewController: WelcomeViewController())
         welcomeVC.modalTransitionStyle = .flipHorizontal
+        welcomeVC.modalPresentationStyle = .fullScreen
         self.present(welcomeVC, animated: true, completion: nil)
     }
     

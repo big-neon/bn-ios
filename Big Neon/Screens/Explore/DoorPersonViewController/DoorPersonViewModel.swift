@@ -27,18 +27,35 @@ final class DoorPersonViewModel {
     
     func configureAccessToken(completion: @escaping(Bool) -> Void) {
         
-        BusinessService.shared.database.tokenIsExpired { [weak self] (expired) in
-            guard let self = self else {
+//        BusinessService.shared.database.tokenIsExpired { (expired) in
+//            if expired == true {
+//                self.fetchNewAccessToken(completion: { (completed) in
+//                    completion(completed)
+//                    return
+//                })
+//            } else {
+//                self.fetchCheckins(completion: { (completed) in
+//                    completion(completed)
+//                    return
+//                })
+//            }
+//        }
+        
+        BusinessService.shared.database.checkTokenExpirationAndUpdate { (tokenResult, error) in
+            if error != nil {
+                print(error)
                 completion(false)
                 return
             }
             
-            if expired == true {
-                self.fetchNewAccessToken(completion: { (completed) in
-                    completion(completed)
-                    return
-                })
-            } else {
+            switch tokenResult {
+            case .noAccessToken:
+               print("No Access Token Found")
+               completion(false)
+            case .tokenExpired:
+                print("Token has expired")
+                completion(false)
+            default:
                 self.fetchCheckins(completion: { (completed) in
                     completion(completed)
                     return
@@ -47,23 +64,23 @@ final class DoorPersonViewModel {
         }
     }
     
-    func fetchNewAccessToken(completion: @escaping(Bool) -> Void) {
-        BusinessService.shared.database.fetchNewAccessToken { [weak self] (error, tokens) in
-            
-            AnalyticsService.reportError(errorType: ErrorType.eventFetching, error: error?.localizedDescription ?? "")
-            
-            guard let self = self, let tokens = tokens else {
-                completion(false)
-                return
-            }
-            
-            Utils.saveTokensInKeychain(token: tokens)
-            self.fetchCheckins(completion: { (completed) in
-                completion(completed)
-                return
-            })
-        }
-    }
+//    func fetchNewAccessToken(completion: @escaping(Bool) -> Void) {
+//        BusinessService.shared.database.fetchNewAccessToken { [weak self] (error, tokens) in
+//
+//            AnalyticsService.reportError(errorType: ErrorType.eventFetching, error: error?.localizedDescription ?? "")
+//
+//            guard let self = self, let tokens = tokens else {
+//                completion(false)
+//                return
+//            }
+//
+//            Utils.saveTokensInKeychain(token: tokens)
+//            self.fetchCheckins(completion: { (completed) in
+//                completion(completed)
+//                return
+//            })
+//        }
+//    }
     
     func fetchCheckins(completion: @escaping(Bool) -> Void) {
         self.events = nil
@@ -85,21 +102,53 @@ final class DoorPersonViewModel {
     
     func fetchUser(completion: @escaping(Bool) -> Void) {
         
-        guard let accessToken = BusinessService.shared.database.fetchAcessToken() else {
-            completion(false)
-            return
-        }
-        
-        BusinessService.shared.database.fetchUser(withAccessToken: accessToken) { (error, userFound) in
-            guard let user = userFound else {
+        BusinessService.shared.database.checkTokenExpirationAndUpdate { (tokenResult, error) in
+            if error != nil {
+                print(error)
                 completion(false)
                 return
             }
             
-            self.user = user
-            completion(true)
-            return
+            switch tokenResult {
+            case .noAccessToken:
+               print("No Access Token Found")
+               completion(false)
+            case .tokenExpired:
+                print("Token has expired")
+                completion(false)
+            default:
+//                self.fetchCheckins(completion: { (completed) in
+//                    completion(completed)
+//                    return
+//                })
+                BusinessService.shared.database.fetchUser() { (error, userFound) in
+                    guard let user = userFound else {
+                        completion(false)
+                        return
+                    }
+                    
+                    self.user = user
+                    completion(true)
+                    return
+                }
+            }
         }
+        
+//        guard let accessToken = BusinessService.shared.database.fetchAcessToken() else {
+//            completion(false)
+//            return
+//        }
+//
+//        BusinessService.shared.database.fetchUser(withAccessToken: accessToken) { (error, userFound) in
+//            guard let user = userFound else {
+//                completion(false)
+//                return
+//            }
+//
+//            self.user = user
+//            completion(true)
+//            return
+//        }
         
     }
     
