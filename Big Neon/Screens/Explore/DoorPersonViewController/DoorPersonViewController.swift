@@ -15,6 +15,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         let fetcher = GuestsFetcher()
         return fetcher
     }()
+    
     var headerLabel: UILabel = {
         let label = UILabel()
         label.text = "No Published Events"

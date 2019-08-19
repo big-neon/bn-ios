@@ -103,10 +103,4 @@ final class DoorPersonViewModel {
         
     }
     
-   func handleLogout(completion: @escaping (Bool) -> Void) {
-        BusinessService.shared.database.logout { (completed) in
-            completion(completed)
-        }
-    }
-    
 }

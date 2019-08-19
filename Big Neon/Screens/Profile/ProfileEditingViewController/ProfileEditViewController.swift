@@ -24,6 +24,11 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
         return feedback
     }()
     
+    lazy var fetcher: EventsFetcher = {
+        let fetcher = EventsFetcher()
+        return fetcher
+    }()
+    
     internal lazy var profileEditTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: UITableView.Style.grouped)
         tableView.backgroundColor = UIColor.brandBackground
@@ -128,9 +133,7 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
         
         let confirmButton = UIAlertAction(title: "Confirm", style: .default, handler: { (_) -> Void in
             self.profleEditViewModel.handleLogout(completion: { (_) in
-                let welcomeVC = UINavigationController(rootViewController: WelcomeViewController())
-                welcomeVC.modalTransitionStyle = .flipHorizontal
-                self.present(welcomeVC, animated: true, completion: nil)
+                self.navigateToWelcome()
                 return
             })
         })
@@ -142,6 +145,18 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
         alertController.addAction(cancelButton)
         
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    // Clear Local Cache
+    func clearCoreData() {
+//        fetcher.
+    }
+    
+    //  Navigate to Home Screen
+    func navigateToWelcome() {
+        let welcomeVC = UINavigationController(rootViewController: WelcomeViewController())
+        welcomeVC.modalTransitionStyle = .flipHorizontal
+        self.present(welcomeVC, animated: true, completion: nil)
     }
     
 }

@@ -4,7 +4,6 @@ import Sync
 import Alamofire
 import Big_Neon_Core
 
-
 enum VoidResult {
     case success
     case failure(NSError)
@@ -53,6 +52,22 @@ class EventsFetcher {
             self.dataStack.sync(events, inEntityNamed: EventsData.entity().managedObjectClassName) { error in
                 completion(.success)
             }
+        }
+    }
+    
+    func syncToDelete(completion: @escaping (_ result: VoidResult) -> ()) {
+        
+        self.repository.fetchEvents { (eventsFetchedDict, error) in
+            if error != nil {
+                completion(.failure(error! as NSError))
+                return
+            }
+            
+            guard let events = eventsFetchedDict else {
+                return
+            }
+    
+            try! self.dataStack.delete(events, inEntityNamed: EventsData.entity().managedObjectClassName)
         }
     }
 }
