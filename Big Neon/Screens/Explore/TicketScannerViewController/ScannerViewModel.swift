@@ -7,6 +7,7 @@ import Sync
 
 final class TicketScannerViewModel {
     
+    var scannedMetaString: String?
     var redeemedTicket: RedeemableTicket?
     var lastRedeemedTicket: RedeemableTicket?
     var scanVC: ScannerViewController?

@@ -52,28 +52,37 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             }
             
             //  Last Ticket and Latest Ticket are the same - don't rescan.
-            if let scannedTicketID = self.scannerViewModel?.redeemedTicket?.id {
+            if let scannedMetaString = self.scannerViewModel?.scannedMetaString {
                 
-                if ticketID != scannedTicketID {
-                    self.checkinAutomatically(withTicketID: scannedTicketID, fromGuestTableView: false, atIndexPath: nil)
-                    self.stopScanning = false
-                    self.timer?.invalidate()
-                    self.timer = nil
+                //  Check if the Meta String is not the same
+                if metaDataString == scannedMetaString {
+                    print("Scanned QR is the Same, Scan a new ticket")
                     return
                 }
-
-                if let timer = self.timer {
-                    if timer.isValid == true {
-                       return
-                    }
-                } else {
-                    if ticketID == scannedTicketID {
-                        self.checkinAutomatically(withTicketID: scannedTicketID, fromGuestTableView: false, atIndexPath: nil)
-                        self.stopScanning = false
-                        return
-                    }
-                }
+                
+//                if ticketID != scannedTicketID {
+//                    self.checkinAutomatically(withTicketID: scannedTicketID, fromGuestTableView: false, atIndexPath: nil)
+//                    self.stopScanning = false
+//                    self.timer?.invalidate()
+//                    self.timer = nil
+//                    return
+//                }
+//
+//                if let timer = self.timer {
+//                    if timer.isValid == true {
+//                       return
+//                    }
+//                } else {
+//                    if ticketID == scannedTicketID {
+//                        self.checkinAutomatically(withTicketID: scannedTicketID, fromGuestTableView: false, atIndexPath: nil)
+//                        self.stopScanning = false
+//                        return
+//                    }
+//                }
             }
+            
+            // **  Save the Meta String to prevent Duplicate Scanning
+            self.scannerViewModel?.scannedMetaString = metaDataString
             
             //  Check if a Scanned User
             if self.isShowingScannedUser == true {
