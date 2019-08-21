@@ -79,17 +79,17 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
     @objc internal func handleSave() {
         
         guard let firstName = self.profleEditViewModel.firstName else {
-            Utils.showAlert(presenter: self, title: "First Name Missing", message: "Please add your name before saving")
+            self.showAlert(presenter: self, title: "First Name Missing", message: "Please add your name before saving")
             return
         }
         
         guard let lastName = self.profleEditViewModel.lastName else {
-            Utils.showAlert(presenter: self, title: "Last Name Missing", message: "Please add your last name")
+            self.showAlert(presenter: self, title: "Last Name Missing", message: "Please add your last name")
             return
         }
         
         guard let email = self.profleEditViewModel.email else {
-            Utils.showAlert(presenter: self, title: "Email Missing", message: "Please add your email")
+            self.showAlert(presenter: self, title: "Email Missing", message: "Please add your email")
             return
         }
         

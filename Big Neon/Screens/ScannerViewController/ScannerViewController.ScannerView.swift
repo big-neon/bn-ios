@@ -40,7 +40,9 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             
             guard self.scannerViewModel?.getRedeemKey(fromStringValue: metaDataString) != nil else {
                 self.generator.notificationOccurred(.error)
-                Utils.showAlert(presenter: self, title: "No Redeem Key Found", message: "The ticket does not contain a redeem key. Check the guest in from the guest list")
+                self.showAlert(presenter: self, title: "No Redeem Key Found", message: "The ticket does not contain a redeem key. Check the guest in from the guest list")
+                // **  Save the Meta String to prevent Duplicate Scanning
+                self.scannerViewModel?.scannedMetaString = metaDataString
                 self.stopScanning = true
                 return
             }
