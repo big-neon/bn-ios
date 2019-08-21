@@ -125,15 +125,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         return view
     }()
     
-    /*
-    lazy var guestListView: GuestListView = {
-        let view =  GuestListView()
-        view.delegate = self
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    */
-    
     lazy var manualUserCheckinView: ManualCheckinModeView = {
         let view =  ManualCheckinModeView()
         view.delegate = self
@@ -226,8 +217,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
 
         self.scannerViewModel?.fetchEventGuests(forEventID: eventID, page: 0, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
-                guard let self = self else {return}
-                if completed == false {
+                guard let self = self, completed else {
                     return
                 }
                 self.guests = self.scannerViewModel?.ticketsFetched

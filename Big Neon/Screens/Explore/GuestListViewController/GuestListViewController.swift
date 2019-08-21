@@ -5,7 +5,6 @@ import UIKit
 import Big_Neon_Core
 import Big_Neon_UI
 import PanModal
-//import SwipeCellKit
 import Sync
 
 protocol GuestListViewDelegate: class {
@@ -27,7 +26,7 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
     var scannerViewModel: TicketScannerViewModel
     var guestViewModel = GuestsListViewModel()
     
-    var guestsFetcher: GuestsFetcher?  // Fetching guests Offline
+    var guestsFetcher: GuestsFetcher?
     
     var isSearching: Bool = false {
         didSet {
@@ -80,17 +79,6 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
             configureNavBar()
             configureView()
             guestsDictionary.removeAll()
-            
-//            for guest in guests {
-//                let guestKey = String(guest.first_name!.prefix(1).uppercased())
-//                if var guestValues = guestsDictionary[guestKey] {
-//                    guestValues.append(guest)
-//                    guestsDictionary[guestKey] = guestValues
-//                } else {
-//                    guestsDictionary[guestKey] = [guest]
-//                }
-//            }
-            
             self.guestSectionTitles = [String](guestsDictionary.keys)
             self.guestSectionTitles = guestSectionTitles.sorted(by: { $0 < $1 })
         }
@@ -155,7 +143,6 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        //perform(#selector(fetchUpdatedGuests), with: self, afterDelay: 1.0)
     }
 
     func fetchGuests() {
@@ -249,9 +236,10 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
         
         self.scannerViewModel.fetchEventGuests(forEventID: eventID, page: guestViewModel.currentPage, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
-                self?.guests = (self?.scannerViewModel.ticketsFetched)!
-                self?.guestTableView.reloadData()
-                self?.refresher.endRefreshing()
+                guard let self = self else { return }
+                self.guests = self.scannerViewModel.ticketsFetched
+                self.guestTableView.reloadData()
+                self.refresher.endRefreshing()
                 return
             }
         })

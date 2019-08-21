@@ -79,7 +79,7 @@ class GuestListHeaderView: UIView {
         subtitleLabel.widthAnchor.constraint(equalToConstant: 200.0).isActive = true
     }
     
-    @objc func handleReloadGuest()
+    @objc func handleReloadGuest() {
         self.delegate?.reloadGuests()
     }
     
