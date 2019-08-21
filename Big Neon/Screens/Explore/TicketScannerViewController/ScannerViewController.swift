@@ -370,6 +370,10 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     }
     
     /*
+     
+     TO DO: Review if Still Needed
+     
+     
     @objc func showGuestList() {
         viewAnimationBounce(viewSelected: showGuestView,
                             bounceVelocity: 10.0,

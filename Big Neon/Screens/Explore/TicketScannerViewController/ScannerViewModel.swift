@@ -49,30 +49,19 @@ final class TicketScannerViewModel {
     }
 
     func getRedeemKey(fromStringValue value: String) -> String? {
-        // MARK: use just one guard
-        guard let data = try? JSONSerialization.jsonObject(with: Data(value.utf8), options: []) else {
-            return nil
-        }
-        
-        guard let dataValue = data as? [String: Any] else {
-            return nil
-        }
-        guard let redeemKeyData = dataValue["data"] as? [String:String] else {
+        guard let data = try? JSONSerialization.jsonObject(with: Data(value.utf8), options: []),
+            let dataValue = data as? [String: Any],
+            let redeemKeyData = dataValue["data"] as? [String:String] else {
             return nil
         }
         return redeemKeyData["redeem_key"]
     }
     
     func getTicketID(fromStringValue value: String) -> String? {
-        // MARK: use just one guard
-        guard let data = try? JSONSerialization.jsonObject(with: Data(value.utf8), options: []) else {
-            return nil
-        }
-        
-        guard let dataValue = data as? [String: Any] else {
-            return nil
-        }
-        guard let redeemKeyData = dataValue["data"] as? [String:String] else {
+        guard let data = try? JSONSerialization.jsonObject(with: Data(value.utf8), options: []),
+            let dataValue = data as? [String: Any],
+            let redeemKeyData = dataValue["data"] as? [String:String] else {
+                
             return nil
         }
         return redeemKeyData["id"]

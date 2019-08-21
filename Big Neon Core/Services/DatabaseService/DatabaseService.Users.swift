@@ -89,6 +89,9 @@ extension DatabaseService {
     }
     
     /*
+     
+     TO DO
+     
     public func updateUserImage(image: UIImage, lastName: String, email: String, completion: @escaping(Error?) -> Void) {
         
         case profilePicURL = "profile_pic_url"

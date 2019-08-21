@@ -29,40 +29,10 @@ public class EventsApiRepository {
             completion(true)
             return
         }
-        
-//        BusinessService.shared.database.checkTokenExpirationAndUpdate { (tokenResult, error) in
-//            if error != nil {
-//                print(error)
-//                completion(false)
-//                return
-//            }
-//
-//            switch tokenResult {
-//            case .noAccessToken?:
-//               print("No Access Token Found")
-//               completion(false)
-//            case .tokenExpired?:
-//                print("Token has expired")
-//                completion(false)
-//            default:
-//                completion(true)
-//                return
-//            }
-//        }
     }
     
     private func fetchNewAccessToken(completion: @escaping(Bool) -> Void) {
         
-//        TokenService.shared.fetchNewAccessToken()
-//        TokenService.shared.checkToken { (completed) in
-//            guard completed else {
-//                completion(completed)
-//                return
-//            }
-//
-//            completion(true)
-//            return
-//        }
         TokenService.shared.fetchNewAccessToken { (error, tokens) in
             guard let tokens = tokens, (error != nil) else {
                 completion(false)
@@ -73,12 +43,6 @@ public class EventsApiRepository {
             completion(true)
         }
     }
-    
-//    private func saveTokensInKeychain(token: Tokens) {
-//        KeychainWrapper.standard.set(token.accessToken, forKey: "accessToken")
-//        KeychainWrapper.standard.set(token.refreshToken, forKey: "refreshToken")
-//        return
-//    }
     
     func fetchEvents(completion: @escaping (_ fetchedEventsDict: [[String: Any]]?, _ error: Error?) -> ()) {
         

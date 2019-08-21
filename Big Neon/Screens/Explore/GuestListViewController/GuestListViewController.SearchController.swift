@@ -27,7 +27,7 @@ extension GuestListViewController {
         
         self.isSearching = true
         
-        // Ping Database for information
+        // Ping DB for information
         self.guestViewModel.fetchGuests(withQuery: searchText, page: nil, isSearching: true) { [weak self] (_) in
             DispatchQueue.main.async {
                 self?.headerView.searchResults = self?.guestViewModel.guestSearchResults.count

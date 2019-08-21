@@ -39,26 +39,6 @@ final class ProfileViewModel {
                 return
             })
         }
-        
-//        BusinessService.shared.database.checkTokenExpirationAndUpdate { (tokenResult, error) in
-//            if error != nil {
-//                print(error)
-//                completion(false)
-//                return
-//            }
-//
-//            switch tokenResult {
-//            case .noAccessToken?:
-//               print("No Access Token Found")
-//               completion(false)
-//            case .tokenExpired?:
-//                print("Token has expired")
-//                completion(false)
-//            default:
-//
-//            }
-//        }
-    
     }
     
     private func fetchUser(completion: @escaping(Bool) -> Void) {
