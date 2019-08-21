@@ -128,7 +128,6 @@
 		C6B88D5321F1C323006394F8 /* BrandTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D4C21F1C323006394F8 /* BrandTitle.swift */; };
 		C6B88D5421F1C323006394F8 /* BrandTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D4D21F1C323006394F8 /* BrandTextField.swift */; };
 		C6B88D5D21F1C359006394F8 /* NavBarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D5921F1C359006394F8 /* NavBarConfig.swift */; };
-		C6B88D5E21F1C359006394F8 /* StatusBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D5A21F1C359006394F8 /* StatusBarView.swift */; };
 		C6B88D5F21F1C359006394F8 /* ValidEmailAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D5B21F1C359006394F8 /* ValidEmailAddress.swift */; };
 		C6B88D6021F1C359006394F8 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D5C21F1C359006394F8 /* RoundedCorner.swift */; };
 		C6B88D6721F1C862006394F8 /* DateConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D6621F1C862006394F8 /* DateConfig.swift */; };
@@ -379,7 +378,6 @@
 		C6B88D4C21F1C323006394F8 /* BrandTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandTitle.swift; sourceTree = "<group>"; };
 		C6B88D4D21F1C323006394F8 /* BrandTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandTextField.swift; sourceTree = "<group>"; };
 		C6B88D5921F1C359006394F8 /* NavBarConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavBarConfig.swift; sourceTree = "<group>"; };
-		C6B88D5A21F1C359006394F8 /* StatusBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarView.swift; sourceTree = "<group>"; };
 		C6B88D5B21F1C359006394F8 /* ValidEmailAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidEmailAddress.swift; sourceTree = "<group>"; };
 		C6B88D5C21F1C359006394F8 /* RoundedCorner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		C6B88D6121F1C372006394F8 /* TicketQRCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketQRCodeView.swift; sourceTree = "<group>"; };
@@ -971,7 +969,6 @@
 			children = (
 				C6B88D5921F1C359006394F8 /* NavBarConfig.swift */,
 				C6B88D5C21F1C359006394F8 /* RoundedCorner.swift */,
-				C6B88D5A21F1C359006394F8 /* StatusBarView.swift */,
 				C6B88D5B21F1C359006394F8 /* ValidEmailAddress.swift */,
 				C6C45D6921F5CDCD00D2F602 /* PopAnimations.swift */,
 				C6C45D6B21F5CEC000D2F602 /* Feedbacksystem.swift */,
@@ -1749,7 +1746,6 @@
 				C6C45D6A21F5CDCD00D2F602 /* PopAnimations.swift in Sources */,
 				C64124CA21F26D1800233797 /* AuthTextView.swift in Sources */,
 				C6EC209E220075D100BD10DD /* PhoneNumberTextField.swift in Sources */,
-				C6B88D5E21F1C359006394F8 /* StatusBarView.swift in Sources */,
 				C6C49DA52209A77E0087AE16 /* DollarString.swift in Sources */,
 				C6B88D5421F1C323006394F8 /* BrandTextField.swift in Sources */,
 				C66923B822CF436100A162A6 /* ScreenSize.swift in Sources */,

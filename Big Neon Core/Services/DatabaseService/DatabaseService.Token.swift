@@ -29,9 +29,12 @@ extension DatabaseService {
         do {
             let jwt = try decode(jwt: accessToken)
             let _ = jwt.expired
-            let tokenExpiryDate = jwt.expiresAt
+            guard let tokenExpiryDate = jwt.expiresAt else {
+                completion(.noAccessToken, nil)
+                return
+            }
 
-            if tokenExpiryDate! < Date.init(timeInterval: 60, since: Date()) {
+            if tokenExpiryDate < Date.init(timeInterval: 60, since: Date()) {
                 self.updateAccessToken { (error) in
                     if let err = error {
                         completion(nil, err)
