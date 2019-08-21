@@ -15,7 +15,7 @@ final class RoutingViewModel {
 //        }
 //        return true
                 
-        if BusinessService.shared.database.fetchRefreshToken() == nil {
+        if  TokenService.shared.fetchRefreshToken() == nil {
             return false
         }
         return true

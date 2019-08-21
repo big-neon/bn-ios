@@ -1,3 +1,6 @@
+
+import Foundation
+import SwiftKeychainWrapper
 import Foundation
 import Alamofire
 import JWTDecode
@@ -10,9 +13,51 @@ public enum TokenExpResult {
     case tokenNotExpired
 }
 
-extension DatabaseService {
+public class TokenService {
     
-    public func checkTokenExpirationAndUpdate(completion: @escaping (TokenExpResult?, Error?) -> Void) {
+    public class var shared: TokenService {
+        struct Static {
+            static let instance: TokenService = TokenService()
+        }
+        return Static.instance
+    }
+    
+    public func fetchAcessToken() -> String? {
+        return KeychainWrapper.standard.string(forKey: Constants.keychainAccessToken)
+    }
+    
+    public func saveTokensInKeychain(token: Tokens) {
+        KeychainWrapper.standard.set(token.accessToken, forKey:  Constants.keychainAccessToken)
+        KeychainWrapper.standard.set(token.refreshToken, forKey: Constants.keychainRefreshToken)
+    }
+    
+    @discardableResult public func fetchRefreshToken() -> String? {
+        return KeychainWrapper.standard.string(forKey: Constants.keychainRefreshToken)
+    }
+    
+    public func checkToken(completion: @escaping(Bool) -> Void) {
+        
+        self.checkTokenExpirationAndUpdate { (tokenResult, error) in
+            if error != nil {
+                completion(false)
+                return
+            }
+            
+            switch tokenResult {
+            case .noAccessToken?:
+               print("No Access Token Found")
+               completion(false)
+            case .tokenExpired?:
+                print("Token has expired")
+                completion(false)
+            default:
+                completion(true)
+            }
+        }
+        
+    }
+    
+    private func checkTokenExpirationAndUpdate(completion: @escaping (TokenExpResult?, Error?) -> Void) {
         
         guard let accessToken = self.fetchAcessToken() else {
             
@@ -54,7 +99,7 @@ extension DatabaseService {
         }
     }
     
-    public func updateAccessToken(completion: @escaping(Error?) -> Void) {
+    private func updateAccessToken(completion: @escaping(Error?) -> Void) {
         self.fetchNewAccessToken { (error, tokens) in
             if let err = error {
                 completion(err)

@@ -15,7 +15,7 @@ extension DatabaseService {
     public func getRedeemTicket(forTicketID ticketID: String, completion: @escaping (ScanFeedback?, String?, RedeemableTicket?) -> Void) {
         
         let APIURL = APIService.getRedeemableTicket(ticketID: ticketID)
-        let accessToken = self.fetchAcessToken()
+        let accessToken = TokenService.shared.fetchAcessToken()
 
         AF.request(APIURL,
                    method: HTTPMethod.get,
@@ -62,7 +62,7 @@ extension DatabaseService {
         redeemTicket(forTicketID ticketID: String, eventID: String, redeemKey: String, completion: @escaping (ScanFeedback, RedeemableTicket?) -> Void) {
 
         let apiURL = APIService.redeemTicket(eventID: eventID, ticketID: ticketID)
-        let accessToken = self.fetchAcessToken()
+        let accessToken = TokenService.shared.fetchAcessToken()
         let parameters = ["ticket_id": ticketID,
                           "event_id": eventID,
                           "redeem_key": redeemKey]
@@ -109,7 +109,7 @@ extension DatabaseService {
     public func fetchGuests(forEventID eventID: String, limit: Int, page: Int?, guestQuery: String?, completion: @escaping (_ error: Error?, _ fetchedGuestsDict: [[String: Any]]?, _ serverGuests: Guests?, _ totalGuests: Int) -> Void) {
         
         let apiURL = APIService.fetchEvents(eventID: eventID, changesSince: nil, page: page, limit: limit, query: guestQuery)
-        let accessToken = self.fetchAcessToken()
+        let accessToken = TokenService.shared.fetchAcessToken()
         
         AF.request(apiURL,
                    method: HTTPMethod.get,
@@ -152,7 +152,7 @@ extension DatabaseService {
     public func fetchUpdatedGuests(forEventID eventID: String, changeSince: String?, completion: @escaping (_ error: Error?, _ updatedGuestsDict: [[String: Any]]?) -> Void) {
         
         let apiURL = APIService.fetchEvents(eventID: eventID, changesSince: changeSince, page: nil, limit: nil, query: nil)
-        let accessToken = self.fetchAcessToken()
+        let accessToken = TokenService.shared.fetchAcessToken()
         
         AF.request(apiURL,
                    method: HTTPMethod.get,

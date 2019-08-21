@@ -28,27 +28,36 @@ final class ProfileViewModel {
     
     func configureAccessToken(completion: @escaping(Bool) -> Void) {
         
-        BusinessService.shared.database.checkTokenExpirationAndUpdate { (tokenResult, error) in
-            if error != nil {
-                print(error)
-                completion(false)
+        TokenService.shared.checkToken { (completed) in
+            guard completed else {
+                completion(completed)
                 return
             }
             
-            switch tokenResult {
-            case .noAccessToken?:
-               print("No Access Token Found")
-               completion(false)
-            case .tokenExpired?:
-                print("Token has expired")
-                completion(false)
-            default:
-                self.fetchUser(completion: { (completed) in
-                    completion(completed)
-                    return
-                })
-            }
+            self.fetchUser(completion: { (completed) in
+                completion(completed)
+                return
+            })
         }
+        
+//        BusinessService.shared.database.checkTokenExpirationAndUpdate { (tokenResult, error) in
+//            if error != nil {
+//                print(error)
+//                completion(false)
+//                return
+//            }
+//
+//            switch tokenResult {
+//            case .noAccessToken?:
+//               print("No Access Token Found")
+//               completion(false)
+//            case .tokenExpired?:
+//                print("Token has expired")
+//                completion(false)
+//            default:
+//
+//            }
+//        }
     
     }
     

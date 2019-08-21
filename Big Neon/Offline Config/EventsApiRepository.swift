@@ -20,44 +20,65 @@ public class EventsApiRepository {
     
     private func configureAccessToken(completion: @escaping(Bool) -> Void) {
         
-        BusinessService.shared.database.checkTokenExpirationAndUpdate { (tokenResult, error) in
-            if error != nil {
-                print(error)
-                completion(false)
+        TokenService.shared.checkToken { (completed) in
+            guard completed else {
+                completion(completed)
                 return
             }
-            
-            switch tokenResult {
-            case .noAccessToken?:
-               print("No Access Token Found")
-               completion(false)
-            case .tokenExpired?:
-                print("Token has expired")
-                completion(false)
-            default:
-                completion(true)
-                return
-            }
+        
+            completion(true)
+            return
         }
+        
+//        BusinessService.shared.database.checkTokenExpirationAndUpdate { (tokenResult, error) in
+//            if error != nil {
+//                print(error)
+//                completion(false)
+//                return
+//            }
+//
+//            switch tokenResult {
+//            case .noAccessToken?:
+//               print("No Access Token Found")
+//               completion(false)
+//            case .tokenExpired?:
+//                print("Token has expired")
+//                completion(false)
+//            default:
+//                completion(true)
+//                return
+//            }
+//        }
     }
     
     private func fetchNewAccessToken(completion: @escaping(Bool) -> Void) {
-        BusinessService.shared.database.fetchNewAccessToken { [weak self] (error, tokens) in
-            guard let tokens = tokens else {
+        
+//        TokenService.shared.fetchNewAccessToken()
+//        TokenService.shared.checkToken { (completed) in
+//            guard completed else {
+//                completion(completed)
+//                return
+//            }
+//
+//            completion(true)
+//            return
+//        }
+        TokenService.shared.fetchNewAccessToken { (error, tokens) in
+            guard let tokens = tokens, (error != nil) else {
                 completion(false)
                 return
             }
             
-            self?.saveTokensInKeychain(token: tokens)
+            TokenService.shared.saveTokensInKeychain(token: tokens)
             completion(true)
         }
     }
     
-    private func saveTokensInKeychain(token: Tokens) {
-        KeychainWrapper.standard.set(token.accessToken, forKey: "accessToken")
-        KeychainWrapper.standard.set(token.refreshToken, forKey: "refreshToken")
-        return
-    }
+//    private func saveTokensInKeychain(token: Tokens) {
+//        KeychainWrapper.standard.set(token.accessToken, forKey: "accessToken")
+//        KeychainWrapper.standard.set(token.refreshToken, forKey: "refreshToken")
+//        return
+//    }
     
     func fetchEvents(completion: @escaping (_ fetchedEventsDict: [[String: Any]]?, _ error: Error?) -> ()) {
         
@@ -67,7 +88,7 @@ public class EventsApiRepository {
                 return
             }
             
-            let accessToken = BusinessService.shared.database.fetchAcessToken()
+            let accessToken =  TokenService.shared.fetchAcessToken()
             AF.request(self.APIURL,
                        method: HTTPMethod.get,
                        parameters: nil,

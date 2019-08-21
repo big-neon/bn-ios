@@ -23,7 +23,7 @@ final class AccountViewModel {
                 return
             }
             
-            BusinessService.shared.database.saveTokensInKeychain(token: tokens)
+            TokenService.shared.saveTokensInKeychain(token: tokens)
             
             completion(true, nil)
             return
@@ -43,7 +43,7 @@ final class AccountViewModel {
             guard let tokens = tokens else {
                 return
             }
-            BusinessService.shared.database.saveTokensInKeychain(token: tokens)
+             TokenService.shared.saveTokensInKeychain(token: tokens)
             
             completion(true, nil)
             return

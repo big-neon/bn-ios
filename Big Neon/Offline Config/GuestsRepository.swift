@@ -14,35 +14,45 @@ public class GuestsApiRepository {
     
     private func configureAccessToken(completion: @escaping(Bool) -> Void) {
         
-        BusinessService.shared.database.checkTokenExpirationAndUpdate { (tokenResult, error) in
-            if error != nil {
-                print(error)
+        TokenService.shared.checkToken { (completed) in
+            guard completed else {
                 completion(false)
                 return
             }
-            
-            switch tokenResult {
-            case .noAccessToken?:
-               print("No Access Token Found")
-               completion(false)
-            case .tokenExpired?:
-                print("Token has expired")
-                completion(false)
-            default:
-                completion(true)
-                return
-            }
+        
+            completion(true)
+            return
         }
+        
+//        BusinessService.shared.database.checkTokenExpirationAndUpdate { (tokenResult, error) in
+//            if error != nil {
+//                print(error)
+//                completion(false)
+//                return
+//            }
+//
+//            switch tokenResult {
+//            case .noAccessToken?:
+//               print("No Access Token Found")
+//               completion(false)
+//            case .tokenExpired?:
+//                print("Token has expired")
+//                completion(false)
+//            default:
+//                completion(true)
+//                return
+//            }
+//        }
     }
     
     private func fetchNewAccessToken(completion: @escaping(Bool) -> Void) {
-        BusinessService.shared.database.fetchNewAccessToken { [weak self] (error, tokens) in
+        TokenService.shared.fetchNewAccessToken { (error, tokens) in
             guard let tokens = tokens else {
                 completion(false)
                 return
             }
             
-            self?.saveTokensInKeychain(token: tokens)
+            TokenService.shared.saveTokensInKeychain(token: tokens)
             completion(true)
         }
     }
@@ -55,7 +65,7 @@ public class GuestsApiRepository {
     
     func fetchGuests(forEventID eventID: String, completion: @escaping (_ fetchedGuestsDict: [[String: Any]]?, _ error: Error?) -> ()) {
         let apiURL = APIService.fetchEvents(eventID: eventID, changesSince: nil, page: nil, limit: nil, query: nil)
-        let accessToken = BusinessService.shared.database.fetchAcessToken()
+        let accessToken =  TokenService.shared.fetchAcessToken()
         
         AF.request(apiURL,
                    method: HTTPMethod.get,

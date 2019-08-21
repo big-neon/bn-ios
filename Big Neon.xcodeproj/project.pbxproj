@@ -46,7 +46,6 @@
 		C623C0802251E42C0020D0A8 /* CheckinTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A422222304D9F002789E6 /* CheckinTagView.swift */; };
 		C623C0812251E42C0020D0A8 /* LastScannedUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C689AE223A74AC00004593 /* LastScannedUserView.swift */; };
 		C628B15021F7B75800FCBDC9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C628B14F21F7B75800FCBDC9 /* Constants.swift */; };
-		C628B15221F9C89200FCBDC9 /* DatabaseService.Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = C628B15121F9C89200FCBDC9 /* DatabaseService.Token.swift */; };
 		C628B15421F9E35700FCBDC9 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C628B15321F9E35700FCBDC9 /* SplashViewModel.swift */; };
 		C628B15621FAD76000FCBDC9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C628B15521FAD76000FCBDC9 /* User.swift */; };
 		C62BC78421CCC3F700830A5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC78321CCC3F700830A5F /* AppDelegate.swift */; };
@@ -175,6 +174,7 @@
 		C6CD1C2222AA89BA009D7510 /* GuestsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CD1C2122AA89BA009D7510 /* GuestsListViewModel.swift */; };
 		C6CEC8A9221ADBCE00F7329D /* TicketTypeStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CEC8A8221ADBCE00F7329D /* TicketTypeStatus.swift */; };
 		C6D2413421EF53B000FC3E41 /* NamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2413321EF53B000FC3E41 /* NamesViewController.swift */; };
+		C6DB1F98230D63710019C014 /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DB1F97230D63710019C014 /* TokenService.swift */; };
 		C6DBF0AD2305739800911392 /* GuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DBF0AC2305739800911392 /* GuestViewController.swift */; };
 		C6DE2F7A225360BA00ECF7D7 /* EventGuests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DE2F79225360BA00ECF7D7 /* EventGuests.swift */; };
 		C6E648532240D088000F2DFB /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E648522240D088000F2DFB /* ScannerViewController.swift */; };
@@ -279,7 +279,6 @@
 		C62009AA970A5B16F004DD37 /* Pods-Big Neon Core.debug (beta).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon Core.debug (beta).xcconfig"; path = "Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.debug (beta).xcconfig"; sourceTree = "<group>"; };
 		C626B6C922254A9A00EB3150 /* GuestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestsView.swift; sourceTree = "<group>"; };
 		C628B14F21F7B75800FCBDC9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		C628B15121F9C89200FCBDC9 /* DatabaseService.Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Token.swift; sourceTree = "<group>"; };
 		C628B15321F9E35700FCBDC9 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		C628B15521FAD76000FCBDC9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C62BC78021CCC3F700830A5F /* Big Neon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Big Neon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -430,6 +429,7 @@
 		C6CEC8A8221ADBCE00F7329D /* TicketTypeStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTypeStatus.swift; sourceTree = "<group>"; };
 		C6D2413321EF53B000FC3E41 /* NamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesViewController.swift; sourceTree = "<group>"; };
 		C6D37B3421F1CD8200C616D0 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		C6DB1F97230D63710019C014 /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
 		C6DBF0AC2305739800911392 /* GuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestViewController.swift; sourceTree = "<group>"; };
 		C6DE2F79225360BA00ECF7D7 /* EventGuests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventGuests.swift; sourceTree = "<group>"; };
 		C6E648522240D088000F2DFB /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
@@ -1021,6 +1021,7 @@
 		C6B88D6821F1C86B006394F8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C6DB1F96230D63540019C014 /* TokenService */,
 				C6B88D6921F1C872006394F8 /* BusinessService */,
 				C6B88D6A21F1C87B006394F8 /* DatabaseService */,
 			);
@@ -1039,7 +1040,6 @@
 			isa = PBXGroup;
 			children = (
 				C6B88D6B21F1C889006394F8 /* DatabaseService.swift */,
-				C628B15121F9C89200FCBDC9 /* DatabaseService.Token.swift */,
 				C6B88D6C21F1C88A006394F8 /* DatabaseService.Authentication.swift */,
 				C644BA3321F70C19003C188B /* DatabaseService.Users.swift */,
 				C6B88D6D21F1C88A006394F8 /* DatabaseService.Events.swift */,
@@ -1125,6 +1125,14 @@
 				C6CEC8A8221ADBCE00F7329D /* TicketTypeStatus.swift */,
 			);
 			path = TicketTypeStatus;
+			sourceTree = "<group>";
+		};
+		C6DB1F96230D63540019C014 /* TokenService */ = {
+			isa = PBXGroup;
+			children = (
+				C6DB1F97230D63710019C014 /* TokenService.swift */,
+			);
+			path = TokenService;
 			sourceTree = "<group>";
 		};
 		C6DBF0AB2305738800911392 /* GuestViewController */ = {
@@ -1687,7 +1695,6 @@
 				C60BDEBE229EC03F00E54456 /* Environment.swift in Sources */,
 				C678C17F2276FABD0069A2DF /* ObjectAddingUtils.swift in Sources */,
 				C6B88D8F21F1C94E006394F8 /* Organisation.swift in Sources */,
-				C628B15221F9C89200FCBDC9 /* DatabaseService.Token.swift in Sources */,
 				C6B88D8121F1C93A006394F8 /* LocalizedTimes.swift in Sources */,
 				C6B88D8E21F1C94E006394F8 /* TicketType.swift in Sources */,
 				C6B88D8B21F1C94E006394F8 /* EventDetail.swift in Sources */,
@@ -1712,6 +1719,7 @@
 				C698F6032238F76400977259 /* ScanFeedback.swift in Sources */,
 				C644BA2F21F7069D003C188B /* BasicError.swift in Sources */,
 				C60EDC852248E3EE00C9CC27 /* Environment-Old.swift in Sources */,
+				C6DB1F98230D63710019C014 /* TokenService.swift in Sources */,
 				C6B88D7921F1C932006394F8 /* Tokens.swift in Sources */,
 				C628B15621FAD76000FCBDC9 /* User.swift in Sources */,
 				C6CEC8A9221ADBCE00F7329D /* TicketTypeStatus.swift in Sources */,

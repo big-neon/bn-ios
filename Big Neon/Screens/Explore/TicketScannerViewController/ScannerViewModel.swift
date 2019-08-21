@@ -111,26 +111,16 @@ final class TicketScannerViewModel {
             return
         }
         
-        BusinessService.shared.database.checkTokenExpirationAndUpdate { (tokenResult, error) in
-            
-            if error != nil {
+        TokenService.shared.checkToken { (completed) in
+            guard completed else {
                 completion(.issueFound)
                 return
             }
-            
-            switch tokenResult {
-            case .noAccessToken?:
-               print("No Access Token Found")
-               completion(.issueFound)
-            case .tokenExpired?:
-                print("Token has expired")
-                completion(.issueFound)
-            default:
-                BusinessService.shared.database.redeemTicket(forTicketID: ticket.id, eventID: eventID, redeemKey: ticket.redeemKey) { [weak self] (scanFeedback, ticket) in
-                    DispatchQueue.main.async {
-                        self?.redeemedTicket = ticket
-                        completion(scanFeedback)
-                    }
+        
+            BusinessService.shared.database.redeemTicket(forTicketID: ticket.id, eventID: eventID, redeemKey: ticket.redeemKey) { [weak self] (scanFeedback, ticket) in
+                DispatchQueue.main.async {
+                    self?.redeemedTicket = ticket
+                    completion(scanFeedback)
                 }
             }
         }
@@ -167,50 +157,31 @@ final class TicketScannerViewModel {
     }
     
     func completeAutoCheckin(eventID: String, ticket: RedeemableTicket, completion: @escaping(ScanFeedback) -> Void) {
-        BusinessService.shared.database.checkTokenExpirationAndUpdate { (tokenResult, error) in
-            if error != nil {
-                print(error)
+        
+        TokenService.shared.checkToken { (completed) in
+            guard completed else {
                 completion(.issueFound)
                 return
             }
-            
-            switch tokenResult {
-            case .noAccessToken?:
-               print("No Access Token Found")
-               completion(.issueFound)
-            case .tokenExpired?:
-                print("Token has expired")
-                completion(.issueFound)
-            default:
-                self.completeCheckin(eventID: eventID, ticket: ticket) { (scanFeedback) in
-                    completion(scanFeedback)
-                }
+        
+            self.completeCheckin(eventID: eventID, ticket: ticket) { (scanFeedback) in
+                completion(scanFeedback)
             }
         }
     }
 
     func completeCheckin(eventID: String, ticket: RedeemableTicket, completion: @escaping(ScanFeedback) -> Void) {
         
-        BusinessService.shared.database.checkTokenExpirationAndUpdate { (tokenResult, error) in
-            if error != nil {
-                print(error)
+        TokenService.shared.checkToken { (completed) in
+            guard completed else {
                 completion(.issueFound)
                 return
             }
-            
-            switch tokenResult {
-            case .noAccessToken?:
-               print("No Access Token Found")
-               completion(.issueFound)
-            case .tokenExpired?:
-                print("Token has expired")
-                completion(.issueFound)
-            default:
-                BusinessService.shared.database.redeemTicket(forTicketID: ticket.id, eventID: eventID, redeemKey: ticket.redeemKey) { [weak self] (scanFeedback, ticket) in
-                    DispatchQueue.main.async {
-                        self?.redeemedTicket = ticket
-                        completion(scanFeedback)
-                    }
+        
+            BusinessService.shared.database.redeemTicket(forTicketID: ticket.id, eventID: eventID, redeemKey: ticket.redeemKey) { [weak self] (scanFeedback, ticket) in
+                DispatchQueue.main.async {
+                    self?.redeemedTicket = ticket
+                    completion(scanFeedback)
                 }
             }
         }
@@ -218,25 +189,15 @@ final class TicketScannerViewModel {
     
     func fetchEventGuests(forEventID eventID: String, page: Int, completion: @escaping(Bool) -> Void) {
         
-        BusinessService.shared.database.checkTokenExpirationAndUpdate { (tokenResult, error) in
-            if error != nil {
-                print(error)
+        TokenService.shared.checkToken { (completed) in
+            guard completed else {
                 completion(false)
                 return
             }
-            
-            switch tokenResult {
-            case .noAccessToken?:
-               print("No Access Token Found")
-               completion(false)
-            case .tokenExpired?:
-                print("Token has expired")
-                completion(false)
-            default:
-                self.fetchGuests(forEventID: eventID, page: page) { (completed) in
-                    completion(completed)
-                    return
-                }
+        
+            self.fetchGuests(forEventID: eventID, page: page) { (completed) in
+                completion(completed)
+                return
             }
         }
     }
