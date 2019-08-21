@@ -38,9 +38,8 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     let blurEffect = UIBlurEffect(style: .dark)
     var blurView: UIVisualEffectView?
     
-    //  Count Down Timer
-    var timer: Timer?
-    var scanSeconds = 10
+    //  Last Scanned Ticked Time
+    var lastScannedTicketTime: Date?
     
     let supportedCodeTypes = [AVMetadataObject.ObjectType.upce,
                               AVMetadataObject.ObjectType.code39,
@@ -180,10 +179,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         //  Ticket Fetching
         fetchGuests()
         //  syncGuestsData()
-    }
-    
-    deinit {
-        timer?.invalidate()
     }
     
     func configureAutoMode() {

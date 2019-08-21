@@ -53,34 +53,15 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                 return
             }
             
-            //  Last Ticket and Latest Ticket are the same - don't rescan.
-            if let scannedMetaString = self.scannerViewModel?.scannedMetaString {
-                
-                //  Check if the Meta String is not the same
-                if metaDataString == scannedMetaString {
-                    print("Scanned QR is the Same, Scan a new ticket")
+            //  Last Meta String and Latest are the same or the Time since scan is greater than the scan date
+            if let scannedMetaString = self.scannerViewModel?.scannedMetaString, let lastScannedTime = self.lastScannedTicketTime  {
+                let timeDelaySeconds = ScanDelaySeconds.fetchScanSeconds() as! TimeInterval
+                if metaDataString != scannedMetaString || Date() > Date.init(timeInterval: timeDelaySeconds, since: lastScannedTime) {
+                    self.lastScannedTicketTime = Date() // update the Last Scanned User Timer
+                    self.checkinAutomatically(withTicketID: ticketID, fromGuestTableView: false, atIndexPath: nil)
+                    self.stopScanning = false
                     return
                 }
-                
-//                if ticketID != scannedTicketID {
-//                    self.checkinAutomatically(withTicketID: scannedTicketID, fromGuestTableView: false, atIndexPath: nil)
-//                    self.stopScanning = false
-//                    self.timer?.invalidate()
-//                    self.timer = nil
-//                    return
-//                }
-//
-//                if let timer = self.timer {
-//                    if timer.isValid == true {
-//                       return
-//                    }
-//                } else {
-//                    if ticketID == scannedTicketID {
-//                        self.checkinAutomatically(withTicketID: scannedTicketID, fromGuestTableView: false, atIndexPath: nil)
-//                        self.stopScanning = false
-//                        return
-//                    }
-//                }
             }
             
             // **  Save the Meta String to prevent Duplicate Scanning
@@ -94,6 +75,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             
             self.hideScannedUser()
             self.stopScanning = true
+            self.lastScannedTicketTime = Date() // update the Last Scanned User Timer
             if self.scannerViewModel?.scannerMode() == true {
                 self.checkinAutomatically(withTicketID: ticketID, fromGuestTableView: false, atIndexPath: nil)
             } else {
