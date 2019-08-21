@@ -4,4 +4,4 @@
 
 //  Server URLs and Other Configuration Keys
 server_url              = dev.api.bigneon.com
-protocol                = http
+protocol                = https

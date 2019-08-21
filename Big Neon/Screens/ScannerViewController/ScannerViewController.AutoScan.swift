@@ -81,19 +81,6 @@ extension ScannerViewController {
         
     }
     
-//    func runCountDownTimer() {
-//        self.scanSeconds = 10
-//        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
-//    }
-//    
-//    @objc func updateTimer() {
-//        self.scanSeconds -= 1
-//        if self.scanSeconds == 0 {
-//            self.timer?.invalidate()
-//            self.scanSeconds = 10
-//        }
-//    }
-    
     func playSuccessSound(forValidTicket valid: Bool) {
         let sound = valid == true ? "Valid" : "Redeemed"
         if let resourcePath =  Bundle.main.path(forResource: sound, ofType: "m4a") {
