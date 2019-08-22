@@ -32,21 +32,20 @@ extension ProfileViewController {
         case 0:
             return "Account Details"
         default:
-            return "Event Tools"
+            return "Build: 200  ||  Version: 1.0.0"
         }
     }
     
     internal func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        // if.. else..
         case 0:
             return self.profileViewModel.sectionOneLabels.count
         default:
-            return self.profileViewModel.doorManLabel.count
+            return 0    //  self.profileViewModel.doorManLabel.count
         }
     }
     
