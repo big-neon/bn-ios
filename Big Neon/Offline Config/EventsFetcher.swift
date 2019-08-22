@@ -23,6 +23,15 @@ class EventsFetcher {
         let request: NSFetchRequest<EventsData> = EventsData.fetchRequest()
         return try! self.dataStack.viewContext.fetch(request)
     }
+    
+    func deleteLocalCache() {
+        
+        //  Delete Venues
+        self.dataStack.viewContext.delete(Venue.init())
+
+        //  Delete Events
+        self.dataStack.viewContext.delete(EventsData.init())
+    }
 
     func fetchLocalGuests() -> [RedeemedTicket] {
         let guests: NSFetchRequest<RedeemedTicket> = RedeemedTicket.fetchRequest()

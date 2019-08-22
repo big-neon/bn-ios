@@ -16,17 +16,17 @@ import Big_Neon_UI
 internal class ProfileEditViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, ProfileImageUploadDelegate  {
     
     
-    internal var profleEditViewModel: ProfileEditViewModel = ProfileEditViewModel()
-    internal let picker = UIImagePickerController()
-    
-    internal lazy var errorFeedback: FeedbackSystem = {
-        let feedback = FeedbackSystem()
-        return feedback
-    }()
+    var profleEditViewModel: ProfileEditViewModel = ProfileEditViewModel()
+    let picker = UIImagePickerController()
     
     lazy var fetcher: EventsFetcher = {
         let fetcher = EventsFetcher()
         return fetcher
+    }()
+    
+    internal lazy var errorFeedback: FeedbackSystem = {
+        let feedback = FeedbackSystem()
+        return feedback
     }()
     
     internal lazy var profileEditTableView: UITableView = {
@@ -133,6 +133,7 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
         
         let confirmButton = UIAlertAction(title: "Confirm", style: .default, handler: { (_) -> Void in
             self.profleEditViewModel.handleLogout(completion: { (_) in
+                self.clearCoreData()
                 self.navigateToWelcome()
                 return
             })
@@ -149,7 +150,7 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
     
     // Clear Local Cache
     func clearCoreData() {
-//        fetcher.
+        self.fetcher.deleteLocalCache()
     }
     
     //  Navigate to Home Screen
