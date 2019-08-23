@@ -27,7 +27,6 @@ public class EventsApiRepository {
             }
         
             completion(true)
-            return
         }
     }
     

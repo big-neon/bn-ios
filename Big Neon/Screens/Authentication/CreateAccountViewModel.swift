@@ -29,18 +29,13 @@ final class AccountViewModel {
     func login(email: String, password: String, completion: @escaping(Bool, String?) -> Void) {
         BusinessService.shared.database.loginToAccount(withEmail: email, password: password) { (error, tokens) in
             
-            if error != nil {
-                print(error)
+            guard let tokens = tokens, (error != nil) else {
                 AnalyticsService.reportError(errorType: ErrorType.authentication, error: error ?? "")
                 completion(false, error)
                 return
             }
             
-            guard let tokens = tokens else {
-                return
-            }
-             TokenService.shared.saveTokensInKeychain(token: tokens)
-            
+            TokenService.shared.saveTokensInKeychain(token: tokens)
             completion(true, nil)
             return
         }

@@ -73,7 +73,6 @@ public class TokenService {
         
         do {
             let jwt = try decode(jwt: accessToken)
-            let _ = jwt.expired
             guard let tokenExpiryDate = jwt.expiresAt else {
                 completion(.noAccessToken, nil)
                 return
@@ -137,14 +136,13 @@ public class TokenService {
                         return
                     }
 
-                    guard let data = response.result.value else {
-                        completion(nil, nil)
-                        return
-                    }
-
                     do {
+                        guard let dataValue = response.result.value, let data = dataValue else {
+                            completion(nil, nil)
+                            return
+                        }
                         let decoder = JSONDecoder()
-                        let tokens = try decoder.decode(Tokens.self, from: data!)
+                        let tokens = try decoder.decode(Tokens.self, from: data)
                         completion(nil, tokens)
                         return
                     } catch let error as NSError {

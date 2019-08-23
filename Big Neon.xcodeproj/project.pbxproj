@@ -1024,8 +1024,8 @@
 		C6B88D6821F1C86B006394F8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				C6DB1F96230D63540019C014 /* TokenService */,
 				C6B88D6921F1C872006394F8 /* BusinessService */,
+				C6DB1F96230D63540019C014 /* TokenService */,
 				C6B88D6A21F1C87B006394F8 /* DatabaseService */,
 			);
 			path = Services;

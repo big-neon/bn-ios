@@ -5,11 +5,10 @@ public class ScanDelaySeconds {
     
     class var infoDict: [String: Any]  {
         get {
-            if let dict = Bundle.main.infoDictionary {
-                return dict
-            } else {
+            guard let dict = Bundle.main.infoDictionary else {
                 fatalError("Plist file not found")
             }
+            return dict
         }
     }
     

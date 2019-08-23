@@ -63,7 +63,6 @@ final class GuestViewController: UIViewController {
     private func configureImageView() {
         view.addSubview(guestProfileImageView)
         view.addSubview(guestNameLabel)
-//        view.addSubview(guestProfileImageView)
         
         guestProfileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         guestProfileImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
