@@ -19,7 +19,7 @@ extension ScannerViewController {
                     self?.checkinAutomatically(withTicketID: ticketID, fromGuestTableView: false, atIndexPath: nil)
                 default:
                       print("Ticket Not Found")    // To be modified to handle different types of errors
-                    //  self?.manualCheckinFeedback(scanFeedback: scanFeedback)
+                    //  self?.manualCheckinFeedback(scanFeedback: scanFeedback) 
                 }
             }
         }

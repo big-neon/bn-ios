@@ -1,7 +1,7 @@
 
 import Foundation
 
-public class ScanDelaySeconds {
+public class BundleInfo {
     
     class var infoDict: [String: Any]  {
         get {
@@ -17,5 +17,19 @@ public class ScanDelaySeconds {
             return 10
         }
         return secondsValue
+    }
+    
+    class func fetchVersionNumber() -> String {
+        guard let versionNumber = infoDict["CFBundleShortVersionString"] as? String else {
+            return ""
+        }
+        return versionNumber
+    }
+    
+    class func fetchBuildNumber() -> String {
+        guard let versionNumber = infoDict["CFBundleVersion"] as? String else {
+            return ""
+        }
+        return versionNumber
     }
 }

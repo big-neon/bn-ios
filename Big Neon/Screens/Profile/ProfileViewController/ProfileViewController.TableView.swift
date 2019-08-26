@@ -26,13 +26,13 @@ extension ProfileViewController {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        // if ... else...
         switch section {
-            
         case 0:
             return "Account Details"
         default:
-            return "Build: 210  ||  Version: 1.0.0"
+            let versionNumber = BundleInfo.fetchVersionNumber()
+            let buildNumber = BundleInfo.fetchBuildNumber()
+            return "Build: \(buildNumber)  ||  Version: \(versionNumber)"
         }
     }
     
