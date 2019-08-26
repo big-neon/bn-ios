@@ -23,6 +23,15 @@ class EventsFetcher {
         let request: NSFetchRequest<EventsData> = EventsData.fetchRequest()
         return try! self.dataStack.viewContext.fetch(request)
     }
+    
+    func deleteLocalCache() {
+        
+        //  Delete Venues
+        self.dataStack.viewContext.delete(Venue.init())
+
+        //  Delete Events
+        self.dataStack.viewContext.delete(EventsData.init())
+    }
 
     func fetchLocalGuests() -> [RedeemedTicket] {
         let guests: NSFetchRequest<RedeemedTicket> = RedeemedTicket.fetchRequest()
@@ -58,16 +67,22 @@ class EventsFetcher {
     func syncToDelete(completion: @escaping (_ result: VoidResult) -> ()) {
         
         self.repository.fetchEvents { (eventsFetchedDict, error) in
-            if error != nil {
-                completion(.failure(error! as NSError))
+            if let err = error {
+                completion(.failure(err as NSError))
                 return
             }
             
             guard let events = eventsFetchedDict else {
                 return
             }
+            
+            do {
+                try self.dataStack.delete(events, inEntityNamed: EventsData.entity().managedObjectClassName)
+            } catch {
+                
+            }
     
-            try! self.dataStack.delete(events, inEntityNamed: EventsData.entity().managedObjectClassName)
+            
         }
     }
 }

@@ -198,9 +198,9 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
                     self?.loginButton.stopAnimation(animationStyle: .shake,
                                                    revertAfterDelay: 1.0,
                                                    completion: {
-                                                       //MARK: do not use explicite unwraping,
-                                                       // previous guard is not covering this errorString
-                                                    self?.showFeedback(message: errorString!)
+                                                    if let errorValue = errorString {
+                                                        self?.showFeedback(message: errorValue)
+                                                    }
                                                     self?.enableView()
                     })
                     return

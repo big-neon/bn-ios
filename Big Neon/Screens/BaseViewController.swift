@@ -65,7 +65,7 @@ class BaseViewController: UIViewController  {
     }
     
     @objc func handleBack() {
-        self.navigationController?.popViewController(animated: true)
+       self.navigationController?.popViewController(animated: true)
     }
     
 }

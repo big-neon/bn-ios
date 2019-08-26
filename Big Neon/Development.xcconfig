@@ -1,14 +1,7 @@
-//
-//  Development.xcconfig
-//  Big Neon
-//
-//  Created by Gugulethu on 2019/05/29.
-//  Copyright © 2019 Big Neon Inc. All rights reserved.
-//
 
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-//  Server UR;s and Other Configuration Keys
+//  Server URLs and Other Configuration Keys
 server_url              = dev.api.bigneon.com
 protocol                = https

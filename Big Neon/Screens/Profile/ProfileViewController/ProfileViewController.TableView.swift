@@ -26,27 +26,26 @@ extension ProfileViewController {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        // if ... else...
         switch section {
-            
         case 0:
             return "Account Details"
         default:
-            return "Event Tools"
+            let versionNumber = BundleInfo.fetchVersionNumber()
+            let buildNumber = BundleInfo.fetchBuildNumber()
+            return "Build: \(buildNumber)  ||  Version: \(versionNumber)"
         }
     }
     
     internal func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        // if.. else..
         case 0:
             return self.profileViewModel.sectionOneLabels.count
         default:
-            return self.profileViewModel.doorManLabel.count
+            return 0    //  self.profileViewModel.doorManLabel.count
         }
     }
     

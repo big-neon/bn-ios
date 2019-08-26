@@ -59,7 +59,7 @@ extension DatabaseService {
                    headers: [:])
             .validate()
             .response { (response) in
-
+                
                 do {
                     if let data = response.data {
                         let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])

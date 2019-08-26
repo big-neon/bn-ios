@@ -12,7 +12,6 @@
 		82440D91D23AF737DB34B959 /* Pods_Big_Neon_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58804A3D6C2FB1A6BD559FD5 /* Pods_Big_Neon_Core.framework */; };
 		C60BDEBE229EC03F00E54456 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60BDEB9229EB4B600E54456 /* Environment.swift */; };
 		C60BDEBF229EC03F00E54456 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D37B3421F1CD8200C616D0 /* API.swift */; };
-		C60EDC852248E3EE00C9CC27 /* Environment-Old.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60EDC842248E3EE00C9CC27 /* Environment-Old.swift */; };
 		C61853B72212F1DB005D6250 /* DoorPersonViewController.Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853B62212F1DB005D6250 /* DoorPersonViewController.Search.swift */; };
 		C61853B92212F4C8005D6250 /* TicketTypeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853B82212F4C8005D6250 /* TicketTypeSelectionViewController.swift */; };
 		C61853BC2212F6FA005D6250 /* ThreeQuaterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853BB2212F6FA005D6250 /* ThreeQuaterPresenter.swift */; };
@@ -175,6 +174,8 @@
 		C6CEC8A9221ADBCE00F7329D /* TicketTypeStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CEC8A8221ADBCE00F7329D /* TicketTypeStatus.swift */; };
 		C6D2413421EF53B000FC3E41 /* NamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2413321EF53B000FC3E41 /* NamesViewController.swift */; };
 		C6DB1F98230D63710019C014 /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DB1F97230D63710019C014 /* TokenService.swift */; };
+		C6DB1F9A230D74380019C014 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DB1F99230D74380019C014 /* Alerts.swift */; };
+		C6DB1F9C230D75F70019C014 /* ScanSeconds.Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DB1F9B230D75F70019C014 /* ScanSeconds.Environment.swift */; };
 		C6DBF0AD2305739800911392 /* GuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DBF0AC2305739800911392 /* GuestViewController.swift */; };
 		C6DE2F7A225360BA00ECF7D7 /* EventGuests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DE2F79225360BA00ECF7D7 /* EventGuests.swift */; };
 		C6E648532240D088000F2DFB /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E648522240D088000F2DFB /* ScannerViewController.swift */; };
@@ -266,7 +267,6 @@
 		C60BDEB8229EAAD800E54456 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		C60BDEB9229EB4B600E54456 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		C60BDEC0229EE27A00E54456 /* Production.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Production.plist; sourceTree = "<group>"; };
-		C60EDC842248E3EE00C9CC27 /* Environment-Old.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment-Old.swift"; sourceTree = "<group>"; };
 		C61853B62212F1DB005D6250 /* DoorPersonViewController.Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonViewController.Search.swift; sourceTree = "<group>"; };
 		C61853B82212F4C8005D6250 /* TicketTypeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTypeSelectionViewController.swift; sourceTree = "<group>"; };
 		C61853BB2212F6FA005D6250 /* ThreeQuaterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeQuaterPresenter.swift; sourceTree = "<group>"; };
@@ -430,6 +430,8 @@
 		C6D2413321EF53B000FC3E41 /* NamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesViewController.swift; sourceTree = "<group>"; };
 		C6D37B3421F1CD8200C616D0 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C6DB1F97230D63710019C014 /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
+		C6DB1F99230D74380019C014 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		C6DB1F9B230D75F70019C014 /* ScanSeconds.Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanSeconds.Environment.swift; sourceTree = "<group>"; };
 		C6DBF0AC2305739800911392 /* GuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestViewController.swift; sourceTree = "<group>"; };
 		C6DE2F79225360BA00ECF7D7 /* EventGuests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventGuests.swift; sourceTree = "<group>"; };
 		C6E648522240D088000F2DFB /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
@@ -641,12 +643,12 @@
 		C63B39BA2248D3AA00E560A7 /* Environment */ = {
 			isa = PBXGroup;
 			children = (
-				C60EDC842248E3EE00C9CC27 /* Environment-Old.swift */,
+				C60BDEB9229EB4B600E54456 /* Environment.swift */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
 		};
-		C63D1A152220054700152E83 /* TicketScannerViewController */ = {
+		C63D1A152220054700152E83 /* ScannerViewController */ = {
 			isa = PBXGroup;
 			children = (
 				C6BCBE9D222D06C70026B858 /* ScannerViewModel.swift */,
@@ -655,7 +657,7 @@
 				C636674522935D4E00A356F9 /* ScannerViewController.AutoScan.swift */,
 				C636674322935CE000A356F9 /* scannerViewController.ManualScan.swift */,
 			);
-			path = TicketScannerViewController;
+			path = ScannerViewController;
 			sourceTree = "<group>";
 		};
 		C64124C721F267FF00233797 /* LoginViewController */ = {
@@ -696,6 +698,9 @@
 			children = (
 				C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */,
 				C665DFE321E87CAC00DFB955 /* Authentication */,
+				C6AFB78C21DD655900670AC3 /* DoorPersonViewController */,
+				C63D1A152220054700152E83 /* ScannerViewController */,
+				C69370FE228F3EB9004EBC12 /* GuestListViewController */,
 				C64B0AD421D123C300386000 /* Explore */,
 				C64B0AD521D123D100386000 /* Tickets */,
 				C64B0AD621D123D700386000 /* Profile */,
@@ -708,6 +713,7 @@
 			children = (
 				C64B0ABF21D0DD1E00386000 /* Utils.swift */,
 				C6562F512203286E0020B6D3 /* UtilityConstants.swift */,
+				C6DB1F99230D74380019C014 /* Alerts.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -715,10 +721,6 @@
 		C64B0AD421D123C300386000 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				C6AFB78C21DD655900670AC3 /* DoorPersonViewController */,
-				C63D1A152220054700152E83 /* TicketScannerViewController */,
-				C69370FE228F3EB9004EBC12 /* GuestListViewController */,
-				C6DBF0AB2305738800911392 /* GuestViewController */,
 				C6AFB78D21DD656500670AC3 /* EventDetailViewController */,
 			);
 			path = Explore;
@@ -786,6 +788,7 @@
 				C6937103228F52E7004EBC12 /* GuestListViewController.SearchController.swift */,
 				C69370FC228F3570004EBC12 /* GuestListViewController.TableView.swift */,
 				C6EC4B2D2227C1150056CE73 /* GuestTableViewCell.swift */,
+				C6DBF0AB2305738800911392 /* GuestViewController */,
 			);
 			path = GuestListViewController;
 			sourceTree = "<group>";
@@ -797,6 +800,7 @@
 				C64B0ABE21D0DD1500386000 /* Utils */,
 				C64B0AB021D0DBAE00386000 /* TabBar */,
 				C694D25821D0BFD700B2AE07 /* Routing */,
+				C6DB1F9B230D75F70019C014 /* ScanSeconds.Environment.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -848,7 +852,6 @@
 		C6B88D0021F19FC0006394F8 /* Big Neon Core */ = {
 			isa = PBXGroup;
 			children = (
-				C60BDEB9229EB4B600E54456 /* Environment.swift */,
 				C6D37B3421F1CD8200C616D0 /* API.swift */,
 				C63B39BA2248D3AA00E560A7 /* Environment */,
 				C6B88D6821F1C86B006394F8 /* Services */,
@@ -1021,8 +1024,8 @@
 		C6B88D6821F1C86B006394F8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				C6DB1F96230D63540019C014 /* TokenService */,
 				C6B88D6921F1C872006394F8 /* BusinessService */,
+				C6DB1F96230D63540019C014 /* TokenService */,
 				C6B88D6A21F1C87B006394F8 /* DatabaseService */,
 			);
 			path = Services;
@@ -1610,6 +1613,7 @@
 				C6AFB78B21DD579600670AC3 /* ProfileViewModel.swift in Sources */,
 				C623C0732251E3D70020D0A8 /* EventHeaderView.swift in Sources */,
 				C665DFE521E87CB800DFB955 /* WelcomeViewController.swift in Sources */,
+				C6DB1F9C230D75F70019C014 /* ScanSeconds.Environment.swift in Sources */,
 				C6C4E9B72302D2810040C258 /* SwipeCollectionViewCellDelegate.swift in Sources */,
 				C64124C621F266B100233797 /* LoginViewController.swift in Sources */,
 				C623C07F2251E42C0020D0A8 /* ManualCheckinModeView.swift in Sources */,
@@ -1639,6 +1643,7 @@
 				C683232F21FF31F5002342AE /* ProfileEditingTableViewCell.swift in Sources */,
 				C69370FD228F3570004EBC12 /* GuestListViewController.TableView.swift in Sources */,
 				C6C4E9AC2302D2810040C258 /* SwipeAccessibilityCustomAction.swift in Sources */,
+				C6DB1F9A230D74380019C014 /* Alerts.swift in Sources */,
 				C6AFB79C21DD76AE00670AC3 /* ExploreDetailViewModel.swift in Sources */,
 				C6DBF0AD2305739800911392 /* GuestViewController.swift in Sources */,
 				C6B6DEA2227ABE3A003367D7 /* EventsFetcher.swift in Sources */,
@@ -1718,7 +1723,6 @@
 				C655BD39221D69FD00EB1FDD /* DatabaseService.Checkins.swift in Sources */,
 				C698F6032238F76400977259 /* ScanFeedback.swift in Sources */,
 				C644BA2F21F7069D003C188B /* BasicError.swift in Sources */,
-				C60EDC852248E3EE00C9CC27 /* Environment-Old.swift in Sources */,
 				C6DB1F98230D63710019C014 /* TokenService.swift in Sources */,
 				C6B88D7921F1C932006394F8 /* Tokens.swift in Sources */,
 				C628B15621FAD76000FCBDC9 /* User.swift in Sources */,
@@ -1867,7 +1871,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 190;
+				CURRENT_PROJECT_VERSION = 210;
 				DEVELOPMENT_TEAM = YVK784K26W;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2064,7 +2068,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = BetaIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 190;
+				CURRENT_PROJECT_VERSION = 210;
 				DEVELOPMENT_TEAM = YVK784K26W;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2322,7 +2326,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = DevIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 190;
+				CURRENT_PROJECT_VERSION = 210;
 				DEVELOPMENT_TEAM = YVK784K26W;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2352,7 +2356,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = BetaIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 190;
+				CURRENT_PROJECT_VERSION = 210;
 				DEVELOPMENT_TEAM = YVK784K26W;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -38,9 +38,8 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     let blurEffect = UIBlurEffect(style: .dark)
     var blurView: UIVisualEffectView?
     
-    //  Count Down Timer
-    var timer: Timer?
-    var scanSeconds = 10
+    //  Last Scanned Ticked Time
+    var lastScannedTicketTime: Date?
     
     let supportedCodeTypes = [AVMetadataObject.ObjectType.upce,
                               AVMetadataObject.ObjectType.code39,
@@ -180,10 +179,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         //  Ticket Fetching
         fetchGuests()
         //  syncGuestsData()
-    }
-    
-    deinit {
-        timer?.invalidate()
     }
     
     func configureAutoMode() {
@@ -343,11 +338,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
             return
         }
         
-        guard let event = self.event, let eventID = event.id, let eventTimeZone = event.venue?.timezone else {
-            return
-        }
-        
-        guard let scannerViewModel = self.scannerViewModel else {
+        guard let event = self.event, let eventID = event.id, let eventTimeZone = event.venue?.timezone, let scannerViewModel = self.scannerViewModel else {
             return
         }
         
@@ -356,15 +347,16 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
                                               eventTimeZone: eventTimeZone,
                                               scannerVC: self,
                                               scannerVM: scannerViewModel)
-        guestListVC!.delegate = self
-        guestListVC!.guests = guests
-        guestListVC!.guestViewModel.totalGuests = scannerViewModel.totalGuests
-        guestListVC!.guestViewModel.currentTotalGuests = scannerViewModel.currentTotalGuests
-        guestListVC!.guestViewModel.currentPage = scannerViewModel.currentPage
-        guestListVC!.guestViewModel.ticketsFetched = guests
-        guestListVC!.totalGuests = scannerViewModel.totalGuests
-        guestListVC!.scanVC = self
-        let navGuestVC = UINavigationController(rootViewController: guestListVC!)
+        guard let guestListVC = guestListVC else { return }
+        guestListVC.delegate = self
+        guestListVC.guests = guests
+        guestListVC.guestViewModel.totalGuests = scannerViewModel.totalGuests
+        guestListVC.guestViewModel.currentTotalGuests = scannerViewModel.currentTotalGuests
+        guestListVC.guestViewModel.currentPage = scannerViewModel.currentPage
+        guestListVC.guestViewModel.ticketsFetched = guests
+        guestListVC.totalGuests = scannerViewModel.totalGuests
+        guestListVC.scanVC = self
+        let navGuestVC = UINavigationController(rootViewController: guestListVC)
         navGuestVC.modalPresentationStyle = .fullScreen
         self.present(navGuestVC, animated: true, completion: nil)
     }

@@ -14,7 +14,7 @@ final class WelcomeViewController: UIViewController {
     private var loginButtonBottomConstraint: NSLayoutConstraint?
     private var getStartedButtonBottomConstraint: NSLayoutConstraint?
     
-    internal var backgroundImage: UIImageView = {
+    var backgroundImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "onboarding_Background")
         imageView.contentMode = .scaleAspectFill
@@ -23,7 +23,7 @@ final class WelcomeViewController: UIViewController {
         return imageView
     }()
     
-    internal var logoImage: UIImageView = {
+    var logoImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "ic_logoImage")
         imageView.contentMode = .scaleAspectFit

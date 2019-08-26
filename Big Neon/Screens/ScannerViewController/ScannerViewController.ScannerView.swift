@@ -40,7 +40,9 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             
             guard self.scannerViewModel?.getRedeemKey(fromStringValue: metaDataString) != nil else {
                 self.generator.notificationOccurred(.error)
-                Utils.showAlert(presenter: self, title: "No Redeem Key Found", message: "The ticket does not contain a redeem key. Check the guest in from the guest list")
+                self.showAlert(presenter: self, title: "No Redeem Key Found", message: "The ticket does not contain a redeem key. Check the guest in from the guest list")
+                // **  Save the Meta String to prevent Duplicate Scanning
+                self.scannerViewModel?.scannedMetaString = metaDataString
                 self.stopScanning = true
                 return
             }
@@ -51,29 +53,16 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                 return
             }
             
-            //  Last Ticket and Latest Ticket are the same - don't rescan.
-            if let scannedTicketID = self.scannerViewModel?.redeemedTicket?.id {
-                
-                if ticketID != scannedTicketID {
-                    self.checkinAutomatically(withTicketID: scannedTicketID, fromGuestTableView: false, atIndexPath: nil)
-                    self.stopScanning = false
-                    self.timer?.invalidate()
-                    self.timer = nil
+            //  Last Meta String and Latest are the same or the Time since scan is greater than the scan date
+            if let scannedMetaString = self.scannerViewModel?.scannedMetaString, let lastScannedTime = self.lastScannedTicketTime  {
+                let timeDelaySeconds = BundleInfo.fetchScanSeconds()
+                if metaDataString == scannedMetaString || Date() < Date.init(timeInterval: TimeInterval(timeDelaySeconds), since: lastScannedTime) {
                     return
                 }
-
-                if let timer = self.timer {
-                    if timer.isValid == true {
-                       return
-                    }
-                } else {
-                    if ticketID == scannedTicketID {
-                        self.checkinAutomatically(withTicketID: scannedTicketID, fromGuestTableView: false, atIndexPath: nil)
-                        self.stopScanning = false
-                        return
-                    }
-                }
             }
+            
+            // **  Save the Meta String to prevent Duplicate Scanning
+            self.scannerViewModel?.scannedMetaString = metaDataString
             
             //  Check if a Scanned User
             if self.isShowingScannedUser == true {
@@ -83,6 +72,9 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             
             self.hideScannedUser()
             self.stopScanning = true
+            
+            //  **  // update the Last Scanned User Timer
+            self.lastScannedTicketTime = Date()
             if self.scannerViewModel?.scannerMode() == true {
                 self.checkinAutomatically(withTicketID: ticketID, fromGuestTableView: false, atIndexPath: nil)
             } else {

@@ -9,14 +9,18 @@ extension ScannerViewController {
     func checkinManually(withTicketID ticketID: String) {
         self.scannerViewModel?.getRedeemTicket(ticketID: ticketID) { [weak self] (scanFeedback, errorString) in
             DispatchQueue.main.async {
-                if scanFeedback == .validTicketID {
+                switch scanFeedback {
+                case .validTicketID?:
                     self?.stopScanning = false
                     if let ticket = self?.scannedTicket {
                         self?.showRedeemedTicket(forTicket: ticket)
                     }
-                    return
+                case .wrongEvent?:
+                    self?.checkinAutomatically(withTicketID: ticketID, fromGuestTableView: false, atIndexPath: nil)
+                default:
+                      print("Ticket Not Found")    // To be modified to handle different types of errors
+                    //  self?.manualCheckinFeedback(scanFeedback: scanFeedback) 
                 }
-                self?.manualCheckinFeedback(scanFeedback: scanFeedback)
             }
         }
     }

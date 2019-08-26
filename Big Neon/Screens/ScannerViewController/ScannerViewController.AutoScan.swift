@@ -22,6 +22,7 @@ extension ScannerViewController {
     
     func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath indexPath: IndexPath?) {
         self.stopScanning = true
+        
         self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID) { [weak self] (scanFeedback, errorString, ticket) in
             DispatchQueue.main.async {
                 
@@ -58,7 +59,6 @@ extension ScannerViewController {
 
     func showScannedUser(feedback: ScanFeedback?, ticket: RedeemableTicket?) {
         var feedFound = feedback
-        runCountDownTimer()
         if ticket?.eventName != self.event?.name {
             self.playSuccessSound(forValidTicket: false)
             self.scannedTicketID = ticket?.id
@@ -79,19 +79,6 @@ extension ScannerViewController {
         manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
         generator.notificationOccurred(.success)
         
-    }
-    
-    func runCountDownTimer() {
-        self.scanSeconds = 10
-        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
-    }
-    
-    @objc func updateTimer() {
-        self.scanSeconds -= 1
-        if self.scanSeconds == 0 {
-            self.timer?.invalidate()
-            self.scanSeconds = 10
-        }
     }
     
     func playSuccessSound(forValidTicket valid: Bool) {

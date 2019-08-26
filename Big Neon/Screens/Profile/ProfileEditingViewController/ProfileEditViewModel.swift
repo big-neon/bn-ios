@@ -19,7 +19,7 @@ final class ProfileEditViewModel {
     var user: User?
     var imageToUpload: UIImage?
     
-    internal func configureUserData() {
+    func configureUserData() {
         self.userImageRL    = user?.profilePicURL
         self.firstName      = user?.firstName
         self.lastName       = user?.lastName
@@ -27,7 +27,7 @@ final class ProfileEditViewModel {
         self.email          = user?.email
     }
     
-    internal func updateUserImage(image: UIImage, completion: @escaping(Error?) -> Void) {
+    func updateUserImage(image: UIImage, completion: @escaping(Error?) -> Void) {
         
 //        BusinessService.shared.database.updateUser(firstName: firstName, lastName: lastName, email: email) { (error, user) in
 //            if error != nil {
@@ -42,7 +42,7 @@ final class ProfileEditViewModel {
 //        }
     }
     
-    internal func updateUserAccount(firstName: String, lastName: String, email: String, completion: @escaping(Error?) -> Void) {
+    func updateUserAccount(firstName: String, lastName: String, email: String, completion: @escaping(Error?) -> Void) {
         BusinessService.shared.database.updateUser(firstName: firstName, lastName: lastName, email: email) { (error, user) in
             if error != nil {
                 completion(error)
@@ -56,7 +56,7 @@ final class ProfileEditViewModel {
         }
     }
 
-    internal func handleLogout(completion: @escaping (Bool) -> Void) {
+    func handleLogout(completion: @escaping (Bool) -> Void) {
         BusinessService.shared.database.logout { (completed) in
             completion(completed)
         }
