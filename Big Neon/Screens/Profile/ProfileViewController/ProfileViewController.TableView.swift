@@ -32,7 +32,7 @@ extension ProfileViewController {
         case 0:
             return "Account Details"
         default:
-            return "Build: 200  ||  Version: 1.0.0"
+            return "Build: 210  ||  Version: 1.0.0"
         }
     }
     
