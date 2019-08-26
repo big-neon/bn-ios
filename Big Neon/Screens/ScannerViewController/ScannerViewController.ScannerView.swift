@@ -56,7 +56,6 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             //  Last Meta String and Latest are the same or the Time since scan is greater than the scan date
             if let scannedMetaString = self.scannerViewModel?.scannedMetaString, let lastScannedTime = self.lastScannedTicketTime  {
                 let timeDelaySeconds = ScanDelaySeconds.fetchScanSeconds()
-                let lastScannedTime = Date.init(timeInterval: TimeInterval(timeDelaySeconds), since: lastScannedTime)
                 if metaDataString == scannedMetaString || Date() < Date.init(timeInterval: TimeInterval(timeDelaySeconds), since: lastScannedTime) {
                     return
                 }
