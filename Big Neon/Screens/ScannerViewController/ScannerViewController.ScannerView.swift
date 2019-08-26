@@ -57,13 +57,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             if let scannedMetaString = self.scannerViewModel?.scannedMetaString, let lastScannedTime = self.lastScannedTicketTime  {
                 let timeDelaySeconds = ScanDelaySeconds.fetchScanSeconds()
                 let lastScannedTime = Date.init(timeInterval: TimeInterval(timeDelaySeconds), since: lastScannedTime)
-                if metaDataString != scannedMetaString || Date() > Date.init(timeInterval: TimeInterval(timeDelaySeconds), since: lastScannedTime) {
-                    self.lastScannedTicketTime = Date()
-                    self.scannerViewModel?.scannedMetaString = metaDataString
-                    self.checkinAutomatically(withTicketID: ticketID, fromGuestTableView: false, atIndexPath: nil)
-                    self.stopScanning = false
-                    return
-                } else {
+                if metaDataString == scannedMetaString || Date() < Date.init(timeInterval: TimeInterval(timeDelaySeconds), since: lastScannedTime) {
                     return
                 }
             }
@@ -79,7 +73,9 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             
             self.hideScannedUser()
             self.stopScanning = true
-            self.lastScannedTicketTime = Date() // update the Last Scanned User Timer
+            
+            //  **  // update the Last Scanned User Timer
+            self.lastScannedTicketTime = Date()
             if self.scannerViewModel?.scannerMode() == true {
                 self.checkinAutomatically(withTicketID: ticketID, fromGuestTableView: false, atIndexPath: nil)
             } else {
