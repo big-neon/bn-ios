@@ -25,17 +25,19 @@ extension DoorPersonViewController {
     }
     
     @objc func reloadEvents() {
-        self.doorPersonViemodel.configureAccessToken { [weak self] (completed) in
+        fetcher.syncCheckins { result in
             DispatchQueue.main.async {
-                self?.loadingView.stopAnimating()
-                self?.refresher.endRefreshing()
-                
-                if completed == false {
-                    self?.exploreCollectionView.reloadData()
-                    return
+                switch result {
+                case .success:
+                    self.loadingView.stopAnimating()
+                    self.refresher.endRefreshing()
+                    self.exploreCollectionView.reloadData()
+                case .failure(let error):
+                    self.loadingView.stopAnimating()
+                    self.refresher.endRefreshing()
+                    self.showFeedback(message: error.localizedDescription)
+                    self.exploreCollectionView.reloadData()
                 }
-                self?.exploreCollectionView.reloadData()
-                return
             }
         }
     }
