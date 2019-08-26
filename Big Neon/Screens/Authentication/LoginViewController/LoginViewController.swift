@@ -198,7 +198,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
                     self?.loginButton.stopAnimation(animationStyle: .shake,
                                                    revertAfterDelay: 1.0,
                                                    completion: {
-                                                    if let errorValue = errorString else {
+                                                    if let errorValue = errorString {
                                                         self?.showFeedback(message: errorValue)
                                                     }
                                                     self?.enableView()
