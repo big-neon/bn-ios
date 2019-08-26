@@ -12,8 +12,8 @@ public class ScanDelaySeconds {
         }
     }
     
-    class func fetchScanSeconds() -> Any {
-        guard let secondsValue = infoDict["scan_delay_seconds"] else {
+    class func fetchScanSeconds() -> Int {
+        guard let secondsValue = infoDict["scan_delay_seconds"] as? Int else {
             return 10
         }
         return secondsValue

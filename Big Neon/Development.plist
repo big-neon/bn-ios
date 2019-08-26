@@ -60,7 +60,7 @@
 	<key>protocol</key>
 	<string>$(protocol)</string>
 	<key>scan_delay_seconds</key>
-	<string>95</string>
+	<integer>95</integer>
 	<key>server_url</key>
 	<string>$(server_url)</string>
 </dict>
