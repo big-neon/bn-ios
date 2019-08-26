@@ -14,27 +14,25 @@ public class GuestsApiRepository {
     
     private func configureAccessToken(completion: @escaping(Bool) -> Void) {
         
-        BusinessService.shared.database.tokenIsExpired { [weak self] (expired) in
-            if expired == true {
-                self?.fetchNewAccessToken(completion: { (completed) in
-                    completion(completed)
-                    return
-                })
-            } else {
-                completion(true)
+        TokenService.shared.checkToken { (completed) in
+            guard completed else {
+                completion(false)
                 return
             }
+        
+            completion(true)
+            return
         }
     }
     
     private func fetchNewAccessToken(completion: @escaping(Bool) -> Void) {
-        BusinessService.shared.database.fetchNewAccessToken { [weak self] (error, tokens) in
+        TokenService.shared.fetchNewAccessToken { (error, tokens) in
             guard let tokens = tokens else {
                 completion(false)
                 return
             }
             
-            self?.saveTokensInKeychain(token: tokens)
+            TokenService.shared.saveTokensInKeychain(token: tokens)
             completion(true)
         }
     }
@@ -47,7 +45,7 @@ public class GuestsApiRepository {
     
     func fetchGuests(forEventID eventID: String, completion: @escaping (_ fetchedGuestsDict: [[String: Any]]?, _ error: Error?) -> ()) {
         let apiURL = APIService.fetchEvents(eventID: eventID, changesSince: nil, page: nil, limit: nil, query: nil)
-        let accessToken = BusinessService.shared.database.fetchAcessToken()
+        let accessToken =  TokenService.shared.fetchAcessToken()
         
         AF.request(apiURL,
                    method: HTTPMethod.get,
@@ -77,10 +75,12 @@ public class GuestsApiRepository {
                             throw NSError(domain: dataErrorDomain, code: DataErrorCode.wrongDataFormat.rawValue, userInfo: nil)
                     }
                     
-//                    let pagingDictionary = jsonDictionary["paging"] as? [String: Any]
-//                    let totalGuests = pagingDictionary!["total"] as! Int
-//                    let decoder = JSONDecoder()
-//                    let guests = try decoder.decode(Guests.self, from: data!)
+                    /*
+                    let pagingDictionary = jsonDictionary["paging"] as? [String: Any]
+                    let totalGuests = pagingDictionary!["total"] as! Int
+                    let decoder = JSONDecoder()
+                    let guests = try decoder.decode(Guests.self, from: data!)
+                    */
                     
                     completion(result, nil)
                     
@@ -91,50 +91,55 @@ public class GuestsApiRepository {
         }
     }
     
-//    func fetchEvents(completion: @escaping (_ fetchedEventsDict: [[String: Any]]?, _ error: Error?) -> ()) {
-//
-//        self.configureAccessToken { (completed) in
-//            if completed == false {
-//                completion(nil, nil)
-//                return
-//            }
-//
-//            let accessToken = BusinessService.shared.database.fetchAcessToken()
-//            AF.request(self.APIURL,
-//                       method: HTTPMethod.get,
-//                       parameters: nil,
-//                       encoding: JSONEncoding.default,
-//                       headers: [APIParameterKeys.authorization :"Bearer \(accessToken!)"])
-//                .validate(statusCode: 200..<300)
-//                .response { (response) in
-//
-//                    guard response.result.isSuccess else {
-//                        let error = NSError(domain: dataErrorDomain, code: DataErrorCode.networkUnavailable.rawValue, userInfo: nil)
-//                        completion(nil, error)
-//                        return
-//                    }
-//
-//                    guard let data = response.result.value else {
-//                        let error = NSError(domain: dataErrorDomain, code: DataErrorCode.networkUnavailable.rawValue, userInfo: nil)
-//                        completion(nil, error)
-//                        return
-//                    }
-//
-//                    do {
-//                        let jsonObject = try JSONSerialization.jsonObject(with: data!, options: [])
-//
-//                        guard let jsonDictionary = jsonObject as? [String: Any],
-//                            let result = jsonDictionary["data"] as? [[String: Any]] else {
-//                                throw NSError(domain: dataErrorDomain, code: DataErrorCode.wrongDataFormat.rawValue, userInfo: nil)
-//                        }
-//
-//                        completion(result, nil)
-//                    } catch {
-//                        completion(nil, error)
-//                    }
-//            }
-//        }
-//
-//    }
+    /*
+     
+     TO DO: Review if still needed
+     
+    func fetchEvents(completion: @escaping (_ fetchedEventsDict: [[String: Any]]?, _ error: Error?) -> ()) {
+
+        self.configureAccessToken { (completed) in
+            if completed == false {
+                completion(nil, nil)
+                return
+            }
+
+            let accessToken = BusinessService.shared.database.fetchAcessToken()
+            AF.request(self.APIURL,
+                       method: HTTPMethod.get,
+                       parameters: nil,
+                       encoding: JSONEncoding.default,
+                       headers: [APIParameterKeys.authorization :"Bearer \(accessToken!)"])
+                .validate(statusCode: 200..<300)
+                .response { (response) in
+
+                    guard response.result.isSuccess else {
+                        let error = NSError(domain: dataErrorDomain, code: DataErrorCode.networkUnavailable.rawValue, userInfo: nil)
+                        completion(nil, error)
+                        return
+                    }
+
+                    guard let data = response.result.value else {
+                        let error = NSError(domain: dataErrorDomain, code: DataErrorCode.networkUnavailable.rawValue, userInfo: nil)
+                        completion(nil, error)
+                        return
+                    }
+
+                    do {
+                        let jsonObject = try JSONSerialization.jsonObject(with: data!, options: [])
+
+                        guard let jsonDictionary = jsonObject as? [String: Any],
+                            let result = jsonDictionary["data"] as? [[String: Any]] else {
+                                throw NSError(domain: dataErrorDomain, code: DataErrorCode.wrongDataFormat.rawValue, userInfo: nil)
+                        }
+
+                        completion(result, nil)
+                    } catch {
+                        completion(nil, error)
+                    }
+            }
+        }
+
+    }
+     */
     
 }

@@ -34,7 +34,7 @@ final class GuestsListViewModel {
         }
     }
     
-    func fetchGuests(andQuery query: String?, page: Int?, isSearching: Bool, completion: @escaping(Bool) -> Void) {
+    func fetchGuests(withQuery query: String?, page: Int?, isSearching: Bool, completion: @escaping(Bool) -> Void) {
         
         guard let eventID = eventID else {
             completion(false)

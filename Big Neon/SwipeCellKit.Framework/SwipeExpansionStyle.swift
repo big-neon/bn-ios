@@ -33,7 +33,7 @@ public struct SwipeExpansionStyle {
         return .fillReset(timing: SwipeExpansionStyle.FillOptions.HandlerInvocationTiming.with)
     }
     
-    public static func fillReset(timing: FillOptions.HandlerInvocationTiming = .with) -> SwipeExpansionStyle {
+    public static func fillReset(timing: FillOptions.HandlerInvocationTiming = .after) -> SwipeExpansionStyle {
         return SwipeExpansionStyle(target: .edgeInset(-10),
                                    additionalTriggers: [.touchThreshold(0.8)],
                                    completionAnimation: .fill(.automatic(ExpansionFulfillmentStyle.reset,
@@ -73,7 +73,7 @@ public struct SwipeExpansionStyle {
     /// The amount of elasticity applied when dragging past the expansion target.
     ///
     /// - note: Default value is 0.2. Valid range is from 0.0 for no movement past the expansion target, to 1.0 for unrestricted movement with dragging.
-    public var targetOverscrollElasticity: CGFloat = 0.2
+    public var targetOverscrollElasticity: CGFloat = 1.0
     
     var minimumExpansionTranslation: CGFloat = 8.0
     

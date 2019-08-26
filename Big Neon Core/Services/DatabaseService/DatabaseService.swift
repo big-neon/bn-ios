@@ -11,17 +11,4 @@ public class DatabaseService {
         }
         return Static.instance
     }
-    
-    public init() {
-    }
-    
-    public func fetchAcessToken() -> String? {
-        return KeychainWrapper.standard.string(forKey: Constants.keychainAccessToken)
-    }
-    
-    // MARK add @discardableResult so
-    public func fetchRefreshToken() -> String? {
-        return KeychainWrapper.standard.string(forKey: Constants.keychainRefreshToken)
-    }
-    
 }

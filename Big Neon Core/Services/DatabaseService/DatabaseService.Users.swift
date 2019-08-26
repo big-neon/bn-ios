@@ -10,7 +10,7 @@ extension DatabaseService {
                           "last_name": lastName]
         
         let APIURL = APIService.updateUser()
-        let accessToken = self.fetchAcessToken()
+        let accessToken = TokenService.shared.fetchAcessToken()
         
         AF.request(APIURL,
                    method: HTTPMethod.put,
@@ -52,7 +52,7 @@ extension DatabaseService {
                         "last_name": lastName,
                         "email": email]
         let APIURL = APIService.updateUser()
-        let accessToken = self.fetchAcessToken()
+        let accessToken = TokenService.shared.fetchAcessToken()
         
         AF.request(APIURL,
                    method: HTTPMethod.put,
@@ -89,6 +89,9 @@ extension DatabaseService {
     }
     
     /*
+     
+     TO DO
+     
     public func updateUserImage(image: UIImage, lastName: String, email: String, completion: @escaping(Error?) -> Void) {
         
         case profilePicURL = "profile_pic_url"
@@ -137,19 +140,21 @@ extension DatabaseService {
     }
     */
     
-    public func fetchUser(withAccessToken accessToken: String, completion: @escaping(Error?, User?) -> Void) {
+    public func fetchUser(completion: @escaping(Error?, User?) -> Void) {
         
         let APIURL = APIService.updateUser()
+        let accessToken = TokenService.shared.fetchAcessToken()!
+        
         AF.request(APIURL,
             method: HTTPMethod.get,
             parameters: nil,
             encoding: JSONEncoding.default,
-            headers: [APIParameterKeys.authorization :"Bearer \(accessToken)"])
+            headers: [APIParameterKeys.authorization: "Bearer \(accessToken)"])
             .validate()
             .response { (response) in
                 
                 guard response.result.isSuccess else {
-                    print("Error while fetching tags: \(response.result.error)")
+                    print("Error while fetching user: \(response.result.error)")
                     completion(nil, nil)
                     return
                 }

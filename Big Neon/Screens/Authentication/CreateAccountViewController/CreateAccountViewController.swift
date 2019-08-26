@@ -24,12 +24,14 @@ internal class CreateAccountViewController: BaseViewController, UITextFieldDeleg
     lazy var emailTextView: AuthenticationTextView = {
         let textField = AuthenticationTextView()
         textField.textFieldType = .email
+        textField.authTextField.keyboardType = .emailAddress
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
     lazy var passwordTextView: AuthenticationTextView = {
         let textField = AuthenticationTextView()
+        textField.authTextField.keyboardType = .default
         textField.textFieldType = .signUpPassword
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField

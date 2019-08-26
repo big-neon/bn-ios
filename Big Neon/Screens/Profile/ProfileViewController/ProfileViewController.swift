@@ -90,6 +90,7 @@ internal class ProfileViewController: UIViewController, UITableViewDelegate, UIT
     @objc func reloadProfile() {
         self.profileViewModel.configureAccessToken(completion: ) { [weak self] (completed) in
             DispatchQueue.main.async {
+                print(completed)
                 self?.refresher.endRefreshing()
                 self?.profileTableView.reloadData()
             }

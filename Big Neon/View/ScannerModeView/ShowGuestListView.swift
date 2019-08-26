@@ -8,7 +8,7 @@ public class ShowGuestListView: UIView {
     
     lazy var headerLabel: BrandTitleLabel = {
         let label = BrandTitleLabel()
-        label.text = "Show Guest List"
+        label.text = "View Guest List"
         label.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.bold)
         label.textColor = UIColor.brandGrey
         label.textAlignment = .center

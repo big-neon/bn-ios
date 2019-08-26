@@ -1,12 +1,13 @@
 
 import Foundation
 import UIKit
-//import SwipeCellKit
+import Big_Neon_UI
+import TransitionButton
 
 final class GuestTableViewCell: SwipeTableViewCell {
     
     static let cellID = "GuestTableViewCellID"
-    
+
     lazy var guestNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandBlack
@@ -23,11 +24,14 @@ final class GuestTableViewCell: SwipeTableViewCell {
         return label
     }()
     
-    lazy var ticketStateView: CheckinTagView = {
-        let view = CheckinTagView()
-        view.backgroundColor = UIColor.brandBlack
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    lazy var ticketStateView: TransitionButton = {
+        let button = TransitionButton()
+        button.layer.cornerRadius = 4.0
+        button.setTitleColor(UIColor.brandWhite, for: UIControl.State.normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 10, weight: UIFont.Weight.bold)
+        button.backgroundColor = UIColor.brandBlack
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -37,9 +41,9 @@ final class GuestTableViewCell: SwipeTableViewCell {
     }
     
     private func configureView() {
-        addSubview(ticketStateView)
-        addSubview(guestNameLabel)
-        addSubview(ticketTypeNameLabel)
+        contentView.addSubview(ticketStateView)
+        contentView.addSubview(guestNameLabel)
+        contentView.addSubview(ticketTypeNameLabel)
         
         ticketStateView.topAnchor.constraint(equalTo: self.topAnchor, constant: 12).isActive = true
         ticketStateView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true

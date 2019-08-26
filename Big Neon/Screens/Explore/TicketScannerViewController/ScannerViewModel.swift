@@ -49,30 +49,19 @@ final class TicketScannerViewModel {
     }
 
     func getRedeemKey(fromStringValue value: String) -> String? {
-        // MARK: use just one guard
-        guard let data = try? JSONSerialization.jsonObject(with: Data(value.utf8), options: []) else {
-            return nil
-        }
-        
-        guard let dataValue = data as? [String: Any] else {
-            return nil
-        }
-        guard let redeemKeyData = dataValue["data"] as? [String:String] else {
+        guard let data = try? JSONSerialization.jsonObject(with: Data(value.utf8), options: []),
+            let dataValue = data as? [String: Any],
+            let redeemKeyData = dataValue["data"] as? [String:String] else {
             return nil
         }
         return redeemKeyData["redeem_key"]
     }
     
     func getTicketID(fromStringValue value: String) -> String? {
-        // MARK: use just one guard
-        guard let data = try? JSONSerialization.jsonObject(with: Data(value.utf8), options: []) else {
-            return nil
-        }
-        
-        guard let dataValue = data as? [String: Any] else {
-            return nil
-        }
-        guard let redeemKeyData = dataValue["data"] as? [String:String] else {
+        guard let data = try? JSONSerialization.jsonObject(with: Data(value.utf8), options: []),
+            let dataValue = data as? [String: Any],
+            let redeemKeyData = dataValue["data"] as? [String:String] else {
+                
             return nil
         }
         return redeemKeyData["id"]
@@ -111,12 +100,20 @@ final class TicketScannerViewModel {
             return
         }
         
-        BusinessService.shared.database.redeemTicket(forTicketID: ticket.id, eventID: eventID, redeemKey: ticket.redeemKey) { [weak self] (scanFeedback, ticket) in
-            DispatchQueue.main.async {
-                self?.redeemedTicket = ticket
-                completion(scanFeedback)
+        TokenService.shared.checkToken { (completed) in
+            guard completed else {
+                completion(.issueFound)
+                return
+            }
+        
+            BusinessService.shared.database.redeemTicket(forTicketID: ticket.id, eventID: eventID, redeemKey: ticket.redeemKey) { [weak self] (scanFeedback, ticket) in
+                DispatchQueue.main.async {
+                    self?.redeemedTicket = ticket
+                    completion(scanFeedback)
+                }
             }
         }
+        
     }
     
     func automaticallyCheckin(ticketID: String, completion: @escaping(ScanFeedback?, String?, RedeemableTicket?) -> Void) {
@@ -147,17 +144,53 @@ final class TicketScannerViewModel {
             }
         }
     }
-
+    
     func completeAutoCheckin(eventID: String, ticket: RedeemableTicket, completion: @escaping(ScanFeedback) -> Void) {
         
-        BusinessService.shared.database.redeemTicket(forTicketID: ticket.id, eventID: eventID, redeemKey: ticket.redeemKey) { [weak self] (scanFeedback, ticket) in
-            DispatchQueue.main.async {
-                self?.redeemedTicket = ticket
+        TokenService.shared.checkToken { (completed) in
+            guard completed else {
+                completion(.issueFound)
+                return
+            }
+        
+            self.completeCheckin(eventID: eventID, ticket: ticket) { (scanFeedback) in
                 completion(scanFeedback)
             }
         }
     }
 
+    func completeCheckin(eventID: String, ticket: RedeemableTicket, completion: @escaping(ScanFeedback) -> Void) {
+        
+        TokenService.shared.checkToken { (completed) in
+            guard completed else {
+                completion(.issueFound)
+                return
+            }
+        
+            BusinessService.shared.database.redeemTicket(forTicketID: ticket.id, eventID: eventID, redeemKey: ticket.redeemKey) { [weak self] (scanFeedback, ticket) in
+                DispatchQueue.main.async {
+                    self?.redeemedTicket = ticket
+                    completion(scanFeedback)
+                }
+            }
+        }
+    }
+    
+    func fetchEventGuests(forEventID eventID: String, page: Int, completion: @escaping(Bool) -> Void) {
+        
+        TokenService.shared.checkToken { (completed) in
+            guard completed else {
+                completion(false)
+                return
+            }
+        
+            self.fetchGuests(forEventID: eventID, page: page) { (completed) in
+                completion(completed)
+                return
+            }
+        }
+    }
+    
     func fetchGuests(forEventID eventID: String, page: Int, completion: @escaping(Bool) -> Void) {
         
         BusinessService.shared.database.fetchGuests(forEventID: eventID, limit: limit, page: page, guestQuery: nil) { [weak self] (error, guestsFetched, serverGuests, totalGuests) in

@@ -2,7 +2,6 @@
 
 import Foundation
 import UIKit
-//import SwipeCellKit
 import Big_Neon_Core
 import AudioToolbox
 
@@ -71,10 +70,10 @@ extension GuestListViewController: SwipeActionTransitioning {
         guestCell.ticketTypeNameLabel.text = price.dollarString + " | " + guestValues!.ticketType + " | " + ticketID
         
         if guestValues!.status == TicketStatus.purchased.rawValue {
-            guestCell.ticketStateView.tagLabel.text = "PURCHASED"
+            guestCell.ticketStateView.setTitle("PURCHASED", for: UIControl.State.normal)
             guestCell.ticketStateView.backgroundColor = UIColor.brandGreen
         } else {
-            guestCell.ticketStateView.tagLabel.text = "REDEEMED"
+            guestCell.ticketStateView.setTitle("REDEEMED", for: UIControl.State.normal)
             guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
         }
         
@@ -87,6 +86,8 @@ extension GuestListViewController: SwipeActionTransitioning {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        //  TO DO: To be added as a way to select and show the guest list.
+        //  self.showGuest()
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
@@ -122,9 +123,6 @@ extension GuestListViewController: SwipeActionTransitioning {
         if context.newPercentVisible > 0.8 {   //  2.66
             context.button.setImage(UIImage(named: "ic_checkin_check"), for: UIControl.State.normal)
             context.button.setTitle("Redeem", for: UIControl.State.normal)
-//        } else if context.newPercentVisible > 0.8 { //2.2
-//            context.button.setImage(UIImage(named: "ic_checkin_check"), for: UIControl.State.normal)
-//            context.button.setTitle("Checking In...", for: UIControl.State.normal)
         } else  {
             context.button.setImage(UIImage(named: "ic_checkin_check"), for: UIControl.State.normal)
             context.button.setTitle("Redeem", for: UIControl.State.normal)
@@ -147,8 +145,7 @@ extension GuestListViewController: SwipeActionTransitioning {
             var options = SwipeOptions()
             options.backgroundColor = UIColor.brandPrimary
             options.transitionStyle = .reveal
-//            options.minimumButtonWidth = UIScreen.main.bounds.width //* 0.4
-            options.expansionStyle = .fillReset(timing: .with) //.selection
+            options.expansionStyle = .fillReset(timing: .after)
             return options
         }
         var options = SwipeOptions()
@@ -158,7 +155,10 @@ extension GuestListViewController: SwipeActionTransitioning {
     }
     
     func checkinTicket(ticketID: String?, atIndex index: IndexPath, direction: Bool) {
+        
         if let id = ticketID {
+            let guestCell: GuestTableViewCell = self.guestTableView.cellForRow(at: index) as! GuestTableViewCell
+            guestCell.ticketStateView.startAnimation()
             self.delegate?.checkinAutomatically(withTicketID: id, fromGuestTableView: true, atIndexPath: index)
         }
     }

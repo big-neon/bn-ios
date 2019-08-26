@@ -33,6 +33,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     lazy var emailTextView: AuthenticationTextView = {
         let textField = AuthenticationTextView()
         textField.textFieldType = .email
+        textField.authTextField.keyboardType = .emailAddress
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -40,6 +41,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     lazy var passwordTextView: AuthenticationTextView = {
         let textField = AuthenticationTextView()
         textField.textFieldType = .loginPassword
+        textField.authTextField.keyboardType = .default
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
