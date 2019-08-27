@@ -8,12 +8,16 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     
     func scannerSetAutomatic() {
         self.hideScannedUser()
+        self.lastScannedTicketTime = nil
+        self.scannerViewModel?.scannedMetaString = nil
         self.stopScanning = false
         self.scannerViewModel?.setCheckingModeAutomatic()
     }
     
     func scannerSetManual() {
         self.hideScannedUser()
+        self.lastScannedTicketTime = nil
+        self.scannerViewModel?.scannedMetaString = nil
         self.stopScanning = false
         self.scannerViewModel?.setCheckingModeManual()
     }
