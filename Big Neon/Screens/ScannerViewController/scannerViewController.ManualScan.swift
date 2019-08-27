@@ -50,6 +50,7 @@ extension ScannerViewController {
             self.showGuestView.layer.opacity = 0.0
             self.closeButton.layer.opacity = 0.0
             self.blurView?.layer.opacity = 1.0
+            self.scanningBoarderView.layer.opacity = 0.0
             self.scannerModeView.layer.opacity = 0.0
             self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height - 272.0
             self.view.layoutIfNeeded()
@@ -90,6 +91,8 @@ extension ScannerViewController {
         self.scannerModeView.layer.opacity = 1.0
         self.showGuestView.layer.opacity = 1.0
         self.closeButton.layer.opacity = 1.0
+        self.scanningBoarderView.layer.opacity = 1.0
+        self.scannerViewModel?.lastRedeemedTicket = nil
         self.scannedUserBottomAnchor?.constant = -100.0
         self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
         self.generator.notificationOccurred(.success)

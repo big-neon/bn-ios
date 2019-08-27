@@ -90,6 +90,8 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     func dismissScannedUserView() {
         self.isShowingScannedUser = false
         self.dismissFeedbackView(feedback: nil)
+        self.lastScannedTicketTime = nil
+        self.scannerViewModel?.lastRedeemedTicket = nil
     }
     
     func dismissFeedbackView(feedback: ScanFeedback?) {
@@ -98,6 +100,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             self.closeButton.layer.opacity = 1.0
             self.scanningBoarderView.layer.opacity = 1.0
             self.showGuestView.layer.opacity = 1.0
+            self.scanningBoarderView.layer.opacity = 1.0
             self.scannerModeView.layer.opacity = 1.0
             self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
             self.view.layoutIfNeeded()
