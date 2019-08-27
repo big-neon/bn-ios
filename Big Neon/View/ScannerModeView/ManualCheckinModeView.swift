@@ -46,14 +46,17 @@ public class ManualCheckinModeView: UIView {
                 completeCheckinButton.addTarget(self, action: #selector(handleCompleteCheckin), for: UIControl.Event.touchUpInside)
                 
             } else {
-                bannedTagView.isHidden = true
+                //  Ticket had been redeemed
+                
+                bannedTagView.tagLabel.text = "Redemeed"
+                bannedTagView.backgroundColor = UIColor.brandBlack
                 completeCheckinButton.backgroundColor = .brandBackground
                 completeCheckinButton.setTitleColor(UIColor.brandLightGrey, for: UIControl.State.normal)
                 completeCheckinButton.setTitle("Already Redeemed", for: UIControl.State.normal)
                 completeCheckinButton.addTarget(self, action: #selector(doNothing), for: UIControl.Event.touchUpInside)
                 
                 if let redemeedBy = ticket.redeemedBy {
-                  redeemedByLabel.text = redemeedBy
+                    redeemedByLabel.text = redemeedBy
                 }
                 
                 ticketTypeLabel.text = price.dollarString + " | " + ticket.ticketType + " | " + ticketID
@@ -96,7 +99,8 @@ public class ManualCheckinModeView: UIView {
     public lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 30.0
-        imageView.backgroundColor = UIColor.red
+        imageView.backgroundColor = UIColor.brandBackground
+        imageView.image = UIImage(named: "empty_profile")
         imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
