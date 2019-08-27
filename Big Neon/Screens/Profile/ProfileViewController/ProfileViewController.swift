@@ -7,7 +7,7 @@ protocol ProfileViewDelegate: class {
     func handleUploadImage()
 }
 
-class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ProfileViewDelegate  {
     
     var profileHeaderView: ProfileHeaderView = ProfileHeaderView()
     var profileViewModel: ProfileViewModel = ProfileViewModel()

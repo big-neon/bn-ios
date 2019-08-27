@@ -19,6 +19,7 @@ public class ManualCheckinModeView: UIView {
             
             self.userNameLabel.text = ticket.firstName
             self.ticketTypeLabel.text = ticket.eventName
+            self.redeemedByLabel.text = ticket.eventName
             let price = Int(ticket.priceInCents)
             let ticketID = "#" + ticket.id.suffix(8).uppercased()
             dateValueLabel.text = price.dollarString + " | " + ticket.ticketType + " | " + ticketID
@@ -71,7 +72,7 @@ public class ManualCheckinModeView: UIView {
             }
         }
     }
-    
+
     lazy var completeCheckinButton: TransitionButton = {
         let button = TransitionButton()
         button.layer.cornerRadius = 4.0
@@ -80,9 +81,10 @@ public class ManualCheckinModeView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+
     lazy var dismissView: UIButton = {
         let button = UIButton()
+        button.imageEdgeInsets = UIEdgeInsets(top: 12.0, left: 12.0, bottom: 12.0, right: 12.0)
         button.addTarget(self, action: #selector(cancelChecking), for: UIControl.Event.touchUpInside)
         button.setImage(#imageLiteral(resourceName: "ic_dismissButton").withRenderingMode(.alwaysTemplate), for: UIControl.State.normal)
         button.tintColor = UIColor.brandGrey
@@ -94,8 +96,8 @@ public class ManualCheckinModeView: UIView {
     public lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 30.0
-        imageView.backgroundColor = UIColor.brandBackground
-        imageView.clipsToBounds = true
+        imageView.backgroundColor = UIColor.red
+        imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -138,7 +140,6 @@ public class ManualCheckinModeView: UIView {
     
     lazy var redeemedByLabel: UILabel = {
         let label = UILabel()
-        label.text = "Event Details"
         label.textColor = UIColor.brandBlack
         label.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -169,10 +170,10 @@ public class ManualCheckinModeView: UIView {
         addSubview(userImageView)
         addSubview(dismissView)
         addSubview(userNameLabel)
-        addSubview(ticketTypeLabel)
+//        addSubview(ticketTypeLabel)
         addSubview(lineView)
         addSubview(bannedTagView)
-        addSubview(vipTagView)
+//        addSubview(vipTagView)
         addSubview(redeemedByLabel)
         addSubview(dateValueLabel)
         addSubview(completeCheckinButton)
@@ -188,18 +189,13 @@ public class ManualCheckinModeView: UIView {
         
         dismissView.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor).isActive = true
         dismissView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
-        dismissView.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        dismissView.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        dismissView.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        dismissView.widthAnchor.constraint(equalToConstant: 56).isActive = true
         
-        userNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 22).isActive = true
+        userNameLabel.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor).isActive = true
         userNameLabel.leftAnchor.constraint(equalTo: userImageView.rightAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
         userNameLabel.rightAnchor.constraint(equalTo: dismissView.leftAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
         userNameLabel.heightAnchor.constraint(equalToConstant: 28).isActive = true
-        
-        ticketTypeLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 2).isActive = true
-        ticketTypeLabel.leftAnchor.constraint(equalTo: userNameLabel.leftAnchor).isActive = true
-        ticketTypeLabel.rightAnchor.constraint(equalTo: userNameLabel.rightAnchor).isActive = true
-        ticketTypeLabel.heightAnchor.constraint(equalToConstant: 22).isActive = true
         
         lineView.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
         lineView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
@@ -212,13 +208,18 @@ public class ManualCheckinModeView: UIView {
         bannedTagView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
         bannedTagView.widthAnchor.constraint(equalToConstant: 88.0).isActive = true
         
-        vipTagView.centerYAnchor.constraint(equalTo: bannedTagView.centerYAnchor).isActive = true
-        vipTagView.rightAnchor.constraint(equalTo: bannedTagView.leftAnchor, constant: -10.0).isActive = true
-        vipTagView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
-        vipTagView.widthAnchor.constraint(equalToConstant: 55.0).isActive = true
+//        vipTagView.centerYAnchor.constraint(equalTo: bannedTagView.centerYAnchor).isActive = true
+//        vipTagView.rightAnchor.constraint(equalTo: bannedTagView.leftAnchor, constant: -10.0).isActive = true
+//        vipTagView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
+//        vipTagView.widthAnchor.constraint(equalToConstant: 55.0).isActive = true
         
         
         //  Redeeemed By
+//        ticketTypeLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 2).isActive = true
+//        ticketTypeLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
+//        ticketTypeLabel.rightAnchor.constraint(equalTo: bannedTagView.leftAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
+//        ticketTypeLabel.heightAnchor.constraint(equalToConstant: 22).isActive = true
+        
         redeemedByLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: LayoutSpec.Spacing.twenty).isActive = true
         redeemedByLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
         redeemedByLabel.rightAnchor.constraint(equalTo: bannedTagView.leftAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
