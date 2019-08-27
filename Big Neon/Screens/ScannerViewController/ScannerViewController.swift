@@ -175,6 +175,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         configureScanner()
         configureManualCheckinView()
         configureHeader()
+        UIApplication.shared.isIdleTimerDisabled = true  //  Prevent the View from sleeping.
         
         //  Ticket Fetching
         fetchGuests()
@@ -299,6 +300,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     
     @objc func dismissView() {
         dismiss(animated: true, completion: nil)
+        UIApplication.shared.isIdleTimerDisabled = false
     }
 
     private func configureManualCheckinView() {
