@@ -7,11 +7,7 @@ protocol ProfileViewDelegate: class {
     func handleUploadImage()
 }
 
-// MARK:  magic numbers... consider using layout/config class/enum
-// MARK: use abbreviation / syntax sugar
-
-
-internal class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ProfileViewDelegate  {
+class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     
     var profileHeaderView: ProfileHeaderView = ProfileHeaderView()
     var profileViewModel: ProfileViewModel = ProfileViewModel()

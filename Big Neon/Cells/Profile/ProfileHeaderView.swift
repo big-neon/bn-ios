@@ -118,7 +118,7 @@ final public class ProfileHeaderView: UIView {
     }
     
     @objc private func uploadProfileImage() {
-        self.delegate?.handleUploadImage()
+//        self.delegate?.handleUploadImage()
     }
     
     required public init?(coder aDecoder: NSCoder) {
