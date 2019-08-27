@@ -212,17 +212,20 @@ public class ManualCheckinModeView: UIView {
         bannedTagView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
         bannedTagView.widthAnchor.constraint(equalToConstant: 88.0).isActive = true
         
-//        vipTagView.centerYAnchor.constraint(equalTo: bannedTagView.centerYAnchor).isActive = true
-//        vipTagView.rightAnchor.constraint(equalTo: bannedTagView.leftAnchor, constant: -10.0).isActive = true
-//        vipTagView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
-//        vipTagView.widthAnchor.constraint(equalToConstant: 55.0).isActive = true
+        /*
+         ** Old Code - To be finalised in a test
+        vipTagView.centerYAnchor.constraint(equalTo: bannedTagView.centerYAnchor).isActive = true
+        vipTagView.rightAnchor.constraint(equalTo: bannedTagView.leftAnchor, constant: -10.0).isActive = true
+        vipTagView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
+        vipTagView.widthAnchor.constraint(equalToConstant: 55.0).isActive = true
         
         
         //  Redeeemed By
-//        ticketTypeLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 2).isActive = true
-//        ticketTypeLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
-//        ticketTypeLabel.rightAnchor.constraint(equalTo: bannedTagView.leftAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
-//        ticketTypeLabel.heightAnchor.constraint(equalToConstant: 22).isActive = true
+        ticketTypeLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 2).isActive = true
+        ticketTypeLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
+        ticketTypeLabel.rightAnchor.constraint(equalTo: bannedTagView.leftAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
+        ticketTypeLabel.heightAnchor.constraint(equalToConstant: 22).isActive = true
+        */
         
         redeemedByLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: LayoutSpec.Spacing.twenty).isActive = true
         redeemedByLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true

@@ -165,10 +165,17 @@ extension GuestListViewController: SwipeActionTransitioning {
     
     //  Prefetching Rows in TableView
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        if let lastSection = indexPaths.last?.section {
-            if lastSection >= guestSectionTitles.count - 1 {
-                print("We are now in the last section")
+        if let lastSection = indexPaths.last?.section, let lastRow = indexPaths.last?.row, let totalGuests = self.guestViewModel.totalGuests {
+           
+            //  No neeed to fetch more. Guests are less than 100
+            if totalGuests <= 100 {
+                return
+            }
+            
+            //  Last Section and Last Row - Fetch more guests
+            if lastSection >= guestSectionTitles.count - 1 && lastRow >= self.guestViewModel.currentTotalGuests - 20 {
                 fetchNextPage(withIndexPaths: indexPaths)
+                return
             }
         }
     }

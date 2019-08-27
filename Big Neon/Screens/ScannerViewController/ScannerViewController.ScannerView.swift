@@ -58,9 +58,25 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             }
             
             //  Last Meta String and Latest are the same or the Time since scan is greater than the scan date
-            if let scannedMetaString = self.scannerViewModel?.scannedMetaString, let lastScannedTime = self.lastScannedTicketTime  {
+            if let scannedMetaString = self.scannerViewModel?.scannedMetaString,
+                let lastScannedTime = self.lastScannedTicketTime  {
+                
+                //  Rescan the ticket
+                if metaDataString == scannedMetaString {
+                    //  Do an automatic scan and show the already redeemed ticket
+                    self.checkinAutomatically(withTicketID: ticketID, fromGuestTableView: false, atIndexPath: nil)
+                    return
+                }
+                
+                /*
+                 ** Old Approach - still to be finalised
+                 if metaDataString == scannedMetaString || Date() < Date.init(timeInterval: TimeInterval(timeDelaySeconds), since: lastScannedTime) {
+                 return
+                 }
+                */
+                
                 let timeDelaySeconds = BundleInfo.fetchScanSeconds()
-                if metaDataString == scannedMetaString || Date() < Date.init(timeInterval: TimeInterval(timeDelaySeconds), since: lastScannedTime) {
+                if Date() < Date.init(timeInterval: TimeInterval(timeDelaySeconds), since: lastScannedTime) {
                     return
                 }
             }

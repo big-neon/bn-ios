@@ -182,6 +182,11 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         //  syncGuestsData()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.isIdleTimerDisabled = false
+    }
+    
     func configureAutoMode() {
         if scannerViewModel?.setScannerModeFirstTime() == true {
             self.scannerModeView.setAutoMode = true
@@ -300,7 +305,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     
     @objc func dismissView() {
         dismiss(animated: true, completion: nil)
-        UIApplication.shared.isIdleTimerDisabled = false
     }
 
     private func configureManualCheckinView() {
