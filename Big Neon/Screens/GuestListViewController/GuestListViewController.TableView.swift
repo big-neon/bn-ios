@@ -86,8 +86,14 @@ extension GuestListViewController: SwipeActionTransitioning {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        //  TO DO: To be added as a way to select and show the guest list.
-        //  self.showGuest()
+        var ticket: RedeemableTicket?
+        if self.isSearching == true && !self.guestViewModel.guestSearchResults.isEmpty {
+            ticket = self.guestViewModel.guestSearchResults[indexPath.row]
+        } else {
+            let guestKey = guestSectionTitles[indexPath.section]
+            ticket = guestsDictionary[guestKey]![indexPath.row]
+        }
+        self.showGuest(withTicket: ticket)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {

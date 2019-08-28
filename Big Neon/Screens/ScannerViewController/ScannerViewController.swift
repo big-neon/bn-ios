@@ -356,6 +356,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         guard let guestListVC = guestListVC else { return }
         guestListVC.delegate = self
         guestListVC.guests = guests
+        guestListVC.event = self.event
         guestListVC.guestViewModel.totalGuests = scannerViewModel.totalGuests
         guestListVC.guestViewModel.currentTotalGuests = scannerViewModel.currentTotalGuests
         guestListVC.guestViewModel.currentPage = scannerViewModel.currentPage

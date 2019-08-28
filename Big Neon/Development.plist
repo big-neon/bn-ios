@@ -4,8 +4,6 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>CFBundleDisplayName</key>
-	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -37,9 +35,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Big Neon will use your camera to capture an image for your Profie and scan your ticket</string>
+	<string>Big Neon Studio will use your camera to capture an image for your Profie and scan your ticket</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Big Neon will use your photo library to capture an image for your Profie</string>
+	<string>Big Neon Studio will use your photo library to capture an image for your Profie</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

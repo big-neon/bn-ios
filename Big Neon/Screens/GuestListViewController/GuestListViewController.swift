@@ -27,6 +27,7 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
     var guestViewModel = GuestsListViewModel()
     
     var guestsFetcher: GuestsFetcher?
+    var event: EventsData?
     
     var isSearching: Bool = false {
         didSet {
@@ -245,8 +246,10 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
         })
     }
     
-    func showGuest() {
+    func showGuest(withTicket ticket: RedeemableTicket?) {
         let guestVC = GuestViewController()
+        guestVC.event = self.event
+        guestVC.redeemableTicket = ticket
         self.presentPanModal(guestVC)
     }
 }
