@@ -93,7 +93,7 @@ extension GuestListViewController: SwipeActionTransitioning {
             let guestKey = guestSectionTitles[indexPath.section]
             ticket = guestsDictionary[guestKey]![indexPath.row]
         }
-        self.showGuest(withTicket: ticket)
+        self.showGuest(withTicket: ticket, selectedIndex: indexPath)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {

@@ -246,10 +246,12 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
         })
     }
     
-    func showGuest(withTicket ticket: RedeemableTicket?) {
+    func showGuest(withTicket ticket: RedeemableTicket?, selectedIndex: IndexPath) {
         let guestVC = GuestViewController()
         guestVC.event = self.event
         guestVC.redeemableTicket = ticket
+        guestVC.guestListVC = self
+        guestVC.guestListIndex = selectedIndex
         self.presentPanModal(guestVC)
     }
 }

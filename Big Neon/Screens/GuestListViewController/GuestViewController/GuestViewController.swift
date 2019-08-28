@@ -22,20 +22,20 @@ extension GuestViewController: PanModalPresentable {
     }
 }
 
-final class GuestViewController: UIViewController {
+final class GuestViewController: BaseViewController {
     
-    weak var delegate: ScannerViewDelegate?
     var event: EventsData?
+    var guestListVC: GuestListViewController?
+    var scannerViewModel = TicketScannerViewModel()
+    var guestListIndex: IndexPath?
     var redeemableTicket: RedeemableTicket? {
         didSet {
             guard let ticket = self.redeemableTicket else {
                 return
             }
             
-            print(ticket)
             self.userNameLabel.text = ticket.firstName
             self.ticketTypeLabel.text = ticket.eventName
-//            self.redeemedByLabel.text = ticket.eventName
             let price = Int(ticket.priceInCents)
             let ticketID = "#" + ticket.id.suffix(8).uppercased()
             ticketTypeLabel.text = price.dollarString + " | " + ticket.ticketType + " | " + ticketID
@@ -49,14 +49,14 @@ final class GuestViewController: UIViewController {
                 completeCheckinButton.addTarget(self, action: #selector(handleCompleteCheckin), for: UIControl.Event.touchUpInside)
                 
             } else {
-                //  Ticket had been redeemed
                 
+                //  Ticket Redeemed
                 ticketTagView.tagLabel.text = "REDEEMED"
                 ticketTagView.backgroundColor = UIColor.brandBlack
                 completeCheckinButton.backgroundColor = .brandBackground
                 completeCheckinButton.setTitleColor(UIColor.brandLightGrey, for: UIControl.State.normal)
-                completeCheckinButton.setTitle("Already Redeemed", for: UIControl.State.normal)
-                completeCheckinButton.addTarget(self, action: #selector(doNothing), for: UIControl.Event.touchUpInside)
+                completeCheckinButton.setTitle("Redeemed", for: UIControl.State.normal)
+                completeCheckinButton.isUserInteractionEnabled = false
 
                 if let redemeedBy = ticket.redeemedBy {
                     redeemedByLabel.text = "Redeemed by: " + redemeedBy
@@ -193,8 +193,60 @@ final class GuestViewController: UIViewController {
     }
     
     @objc func handleCompleteCheckin() {
-//        self.completeCheckinButton.startAnimation()
-//        self.delegate?.completeCheckin()
+        self.completeCheckinButton.startAnimation()
+        self.completeCheckin()
+    }
+    
+    //  Complete Checkin
+    func completeCheckin() {
+        
+        guard let ticketID = self.redeemableTicket?.id else {
+            return
+        }
+        
+        self.scannerViewModel.automaticallyCheckin(ticketID: ticketID, eventID: self.event?.id) { (scanFeedback, errorString, ticket) in
+            DispatchQueue.main.async {
+                
+                self.completeCheckinButton.stopAnimation(animationStyle: .normal, revertAfterDelay: 0.0) {
+                    self.completeCheckinButton.layer.cornerRadius = 6.0
+                    self.reloadGuestList(ticketID: ticketID)
+                    self.generator.notificationOccurred(.success)
+                }
+            }
+        }
+    }
+    
+    //  Reload the Cells in the Guest List
+    func reloadGuestList(ticketID: String) {
+        
+        guard let indexPath = guestListIndex else {
+            return
+        }
+        
+        if self.guestListVC?.isSearching == true {
+            self.guestListVC?.guestViewModel.guestSearchResults.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
+            self.reloadGuestCells(atIndexPath: indexPath)
+        } else {
+            self.guestListVC?.guestViewModel.ticketsFetched.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
+            self.reloadGuestCells(atIndexPath: indexPath)
+        }
+    }
+    
+    func reloadGuestCells(atIndexPath indexPath: IndexPath?) {
+        guard let indexPath = indexPath else { return }
+        let guestCell: GuestTableViewCell = self.guestListVC?.guestTableView.cellForRow(at: indexPath) as! GuestTableViewCell
+        guestCell.ticketStateView.stopAnimation(animationStyle: .normal, revertAfterDelay: 0.0) {
+            guestCell.ticketStateView.layer.cornerRadius = 3.0
+            guestCell.ticketStateView.setTitle("REDEEMED", for: UIControl.State.normal)
+            guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
+        }
+        
+        let guestKey = self.guestListVC?.guestSectionTitles[indexPath.section]
+        let guestValues = self.guestListVC?.isSearching == true ? self.guestListVC?.guestViewModel.guestSearchResults :  self.guestListVC?.guestsDictionary[guestKey!]
+        guestValues![indexPath.row].status = TicketStatus.Redeemed.rawValue
+        
+        //  Update the Current Ticket
+        self.redeemableTicket = guestValues![indexPath.row]
     }
     
     @objc func doNothing() {

@@ -59,14 +59,14 @@ extension ScannerViewController {
         })
     }
     
-    internal func completeCheckin() {
+    func completeCheckin() {
         
         guard let ticketID = self.scannedTicketID else {
             return
         }
         
         self.isShowingScannedUser = false
-        self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID) { (scanFeedback, errorString, ticket) in
+        self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID, eventID: nil) { (scanFeedback, errorString, ticket) in
             DispatchQueue.main.async {
                 self.manualUserCheckinView.completeCheckinButton.stopAnimation()
                 UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
@@ -76,7 +76,6 @@ extension ScannerViewController {
                     self.stopScanning = false
                 })
             }
-            
         }
     }
     
