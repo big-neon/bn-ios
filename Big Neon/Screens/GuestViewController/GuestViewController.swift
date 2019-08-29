@@ -6,6 +6,7 @@ import PanModal
 import Big_Neon_UI
 import Big_Neon_Core
 import TransitionButton
+import AVFoundation
 
 extension GuestViewController: PanModalPresentable {
 
@@ -22,12 +23,13 @@ extension GuestViewController: PanModalPresentable {
     }
 }
 
-final class GuestViewController: BaseViewController {
+class GuestViewController: BaseViewController {
     
     var event: EventsData?
     var guestListVC: GuestListViewController?
     var scannerViewModel = TicketScannerViewModel()
     var guestListIndex: IndexPath?
+    var audioPlayer: AVAudioPlayer?
     var redeemableTicket: RedeemableTicket? {
         didSet {
             guard let ticket = self.redeemableTicket else {
@@ -205,13 +207,27 @@ final class GuestViewController: BaseViewController {
         self.scannerViewModel.automaticallyCheckin(ticketID: ticketID, eventID: self.event?.id) { (scanFeedback, errorString, ticket) in
             DispatchQueue.main.async {
                 
+                //  Handle the Errors from Checking
+                
                 self.completeCheckinButton.stopAnimation(animationStyle: .normal, revertAfterDelay: 0.0) {
                     self.completeCheckinButton.layer.cornerRadius = 6.0
                     self.reloadGuestList(ticketID: ticketID)
+                    self.playSuccessSound(forValidTicket: true)
                     self.generator.notificationOccurred(.success)
                 }
             }
         }
+    }
+    
+    func playSuccessSound(forValidTicket valid: Bool) {
+        let sound = valid == true ? "Valid" : "Redeemed"
+        if let resourcePath =  Bundle.main.path(forResource: sound, ofType: "m4a") {
+            let url = URL(fileURLWithPath: resourcePath)
+            audioPlayer = try? AVAudioPlayer(contentsOf: url)
+            audioPlayer?.prepareToPlay()
+            audioPlayer?.play()
+        }
+        
     }
     
     //  Reload the Cells in the Guest List

@@ -694,6 +694,7 @@
 				C665DFE321E87CAC00DFB955 /* Authentication */,
 				C6AFB78C21DD655900670AC3 /* DoorPersonViewController */,
 				C63D1A152220054700152E83 /* ScannerViewController */,
+				C6DBF0AB2305738800911392 /* GuestViewController */,
 				C69370FE228F3EB9004EBC12 /* GuestListViewController */,
 				C64B0AD421D123C300386000 /* Explore */,
 				C64B0AD521D123D100386000 /* Tickets */,
@@ -782,7 +783,6 @@
 				C6937103228F52E7004EBC12 /* GuestListViewController.SearchController.swift */,
 				C69370FC228F3570004EBC12 /* GuestListViewController.TableView.swift */,
 				C6EC4B2D2227C1150056CE73 /* GuestTableViewCell.swift */,
-				C6DBF0AB2305738800911392 /* GuestViewController */,
 			);
 			path = GuestListViewController;
 			sourceTree = "<group>";
@@ -1864,7 +1864,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.studio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.doorperson.staging;
 				PRODUCT_NAME = "Big Neon Studio";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -2062,7 +2062,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEBUG\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.studio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.doorperson.staging;
 				PRODUCT_NAME = "Big Neon Studio";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -2320,7 +2320,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEBUG\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.studio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.doorperson.staging;
 				PRODUCT_NAME = "Big Neon Studio";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -2333,7 +2333,7 @@
 			baseConfigurationReference = 5C78351A5C87795AEF5484B1 /* Pods-Big Neon.release (development).xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = BetaIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 230;
@@ -2349,7 +2349,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.studio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.doorperson.staging;
 				PRODUCT_NAME = "Big Neon Studio";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
