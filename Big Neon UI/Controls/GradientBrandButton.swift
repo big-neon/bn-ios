@@ -28,7 +28,7 @@ public class BrandButton: TransitionButton {
     }
     
     public func setupLayout() {
-        self.layer.cornerRadius = 4.0
+        self.layer.cornerRadius = 6.0
         self.layer.masksToBounds = true
         self.setTitleColor(UIColor.white, for: .normal)
         self.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.semibold)
