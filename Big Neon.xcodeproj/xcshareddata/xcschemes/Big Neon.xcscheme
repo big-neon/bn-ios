@@ -27,15 +27,6 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C62BC77F21CCC3F700830A5F"
-            BuildableName = "Big Neon Studio.app"
-            BlueprintName = "Big Neon"
-            ReferencedContainer = "container:Big Neon.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -58,9 +49,20 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "C62BC77F21CCC3F700830A5F"
+            BuildableName = "Big Neon Studio.app"
+            BlueprintName = "Big Neon"
+            ReferencedContainer = "container:Big Neon.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug (Development)"
+      buildConfiguration = "Release (Production)"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -86,9 +88,11 @@
             isEnabled = "NO">
          </EnvironmentVariable>
       </EnvironmentVariables>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
-      buildConfiguration = "Release (Development)"
+      buildConfiguration = "Release (Production)"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
@@ -108,7 +112,7 @@
       buildConfiguration = "Debug (Development)">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Release (Development)"
+      buildConfiguration = "Release (Production)"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

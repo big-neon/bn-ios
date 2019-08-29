@@ -65,16 +65,14 @@ final class GuestViewController: BaseViewController {
                 ticketTypeLabel.text = price.dollarString + " | " + ticket.ticketType + " | " + ticketID
                 
                 guard let timezone = event?.venue, let redeemDate = ticket.redeemedAt else {
-                    ticketTypeLabel.text = "No Date Captured"
                     return
                 }
 
                 guard let redeemedDate = DateConfig.formatServerDate(date: redeemDate, timeZone: timezone.timezone!) else {
-                    ticketTypeLabel.text = "No Date Captured"
                     return
                 }
 
-                ticketTypeLabel.text = "Redeemed: " + redeemedDate.getElapsed()
+                redeemedByLabel.text = "Redeemed: " + redeemedDate.getElapsed()
 
             }
         }
