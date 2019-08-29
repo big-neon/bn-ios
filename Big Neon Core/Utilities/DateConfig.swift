@@ -77,7 +77,7 @@ final public class DateConfig {
     public class  func dateFormatShort(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.current
-        dateFormatter.dateFormat = "dd/MM/YY"
+        dateFormatter.dateFormat = "MM/dd/YY"
         return dateFormatter.string(from: date)
     }
     
