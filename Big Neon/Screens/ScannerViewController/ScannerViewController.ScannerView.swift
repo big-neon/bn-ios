@@ -125,7 +125,6 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     }
     
     func presentScannedUser() {
-        self.manualUserCheckinView.redeemableTicket = self.scannedTicket
         self.generator.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.success)
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.scannedUserBottomAnchor?.constant = -100.0
@@ -136,7 +135,6 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     }
     
     func hideScannedUser() {
-        self.manualUserCheckinView.redeemableTicket = nil
         self.lastScannedTicket = self.scannedTicket
         self.scannedTicket = nil
         self.stopScanning = true

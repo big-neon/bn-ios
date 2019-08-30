@@ -39,7 +39,6 @@
 		C623C07C2251E4230020D0A8 /* ExploreNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61D51C9220D6458002A70CE /* ExploreNavBarView.swift */; };
 		C623C07D2251E42C0020D0A8 /* ScannerModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6058DE02229520D00BDF397 /* ScannerModeView.swift */; };
 		C623C07E2251E42C0020D0A8 /* TicketScanFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BCBE9F222D38730026B858 /* TicketScanFeedbackView.swift */; };
-		C623C07F2251E42C0020D0A8 /* ManualCheckinModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A4220222FE65F002789E6 /* ManualCheckinModeView.swift */; };
 		C623C0802251E42C0020D0A8 /* CheckinTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A422222304D9F002789E6 /* CheckinTagView.swift */; };
 		C623C0812251E42C0020D0A8 /* LastScannedUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C689AE223A74AC00004593 /* LastScannedUserView.swift */; };
 		C628B15021F7B75800FCBDC9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C628B14F21F7B75800FCBDC9 /* Constants.swift */; };
@@ -323,7 +322,6 @@
 		C683232C21FF2D71002342AE /* ProfileEditViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.TableView.swift; sourceTree = "<group>"; };
 		C683232E21FF31F5002342AE /* ProfileEditingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingTableViewCell.swift; sourceTree = "<group>"; };
 		C683233021FF34DF002342AE /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
-		C68A4220222FE65F002789E6 /* ManualCheckinModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualCheckinModeView.swift; sourceTree = "<group>"; };
 		C68A422222304D9F002789E6 /* CheckinTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinTagView.swift; sourceTree = "<group>"; };
 		C68A9FD622D3414E006535B8 /* DoorPersonViewController.Offline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonViewController.Offline.swift; sourceTree = "<group>"; };
 		C68A9FD822D34995006535B8 /* GuestListViewController.Offline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListViewController.Offline.swift; sourceTree = "<group>"; };
@@ -527,7 +525,6 @@
 				C6058DE02229520D00BDF397 /* ScannerModeView.swift */,
 				C6937105228F6DF3004EBC12 /* ShowGuestListView.swift */,
 				C6BCBE9F222D38730026B858 /* TicketScanFeedbackView.swift */,
-				C68A4220222FE65F002789E6 /* ManualCheckinModeView.swift */,
 				C68A422222304D9F002789E6 /* CheckinTagView.swift */,
 				C6C689AE223A74AC00004593 /* LastScannedUserView.swift */,
 			);
@@ -1598,7 +1595,6 @@
 				C6DB1F9C230D75F70019C014 /* ScanSeconds.Environment.swift in Sources */,
 				C6C4E9B72302D2810040C258 /* SwipeCollectionViewCellDelegate.swift in Sources */,
 				C64124C621F266B100233797 /* LoginViewController.swift in Sources */,
-				C623C07F2251E42C0020D0A8 /* ManualCheckinModeView.swift in Sources */,
 				C6EC209C2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift in Sources */,
 				C6C4E9A52302D2810040C258 /* SwipeExpansionStyle.swift in Sources */,
 				C623C07B2251E41F0020D0A8 /* TicketQRCodeView.swift in Sources */,

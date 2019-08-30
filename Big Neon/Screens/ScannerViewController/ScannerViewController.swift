@@ -124,12 +124,12 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         return view
     }()
     
-    lazy var manualUserCheckinView: ManualCheckinModeView = {
-        let view =  ManualCheckinModeView()
-        view.delegate = self
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+//    lazy var manualUserCheckinView: ManualCheckinModeView = {
+//        let view =  ManualCheckinModeView()
+//        view.delegate = self
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        return view
+//    }()
     
     private func configureBlur() {
         let blur = UIBlurEffect(style: .dark)
@@ -173,7 +173,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         hideNavBar()
         configureAutoMode()
         configureScanner()
-        configureManualCheckinView()
         configureHeader()
         UIApplication.shared.isIdleTimerDisabled = true  //  Prevent the View from sleeping.
         
@@ -305,16 +304,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     
     @objc func dismissView() {
         dismiss(animated: true, completion: nil)
-    }
-
-    private func configureManualCheckinView() {
-        view.addSubview(manualUserCheckinView)
-        
-        manualUserCheckinView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        manualUserCheckinView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-        manualCheckingTopAnchor = manualUserCheckinView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: UIScreen.main.bounds.height + 50.0)
-        manualCheckingTopAnchor?.isActive = true
-        manualUserCheckinView.heightAnchor.constraint(equalToConstant: 264.0).isActive = true
     }
     
     private func configureScannedUserView() {
