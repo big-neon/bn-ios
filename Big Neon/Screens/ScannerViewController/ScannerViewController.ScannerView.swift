@@ -63,7 +63,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                 
                 let timeDelaySeconds = BundleInfo.fetchScanSeconds()
                 if metaDataString == scannedMetaString || Date() < Date.init(timeInterval: TimeInterval(timeDelaySeconds), since: lastScannedTime) {
-                    self.checkinAutomatically(withTicketID: ticketID, fromGuestTableView: false, atIndexPath: nil)
+                    self.checkingTicket(ticketID: ticketID, scannerMode: self.scannerViewModel?.scannerMode())
                     return
                 }
                 
@@ -86,11 +86,15 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             
             //  **  // update the Last Scanned User Timer
             self.lastScannedTicketTime = Date()
-            if self.scannerViewModel?.scannerMode() == true {
-                self.checkinAutomatically(withTicketID: ticketID, fromGuestTableView: false, atIndexPath: nil)
-            } else {
-                self.checkinManually(withTicketID: ticketID)
-            }
+            self.checkingTicket(ticketID: ticketID, scannerMode: self.scannerViewModel?.scannerMode())
+        }
+    }
+    
+    private func checkingTicket(ticketID: String, scannerMode: Bool?) {
+        if scannerMode == true {
+            self.checkinAutomatically(withTicketID: ticketID, fromGuestTableView: false, atIndexPath: nil)
+        } else {
+            self.checkinManually(withTicketID: ticketID)
         }
     }
     

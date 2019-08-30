@@ -61,7 +61,8 @@ class GuestViewController: BaseViewController {
                 completeCheckinButton.isUserInteractionEnabled = false
 
                 if let redemeedBy = ticket.redeemedBy {
-                    redeemedByLabel.text = "Redeemed by: " + redemeedBy
+                    redeemedByLabel.text = "By: " + redemeedBy
+                    completeCheckinButton.isHidden = true
                 }
                 
                 ticketTypeLabel.text = price.dollarString + " | " + ticket.ticketType + " | " + ticketID
@@ -74,7 +75,7 @@ class GuestViewController: BaseViewController {
                     return
                 }
 
-                redeemedByLabel.text = "Redeemed: " + redeemedDate.getElapsed()
+                redeemedTimeAgoLabel.text = "Redeemed: " + redeemedDate.getElapsed()
 
             }
         }
@@ -91,7 +92,6 @@ class GuestViewController: BaseViewController {
    
    lazy var userNameLabel: UILabel = {
        let label = UILabel()
-       label.text = "User Name"
        label.textAlignment = .center
        label.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.bold)
        label.translatesAutoresizingMaskIntoConstraints = false
@@ -121,11 +121,20 @@ class GuestViewController: BaseViewController {
         return view
     }()
     
-    lazy var redeemedByLabel: UILabel = {
+    lazy var redeemedTimeAgoLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = UIColor.brandBlack
         label.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var redeemedByLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.textColor = UIColor.brandGrey
+        label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -152,8 +161,9 @@ class GuestViewController: BaseViewController {
         view.addSubview(ticketTagView)
         
         view.addSubview(lineView)
-        view.addSubview(redeemedByLabel)
+        view.addSubview(redeemedTimeAgoLabel)
         view.addSubview(completeCheckinButton)
+        view.addSubview(redeemedByLabel)
         
         userImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: LayoutSpec.Spacing.thirtyTwo).isActive = true
         userImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -180,16 +190,22 @@ class GuestViewController: BaseViewController {
         lineView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         lineView.heightAnchor.constraint(equalToConstant: 0.9).isActive = true
         
-        redeemedByLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: LayoutSpec.Spacing.twenty).isActive = true
+        redeemedTimeAgoLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: LayoutSpec.Spacing.thirtyTwo).isActive = true
+        redeemedTimeAgoLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
+        redeemedTimeAgoLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
+        redeemedTimeAgoLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twentyFour).isActive = true
+        
+        redeemedByLabel.topAnchor.constraint(equalTo: redeemedTimeAgoLabel.bottomAnchor, constant: LayoutSpec.Spacing.twelve).isActive = true
         redeemedByLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
         redeemedByLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
-        redeemedByLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twentyFour).isActive = true
+        redeemedByLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twenty).isActive = true
         
         //  Completed
-        completeCheckinButton.topAnchor.constraint(equalTo: redeemedByLabel.bottomAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
+        completeCheckinButton.topAnchor.constraint(equalTo: redeemedTimeAgoLabel.bottomAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
         completeCheckinButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
         completeCheckinButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
         completeCheckinButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
+        
     }
     
     @objc func handleCompleteCheckin() {
