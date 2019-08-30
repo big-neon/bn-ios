@@ -154,6 +154,7 @@ class GuestViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        self.scannerVC?.stopScanning = true
         configureView()
     }
     
@@ -217,7 +218,9 @@ class GuestViewController: BaseViewController {
     }
     
     func panModalWillDismiss() {
-        self.delegate?.dismissScannedUserView()
+        self.scannerVC?.isShowingScannedUser = false
+        self.scannerVC?.lastScannedTicketTime = nil
+        self.scannerVC?.scannerViewModel?.lastRedeemedTicket = nil
     }
     
     //  Complete Checkin
@@ -227,25 +230,31 @@ class GuestViewController: BaseViewController {
             return
         }
         
-        self.scannerViewModel.automaticallyCheckin(ticketID: ticketID, eventID: self.event?.id) { (scanFeedback, errorString, ticket) in
-            
+        let fromGuestListVC = guestListVC == nil ? false : true
+        self.scannerViewModel.automaticallyCheckin(ticketID: ticketID, eventID: self.event?.id) { [weak self] (scanFeedback, errorString, ticket) in
             DispatchQueue.main.async {
                 
-                //  Handle the Errors from Checking
+                guard let self = self else { return }
+                
+                //  Update the Redeemed Ticket
+                self.redeemableTicket = ticket
+                
+                //  Stop Animating the Button
                 self.completeCheckinButton.stopAnimation(animationStyle: .normal, revertAfterDelay: 0.0) {
-                    
                     self.completeCheckinButton.layer.cornerRadius = 6.0
                     
-                    //  Update the scanner
-                    if self.scannerVC != nil {
-                        self.dismiss(animated: true, completion: {
-                            //  Show the Scanned User
-                        })
-                    } else {
+                    //  Checking from Guestlist
+                    if fromGuestListVC == true {
                         self.reloadGuestList(ticketID: ticketID)
                         self.playSuccessSound(forValidTicket: true)
                         self.generator.notificationOccurred(.success)
+                        return
                     }
+                    
+                    
+                    self.dismissController()
+                    self.scannerVC?.showScannedUser(feedback: scanFeedback, ticket: ticket)
+                    
                 }
             }
         }
@@ -259,7 +268,6 @@ class GuestViewController: BaseViewController {
             audioPlayer?.prepareToPlay()
             audioPlayer?.play()
         }
-        
     }
     
     //  Reload the Cells in the Guest List

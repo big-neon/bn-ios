@@ -49,6 +49,7 @@ extension ScannerViewController {
         guestVC.event = self.event
         guestVC.redeemableTicket = ticket
         guestVC.delegate = self
+        guestVC.scannerVC = self
         guestVC.guestListIndex = selectedIndex
         self.presentPanModal(guestVC)
     }

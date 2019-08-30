@@ -183,6 +183,9 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
     }
     
     @objc func handleDimiss() {
+        self.scanVC.isShowingScannedUser = false
+        self.scanVC.lastScannedTicketTime = nil
+        self.scanVC.scannerViewModel?.lastRedeemedTicket = nil
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -227,6 +230,12 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
     
     var shortFormHeight: PanModalHeight {
         return .contentHeight(900)
+    }
+    
+    func panModalWillDismiss() {
+        self.scanVC.isShowingScannedUser = false
+        self.scanVC.lastScannedTicketTime = nil
+        self.scanVC.scannerViewModel?.lastRedeemedTicket = nil
     }
     
     @objc func reloadGuests() {

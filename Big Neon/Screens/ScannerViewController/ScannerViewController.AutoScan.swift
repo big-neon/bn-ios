@@ -22,7 +22,6 @@ extension ScannerViewController {
     
     func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath indexPath: IndexPath?) {
         self.stopScanning = true
-        
         self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID, eventID: nil) { [weak self] (scanFeedback, errorString, ticket) in
             DispatchQueue.main.async {
                 
@@ -70,7 +69,6 @@ extension ScannerViewController {
             scannerViewModel?.redeemedTicket = ticket
             scannedUserView.redeemableTicket = ticket
         }
-        
         
         scannedUserView.scanFeedback = feedFound
         blurView?.layer.opacity = 0.0
