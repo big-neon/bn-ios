@@ -208,7 +208,6 @@ class GuestViewController: BaseViewController {
             DispatchQueue.main.async {
                 
                 //  Handle the Errors from Checking
-                
                 self.completeCheckinButton.stopAnimation(animationStyle: .normal, revertAfterDelay: 0.0) {
                     self.completeCheckinButton.layer.cornerRadius = 6.0
                     self.reloadGuestList(ticketID: ticketID)

@@ -39,25 +39,8 @@ extension ScannerViewController {
     
     func showRedeemedTicket(forTicket ticket: RedeemableTicket) {
         self.stopScanning = true
-//        self.isShowingScannedUser = true
-//        self.manualUserCheckinView.event = self.event
+        self.isShowingScannedUser = true
         self.scannedTicketID = ticket.id
-//        self.manualUserCheckinView.redeemableTicket = ticket
-//        self.playSuccessSound(forValidTicket: false)
-        
-//        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-//            self.scanningBoarderView.layer.opacity = 1.0
-//            self.showGuestView.layer.opacity = 0.0
-//            self.closeButton.layer.opacity = 0.0
-//            self.blurView?.layer.opacity = 1.0
-//            self.scanningBoarderView.layer.opacity = 0.0
-//            self.scannerModeView.layer.opacity = 0.0
-//            self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height - 272.0
-//            self.view.layoutIfNeeded()
-//        }, completion: { (completed) in
-//            self.stopScanning = true
-//        })
-        
         self.showGuest(withTicket: ticket, selectedIndex: nil)
     }
     
@@ -65,7 +48,6 @@ extension ScannerViewController {
         let guestVC = GuestViewController()
         guestVC.event = self.event
         guestVC.redeemableTicket = ticket
-//        guestVC.guestListVC = self
         guestVC.guestListIndex = selectedIndex
         self.presentPanModal(guestVC)
     }
