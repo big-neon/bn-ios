@@ -39,20 +39,28 @@ final class WelcomeViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
-    private lazy var loginButton: UIButton = {
-        let button = UIButton()
+    
+    private lazy var loginButton: BrandButton = {
+        let button = BrandButton()
         button.addTarget(self, action: #selector(handleLogin), for: UIControl.Event.touchUpInside)
-        button.backgroundColor = UIColor.clear
-        button.layer.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
-        button.layer.borderWidth = 2.0
-        button.layer.cornerRadius = 3.0
-        button.setTitle("Login To Your Account", for: UIControl.State.normal)
-        button.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: UIControl.State.normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.regular)
+        button.setTitle("Login to your Account", for: UIControl.State.normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+
+//    private lazy var loginButton: UIButton = {
+//        let button = UIButton()
+//        button.addTarget(self, action: #selector(handleLogin), for: UIControl.Event.touchUpInside)
+//        button.backgroundColor = UIColor.clear
+//        button.layer.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
+//        button.layer.borderWidth = 2.0
+//        button.layer.cornerRadius = 3.0
+//        button.setTitle("Login To Your Account", for: UIControl.State.normal)
+//        button.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: UIControl.State.normal)
+//        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.regular)
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        return button
+//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +92,7 @@ final class WelcomeViewController: UIViewController {
         self.view.addSubview(backgroundImage)
         self.view.addSubview(logoImage)
         self.view.addSubview(loginButton)
-        self.view.addSubview(getStartedButton)
+        //  self.view.addSubview(getStartedButton)
         
         self.backgroundImage.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         self.backgroundImage.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
@@ -102,11 +110,13 @@ final class WelcomeViewController: UIViewController {
         self.loginButtonBottomConstraint?.isActive = true
         self.loginButton.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
         
+        /*
         self.getStartedButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         self.getStartedButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
         self.getStartedButtonBottomConstraint = getStartedButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 200)
         self.getStartedButtonBottomConstraint?.isActive = true
         self.getStartedButton.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
+        */
         
     }
     

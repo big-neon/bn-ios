@@ -32,7 +32,7 @@ extension ProfileViewController {
         default:
             let versionNumber = BundleInfo.fetchVersionNumber()
             let buildNumber = BundleInfo.fetchBuildNumber()
-            return "Build: \(buildNumber)  ||  Version: \(versionNumber)"
+            return "Build: \(buildNumber)  •  Version: \(versionNumber)"
         }
     }
     

@@ -71,6 +71,9 @@ public class ScannerModeView: UIView {
     }
     
     @objc private func stateChanged(switchState: UISwitch) {
+        //  Reset the Scanner View
+        self.delegate?.dismissScannedUserView()
+        
         if switchState.isOn {
             self.setAutoMode = true
             self.delegate?.scannerSetAutomatic()

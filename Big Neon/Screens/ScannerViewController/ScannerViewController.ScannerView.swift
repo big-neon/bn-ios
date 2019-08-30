@@ -8,12 +8,16 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     
     func scannerSetAutomatic() {
         self.hideScannedUser()
+        self.lastScannedTicketTime = nil
+        self.scannerViewModel?.scannedMetaString = nil
         self.stopScanning = false
         self.scannerViewModel?.setCheckingModeAutomatic()
     }
     
     func scannerSetManual() {
         self.hideScannedUser()
+        self.lastScannedTicketTime = nil
+        self.scannerViewModel?.scannedMetaString = nil
         self.stopScanning = false
         self.scannerViewModel?.setCheckingModeManual()
     }
@@ -54,9 +58,16 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             }
             
             //  Last Meta String and Latest are the same or the Time since scan is greater than the scan date
-            if let scannedMetaString = self.scannerViewModel?.scannedMetaString, let lastScannedTime = self.lastScannedTicketTime  {
+            if let scannedMetaString = self.scannerViewModel?.scannedMetaString,
+                let lastScannedTime = self.lastScannedTicketTime  {
+                
                 let timeDelaySeconds = BundleInfo.fetchScanSeconds()
                 if metaDataString == scannedMetaString || Date() < Date.init(timeInterval: TimeInterval(timeDelaySeconds), since: lastScannedTime) {
+                    self.checkingTicket(ticketID: ticketID, scannerMode: self.scannerViewModel?.scannerMode())
+                    return
+                }
+                
+                if Date() < Date.init(timeInterval: TimeInterval(timeDelaySeconds), since: lastScannedTime) {
                     return
                 }
             }
@@ -75,17 +86,23 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             
             //  **  // update the Last Scanned User Timer
             self.lastScannedTicketTime = Date()
-            if self.scannerViewModel?.scannerMode() == true {
-                self.checkinAutomatically(withTicketID: ticketID, fromGuestTableView: false, atIndexPath: nil)
-            } else {
-                self.checkinManually(withTicketID: ticketID)
-            }
+            self.checkingTicket(ticketID: ticketID, scannerMode: self.scannerViewModel?.scannerMode())
+        }
+    }
+    
+    private func checkingTicket(ticketID: String, scannerMode: Bool?) {
+        if scannerMode == true {
+            self.checkinAutomatically(withTicketID: ticketID, fromGuestTableView: false, atIndexPath: nil)
+        } else {
+            self.checkinManually(withTicketID: ticketID)
         }
     }
     
     func dismissScannedUserView() {
         self.isShowingScannedUser = false
         self.dismissFeedbackView(feedback: nil)
+        self.lastScannedTicketTime = nil
+        self.scannerViewModel?.lastRedeemedTicket = nil
     }
     
     func dismissFeedbackView(feedback: ScanFeedback?) {
@@ -94,6 +111,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             self.closeButton.layer.opacity = 1.0
             self.scanningBoarderView.layer.opacity = 1.0
             self.showGuestView.layer.opacity = 1.0
+            self.scanningBoarderView.layer.opacity = 1.0
             self.scannerModeView.layer.opacity = 1.0
             self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
             self.view.layoutIfNeeded()
@@ -107,7 +125,6 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     }
     
     func presentScannedUser() {
-        self.manualUserCheckinView.redeemableTicket = self.scannedTicket
         self.generator.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.success)
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.scannedUserBottomAnchor?.constant = -100.0
@@ -118,7 +135,6 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     }
     
     func hideScannedUser() {
-        self.manualUserCheckinView.redeemableTicket = nil
         self.lastScannedTicket = self.scannedTicket
         self.scannedTicket = nil
         self.stopScanning = true

@@ -117,7 +117,7 @@ final class TicketScannerViewModel {
         
     }
     
-    func automaticallyCheckin(ticketID: String, completion: @escaping(ScanFeedback?, String?, RedeemableTicket?) -> Void) {
+    func automaticallyCheckin(ticketID: String, eventID: String?, completion: @escaping(ScanFeedback?, String?, RedeemableTicket?) -> Void) {
         BusinessService.shared.database.getRedeemTicket(forTicketID: ticketID) { (scanFeedback, errorString, redeemTicket) in
             DispatchQueue.main.async {
                 
@@ -128,13 +128,15 @@ final class TicketScannerViewModel {
                         return
                     }
                     
-                    guard let eventID = self.scanVC?.event?.id else {
+                    if self.scanVC?.event?.id == nil && eventID == nil {
                         AnalyticsService.reportError(errorType: ErrorType.scanning, error: errorString ?? "")
                         completion(.issueFound, errorString, redeemTicket)
                         return
                     }
                     
-                    self.completeAutoCheckin(eventID: eventID, ticket: ticket, completion: { (scanFeedback) in
+                    let eventID = self.scanVC?.event?.id ?? eventID
+                    
+                    self.completeAutoCheckin(eventID: eventID!, ticket: ticket, completion: { (scanFeedback) in
                         AnalyticsService.reportError(errorType: ErrorType.scanning, error: errorString ?? "")
                         completion(scanFeedback, errorString, redeemTicket)
                         return

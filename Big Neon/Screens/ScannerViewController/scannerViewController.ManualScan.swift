@@ -40,58 +40,17 @@ extension ScannerViewController {
     func showRedeemedTicket(forTicket ticket: RedeemableTicket) {
         self.stopScanning = true
         self.isShowingScannedUser = true
-        self.manualUserCheckinView.event = self.event
         self.scannedTicketID = ticket.id
-        self.manualUserCheckinView.redeemableTicket = ticket
-        self.playSuccessSound(forValidTicket: false)
-        
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.scanningBoarderView.layer.opacity = 1.0
-            self.showGuestView.layer.opacity = 0.0
-            self.closeButton.layer.opacity = 0.0
-            self.blurView?.layer.opacity = 1.0
-            self.scannerModeView.layer.opacity = 0.0
-            self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height - 272.0
-            self.view.layoutIfNeeded()
-        }, completion: { (completed) in
-            self.stopScanning = true
-        })
+        self.showGuest(withTicket: ticket, scannerVC: self, selectedIndex: nil)
     }
     
-    internal func completeCheckin() {
-        
-        guard let ticketID = self.scannedTicketID else {
-            return
-        }
-        
-        self.isShowingScannedUser = false
-        self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID) { (scanFeedback, errorString, ticket) in
-            DispatchQueue.main.async {
-                self.manualUserCheckinView.completeCheckinButton.stopAnimation()
-                UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
-                    self.showManuallyScannedUser(feedback: scanFeedback, ticket: ticket)
-                    self.view.layoutIfNeeded()
-                }, completion: { (completed) in
-                    self.stopScanning = false
-                })
-            }
-            
-        }
-    }
-    
-    func showManuallyScannedUser(feedback: ScanFeedback?, ticket: RedeemableTicket?) {
-        var feedFound = feedback
-        if ticket?.eventName != self.event?.name {
-            feedFound = .wrongEvent
-        }
-        self.scannedUserView.redeemableTicket = ticket
-        self.scannedUserView.scanFeedback = feedFound
-        self.blurView?.layer.opacity = 0.0
-        self.scannerModeView.layer.opacity = 1.0
-        self.showGuestView.layer.opacity = 1.0
-        self.closeButton.layer.opacity = 1.0
-        self.scannedUserBottomAnchor?.constant = -100.0
-        self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
-        self.generator.notificationOccurred(.success)
+    func showGuest(withTicket ticket: RedeemableTicket?, scannerVC: ScannerViewController?, selectedIndex: IndexPath?) {
+        let guestVC = GuestViewController()
+        guestVC.event = self.event
+        guestVC.redeemableTicket = ticket
+        guestVC.delegate = self
+        guestVC.scannerVC = self
+        guestVC.guestListIndex = selectedIndex
+        self.presentPanModal(guestVC)
     }
 }

@@ -27,6 +27,7 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
     var guestViewModel = GuestsListViewModel()
     
     var guestsFetcher: GuestsFetcher?
+    var event: EventsData?
     
     var isSearching: Bool = false {
         didSet {
@@ -182,6 +183,9 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
     }
     
     @objc func handleDimiss() {
+        self.scanVC.isShowingScannedUser = false
+        self.scanVC.lastScannedTicketTime = nil
+        self.scanVC.scannerViewModel?.lastRedeemedTicket = nil
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -228,6 +232,12 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
         return .contentHeight(900)
     }
     
+    func panModalWillDismiss() {
+        self.scanVC.isShowingScannedUser = false
+        self.scanVC.lastScannedTicketTime = nil
+        self.scanVC.scannerViewModel?.lastRedeemedTicket = nil
+    }
+    
     @objc func reloadGuests() {
         
         guard let eventID = self.guestViewModel.eventID else {
@@ -245,8 +255,12 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
         })
     }
     
-    func showGuest() {
+    func showGuest(withTicket ticket: RedeemableTicket?, selectedIndex: IndexPath) {
         let guestVC = GuestViewController()
+        guestVC.event = self.event
+        guestVC.redeemableTicket = ticket
+        guestVC.guestListVC = self
+        guestVC.guestListIndex = selectedIndex
         self.presentPanModal(guestVC)
     }
 }

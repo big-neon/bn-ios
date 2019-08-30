@@ -7,6 +7,30 @@ import TransitionButton
 final class GuestTableViewCell: SwipeTableViewCell {
     
     static let cellID = "GuestTableViewCellID"
+    
+    var isLoadingCell: Bool = false {
+        didSet {
+            if isLoadingCell == true {
+                loadingView.startAnimating()
+                guestNameLabel.isHidden = true
+                ticketTypeNameLabel.isHidden = true
+                ticketStateView.isHidden = true
+            } else {
+                loadingView.stopAnimating()
+                guestNameLabel.isHidden = false
+                ticketTypeNameLabel.isHidden = false
+                ticketStateView.isHidden = false
+            }
+        }
+    }
+    
+    let loadingView: UIActivityIndicatorView = {
+        let loader = UIActivityIndicatorView()
+        loader.style = UIActivityIndicatorView.Style.gray
+        loader.hidesWhenStopped = true
+        loader.translatesAutoresizingMaskIntoConstraints = false
+        return loader
+    }()
 
     lazy var guestNameLabel: UILabel = {
         let label = UILabel()
@@ -41,9 +65,16 @@ final class GuestTableViewCell: SwipeTableViewCell {
     }
     
     private func configureView() {
+        loadingView.stopAnimating()
+        contentView.addSubview(loadingView)
         contentView.addSubview(ticketStateView)
         contentView.addSubview(guestNameLabel)
         contentView.addSubview(ticketTypeNameLabel)
+        
+        loadingView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        loadingView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        loadingView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        loadingView.widthAnchor.constraint(equalToConstant: 30).isActive = true
         
         ticketStateView.topAnchor.constraint(equalTo: self.topAnchor, constant: 12).isActive = true
         ticketStateView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
@@ -59,8 +90,6 @@ final class GuestTableViewCell: SwipeTableViewCell {
         ticketTypeNameLabel.topAnchor.constraint(equalTo: guestNameLabel.bottomAnchor, constant: 12).isActive = true
         ticketTypeNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -30).isActive = true
         ticketTypeNameLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
-        
-        
     }
     
     required public init?(coder aDecoder: NSCoder) {

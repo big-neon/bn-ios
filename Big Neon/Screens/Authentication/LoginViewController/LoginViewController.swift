@@ -188,6 +188,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
                     self?.loginButton.stopAnimation(animationStyle: .shake,
                                                   revertAfterDelay: 1.0,
                                                   completion: {
+                                                    self?.loginButton.layer.cornerRadius = 6.0
                                                     self?.showFeedback(message: errorString!)
                                                     self?.enableView()
                     })
@@ -201,6 +202,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
                                                     if let errorValue = errorString {
                                                         self?.showFeedback(message: errorValue)
                                                     }
+                                                    self?.loginButton.layer.cornerRadius = 6.0
                                                     self?.enableView()
                     })
                     return
@@ -209,6 +211,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
                 self?.loginButton.stopAnimation(animationStyle: .normal,
                                               revertAfterDelay: 1.0,
                                               completion: {
+                                                self?.loginButton.layer.cornerRadius = 6.0
                                                 self?.enableView()
                                                 self?.navToHome()
                 })
