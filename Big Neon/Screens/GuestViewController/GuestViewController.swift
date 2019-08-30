@@ -27,9 +27,12 @@ class GuestViewController: BaseViewController {
     
     var event: EventsData?
     var guestListVC: GuestListViewController?
+    var scannerVC: ScannerViewController?
     var scannerViewModel = TicketScannerViewModel()
     var guestListIndex: IndexPath?
     var audioPlayer: AVAudioPlayer?
+    weak var delegate: ScannerViewDelegate?
+    
     var redeemableTicket: RedeemableTicket? {
         didSet {
             guard let ticket = self.redeemableTicket else {
@@ -213,6 +216,10 @@ class GuestViewController: BaseViewController {
         self.completeCheckin()
     }
     
+    func panModalWillDismiss() {
+        self.delegate?.dismissScannedUserView()
+    }
+    
     //  Complete Checkin
     func completeCheckin() {
         
@@ -221,14 +228,24 @@ class GuestViewController: BaseViewController {
         }
         
         self.scannerViewModel.automaticallyCheckin(ticketID: ticketID, eventID: self.event?.id) { (scanFeedback, errorString, ticket) in
+            
             DispatchQueue.main.async {
                 
                 //  Handle the Errors from Checking
                 self.completeCheckinButton.stopAnimation(animationStyle: .normal, revertAfterDelay: 0.0) {
+                    
                     self.completeCheckinButton.layer.cornerRadius = 6.0
-                    self.reloadGuestList(ticketID: ticketID)
-                    self.playSuccessSound(forValidTicket: true)
-                    self.generator.notificationOccurred(.success)
+                    
+                    //  Update the scanner
+                    if self.scannerVC != nil {
+                        self.dismiss(animated: true, completion: {
+                            //  Show the Scanned User
+                        })
+                    } else {
+                        self.reloadGuestList(ticketID: ticketID)
+                        self.playSuccessSound(forValidTicket: true)
+                        self.generator.notificationOccurred(.success)
+                    }
                 }
             }
         }

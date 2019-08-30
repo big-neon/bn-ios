@@ -7,7 +7,7 @@ import Big_Neon_Core
 import PanModal
 
 public protocol ScannerViewDelegate: class {
-    func completeCheckin()
+//    func completeCheckin()
     func scannerSetAutomatic()
     func scannerSetManual()
     func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath: IndexPath?)

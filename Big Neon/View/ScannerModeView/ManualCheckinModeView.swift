@@ -246,7 +246,7 @@ public class ManualCheckinModeView: UIView {
     
     @objc func handleCompleteCheckin() {
         self.completeCheckinButton.startAnimation()
-        self.delegate?.completeCheckin()
+//        self.delegate?.completeCheckin()
     }
     
     @objc func doNothing() {

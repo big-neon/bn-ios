@@ -41,52 +41,53 @@ extension ScannerViewController {
         self.stopScanning = true
         self.isShowingScannedUser = true
         self.scannedTicketID = ticket.id
-        self.showGuest(withTicket: ticket, selectedIndex: nil)
+        self.showGuest(withTicket: ticket, scannerVC: self, selectedIndex: nil)
     }
     
-    func showGuest(withTicket ticket: RedeemableTicket?, selectedIndex: IndexPath?) {
+    func showGuest(withTicket ticket: RedeemableTicket?, scannerVC: ScannerViewController?, selectedIndex: IndexPath?) {
         let guestVC = GuestViewController()
         guestVC.event = self.event
         guestVC.redeemableTicket = ticket
+        guestVC.delegate = self
         guestVC.guestListIndex = selectedIndex
         self.presentPanModal(guestVC)
     }
     
-    func completeCheckin() {
-        
-        guard let ticketID = self.scannedTicketID else {
-            return
-        }
-        
-        self.isShowingScannedUser = false
-        self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID, eventID: nil) { (scanFeedback, errorString, ticket) in
-            DispatchQueue.main.async {
-                self.manualUserCheckinView.completeCheckinButton.stopAnimation()
-                UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
-                    self.showManuallyScannedUser(feedback: scanFeedback, ticket: ticket)
-                    self.view.layoutIfNeeded()
-                }, completion: { (completed) in
-                    self.stopScanning = false
-                })
-            }
-        }
-    }
-    
-    func showManuallyScannedUser(feedback: ScanFeedback?, ticket: RedeemableTicket?) {
-        var feedFound = feedback
-        if ticket?.eventName != self.event?.name {
-            feedFound = .wrongEvent
-        }
-        self.scannedUserView.redeemableTicket = ticket
-        self.scannedUserView.scanFeedback = feedFound
-        self.blurView?.layer.opacity = 0.0
-        self.scannerModeView.layer.opacity = 1.0
-        self.showGuestView.layer.opacity = 1.0
-        self.closeButton.layer.opacity = 1.0
-        self.scanningBoarderView.layer.opacity = 1.0
-        self.scannerViewModel?.lastRedeemedTicket = nil
-        self.scannedUserBottomAnchor?.constant = -100.0
-        self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
-        self.generator.notificationOccurred(.success)
-    }
+//    func completeCheckin() {
+//
+//        guard let ticketID = self.scannedTicketID else {
+//            return
+//        }
+//
+//        self.isShowingScannedUser = false
+//        self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID, eventID: nil) { (scanFeedback, errorString, ticket) in
+//            DispatchQueue.main.async {
+//                self.manualUserCheckinView.completeCheckinButton.stopAnimation()
+//                UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
+//                    self.showManuallyScannedUser(feedback: scanFeedback, ticket: ticket)
+//                    self.view.layoutIfNeeded()
+//                }, completion: { (completed) in
+//                    self.stopScanning = false
+//                })
+//            }
+//        }
+//    }
+//
+//    func showManuallyScannedUser(feedback: ScanFeedback?, ticket: RedeemableTicket?) {
+//        var feedFound = feedback
+//        if ticket?.eventName != self.event?.name {
+//            feedFound = .wrongEvent
+//        }
+//        self.scannedUserView.redeemableTicket = ticket
+//        self.scannedUserView.scanFeedback = feedFound
+//        self.blurView?.layer.opacity = 0.0
+//        self.scannerModeView.layer.opacity = 1.0
+//        self.showGuestView.layer.opacity = 1.0
+//        self.closeButton.layer.opacity = 1.0
+//        self.scanningBoarderView.layer.opacity = 1.0
+//        self.scannerViewModel?.lastRedeemedTicket = nil
+//        self.scannedUserBottomAnchor?.constant = -100.0
+//        self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+//        self.generator.notificationOccurred(.success)
+//    }
 }
