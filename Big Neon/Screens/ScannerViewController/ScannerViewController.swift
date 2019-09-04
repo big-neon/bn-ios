@@ -204,7 +204,9 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
                     self.scannerViewModel?.ticketsCoreData = self.fetcher.fetchLocalGuests()
                     self.guestsCoreData = self.fetcher.fetchLocalGuests()
                 case .failure(let error):
-                    AnalyticsService.reportError(errorType: ErrorType.guestsFetch, error: error.localizedDescription)
+                    if let err = error {
+                        AnalyticsService.reportError(errorType: ErrorType.guestsFetch, error: err.localizedDescription)
+                    }
                 }
             }
         }

@@ -6,7 +6,7 @@ import Big_Neon_Core
 
 enum VoidResult {
     case success
-    case failure(NSError)
+    case failure(NSError?)
 }
 
 class EventsFetcher {
@@ -55,7 +55,13 @@ class EventsFetcher {
                 venues.append(eachEvent["venue"] as! [String : Any])
             }
             
-            self.dataStack.sync(venues, inEntityNamed: Venue.entity().managedObjectClassName) { error in
+            guard let venue = Venue.entity().managedObjectClassName else {
+                print("Failed to fetch the Venue")
+                completion(.failure(nil))
+                return
+            }
+            
+            self.dataStack.sync(venues, inEntityNamed: venue) { error in
             }
             
             self.dataStack.sync(events, inEntityNamed: EventsData.entity().managedObjectClassName) { error in
