@@ -55,9 +55,6 @@ class EventsFetcher {
                 venues.append(eachEvent["venue"] as! [String : Any])
             }
             
-            print(venues)
-            print(Venue.entity().managedObjectClassName)
-            
             guard let venue = Venue.entity().managedObjectClassName else {
                 print("Failed to fetch the Venue")
                 completion(.failure(nil))
