@@ -35,7 +35,10 @@ extension DoorPersonViewController {
                 case .failure(let error):
                     self.loadingView.stopAnimating()
                     self.refresher.endRefreshing()
-                    self.showFeedback(message: error.localizedDescription)
+                    if let err = error {
+                        self.showFeedback(message: err.localizedDescription)
+                    }
+                    
                     self.exploreCollectionView.reloadData()
                 }
             }

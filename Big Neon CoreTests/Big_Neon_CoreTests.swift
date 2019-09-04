@@ -1,10 +1,4 @@
-//
-//  Big_Neon_CoreTests.swift
-//  Big Neon CoreTests
-//
-//  Created by Gugulethu on 2019/01/18.
-//  Copyright © 2019 Big Neon Inc. All rights reserved.
-//
+
 
 import XCTest
 @testable import Big_Neon_Core
@@ -12,7 +6,9 @@ import XCTest
 class Big_Neon_CoreTests: XCTestCase {
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        //
+        
     }
 
     override func tearDown() {
@@ -26,6 +22,8 @@ class Big_Neon_CoreTests: XCTestCase {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
+        
+        
         self.measure {
             // Put the code you want to measure the time of here.
         }
