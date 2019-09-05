@@ -1860,7 +1860,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.doorperson.staging;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.studio;
 				PRODUCT_NAME = "Big Neon Studio";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -2058,7 +2058,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEBUG\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.doorperson.staging;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.studio;
 				PRODUCT_NAME = "Big Neon Studio";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -2316,7 +2316,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEBUG\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.doorperson.staging;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.studio;
 				PRODUCT_NAME = "Big Neon Studio";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -2345,7 +2345,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.doorperson.staging;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.studio;
 				PRODUCT_NAME = "Big Neon Studio";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
