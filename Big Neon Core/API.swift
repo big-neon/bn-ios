@@ -12,7 +12,7 @@ public enum APIParameterKeys {
 
 public class APIService {
     
-    private class func baseURL() -> String {
+    class func baseURL() -> String {
         let serverURL = Environment().configuration(PlistKey.ServerURL)
         let connectionProtocol = Environment().configuration(PlistKey.ConnectionProtocol)
         return "\(connectionProtocol)://\(serverURL)"
