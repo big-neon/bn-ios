@@ -20,13 +20,12 @@ extension DatabaseService {
             .validate(statusCode: 200..<300)
             .response { (response) in
                 
-                guard response.result.isSuccess else {
-                    print(response.result.error)
-                    completion(response.result.error, nil)
+                if let err = response.error {
+                    completion(err, nil)
                     return
                 }
                 
-                guard let data = response.result.value else {
+                guard let data = response.data else {
                     print("Invalid tag information received from the service")
                     completion(nil, nil)
                     return
@@ -34,7 +33,7 @@ extension DatabaseService {
                 
                 do {
                     let decoder = JSONDecoder()
-                    let tokens = try decoder.decode(Tokens.self, from: data!)
+                    let tokens = try decoder.decode(Tokens.self, from: data)
                     completion(nil, tokens)
                     return
                 } catch let error as NSError {
@@ -60,6 +59,11 @@ extension DatabaseService {
             .validate()
             .response { (response) in
                 
+                if let err = response.error {
+                    completion(err.localizedDescription, nil)
+                    return
+                }
+                
                 do {
                     if let data = response.data {
                         let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
@@ -77,7 +81,7 @@ extension DatabaseService {
                     completion(error, nil)
                 }
                 
-                guard let data = response.result.value else {
+                guard let data = response.data else {
                     print("Invalid tag information received from the service")
                     completion(nil, nil)
                     return
@@ -85,7 +89,7 @@ extension DatabaseService {
 
                 do {
                     let decoder = JSONDecoder()
-                    let tokens = try decoder.decode(Tokens.self, from: data!)
+                    let tokens = try decoder.decode(Tokens.self, from: data)
                     completion(nil, tokens)
                     return
                 } catch let error as NSError {

@@ -20,12 +20,12 @@ extension DatabaseService {
             .validate()
             .response { (response) in
                 
-                guard response.result.isSuccess else {
-                    completion(response.result.error, nil)
+                if let err = response.error {
+                    completion(err, nil)
                     return
                 }
                 
-                guard let data = response.result.value else {
+                guard let data = response.data else {
                     print("Invalid tag information received from the service")
                     completion(nil, nil)
                     return
@@ -33,7 +33,7 @@ extension DatabaseService {
                 
                 do {
                     let decoder = JSONDecoder()
-                    let userOrg = try decoder.decode(UserOrg.self, from: data!)
+                    let userOrg = try decoder.decode(UserOrg.self, from: data)
                     let user = userOrg.user
                     completion(nil, user)
                     return
@@ -62,13 +62,12 @@ extension DatabaseService {
             .validate()
             .response { (response) in
                 
-                guard response.result.isSuccess else {
-                    print(response.result.error)
-                    completion(response.result.error, nil)
+                if let err = response.error {
+                    completion(err, nil)
                     return
                 }
                 
-                guard let data = response.result.value else {
+                guard let data = response.data else {
                     print("Invalid tag information received from the service")
                     completion(nil, nil)
                     return
@@ -76,7 +75,7 @@ extension DatabaseService {
                 
                 do {
                     let decoder = JSONDecoder()
-                    let userOrg = try decoder.decode(UserOrg.self, from: data!)
+                    let userOrg = try decoder.decode(UserOrg.self, from: data)
                     let user = userOrg.user
                     completion(nil, user)
                     return
@@ -152,14 +151,13 @@ extension DatabaseService {
             headers: [APIParameterKeys.authorization: "Bearer \(accessToken)"])
             .validate()
             .response { (response) in
-                
-                guard response.result.isSuccess else {
-                    print("Error while fetching user: \(response.result.error)")
-                    completion(nil, nil)
+            
+                if let err = response.error {
+                    completion(err, nil)
                     return
                 }
                 
-                guard let data = response.result.value else {
+                guard let data = response.data else {
                     print("Invalid tag information received from the service")
                     completion(nil, nil)
                     return
@@ -167,7 +165,7 @@ extension DatabaseService {
                 
                 do {
                     let decoder = JSONDecoder()
-                    let userOrg = try decoder.decode(UserOrg.self, from: data!)
+                    let userOrg = try decoder.decode(UserOrg.self, from: data)
                     let user = userOrg.user
                     completion(nil, user)
                     return

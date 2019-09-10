@@ -1,14 +1,14 @@
 PODS:
-  - Alamofire (5.0.0-beta.3)
-  - Answers (1.0.0):
-    - Fabric
-  - Crashlytics (3.12.0):
-    - Fabric (~> 1.9.0)
-  - DTGradientButton (0.1.1)
-  - Fabric (1.9.0)
+  - Alamofire (5.0.0-rc.2)
+  - Answers (1.4.1):
+    - Fabric (~> 1.10.2)
+  - Crashlytics (3.13.4):
+    - Fabric (~> 1.10.2)
+  - DTGradientButton (0.1.3)
+  - Fabric (1.10.2)
   - FLAnimatedImage (1.0.12)
-  - JWTDecode (2.2.0)
-  - PanModal (1.2.2)
+  - JWTDecode (2.3.0)
+  - PanModal (1.2.4)
   - PhoneNumberKit (2.6.0):
     - PhoneNumberKit/PhoneNumberKitCore (= 2.6.0)
     - PhoneNumberKit/UIKit (= 2.6.0)
@@ -22,7 +22,7 @@ PODS:
     - PINCache/Core
   - PINCache/Core (3.0.1-beta.6):
     - PINOperation (~> 1.1.0)
-  - PINOperation (1.1.1)
+  - PINOperation (1.1.2)
   - PINRemoteImage (3.0.0-beta.13):
     - PINRemoteImage/FLAnimatedImage (= 3.0.0-beta.13)
     - PINRemoteImage/PINCache (= 3.0.0-beta.13)
@@ -37,9 +37,9 @@ PODS:
   - pop (1.0.12)
   - PresenterKit (5.1.0)
   - PWSwitch (1.1.2)
-  - QRCodeReader.swift (10.0.0)
-  - Stripe (14.0.0)
-  - SwiftKeychainWrapper (3.2.0)
+  - QRCodeReader.swift (10.1.0)
+  - Stripe (17.0.0)
+  - SwiftKeychainWrapper (3.4.0)
   - Sync (6.0.0)
   - TransitionButton (0.5.2)
   - "UITextField+Shake (1.2.1)"
@@ -99,28 +99,28 @@ CHECKOUT OPTIONS:
     :git: https://github.com/3lvis/Sync.git
 
 SPEC CHECKSUMS:
-  Alamofire: 50d6fa7e8cbe7f84559e86ab641ffd029db655f8
-  Answers: 25f0d740e3e4384ed0d97a8bda6b5eea1842c3d3
-  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
-  DTGradientButton: c5e3c76045af259822d9cf4ebbe9805489f2d5df
-  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
+  Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
+  Answers: 7d5ff1f77fea900eb75032b37b4288482b824055
+  Crashlytics: 2dfd686bcb918dc10ee0e76f7f853fe42c7bd552
+  DTGradientButton: 6f0f696cd433255d226c05e4ab047d991d13d4ef
+  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
-  JWTDecode: 85a405ab16d5473e99bd89ded1d535090ebd6a0e
-  PanModal: db200380a267634f746f8dea550dc3d1df017fc0
+  JWTDecode: fb77675c8049c1a7e9433c7cf448c3ce33ee4ac7
+  PanModal: 275f6d4d07565ddf4ed16d7be5d9cd275682d80d
   PhoneNumberKit: 167ee1f0bbb6efce7c62559e620eae745595532f
   PINCache: d195fdba255283f7e9900a55e3cced377f431f9b
-  PINOperation: a6219e6fc9db9c269eb7a7b871ac193bcf400aac
+  PINOperation: 24b774353ca248fcf87d67b2d61eef42087c125a
   PINRemoteImage: d6d51c5d2adda55f1ce30c96e850b6c4ebd2856a
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   PresenterKit: ebb82bda6b161c720db9b5346cb593b9b00e0ed5
   PWSwitch: 399db6ef5dd8417f9a1e9f82cb70602f10a6c38f
-  QRCodeReader.swift: 74d0378eb0c7807828552b49626bbc8307495aee
-  Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
-  SwiftKeychainWrapper: 82c4c02cdc36f9a24f7edfcaab3e336401caa1a1
+  QRCodeReader.swift: 373a389fe9a22d513c879a32a6f647c58f4ef572
+  Stripe: 109ee11766e03d75c4f8b2a9ead563779f8852bb
+  SwiftKeychainWrapper: 6fc49fbf7d4a6b0772917acb0e53a1639f6078d6
   Sync: a6288926bee65a1ac3c72055446c558776af43f3
   TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
 PODFILE CHECKSUM: 0b2cd6b868166125857a45468a3cfa820beeed9d
 
-COCOAPODS: 1.7.1
+COCOAPODS: 1.6.2

@@ -29,20 +29,11 @@ class EventsFetcher {
     }
     
     func deleteLocalCache() throws {
-        print("Deleting local cache")
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedObjectContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: EVENT_ENTITY_NAME)
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         try managedObjectContext.execute(batchDeleteRequest)
-        print("Finished deleting local cache")
-
-
-        //  Delete Venues
-//        try self.dataStack.viewContext.delete("*", inEntityNamed: Venue.entity().managedObjectClassName)
-//
-//        //  Delete Events
-//        try self.dataStack.viewContext.delete("*", inEntityNamed: EventsData.entity().managedObjectClassName)
     }
 
     func deleteAllData(_ entity:String) {

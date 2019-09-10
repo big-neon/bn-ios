@@ -130,14 +130,14 @@ public class TokenService {
                         headers: [:])
                 .validate()
                 .response { (response) in
-
-                    guard response.result.isSuccess else {
-                        completion(response.result.error, nil)
+                    
+                    if let err = response.error {
+                        completion(err, nil)
                         return
                     }
 
                     do {
-                        guard let dataValue = response.result.value, let data = dataValue else {
+                        guard let data = response.data else {
                             completion(nil, nil)
                             return
                         }

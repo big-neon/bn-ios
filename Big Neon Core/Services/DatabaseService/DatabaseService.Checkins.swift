@@ -20,19 +20,19 @@ extension DatabaseService {
             .validate(statusCode: 200..<300)
             .response { (response) in
                 
-                guard response.result.isSuccess else {
-                    completion(response.result.error, nil)
+                if let err = response.error {
+                    completion(err, nil)
                     return
                 }
                 
-                guard let data = response.result.value else {
+                guard let data = response.data else {
                     completion(nil, nil)
                     return
                 }
                 
                 do {
                     let decoder = JSONDecoder()
-                    let checkins = try decoder.decode(Events.self, from: data!)
+                    let checkins = try decoder.decode(Events.self, from: data)
                     completion(nil, checkins)
                     return
                 } catch let error as NSError {

@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3761B944BCAD328BA221B2DA /* Pods_Big_Neon_UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 341E3BB334D759BEA31DC6E2 /* Pods_Big_Neon_UI.framework */; };
-		6CFD25CA24C8C41F43DD860C /* Pods_Big_Neon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 465C6F10B28F5D3A8C77DC7C /* Pods_Big_Neon.framework */; };
-		82440D91D23AF737DB34B959 /* Pods_Big_Neon_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58804A3D6C2FB1A6BD559FD5 /* Pods_Big_Neon_Core.framework */; };
+		5A2E1B7E405ED17780F3538D /* Pods_Big_Neon_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DB0A1BBBBCC7D4543416D7 /* Pods_Big_Neon_Core.framework */; };
+		85607064B4BF6AE12559F374 /* Pods_Big_Neon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F63D047B71F4AED64CDD07F2 /* Pods_Big_Neon.framework */; };
 		C60BDEBE229EC03F00E54456 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60BDEB9229EB4B600E54456 /* Environment.swift */; };
 		C60BDEBF229EC03F00E54456 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D37B3421F1CD8200C616D0 /* API.swift */; };
 		C61853B72212F1DB005D6250 /* DoorPersonViewController.Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853B62212F1DB005D6250 /* DoorPersonViewController.Search.swift */; };
@@ -180,6 +179,7 @@
 		C6EC209C2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209B2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift */; };
 		C6EC209E220075D100BD10DD /* PhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209D220075D100BD10DD /* PhoneNumberTextField.swift */; };
 		C6EC20A122007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC20A022007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift */; };
+		E57B04BC0509839375C4A4BF /* Pods_Big_Neon_UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51533E2EC2C7F26DF71EF1B /* Pods_Big_Neon_UI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,23 +236,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1C4E4FA5E939F582BAA1457E /* Pods-Big Neon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug.xcconfig"; path = "Target Support Files/Pods-Big Neon/Pods-Big Neon.debug.xcconfig"; sourceTree = "<group>"; };
-		32F347B9FCCE2E0006097802 /* Pods-Big Neon UI.debug (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon UI.debug (development).xcconfig"; path = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.debug (development).xcconfig"; sourceTree = "<group>"; };
-		341E3BB334D759BEA31DC6E2 /* Pods_Big_Neon_UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big_Neon_UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3EB98C832DD1AD952F30AF11 /* Pods-Big Neon.debug (beta).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug (beta).xcconfig"; path = "Target Support Files/Pods-Big Neon/Pods-Big Neon.debug (beta).xcconfig"; sourceTree = "<group>"; };
-		465C6F10B28F5D3A8C77DC7C /* Pods_Big_Neon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big_Neon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4926F0DEA6692EA1B2BCFB44 /* Pods-Big Neon UI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon UI.debug.xcconfig"; path = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.debug.xcconfig"; sourceTree = "<group>"; };
-		54F111152EB597A1C281ACE9 /* Pods-Big Neon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.release.xcconfig"; path = "Target Support Files/Pods-Big Neon/Pods-Big Neon.release.xcconfig"; sourceTree = "<group>"; };
-		58804A3D6C2FB1A6BD559FD5 /* Pods_Big_Neon_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big_Neon_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5AE8B9AAD0C4247CE7226D76 /* Pods-Big Neon Core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon Core.debug.xcconfig"; path = "Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.debug.xcconfig"; sourceTree = "<group>"; };
-		5C78351A5C87795AEF5484B1 /* Pods-Big Neon.release (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.release (development).xcconfig"; path = "Target Support Files/Pods-Big Neon/Pods-Big Neon.release (development).xcconfig"; sourceTree = "<group>"; };
-		5E6D3F4E5F18C016C357EDA4 /* Pods-Big Neon.release (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.release (production).xcconfig"; path = "Target Support Files/Pods-Big Neon/Pods-Big Neon.release (production).xcconfig"; sourceTree = "<group>"; };
-		5EAEACAE363E4CFF233C17D4 /* Pods-Big Neon UI.debug (beta).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon UI.debug (beta).xcconfig"; path = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.debug (beta).xcconfig"; sourceTree = "<group>"; };
-		6FC701048FD9EA085A61090D /* Pods-Big Neon Core.release (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon Core.release (development).xcconfig"; path = "Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.release (development).xcconfig"; sourceTree = "<group>"; };
-		7AE55D7CFD5B5B532A9617AF /* Pods-Big Neon UI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon UI.release.xcconfig"; path = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.release.xcconfig"; sourceTree = "<group>"; };
-		99810E5D537D72E2F2B827F3 /* Pods-Big Neon UI.release (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon UI.release (production).xcconfig"; path = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.release (production).xcconfig"; sourceTree = "<group>"; };
-		A80F30A220DD91B602FBFBE3 /* Pods-Big Neon Core.debug (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon Core.debug (development).xcconfig"; path = "Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.debug (development).xcconfig"; sourceTree = "<group>"; };
-		AE22C3379EA5B3E042F079BA /* Pods-Big Neon Core.release (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon Core.release (production).xcconfig"; path = "Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.release (production).xcconfig"; sourceTree = "<group>"; };
+		0206777751194ADF4DF91562 /* Pods-Big Neon Core.debug (beta).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon Core.debug (beta).xcconfig"; path = "Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.debug (beta).xcconfig"; sourceTree = "<group>"; };
+		0FF8C34F1E11BDD63EED2C23 /* Pods-Big Neon Core.release (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon Core.release (development).xcconfig"; path = "Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.release (development).xcconfig"; sourceTree = "<group>"; };
+		14710A0417E296C545302C40 /* Pods-Big Neon.release (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.release (production).xcconfig"; path = "Target Support Files/Pods-Big Neon/Pods-Big Neon.release (production).xcconfig"; sourceTree = "<group>"; };
+		229F5A7DF557F2879265042F /* Pods-Big Neon UI.release (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon UI.release (production).xcconfig"; path = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.release (production).xcconfig"; sourceTree = "<group>"; };
+		243DFA80E9D9A698FA4711AB /* Pods-Big Neon UI.release (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon UI.release (development).xcconfig"; path = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.release (development).xcconfig"; sourceTree = "<group>"; };
+		28DB0A1BBBBCC7D4543416D7 /* Pods_Big_Neon_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big_Neon_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AFE221B9E0C5454313D5274 /* Pods-Big Neon UI.debug (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon UI.debug (development).xcconfig"; path = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.debug (development).xcconfig"; sourceTree = "<group>"; };
+		5227793D2C68545A2802C714 /* Pods-Big Neon Core.release (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon Core.release (production).xcconfig"; path = "Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.release (production).xcconfig"; sourceTree = "<group>"; };
+		62D1690695C9C42CDA541DCD /* Pods-Big Neon Core.debug (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon Core.debug (development).xcconfig"; path = "Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.debug (development).xcconfig"; sourceTree = "<group>"; };
+		742EA7C612273116DBA59132 /* Pods-Big Neon.debug (beta).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug (beta).xcconfig"; path = "Target Support Files/Pods-Big Neon/Pods-Big Neon.debug (beta).xcconfig"; sourceTree = "<group>"; };
+		846D79338ED0F7680B5B5BBA /* Pods-Big Neon.release (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.release (development).xcconfig"; path = "Target Support Files/Pods-Big Neon/Pods-Big Neon.release (development).xcconfig"; sourceTree = "<group>"; };
+		A51533E2EC2C7F26DF71EF1B /* Pods_Big_Neon_UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big_Neon_UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD5796C55A67C1200B3EE5B1 /* Pods-Big Neon UI.debug (beta).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon UI.debug (beta).xcconfig"; path = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.debug (beta).xcconfig"; sourceTree = "<group>"; };
 		C603E49C221581B20079ED73 /* EventCheckoutDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCheckoutDetailCell.swift; sourceTree = "<group>"; };
 		C603E49E221583940079ED73 /* CheckoutTotalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutTotalCell.swift; sourceTree = "<group>"; };
 		C603E4A0221586040079ED73 /* SubTotalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTotalCell.swift; sourceTree = "<group>"; };
@@ -272,7 +268,6 @@
 		C61853C5221444C9005D6250 /* QuantitySelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantitySelectionCell.swift; sourceTree = "<group>"; };
 		C61853C722144869005D6250 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
 		C61D51C9220D6458002A70CE /* ExploreNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreNavBarView.swift; sourceTree = "<group>"; };
-		C62009AA970A5B16F004DD37 /* Pods-Big Neon Core.debug (beta).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon Core.debug (beta).xcconfig"; path = "Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.debug (beta).xcconfig"; sourceTree = "<group>"; };
 		C628B14F21F7B75800FCBDC9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C628B15321F9E35700FCBDC9 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		C628B15521FAD76000FCBDC9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -434,9 +429,8 @@
 		C6EC209D220075D100BD10DD /* PhoneNumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTextField.swift; sourceTree = "<group>"; };
 		C6EC20A022007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewContorller.ImageUpload.swift; sourceTree = "<group>"; };
 		C6EC4B2D2227C1150056CE73 /* GuestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestTableViewCell.swift; sourceTree = "<group>"; };
-		E2E7544D59566C07F6D3B4CB /* Pods-Big Neon UI.release (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon UI.release (development).xcconfig"; path = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.release (development).xcconfig"; sourceTree = "<group>"; };
-		E2FA0916D7BB58AD30E251C0 /* Pods-Big Neon.debug (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug (development).xcconfig"; path = "Target Support Files/Pods-Big Neon/Pods-Big Neon.debug (development).xcconfig"; sourceTree = "<group>"; };
-		F53CD102EDCF0164A543ADDD /* Pods-Big Neon Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon Core.release.xcconfig"; path = "Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.release.xcconfig"; sourceTree = "<group>"; };
+		F2103222D117085B513E9485 /* Pods-Big Neon.debug (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug (development).xcconfig"; path = "Target Support Files/Pods-Big Neon/Pods-Big Neon.debug (development).xcconfig"; sourceTree = "<group>"; };
+		F63D047B71F4AED64CDD07F2 /* Pods_Big_Neon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big_Neon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -446,7 +440,7 @@
 			files = (
 				C6B88D1421F19FC0006394F8 /* Big_Neon_Core.framework in Frameworks */,
 				C6B88D2821F19FD4006394F8 /* Big_Neon_UI.framework in Frameworks */,
-				6CFD25CA24C8C41F43DD860C /* Pods_Big_Neon.framework in Frameworks */,
+				85607064B4BF6AE12559F374 /* Pods_Big_Neon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,7 +455,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82440D91D23AF737DB34B959 /* Pods_Big_Neon_Core.framework in Frameworks */,
+				5A2E1B7E405ED17780F3538D /* Pods_Big_Neon_Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,19 +471,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3761B944BCAD328BA221B2DA /* Pods_Big_Neon_UI.framework in Frameworks */,
+				E57B04BC0509839375C4A4BF /* Pods_Big_Neon_UI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1BD706CD83513345E9320BDB /* Frameworks */ = {
+		2DB94BDC391C389579FED164 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				465C6F10B28F5D3A8C77DC7C /* Pods_Big_Neon.framework */,
-				58804A3D6C2FB1A6BD559FD5 /* Pods_Big_Neon_Core.framework */,
-				341E3BB334D759BEA31DC6E2 /* Pods_Big_Neon_UI.framework */,
+				F63D047B71F4AED64CDD07F2 /* Pods_Big_Neon.framework */,
+				28DB0A1BBBBCC7D4543416D7 /* Pods_Big_Neon_Core.framework */,
+				A51533E2EC2C7F26DF71EF1B /* Pods_Big_Neon_UI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -497,24 +491,18 @@
 		7B3E96A75988802AD92E269E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1C4E4FA5E939F582BAA1457E /* Pods-Big Neon.debug.xcconfig */,
-				54F111152EB597A1C281ACE9 /* Pods-Big Neon.release.xcconfig */,
-				5AE8B9AAD0C4247CE7226D76 /* Pods-Big Neon Core.debug.xcconfig */,
-				F53CD102EDCF0164A543ADDD /* Pods-Big Neon Core.release.xcconfig */,
-				4926F0DEA6692EA1B2BCFB44 /* Pods-Big Neon UI.debug.xcconfig */,
-				7AE55D7CFD5B5B532A9617AF /* Pods-Big Neon UI.release.xcconfig */,
-				E2FA0916D7BB58AD30E251C0 /* Pods-Big Neon.debug (development).xcconfig */,
-				3EB98C832DD1AD952F30AF11 /* Pods-Big Neon.debug (beta).xcconfig */,
-				5C78351A5C87795AEF5484B1 /* Pods-Big Neon.release (development).xcconfig */,
-				5E6D3F4E5F18C016C357EDA4 /* Pods-Big Neon.release (production).xcconfig */,
-				A80F30A220DD91B602FBFBE3 /* Pods-Big Neon Core.debug (development).xcconfig */,
-				C62009AA970A5B16F004DD37 /* Pods-Big Neon Core.debug (beta).xcconfig */,
-				6FC701048FD9EA085A61090D /* Pods-Big Neon Core.release (development).xcconfig */,
-				AE22C3379EA5B3E042F079BA /* Pods-Big Neon Core.release (production).xcconfig */,
-				32F347B9FCCE2E0006097802 /* Pods-Big Neon UI.debug (development).xcconfig */,
-				5EAEACAE363E4CFF233C17D4 /* Pods-Big Neon UI.debug (beta).xcconfig */,
-				E2E7544D59566C07F6D3B4CB /* Pods-Big Neon UI.release (development).xcconfig */,
-				99810E5D537D72E2F2B827F3 /* Pods-Big Neon UI.release (production).xcconfig */,
+				F2103222D117085B513E9485 /* Pods-Big Neon.debug (development).xcconfig */,
+				742EA7C612273116DBA59132 /* Pods-Big Neon.debug (beta).xcconfig */,
+				846D79338ED0F7680B5B5BBA /* Pods-Big Neon.release (development).xcconfig */,
+				14710A0417E296C545302C40 /* Pods-Big Neon.release (production).xcconfig */,
+				62D1690695C9C42CDA541DCD /* Pods-Big Neon Core.debug (development).xcconfig */,
+				0206777751194ADF4DF91562 /* Pods-Big Neon Core.debug (beta).xcconfig */,
+				0FF8C34F1E11BDD63EED2C23 /* Pods-Big Neon Core.release (development).xcconfig */,
+				5227793D2C68545A2802C714 /* Pods-Big Neon Core.release (production).xcconfig */,
+				4AFE221B9E0C5454313D5274 /* Pods-Big Neon UI.debug (development).xcconfig */,
+				AD5796C55A67C1200B3EE5B1 /* Pods-Big Neon UI.debug (beta).xcconfig */,
+				243DFA80E9D9A698FA4711AB /* Pods-Big Neon UI.release (development).xcconfig */,
+				229F5A7DF557F2879265042F /* Pods-Big Neon UI.release (production).xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -572,7 +560,7 @@
 				C6B88D0D21F19FC0006394F8 /* Big Neon CoreTests */,
 				C62BC78121CCC3F700830A5F /* Products */,
 				7B3E96A75988802AD92E269E /* Pods */,
-				1BD706CD83513345E9320BDB /* Frameworks */,
+				2DB94BDC391C389579FED164 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1173,13 +1161,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C62BC7A821CCC3FB00830A5F /* Build configuration list for PBXNativeTarget "Big Neon" */;
 			buildPhases = (
-				D6758ACFF600C1DF4AAC986B /* [CP] Check Pods Manifest.lock */,
+				49F22E6C4587029413DB89EC /* [CP] Check Pods Manifest.lock */,
 				C62BC77C21CCC3F700830A5F /* Sources */,
 				C62BC77D21CCC3F700830A5F /* Frameworks */,
 				C62BC77E21CCC3F700830A5F /* Resources */,
 				C694D23321D0BBFF00B2AE07 /* Embed Frameworks */,
-				778108FF93811D59365A186E /* [CP] Embed Pods Frameworks */,
 				C62C824F22C4AED400D30E07 /* Fabric Run Script */,
+				54132A5EF810AD0297EBD8AB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1214,7 +1202,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6B88D1621F19FC0006394F8 /* Build configuration list for PBXNativeTarget "Big Neon Core" */;
 			buildPhases = (
-				96B36469E9C3B030EFB62998 /* [CP] Check Pods Manifest.lock */,
+				CB85DE50CC31FA65B5768203 /* [CP] Check Pods Manifest.lock */,
 				C6B88CFA21F19FC0006394F8 /* Headers */,
 				C6B88CFB21F19FC0006394F8 /* Sources */,
 				C6B88CFC21F19FC0006394F8 /* Frameworks */,
@@ -1253,7 +1241,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6B88D2A21F19FD4006394F8 /* Build configuration list for PBXNativeTarget "Big Neon UI" */;
 			buildPhases = (
-				583A1D597C25813803F7BAB9 /* [CP] Check Pods Manifest.lock */,
+				553A86B05D5B66B4232930FE /* [CP] Check Pods Manifest.lock */,
 				C6B88D1C21F19FD4006394F8 /* Headers */,
 				C6B88D1D21F19FD4006394F8 /* Sources */,
 				C6B88D1E21F19FD4006394F8 /* Frameworks */,
@@ -1367,7 +1355,85 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		583A1D597C25813803F7BAB9 /* [CP] Check Pods Manifest.lock */ = {
+		49F22E6C4587029413DB89EC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Big Neon-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		54132A5EF810AD0297EBD8AB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Big Neon/Pods-Big Neon-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
+				"${BUILT_PRODUCTS_DIR}/PanModal/PanModal.framework",
+				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Sync/Sync.framework",
+				"${BUILT_PRODUCTS_DIR}/PWSwitch/PWSwitch.framework",
+				"${BUILT_PRODUCTS_DIR}/PresenterKit/PresenterKit.framework",
+				"${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework",
+				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
+				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
+				"${BUILT_PRODUCTS_DIR}/DTGradientButton/DTGradientButton.framework",
+				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
+				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
+				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
+				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
+				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
+				"${BUILT_PRODUCTS_DIR}/UITextField+Shake/UITextField_Shake.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PanModal.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sync.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PWSwitch.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PresenterKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCodeReader.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DTGradientButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextField_Shake.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Big Neon/Pods-Big Neon-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		553A86B05D5B66B4232930FE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1383,45 +1449,6 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Big Neon UI-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		778108FF93811D59365A186E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Big Neon/Pods-Big Neon-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Big Neon/Pods-Big Neon-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Big Neon/Pods-Big Neon-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		96B36469E9C3B030EFB62998 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Big Neon Core-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1482,7 +1509,7 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" aa0b5f33b3ba00e613962388fc955505c3fe52d3 51cf5667ff9acebe5ac2c48a9dc25e7f40b2664198eca7fa1836fa11074469b6\n";
 		};
-		D6758ACFF600C1DF4AAC986B /* [CP] Check Pods Manifest.lock */ = {
+		CB85DE50CC31FA65B5768203 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1497,7 +1524,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Big Neon-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Big Neon Core-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1800,7 +1827,7 @@
 		};
 		C60BDEAB229EA65A00E54456 /* Release (Production) */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5E6D3F4E5F18C016C357EDA4 /* Pods-Big Neon.release (production).xcconfig */;
+			baseConfigurationReference = 14710A0417E296C545302C40 /* Pods-Big Neon.release (production).xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1850,7 +1877,7 @@
 		};
 		C60BDEAD229EA65A00E54456 /* Release (Production) */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AE22C3379EA5B3E042F079BA /* Pods-Big Neon Core.release (production).xcconfig */;
+			baseConfigurationReference = 5227793D2C68545A2802C714 /* Pods-Big Neon Core.release (production).xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
@@ -1903,7 +1930,7 @@
 		};
 		C60BDEAF229EA65A00E54456 /* Release (Production) */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 99810E5D537D72E2F2B827F3 /* Pods-Big Neon UI.release (production).xcconfig */;
+			baseConfigurationReference = 229F5A7DF557F2879265042F /* Pods-Big Neon UI.release (production).xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
@@ -1997,7 +2024,7 @@
 		};
 		C60BDEB1229EA66E00E54456 /* Debug (Beta) */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3EB98C832DD1AD952F30AF11 /* Pods-Big Neon.debug (beta).xcconfig */;
+			baseConfigurationReference = 742EA7C612273116DBA59132 /* Pods-Big Neon.debug (beta).xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = BetaIcon;
@@ -2048,7 +2075,7 @@
 		};
 		C60BDEB3229EA66E00E54456 /* Debug (Beta) */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C62009AA970A5B16F004DD37 /* Pods-Big Neon Core.debug (beta).xcconfig */;
+			baseConfigurationReference = 0206777751194ADF4DF91562 /* Pods-Big Neon Core.debug (beta).xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
@@ -2102,7 +2129,7 @@
 		};
 		C60BDEB5229EA66E00E54456 /* Debug (Beta) */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5EAEACAE363E4CFF233C17D4 /* Pods-Big Neon UI.debug (beta).xcconfig */;
+			baseConfigurationReference = AD5796C55A67C1200B3EE5B1 /* Pods-Big Neon UI.debug (beta).xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
@@ -2255,7 +2282,7 @@
 		};
 		C62BC7A921CCC3FB00830A5F /* Debug (Development) */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2FA0916D7BB58AD30E251C0 /* Pods-Big Neon.debug (development).xcconfig */;
+			baseConfigurationReference = F2103222D117085B513E9485 /* Pods-Big Neon.debug (development).xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = DevIcon;
@@ -2285,7 +2312,7 @@
 		};
 		C62BC7AA21CCC3FB00830A5F /* Release (Development) */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5C78351A5C87795AEF5484B1 /* Pods-Big Neon.release (development).xcconfig */;
+			baseConfigurationReference = 846D79338ED0F7680B5B5BBA /* Pods-Big Neon.release (development).xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = BetaIcon;
@@ -2356,7 +2383,7 @@
 		};
 		C6B88D1721F19FC0006394F8 /* Debug (Development) */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A80F30A220DD91B602FBFBE3 /* Pods-Big Neon Core.debug (development).xcconfig */;
+			baseConfigurationReference = 62D1690695C9C42CDA541DCD /* Pods-Big Neon Core.debug (development).xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
@@ -2389,7 +2416,7 @@
 		};
 		C6B88D1821F19FC0006394F8 /* Release (Development) */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6FC701048FD9EA085A61090D /* Pods-Big Neon Core.release (development).xcconfig */;
+			baseConfigurationReference = 0FF8C34F1E11BDD63EED2C23 /* Pods-Big Neon Core.release (development).xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
@@ -2463,7 +2490,7 @@
 		};
 		C6B88D2B21F19FD4006394F8 /* Debug (Development) */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 32F347B9FCCE2E0006097802 /* Pods-Big Neon UI.debug (development).xcconfig */;
+			baseConfigurationReference = 4AFE221B9E0C5454313D5274 /* Pods-Big Neon UI.debug (development).xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
@@ -2496,7 +2523,7 @@
 		};
 		C6B88D2C21F19FD4006394F8 /* Release (Development) */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2E7544D59566C07F6D3B4CB /* Pods-Big Neon UI.release (development).xcconfig */;
+			baseConfigurationReference = 243DFA80E9D9A698FA4711AB /* Pods-Big Neon UI.release (development).xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
