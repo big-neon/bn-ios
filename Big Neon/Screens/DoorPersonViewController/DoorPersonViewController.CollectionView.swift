@@ -34,8 +34,9 @@ extension DoorPersonViewController {
         let eventCell: DoorPersonCell = collectionView.dequeueReusableCell(withReuseIdentifier: DoorPersonCell.cellID, for: indexPath) as! DoorPersonCell
         let event = self.doorPersonViemodel.eventCoreData[indexPath.item]
         eventCell.eventNameLabel.text = event.name
-        if let eventImageURL: URL = URL(string: event.promo_image_url!) {
-            eventCell.eventImageView.pin_setImage(from: eventImageURL, placeholderImage: #imageLiteral(resourceName: "ic_placeholder_image"))
+        if let eventImageURL =  event.promo_image_url  {
+            let url = URL(string: eventImageURL)
+            eventCell.eventImageView.pin_setImage(from: url, placeholderImage: #imageLiteral(resourceName: "ic_placeholder_image"))
         }
         eventCell.eventDetailsLabel.text = self.configureEventDetails(event: event)
         eventCell.eventDateLabel.text = self.configureEventDate(event: event)

@@ -9,6 +9,9 @@ enum VoidResult {
     case failure(NSError?)
 }
 
+let EVENT_ENTITY_NAME = "EventsData"
+let VENUE_ENTITY_NAME = "Venue"
+
 class EventsFetcher {
     
     private let dataStack: DataStack
@@ -17,6 +20,7 @@ class EventsFetcher {
     init() {
         self.dataStack = DataStack(modelName: "Big Neon")
         self.repository = EventsApiRepository.shared
+
     }
 
     func fetchLocalEvents() -> [EventsData] {
@@ -24,13 +28,40 @@ class EventsFetcher {
         return try! self.dataStack.viewContext.fetch(request)
     }
     
-    func deleteLocalCache() {
-        
-        //  Delete Venues
-        self.dataStack.viewContext.delete(Venue.init())
+    func deleteLocalCache() throws {
+        print("Deleting local cache")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedObjectContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: EVENT_ENTITY_NAME)
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        try managedObjectContext.execute(batchDeleteRequest)
+        print("Finished deleting local cache")
 
-        //  Delete Events
-        self.dataStack.viewContext.delete(EventsData.init())
+
+        //  Delete Venues
+//        try self.dataStack.viewContext.delete("*", inEntityNamed: Venue.entity().managedObjectClassName)
+//
+//        //  Delete Events
+//        try self.dataStack.viewContext.delete("*", inEntityNamed: EventsData.entity().managedObjectClassName)
+    }
+
+    func deleteAllData(_ entity:String) {
+
+        let appDel =  UIApplication.shared.delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.persistentContainer.viewContext
+
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        fetchRequest.returnsObjectsAsFaults = false
+        do {
+            let results = try context.fetch(fetchRequest)
+            for object in results {
+                guard let objectData = object as? NSManagedObject else {continue}
+                context.delete(objectData)
+            }
+            print("Deleted all data")
+        } catch let error {
+            print("Detele all data in \(entity) error :", error)
+        }
     }
 
     func fetchLocalGuests() -> [RedeemedTicket] {
@@ -49,22 +80,21 @@ class EventsFetcher {
             guard let events = eventsFetchedDict else {
                 return
             }
-    
+
+            do {
+                try self.deleteAllData(EVENT_ENTITY_NAME)
+                try self.deleteAllData(VENUE_ENTITY_NAME)
+            } catch {
+            }
+
             var venues: [[String: Any]] = []
             for eachEvent in events {
                 venues.append(eachEvent["venue"] as! [String : Any])
             }
-            
-            guard let venue = Venue.entity().managedObjectClassName else {
-                print("Failed to fetch the Venue")
-                completion(.failure(nil))
-                return
+
+            self.dataStack.sync(venues, inEntityNamed: VENUE_ENTITY_NAME) { error in
             }
-            
-            self.dataStack.sync(venues, inEntityNamed: venue) { error in
-            }
-            
-            self.dataStack.sync(events, inEntityNamed: EventsData.entity().managedObjectClassName) { error in
+            self.dataStack.sync(events, inEntityNamed: EVENT_ENTITY_NAME) { error in
                 completion(.success)
             }
         }
@@ -83,7 +113,7 @@ class EventsFetcher {
             }
             
             do {
-                try self.dataStack.delete(events, inEntityNamed: EventsData.entity().managedObjectClassName)
+                try self.dataStack.delete(events, inEntityNamed: EVENT_ENTITY_NAME)
             } catch {
                 
             }

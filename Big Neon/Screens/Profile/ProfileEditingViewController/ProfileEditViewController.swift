@@ -133,7 +133,10 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
         
         let confirmButton = UIAlertAction(title: "Confirm", style: .default, handler: { (_) -> Void in
             self.profleEditViewModel.handleLogout(completion: { (_) in
-                self.clearCoreData()
+                do {
+                    try self.clearCoreData()
+                } catch {
+                }
                 self.navigateToWelcome()
                 return
             })
@@ -149,8 +152,8 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
     }
     
     // Clear Local Cache
-    func clearCoreData() {
-        self.fetcher.deleteLocalCache()
+    func clearCoreData() throws {
+        try self.fetcher.deleteLocalCache()
     }
     
     //  Navigate to Home Screen
