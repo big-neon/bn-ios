@@ -9,20 +9,24 @@
 			<key>orderHint</key>
 			<integer>31</integer>
 		</dict>
-		<key>Beta.xcscheme_^#shared#^_</key>
+		<key>Beta.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
 		<key>Big Neon Core.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
-			<integer>29</integer>
+			<integer>5</integer>
 		</dict>
 		<key>Big Neon UI.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>30</integer>
+			<integer>31</integer>
 		</dict>
 		<key>Big Neon.xcscheme_^#shared#^_</key>
 		<dict>
@@ -44,13 +48,22 @@
 			<key>orderHint</key>
 			<integer>17</integer>
 		</dict>
-		<key>Development.xcscheme_^#shared#^_</key>
+		<key>CoreTests.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>Development.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
-		<key>Production.xcscheme_^#shared#^_</key>
+		<key>Production.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
@@ -63,6 +76,11 @@
 			<true/>
 		</dict>
 		<key>C62BC79321CCC3FB00830A5F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C6B88CFE21F19FC0006394F8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

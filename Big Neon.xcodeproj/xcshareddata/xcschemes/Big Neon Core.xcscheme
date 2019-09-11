@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C6934E622328E3300048B5FB"
-               BuildableName = "CoreTests.xctest"
-               BlueprintName = "CoreTests"
+               BlueprintIdentifier = "C6B88CFE21F19FC0006394F8"
+               BuildableName = "Big_Neon_Core.framework"
+               BlueprintName = "Big Neon Core"
                ReferencedContainer = "container:Big Neon.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,16 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C6934E622328E3300048B5FB"
-               BuildableName = "CoreTests.xctest"
-               BlueprintName = "CoreTests"
-               ReferencedContainer = "container:Big Neon.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <AdditionalOptions>
       </AdditionalOptions>
@@ -55,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C6934E622328E3300048B5FB"
-            BuildableName = "CoreTests.xctest"
-            BlueprintName = "CoreTests"
+            BlueprintIdentifier = "C6B88CFE21F19FC0006394F8"
+            BuildableName = "Big_Neon_Core.framework"
+            BlueprintName = "Big Neon Core"
             ReferencedContainer = "container:Big Neon.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -70,6 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "C6B88CFE21F19FC0006394F8"
+            BuildableName = "Big_Neon_Core.framework"
+            BlueprintName = "Big Neon Core"
+            ReferencedContainer = "container:Big Neon.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug (Development)">
