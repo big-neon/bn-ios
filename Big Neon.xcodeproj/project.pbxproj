@@ -104,7 +104,6 @@
 		C6AFB79121DD65D200670AC3 /* EventDetailViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB79021DD65D200670AC3 /* EventDetailViewController.TableView.swift */; };
 		C6AFB79C21DD76AE00670AC3 /* ExploreDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB79B21DD76AE00670AC3 /* ExploreDetailViewModel.swift */; };
 		C6B2AC5E21E4DD3100F996AA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */; };
-		C6B4CF1A2327F99A00C92275 /* BigNeonStudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B4CF192327F99A00C92275 /* BigNeonStudioTests.swift */; };
 		C6B4CF1C2327F99A00C92275 /* Big_Neon_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B88CFF21F19FC0006394F8 /* Big_Neon_Core.framework */; };
 		C6B6DEA2227ABE3A003367D7 /* EventsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B6DEA1227ABE3A003367D7 /* EventsFetcher.swift */; };
 		C6B88D0821F19FC0006394F8 /* Big_Neon_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B88CFF21F19FC0006394F8 /* Big_Neon_Core.framework */; };
@@ -181,7 +180,6 @@
 		C6EC209C2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209B2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift */; };
 		C6EC209E220075D100BD10DD /* PhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209D220075D100BD10DD /* PhoneNumberTextField.swift */; };
 		C6EC20A122007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC20A022007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift */; };
-		C6FF5F0023280A230016C66C /* Big_Neon_StudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FF5EFF23280A230016C66C /* Big_Neon_StudioTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -358,8 +356,6 @@
 		C6AFB79B21DD76AE00670AC3 /* ExploreDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreDetailViewModel.swift; sourceTree = "<group>"; };
 		C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C6B4CF172327F99A00C92275 /* BigNeonStudioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BigNeonStudioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6B4CF192327F99A00C92275 /* BigNeonStudioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigNeonStudioTests.swift; sourceTree = "<group>"; };
-		C6B4CF1B2327F99A00C92275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6B6DEA1227ABE3A003367D7 /* EventsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsFetcher.swift; sourceTree = "<group>"; };
 		C6B88CFF21F19FC0006394F8 /* Big_Neon_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Big_Neon_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B88D0121F19FC0006394F8 /* Big_Neon_Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Big_Neon_Core.h; sourceTree = "<group>"; };
@@ -452,8 +448,6 @@
 		C6EC20A022007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewContorller.ImageUpload.swift; sourceTree = "<group>"; };
 		C6EC4B2D2227C1150056CE73 /* GuestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestTableViewCell.swift; sourceTree = "<group>"; };
 		C6FF5EFD23280A230016C66C /* Big Neon StudioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Big Neon StudioTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6FF5EFF23280A230016C66C /* Big_Neon_StudioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Big_Neon_StudioTests.swift; sourceTree = "<group>"; };
-		C6FF5F0123280A230016C66C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2E7544D59566C07F6D3B4CB /* Pods-Big Neon UI.release (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon UI.release (development).xcconfig"; path = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.release (development).xcconfig"; sourceTree = "<group>"; };
 		E2FA0916D7BB58AD30E251C0 /* Pods-Big Neon.debug (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug (development).xcconfig"; path = "Target Support Files/Pods-Big Neon/Pods-Big Neon.debug (development).xcconfig"; sourceTree = "<group>"; };
 		F53CD102EDCF0164A543ADDD /* Pods-Big Neon Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon Core.release.xcconfig"; path = "Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.release.xcconfig"; sourceTree = "<group>"; };
@@ -603,7 +597,6 @@
 				C62BC78221CCC3F700830A5F /* Big Neon */,
 				C6B88D2221F19FD4006394F8 /* Big Neon UI */,
 				C6B88D0021F19FC0006394F8 /* Big Neon Core */,
-				C6B4CF182327F99A00C92275 /* BigNeonStudioTests */,
 				C6B88D0D21F19FC0006394F8 /* Big Neon CoreTests */,
 				C62BC78121CCC3F700830A5F /* Products */,
 				7B3E96A75988802AD92E269E /* Pods */,
@@ -857,15 +850,6 @@
 			path = EventDetailViewController;
 			sourceTree = "<group>";
 		};
-		C6B4CF182327F99A00C92275 /* BigNeonStudioTests */ = {
-			isa = PBXGroup;
-			children = (
-				C6B4CF192327F99A00C92275 /* BigNeonStudioTests.swift */,
-				C6B4CF1B2327F99A00C92275 /* Info.plist */,
-			);
-			path = BigNeonStudioTests;
-			sourceTree = "<group>";
-		};
 		C6B6DEA0227ABE06003367D7 /* Offline Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -880,7 +864,6 @@
 		C6B88D0021F19FC0006394F8 /* Big Neon Core */ = {
 			isa = PBXGroup;
 			children = (
-				C6FF5EFE23280A230016C66C /* Big Neon StudioTests */,
 				C6D37B3421F1CD8200C616D0 /* API.swift */,
 				C63B39BA2248D3AA00E560A7 /* Environment */,
 				C6B88D6821F1C86B006394F8 /* Services */,
@@ -1183,15 +1166,6 @@
 				C6EC2099220063DE00BD10DD /* ProfileImageUploadCell.swift */,
 			);
 			path = ProfileEditCells;
-			sourceTree = "<group>";
-		};
-		C6FF5EFE23280A230016C66C /* Big Neon StudioTests */ = {
-			isa = PBXGroup;
-			children = (
-				C6FF5EFF23280A230016C66C /* Big_Neon_StudioTests.swift */,
-				C6FF5F0123280A230016C66C /* Info.plist */,
-			);
-			path = "Big Neon StudioTests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1777,7 +1751,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6B4CF1A2327F99A00C92275 /* BigNeonStudioTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1857,7 +1830,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6FF5F0023280A230016C66C /* Big_Neon_StudioTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
