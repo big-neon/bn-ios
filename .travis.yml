@@ -4,4 +4,5 @@ xcode_scheme: Big NeonTests
 xcode_destination: platform=iOS Simulator,OS=12.4,name=iPhone X
 podfile: Podfile
 before_install:
+  - pod update
   - pod repo update
