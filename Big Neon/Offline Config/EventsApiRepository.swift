@@ -60,20 +60,19 @@ public class EventsApiRepository {
                 .validate(statusCode: 200..<300)
                 .response { (response) in
                     
-                    guard response.result.isSuccess else {
+                    if let err = response.error {
                         let error = NSError(domain: dataErrorDomain, code: DataErrorCode.networkUnavailable.rawValue, userInfo: nil)
                         completion(nil, error)
-                        return
                     }
                     
-                    guard let data = response.result.value else {
+                    guard let data = response.data else {
                         let error = NSError(domain: dataErrorDomain, code: DataErrorCode.networkUnavailable.rawValue, userInfo: nil)
                         completion(nil, error)
                         return
                     }
                     
                     do {
-                        let jsonObject = try JSONSerialization.jsonObject(with: data!, options: [])
+                        let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
                         
                         guard let jsonDictionary = jsonObject as? [String: Any],
                             let result = jsonDictionary["data"] as? [[String: Any]] else {

@@ -31,6 +31,7 @@ extension DoorPersonViewController {
                 case .success:
                     self.loadingView.stopAnimating()
                     self.refresher.endRefreshing()
+                    self.doorPersonViemodel.eventCoreData = self.fetcher.fetchLocalEvents()
                     self.exploreCollectionView.reloadData()
                 case .failure(let error):
                     self.loadingView.stopAnimating()
@@ -38,7 +39,6 @@ extension DoorPersonViewController {
                     if let err = error {
                         self.showFeedback(message: err.localizedDescription)
                     }
-                    
                     self.exploreCollectionView.reloadData()
                 }
             }

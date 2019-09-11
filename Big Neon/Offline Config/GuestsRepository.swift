@@ -55,13 +55,13 @@ public class GuestsApiRepository {
             .validate(statusCode: 200..<300)
             .response { (response) in
                 
-                guard response.result.isSuccess else {
-                    completion(nil, response.result.error)
-                    AnalyticsService.reportError(errorType: ErrorType.guestsFetch, error: response.result.error!.localizedDescription)
+                if let err = response.error {
+                    completion(nil, err)
+                    AnalyticsService.reportError(errorType: ErrorType.guestsFetch, error: err.localizedDescription)
                     return
                 }
                 
-                guard let data = response.result.value else {
+                guard let data = response.data else {
                     let error = NSError(domain: dataErrorDomain, code: DataErrorCode.networkUnavailable.rawValue, userInfo: nil)
                     AnalyticsService.reportError(errorType: ErrorType.guestsFetch, error: error.localizedDescription)
                     completion(nil, nil)
@@ -69,7 +69,7 @@ public class GuestsApiRepository {
                 }
                 
                 do {
-                    let jsonObject = try JSONSerialization.jsonObject(with: data!, options: [])
+                    let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
                     guard let jsonDictionary = jsonObject as? [String: Any],
                         let result = jsonDictionary["data"] as? [[String: Any]] else {
                             throw NSError(domain: dataErrorDomain, code: DataErrorCode.wrongDataFormat.rawValue, userInfo: nil)

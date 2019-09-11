@@ -9,7 +9,6 @@ import PINRemoteImage
 // MARK: use abbreviation / syntax sugar
 // MARK: internal is default access level - not need for explicit definition
 
-
 public class DoorPersonCell: UICollectionViewCell {
 
     public static let cellID = "DoorPersonCellID"
