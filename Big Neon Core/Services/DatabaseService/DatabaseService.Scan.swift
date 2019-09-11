@@ -25,8 +25,8 @@ extension DatabaseService {
             .validate(statusCode: 200..<300)
             .response { (response) in
                 
-                guard response.result.isSuccess else {
-                    switch response.result.error?.asAFError?.responseCode {
+                if let error = response.error {
+                    switch error.asAFError?.responseCode {
                     case 409:
                         completion(.alreadyRedeemed, nil, nil)
                         return
@@ -34,20 +34,20 @@ extension DatabaseService {
                         completion(.wrongEvent, "Check to Make sure you are scanning the correct event ticket", nil)
                         return
                     default:
-                        print(response.result.error?.localizedDescription)
-                        completion(.issueFound, response.result.error?.localizedDescription, nil)
+                        print(response.error?.localizedDescription)
+                        completion(.issueFound, response.error?.localizedDescription, nil)
                         return
                     }
                 }
                 
-                guard let data = response.result.value else {
+                guard let data = response.data else {
                     completion(.issueFound, nil, nil)
                     return
                 }
                 
                 do {
                     let decoder = JSONDecoder()
-                    let redeemableTicket = try decoder.decode(RedeemableTicket.self, from: data!)
+                    let redeemableTicket = try decoder.decode(RedeemableTicket.self, from: data)
                     completion(.validTicketID, nil, redeemableTicket)
                     return
                 } catch let error as NSError {
@@ -75,8 +75,8 @@ extension DatabaseService {
             .validate(statusCode: 200..<300)
             .response { (response) in
 
-                guard response.result.isSuccess else {
-                    switch response.result.error?.asAFError?.responseCode {
+                if let err = response.error {
+                    switch err.asAFError?.responseCode {
                     case 409:
                         completion(.alreadyRedeemed, nil)
                         return
@@ -89,14 +89,14 @@ extension DatabaseService {
                     }
                 }
 
-                guard let data = response.result.value else {
+                guard let data = response.data else {
                     completion(.issueFound, nil)
                     return
                 }
 
                 do {
                     let decoder = JSONDecoder()
-                    let ticket = try decoder.decode(RedeemableTicket.self, from: data!)
+                    let ticket = try decoder.decode(RedeemableTicket.self, from: data)
                     completion(.valid, ticket)
                     return
                 } catch let error as NSError {
@@ -119,18 +119,18 @@ extension DatabaseService {
             .validate(statusCode: 200..<300)
             .response { (response) in
                 
-                guard response.result.isSuccess else {
-                    completion(response.result.error, nil, nil, 0)
+                if let err = response.error {
+                    completion(err, nil, nil, 0)
                     return
                 }
                 
-                guard let data = response.result.value else {
+                guard let data = response.data else {
                     completion(nil, nil, nil, 0)
                     return
                 }
                 
                 do {
-                    let jsonObject = try JSONSerialization.jsonObject(with: data!, options: [])
+                    let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
                     guard let jsonDictionary = jsonObject as? [String: Any],
                         let result = jsonDictionary["data"] as? [[String: Any]] else {
                             throw NSError(domain: dataErrorDomain, code: DataErrorCode.wrongDataFormat.rawValue, userInfo: nil)
@@ -139,7 +139,7 @@ extension DatabaseService {
                     let pagingDictionary = jsonDictionary["paging"] as? [String: Any]
                     let totalGuests = pagingDictionary!["total"] as! Int
                     let decoder = JSONDecoder()
-                    let guests = try decoder.decode(Guests.self, from: data!)
+                    let guests = try decoder.decode(Guests.self, from: data)
                     completion(nil, result, guests, totalGuests)
                     
                 } catch let error as NSError {
@@ -162,18 +162,18 @@ extension DatabaseService {
             .validate(statusCode: 200..<300)
             .response { (response) in
                 
-                guard response.result.isSuccess else {
-                    completion(response.result.error, nil)
+                if let err = response.error {
+                    completion(err, nil)
                     return
                 }
                 
-                guard let data = response.result.value else {
+                guard let data = response.data else {
                     completion(nil, nil)
                     return
                 }
                 
                 do {
-                    let jsonObject = try JSONSerialization.jsonObject(with: data!, options: [])
+                    let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
                     guard let jsonDictionary = jsonObject as? [String: Any],
                         let result = jsonDictionary["data"] as? [[String: Any]] else {
                             throw NSError(domain: dataErrorDomain, code: DataErrorCode.wrongDataFormat.rawValue, userInfo: nil)
