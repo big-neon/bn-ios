@@ -20,20 +20,11 @@ class EventsFetcher {
     init() {
         self.dataStack = DataStack(modelName: "Big Neon")
         self.repository = EventsApiRepository.shared
-
     }
 
     func fetchLocalEvents() -> [EventsData] {
         let request: NSFetchRequest<EventsData> = EventsData.fetchRequest()
         return try! self.dataStack.viewContext.fetch(request)
-    }
-    
-    func deleteLocalCache() throws {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let managedObjectContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: EVENT_ENTITY_NAME)
-        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        try managedObjectContext.execute(batchDeleteRequest)
     }
 
     func deleteAllData(_ entity:String) {
@@ -88,28 +79,6 @@ class EventsFetcher {
             self.dataStack.sync(events, inEntityNamed: EVENT_ENTITY_NAME) { error in
                 completion(.success)
             }
-        }
-    }
-    
-    func syncToDelete(completion: @escaping (_ result: VoidResult) -> ()) {
-        
-        self.repository.fetchEvents { (eventsFetchedDict, error) in
-            if let err = error {
-                completion(.failure(err as NSError))
-                return
-            }
-            
-            guard let events = eventsFetchedDict else {
-                return
-            }
-            
-            do {
-                try self.dataStack.delete(events, inEntityNamed: EVENT_ENTITY_NAME)
-            } catch {
-                
-            }
-    
-            
         }
     }
 }

@@ -153,7 +153,11 @@ internal class ProfileEditViewController: UIViewController, UITableViewDelegate,
     
     // Clear Local Cache
     func clearCoreData() throws {
-        try self.fetcher.deleteLocalCache()
+        do {
+            try self.fetcher.deleteAllData(EVENT_ENTITY_NAME)
+            try self.fetcher.deleteAllData(VENUE_ENTITY_NAME)
+        } catch {
+        }
     }
     
     //  Navigate to Home Screen
