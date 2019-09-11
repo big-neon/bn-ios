@@ -36,9 +36,6 @@ PODS:
     - PINRemoteImage/Core
   - pop (1.0.12)
   - PresenterKit (5.1.0)
-  - PWSwitch (1.1.2)
-  - QRCodeReader.swift (10.1.0)
-  - Stripe (17.0.1)
   - SwiftKeychainWrapper (3.4.0)
   - Sync (6.0.0)
   - TransitionButton (0.5.2)
@@ -57,9 +54,6 @@ DEPENDENCIES:
   - PINRemoteImage (= 3.0.0-beta.13)
   - pop
   - PresenterKit
-  - PWSwitch
-  - QRCodeReader.swift
-  - Stripe
   - SwiftKeychainWrapper
   - Sync (from `https://github.com/3lvis/Sync.git`, branch `issue-555`)
   - TransitionButton
@@ -80,9 +74,6 @@ SPEC REPOS:
     - PINRemoteImage
     - pop
     - PresenterKit
-    - PWSwitch
-    - QRCodeReader.swift
-    - Stripe
     - SwiftKeychainWrapper
     - TransitionButton
     - "UITextField+Shake"
@@ -117,14 +108,11 @@ SPEC CHECKSUMS:
   PINRemoteImage: d6d51c5d2adda55f1ce30c96e850b6c4ebd2856a
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   PresenterKit: ebb82bda6b161c720db9b5346cb593b9b00e0ed5
-  PWSwitch: 399db6ef5dd8417f9a1e9f82cb70602f10a6c38f
-  QRCodeReader.swift: 373a389fe9a22d513c879a32a6f647c58f4ef572
-  Stripe: b8e845e12fd6dbc9cb010422b3b6b212e803d308
   SwiftKeychainWrapper: 6fc49fbf7d4a6b0772917acb0e53a1639f6078d6
   Sync: 66933d0f37b3bfb78b0cda35ecf1bc4075029a36
   TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
-PODFILE CHECKSUM: d220d2565d16e1bcb0d2f0653d970410e4a2b9c3
+PODFILE CHECKSUM: f6d71b3af78ffcc5cb8bfb2f681e627a0896885d
 
 COCOAPODS: 1.8.0.beta.2

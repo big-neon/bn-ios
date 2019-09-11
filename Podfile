@@ -7,6 +7,7 @@ use_frameworks!
     pod 'Alamofire', '5.0.0-beta.1'
     pod 'SwiftKeychainWrapper'
     pod 'JWTDecode'
+    pod 'DTGradientButton'
     pod 'PhoneNumberKit', '~> 2.1'
     pod 'Sync', :git => 'https://github.com/3lvis/Sync.git', :branch => 'issue-555' # '~> 5'
   
@@ -21,6 +22,7 @@ use_frameworks!
         pod 'PresenterKit'
         pod 'pop'
         pod 'JWTDecode'
+        pod 'DTGradientButton'
         pod 'SwiftKeychainWrapper'
         pod 'Sync', :git => 'https://github.com/3lvis/Sync.git', :branch => 'issue-555' # '~> 5'
     end
@@ -35,6 +37,7 @@ use_frameworks!
       pod 'TransitionButton'
       pod 'pop'
       pod 'JWTDecode'
+      pod 'DTGradientButton'
       pod 'PINCache', '3.0.1-beta.6'
       pod 'PINRemoteImage', '3.0.0-beta.13'
       pod 'UITextField+Shake'
