@@ -4,7 +4,7 @@ use_frameworks!
     pod 'Stripe'
     pod 'Crashlytics'
     pod 'Fabric'
-    pod 'PanModal'
+    pod 'PanModal', '~> 1.2.4'
     pod 'Alamofire', '~> 5.0.0.beta.1'
     pod 'SwiftKeychainWrapper'
     pod 'JWTDecode'
@@ -15,7 +15,7 @@ use_frameworks!
     target 'Big Neon' do
       inherit! :search_paths
 #        pod 'SwipeCellKit', '2.5.4'
-        pod 'PanModal'
+        pod 'PanModal', '~> 1.2.4'
         pod 'Crashlytics'
         pod 'Fabric'
         pod 'Answers'
@@ -36,7 +36,7 @@ use_frameworks!
       pod 'Crashlytics'
       pod 'Fabric'
       pod 'Stripe'
-      pod 'PanModal'
+      pod 'PanModal', '~> 1.2.4'
       pod 'Sync', :git => 'https://github.com/3lvis/Sync.git', :branch => 'issue-555' # '~> 5'
       pod 'Alamofire', '~> 5.0.0.beta.1'
       pod 'TransitionButton'
