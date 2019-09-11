@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.0.0-rc.2)
+  - Alamofire (5.0.0.beta.1)
   - Answers (1.4.1):
     - Fabric (~> 1.10.2)
   - Crashlytics (3.14.0):
@@ -45,7 +45,7 @@ PODS:
   - "UITextField+Shake (1.2.1)"
 
 DEPENDENCIES:
-  - Alamofire (~> 5.0.0-rc.2)
+  - Alamofire (= 5.0.0-beta.1)
   - Answers
   - Crashlytics
   - DTGradientButton
@@ -103,7 +103,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/3lvis/Sync.git
 
 SPEC CHECKSUMS:
-  Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
+  Alamofire: 2ef6d6c984c5d21c366e9b41a9ae7dfee2b67a44
   Answers: 7d5ff1f77fea900eb75032b37b4288482b824055
   Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
   DTGradientButton: 6f0f696cd433255d226c05e4ab047d991d13d4ef
@@ -125,6 +125,6 @@ SPEC CHECKSUMS:
   TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
-PODFILE CHECKSUM: 9b86c4bca94ea905e8b3d3991366e043b2600db8
+PODFILE CHECKSUM: d220d2565d16e1bcb0d2f0653d970410e4a2b9c3
 
 COCOAPODS: 1.7.1
