@@ -48,6 +48,26 @@
                ReferencedContainer = "container:Big Neon.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C6FF5EFC23280A230016C66C"
+               BuildableName = "Big Neon StudioTests.xctest"
+               BlueprintName = "Big Neon StudioTests"
+               ReferencedContainer = "container:Big Neon.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C6934E622328E3300048B5FB"
+               BuildableName = "CoreTests.xctest"
+               BlueprintName = "CoreTests"
+               ReferencedContainer = "container:Big Neon.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

@@ -220,8 +220,9 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     }
     
     @objc private func navToHome() {
-        let splashVC = UINavigationController(rootViewController: SplashViewController())
-        self.present(splashVC, animated: true, completion: nil)
+        let splashNavVC = UINavigationController(rootViewController: SplashViewController())
+        splashNavVC.modalPresentationStyle = .fullScreen
+        self.present(splashNavVC, animated: true, completion: nil)
     }
     
     // MARK: ... even touchesBegan and resignTextFields() repets ... a lot

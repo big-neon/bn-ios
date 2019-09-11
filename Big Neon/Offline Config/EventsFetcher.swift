@@ -40,9 +40,8 @@ class EventsFetcher {
                 guard let objectData = object as? NSManagedObject else {continue}
                 context.delete(objectData)
             }
-            print("Deleted all data")
         } catch let error {
-            print("Detele all data in \(entity) error :", error)
+            print("Error deteling all data in \(entity):", error)
         }
     }
 

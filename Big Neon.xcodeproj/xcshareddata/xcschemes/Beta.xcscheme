@@ -28,6 +28,19 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+<<<<<<< HEAD
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C6FF5EFC23280A230016C66C"
+               BuildableName = "Big Neon StudioTests.xctest"
+               BlueprintName = "Big Neon StudioTests"
+               ReferencedContainer = "container:Big Neon.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+=======
+>>>>>>> master
       </Testables>
       <MacroExpansion>
          <BuildableReference

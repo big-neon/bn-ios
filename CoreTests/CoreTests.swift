@@ -1,15 +1,15 @@
 //
-//  Big_NeonTests.swift
-//  Big NeonTests
+//  CoreTests.swift
+//  CoreTests
 //
-//  Created by Gugulethu on 2018/12/21.
-//  Copyright © 2018 Big Neon Inc. All rights reserved.
+//  Created by Gugulethu on 2019/09/11.
+//  Copyright © 2019 Big Neon Inc. All rights reserved.
 //
 
 import XCTest
-@testable import Big_Neon
+import Big_Neon_Core
 
-class Big_NeonTests: XCTestCase {
+class CoreTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -20,8 +20,11 @@ class Big_NeonTests: XCTestCase {
     }
 
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let email = "gugulethu@tari.com"
+        let password = "Block45King"
+        BusinessService.shared.database.loginToAccount(withEmail: email, password: password) { (error, tokens) in
+            XCTAssertEqual(error, nil, "Authentication Failed. Error Recieved: \(error)")
+        }
     }
 
     func testPerformanceExample() {
