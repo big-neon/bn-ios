@@ -1,36 +1,28 @@
-//
-//  CoreTests.swift
-//  CoreTests
-//
-//  Created by Gugulethu on 2019/09/11.
-//  Copyright © 2019 Big Neon Inc. All rights reserved.
-//
+
 
 import XCTest
 import Big_Neon_Core
 
 class CoreTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
+    func testAuthentication() {
         let email = "gugulethu@tari.com"
         let password = "Block45King"
         BusinessService.shared.database.loginToAccount(withEmail: email, password: password) { (error, tokens) in
             XCTAssertEqual(error, nil, "Authentication Failed. Error Recieved: \(error)")
         }
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testFetchingGuestList() {
+        let eventID = ""
+        let limit = 100
+        let page = 1
+        let query = ""
+        
+        BusinessService.shared.database.fetchGuests(forEventID: eventID, limit: limit, page: page, guestQuery: query) { [weak self] (error, _, _, _) in
+            DispatchQueue.main.async {
+                XCTAssertEqual(error?.localizedDescription, nil, "Guest list Fetching failed with Error: \(error)")
+            }
         }
     }
 
