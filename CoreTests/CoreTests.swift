@@ -13,6 +13,14 @@ class CoreTests: XCTestCase {
         }
     }
     
+    func testFetchEvents() {
+        BusinessService.shared.database.fetchEvents { (error, events) in
+            DispatchQueue.main.async {
+                XCTAssertEqual(error?.localizedDescription, nil, "Events Fetching failed with Error: \(error)")
+            }
+        }
+    }
+    
     func testFetchingGuestList() {
         let eventID = ""
         let limit = 100
@@ -24,6 +32,12 @@ class CoreTests: XCTestCase {
                 XCTAssertEqual(error?.localizedDescription, nil, "Guest list Fetching failed with Error: \(error)")
             }
         }
+    }
+    
+    func testTokenRefresh() {
+        
+        
+        
     }
 
 }
