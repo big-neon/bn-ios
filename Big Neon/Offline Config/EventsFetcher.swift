@@ -61,6 +61,8 @@ class EventsFetcher {
             guard let events = eventsFetchedDict else {
                 return
             }
+            
+            print(events)
 
             do {
                 try self.deleteAllData(EVENT_ENTITY_NAME)

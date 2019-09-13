@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -1363,7 +1363,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		C60602592254D6D000C5C066 /* Fabric Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1381,7 +1382,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		C62C824F22C4AED400D30E07 /* Fabric Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1720,7 +1722,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.studio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.doorperson.staging;
 				PRODUCT_NAME = "Big Neon Studio";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -1876,7 +1878,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEBUG\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.studio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.doorperson.staging;
 				PRODUCT_NAME = "Big Neon Studio";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -2092,7 +2094,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEBUG\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.studio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.doorperson.staging;
 				PRODUCT_NAME = "Big Neon Studio";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -2121,7 +2123,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.studio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.doorperson.staging;
 				PRODUCT_NAME = "Big Neon Studio";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
