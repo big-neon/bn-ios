@@ -23,8 +23,14 @@ class CoreTests: XCTestCase {
     
     func testFetchingGuestList() {
         
+//        case testEventID
+//        case testAuthEmail
+//        case testAuthenticationPassword
+        
         //  Event ID belongs to Huge Ticket Sales
-        let eventID = "39fb32a6-82f5-4d59-a901-0c8ac09734ad"
+//        let eventID = Environment().configuration(PlistKey.testEventID)
+        let eventID = Environment().configuration(PlistKey.testEventID)
+//        let eventID = "39fb32a6-82f5-4d59-a901-0c8ac09734ad"
         let limit = 100
         let page = 1
         let query = ""

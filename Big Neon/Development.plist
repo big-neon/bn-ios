@@ -59,6 +59,12 @@
 	<string>$(protocol)</string>
 	<key>scan_delay_seconds</key>
 	<integer>5</integer>
+	<key>testEventID</key>
+	<string>39fb32a6-82f5-4d59-a901-0c8ac09734ad</string>
+	<key>testAuthEmail</key>
+	<string>superuser@test.com</string>
+	<key>testAuthenticationPassword</key>
+	<string>password</string>
 	<key>server_url</key>
 	<string>$(server_url)</string>
 </dict>
