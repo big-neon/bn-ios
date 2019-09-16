@@ -65,6 +65,8 @@
 		C64B0ADA21D1240700386000 /* TicketsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AD921D1240700386000 /* TicketsViewModel.swift */; };
 		C64B0ADC21D1276100386000 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ADB21D1276100386000 /* ProfileViewController.swift */; };
 		C64B0AE121D1294600386000 /* ProfileViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */; };
+		C64D488F232F874600615368 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64D488E232F874600615368 /* NotificationService.swift */; };
+		C64D4891232F892E00615368 /* NotificationService.SaveToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64D4890232F892E00615368 /* NotificationService.SaveToken.swift */; };
 		C655BD39221D69FD00EB1FDD /* DatabaseService.Checkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = C655BD38221D69FD00EB1FDD /* DatabaseService.Checkins.swift */; };
 		C6562F522203286E0020B6D3 /* UtilityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6562F512203286E0020B6D3 /* UtilityConstants.swift */; };
 		C665B6E7224B506900581E2E /* ScannerViewController.ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665B6E6224B506900581E2E /* ScannerViewController.ScannerView.swift */; };
@@ -280,6 +282,8 @@
 		C64B0AD921D1240700386000 /* TicketsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsViewModel.swift; sourceTree = "<group>"; };
 		C64B0ADB21D1276100386000 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.TableView.swift; sourceTree = "<group>"; };
+		C64D488E232F874600615368 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		C64D4890232F892E00615368 /* NotificationService.SaveToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.SaveToken.swift; sourceTree = "<group>"; };
 		C655BD38221D69FD00EB1FDD /* DatabaseService.Checkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Checkins.swift; sourceTree = "<group>"; };
 		C6562F512203286E0020B6D3 /* UtilityConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityConstants.swift; sourceTree = "<group>"; };
 		C665B6E6224B506900581E2E /* ScannerViewController.ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.ScannerView.swift; sourceTree = "<group>"; };
@@ -686,6 +690,15 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		C64D488D232F85FB00615368 /* PushNotificationService */ = {
+			isa = PBXGroup;
+			children = (
+				C64D488E232F874600615368 /* NotificationService.swift */,
+				C64D4890232F892E00615368 /* NotificationService.SaveToken.swift */,
+			);
+			path = PushNotificationService;
+			sourceTree = "<group>";
+		};
 		C665DFE321E87CAC00DFB955 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -964,6 +977,7 @@
 		C6B88D6821F1C86B006394F8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C64D488D232F85FB00615368 /* PushNotificationService */,
 				C6B88D6921F1C872006394F8 /* BusinessService */,
 				C6DB1F96230D63540019C014 /* TokenService */,
 				C6B88D6A21F1C87B006394F8 /* DatabaseService */,
@@ -1553,6 +1567,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C644BA3421F70C19003C188B /* DatabaseService.Users.swift in Sources */,
+				C64D488F232F874600615368 /* NotificationService.swift in Sources */,
 				C60BDEBE229EC03F00E54456 /* Environment.swift in Sources */,
 				C678C17F2276FABD0069A2DF /* ObjectAddingUtils.swift in Sources */,
 				C6B88D8F21F1C94E006394F8 /* Organisation.swift in Sources */,
@@ -1579,6 +1594,7 @@
 				C655BD39221D69FD00EB1FDD /* DatabaseService.Checkins.swift in Sources */,
 				C698F6032238F76400977259 /* ScanFeedback.swift in Sources */,
 				C644BA2F21F7069D003C188B /* BasicError.swift in Sources */,
+				C64D4891232F892E00615368 /* NotificationService.SaveToken.swift in Sources */,
 				C6DB1F98230D63710019C014 /* TokenService.swift in Sources */,
 				C6B88D7921F1C932006394F8 /* Tokens.swift in Sources */,
 				C628B15621FAD76000FCBDC9 /* User.swift in Sources */,

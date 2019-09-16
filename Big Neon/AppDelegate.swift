@@ -14,8 +14,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = ApplicationRouter.setupBaseRouting()
         Fabric.with([Crashlytics.self, Answers.self])
+        registerForPushNotifications()
         print("Documents Directory: ", FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last ?? "Not Found!")
         return true
+    }
+    
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current().delegate = BusinessService.shared.notifications
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: {_, _ in
+        })
+        UIApplication.shared.registerForRemoteNotifications()
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        
+        if application.applicationState == .active {
+            //  Present a Popup displaying the Scanned Ticket
+        } else {
+            //  I could add some other type of notification when in the background here
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -25,6 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
