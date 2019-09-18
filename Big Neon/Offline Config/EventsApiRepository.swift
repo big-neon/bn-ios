@@ -15,7 +15,7 @@ enum DataErrorCode: NSInteger {
 public class EventsApiRepository {
     
     private init() {}
-    static let shared = EventsApiRepository()
+    public static let shared = EventsApiRepository()
     private let APIURL = APIService.getCheckins()
     
     private func configureAccessToken(completion: @escaping(Bool) -> Void) {
@@ -43,7 +43,7 @@ public class EventsApiRepository {
         }
     }
     
-    func fetchEvents(completion: @escaping (_ fetchedEventsDict: [[String: Any]]?, _ error: Error?) -> ()) {
+    public func fetchEvents(completion: @escaping (_ fetchedEventsDict: [[String: Any]]?, _ error: Error?) -> ()) {
         
         self.configureAccessToken { (completed) in
             if completed == false {

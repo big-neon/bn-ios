@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -47,7 +47,6 @@
 		C62BC78621CCC3F700830A5F /* DoorPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC78521CCC3F700830A5F /* DoorPersonViewController.swift */; };
 		C62BC78B21CCC3FB00830A5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78A21CCC3FB00830A5F /* Assets.xcassets */; };
 		C62BC78E21CCC3FB00830A5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C62BC78C21CCC3FB00830A5F /* LaunchScreen.storyboard */; };
-		C62BC79921CCC3FB00830A5F /* Big_NeonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */; };
 		C636674422935CE000A356F9 /* scannerViewController.ManualScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C636674322935CE000A356F9 /* scannerViewController.ManualScan.swift */; };
 		C636674622935D4E00A356F9 /* ScannerViewController.AutoScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C636674522935D4E00A356F9 /* ScannerViewController.AutoScan.swift */; };
 		C63D86C02231282F003CFAA7 /* DatabaseService.Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63D86BF2231282F003CFAA7 /* DatabaseService.Scan.swift */; };
@@ -66,6 +65,8 @@
 		C64B0ADA21D1240700386000 /* TicketsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AD921D1240700386000 /* TicketsViewModel.swift */; };
 		C64B0ADC21D1276100386000 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ADB21D1276100386000 /* ProfileViewController.swift */; };
 		C64B0AE121D1294600386000 /* ProfileViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */; };
+		C64D488F232F874600615368 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64D488E232F874600615368 /* NotificationService.swift */; };
+		C64D4891232F892E00615368 /* NotificationService.SaveToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64D4890232F892E00615368 /* NotificationService.SaveToken.swift */; };
 		C655BD39221D69FD00EB1FDD /* DatabaseService.Checkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = C655BD38221D69FD00EB1FDD /* DatabaseService.Checkins.swift */; };
 		C6562F522203286E0020B6D3 /* UtilityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6562F512203286E0020B6D3 /* UtilityConstants.swift */; };
 		C665B6E7224B506900581E2E /* ScannerViewController.ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C665B6E6224B506900581E2E /* ScannerViewController.ScannerView.swift */; };
@@ -88,6 +89,7 @@
 		C68A9FD922D34995006535B8 /* GuestListViewController.Offline.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A9FD822D34995006535B8 /* GuestListViewController.Offline.swift */; };
 		C68A9FDB22D35798006535B8 /* GuestsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A9FDA22D35798006535B8 /* GuestsFetcher.swift */; };
 		C68A9FDD22D35D7F006535B8 /* GuestsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A9FDC22D35D7F006535B8 /* GuestsRepository.swift */; };
+		C68C8D0A23321C8100FF15D6 /* BigNeonStudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68C8D0923321C8100FF15D6 /* BigNeonStudioTests.swift */; };
 		C69370FB228F06D2004EBC12 /* GuestListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69370FA228F06D2004EBC12 /* GuestListViewController.swift */; };
 		C69370FD228F3570004EBC12 /* GuestListViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69370FC228F3570004EBC12 /* GuestListViewController.TableView.swift */; };
 		C6937100228F411B004EBC12 /* GuestListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69370FF228F411B004EBC12 /* GuestListHeaderView.swift */; };
@@ -105,8 +107,6 @@
 		C6AFB79C21DD76AE00670AC3 /* ExploreDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB79B21DD76AE00670AC3 /* ExploreDetailViewModel.swift */; };
 		C6B2AC5E21E4DD3100F996AA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */; };
 		C6B6DEA2227ABE3A003367D7 /* EventsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B6DEA1227ABE3A003367D7 /* EventsFetcher.swift */; };
-		C6B88D0821F19FC0006394F8 /* Big_Neon_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B88CFF21F19FC0006394F8 /* Big_Neon_Core.framework */; };
-		C6B88D0F21F19FC0006394F8 /* Big_Neon_CoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D0E21F19FC0006394F8 /* Big_Neon_CoreTests.swift */; };
 		C6B88D1121F19FC0006394F8 /* Big_Neon_Core.h in Headers */ = {isa = PBXBuildFile; fileRef = C6B88D0121F19FC0006394F8 /* Big_Neon_Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C6B88D1421F19FC0006394F8 /* Big_Neon_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B88CFF21F19FC0006394F8 /* Big_Neon_Core.framework */; };
 		C6B88D1521F19FC0006394F8 /* Big_Neon_Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6B88CFF21F19FC0006394F8 /* Big_Neon_Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -183,21 +183,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C62BC79521CCC3FB00830A5F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C62BC77821CCC3F700830A5F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C62BC77F21CCC3F700830A5F;
-			remoteInfo = "Big Neon";
-		};
-		C6B88D0921F19FC0006394F8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C62BC77821CCC3F700830A5F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C6B88CFE21F19FC0006394F8;
-			remoteInfo = "Big Neon Core";
-		};
-		C6B88D0B21F19FC0006394F8 /* PBXContainerItemProxy */ = {
+		C68C8D0C23321C8100FF15D6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C62BC77821CCC3F700830A5F /* Project object */;
 			proxyType = 1;
@@ -277,9 +263,6 @@
 		C62BC78A21CCC3FB00830A5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C62BC78D21CCC3FB00830A5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C62BC78F21CCC3FB00830A5F /* Development.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Development.plist; sourceTree = "<group>"; };
-		C62BC79421CCC3FB00830A5F /* Big NeonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Big NeonTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Big_NeonTests.swift; sourceTree = "<group>"; };
-		C62BC79A21CCC3FB00830A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C62E64EC224E0DC000A1039C /* DoorPersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonCell.swift; sourceTree = "<group>"; };
 		C630A6F922CE04EE00B73985 /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		C636674322935CE000A356F9 /* scannerViewController.ManualScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scannerViewController.ManualScan.swift; sourceTree = "<group>"; };
@@ -299,6 +282,8 @@
 		C64B0AD921D1240700386000 /* TicketsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsViewModel.swift; sourceTree = "<group>"; };
 		C64B0ADB21D1276100386000 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C64B0AE021D1294600386000 /* ProfileViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.TableView.swift; sourceTree = "<group>"; };
+		C64D488E232F874600615368 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		C64D4890232F892E00615368 /* NotificationService.SaveToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.SaveToken.swift; sourceTree = "<group>"; };
 		C655BD38221D69FD00EB1FDD /* DatabaseService.Checkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Checkins.swift; sourceTree = "<group>"; };
 		C6562F512203286E0020B6D3 /* UtilityConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityConstants.swift; sourceTree = "<group>"; };
 		C665B6E6224B506900581E2E /* ScannerViewController.ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.ScannerView.swift; sourceTree = "<group>"; };
@@ -322,6 +307,9 @@
 		C68A9FD822D34995006535B8 /* GuestListViewController.Offline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListViewController.Offline.swift; sourceTree = "<group>"; };
 		C68A9FDA22D35798006535B8 /* GuestsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestsFetcher.swift; sourceTree = "<group>"; };
 		C68A9FDC22D35D7F006535B8 /* GuestsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestsRepository.swift; sourceTree = "<group>"; };
+		C68C8D0723321C8100FF15D6 /* BigNeonStudioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BigNeonStudioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C68C8D0923321C8100FF15D6 /* BigNeonStudioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigNeonStudioTests.swift; sourceTree = "<group>"; };
+		C68C8D0B23321C8100FF15D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C69370FA228F06D2004EBC12 /* GuestListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListViewController.swift; sourceTree = "<group>"; };
 		C69370FC228F3570004EBC12 /* GuestListViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListViewController.TableView.swift; sourceTree = "<group>"; };
 		C69370FF228F411B004EBC12 /* GuestListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListHeaderView.swift; sourceTree = "<group>"; };
@@ -342,9 +330,6 @@
 		C6B88CFF21F19FC0006394F8 /* Big_Neon_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Big_Neon_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B88D0121F19FC0006394F8 /* Big_Neon_Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Big_Neon_Core.h; sourceTree = "<group>"; };
 		C6B88D0221F19FC0006394F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C6B88D0721F19FC0006394F8 /* Big Neon CoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Big Neon CoreTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6B88D0E21F19FC0006394F8 /* Big_Neon_CoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Big_Neon_CoreTests.swift; sourceTree = "<group>"; };
-		C6B88D1021F19FC0006394F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6B88D2121F19FD4006394F8 /* Big_Neon_UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Big_Neon_UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B88D2321F19FD4006394F8 /* Big_Neon_UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Big_Neon_UI.h; sourceTree = "<group>"; };
 		C6B88D2421F19FD4006394F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -444,7 +429,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C62BC79121CCC3FB00830A5F /* Frameworks */ = {
+		C68C8D0423321C8100FF15D6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -456,14 +441,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A2E1B7E405ED17780F3538D /* Pods_Big_Neon_Core.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C6B88D0421F19FC0006394F8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C6B88D0821F19FC0006394F8 /* Big_Neon_Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,8 +533,7 @@
 				C62BC78221CCC3F700830A5F /* Big Neon */,
 				C6B88D2221F19FD4006394F8 /* Big Neon UI */,
 				C6B88D0021F19FC0006394F8 /* Big Neon Core */,
-				C62BC79721CCC3FB00830A5F /* Big NeonTests */,
-				C6B88D0D21F19FC0006394F8 /* Big Neon CoreTests */,
+				C68C8D0823321C8100FF15D6 /* BigNeonStudioTests */,
 				C62BC78121CCC3F700830A5F /* Products */,
 				7B3E96A75988802AD92E269E /* Pods */,
 				2DB94BDC391C389579FED164 /* Frameworks */,
@@ -568,10 +544,9 @@
 			isa = PBXGroup;
 			children = (
 				C62BC78021CCC3F700830A5F /* Big Neon Studio.app */,
-				C62BC79421CCC3FB00830A5F /* Big NeonTests.xctest */,
 				C6B88CFF21F19FC0006394F8 /* Big_Neon_Core.framework */,
-				C6B88D0721F19FC0006394F8 /* Big Neon CoreTests.xctest */,
 				C6B88D2121F19FD4006394F8 /* Big_Neon_UI.framework */,
+				C68C8D0723321C8100FF15D6 /* BigNeonStudioTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -600,15 +575,6 @@
 				C64B0AB221D0DC3E00386000 /* Screens */,
 			);
 			path = "Big Neon";
-			sourceTree = "<group>";
-		};
-		C62BC79721CCC3FB00830A5F /* Big NeonTests */ = {
-			isa = PBXGroup;
-			children = (
-				C62BC79821CCC3FB00830A5F /* Big_NeonTests.swift */,
-				C62BC79A21CCC3FB00830A5F /* Info.plist */,
-			);
-			path = "Big NeonTests";
 			sourceTree = "<group>";
 		};
 		C62E64EB224E0DA600A1039C /* MyEventsCell */ = {
@@ -724,6 +690,15 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		C64D488D232F85FB00615368 /* PushNotificationService */ = {
+			isa = PBXGroup;
+			children = (
+				C64D488E232F874600615368 /* NotificationService.swift */,
+				C64D4890232F892E00615368 /* NotificationService.SaveToken.swift */,
+			);
+			path = PushNotificationService;
+			sourceTree = "<group>";
+		};
 		C665DFE321E87CAC00DFB955 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -755,6 +730,15 @@
 				C6EC209F220079ED00BD10DD /* ProfileEditCells */,
 			);
 			path = ProfileEditingViewController;
+			sourceTree = "<group>";
+		};
+		C68C8D0823321C8100FF15D6 /* BigNeonStudioTests */ = {
+			isa = PBXGroup;
+			children = (
+				C68C8D0923321C8100FF15D6 /* BigNeonStudioTests.swift */,
+				C68C8D0B23321C8100FF15D6 /* Info.plist */,
+			);
+			path = BigNeonStudioTests;
 			sourceTree = "<group>";
 		};
 		C69370FE228F3EB9004EBC12 /* GuestListViewController */ = {
@@ -840,15 +824,6 @@
 				C6B88D0221F19FC0006394F8 /* Info.plist */,
 			);
 			path = "Big Neon Core";
-			sourceTree = "<group>";
-		};
-		C6B88D0D21F19FC0006394F8 /* Big Neon CoreTests */ = {
-			isa = PBXGroup;
-			children = (
-				C6B88D0E21F19FC0006394F8 /* Big_Neon_CoreTests.swift */,
-				C6B88D1021F19FC0006394F8 /* Info.plist */,
-			);
-			path = "Big Neon CoreTests";
 			sourceTree = "<group>";
 		};
 		C6B88D2221F19FD4006394F8 /* Big Neon UI */ = {
@@ -1002,6 +977,7 @@
 		C6B88D6821F1C86B006394F8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C64D488D232F85FB00615368 /* PushNotificationService */,
 				C6B88D6921F1C872006394F8 /* BusinessService */,
 				C6DB1F96230D63540019C014 /* TokenService */,
 				C6B88D6A21F1C87B006394F8 /* DatabaseService */,
@@ -1180,22 +1156,22 @@
 			productReference = C62BC78021CCC3F700830A5F /* Big Neon Studio.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C62BC79321CCC3FB00830A5F /* Big NeonTests */ = {
+		C68C8D0623321C8100FF15D6 /* BigNeonStudioTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C62BC7AB21CCC3FB00830A5F /* Build configuration list for PBXNativeTarget "Big NeonTests" */;
+			buildConfigurationList = C68C8D0E23321C8100FF15D6 /* Build configuration list for PBXNativeTarget "BigNeonStudioTests" */;
 			buildPhases = (
-				C62BC79021CCC3FB00830A5F /* Sources */,
-				C62BC79121CCC3FB00830A5F /* Frameworks */,
-				C62BC79221CCC3FB00830A5F /* Resources */,
+				C68C8D0323321C8100FF15D6 /* Sources */,
+				C68C8D0423321C8100FF15D6 /* Frameworks */,
+				C68C8D0523321C8100FF15D6 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C62BC79621CCC3FB00830A5F /* PBXTargetDependency */,
+				C68C8D0D23321C8100FF15D6 /* PBXTargetDependency */,
 			);
-			name = "Big NeonTests";
-			productName = "Big NeonTests";
-			productReference = C62BC79421CCC3FB00830A5F /* Big NeonTests.xctest */;
+			name = BigNeonStudioTests;
+			productName = BigNeonStudioTests;
+			productReference = C68C8D0723321C8100FF15D6 /* BigNeonStudioTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		C6B88CFE21F19FC0006394F8 /* Big Neon Core */ = {
@@ -1217,25 +1193,6 @@
 			productName = "Big Neon Core";
 			productReference = C6B88CFF21F19FC0006394F8 /* Big_Neon_Core.framework */;
 			productType = "com.apple.product-type.framework";
-		};
-		C6B88D0621F19FC0006394F8 /* Big Neon CoreTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C6B88D1921F19FC0006394F8 /* Build configuration list for PBXNativeTarget "Big Neon CoreTests" */;
-			buildPhases = (
-				C6B88D0321F19FC0006394F8 /* Sources */,
-				C6B88D0421F19FC0006394F8 /* Frameworks */,
-				C6B88D0521F19FC0006394F8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C6B88D0A21F19FC0006394F8 /* PBXTargetDependency */,
-				C6B88D0C21F19FC0006394F8 /* PBXTargetDependency */,
-			);
-			name = "Big Neon CoreTests";
-			productName = "Big Neon CoreTests";
-			productReference = C6B88D0721F19FC0006394F8 /* Big Neon CoreTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		C6B88D2021F19FD4006394F8 /* Big Neon UI */ = {
 			isa = PBXNativeTarget;
@@ -1263,24 +1220,20 @@
 		C62BC77821CCC3F700830A5F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = "Big Neon Inc";
 				TargetAttributes = {
 					C62BC77F21CCC3F700830A5F = {
 						CreatedOnToolsVersion = 10.1;
 					};
-					C62BC79321CCC3FB00830A5F = {
-						CreatedOnToolsVersion = 10.1;
+					C68C8D0623321C8100FF15D6 = {
+						CreatedOnToolsVersion = 11.0;
 						TestTargetID = C62BC77F21CCC3F700830A5F;
 					};
 					C6B88CFE21F19FC0006394F8 = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1010;
-					};
-					C6B88D0621F19FC0006394F8 = {
-						CreatedOnToolsVersion = 10.1;
-						TestTargetID = C62BC77F21CCC3F700830A5F;
 					};
 					C6B88D2021F19FD4006394F8 = {
 						CreatedOnToolsVersion = 10.1;
@@ -1302,10 +1255,9 @@
 			projectRoot = "";
 			targets = (
 				C62BC77F21CCC3F700830A5F /* Big Neon */,
-				C62BC79321CCC3FB00830A5F /* Big NeonTests */,
 				C6B88CFE21F19FC0006394F8 /* Big Neon Core */,
-				C6B88D0621F19FC0006394F8 /* Big Neon CoreTests */,
 				C6B88D2021F19FD4006394F8 /* Big Neon UI */,
+				C68C8D0623321C8100FF15D6 /* BigNeonStudioTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1324,7 +1276,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C62BC79221CCC3FB00830A5F /* Resources */ = {
+		C68C8D0523321C8100FF15D6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1332,13 +1284,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C6B88CFD21F19FC0006394F8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C6B88D0521F19FC0006394F8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1383,50 +1328,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Big Neon/Pods-Big Neon-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
-				"${BUILT_PRODUCTS_DIR}/PanModal/PanModal.framework",
-				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
-				"${BUILT_PRODUCTS_DIR}/Sync/Sync.framework",
-				"${BUILT_PRODUCTS_DIR}/PWSwitch/PWSwitch.framework",
-				"${BUILT_PRODUCTS_DIR}/PresenterKit/PresenterKit.framework",
-				"${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework",
-				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
-				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
-				"${BUILT_PRODUCTS_DIR}/DTGradientButton/DTGradientButton.framework",
-				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
-				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
-				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
-				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
-				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
-				"${BUILT_PRODUCTS_DIR}/UITextField+Shake/UITextField_Shake.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Big Neon/Pods-Big Neon-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PanModal.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sync.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PWSwitch.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PresenterKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCodeReader.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DTGradientButton.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextField_Shake.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Big Neon/Pods-Big Neon-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1471,7 +1377,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		C60602592254D6D000C5C066 /* Fabric Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1489,7 +1396,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		C62C824F22C4AED400D30E07 /* Fabric Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1646,11 +1554,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C62BC79021CCC3FB00830A5F /* Sources */ = {
+		C68C8D0323321C8100FF15D6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C62BC79921CCC3FB00830A5F /* Big_NeonTests.swift in Sources */,
+				C68C8D0A23321C8100FF15D6 /* BigNeonStudioTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1659,6 +1567,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C644BA3421F70C19003C188B /* DatabaseService.Users.swift in Sources */,
+				C64D488F232F874600615368 /* NotificationService.swift in Sources */,
 				C60BDEBE229EC03F00E54456 /* Environment.swift in Sources */,
 				C678C17F2276FABD0069A2DF /* ObjectAddingUtils.swift in Sources */,
 				C6B88D8F21F1C94E006394F8 /* Organisation.swift in Sources */,
@@ -1685,19 +1594,12 @@
 				C655BD39221D69FD00EB1FDD /* DatabaseService.Checkins.swift in Sources */,
 				C698F6032238F76400977259 /* ScanFeedback.swift in Sources */,
 				C644BA2F21F7069D003C188B /* BasicError.swift in Sources */,
+				C64D4891232F892E00615368 /* NotificationService.SaveToken.swift in Sources */,
 				C6DB1F98230D63710019C014 /* TokenService.swift in Sources */,
 				C6B88D7921F1C932006394F8 /* Tokens.swift in Sources */,
 				C628B15621FAD76000FCBDC9 /* User.swift in Sources */,
 				C6CEC8A9221ADBCE00F7329D /* TicketTypeStatus.swift in Sources */,
 				C6825A6C225DF28B003470A5 /* Rechability.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C6B88D0321F19FC0006394F8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C6B88D0F21F19FC0006394F8 /* Big_Neon_CoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1729,20 +1631,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C62BC79621CCC3FB00830A5F /* PBXTargetDependency */ = {
+		C68C8D0D23321C8100FF15D6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C62BC77F21CCC3F700830A5F /* Big Neon */;
-			targetProxy = C62BC79521CCC3FB00830A5F /* PBXContainerItemProxy */;
-		};
-		C6B88D0A21F19FC0006394F8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C6B88CFE21F19FC0006394F8 /* Big Neon Core */;
-			targetProxy = C6B88D0921F19FC0006394F8 /* PBXContainerItemProxy */;
-		};
-		C6B88D0C21F19FC0006394F8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C62BC77F21CCC3F700830A5F /* Big Neon */;
-			targetProxy = C6B88D0B21F19FC0006394F8 /* PBXContainerItemProxy */;
+			targetProxy = C68C8D0C23321C8100FF15D6 /* PBXContainerItemProxy */;
 		};
 		C6B88D1321F19FC0006394F8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1854,27 +1746,6 @@
 			};
 			name = "Release (Production)";
 		};
-		C60BDEAC229EA65A00E54456 /* Release (Production) */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YVK784K26W;
-				INFOPLIST_FILE = "Big NeonTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bigneon.Big-NeonTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Big Neon.app/Big Neon";
-			};
-			name = "Release (Production)";
-		};
 		C60BDEAD229EA65A00E54456 /* Release (Production) */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5227793D2C68545A2802C714 /* Pods-Big Neon Core.release (production).xcconfig */;
@@ -1904,27 +1775,6 @@
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = "Release (Production)";
-		};
-		C60BDEAE229EA65A00E54456 /* Release (Production) */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YVK784K26W;
-				INFOPLIST_FILE = "Big Neon CoreTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bigneon.Big-Neon-CoreTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Big Neon.app/Big Neon";
 			};
 			name = "Release (Production)";
 		};
@@ -2052,27 +1902,6 @@
 			};
 			name = "Debug (Beta)";
 		};
-		C60BDEB2229EA66E00E54456 /* Debug (Beta) */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YVK784K26W;
-				INFOPLIST_FILE = "Big NeonTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bigneon.Big-NeonTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Big Neon.app/Big Neon";
-			};
-			name = "Debug (Beta)";
-		};
 		C60BDEB3229EA66E00E54456 /* Debug (Beta) */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0206777751194ADF4DF91562 /* Pods-Big Neon Core.debug (beta).xcconfig */;
@@ -2103,27 +1932,6 @@
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = "Debug (Beta)";
-		};
-		C60BDEB4229EA66E00E54456 /* Debug (Beta) */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YVK784K26W;
-				INFOPLIST_FILE = "Big Neon CoreTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bigneon.Big-Neon-CoreTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Big Neon.app/Big Neon";
 			};
 			name = "Debug (Beta)";
 		};
@@ -2339,47 +2147,289 @@
 			};
 			name = "Release (Development)";
 		};
-		C62BC7AC21CCC3FB00830A5F /* Debug (Development) */ = {
+		C68C8D0F23321C8100FF15D6 /* Debug (Development) */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = YVK784K26W;
-				INFOPLIST_FILE = "Big NeonTests/Info.plist";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = BigNeonStudioTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bigneon.Big-NeonTests";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.BigNeonStudioTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Big Neon.app/Big Neon";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Big Neon Studio.app/Big Neon Studio";
 			};
 			name = "Debug (Development)";
 		};
-		C62BC7AD21CCC3FB00830A5F /* Release (Development) */ = {
+		C68C8D1023321C8100FF15D6 /* Debug (Beta) */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = YVK784K26W;
-				INFOPLIST_FILE = "Big NeonTests/Info.plist";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = BigNeonStudioTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bigneon.Big-NeonTests";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.BigNeonStudioTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Big Neon.app/Big Neon";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Big Neon Studio.app/Big Neon Studio";
+			};
+			name = "Debug (Beta)";
+		};
+		C68C8D1123321C8100FF15D6 /* Release (Development) */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = YVK784K26W;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = BigNeonStudioTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.BigNeonStudioTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Big Neon Studio.app/Big Neon Studio";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = "Release (Development)";
+		};
+		C68C8D1223321C8100FF15D6 /* Release (Production) */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = YVK784K26W;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = BigNeonStudioTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bigneon.BigNeonStudioTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Big Neon Studio.app/Big Neon Studio";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release (Production)";
 		};
 		C6B88D1721F19FC0006394F8 /* Debug (Development) */ = {
 			isa = XCBuildConfiguration;
@@ -2443,48 +2493,6 @@
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = "Release (Development)";
-		};
-		C6B88D1A21F19FC0006394F8 /* Debug (Development) */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YVK784K26W;
-				INFOPLIST_FILE = "Big Neon CoreTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bigneon.Big-Neon-CoreTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Big Neon.app/Big Neon";
-			};
-			name = "Debug (Development)";
-		};
-		C6B88D1B21F19FC0006394F8 /* Release (Development) */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YVK784K26W;
-				INFOPLIST_FILE = "Big Neon CoreTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bigneon.Big-Neon-CoreTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Big Neon.app/Big Neon";
 			};
 			name = "Release (Development)";
 		};
@@ -2578,13 +2586,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Release (Development)";
 		};
-		C62BC7AB21CCC3FB00830A5F /* Build configuration list for PBXNativeTarget "Big NeonTests" */ = {
+		C68C8D0E23321C8100FF15D6 /* Build configuration list for PBXNativeTarget "BigNeonStudioTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C62BC7AC21CCC3FB00830A5F /* Debug (Development) */,
-				C60BDEB2229EA66E00E54456 /* Debug (Beta) */,
-				C62BC7AD21CCC3FB00830A5F /* Release (Development) */,
-				C60BDEAC229EA65A00E54456 /* Release (Production) */,
+				C68C8D0F23321C8100FF15D6 /* Debug (Development) */,
+				C68C8D1023321C8100FF15D6 /* Debug (Beta) */,
+				C68C8D1123321C8100FF15D6 /* Release (Development) */,
+				C68C8D1223321C8100FF15D6 /* Release (Production) */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Release (Development)";
@@ -2596,17 +2604,6 @@
 				C60BDEB3229EA66E00E54456 /* Debug (Beta) */,
 				C6B88D1821F19FC0006394F8 /* Release (Development) */,
 				C60BDEAD229EA65A00E54456 /* Release (Production) */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "Release (Development)";
-		};
-		C6B88D1921F19FC0006394F8 /* Build configuration list for PBXNativeTarget "Big Neon CoreTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C6B88D1A21F19FC0006394F8 /* Debug (Development) */,
-				C60BDEB4229EA66E00E54456 /* Debug (Beta) */,
-				C6B88D1B21F19FC0006394F8 /* Release (Development) */,
-				C60BDEAE229EA65A00E54456 /* Release (Production) */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Release (Development)";

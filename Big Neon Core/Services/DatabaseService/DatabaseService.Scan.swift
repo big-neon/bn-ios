@@ -109,13 +109,17 @@ extension DatabaseService {
     public func fetchGuests(forEventID eventID: String, limit: Int, page: Int?, guestQuery: String?, completion: @escaping (_ error: Error?, _ fetchedGuestsDict: [[String: Any]]?, _ serverGuests: Guests?, _ totalGuests: Int) -> Void) {
         
         let apiURL = APIService.fetchEvents(eventID: eventID, changesSince: nil, page: page, limit: limit, query: guestQuery)
-        let accessToken = TokenService.shared.fetchAcessToken()
+        guard let accessToken = TokenService.shared.fetchAcessToken() else {
+            print("Access Token not found")
+            completion(nil, nil, nil, 0)
+            return
+        }
         
         AF.request(apiURL,
                    method: HTTPMethod.get,
                    parameters: nil,
                    encoding: JSONEncoding.default,
-                   headers: [APIParameterKeys.authorization :"Bearer \(accessToken!)"])
+                   headers: [APIParameterKeys.authorization :"Bearer \(accessToken)"])
             .validate(statusCode: 200..<300)
             .response { (response) in
                 
