@@ -1,6 +1,9 @@
+
 language: swift
-xcode_workspace: Big Neon.xcworkspace
-osx_image: xcode11
-xcode_scheme: BigNeonStudioTests
-xcode_destination: platform=iOS Simulator,OS=11,name=iPhone 11
-pod install
+
+before_install:
+   - rvm use system
+   - sudo gem install cocoapods -v '0.39.0'
+
+script:
+    xctool -workspace Big Neon.xcworkspace -scheme BigNeonStudioTests build -sdk iphonesimulator
