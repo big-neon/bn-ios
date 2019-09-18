@@ -1,6 +1,6 @@
 language: swift
 xcode_workspace: Big Neon.xcworkspace
-xcode_scheme: CoreTests
+xcode_scheme: BigNeonStudioTests
 xcode_destination: platform=iOS Simulator,OS=11.4,name=iPhone X
 podfile: Podfile
 cache: cocoapods

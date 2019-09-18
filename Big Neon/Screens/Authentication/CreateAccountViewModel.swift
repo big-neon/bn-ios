@@ -41,7 +41,7 @@ final class AccountViewModel {
                 return
             }
             
-            NotificationService.saveNotificationToken(withUserID: email)
+            NotificationService.saveNotificationToken(withUserEmail: email)
             
         }
     }
