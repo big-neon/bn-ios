@@ -58,8 +58,7 @@ extension DatabaseService {
     }
     
     
-    public func
-        redeemTicket(forTicketID ticketID: String, eventID: String, redeemKey: String, completion: @escaping (ScanFeedback, RedeemableTicket?) -> Void) {
+    public func redeemTicket(forTicketID ticketID: String, eventID: String, redeemKey: String, completion: @escaping (ScanFeedback, RedeemableTicket?) -> Void) {
 
         let apiURL = APIService.redeemTicket(eventID: eventID, ticketID: ticketID)
         let accessToken = TokenService.shared.fetchAcessToken()
