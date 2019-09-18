@@ -51,7 +51,6 @@ class BigNeonStudioTests: XCTestCase {
                 
                 if let err = error {
                     XCTFail("Failed to fetch guests with Error: \(err)")
-                    XCTFail()
                     return
                 }
                 
