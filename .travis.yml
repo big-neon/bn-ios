@@ -3,7 +3,7 @@ language: swift
 
 before_install:
    - rvm use system
-   - sudo gem install cocoapods -v '0.39.0'
+   - sudo gem install cocoapods -v '1.8.0.beta.2'
 
 script:
     xctool -workspace Big Neon.xcworkspace -scheme BigNeonStudioTests build -sdk iphonesimulator
