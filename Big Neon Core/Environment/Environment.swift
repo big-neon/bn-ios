@@ -39,6 +39,11 @@ public struct Environment {
             }
         }
     }
+    
+    public init() {
+        
+    }
+    
     public func configuration(_ key: PlistKey) -> String {
         switch key {
         case .ServerURL:
