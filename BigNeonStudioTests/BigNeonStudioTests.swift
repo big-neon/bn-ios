@@ -8,8 +8,8 @@ class BigNeonStudioTests: XCTestCase {
     private let repository = EventsApiRepository.shared
 
     func testAuthentication() {
-        let email = Environment().configuration(PlistKey.testAuthEmail)
-        let password = Environment().configuration(PlistKey.testAuthenticationPassword)
+        let email = "superuser@test.com" // Environment().configuration(PlistKey.testAuthEmail)
+        let password = "password"   // Environment().configuration(PlistKey.testAuthenticationPassword)
         BusinessService.shared.database.loginToAccount(withEmail: email, password: password) { (error, tokens) in
             XCTAssertEqual(error, nil, "Authentication Failed. Error Recieved: \(error)")
         }
@@ -25,7 +25,7 @@ class BigNeonStudioTests: XCTestCase {
     
     func testFetchingGuestList() {
         
-        let eventID = Environment().configuration(PlistKey.testEventID)
+        let eventID = "39fb32a6-82f5-4d59-a901-0c8ac09734ad"    // Environment().configuration(PlistKey.testEventID)
         let limit = 50
         let page = 1
         let query = ""
@@ -40,7 +40,7 @@ class BigNeonStudioTests: XCTestCase {
     
     func testTicketCheckin() {
         
-        let eventID = Environment().configuration(PlistKey.testEventID)
+        let eventID = "39fb32a6-82f5-4d59-a901-0c8ac09734ad"    // Environment().configuration(PlistKey.testEventID)
         let limit = 50
         let page = 1
         let query = ""
