@@ -51,7 +51,7 @@ extension DoorPersonViewController {
         guard let venueName = venue.name, let venueCity = venue.city, let venueState = venue.state else {
             return ""
         }
-        return venueName + "   •   " + venueCity + ", " + venueState
+        return venueName //+ "   •   " + venueCity + ", " + venueState
     }
 
     private func configureEventDate(event: EventsData) -> String {

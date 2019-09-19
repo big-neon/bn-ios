@@ -39,7 +39,7 @@ class GuestViewController: BaseViewController {
                 return
             }
             
-            self.userNameLabel.text = ticket.firstName
+            self.userNameLabel.text = ticket.firstName + " " + ticket.lastName
             self.ticketTypeLabel.text = ticket.eventName
             let price = Int(ticket.priceInCents)
             let ticketID = "#" + ticket.id.suffix(8).uppercased()
@@ -53,7 +53,7 @@ class GuestViewController: BaseViewController {
                 completeCheckinButton.setTitle("Complete Check-in", for: UIControl.State.normal)
                 completeCheckinButton.addTarget(self, action: #selector(handleCompleteCheckin), for: UIControl.Event.touchUpInside)
                 
-            } else {
+            } else { 
                 
                 //  Ticket Redeemed
                 ticketTagView.tagLabel.text = "REDEEMED"

@@ -98,6 +98,7 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
         tableView.delegate = self
         tableView.dataSource = self
         tableView.prefetchDataSource = self
+        tableView.keyboardDismissMode = .interactive
         tableView.separatorColor = UIColor.brandGrey.withAlphaComponent(0.3)
         tableView.showsVerticalScrollIndicator = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -192,7 +193,7 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
     func configureNavBar() {
         navigationNoLineBar()
         navigationController?.navigationBar.barTintColor = UIColor.brandBackground
-        navigationController?.navigationBar.tintColor = UIColor.brandBlack
+        navigationController?.navigationBar.tintColor = UIColor.brandPrimary
         if let eventName = self.scanVC.event!.name {
             self.setNavigationTitle(withTitle: eventName)
         }
@@ -206,19 +207,19 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
     
     private func configureView() {
         
-        view.addSubview(headerView)
+//        view.addSubview(headerView)
         view.addSubview(guestTableView)
         
         self.refresher.addTarget(self, action: #selector(reloadGuests), for: .valueChanged)
         guestTableView.refreshControl = self.refresher
         guestTableView.register(GuestTableViewCell.self, forCellReuseIdentifier: GuestTableViewCell.cellID)
         
-        headerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        headerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        headerView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        headerView.heightAnchor.constraint(equalToConstant: 64.0).isActive = true
+//        headerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+//        headerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+//        headerView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+//        headerView.heightAnchor.constraint(equalToConstant: 64.0).isActive = true
         
-        guestTableView.topAnchor.constraint(equalTo: headerView.bottomAnchor).isActive = true
+        guestTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         guestTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         guestTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         guestTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true

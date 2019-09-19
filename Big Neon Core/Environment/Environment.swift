@@ -9,7 +9,7 @@ public enum PlistKey {
     case testAuthEmail
     case testAuthenticationPassword
     
-    func value() -> String {
+    public func value() -> String {
         switch self {
         case .ServerURL:
             return "server_url"
@@ -30,7 +30,7 @@ public enum PlistKey {
 
 public struct Environment {
     
-    fileprivate var infoDict: [String: Any]  {
+    public var infoDict: [String: Any]  {
         get {
             if let dict = Bundle.main.infoDictionary {
                 return dict

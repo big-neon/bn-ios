@@ -12,12 +12,17 @@ extension DoorPersonViewController {
                 switch result {
                 case .success:
                     self.doorPersonViemodel.eventCoreData = self.fetcher.fetchLocalEvents()
+                    self.orderEventsByDate()
                     self.exploreCollectionView.reloadData()
                 case .failure(let error):
                     print(error)
                 }
             }
         }
+    }
+    
+    func orderEventsByDate() {
+        self.doorPersonViemodel.eventCoreData.sort(by: { DateConfig.dateFromUTCString(stringDate: $0.event_start!)! > DateConfig.dateFromUTCString(stringDate: $1.event_start!)!})
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
@@ -32,6 +37,7 @@ extension DoorPersonViewController {
                     self.loadingView.stopAnimating()
                     self.refresher.endRefreshing()
                     self.doorPersonViemodel.eventCoreData = self.fetcher.fetchLocalEvents()
+                    self.orderEventsByDate()
                     self.exploreCollectionView.reloadData()
                 case .failure(let error):
                     self.loadingView.stopAnimating()

@@ -85,6 +85,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         configureSearch()
         configureCollectionView()
         doorPersonViemodel.eventCoreData = fetcher.fetchLocalEvents()
+        self.orderEventsByDate()
         syncEventsData()
     }
 

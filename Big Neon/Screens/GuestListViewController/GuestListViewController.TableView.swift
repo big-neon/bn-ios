@@ -61,7 +61,7 @@ extension GuestListViewController: SwipeActionTransitioning {
         if guestValues!.lastName == "" && guestValues!.firstName  == ""{
             guestCell.guestNameLabel.text = "No Details Provided"
         } else {
-            guestCell.guestNameLabel.text = guestValues!.firstName + ", " + guestValues!.lastName
+            guestCell.guestNameLabel.text = guestValues!.firstName + " " + guestValues!.lastName
         }
         
         
