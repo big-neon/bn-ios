@@ -31,7 +31,7 @@ public class HomeSectionCell: UICollectionViewCell {
         
         sectionLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
         sectionLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
-        sectionLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        sectionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -LayoutSpec.Spacing.twentyFour).isActive = true
         sectionLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.sixteen).isActive = true
     }
     

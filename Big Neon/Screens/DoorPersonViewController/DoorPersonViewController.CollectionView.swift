@@ -12,17 +12,13 @@ extension DoorPersonViewController {
 
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
-        //  Live Events
         case 0:
             return 1
         case 1:
-            print(self.doorPersonViemodel.todayEvents.count)
-            return self.doorPersonViemodel.todayEvents.count
-        //  Upcomimg Events
+            return 1    // self.doorPersonViemodel.todayEvents.count
         case 2:
             return 1
         default:
-            print(self.doorPersonViemodel.upcomingEvents.count)
             return  self.doorPersonViemodel.upcomingEvents.count
             
         }
@@ -30,7 +26,7 @@ extension DoorPersonViewController {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        switch indexPath.item {
+        switch indexPath.section {
         case 0:
             let sectionLabelCell: SectionHeaderCell = collectionView.dequeueReusableCell(withReuseIdentifier: SectionHeaderCell.cellID, for: indexPath) as! SectionHeaderCell
             sectionLabelCell.delegate = self
@@ -43,6 +39,9 @@ extension DoorPersonViewController {
             return sectionLabelCell
         case 1:
             let eventCell: DoorPersonCell = collectionView.dequeueReusableCell(withReuseIdentifier: DoorPersonCell.cellID, for: indexPath) as! DoorPersonCell
+            if self.doorPersonViemodel.todayEvents.isEmpty == true {
+                return eventCell
+            }
             let event = self.doorPersonViemodel.todayEvents[indexPath.item]
             eventCell.eventNameLabel.text = event.name
             if let eventImageURL =  event.promo_image_url  {
