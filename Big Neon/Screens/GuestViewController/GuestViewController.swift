@@ -161,14 +161,10 @@ class GuestViewController: BaseViewController {
         enableCheckinButton()
     }
     
-    func eventDateIsToday(eventStartDate: String) -> Bool {
-        return DateConfig.eventDate(date: DateConfig.dateFromUTCString(stringDate: eventStartDate)!) == DateConfig.eventDate(date: Date())
-    }
-    
     func enableCheckinButton() {
         
         if let ticket = self.redeemableTicket {
-            if eventDateIsToday(eventStartDate: ticket.eventStart) == true {
+            if DateConfig.eventDateIsToday(eventStartDate: ticket.eventStart) == true {
                 return
             }
             

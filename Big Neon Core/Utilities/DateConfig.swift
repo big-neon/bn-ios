@@ -19,6 +19,10 @@ final public class DateConfig {
         }
         return  dateFormatter.date(from: dateFormatter.string(from: convertedDate))
     }
+    
+    public class func eventDateIsToday(eventStartDate: String) -> Bool {
+        return DateConfig.eventDate(date: DateConfig.dateFromUTCString(stringDate: eventStartDate)!) == DateConfig.eventDate(date: Date())
+    }
 
     private class func dropMilliseconds(date:String) -> String{
         let dateParts = date.components(separatedBy: ".")
