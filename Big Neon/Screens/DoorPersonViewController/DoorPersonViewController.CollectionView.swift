@@ -7,20 +7,31 @@ import Big_Neon_Core
 extension DoorPersonViewController {
 
     internal func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 4
     }
 
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
+        //  Live Events
         case 0:
             return 1
+        case 1:
+            print(self.doorPersonViemodel.todayEvents.count)
+            return self.doorPersonViemodel.todayEvents.count
+        //  Upcomimg Events
+        case 2:
+            return 1
         default:
-            return  self.doorPersonViemodel.eventCoreData.count
+            print(self.doorPersonViemodel.upcomingEvents.count)
+            return  self.doorPersonViemodel.upcomingEvents.count
+            
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.section == 0 {
+        
+        switch indexPath.item {
+        case 0:
             let sectionLabelCell: SectionHeaderCell = collectionView.dequeueReusableCell(withReuseIdentifier: SectionHeaderCell.cellID, for: indexPath) as! SectionHeaderCell
             sectionLabelCell.delegate = self
             sectionLabelCell.sectionHeaderLabel.text = "My Events"
@@ -30,17 +41,33 @@ extension DoorPersonViewController {
                 }
             }
             return sectionLabelCell
+        case 1:
+            let eventCell: DoorPersonCell = collectionView.dequeueReusableCell(withReuseIdentifier: DoorPersonCell.cellID, for: indexPath) as! DoorPersonCell
+            let event = self.doorPersonViemodel.todayEvents[indexPath.item]
+            eventCell.eventNameLabel.text = event.name
+            if let eventImageURL =  event.promo_image_url  {
+                let url = URL(string: eventImageURL)
+                eventCell.eventImageView.pin_setImage(from: url, placeholderImage: #imageLiteral(resourceName: "ic_placeholder_image"))
+            }
+            eventCell.eventDetailsLabel.text = self.configureEventDetails(event: event)
+            eventCell.eventDateLabel.text = self.configureEventDate(event: event)
+            return eventCell
+        case 2:
+            let sectionLabelCell: HomeSectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeSectionCell.cellID, for: indexPath) as! HomeSectionCell
+            sectionLabelCell.sectionLabel.text = "Upcoming"
+            return sectionLabelCell
+        default:
+            let eventCell: DoorPersonCell = collectionView.dequeueReusableCell(withReuseIdentifier: DoorPersonCell.cellID, for: indexPath) as! DoorPersonCell
+            let event = self.doorPersonViemodel.upcomingEvents[indexPath.item]
+            eventCell.eventNameLabel.text = event.name
+            if let eventImageURL =  event.promo_image_url  {
+                let url = URL(string: eventImageURL)
+                eventCell.eventImageView.pin_setImage(from: url, placeholderImage: #imageLiteral(resourceName: "ic_placeholder_image"))
+            }
+            eventCell.eventDetailsLabel.text = self.configureEventDetails(event: event)
+            eventCell.eventDateLabel.text = self.configureEventDate(event: event)
+            return eventCell
         }
-        let eventCell: DoorPersonCell = collectionView.dequeueReusableCell(withReuseIdentifier: DoorPersonCell.cellID, for: indexPath) as! DoorPersonCell
-        let event = self.doorPersonViemodel.eventCoreData[indexPath.item]
-        eventCell.eventNameLabel.text = event.name
-        if let eventImageURL =  event.promo_image_url  {
-            let url = URL(string: eventImageURL)
-            eventCell.eventImageView.pin_setImage(from: url, placeholderImage: #imageLiteral(resourceName: "ic_placeholder_image"))
-        }
-        eventCell.eventDetailsLabel.text = self.configureEventDetails(event: event)
-        eventCell.eventDateLabel.text = self.configureEventDate(event: event)
-        return eventCell
        
     }
 

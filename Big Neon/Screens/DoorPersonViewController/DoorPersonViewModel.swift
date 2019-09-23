@@ -9,6 +9,8 @@ final class DoorPersonViewModel {
     var events: Events?
     var event: Event?
     var eventCoreData: [EventsData] = []
+    var todayEvents: [EventsData] = []
+    var upcomingEvents: [EventsData] = []
     var user: User?
     
     func fetchEvents(completion: @escaping(Bool) -> Void) {

@@ -31,7 +31,7 @@ public class SectionHeaderCell: UICollectionViewCell {
     lazy var detailLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandGrey
-        label.text = "Upcoming"
+        label.text = "Today's Events"
         label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

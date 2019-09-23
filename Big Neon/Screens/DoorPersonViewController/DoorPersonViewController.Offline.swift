@@ -23,6 +23,13 @@ extension DoorPersonViewController {
     
     func orderEventsByDate() {
         self.doorPersonViemodel.eventCoreData.sort(by: { DateConfig.dateFromUTCString(stringDate: $0.event_start!)! > DateConfig.dateFromUTCString(stringDate: $1.event_start!)!})
+        
+        //  Get Events Occuring Today
+        self.doorPersonViemodel.todayEvents
+            = self.doorPersonViemodel.eventCoreData.filter{ DateConfig.eventDate(date: DateConfig.dateFromUTCString(stringDate: $0.event_start!)!) == DateConfig.eventDate(date: Date()) }
+        
+        //  Get Other events
+        self.doorPersonViemodel.upcomingEvents = self.doorPersonViemodel.eventCoreData.filter{ DateConfig.eventDate(date: DateConfig.dateFromUTCString(stringDate: $0.event_start!)!) != DateConfig.eventDate(date: Date()) }
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {

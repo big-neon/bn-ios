@@ -125,6 +125,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         exploreCollectionView.register(SectionHeaderCell.self, forCellWithReuseIdentifier: SectionHeaderCell.cellID)
         exploreCollectionView.register(HotThisWeekCell.self, forCellWithReuseIdentifier: HotThisWeekCell.cellID)
         exploreCollectionView.register(DoorPersonCell.self, forCellWithReuseIdentifier: DoorPersonCell.cellID)
+        exploreCollectionView.register(HomeSectionCell.self, forCellWithReuseIdentifier: HomeSectionCell.cellID)
         
         exploreCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         exploreCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
