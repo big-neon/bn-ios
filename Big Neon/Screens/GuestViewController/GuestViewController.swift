@@ -81,6 +81,8 @@ class GuestViewController: BaseViewController {
                 redeemedTimeAgoLabel.text = "Redeemed: " + redeemedDate.getElapsed()
 
             }
+            
+            self.enableCheckinButton()
         }
     }
        
@@ -154,8 +156,27 @@ class GuestViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        self.scannerVC?.stopScanning = true
+        scannerVC?.stopScanning = true
         configureView()
+        enableCheckinButton()
+    }
+    
+    func eventDateIsToday(eventStartDate: String) -> Bool {
+        return DateConfig.eventDate(date: DateConfig.dateFromUTCString(stringDate: eventStartDate)!) == DateConfig.eventDate(date: Date())
+    }
+    
+    func enableCheckinButton() {
+        
+        if let ticket = self.redeemableTicket {
+            if eventDateIsToday(eventStartDate: ticket.eventStart) == true {
+                return
+            }
+            
+            completeCheckinButton.setTitleColor(UIColor.brandLightGrey, for: UIControl.State.normal)
+            completeCheckinButton.backgroundColor = UIColor.brandBackground
+            completeCheckinButton.setTitle("Not Event Date", for: UIControl.State.normal)
+            completeCheckinButton.isUserInteractionEnabled = false
+        }
     }
     
     private func configureView() {

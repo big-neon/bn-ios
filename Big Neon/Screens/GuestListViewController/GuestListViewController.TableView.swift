@@ -70,14 +70,20 @@ extension GuestListViewController: SwipeActionTransitioning {
         guestCell.ticketTypeNameLabel.text = price.dollarString + " | " + guestValues!.ticketType + " | " + ticketID
         
         if guestValues!.status == TicketStatus.purchased.rawValue {
-            guestCell.ticketStateView.setTitle("PURCHASED", for: UIControl.State.normal)
-            guestCell.ticketStateView.backgroundColor = UIColor.brandGreen
+            guestCell.ticketStateView.backgroundColor = eventDateIsToday(eventStartDate: guestValues!.eventStart) == true ? UIColor.brandGreen : UIColor.white
+            let buttonValue = eventDateIsToday(eventStartDate: guestValues!.eventStart) == true ? "PURCHASED" : "-"
+            guestCell.ticketStateView.setTitle(buttonValue, for: UIControl.State.normal)
         } else {
-            guestCell.ticketStateView.setTitle("REDEEMED", for: UIControl.State.normal)
-            guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
+            guestCell.ticketStateView.backgroundColor = eventDateIsToday(eventStartDate: guestValues!.eventStart) == true ? UIColor.brandBlack : UIColor.white
+            let buttonValue = eventDateIsToday(eventStartDate: guestValues!.eventStart) == true ? "REDEEMED" : "-"
+            guestCell.ticketStateView.setTitle(buttonValue, for: UIControl.State.normal)
         }
         
         return guestCell
+    }
+    
+    func eventDateIsToday(eventStartDate: String) -> Bool {
+        return DateConfig.eventDate(date: DateConfig.dateFromUTCString(stringDate: eventStartDate)!) == DateConfig.eventDate(date: Date())
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

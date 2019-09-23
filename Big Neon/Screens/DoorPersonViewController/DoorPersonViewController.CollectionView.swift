@@ -15,7 +15,7 @@ extension DoorPersonViewController {
         case 0:
             return 1
         case 1:
-            return 1    // self.doorPersonViemodel.todayEvents.count
+            return self.doorPersonViemodel.todayEvents.count == 0 ? 0 : self.doorPersonViemodel.todayEvents.count
         case 2:
             return 1
         default:
@@ -30,6 +30,7 @@ extension DoorPersonViewController {
         case 0:
             let sectionLabelCell: SectionHeaderCell = collectionView.dequeueReusableCell(withReuseIdentifier: SectionHeaderCell.cellID, for: indexPath) as! SectionHeaderCell
             sectionLabelCell.delegate = self
+            sectionLabelCell.detailLabel.text = self.doorPersonViemodel.todayEvents.isEmpty == true ? "" : "Today's Events"
             sectionLabelCell.sectionHeaderLabel.text = "My Events"
             self.doorPersonViemodel.fetchUser { [weak self] (_) in
                 DispatchQueue.main.async {
@@ -94,16 +95,26 @@ extension DoorPersonViewController {
     }
 
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height: CGFloat = indexPath.section == 0 ? 140 : 100
-        let width: CGFloat = indexPath.section == 0 ? UIScreen.main.bounds.width : UIScreen.main.bounds.width - 40
-        return CGSize(width: width, height: height)
+        let cellSize = CGSize(width: UIScreen.main.bounds.width - 40, height: 100)
+        switch indexPath.section {
+        case 0:
+            let height: CGFloat = self.doorPersonViemodel.todayEvents.count == 0 ? 80 : 140
+            return CGSize(width: UIScreen.main.bounds.width, height: height)
+        case 1:
+            return cellSize
+        case 2:
+            return CGSize(width: UIScreen.main.bounds.width, height: 80.0)
+        default:
+            return cellSize
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        if indexPath.section > 0 {
-            self.showScanner(forTicketIndex: indexPath.item)
+        if indexPath.section == 0 || indexPath.section == 2 {
+            return
         }
+        self.showScanner(forTicketIndex: indexPath.item, section: indexPath.section)
     }
 
 }

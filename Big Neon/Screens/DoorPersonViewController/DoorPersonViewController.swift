@@ -144,10 +144,11 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         self.navigationController?.push(ProfileViewController())
     }
     
-    internal func showScanner(forTicketIndex ticketIndex: Int) {
+    internal func showScanner(forTicketIndex ticketIndex: Int, section: Int) {
+        
         let scannerVC = ScannerViewController(fetcher: guestsFetcher)
         scannerVC.modalPresentationStyle = .fullScreen
-        scannerVC.event = self.doorPersonViemodel.eventCoreData[ticketIndex]
+        scannerVC.event = section == 1 ? self.doorPersonViemodel.todayEvents[ticketIndex] : self.doorPersonViemodel.upcomingEvents[ticketIndex]
         let scannerNavVC = UINavigationController(rootViewController: scannerVC)
         scannerNavVC.modalPresentationStyle = .fullScreen
         self.present(scannerNavVC, animated: true, completion: nil)
