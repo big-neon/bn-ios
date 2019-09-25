@@ -14,7 +14,7 @@ final class GuestListViewController: BaseViewController, UITableViewDataSource, 
 
     weak var delegate: ScannerViewDelegate?
     var guestsDictionary: [String: [RedeemableTicket]] = [:]
-//    var guestSectionTitles = [String]()
+    //: Alphabetic List Removal     -   var guestSectionTitles = [String]()
     var filteredLocalSearchResults: [RedeemableTicket] = []
     
     var isShortFormEnabled = true
@@ -56,6 +56,8 @@ final class GuestListViewController: BaseViewController, UITableViewDataSource, 
             guestsDictionary.removeAll()
             
             /*
+             Alphabetic guest list removal
+             
             for guest in guests {
                 let guestKey = String(guest.firstName.prefix(1).uppercased())
                 if var guestValues = guestsDictionary[guestKey] {
@@ -81,8 +83,11 @@ final class GuestListViewController: BaseViewController, UITableViewDataSource, 
             configureNavBar()
             configureView()
             guestsDictionary.removeAll()
-//            self.guestSectionTitles = [String](guestsDictionary.keys)
-//            self.guestSectionTitles = guestSectionTitles.sorted(by: { $0 < $1 })
+            /*
+             Alphabetic List Removal
+            self.guestSectionTitles = [String](guestsDictionary.keys)
+            self.guestSectionTitles = guestSectionTitles.sorted(by: { $0 < $1 })
+            */
         }
     }
 

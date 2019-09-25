@@ -79,11 +79,13 @@ extension GuestListViewController: SwipeActionTransitioning {
         guestCell.ticketTypeNameLabel.text = price.dollarString + " | " + guestValues!.ticketType + " | " + ticketID
         
         if guestValues!.status == TicketStatus.purchased.rawValue {
-            guestCell.ticketStateView.backgroundColor = DateConfig.eventDateIsToday(eventStartDate: guestValues!.eventStart) == true ? UIColor.brandGreen : UIColor.white
+            guestCell.ticketStateView.isHidden = !DateConfig.eventDateIsToday(eventStartDate: guestValues!.eventStart) //== true ? false : true
+            guestCell.ticketStateView.backgroundColor = UIColor.brandGreen
             let buttonValue = DateConfig.eventDateIsToday(eventStartDate: guestValues!.eventStart) == true ? "PURCHASED" : "-"
             guestCell.ticketStateView.setTitle(buttonValue, for: UIControl.State.normal)
         } else {
-            guestCell.ticketStateView.backgroundColor = DateConfig.eventDateIsToday(eventStartDate: guestValues!.eventStart) == true ? UIColor.brandBlack : UIColor.white
+            guestCell.ticketStateView.isHidden = !DateConfig.eventDateIsToday(eventStartDate: guestValues!.eventStart) //== true ? false : UIColor.white
+            guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
             let buttonValue = DateConfig.eventDateIsToday(eventStartDate: guestValues!.eventStart) == true ? "REDEEMED" : "-"
             guestCell.ticketStateView.setTitle(buttonValue, for: UIControl.State.normal)
         }
