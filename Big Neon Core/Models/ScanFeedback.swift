@@ -9,4 +9,5 @@ public enum ScanFeedback: String {
     case ticketNotFound
     case wrongEvent
     case validTicketID
+    case notEventDate
 }

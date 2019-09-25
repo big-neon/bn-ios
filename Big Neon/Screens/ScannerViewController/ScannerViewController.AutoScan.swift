@@ -46,7 +46,6 @@ extension ScannerViewController {
                 }
                 
                 UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
-                    
                     self?.showScannedUser(feedback: scanFeedback, ticket: ticket)
                     self?.view.layoutIfNeeded()
                 }, completion: { (completed) in
@@ -68,6 +67,7 @@ extension ScannerViewController {
             playSuccessSound(forValidTicket: true)
             scannerViewModel?.redeemedTicket = ticket
             scannedUserView.redeemableTicket = ticket
+            scannedUserView.scanFeedback = feedFound
         }
         
         scannedUserView.scanFeedback = feedFound

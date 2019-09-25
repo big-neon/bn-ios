@@ -128,6 +128,12 @@ final class TicketScannerViewModel {
                         return
                     }
                     
+                    
+                    if !DateConfig.eventDateIsToday(eventStartDate: ticket.eventStart) {
+                        completion(.notEventDate, nil, redeemTicket)
+                        return
+                    }
+                    
                     if self.scanVC?.event?.id == nil && eventID == nil {
                         AnalyticsService.reportError(errorType: ErrorType.scanning, error: errorString ?? "")
                         completion(.issueFound, errorString, redeemTicket)
