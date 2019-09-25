@@ -56,6 +56,9 @@ extension ScannerViewController {
     }
 
     func showScannedUser(feedback: ScanFeedback?, ticket: RedeemableTicket?) {
+        
+        print(ticket)
+        
         var feedFound = feedback
         if ticket?.eventName != self.event?.name {
             self.playSuccessSound(forValidTicket: false)
