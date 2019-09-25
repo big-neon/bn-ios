@@ -94,7 +94,6 @@
 		C69370FB228F06D2004EBC12 /* GuestListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69370FA228F06D2004EBC12 /* GuestListViewController.swift */; };
 		C69370FD228F3570004EBC12 /* GuestListViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69370FC228F3570004EBC12 /* GuestListViewController.TableView.swift */; };
 		C6937100228F411B004EBC12 /* GuestListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69370FF228F411B004EBC12 /* GuestListHeaderView.swift */; };
-		C6937102228F4BDA004EBC12 /* GuestListNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6937101228F4BDA004EBC12 /* GuestListNavigationController.swift */; };
 		C6937104228F52E7004EBC12 /* GuestListViewController.SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6937103228F52E7004EBC12 /* GuestListViewController.SearchController.swift */; };
 		C6937106228F6DF3004EBC12 /* ShowGuestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6937105228F6DF3004EBC12 /* ShowGuestListView.swift */; };
 		C694D25A21D0BFE600B2AE07 /* ApplicationRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */; };
@@ -315,7 +314,6 @@
 		C69370FA228F06D2004EBC12 /* GuestListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListViewController.swift; sourceTree = "<group>"; };
 		C69370FC228F3570004EBC12 /* GuestListViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListViewController.TableView.swift; sourceTree = "<group>"; };
 		C69370FF228F411B004EBC12 /* GuestListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListHeaderView.swift; sourceTree = "<group>"; };
-		C6937101228F4BDA004EBC12 /* GuestListNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListNavigationController.swift; sourceTree = "<group>"; };
 		C6937103228F52E7004EBC12 /* GuestListViewController.SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListViewController.SearchController.swift; sourceTree = "<group>"; };
 		C6937105228F6DF3004EBC12 /* ShowGuestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowGuestListView.swift; sourceTree = "<group>"; };
 		C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouting.swift; sourceTree = "<group>"; };
@@ -756,7 +754,6 @@
 			children = (
 				C6CD1C2122AA89BA009D7510 /* GuestsListViewModel.swift */,
 				C69370FF228F411B004EBC12 /* GuestListHeaderView.swift */,
-				C6937101228F4BDA004EBC12 /* GuestListNavigationController.swift */,
 				C69370FA228F06D2004EBC12 /* GuestListViewController.swift */,
 				C68A9FD822D34995006535B8 /* GuestListViewController.Offline.swift */,
 				C6937103228F52E7004EBC12 /* GuestListViewController.SearchController.swift */,
@@ -1516,7 +1513,6 @@
 				C623C0722251E3C80020D0A8 /* EventDetailCell.swift in Sources */,
 				C683232921FF07FE002342AE /* ProfileEditViewController.swift in Sources */,
 				C623C06F2251E3A90020D0A8 /* HotWeekCell.swift in Sources */,
-				C6937102228F4BDA004EBC12 /* GuestListNavigationController.swift in Sources */,
 				C6C4E9A92302D2810040C258 /* Extensions.swift in Sources */,
 				C6E648532240D088000F2DFB /* ScannerViewController.swift in Sources */,
 				C6C4E9A42302D2810040C258 /* SwipeCollectionViewCell+Accessibility.swift in Sources */,

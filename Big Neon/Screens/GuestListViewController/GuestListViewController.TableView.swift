@@ -8,25 +8,32 @@ import AudioToolbox
 extension GuestListViewController: SwipeActionTransitioning {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-//        guard self.isSearching else {
-//            return guestSectionTitles.count
-//        }
+        /*
+         Alphabetic List Removal
+         
+        guard self.isSearching else {
+            return guestSectionTitles.count
+        }
+         */
         return 1
     }
     
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        guard self.isSearching else {
-//            return guestSectionTitles[section].uppercased()
-//        }
-//        return nil
-//    }
+    /*
+     Alphabetic List Removal
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard self.isSearching else {
+            return guestSectionTitles[section].uppercased()
+        }
+        return nil
+    }
     
-//    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-//        guard self.isSearching else {
-//            return guestSectionTitles
-//        }
-//        return nil
-//    }
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        guard self.isSearching else {
+            return guestSectionTitles
+        }
+        return nil
+    }
+    */
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -52,8 +59,8 @@ extension GuestListViewController: SwipeActionTransitioning {
         if self.isSearching == true && !self.guestViewModel.guestSearchResults.isEmpty {
             guestValues = self.guestViewModel.guestSearchResults[indexPath.row]
         } else {
-//            let guestKey = guestSectionTitles[indexPath.section]
-            guestValues = self.guestViewModel.ticketsFetched[indexPath.row] //    guestsDictionary[guestKey]![indexPath.row]
+            //: Alphabetic List Removal: let guestKey = guestSectionTitles[indexPath.section]
+            guestValues = self.guestViewModel.ticketsFetched[indexPath.row] //: Alphabetic List Removal    guestsDictionary[guestKey]![indexPath.row]
         }
         
         if guestValues == nil {
@@ -94,15 +101,15 @@ extension GuestListViewController: SwipeActionTransitioning {
         if self.isSearching == true && !self.guestViewModel.guestSearchResults.isEmpty {
             ticket = self.guestViewModel.guestSearchResults[indexPath.row]
         } else {
-//            let guestKey = guestSectionTitles[indexPath.section]
-            ticket = self.guestViewModel.ticketsFetched[indexPath.row]  // guestsDictionary[guestKey]![indexPath.row]
+            //: Alphabetic List Removal     -   let guestKey = guestSectionTitles[indexPath.section]
+            ticket = self.guestViewModel.ticketsFetched[indexPath.row]  //: Alphabetic List Removal     guestsDictionary[guestKey]![indexPath.row]
         }
         self.showGuest(withTicket: ticket, selectedIndex: indexPath)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-//        let guestKey = guestSectionTitles[indexPath.section]
-        let guestValues = self.isSearching == true ? self.guestViewModel.guestSearchResults : self.guestViewModel.ticketsFetched // guestsDictionary[guestKey]
+        //: Alphabetic List Removal     -   let guestKey = guestSectionTitles[indexPath.section]
+        let guestValues = self.isSearching == true ? self.guestViewModel.guestSearchResults : self.guestViewModel.ticketsFetched //: Alphabetic List Removal - guestsDictionary[guestKey]
         return [swipeCellAction(forGuestValues: guestValues, indexPath)]
     }
     
@@ -117,7 +124,7 @@ extension GuestListViewController: SwipeActionTransitioning {
         
         if DateConfig.eventDateIsToday(eventStartDate: ticket.eventStart) == false {
             let checkinAction = SwipeAction(style: .default, title: "") { action, indexPath in
-                //  No Action
+                //  No Action - Not the date of the event
             }
             
             checkinAction.fulfill(with: ExpansionFulfillmentStyle.reset)
@@ -166,8 +173,11 @@ extension GuestListViewController: SwipeActionTransitioning {
     
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
         
-//        let guestKey = guestSectionTitles[indexPath.section]
-        let guestValues = self.isSearching == true ? self.guestViewModel.guestSearchResults : self.guestViewModel.ticketsFetched   //  guestsDictionary[guestKey]
+        /*
+         Alphabetic List Removal
+         let guestKey = guestSectionTitles[indexPath.section]let guestKey = guestSectionTitles[indexPath.section]
+         */
+        let guestValues = self.isSearching == true ? self.guestViewModel.guestSearchResults : self.guestViewModel.ticketsFetched   //: Alphabetic List Removal  guestsDictionary[guestKey]
         let ticket = guestValues[indexPath.row]
        
         if DateConfig.eventDateIsToday(eventStartDate: ticket.eventStart) == false {
@@ -200,7 +210,6 @@ extension GuestListViewController: SwipeActionTransitioning {
         }
     }
     
-    //  Prefetching Rows in TableView
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         if let lastRow = indexPaths.last?.row, let totalGuests = self.guestViewModel.totalGuests {
            
@@ -216,7 +225,7 @@ extension GuestListViewController: SwipeActionTransitioning {
             }
             
             /*
-             Alphabetic List View
+             Alphabetic List Removed Code
              if lastSection >= guestSectionTitles.count - 1 && lastRow >= self.guestViewModel.currentTotalGuests - 20 {
                  fetchNextPage(withIndexPaths: indexPaths)
                  return
