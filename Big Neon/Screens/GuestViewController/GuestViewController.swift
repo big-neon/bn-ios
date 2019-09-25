@@ -15,7 +15,7 @@ extension GuestViewController: PanModalPresentable {
     }
     
     var shortFormHeight: PanModalHeight {
-        return .contentHeight(390)
+        return .contentHeight(410)
     }
 
     var longFormHeight: PanModalHeight {
@@ -49,6 +49,7 @@ class GuestViewController: BaseViewController {
             } else {
                 ticketEmailPhoneLabel.text = ticket.email ?? ""
             }
+            
             
             
             if ticket.status == TicketStatus.purchased.rawValue {
@@ -85,7 +86,7 @@ class GuestViewController: BaseViewController {
                 }
 
                 redeemedTimeAgoLabel.text = "Redeemed: " + redeemedDate.getElapsed()
-
+                redeemedTimeLabel.text = DateConfig.fullDateFormat(date: redeemedDate)
             }
             
             self.enableCheckinButton()
@@ -159,6 +160,15 @@ class GuestViewController: BaseViewController {
         return label
     }()
     
+    lazy var redeemedTimeLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.textColor = UIColor.brandGrey
+        label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     lazy var completeCheckinButton: TransitionButton = {
         let button = TransitionButton()
         button.layer.cornerRadius = 4.0
@@ -199,6 +209,7 @@ class GuestViewController: BaseViewController {
         
         view.addSubview(lineView)
         view.addSubview(redeemedTimeAgoLabel)
+        view.addSubview(redeemedTimeLabel)
         view.addSubview(completeCheckinButton)
         view.addSubview(redeemedByLabel)
         
@@ -237,13 +248,18 @@ class GuestViewController: BaseViewController {
         redeemedTimeAgoLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
         redeemedTimeAgoLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twentyFour).isActive = true
         
-        redeemedByLabel.topAnchor.constraint(equalTo: redeemedTimeAgoLabel.bottomAnchor, constant: LayoutSpec.Spacing.twelve).isActive = true
+        redeemedTimeLabel.topAnchor.constraint(equalTo: redeemedTimeAgoLabel.bottomAnchor, constant: LayoutSpec.Spacing.twelve).isActive = true
+        redeemedTimeLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
+        redeemedTimeLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
+        redeemedTimeLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twenty).isActive = true
+        
+        redeemedByLabel.topAnchor.constraint(equalTo: redeemedTimeLabel.bottomAnchor, constant: LayoutSpec.Spacing.twelve).isActive = true
         redeemedByLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
         redeemedByLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
         redeemedByLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twenty).isActive = true
         
         //  Completed
-        completeCheckinButton.topAnchor.constraint(equalTo: redeemedTimeAgoLabel.bottomAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
+        completeCheckinButton.topAnchor.constraint(equalTo: redeemedTimeLabel.bottomAnchor, constant: LayoutSpec.Spacing.eight).isActive = true
         completeCheckinButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
         completeCheckinButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
         completeCheckinButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
