@@ -8,25 +8,25 @@ import AudioToolbox
 extension GuestListViewController: SwipeActionTransitioning {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        guard self.isSearching else {
-            return guestSectionTitles.count
-        }
+//        guard self.isSearching else {
+//            return guestSectionTitles.count
+//        }
         return 1
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard self.isSearching else {
-            return guestSectionTitles[section].uppercased()
-        }
-        return nil
-    }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        guard self.isSearching else {
+//            return guestSectionTitles[section].uppercased()
+//        }
+//        return nil
+//    }
     
-    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        guard self.isSearching else {
-            return guestSectionTitles
-        }
-        return nil
-    }
+//    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+//        guard self.isSearching else {
+//            return guestSectionTitles
+//        }
+//        return nil
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -34,11 +34,13 @@ extension GuestListViewController: SwipeActionTransitioning {
             return self.guestViewModel.guestSearchResults.count
         }
         
+        /*
         let guestKey = guestSectionTitles[section]
         if let guestValues = guestsDictionary[guestKey] {
             return guestValues.count
         }
-        return 0
+        */
+        return self.guestViewModel.ticketsFetched.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -50,8 +52,8 @@ extension GuestListViewController: SwipeActionTransitioning {
         if self.isSearching == true && !self.guestViewModel.guestSearchResults.isEmpty {
             guestValues = self.guestViewModel.guestSearchResults[indexPath.row]
         } else {
-            let guestKey = guestSectionTitles[indexPath.section]
-            guestValues = guestsDictionary[guestKey]![indexPath.row]
+//            let guestKey = guestSectionTitles[indexPath.section]
+            guestValues = self.guestViewModel.ticketsFetched[indexPath.row] //    guestsDictionary[guestKey]![indexPath.row]
         }
         
         if guestValues == nil {
@@ -92,16 +94,16 @@ extension GuestListViewController: SwipeActionTransitioning {
         if self.isSearching == true && !self.guestViewModel.guestSearchResults.isEmpty {
             ticket = self.guestViewModel.guestSearchResults[indexPath.row]
         } else {
-            let guestKey = guestSectionTitles[indexPath.section]
-            ticket = guestsDictionary[guestKey]![indexPath.row]
+//            let guestKey = guestSectionTitles[indexPath.section]
+            ticket = self.guestViewModel.ticketsFetched[indexPath.row]  // guestsDictionary[guestKey]![indexPath.row]
         }
         self.showGuest(withTicket: ticket, selectedIndex: indexPath)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        let guestKey = guestSectionTitles[indexPath.section]
-        let guestValues = self.isSearching == true ? self.guestViewModel.guestSearchResults :  guestsDictionary[guestKey]
-        return [swipeCellAction(forGuestValues: guestValues!, indexPath)]
+//        let guestKey = guestSectionTitles[indexPath.section]
+        let guestValues = self.isSearching == true ? self.guestViewModel.guestSearchResults : self.guestViewModel.ticketsFetched // guestsDictionary[guestKey]
+        return [swipeCellAction(forGuestValues: guestValues, indexPath)]
     }
     
     func swipeCellAction(forGuestValues guestValues: [RedeemableTicket],_ indexPath: IndexPath) -> SwipeAction {
@@ -164,9 +166,9 @@ extension GuestListViewController: SwipeActionTransitioning {
     
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
         
-        let guestKey = guestSectionTitles[indexPath.section]
-        let guestValues = self.isSearching == true ? self.guestViewModel.guestSearchResults :  guestsDictionary[guestKey]
-        let ticket = guestValues![indexPath.row]
+//        let guestKey = guestSectionTitles[indexPath.section]
+        let guestValues = self.isSearching == true ? self.guestViewModel.guestSearchResults : self.guestViewModel.ticketsFetched   //  guestsDictionary[guestKey]
+        let ticket = guestValues[indexPath.row]
        
         if DateConfig.eventDateIsToday(eventStartDate: ticket.eventStart) == false {
             var options = SwipeOptions()
@@ -200,7 +202,7 @@ extension GuestListViewController: SwipeActionTransitioning {
     
     //  Prefetching Rows in TableView
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        if let lastSection = indexPaths.last?.section, let lastRow = indexPaths.last?.row, let totalGuests = self.guestViewModel.totalGuests {
+        if let lastRow = indexPaths.last?.row, let totalGuests = self.guestViewModel.totalGuests {
            
             //  No neeed to fetch more. Guests are less than 100
             if totalGuests <= 100 {
@@ -208,10 +210,18 @@ extension GuestListViewController: SwipeActionTransitioning {
             }
             
             //  Last Section and Last Row - Fetch more guests
-            if lastSection >= guestSectionTitles.count - 1 && lastRow >= self.guestViewModel.currentTotalGuests - 20 {
+            if lastRow >= self.guestViewModel.currentTotalGuests - 20 {
                 fetchNextPage(withIndexPaths: indexPaths)
                 return
             }
+            
+            /*
+             Alphabetic List View
+             if lastSection >= guestSectionTitles.count - 1 && lastRow >= self.guestViewModel.currentTotalGuests - 20 {
+                 fetchNextPage(withIndexPaths: indexPaths)
+                 return
+             }
+             */
         }
     }
     

@@ -15,7 +15,7 @@ extension GuestViewController: PanModalPresentable {
     }
     
     var shortFormHeight: PanModalHeight {
-        return .contentHeight(360)
+        return .contentHeight(390)
     }
 
     var longFormHeight: PanModalHeight {
@@ -44,6 +44,12 @@ class GuestViewController: BaseViewController {
             let price = Int(ticket.priceInCents)
             let ticketID = "#" + ticket.id.suffix(8).uppercased()
             ticketTypeLabel.text = price.dollarString + " | " + ticket.ticketType + " | " + ticketID
+            if let phone = ticket.phone {
+                ticketEmailPhoneLabel.text = ticket.email ?? "" + " " + phone
+            } else {
+                ticketEmailPhoneLabel.text = ticket.email ?? ""
+            }
+            
             
             if ticket.status == TicketStatus.purchased.rawValue {
                 ticketTagView.backgroundColor = UIColor.brandGreen
@@ -102,6 +108,15 @@ class GuestViewController: BaseViewController {
        label.translatesAutoresizingMaskIntoConstraints = false
        return label
    }()
+    
+    lazy var ticketEmailPhoneLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.textColor = UIColor.brandGrey
+        label.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
    
    lazy var ticketTypeLabel: UILabel = {
        let label = UILabel()
@@ -179,6 +194,7 @@ class GuestViewController: BaseViewController {
         view.addSubview(userImageView)
         view.addSubview(userNameLabel)
         view.addSubview(ticketTypeLabel)
+        view.addSubview(ticketEmailPhoneLabel)
         view.addSubview(ticketTagView)
         
         view.addSubview(lineView)
@@ -186,7 +202,7 @@ class GuestViewController: BaseViewController {
         view.addSubview(completeCheckinButton)
         view.addSubview(redeemedByLabel)
         
-        userImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: LayoutSpec.Spacing.thirtyTwo).isActive = true
+        userImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: LayoutSpec.Spacing.twentyFour).isActive = true
         userImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         userImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         userImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
@@ -201,8 +217,13 @@ class GuestViewController: BaseViewController {
         ticketTypeLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
         ticketTypeLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twenty).isActive = true
         
+        ticketEmailPhoneLabel.topAnchor.constraint(equalTo: ticketTypeLabel.bottomAnchor, constant: LayoutSpec.Spacing.eight).isActive = true
+        ticketEmailPhoneLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
+        ticketEmailPhoneLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
+        ticketEmailPhoneLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twenty).isActive = true
+        
         ticketTagView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        ticketTagView.topAnchor.constraint(equalTo: ticketTypeLabel.bottomAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
+        ticketTagView.topAnchor.constraint(equalTo: ticketEmailPhoneLabel.bottomAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
         ticketTagView.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twentyFour).isActive = true
         ticketTagView.widthAnchor.constraint(equalToConstant: 88).isActive = true
 
@@ -312,12 +333,15 @@ class GuestViewController: BaseViewController {
             guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
         }
         
+        /*
         let guestKey = self.guestListVC?.guestSectionTitles[indexPath.section]
         let guestValues = self.guestListVC?.isSearching == true ? self.guestListVC?.guestViewModel.guestSearchResults :  self.guestListVC?.guestsDictionary[guestKey!]
         guestValues![indexPath.row].status = TicketStatus.Redeemed.rawValue
         
+        
         //  Update the Current Ticket
         self.redeemableTicket = guestValues![indexPath.row]
+         */
     }
     
     @objc func doNothing() {

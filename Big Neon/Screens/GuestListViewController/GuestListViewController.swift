@@ -4,18 +4,17 @@ import Foundation
 import UIKit
 import Big_Neon_Core
 import Big_Neon_UI
-import PanModal
 import Sync
 
 protocol GuestListViewDelegate: class {
     func reloadGuests()
 }
 
-final class GuestListViewController: BaseViewController, PanModalPresentable, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, GuestListViewDelegate, UITableViewDataSourcePrefetching, SwipeTableViewCellDelegate {
+final class GuestListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, GuestListViewDelegate, UITableViewDataSourcePrefetching, SwipeTableViewCellDelegate {
 
     weak var delegate: ScannerViewDelegate?
     var guestsDictionary: [String: [RedeemableTicket]] = [:]
-    var guestSectionTitles = [String]()
+//    var guestSectionTitles = [String]()
     var filteredLocalSearchResults: [RedeemableTicket] = []
     
     var isShortFormEnabled = true
@@ -56,6 +55,7 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
             configureView()
             guestsDictionary.removeAll()
             
+            /*
             for guest in guests {
                 let guestKey = String(guest.firstName.prefix(1).uppercased())
                 if var guestValues = guestsDictionary[guestKey] {
@@ -68,6 +68,7 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
             
             self.guestSectionTitles = [String](guestsDictionary.keys)
             self.guestSectionTitles = guestSectionTitles.sorted(by: { $0 < $1 })
+            */
         }
     }
     
@@ -80,8 +81,8 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
             configureNavBar()
             configureView()
             guestsDictionary.removeAll()
-            self.guestSectionTitles = [String](guestsDictionary.keys)
-            self.guestSectionTitles = guestSectionTitles.sorted(by: { $0 < $1 })
+//            self.guestSectionTitles = [String](guestsDictionary.keys)
+//            self.guestSectionTitles = guestSectionTitles.sorted(by: { $0 < $1 })
         }
     }
 
@@ -223,14 +224,6 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
         guestTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         guestTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         guestTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-    }
-    
-    var panScrollable: UIScrollView? {
-        return guestTableView
-    }
-    
-    var shortFormHeight: PanModalHeight {
-        return .contentHeight(900)
     }
     
     func panModalWillDismiss() {

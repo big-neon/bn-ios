@@ -15,8 +15,8 @@ extension ScannerViewController {
             guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
         }
         
-        let guestKey = self.guestListVC?.guestSectionTitles[indexPath.section]
-        let guestValues = self.guestListVC?.isSearching == true ? self.guestListVC?.guestViewModel.guestSearchResults :  self.guestListVC?.guestsDictionary[guestKey!]
+//        let guestKey = self.guestListVC?.guestSectionTitles[indexPath.section]
+        let guestValues = self.guestListVC?.isSearching == true ? self.guestListVC?.guestViewModel.guestSearchResults : self.guestListVC?.guestViewModel.ticketsFetched    //  self.guestListVC?.guestsDictionary[guestKey!]
         guestValues![indexPath.row].status = TicketStatus.Redeemed.rawValue
     }
     
