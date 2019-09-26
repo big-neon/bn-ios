@@ -22,14 +22,39 @@ extension DoorPersonViewController {
     }
     
     func orderEventsByDate() {
-        self.doorPersonViemodel.eventCoreData.sort(by: { DateConfig.dateFromUTCString(stringDate: $0.event_start!)! > DateConfig.dateFromUTCString(stringDate: $1.event_start!)!})
+        
+        self.doorPersonViemodel.eventCoreData.sort(by: {
+            guard let firstEvent = $0.event_start,
+                let firstDate = DateConfig.dateFromUTCString(stringDate: firstEvent),
+                let secondEvent = $1.event_start,
+                let endDate = DateConfig.dateFromUTCString(stringDate: secondEvent) else {
+                return false
+            }
+            return firstDate > endDate
+        })
         
         //  Get Events Occuring Today
-        self.doorPersonViemodel.todayEvents
-            = self.doorPersonViemodel.eventCoreData.filter{ DateConfig.eventDate(date: DateConfig.dateFromUTCString(stringDate: $0.event_start!)!) == DateConfig.eventDate(date: Date()) }
+        self.doorPersonViemodel.todayEvents = self.doorPersonViemodel.eventCoreData.filter {
+//                DateConfig.eventDate(date: DateConfig.dateFromUTCString(stringDate: $0.event_start!)!) == DateConfig.eventDate(date: Date())
+                
+                guard let firstEvent = $0.event_start,
+                    let firstDate = DateConfig.dateFromUTCString(stringDate: firstEvent) else {
+                    return false
+                }
+                return DateConfig.eventDate(date: firstDate) == DateConfig.eventDate(date: Date())
+                
+        }
         
         //  Get Other events
-        self.doorPersonViemodel.upcomingEvents = self.doorPersonViemodel.eventCoreData.filter{ DateConfig.eventDate(date: DateConfig.dateFromUTCString(stringDate: $0.event_start!)!) != DateConfig.eventDate(date: Date()) }
+        self.doorPersonViemodel.upcomingEvents = self.doorPersonViemodel.eventCoreData.filter{
+//            DateConfig.eventDate(date: DateConfig.dateFromUTCString(stringDate: $0.event_start!)!) != DateConfig.eventDate(date: Date())
+            guard let firstEvent = $0.event_start,
+                let firstDate = DateConfig.dateFromUTCString(stringDate: firstEvent) else {
+                return false
+            }
+            return DateConfig.eventDate(date: firstDate) != DateConfig.eventDate(date: Date())
+            
+        }
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
