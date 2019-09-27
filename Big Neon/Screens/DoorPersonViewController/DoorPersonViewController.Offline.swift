@@ -50,7 +50,7 @@ extension DoorPersonViewController {
                 let firstDate = DateConfig.dateFromUTCString(stringDate: firstEvent) else {
                 return false
             }
-            return DateConfig.eventDate(date: firstDate) < DateConfig.eventDate(date: Date())
+            return DateConfig.eventDate(date: firstDate) != DateConfig.eventDate(date: Date())
             
         }
     }

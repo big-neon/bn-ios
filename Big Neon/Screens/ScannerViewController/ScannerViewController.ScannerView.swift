@@ -62,12 +62,20 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                 let lastScannedTime = self.lastScannedTicketTime  {
                 
                 let timeDelaySeconds = BundleInfo.fetchScanSeconds()
-                if metaDataString == scannedMetaString || Date() < Date.init(timeInterval: TimeInterval(timeDelaySeconds), since: lastScannedTime) {
+//                if metaDataString == scannedMetaString || Date() < Date.init(timeInterval: TimeInterval(timeDelaySeconds), since: lastScannedTime) {
 //                    self.checkingTicket(ticketID: ticketID, scannerMode: self.scannerViewModel?.scannerMode())
-                    return
+//                    return
+//                }
+                
+                if let lastScannedTimer = self.lastScannedTicketTimer {
+                    if metaDataString == scannedMetaString && lastScannedTimer.isValid {
+                        return
+                    }
                 }
                 
+                
                 if Date() < Date.init(timeInterval: TimeInterval(timeDelaySeconds), since: lastScannedTime) {
+                    //  Date of Last scan is less than the current time + 5 seconds
                     return
                 }
             }

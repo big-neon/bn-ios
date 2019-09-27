@@ -152,6 +152,8 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     
     lazy var scannedUserView: LastScannedUserView = {
         let view =  LastScannedUserView()
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showRedeemedTicket)))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

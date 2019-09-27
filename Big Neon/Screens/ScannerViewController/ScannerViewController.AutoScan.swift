@@ -40,8 +40,10 @@ extension ScannerViewController {
             
                 if scanFeedback == .alreadyRedeemed {
                     if let ticket = ticket {
-                        self?.showRedeemedTicket(forTicket: ticket)
+//                        self?.showRedeemedTicket(forTicket: ticket)
+                        self?.showScannedUser(feedback: .alreadyRedeemed, ticket: ticket)
                     }
+                    
                     return
                 }
                 
@@ -77,7 +79,7 @@ extension ScannerViewController {
         scannerModeView.layer.opacity = 1.0
         scannedUserBottomAnchor?.constant = -90.0
         manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
-        generator.notificationOccurred(.success)
+//        generator.notificationOccurred(.success)
         
     }
     
