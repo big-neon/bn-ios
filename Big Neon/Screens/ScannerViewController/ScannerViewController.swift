@@ -46,7 +46,8 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     var displayedScannedUser: Bool = false {
         didSet {
             if displayedScannedUser == true {
-                lastScannedTicketTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(hideScannedUser), userInfo: nil, repeats: false)
+                let timeDelaySeconds = Double(BundleInfo.fetchScanViewDimissSeconds())
+                lastScannedTicketTimer = Timer.scheduledTimer(timeInterval: timeDelaySeconds, target: self, selector: #selector(hideScannedUser), userInfo: nil, repeats: false)
             }
         }
     }

@@ -19,6 +19,14 @@ public class BundleInfo {
         return secondsValue
     }
     
+    
+    class func fetchScanViewDimissSeconds() -> Int {
+        guard let secondsValue = infoDict["scanned_dismiss_seconds"] as? Int else {
+            return 5
+        }
+        return secondsValue
+    }
+    
     class func fetchVersionNumber() -> String {
         guard let versionNumber = infoDict["CFBundleShortVersionString"] as? String else {
             return ""

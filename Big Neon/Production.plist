@@ -61,6 +61,8 @@
 	<string>$(protocol)</string>
 	<key>scan_delay_seconds</key>
 	<string>5</string>
+	<key>scanned_dismiss_seconds</key>
+	<string>5</string>
 	<key>server_url</key>
 	<string>$(server_url)</string>
 </dict>
