@@ -290,12 +290,13 @@ class GuestViewController: BaseViewController {
                 
                 guard let self = self else { return }
                 
-                //  Update the Redeemed Ticket
-                self.redeemableTicket = ticket
-                
                 //  Stop Animating the Button
                 self.completeCheckinButton.stopAnimation(animationStyle: .normal, revertAfterDelay: 0.0) {
                     self.completeCheckinButton.layer.cornerRadius = 6.0
+                    
+                    //  Update the Redeemed Ticket
+                    self.redeemableTicket = ticket
+                    print(ticket?.status)
                     
                     //  Checking from Guestlist
                     if fromGuestListVC == true {
