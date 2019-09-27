@@ -71,6 +71,9 @@ final class TicketScannerViewModel {
     func getRedeemTicket(ticketID: String, completion: @escaping(ScanFeedback?, String?) -> Void) {
         BusinessService.shared.database.getRedeemTicket(forTicketID: ticketID) { (scanFeedback, errorString, redeemTicket) in
             DispatchQueue.main.async {
+                
+                self.scanVC?.scannedTicket = redeemTicket
+                
                 switch scanFeedback {
                 case .alreadyRedeemed?:
                     completion(.alreadyRedeemed, errorString)
@@ -83,7 +86,6 @@ final class TicketScannerViewModel {
                     completion(.wrongEvent, errorString)
                     return
                 case .validTicketID?:
-                    self.scanVC?.scannedTicket = redeemTicket
                     completion(.validTicketID, errorString)
                     return
                 default:
@@ -121,6 +123,7 @@ final class TicketScannerViewModel {
         BusinessService.shared.database.getRedeemTicket(forTicketID: ticketID) { (scanFeedback, errorString, redeemTicket) in
             DispatchQueue.main.async {
                 
+                self.scanVC?.scannedTicket = redeemTicket
                 if scanFeedback == .validTicketID {
                     guard let ticket = redeemTicket else {
                         AnalyticsService.reportError(errorType: ErrorType.scanning, error: errorString ?? "")

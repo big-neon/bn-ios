@@ -6,6 +6,8 @@ import Big_Neon_UI
 
 public class LastScannedUserView: UIView {
     
+    var delegate: ScannerViewDelegate?
+    
     var redeemableTicket: RedeemableTicket? {
         didSet {
             guard let ticket = self.redeemableTicket else {
@@ -46,6 +48,8 @@ public class LastScannedUserView: UIView {
     
     public lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showScannedTicket)))
         imageView.image = UIImage(named: "empty_profile")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -55,6 +59,8 @@ public class LastScannedUserView: UIView {
     
     lazy var userNameLabel: UILabel = {
         let label = UILabel()
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showScannedTicket)))
         label.textColor = UIColor.white
         label.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -63,6 +69,8 @@ public class LastScannedUserView: UIView {
     
     lazy var ticketTypeLabel: UILabel = {
         let label = UILabel()
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showScannedTicket)))
         label.textColor = UIColor.brandBackground
         label.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.regular)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -71,6 +79,8 @@ public class LastScannedUserView: UIView {
     
     lazy var ticketScanStateTagView: CheckinTagView = {
         let view = CheckinTagView()
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showScannedTicket)))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -108,6 +118,10 @@ public class LastScannedUserView: UIView {
         ticketTypeLabel.rightAnchor.constraint(equalTo: ticketScanStateTagView.leftAnchor, constant: -LayoutSpec.Spacing.twelve).isActive = true
         ticketTypeLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.sixteen).isActive = true
         
+    }
+    
+    @objc func showScannedTicket() {
+        self.delegate?.showRedeemedTicket()
     }
     
     required public init?(coder aDecoder: NSCoder) {

@@ -38,12 +38,10 @@ extension ScannerViewController {
     }
     
     @objc func showRedeemedTicket() {
+        
         guard  let ticket = self.scannedTicket else {
-            
-            
             return
         }
-        print(ticket)
         self.stopScanning = true
         self.isShowingScannedUser = true
         self.scannedTicketID = ticket.id
