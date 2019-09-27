@@ -37,7 +37,6 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         
         if supportedCodeTypes.contains(metadataObj.type) {
             guard let metaDataString = metadataObj.stringValue else {
-                self.generator.notificationOccurred(.error)
                 self.stopScanning = true
                 return
             }
@@ -52,7 +51,6 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             }
             
             guard let ticketID = self.scannerViewModel?.getTicketID(fromStringValue: metaDataString) else {
-                self.generator.notificationOccurred(.error) 
                 self.stopScanning = true
                 return
             }
@@ -72,7 +70,6 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                         return
                     }
                 }
-                
                 
                 if Date() < Date.init(timeInterval: TimeInterval(timeDelaySeconds), since: lastScannedTime) {
                     //  Date of Last scan is less than the current time + 5 seconds

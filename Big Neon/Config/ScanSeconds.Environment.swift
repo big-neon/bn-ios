@@ -14,7 +14,7 @@ public class BundleInfo {
     
     class func fetchScanSeconds() -> Int {
         guard let secondsValue = infoDict["scan_delay_seconds"] as? Int else {
-            return 10
+            return 3
         }
         return secondsValue
     }
