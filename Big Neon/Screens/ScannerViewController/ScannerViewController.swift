@@ -41,6 +41,16 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     //  Last Scanned Ticked Time
     var lastScannedTicketTime: Date?
     
+    //  Scanned Time
+    var lastScannedTicketTimer: Timer?
+    var displayedScannedUser: Bool = false {
+        didSet {
+            if displayedScannedUser == true {
+                lastScannedTicketTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(hideScannedUser), userInfo: nil, repeats: false)
+            }
+        }
+    }
+    
     let supportedCodeTypes = [AVMetadataObject.ObjectType.upce,
                               AVMetadataObject.ObjectType.code39,
                               AVMetadataObject.ObjectType.code39Mod43,

@@ -63,7 +63,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                 
                 let timeDelaySeconds = BundleInfo.fetchScanSeconds()
                 if metaDataString == scannedMetaString || Date() < Date.init(timeInterval: TimeInterval(timeDelaySeconds), since: lastScannedTime) {
-                    self.checkingTicket(ticketID: ticketID, scannerMode: self.scannerViewModel?.scannerMode())
+//                    self.checkingTicket(ticketID: ticketID, scannerMode: self.scannerViewModel?.scannerMode())
                     return
                 }
                 
@@ -134,10 +134,12 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         })
     }
     
-    func hideScannedUser() {
+    @objc func hideScannedUser() {
         self.lastScannedTicket = self.scannedTicket
         self.scannedTicket = nil
         self.stopScanning = true
+        self.lastScannedTicketTimer?.invalidate()
+        self.displayedScannedUser = false
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
             self.scannedUserBottomAnchor?.constant = 250.0
             self.blurView?.layer.opacity = 0.0

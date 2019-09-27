@@ -35,7 +35,6 @@ extension DoorPersonViewController {
         
         //  Get Events Occuring Today
         self.doorPersonViemodel.todayEvents = self.doorPersonViemodel.eventCoreData.filter {
-//                DateConfig.eventDate(date: DateConfig.dateFromUTCString(stringDate: $0.event_start!)!) == DateConfig.eventDate(date: Date())
                 
                 guard let firstEvent = $0.event_start,
                     let firstDate = DateConfig.dateFromUTCString(stringDate: firstEvent) else {
@@ -45,14 +44,13 @@ extension DoorPersonViewController {
                 
         }
         
-        //  Get Other events
-        self.doorPersonViemodel.upcomingEvents = self.doorPersonViemodel.eventCoreData.filter{
-//            DateConfig.eventDate(date: DateConfig.dateFromUTCString(stringDate: $0.event_start!)!) != DateConfig.eventDate(date: Date())
+        //  Get Future events
+        self.doorPersonViemodel.upcomingEvents = self.doorPersonViemodel.eventCoreData.filter {
             guard let firstEvent = $0.event_start,
                 let firstDate = DateConfig.dateFromUTCString(stringDate: firstEvent) else {
                 return false
             }
-            return DateConfig.eventDate(date: firstDate) != DateConfig.eventDate(date: Date())
+            return DateConfig.eventDate(date: firstDate) < DateConfig.eventDate(date: Date())
             
         }
     }

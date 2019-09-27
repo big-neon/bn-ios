@@ -57,8 +57,6 @@ extension ScannerViewController {
 
     func showScannedUser(feedback: ScanFeedback?, ticket: RedeemableTicket?) {
         
-        print(ticket)
-        
         var feedFound = feedback
         if ticket?.eventName != self.event?.name {
             self.playSuccessSound(forValidTicket: false)
@@ -74,6 +72,7 @@ extension ScannerViewController {
         }
         
         scannedUserView.scanFeedback = feedFound
+        self.displayedScannedUser = true
         blurView?.layer.opacity = 0.0
         scannerModeView.layer.opacity = 1.0
         scannedUserBottomAnchor?.constant = -90.0

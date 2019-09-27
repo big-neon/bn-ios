@@ -54,7 +54,7 @@ extension DoorPersonViewController {
             return eventCell
         case 2:
             let sectionLabelCell: HomeSectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeSectionCell.cellID, for: indexPath) as! HomeSectionCell
-            sectionLabelCell.sectionLabel.text = "Upcoming Events"
+            sectionLabelCell.sectionLabel.text = self.doorPersonViemodel.upcomingEvents.isEmpty == true ? "No Upcoming Events" : "Upcoming Events"
             return sectionLabelCell
         default:
             let eventCell: DoorPersonCell = collectionView.dequeueReusableCell(withReuseIdentifier: DoorPersonCell.cellID, for: indexPath) as! DoorPersonCell
