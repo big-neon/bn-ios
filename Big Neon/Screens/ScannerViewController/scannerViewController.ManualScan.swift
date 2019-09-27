@@ -43,8 +43,10 @@ extension ScannerViewController {
             return
         }
         self.stopScanning = true
-        self.isShowingScannedUser = true
         self.scannedTicketID = ticket.id
+        if ticket.status == TicketStatus.purchased.rawValue {
+            ticket.status = TicketStatus.Redeemed.rawValue
+        }
         self.showGuest(withTicket: ticket, scannerVC: self, selectedIndex: nil)
     }
     

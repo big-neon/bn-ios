@@ -81,10 +81,10 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             self.scannerViewModel?.scannedMetaString = metaDataString
             
             //  Check if a Scanned User
-            if self.isShowingScannedUser == true {
-                print("Scanner is still showing a user")
-                return
-            }
+//            if self.isShowingScannedUser == true {
+//                print("Scanner is still showing a user")
+//                return
+//            }
             
             self.hideScannedUser()
             self.stopScanning = true
@@ -141,6 +141,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     
     @objc func hideScannedUser() {
         self.lastScannedTicket = self.scannedTicket
+        self.isShowingScannedUser = nil
         self.scannedTicket = nil
         self.stopScanning = true
         self.lastScannedTicketTimer?.invalidate()
