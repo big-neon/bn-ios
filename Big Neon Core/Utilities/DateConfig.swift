@@ -111,7 +111,7 @@ final public class DateConfig {
     
     public class func dateIsInFutureDate(ofDate date: Date) -> Bool {
         if let tomorrowsDate = Calendar.current.date(byAdding: Calendar.Component.hour, value: 24, to: Date()) {
-            return date > tomorrowsDate
+            return date >= tomorrowsDate
         }
         return false
     }
