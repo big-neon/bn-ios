@@ -92,11 +92,28 @@ final public class DateConfig {
         return dateFormatter.string(from: date)
     }
     
-    public class  func fullDateFormat(date: Date) -> String {
+    public class func fullDateFormat(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.current
         dateFormatter.dateFormat = "EEEE dd MMMM - HH:mm"
         return dateFormatter.string(from: date)
+    }
+    
+    public class func  dateIsWithinTwentyFourHours(ofDate date: Date) -> Bool {
+        let interval = Calendar.current.dateComponents([.hour], from: date, to: Date())
+        if let hours = interval.hour {
+            if hours < 24 {
+                return true
+            }
+        }
+        return false
+    }
+    
+    public class func dateIsInFutureDate(ofDate date: Date) -> Bool {
+        if let tomorrowsDate = Calendar.current.date(byAdding: Calendar.Component.hour, value: 24, to: Date()) {
+            return date > tomorrowsDate
+        }
+        return false
     }
    
 }
