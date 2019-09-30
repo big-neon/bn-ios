@@ -96,11 +96,32 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     }
     
     private func checkingTicket(ticketID: String, scannerMode: Bool?) {
+        
+        //  Display the Scanned Pill Here with a Spinner
+        self.showScannedUser()
+        
+        //  Ping the database for data
         if scannerMode == true {
             self.checkinAutomatically(withTicketID: ticketID, fromGuestTableView: false, atIndexPath: nil)
         } else {
             self.checkinManually(withTicketID: ticketID)
         }
+    }
+    
+    func showScannedUser() {
+        
+        scannedUserView.isFetchingData = true
+        displayedScannedUser = true
+        
+        UIView.animate(withDuration: 0.8, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.blurView?.layer.opacity = 0.0
+            self.scannerModeView.layer.opacity = 1.0
+            self.scannedUserBottomAnchor?.constant = -90.0
+            self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+        }, completion: { (completed) in
+            self.generator.notificationOccurred(.success)
+        })
+         
     }
     
     func dismissScannedUserView() {

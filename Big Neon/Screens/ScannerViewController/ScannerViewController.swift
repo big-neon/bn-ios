@@ -336,7 +336,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
             scannedUserView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20.0).isActive = true
         }
 
-        scannedUserBottomAnchor = scannedUserView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 200.0)
+        scannedUserBottomAnchor = scannedUserView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 250.0) 
         scannedUserBottomAnchor?.isActive = true
         scannedUserView.heightAnchor.constraint(equalToConstant: 76.0).isActive = true
     }
