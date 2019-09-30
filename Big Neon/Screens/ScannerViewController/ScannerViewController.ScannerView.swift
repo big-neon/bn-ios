@@ -113,11 +113,11 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         scannedUserView.isFetchingData = true
         displayedScannedUser = true
         
-        UIView.animate(withDuration: 0.8, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.blurView?.layer.opacity = 0.0
+        UIView.animate(withDuration: 0.7, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.scannerModeView.layer.opacity = 1.0
             self.scannedUserBottomAnchor?.constant = -90.0
             self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+            self.view.layoutIfNeeded()
         }, completion: { (completed) in
             self.generator.notificationOccurred(.success)
         })
@@ -133,7 +133,6 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     
     func dismissFeedbackView(feedback: ScanFeedback?) {
         UIView.animate(withDuration: 0.8, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.blurView?.layer.opacity = 0.0
             self.closeButton.layer.opacity = 1.0
             self.scanningBoarderView.layer.opacity = 1.0
             self.showGuestView.layer.opacity = 1.0
@@ -169,7 +168,6 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         self.displayedScannedUser = false
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
             self.scannedUserBottomAnchor?.constant = 250.0
-            self.blurView?.layer.opacity = 0.0
             self.view.layoutIfNeeded()
         }, completion: nil)
     }

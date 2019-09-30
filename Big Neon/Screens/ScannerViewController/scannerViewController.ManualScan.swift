@@ -31,7 +31,6 @@ extension ScannerViewController {
         UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.scanningBoarderView.layer.opacity = 0.0
             self.showGuestView.layer.opacity = 0.0
-            self.blurView?.layer.opacity = 1.0
             self.scannerModeView.layer.opacity = 0.0
             self.view.layoutIfNeeded()
         }, completion: { (completed) in

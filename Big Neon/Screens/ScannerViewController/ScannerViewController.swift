@@ -36,8 +36,8 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     var stopScanning: Bool?
     var isShowingScannedUser: Bool?
     var scannerViewModel : TicketScannerViewModel?
-    let blurEffect = UIBlurEffect(style: .dark)
-    var blurView: UIVisualEffectView?
+    //  let blurEffect = UIBlurEffect(style: .dark)
+    //  var blurView: UIVisualEffectView?
     
     //  Last Scanned Ticked Time
     var lastScannedTicketTime: Date?
@@ -142,15 +142,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
 //        view.translatesAutoresizingMaskIntoConstraints = false
 //        return view
 //    }()
-    
-    private func configureBlur() {
-        let blur = UIBlurEffect(style: .dark)
-        self.blurView = UIVisualEffectView(effect: blur)
-        self.blurView?.frame = self.view.bounds
-        self.blurView?.layer.opacity = 0.0
-        self.blurView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.view.addSubview(self.blurView!)
-    }
     
     lazy var scannedUserView: LastScannedUserView = {
         let view =  LastScannedUserView()
@@ -313,7 +304,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         videoPreviewLayer?.frame = view.layer.bounds
         view.layer.addSublayer(videoPreviewLayer!)
         captureSession.startRunning()
-        configureBlur()
         configureScannedUserView()
     }
     

@@ -76,11 +76,10 @@ extension ScannerViewController {
         
         scannedUserView.scanFeedback = feedFound
         self.displayedScannedUser = true
-        blurView?.layer.opacity = 0.0
         scannerModeView.layer.opacity = 1.0
         
 //        scannedUserBottomAnchor?.constant = -90.0
-//        manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+        manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
 //        generator.notificationOccurred(.success)
         
     }
