@@ -37,7 +37,6 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         
         if supportedCodeTypes.contains(metadataObj.type) {
             guard let metaDataString = metadataObj.stringValue else {
-                self.generator.notificationOccurred(.error)
                 self.stopScanning = true
                 return
             }
@@ -52,7 +51,6 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             }
             
             guard let ticketID = self.scannerViewModel?.getTicketID(fromStringValue: metaDataString) else {
-                self.generator.notificationOccurred(.error) 
                 self.stopScanning = true
                 return
             }
@@ -62,12 +60,19 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                 let lastScannedTime = self.lastScannedTicketTime  {
                 
                 let timeDelaySeconds = BundleInfo.fetchScanSeconds()
-                if metaDataString == scannedMetaString || Date() < Date.init(timeInterval: TimeInterval(timeDelaySeconds), since: lastScannedTime) {
-                    self.checkingTicket(ticketID: ticketID, scannerMode: self.scannerViewModel?.scannerMode())
-                    return
+//                if metaDataString == scannedMetaString || Date() < Date.init(timeInterval: TimeInterval(timeDelaySeconds), since: lastScannedTime) {
+//                    self.checkingTicket(ticketID: ticketID, scannerMode: self.scannerViewModel?.scannerMode())
+//                    return
+//                }
+                
+                if let lastScannedTimer = self.lastScannedTicketTimer {
+                    if metaDataString == scannedMetaString && lastScannedTimer.isValid {
+                        return
+                    }
                 }
                 
                 if Date() < Date.init(timeInterval: TimeInterval(timeDelaySeconds), since: lastScannedTime) {
+                    //  Date of Last scan is less than the current time + 5 seconds
                     return
                 }
             }
@@ -76,10 +81,10 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             self.scannerViewModel?.scannedMetaString = metaDataString
             
             //  Check if a Scanned User
-            if self.isShowingScannedUser == true {
-                print("Scanner is still showing a user")
-                return
-            }
+//            if self.isShowingScannedUser == true {
+//                print("Scanner is still showing a user")
+//                return
+//            }
             
             self.hideScannedUser()
             self.stopScanning = true
@@ -134,10 +139,13 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         })
     }
     
-    func hideScannedUser() {
+    @objc func hideScannedUser() {
         self.lastScannedTicket = self.scannedTicket
+        self.isShowingScannedUser = nil
         self.scannedTicket = nil
         self.stopScanning = true
+        self.lastScannedTicketTimer?.invalidate()
+        self.displayedScannedUser = false
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
             self.scannedUserBottomAnchor?.constant = 250.0
             self.blurView?.layer.opacity = 0.0

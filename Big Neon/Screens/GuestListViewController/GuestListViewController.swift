@@ -4,18 +4,17 @@ import Foundation
 import UIKit
 import Big_Neon_Core
 import Big_Neon_UI
-import PanModal
 import Sync
 
 protocol GuestListViewDelegate: class {
     func reloadGuests()
 }
 
-final class GuestListViewController: BaseViewController, PanModalPresentable, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, GuestListViewDelegate, UITableViewDataSourcePrefetching, SwipeTableViewCellDelegate {
+final class GuestListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, GuestListViewDelegate, UITableViewDataSourcePrefetching, SwipeTableViewCellDelegate {
 
     weak var delegate: ScannerViewDelegate?
     var guestsDictionary: [String: [RedeemableTicket]] = [:]
-    var guestSectionTitles = [String]()
+    //: Alphabetic List Removal     -   var guestSectionTitles = [String]()
     var filteredLocalSearchResults: [RedeemableTicket] = []
     
     var isShortFormEnabled = true
@@ -56,6 +55,9 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
             configureView()
             guestsDictionary.removeAll()
             
+            /*
+             Alphabetic guest list removal
+             
             for guest in guests {
                 let guestKey = String(guest.firstName.prefix(1).uppercased())
                 if var guestValues = guestsDictionary[guestKey] {
@@ -68,6 +70,7 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
             
             self.guestSectionTitles = [String](guestsDictionary.keys)
             self.guestSectionTitles = guestSectionTitles.sorted(by: { $0 < $1 })
+            */
         }
     }
     
@@ -80,8 +83,11 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
             configureNavBar()
             configureView()
             guestsDictionary.removeAll()
+            /*
+             Alphabetic List Removal
             self.guestSectionTitles = [String](guestsDictionary.keys)
             self.guestSectionTitles = guestSectionTitles.sorted(by: { $0 < $1 })
+            */
         }
     }
 
@@ -98,6 +104,7 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
         tableView.delegate = self
         tableView.dataSource = self
         tableView.prefetchDataSource = self
+        tableView.keyboardDismissMode = .interactive
         tableView.separatorColor = UIColor.brandGrey.withAlphaComponent(0.3)
         tableView.showsVerticalScrollIndicator = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -192,7 +199,7 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
     func configureNavBar() {
         navigationNoLineBar()
         navigationController?.navigationBar.barTintColor = UIColor.brandBackground
-        navigationController?.navigationBar.tintColor = UIColor.brandBlack
+        navigationController?.navigationBar.tintColor = UIColor.brandPrimary
         if let eventName = self.scanVC.event!.name {
             self.setNavigationTitle(withTitle: eventName)
         }
@@ -206,30 +213,22 @@ final class GuestListViewController: BaseViewController, PanModalPresentable, UI
     
     private func configureView() {
         
-        view.addSubview(headerView)
+//        view.addSubview(headerView)
         view.addSubview(guestTableView)
         
         self.refresher.addTarget(self, action: #selector(reloadGuests), for: .valueChanged)
         guestTableView.refreshControl = self.refresher
         guestTableView.register(GuestTableViewCell.self, forCellReuseIdentifier: GuestTableViewCell.cellID)
         
-        headerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        headerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        headerView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        headerView.heightAnchor.constraint(equalToConstant: 64.0).isActive = true
+//        headerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+//        headerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+//        headerView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+//        headerView.heightAnchor.constraint(equalToConstant: 64.0).isActive = true
         
-        guestTableView.topAnchor.constraint(equalTo: headerView.bottomAnchor).isActive = true
+        guestTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         guestTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         guestTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         guestTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-    }
-    
-    var panScrollable: UIScrollView? {
-        return guestTableView
-    }
-    
-    var shortFormHeight: PanModalHeight {
-        return .contentHeight(900)
     }
     
     func panModalWillDismiss() {

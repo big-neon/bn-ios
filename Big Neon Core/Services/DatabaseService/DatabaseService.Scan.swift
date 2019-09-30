@@ -14,6 +14,21 @@ extension DatabaseService {
     
     public func getRedeemTicket(forTicketID ticketID: String, completion: @escaping (ScanFeedback?, String?, RedeemableTicket?) -> Void) {
         
+        TokenService.shared.checkToken { (completed) in
+            guard completed else {
+                completion(nil, nil, nil)
+                return
+            }
+            
+            self.fetchRedeemTicket(forTicketID: ticketID) { (scanFeedback, errorString, redeemableTicket) in
+                completion(scanFeedback, errorString, redeemableTicket)
+                return
+            }
+        }
+    }
+    
+    public func fetchRedeemTicket(forTicketID ticketID: String, completion: @escaping (ScanFeedback?, String?, RedeemableTicket?) -> Void) {
+        
         let APIURL = APIService.getRedeemableTicket(ticketID: ticketID)
         let accessToken = TokenService.shared.fetchAcessToken()
 
@@ -58,8 +73,7 @@ extension DatabaseService {
     }
     
     
-    public func
-        redeemTicket(forTicketID ticketID: String, eventID: String, redeemKey: String, completion: @escaping (ScanFeedback, RedeemableTicket?) -> Void) {
+    public func redeemTicket(forTicketID ticketID: String, eventID: String, redeemKey: String, completion: @escaping (ScanFeedback, RedeemableTicket?) -> Void) {
 
         let apiURL = APIService.redeemTicket(eventID: eventID, ticketID: ticketID)
         let accessToken = TokenService.shared.fetchAcessToken()

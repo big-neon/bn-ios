@@ -8,12 +8,18 @@ import AudioToolbox
 extension GuestListViewController: SwipeActionTransitioning {
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        /*
+         Alphabetic List Removal
+         
         guard self.isSearching else {
             return guestSectionTitles.count
         }
+         */
         return 1
     }
     
+    /*
+     Alphabetic List Removal
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard self.isSearching else {
             return guestSectionTitles[section].uppercased()
@@ -27,6 +33,7 @@ extension GuestListViewController: SwipeActionTransitioning {
         }
         return nil
     }
+    */
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -34,11 +41,13 @@ extension GuestListViewController: SwipeActionTransitioning {
             return self.guestViewModel.guestSearchResults.count
         }
         
+        /*
         let guestKey = guestSectionTitles[section]
         if let guestValues = guestsDictionary[guestKey] {
             return guestValues.count
         }
-        return 0
+        */
+        return self.guestViewModel.ticketsFetched.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -50,8 +59,8 @@ extension GuestListViewController: SwipeActionTransitioning {
         if self.isSearching == true && !self.guestViewModel.guestSearchResults.isEmpty {
             guestValues = self.guestViewModel.guestSearchResults[indexPath.row]
         } else {
-            let guestKey = guestSectionTitles[indexPath.section]
-            guestValues = guestsDictionary[guestKey]![indexPath.row]
+            //: Alphabetic List Removal: let guestKey = guestSectionTitles[indexPath.section]
+            guestValues = self.guestViewModel.ticketsFetched[indexPath.row] //: Alphabetic List Removal    guestsDictionary[guestKey]![indexPath.row]
         }
         
         if guestValues == nil {
@@ -61,7 +70,7 @@ extension GuestListViewController: SwipeActionTransitioning {
         if guestValues!.lastName == "" && guestValues!.firstName  == ""{
             guestCell.guestNameLabel.text = "No Details Provided"
         } else {
-            guestCell.guestNameLabel.text = guestValues!.firstName + ", " + guestValues!.lastName
+            guestCell.guestNameLabel.text = guestValues!.firstName + " " + guestValues!.lastName
         }
         
         
@@ -70,11 +79,15 @@ extension GuestListViewController: SwipeActionTransitioning {
         guestCell.ticketTypeNameLabel.text = price.dollarString + " | " + guestValues!.ticketType + " | " + ticketID
         
         if guestValues!.status == TicketStatus.purchased.rawValue {
-            guestCell.ticketStateView.setTitle("PURCHASED", for: UIControl.State.normal)
+            guestCell.ticketStateView.isHidden = !DateConfig.eventDateIsToday(eventStartDate: guestValues!.eventStart) //== true ? false : true
             guestCell.ticketStateView.backgroundColor = UIColor.brandGreen
+            let buttonValue = DateConfig.eventDateIsToday(eventStartDate: guestValues!.eventStart) == true ? "PURCHASED" : "-"
+            guestCell.ticketStateView.setTitle(buttonValue, for: UIControl.State.normal)
         } else {
-            guestCell.ticketStateView.setTitle("REDEEMED", for: UIControl.State.normal)
+            guestCell.ticketStateView.isHidden = !DateConfig.eventDateIsToday(eventStartDate: guestValues!.eventStart) //== true ? false : UIColor.white
             guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
+            let buttonValue = DateConfig.eventDateIsToday(eventStartDate: guestValues!.eventStart) == true ? "REDEEMED" : "-"
+            guestCell.ticketStateView.setTitle(buttonValue, for: UIControl.State.normal)
         }
         
         return guestCell
@@ -90,16 +103,16 @@ extension GuestListViewController: SwipeActionTransitioning {
         if self.isSearching == true && !self.guestViewModel.guestSearchResults.isEmpty {
             ticket = self.guestViewModel.guestSearchResults[indexPath.row]
         } else {
-            let guestKey = guestSectionTitles[indexPath.section]
-            ticket = guestsDictionary[guestKey]![indexPath.row]
+            //: Alphabetic List Removal     -   let guestKey = guestSectionTitles[indexPath.section]
+            ticket = self.guestViewModel.ticketsFetched[indexPath.row]  //: Alphabetic List Removal     guestsDictionary[guestKey]![indexPath.row]
         }
         self.showGuest(withTicket: ticket, selectedIndex: indexPath)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        let guestKey = guestSectionTitles[indexPath.section]
-        let guestValues = self.isSearching == true ? self.guestViewModel.guestSearchResults :  guestsDictionary[guestKey]
-        return [swipeCellAction(forGuestValues: guestValues!, indexPath)]
+        //: Alphabetic List Removal     -   let guestKey = guestSectionTitles[indexPath.section]
+        let guestValues = self.isSearching == true ? self.guestViewModel.guestSearchResults : self.guestViewModel.ticketsFetched //: Alphabetic List Removal - guestsDictionary[guestKey]
+        return [swipeCellAction(forGuestValues: guestValues, indexPath)]
     }
     
     func swipeCellAction(forGuestValues guestValues: [RedeemableTicket],_ indexPath: IndexPath) -> SwipeAction {
@@ -109,11 +122,27 @@ extension GuestListViewController: SwipeActionTransitioning {
     
     func checkAction(atIndexPath indexPath: IndexPath, guestValues: [RedeemableTicket]) -> SwipeAction {
         
-        let checkinAction = SwipeAction(style: .default, title: "Checkin") { action, indexPath in
-            let ticketID = guestValues[indexPath.row].id
-            self.checkinTicket(ticketID: ticketID, atIndex: indexPath, direction: true)
+        let ticket = guestValues[indexPath.row]
+        
+        if DateConfig.eventDateIsToday(eventStartDate: ticket.eventStart) == false {
+            let checkinAction = SwipeAction(style: .default, title: "") { action, indexPath in
+                //  No Action - Not the date of the event
+            }
+            
+            checkinAction.fulfill(with: ExpansionFulfillmentStyle.reset)
+            checkinAction.highlightedBackgroundColor = UIColor.white
+            checkinAction.title = "Not Event Date"
+            checkinAction.hidesWhenSelected = false
+            checkinAction.font = .systemFont(ofSize: 15)
+            checkinAction.backgroundColor = UIColor.brandBlack
+            return checkinAction
         }
         
+        let checkinAction = SwipeAction(style: .default, title: "Checkin") { action, indexPath in
+            let ticketID = ticket.id
+            self.checkinTicket(ticketID: ticketID, atIndex: indexPath, direction: true)
+        }
+    
         checkinAction.fulfill(with: ExpansionFulfillmentStyle.reset)
         checkinAction.highlightedBackgroundColor = UIColor.brandPrimary
         checkinAction.transitionDelegate = self
@@ -126,7 +155,8 @@ extension GuestListViewController: SwipeActionTransitioning {
     }
     
     func didTransition(with context: SwipeActionTransitioningContext) {
-        if context.newPercentVisible > 0.8 {   //  2.66
+        
+        if context.newPercentVisible > 0.8 {
             context.button.setImage(UIImage(named: "ic_checkin_check"), for: UIControl.State.normal)
             context.button.setTitle("Redeem", for: UIControl.State.normal)
         } else  {
@@ -145,15 +175,28 @@ extension GuestListViewController: SwipeActionTransitioning {
     
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
         
-        let guestKey = guestSectionTitles[indexPath.section]
-        let guestValues = self.isSearching == true ? self.guestViewModel.guestSearchResults :  guestsDictionary[guestKey]
-        if guestValues![indexPath.row].status == TicketStatus.purchased.rawValue {
+        /*
+         Alphabetic List Removal
+         let guestKey = guestSectionTitles[indexPath.section]let guestKey = guestSectionTitles[indexPath.section]
+         */
+        let guestValues = self.isSearching == true ? self.guestViewModel.guestSearchResults : self.guestViewModel.ticketsFetched   //: Alphabetic List Removal  guestsDictionary[guestKey]
+        let ticket = guestValues[indexPath.row]
+       
+        if DateConfig.eventDateIsToday(eventStartDate: ticket.eventStart) == false {
+            var options = SwipeOptions()
+            options.transitionStyle = .drag
+            options.expansionStyle = .none
+            return options
+        }
+        
+        if ticket.status == TicketStatus.purchased.rawValue {
             var options = SwipeOptions()
             options.backgroundColor = UIColor.brandPrimary
             options.transitionStyle = .reveal
             options.expansionStyle = .fillReset(timing: .after)
             return options
         }
+        
         var options = SwipeOptions()
         options.transitionStyle = .drag
         options.expansionStyle = .none
@@ -169,9 +212,8 @@ extension GuestListViewController: SwipeActionTransitioning {
         }
     }
     
-    //  Prefetching Rows in TableView
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        if let lastSection = indexPaths.last?.section, let lastRow = indexPaths.last?.row, let totalGuests = self.guestViewModel.totalGuests {
+        if let lastRow = indexPaths.last?.row, let totalGuests = self.guestViewModel.totalGuests {
            
             //  No neeed to fetch more. Guests are less than 100
             if totalGuests <= 100 {
@@ -179,10 +221,18 @@ extension GuestListViewController: SwipeActionTransitioning {
             }
             
             //  Last Section and Last Row - Fetch more guests
-            if lastSection >= guestSectionTitles.count - 1 && lastRow >= self.guestViewModel.currentTotalGuests - 20 {
+            if lastRow >= self.guestViewModel.currentTotalGuests - 20 {
                 fetchNextPage(withIndexPaths: indexPaths)
                 return
             }
+            
+            /*
+             Alphabetic List Removed Code
+             if lastSection >= guestSectionTitles.count - 1 && lastRow >= self.guestViewModel.currentTotalGuests - 20 {
+                 fetchNextPage(withIndexPaths: indexPaths)
+                 return
+             }
+             */
         }
     }
     

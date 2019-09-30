@@ -12,6 +12,7 @@ public protocol ScannerViewDelegate: class {
     func scannerSetManual()
     func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath: IndexPath?)
     func dismissScannedUserView()
+    func showRedeemedTicket()
 }
 
 final class ScannerViewController: UIViewController, ScannerViewDelegate {
@@ -40,6 +41,17 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     
     //  Last Scanned Ticked Time
     var lastScannedTicketTime: Date?
+    
+    //  Scanned Time
+    var lastScannedTicketTimer: Timer?
+    var displayedScannedUser: Bool = false {
+        didSet {
+            if displayedScannedUser == true {
+                let timeDelaySeconds = Double(BundleInfo.fetchScanViewDimissSeconds())
+                lastScannedTicketTimer = Timer.scheduledTimer(timeInterval: timeDelaySeconds, target: self, selector: #selector(hideScannedUser), userInfo: nil, repeats: false)
+            }
+        }
+    }
     
     let supportedCodeTypes = [AVMetadataObject.ObjectType.upce,
                               AVMetadataObject.ObjectType.code39,
@@ -142,6 +154,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     
     lazy var scannedUserView: LastScannedUserView = {
         let view =  LastScannedUserView()
+        view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -310,7 +323,10 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     
     private func configureScannedUserView() {
         view.addSubview(scannedUserView)
-
+        scannedUserView.isUserInteractionEnabled = true
+        scannedUserView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showRedeemedTicket)))
+        
+        
         if self.isiPhoneSE() == true {
             scannedUserView.layer.cornerRadius = 0.0
             scannedUserView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true

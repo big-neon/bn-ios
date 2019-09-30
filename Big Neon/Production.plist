@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.1</string>
 	<key>CFBundleVersion</key>
-	<string>270</string>
+	<string>300</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -60,6 +60,8 @@
 	<key>protocol</key>
 	<string>$(protocol)</string>
 	<key>scan_delay_seconds</key>
+	<string>5</string>
+	<key>scanned_dismiss_seconds</key>
 	<string>5</string>
 	<key>server_url</key>
 	<string>$(server_url)</string>

@@ -15,7 +15,7 @@ extension GuestViewController: PanModalPresentable {
     }
     
     var shortFormHeight: PanModalHeight {
-        return .contentHeight(360)
+        return .contentHeight(410)
     }
 
     var longFormHeight: PanModalHeight {
@@ -39,11 +39,18 @@ class GuestViewController: BaseViewController {
                 return
             }
             
-            self.userNameLabel.text = ticket.firstName
+            self.userNameLabel.text = ticket.firstName + " " + ticket.lastName
             self.ticketTypeLabel.text = ticket.eventName
             let price = Int(ticket.priceInCents)
             let ticketID = "#" + ticket.id.suffix(8).uppercased()
             ticketTypeLabel.text = price.dollarString + " | " + ticket.ticketType + " | " + ticketID
+            if let phone = ticket.phone {
+                ticketEmailPhoneLabel.text = ticket.email ?? "" + " " + phone
+            } else {
+                ticketEmailPhoneLabel.text = ticket.email ?? ""
+            }
+            
+            
             
             if ticket.status == TicketStatus.purchased.rawValue {
                 ticketTagView.backgroundColor = UIColor.brandGreen
@@ -53,7 +60,7 @@ class GuestViewController: BaseViewController {
                 completeCheckinButton.setTitle("Complete Check-in", for: UIControl.State.normal)
                 completeCheckinButton.addTarget(self, action: #selector(handleCompleteCheckin), for: UIControl.Event.touchUpInside)
                 
-            } else {
+            } else { 
                 
                 //  Ticket Redeemed
                 ticketTagView.tagLabel.text = "REDEEMED"
@@ -79,8 +86,10 @@ class GuestViewController: BaseViewController {
                 }
 
                 redeemedTimeAgoLabel.text = "Redeemed: " + redeemedDate.getElapsed()
-
+                redeemedTimeLabel.text = DateConfig.fullDateFormat(date: redeemedDate)
             }
+            
+            self.enableCheckinButton()
         }
     }
        
@@ -100,6 +109,15 @@ class GuestViewController: BaseViewController {
        label.translatesAutoresizingMaskIntoConstraints = false
        return label
    }()
+    
+    lazy var ticketEmailPhoneLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.textColor = UIColor.brandGrey
+        label.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
    
    lazy var ticketTypeLabel: UILabel = {
        let label = UILabel()
@@ -142,6 +160,15 @@ class GuestViewController: BaseViewController {
         return label
     }()
     
+    lazy var redeemedTimeLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.textColor = UIColor.brandGrey
+        label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     lazy var completeCheckinButton: TransitionButton = {
         let button = TransitionButton()
         button.layer.cornerRadius = 4.0
@@ -154,22 +181,39 @@ class GuestViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        self.scannerVC?.stopScanning = true
+        scannerVC?.stopScanning = true
         configureView()
+        enableCheckinButton()
+    }
+    
+    func enableCheckinButton() {
+        
+        if let ticket = self.redeemableTicket {
+            if DateConfig.eventDateIsToday(eventStartDate: ticket.eventStart) == true {
+                return
+            }
+            
+            completeCheckinButton.setTitleColor(UIColor.brandLightGrey, for: UIControl.State.normal)
+            completeCheckinButton.backgroundColor = UIColor.brandBackground
+            completeCheckinButton.setTitle("Not Event Date", for: UIControl.State.normal)
+            completeCheckinButton.isUserInteractionEnabled = false
+        }
     }
     
     private func configureView() {
         view.addSubview(userImageView)
         view.addSubview(userNameLabel)
         view.addSubview(ticketTypeLabel)
+        view.addSubview(ticketEmailPhoneLabel)
         view.addSubview(ticketTagView)
         
         view.addSubview(lineView)
         view.addSubview(redeemedTimeAgoLabel)
+        view.addSubview(redeemedTimeLabel)
         view.addSubview(completeCheckinButton)
         view.addSubview(redeemedByLabel)
         
-        userImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: LayoutSpec.Spacing.thirtyTwo).isActive = true
+        userImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: LayoutSpec.Spacing.twentyFour).isActive = true
         userImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         userImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         userImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
@@ -184,8 +228,13 @@ class GuestViewController: BaseViewController {
         ticketTypeLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
         ticketTypeLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twenty).isActive = true
         
+        ticketEmailPhoneLabel.topAnchor.constraint(equalTo: ticketTypeLabel.bottomAnchor, constant: LayoutSpec.Spacing.eight).isActive = true
+        ticketEmailPhoneLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
+        ticketEmailPhoneLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
+        ticketEmailPhoneLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twenty).isActive = true
+        
         ticketTagView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        ticketTagView.topAnchor.constraint(equalTo: ticketTypeLabel.bottomAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
+        ticketTagView.topAnchor.constraint(equalTo: ticketEmailPhoneLabel.bottomAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
         ticketTagView.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twentyFour).isActive = true
         ticketTagView.widthAnchor.constraint(equalToConstant: 88).isActive = true
 
@@ -199,13 +248,18 @@ class GuestViewController: BaseViewController {
         redeemedTimeAgoLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
         redeemedTimeAgoLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twentyFour).isActive = true
         
-        redeemedByLabel.topAnchor.constraint(equalTo: redeemedTimeAgoLabel.bottomAnchor, constant: LayoutSpec.Spacing.twelve).isActive = true
+        redeemedTimeLabel.topAnchor.constraint(equalTo: redeemedTimeAgoLabel.bottomAnchor, constant: LayoutSpec.Spacing.twelve).isActive = true
+        redeemedTimeLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
+        redeemedTimeLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
+        redeemedTimeLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twenty).isActive = true
+        
+        redeemedByLabel.topAnchor.constraint(equalTo: redeemedTimeLabel.bottomAnchor, constant: LayoutSpec.Spacing.twelve).isActive = true
         redeemedByLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
         redeemedByLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
         redeemedByLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twenty).isActive = true
         
         //  Completed
-        completeCheckinButton.topAnchor.constraint(equalTo: redeemedTimeAgoLabel.bottomAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
+        completeCheckinButton.topAnchor.constraint(equalTo: redeemedTimeLabel.bottomAnchor, constant: LayoutSpec.Spacing.eight).isActive = true
         completeCheckinButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
         completeCheckinButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
         completeCheckinButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
@@ -236,12 +290,13 @@ class GuestViewController: BaseViewController {
                 
                 guard let self = self else { return }
                 
-                //  Update the Redeemed Ticket
-                self.redeemableTicket = ticket
-                
                 //  Stop Animating the Button
                 self.completeCheckinButton.stopAnimation(animationStyle: .normal, revertAfterDelay: 0.0) {
                     self.completeCheckinButton.layer.cornerRadius = 6.0
+                    
+                    //  Update the Redeemed Ticket
+                    self.redeemableTicket = ticket
+                    print(ticket?.status)
                     
                     //  Checking from Guestlist
                     if fromGuestListVC == true {
@@ -295,12 +350,15 @@ class GuestViewController: BaseViewController {
             guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
         }
         
+        /*
         let guestKey = self.guestListVC?.guestSectionTitles[indexPath.section]
         let guestValues = self.guestListVC?.isSearching == true ? self.guestListVC?.guestViewModel.guestSearchResults :  self.guestListVC?.guestsDictionary[guestKey!]
         guestValues![indexPath.row].status = TicketStatus.Redeemed.rawValue
         
+        
         //  Update the Current Ticket
         self.redeemableTicket = guestValues![indexPath.row]
+         */
     }
     
     @objc func doNothing() {

@@ -13,8 +13,10 @@ extension ScannerViewController {
                 case .validTicketID?:
                     self?.stopScanning = false
                     if let ticket = self?.scannedTicket {
-                        self?.showRedeemedTicket(forTicket: ticket)
+//                        self?.showRedeemedTicket(forTicket: ticket)
+                        self?.showGuest(withTicket: ticket, scannerVC: self, selectedIndex: nil)
                     }
+                    
                 case .wrongEvent?:
                     self?.checkinAutomatically(withTicketID: ticketID, fromGuestTableView: false, atIndexPath: nil)
                 default:
@@ -37,9 +39,12 @@ extension ScannerViewController {
         })
     }
     
-    func showRedeemedTicket(forTicket ticket: RedeemableTicket) {
+    @objc func showRedeemedTicket() {
+        
+        guard let ticket = self.scannerViewModel?.redeemedTicket else {
+            return
+        }
         self.stopScanning = true
-        self.isShowingScannedUser = true
         self.scannedTicketID = ticket.id
         self.showGuest(withTicket: ticket, scannerVC: self, selectedIndex: nil)
     }

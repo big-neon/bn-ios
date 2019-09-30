@@ -15,8 +15,8 @@ extension ScannerViewController {
             guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
         }
         
-        let guestKey = self.guestListVC?.guestSectionTitles[indexPath.section]
-        let guestValues = self.guestListVC?.isSearching == true ? self.guestListVC?.guestViewModel.guestSearchResults :  self.guestListVC?.guestsDictionary[guestKey!]
+//        let guestKey = self.guestListVC?.guestSectionTitles[indexPath.section]
+        let guestValues = self.guestListVC?.isSearching == true ? self.guestListVC?.guestViewModel.guestSearchResults : self.guestListVC?.guestViewModel.ticketsFetched    //  self.guestListVC?.guestsDictionary[guestKey!]
         guestValues![indexPath.row].status = TicketStatus.Redeemed.rawValue
     }
     
@@ -40,13 +40,14 @@ extension ScannerViewController {
             
                 if scanFeedback == .alreadyRedeemed {
                     if let ticket = ticket {
-                        self?.showRedeemedTicket(forTicket: ticket)
+//                        self?.showRedeemedTicket(forTicket: ticket)
+                        self?.showScannedUser(feedback: .alreadyRedeemed, ticket: ticket)
                     }
+                    
                     return
                 }
                 
                 UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
-                    
                     self?.showScannedUser(feedback: scanFeedback, ticket: ticket)
                     self?.view.layoutIfNeeded()
                 }, completion: { (completed) in
@@ -57,6 +58,7 @@ extension ScannerViewController {
     }
 
     func showScannedUser(feedback: ScanFeedback?, ticket: RedeemableTicket?) {
+        
         var feedFound = feedback
         if ticket?.eventName != self.event?.name {
             self.playSuccessSound(forValidTicket: false)
@@ -68,9 +70,11 @@ extension ScannerViewController {
             playSuccessSound(forValidTicket: true)
             scannerViewModel?.redeemedTicket = ticket
             scannedUserView.redeemableTicket = ticket
+            scannedUserView.scanFeedback = feedFound
         }
         
         scannedUserView.scanFeedback = feedFound
+        self.displayedScannedUser = true
         blurView?.layer.opacity = 0.0
         scannerModeView.layer.opacity = 1.0
         scannedUserBottomAnchor?.constant = -90.0
