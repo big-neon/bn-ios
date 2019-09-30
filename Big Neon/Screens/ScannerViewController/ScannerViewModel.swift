@@ -131,7 +131,6 @@ final class TicketScannerViewModel {
                         return
                     }
                     
-                    
                     if !DateConfig.eventDateIsToday(eventStartDate: ticket.eventStart) {
                         completion(.notEventDate, nil, redeemTicket)
                         return

@@ -58,7 +58,7 @@
 	<key>protocol</key>
 	<string>$(protocol)</string>
 	<key>scan_delay_seconds</key>
-	<integer>5</integer>
+	<integer>2</integer>
 	<key>scanned_dismiss_seconds</key>
 	<string>5</string>
 	<key>server_url</key>

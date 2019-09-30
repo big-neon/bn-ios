@@ -91,17 +91,16 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             
             //  **  // update the Last Scanned User Timer
             self.lastScannedTicketTime = Date()
+            
+            
             self.checkingTicket(ticketID: ticketID, scannerMode: self.scannerViewModel?.scannerMode())
         }
     }
     
     private func checkingTicket(ticketID: String, scannerMode: Bool?) {
-        
-        //  Display the Scanned Pill Here with a Spinner
-        self.showScannedUser()
-        
         //  Ping the database for data
         if scannerMode == true {
+            self.showScannedUser()  //  Show Scanned User until the fetching is complete
             self.checkinAutomatically(withTicketID: ticketID, fromGuestTableView: false, atIndexPath: nil)
         } else {
             self.checkinManually(withTicketID: ticketID)
