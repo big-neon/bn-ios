@@ -82,15 +82,10 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         self.refresher.addTarget(self, action: #selector(reloadEvents), for: .valueChanged)
         configureNavBar()
         view.backgroundColor = UIColor.white
-        configureSearch()
         configureCollectionView()
         doorPersonViemodel.eventCoreData = fetcher.fetchLocalEvents()
         self.orderEventsByDate()
         syncEventsData()
-    }
-
-    private func configureSearch() {
-        //TODO: self.navigationItem.searchController = searchController
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -144,7 +139,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         self.navigationController?.push(ProfileViewController())
     }
     
-    internal func showScanner(forTicketIndex ticketIndex: Int, section: Int) {
+    func showScanner(forTicketIndex ticketIndex: Int, section: Int) {
         
         let scannerVC = ScannerViewController(fetcher: guestsFetcher)
         scannerVC.modalPresentationStyle = .fullScreen
@@ -152,6 +147,13 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         let scannerNavVC = UINavigationController(rootViewController: scannerVC)
         scannerNavVC.modalPresentationStyle = .fullScreen
         self.present(scannerNavVC, animated: true, completion: nil)
+    }
+    
+    func showEvent(forTicketIndex ticketIndex: Int, section: Int) {
+        let event = section == 1 ? self.doorPersonViemodel.todayEvents[ticketIndex] : self.doorPersonViemodel.upcomingEvents[ticketIndex]
+        let eventVC = EventViewController(event: event)
+        let eventNavVC = UINavigationController(rootViewController: eventVC)
+        self.navigationController?.push(eventVC)
     }
 
 }

@@ -114,7 +114,9 @@ extension DoorPersonViewController {
         if indexPath.section == 0 || indexPath.section == 2 {
             return
         }
-        self.showScanner(forTicketIndex: indexPath.item, section: indexPath.section)
+//        self.showScanner(forTicketIndex: indexPath.item, section: indexPath.section)
+        self.showEvent(forTicketIndex: indexPath.item, section: indexPath.section)
+         
     }
 
 }

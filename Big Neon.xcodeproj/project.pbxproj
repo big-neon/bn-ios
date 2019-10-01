@@ -96,6 +96,11 @@
 		C6937100228F411B004EBC12 /* GuestListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69370FF228F411B004EBC12 /* GuestListHeaderView.swift */; };
 		C6937104228F52E7004EBC12 /* GuestListViewController.SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6937103228F52E7004EBC12 /* GuestListViewController.SearchController.swift */; };
 		C6937106228F6DF3004EBC12 /* ShowGuestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6937105228F6DF3004EBC12 /* ShowGuestListView.swift */; };
+		C69494262343504E00BC7219 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69494252343504E00BC7219 /* EventViewController.swift */; };
+		C69494282343522400BC7219 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69494272343522400BC7219 /* EventView.swift */; };
+		C694942A234358ED00BC7219 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6949429234358ED00BC7219 /* EventViewModel.swift */; };
+		C694942C23435BDA00BC7219 /* EventViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694942B23435BDA00BC7219 /* EventViewController.TableView.swift */; };
+		C694942E2343607000BC7219 /* EventViewController.Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694942D2343607000BC7219 /* EventViewController.Search.swift */; };
 		C694D25A21D0BFE600B2AE07 /* ApplicationRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */; };
 		C698AB1021EDE9BC0073F1FB /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB0F21EDE9BC0073F1FB /* CreateAccountViewController.swift */; };
 		C698AB1621EF1FE00073F1FB /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698AB1521EF1FE00073F1FB /* CreateAccountViewModel.swift */; };
@@ -318,6 +323,11 @@
 		C69370FF228F411B004EBC12 /* GuestListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListHeaderView.swift; sourceTree = "<group>"; };
 		C6937103228F52E7004EBC12 /* GuestListViewController.SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListViewController.SearchController.swift; sourceTree = "<group>"; };
 		C6937105228F6DF3004EBC12 /* ShowGuestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowGuestListView.swift; sourceTree = "<group>"; };
+		C69494252343504E00BC7219 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		C69494272343522400BC7219 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
+		C6949429234358ED00BC7219 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
+		C694942B23435BDA00BC7219 /* EventViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.TableView.swift; sourceTree = "<group>"; };
+		C694942D2343607000BC7219 /* EventViewController.Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.Search.swift; sourceTree = "<group>"; };
 		C694D25921D0BFE600B2AE07 /* ApplicationRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouting.swift; sourceTree = "<group>"; };
 		C698AB0F21EDE9BC0073F1FB /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		C698AB1521EF1FE00073F1FB /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
@@ -647,6 +657,7 @@
 				C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */,
 				C665DFE321E87CAC00DFB955 /* Authentication */,
 				C6AFB78C21DD655900670AC3 /* DoorPersonViewController */,
+				C69494242343502600BC7219 /* EventViewController */,
 				C63D1A152220054700152E83 /* ScannerViewController */,
 				C6DBF0AB2305738800911392 /* GuestViewController */,
 				C69370FE228F3EB9004EBC12 /* GuestListViewController */,
@@ -764,6 +775,18 @@
 				C6EC4B2D2227C1150056CE73 /* GuestTableViewCell.swift */,
 			);
 			path = GuestListViewController;
+			sourceTree = "<group>";
+		};
+		C69494242343502600BC7219 /* EventViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C6949429234358ED00BC7219 /* EventViewModel.swift */,
+				C69494272343522400BC7219 /* EventView.swift */,
+				C69494252343504E00BC7219 /* EventViewController.swift */,
+				C694942D2343607000BC7219 /* EventViewController.Search.swift */,
+				C694942B23435BDA00BC7219 /* EventViewController.TableView.swift */,
+			);
+			path = EventViewController;
 			sourceTree = "<group>";
 		};
 		C694D25721D0BFB300B2AE07 /* Config */ = {
@@ -1484,6 +1507,7 @@
 				C6E6485622423C11000F2DFB /* Big Neon.xcdatamodeld in Sources */,
 				C6AFB78F21DD658800670AC3 /* EventDetailViewController.swift in Sources */,
 				C623C0802251E42C0020D0A8 /* CheckinTagView.swift in Sources */,
+				C694942A234358ED00BC7219 /* EventViewModel.swift in Sources */,
 				C64B0ABD21D0DCDB00386000 /* DoorPersonViewModel.swift in Sources */,
 				C623C06B2251E3970020D0A8 /* CardCheckoutCell.swift in Sources */,
 				C683233121FF34DF002342AE /* LogoutCell.swift in Sources */,
@@ -1497,8 +1521,10 @@
 				C68A9FD922D34995006535B8 /* GuestListViewController.Offline.swift in Sources */,
 				C6AFB78B21DD579600670AC3 /* ProfileViewModel.swift in Sources */,
 				C623C0732251E3D70020D0A8 /* EventHeaderView.swift in Sources */,
+				C69494262343504E00BC7219 /* EventViewController.swift in Sources */,
 				C665DFE521E87CB800DFB955 /* WelcomeViewController.swift in Sources */,
 				C6DB1F9C230D75F70019C014 /* ScanSeconds.Environment.swift in Sources */,
+				C69494282343522400BC7219 /* EventView.swift in Sources */,
 				C6C4E9B72302D2810040C258 /* SwipeCollectionViewCellDelegate.swift in Sources */,
 				C64124C621F266B100233797 /* LoginViewController.swift in Sources */,
 				C6EC209C2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift in Sources */,
@@ -1548,10 +1574,12 @@
 				C6D2413421EF53B000FC3E41 /* NamesViewController.swift in Sources */,
 				C61853C3221430A2005D6250 /* TicketTypeViewModel.swift in Sources */,
 				C6A6FAA6226F3A6200601AC2 /* EventsApiRepository.swift in Sources */,
+				C694942C23435BDA00BC7219 /* EventViewController.TableView.swift in Sources */,
 				C68A9FDD22D35D7F006535B8 /* GuestsRepository.swift in Sources */,
 				C6C4E9A62302D2810040C258 /* SwipeOptions.swift in Sources */,
 				C698AB1621EF1FE00073F1FB /* CreateAccountViewModel.swift in Sources */,
 				C62BC78421CCC3F700830A5F /* AppDelegate.swift in Sources */,
+				C694942E2343607000BC7219 /* EventViewController.Search.swift in Sources */,
 				C623C0692251E38E0020D0A8 /* QuantitySelectionCell.swift in Sources */,
 				C64B0AC021D0DD1E00386000 /* Utils.swift in Sources */,
 				C628B15421F9E35700FCBDC9 /* SplashViewModel.swift in Sources */,
