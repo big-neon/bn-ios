@@ -21,7 +21,17 @@ final public class DateConfig {
     }
     
     public class func eventDateIsToday(eventStartDate: String) -> Bool {
-        return DateConfig.eventDate(date: DateConfig.dateFromUTCString(stringDate: eventStartDate)!) == DateConfig.eventDate(date: Date())
+        guard let startDate = DateConfig.dateFromUTCString(stringDate: eventStartDate) else {
+            return false
+        }
+        
+        let interval = Calendar.current.dateComponents([.hour], from: startDate, to: Date())
+        if let hours = interval.hour {
+            if hours < 24 {
+                return true
+            }
+        }
+        return false
     }
 
     private class func dropMilliseconds(date:String) -> String{

@@ -4,7 +4,7 @@ import UIKit
 import Big_Neon_Core
 import Big_Neon_UI
 
-public class LastScannedUserView: UIView {
+public class LastScannedUserView: BrandShadowView {
     
     var delegate: ScannerViewDelegate?
     
@@ -46,6 +46,30 @@ public class LastScannedUserView: UIView {
         }
     }
     
+    public var isFetchingData: Bool = false {
+        didSet {
+            self.userImageView.isHidden = isFetchingData
+            self.userNameLabel.isHidden = isFetchingData
+            self.ticketTypeLabel.isHidden = isFetchingData
+            self.ticketScanStateTagView.isHidden = isFetchingData
+            
+            if isFetchingData == true {
+                self.loadingView.startAnimating()
+            } else {
+                self.loadingView.stopAnimating()
+            }
+            
+        }
+    }
+    
+    let loadingView: UIActivityIndicatorView = {
+        let loader = UIActivityIndicatorView()
+        loader.style = UIActivityIndicatorView.Style.gray
+        loader.hidesWhenStopped = true
+        loader.translatesAutoresizingMaskIntoConstraints = false
+        return loader
+    }()
+    
     public lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true
@@ -61,7 +85,7 @@ public class LastScannedUserView: UIView {
         let label = UILabel()
         label.isUserInteractionEnabled = true
         label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showScannedTicket)))
-        label.textColor = UIColor.white
+        label.textColor = UIColor.brandBlack
         label.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -71,7 +95,7 @@ public class LastScannedUserView: UIView {
         let label = UILabel()
         label.isUserInteractionEnabled = true
         label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showScannedTicket)))
-        label.textColor = UIColor.brandBackground
+        label.textColor = UIColor.brandGrey
         label.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.regular)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -87,12 +111,21 @@ public class LastScannedUserView: UIView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        self.backgroundColor = UIColor.white    //  .withAlphaComponent(0.8)
         self.layer.cornerRadius = 38.0
         self.configureView()
+        self.loadingAnimation()
     }
     
-    private func configureView() {
+    private func loadingAnimation() {
+        addSubview(loadingView)
+        loadingView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        loadingView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        loadingView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        loadingView.widthAnchor.constraint(equalToConstant: 30).isActive = true
+    }
+    
+    override public func configureView() {
         self.addSubview(userImageView)
         self.addSubview(userNameLabel)
         self.addSubview(ticketTypeLabel)

@@ -56,10 +56,11 @@ extension ScannerViewController {
             }
         }
     }
-
+    
     func showScannedUser(feedback: ScanFeedback?, ticket: RedeemableTicket?) {
         
         var feedFound = feedback
+        scannedUserView.isFetchingData = false
         if ticket?.eventName != self.event?.name {
             self.playSuccessSound(forValidTicket: false)
             self.scannedTicketID = ticket?.id
@@ -75,11 +76,11 @@ extension ScannerViewController {
         
         scannedUserView.scanFeedback = feedFound
         self.displayedScannedUser = true
-        blurView?.layer.opacity = 0.0
         scannerModeView.layer.opacity = 1.0
-        scannedUserBottomAnchor?.constant = -90.0
+        
+//        scannedUserBottomAnchor?.constant = -90.0
         manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
-        generator.notificationOccurred(.success)
+//        generator.notificationOccurred(.success)
         
     }
     

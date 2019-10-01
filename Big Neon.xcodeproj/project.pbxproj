@@ -168,6 +168,8 @@
 		C6CD1C2222AA89BA009D7510 /* GuestsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CD1C2122AA89BA009D7510 /* GuestsListViewModel.swift */; };
 		C6CEC8A9221ADBCE00F7329D /* TicketTypeStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CEC8A8221ADBCE00F7329D /* TicketTypeStatus.swift */; };
 		C6D2413421EF53B000FC3E41 /* NamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2413321EF53B000FC3E41 /* NamesViewController.swift */; };
+		C6D2C96C23422A590025E6D5 /* BrandShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C96B23422A590025E6D5 /* BrandShadowView.swift */; };
+		C6D2C96D23422B350025E6D5 /* BrandShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C96B23422A590025E6D5 /* BrandShadowView.swift */; };
 		C6DB1F98230D63710019C014 /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DB1F97230D63710019C014 /* TokenService.swift */; };
 		C6DB1F9A230D74380019C014 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DB1F99230D74380019C014 /* Alerts.swift */; };
 		C6DB1F9C230D75F70019C014 /* ScanSeconds.Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DB1F9B230D75F70019C014 /* ScanSeconds.Environment.swift */; };
@@ -401,6 +403,7 @@
 		C6CD1C2122AA89BA009D7510 /* GuestsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestsListViewModel.swift; sourceTree = "<group>"; };
 		C6CEC8A8221ADBCE00F7329D /* TicketTypeStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTypeStatus.swift; sourceTree = "<group>"; };
 		C6D2413321EF53B000FC3E41 /* NamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesViewController.swift; sourceTree = "<group>"; };
+		C6D2C96B23422A590025E6D5 /* BrandShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandShadowView.swift; sourceTree = "<group>"; };
 		C6D37B3421F1CD8200C616D0 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C6DB1F97230D63710019C014 /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
 		C6DB1F99230D74380019C014 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -940,6 +943,7 @@
 				C6C49DA42209A77E0087AE16 /* DollarString.swift */,
 				C61853BB2212F6FA005D6250 /* ThreeQuaterPresenter.swift */,
 				C66923B722CF436100A162A6 /* ScreenSize.swift */,
+				C6D2C96B23422A590025E6D5 /* BrandShadowView.swift */,
 			);
 			path = UIUtilities;
 			sourceTree = "<group>";
@@ -1556,6 +1560,7 @@
 				C6C4E9AF2302D2810040C258 /* SwipeFeedback.swift in Sources */,
 				C66C0BA721E339CA0066CD0F /* SplashViewController.swift in Sources */,
 				C623C0682251E36B0020D0A8 /* TicketTypeCell.swift in Sources */,
+				C6D2C96D23422B350025E6D5 /* BrandShadowView.swift in Sources */,
 				C6C4E9B52302D2810040C258 /* SwipeActionsView.swift in Sources */,
 				C6937106228F6DF3004EBC12 /* ShowGuestListView.swift in Sources */,
 				C623C06E2251E3A60020D0A8 /* HotThisWeekCell.swift in Sources */,
@@ -1628,6 +1633,7 @@
 				C6B88D5221F1C323006394F8 /* InterestedButtonView.swift in Sources */,
 				C6C45D6A21F5CDCD00D2F602 /* PopAnimations.swift in Sources */,
 				C672990C2338CC1000AC0C40 /* Layout.swift in Sources */,
+				C6D2C96C23422A590025E6D5 /* BrandShadowView.swift in Sources */,
 				C64124CA21F26D1800233797 /* AuthTextView.swift in Sources */,
 				C6EC209E220075D100BD10DD /* PhoneNumberTextField.swift in Sources */,
 				C6C49DA52209A77E0087AE16 /* DollarString.swift in Sources */,
