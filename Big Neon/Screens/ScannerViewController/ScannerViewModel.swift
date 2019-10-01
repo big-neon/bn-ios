@@ -156,7 +156,7 @@ final class TicketScannerViewModel {
         }
     }
     
-    func completeAutoCheckin(eventID: String, ticket: RedeemableTicket, completion: @escaping(ScanFeedback, RedeemableTicket) -> Void) {
+    func completeAutoCheckin(eventID: String, ticket: RedeemableTicket, completion: @escaping(ScanFeedback, RedeemableTicket?) -> Void) {
         
         TokenService.shared.checkToken { (completed) in
             guard completed else {
@@ -170,7 +170,7 @@ final class TicketScannerViewModel {
         }
     }
 
-    func completeCheckin(eventID: String, ticket: RedeemableTicket, completion: @escaping(ScanFeedback, RedeemableTicket) -> Void) {
+    func completeCheckin(eventID: String, ticket: RedeemableTicket, completion: @escaping(ScanFeedback, RedeemableTicket?) -> Void) {
         
         TokenService.shared.checkToken { (completed) in
             guard completed else {
