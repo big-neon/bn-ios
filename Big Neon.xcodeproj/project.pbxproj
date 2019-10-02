@@ -187,6 +187,7 @@
 		C6EC209E220075D100BD10DD /* PhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209D220075D100BD10DD /* PhoneNumberTextField.swift */; };
 		C6EC20A122007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC20A022007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift */; };
 		C6FBD5A42344CD150032A439 /* EventGuestsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FBD5A32344CD150032A439 /* EventGuestsCell.swift */; };
+		C6FBD5A62344CF840032A439 /* ScanTicketsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FBD5A52344CF840032A439 /* ScanTicketsButton.swift */; };
 		E57B04BC0509839375C4A4BF /* Pods_Big_Neon_UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51533E2EC2C7F26DF71EF1B /* Pods_Big_Neon_UI.framework */; };
 /* End PBXBuildFile section */
 
@@ -429,6 +430,7 @@
 		C6EC20A022007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewContorller.ImageUpload.swift; sourceTree = "<group>"; };
 		C6EC4B2D2227C1150056CE73 /* GuestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestTableViewCell.swift; sourceTree = "<group>"; };
 		C6FBD5A32344CD150032A439 /* EventGuestsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventGuestsCell.swift; sourceTree = "<group>"; };
+		C6FBD5A52344CF840032A439 /* ScanTicketsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanTicketsButton.swift; sourceTree = "<group>"; };
 		F2103222D117085B513E9485 /* Pods-Big Neon.debug (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug (development).xcconfig"; path = "Target Support Files/Pods-Big Neon/Pods-Big Neon.debug (development).xcconfig"; sourceTree = "<group>"; };
 		F63D047B71F4AED64CDD07F2 /* Pods_Big_Neon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big_Neon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -784,6 +786,7 @@
 			children = (
 				C6949429234358ED00BC7219 /* EventViewModel.swift */,
 				C69494272343522400BC7219 /* EventView.swift */,
+				C6FBD5A52344CF840032A439 /* ScanTicketsButton.swift */,
 				C69494252343504E00BC7219 /* EventViewController.swift */,
 				C694942D2343607000BC7219 /* EventViewController.Search.swift */,
 				C694942B23435BDA00BC7219 /* EventViewController.TableView.swift */,
@@ -1489,6 +1492,7 @@
 				C623C06D2251E39E0020D0A8 /* CheckoutTotalCell.swift in Sources */,
 				C623C07D2251E42C0020D0A8 /* ScannerModeView.swift in Sources */,
 				C623C0772251E3F50020D0A8 /* DoorPersonCell.swift in Sources */,
+				C6FBD5A62344CF840032A439 /* ScanTicketsButton.swift in Sources */,
 				C64B0ADA21D1240700386000 /* TicketsViewModel.swift in Sources */,
 				C623C0752251E3DF0020D0A8 /* ProfileHeaderView.swift in Sources */,
 				C6C4E9B92302D2810040C258 /* SwipeExpanding.swift in Sources */,

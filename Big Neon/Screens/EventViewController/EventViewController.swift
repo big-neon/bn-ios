@@ -14,12 +14,13 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
     var filteredLocalSearchResults: [RedeemableTicket] = []
     var isFetchingNextPage = false
     var guestsFetcher: GuestsFetcher?
+    var scanButtonBottomAnchor: NSLayoutConstraint?
     
     var isSearching: Bool = false
     public var  guests: [RedeemableTicket]?
     
     lazy var guestTableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: UITableView.Style.plain)
+        let tableView = UITableView(frame: .zero, style: UITableView.Style.grouped)
         tableView.backgroundColor = UIColor.white
         tableView.delegate = self
         tableView.dataSource = self
@@ -29,6 +30,12 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
         tableView.showsVerticalScrollIndicator = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
+    }()
+    
+    lazy var scanTicketsButton: ScanTicketsButton = {
+        let button = ScanTicketsButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
 
     lazy var searchController: UISearchController = {
@@ -66,6 +73,7 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.perform(#selector(isTodayEvent), with: self, afterDelay: 1.0)
     }
     
     func fetchGuests() {
@@ -73,9 +81,9 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
             DispatchQueue.main.async {
                 self.configureTableView()
                 self.configureHeaderView()
+                self.configureScanButton()
             }
         }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -121,6 +129,36 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
         guestTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         guestTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         guestTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+
+    private func configureScanButton() {
+        view.addSubview(scanTicketsButton)
+    
+        scanButtonBottomAnchor = scanTicketsButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 200.0)
+        scanButtonBottomAnchor?.isActive = true
+        scanTicketsButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
+        scanTicketsButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
+        scanTicketsButton.heightAnchor.constraint(equalToConstant: 56.0).isActive = true
+    }
+    
+    @objc func isTodayEvent() {
+        guard let event = self.eventViewModel.eventData, let eventDate = event.event_start else {
+            return
+        }
+        
+        if self.eventViewModel.ticketsFetched.isEmpty {
+            return
+        }
+        
+        let isEventDate = DateConfig.eventDateIsToday(eventStartDate: eventDate)
+        self.showScanButton(isEventDate: isEventDate)
+    }
+    
+    func showScanButton(isEventDate: Bool) {
+        UIView.animate(withDuration: 0.8) {
+            self.scanButtonBottomAnchor?.constant = isEventDate == true ? -LayoutSpec.Spacing.twenty : -200.0
+            self.view.layoutIfNeeded()
+        }
     }
     
     func showGuest(withTicket ticket: RedeemableTicket?, selectedIndex: IndexPath) {
