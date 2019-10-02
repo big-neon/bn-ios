@@ -35,7 +35,7 @@ class EventView: UIView {
     lazy var eventNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandBlack
-        label.font = UIFont.systemFont(ofSize: LayoutSpec.Spacing.twentyFour, weight: UIFont.Weight.bold)
+        label.font = UIFont.systemFont(ofSize: LayoutSpec.Spacing.twenty, weight: UIFont.Weight.bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

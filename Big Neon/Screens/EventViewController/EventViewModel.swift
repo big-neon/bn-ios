@@ -19,7 +19,7 @@ final class EventViewModel {
     var ticketsFetched: [RedeemableTicket] = []
     var guestSearchResults: [RedeemableTicket] = []
 
-    func fetchEventGuests(forEventID eventID: String, page: Int, completion: @escaping(Bool) -> Void) {
+    func fetchEventGuests(page: Int, completion: @escaping(Bool) -> Void) {
         
         TokenService.shared.checkToken { (completed) in
             guard completed else {
@@ -27,14 +27,19 @@ final class EventViewModel {
                 return
             }
         
-            self.fetchGuests(forEventID: eventID, page: page) { (completed) in
+            self.fetchGuests(page: page) { (completed) in
                 completion(completed)
                 return
             }
         }
     }
     
-    func fetchGuests(forEventID eventID: String, page: Int, completion: @escaping(Bool) -> Void) {
+    func fetchGuests(page: Int, completion: @escaping(Bool) -> Void) {
+        
+        guard let eventID = self.eventData!.id else {
+            completion(false)
+            return
+        }
         
         BusinessService.shared.database.fetchGuests(forEventID: eventID, limit: limit, page: page, guestQuery: nil) { [weak self] (error, guestsFetched, serverGuests, totalGuests) in
             DispatchQueue.main.async {

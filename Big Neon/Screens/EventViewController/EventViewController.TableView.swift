@@ -41,8 +41,7 @@ extension EventViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let guestCell: GuestTableViewCell = tableView.dequeueReusableCell(withIdentifier: GuestTableViewCell.cellID, for: indexPath) as! GuestTableViewCell
-//        guestCell.delegate = self
+        let guestCell: EventGuestsCell = tableView.dequeueReusableCell(withIdentifier: EventGuestsCell.cellID, for: indexPath) as! EventGuestsCell
         
         var guestValues: RedeemableTicket?
         
@@ -83,18 +82,18 @@ extension EventViewController {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80.0
+        return 88.0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-//        var ticket: RedeemableTicket?
-//        if self.isSearching == true && !self.guestViewModel.guestSearchResults.isEmpty {
-//            ticket = self.guestViewModel.guestSearchResults[indexPath.row]
-//        } else {
-//            ticket = self.guestViewModel.ticketsFetched[indexPath.row]
-//        }
-//        self.showGuest(withTicket: ticket, selectedIndex: indexPath)
+        var ticket: RedeemableTicket?
+        if self.isSearching == true && !self.eventViewModel.guestSearchResults.isEmpty {
+            ticket = self.eventViewModel.guestSearchResults[indexPath.row]
+        } else {
+            ticket = self.eventViewModel.ticketsFetched[indexPath.row]
+        }
+        self.showGuest(withTicket: ticket, selectedIndex: indexPath)
     }
     
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
@@ -125,17 +124,15 @@ extension EventViewController {
         guard !isFetchingNextPage else {
             return
         }
-        if let id = self.eventViewModel.eventData?.id {
-            self.isFetchingNextPage = true
-            self.eventViewModel.fetchGuests(forEventID: id, page: eventViewModel.currentPage, completion: { [unowned self] (_) in
-                DispatchQueue.main.async {
-                    self.isFetchingNextPage = false
-                    self.guests = self.eventViewModel.ticketsFetched
-                    self.guestTableView.reloadData()
-                    return
-                }
-            })
-        }
+        self.isFetchingNextPage = true
+        self.eventViewModel.fetchGuests(page: eventViewModel.currentPage, completion: { [unowned self] (_) in
+           DispatchQueue.main.async {
+               self.isFetchingNextPage = false
+               self.guests = self.eventViewModel.ticketsFetched
+               self.guestTableView.reloadData()
+               return
+           }
+        })
     }
     
 }

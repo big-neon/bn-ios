@@ -186,6 +186,7 @@
 		C6EC209C2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209B2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift */; };
 		C6EC209E220075D100BD10DD /* PhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC209D220075D100BD10DD /* PhoneNumberTextField.swift */; };
 		C6EC20A122007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EC20A022007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift */; };
+		C6FBD5A42344CD150032A439 /* EventGuestsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FBD5A32344CD150032A439 /* EventGuestsCell.swift */; };
 		E57B04BC0509839375C4A4BF /* Pods_Big_Neon_UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51533E2EC2C7F26DF71EF1B /* Pods_Big_Neon_UI.framework */; };
 /* End PBXBuildFile section */
 
@@ -427,6 +428,7 @@
 		C6EC209D220075D100BD10DD /* PhoneNumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTextField.swift; sourceTree = "<group>"; };
 		C6EC20A022007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewContorller.ImageUpload.swift; sourceTree = "<group>"; };
 		C6EC4B2D2227C1150056CE73 /* GuestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestTableViewCell.swift; sourceTree = "<group>"; };
+		C6FBD5A32344CD150032A439 /* EventGuestsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventGuestsCell.swift; sourceTree = "<group>"; };
 		F2103222D117085B513E9485 /* Pods-Big Neon.debug (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug (development).xcconfig"; path = "Target Support Files/Pods-Big Neon/Pods-Big Neon.debug (development).xcconfig"; sourceTree = "<group>"; };
 		F63D047B71F4AED64CDD07F2 /* Pods_Big_Neon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big_Neon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -785,6 +787,7 @@
 				C69494252343504E00BC7219 /* EventViewController.swift */,
 				C694942D2343607000BC7219 /* EventViewController.Search.swift */,
 				C694942B23435BDA00BC7219 /* EventViewController.TableView.swift */,
+				C6FBD5A32344CD150032A439 /* EventGuestsCell.swift */,
 			);
 			path = EventViewController;
 			sourceTree = "<group>";
@@ -1510,6 +1513,7 @@
 				C694942A234358ED00BC7219 /* EventViewModel.swift in Sources */,
 				C64B0ABD21D0DCDB00386000 /* DoorPersonViewModel.swift in Sources */,
 				C623C06B2251E3970020D0A8 /* CardCheckoutCell.swift in Sources */,
+				C6FBD5A42344CD150032A439 /* EventGuestsCell.swift in Sources */,
 				C683233121FF34DF002342AE /* LogoutCell.swift in Sources */,
 				C6C4E9AD2302D2810040C258 /* SwipeCollectionViewCell+Display.swift in Sources */,
 				C6CD1C2222AA89BA009D7510 /* GuestsListViewModel.swift in Sources */,

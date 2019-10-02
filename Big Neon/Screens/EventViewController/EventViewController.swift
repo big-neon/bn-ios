@@ -57,8 +57,7 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
         super.init(nibName: nil, bundle: nil)
         self.eventViewModel.eventData = event
         self.setNavigationTitle(withTitle: event.name ?? "")
-        configureTableView()
-        configureHeaderView()
+        self.fetchGuests()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -67,7 +66,16 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationItem.searchController = searchController
+    }
+    
+    func fetchGuests() {
+        self.eventViewModel.fetchEventGuests(page: 0) { (fetched) in
+            DispatchQueue.main.async {
+                self.configureTableView()
+                self.configureHeaderView()
+            }
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,12 +115,21 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
     private func configureTableView() {
         
         view.addSubview(guestTableView)
-        guestTableView.register(GuestTableViewCell.self, forCellReuseIdentifier: GuestTableViewCell.cellID)
+        guestTableView.register(EventGuestsCell.self, forCellReuseIdentifier: EventGuestsCell.cellID)
         
         guestTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         guestTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         guestTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         guestTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+    
+    func showGuest(withTicket ticket: RedeemableTicket?, selectedIndex: IndexPath) {
+        let guestVC = GuestViewController()
+        guestVC.event = self.eventViewModel.eventData
+        guestVC.redeemableTicket = ticket
+//        guestVC.guestListVC = self
+        guestVC.guestListIndex = selectedIndex
+        self.presentPanModal(guestVC)
     }
     
     
