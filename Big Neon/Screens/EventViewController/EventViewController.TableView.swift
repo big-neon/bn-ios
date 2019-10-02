@@ -7,6 +7,27 @@ import Big_Neon_Core
 
 extension EventViewController {
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let sectionHeaderView: UIView = UIView.init(frame: CGRect(x: 0, y: 0.0, width: tableView.frame.width, height: 56.0))
+        sectionHeaderView.backgroundColor = UIColor.brandBackground
+        
+        let sectionHeaderLabel: UILabel = UILabel.init(frame: CGRect(x: 16.0, y: 16.0, width: tableView.frame.width - 32, height: 20))
+        sectionHeaderLabel.font = UIFont.systemFont(ofSize: 16.0, weight: UIFont.Weight.medium)
+        sectionHeaderLabel.textColor = UIColor.brandGrey
+        sectionHeaderLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
+        
+        sectionHeaderView.addSubview(sectionHeaderLabel)
+        return sectionHeaderView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 56
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Guests"
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

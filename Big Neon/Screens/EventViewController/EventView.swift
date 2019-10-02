@@ -14,6 +14,8 @@ class EventView: UIView {
             }
             
             eventNameLabel.text = event.name
+            eventDetailsLabel.text = event.venue?.name
+            eventDateLabel.text = self.configureEventDate(event: event)
             if let eventImageURL =  event.promo_image_url  {
                 let url = URL(string: eventImageURL)
                 eventImageView.pin_setImage(from: url, placeholderImage: #imageLiteral(resourceName: "ic_placeholder_image"))
@@ -60,12 +62,25 @@ class EventView: UIView {
         self.backgroundColor = UIColor.white
         self.configureView()
     }
+    
+    private func configureEventDate(event: EventsData) -> String {
+           let utcEventStart = event.event_start
+           
+           guard let timezone = event.venue else {
+               return "-"
+           }
+           
+           guard let eventDate = DateConfig.formatServerDate(date: utcEventStart!, timeZone: timezone.timezone!) else {
+               return "-"
+           }
+           return DateConfig.dateFormatShort(date: eventDate)
+       }
 
     private func configureView() {
         self.addSubview(eventImageView)
         self.addSubview(eventNameLabel)
-//        self.addSubview(eventDetailsLabel)
-//        self.addSubview(eventDateLabel)
+        self.addSubview(eventDetailsLabel)
+        self.addSubview(eventDateLabel)
         
         eventImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
         eventImageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
@@ -73,19 +88,19 @@ class EventView: UIView {
         eventImageView.heightAnchor.constraint(equalToConstant: 200.0).isActive = true
         
         eventNameLabel.leftAnchor.constraint(equalTo: eventImageView.leftAnchor).isActive = true
-        eventNameLabel.rightAnchor.constraint(equalTo: eventImageView.rightAnchor).isActive = true
+        eventNameLabel.rightAnchor.constraint(equalTo: eventImageView.rightAnchor, constant: -150).isActive = true
         eventNameLabel.topAnchor.constraint(equalTo: eventImageView.bottomAnchor, constant: LayoutSpec.Spacing.twelve).isActive = true
-        eventNameLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twentyFour).isActive = true
+        eventNameLabel.heightAnchor.constraint(equalToConstant: 32).isActive = true
         
-//        eventDetailsLabel.leftAnchor.constraint(equalTo: eventNameLabel.leftAnchor).isActive = true
-//        eventDetailsLabel.rightAnchor.constraint(equalTo: eventNameLabel.rightAnchor).isActive = true
-//        eventDetailsLabel.topAnchor.constraint(equalTo: eventNameLabel.bottomAnchor, constant: 6).isActive = true
-//        eventDetailsLabel.heightAnchor.constraint(equalToConstant: 16.0).isActive = true
-//
-//        eventDateLabel.leftAnchor.constraint(equalTo: eventNameLabel.leftAnchor).isActive = true
-//        eventDateLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
-//        eventDateLabel.topAnchor.constraint(equalTo: eventDetailsLabel.bottomAnchor, constant: 6).isActive = true
-//        eventDateLabel.heightAnchor.constraint(equalToConstant: 18.0).isActive = true
+        eventDetailsLabel.leftAnchor.constraint(equalTo: eventNameLabel.leftAnchor).isActive = true
+        eventDetailsLabel.rightAnchor.constraint(equalTo: eventNameLabel.rightAnchor).isActive = true
+        eventDetailsLabel.topAnchor.constraint(equalTo: eventNameLabel.bottomAnchor, constant: 8).isActive = true
+        eventDetailsLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twentyFour).isActive = true
+
+        eventDateLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
+        eventDateLabel.centerYAnchor.constraint(equalTo: eventNameLabel.centerYAnchor).isActive = true
+        eventDateLabel.heightAnchor.constraint(equalToConstant: 18.0).isActive = true
+        eventDateLabel.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
     }
     
     required public init?(coder aDecoder: NSCoder) {
