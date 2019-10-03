@@ -16,8 +16,14 @@ class BaseViewController: UIViewController  {
         return feedback
     }()
     
+    
     lazy var fetcher: EventsFetcher = {
         let fetcher = EventsFetcher()
+        return fetcher
+    }()
+    
+    lazy var guestFetcher: GuestsFetcher = {
+        let fetcher = GuestsFetcher()
         return fetcher
     }()
     

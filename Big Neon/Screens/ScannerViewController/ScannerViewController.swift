@@ -67,7 +67,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
                               AVMetadataObject.ObjectType.interleaved2of5,
                               AVMetadataObject.ObjectType.qr]
     
-    var guestsCoreData: [RedeemedTicket]? {
+    var guestsCoreData: [GuestData]? {
         didSet {
             showGuestView.loadingView.stopAnimating()
             
@@ -190,6 +190,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     }
     
     @objc func syncGuestsData() {
+        /*
         guard let eventID = self.event?.id else {
             return
         }
@@ -207,6 +208,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
                 }
             }
         }
+        */
     }
 
     func fetchGuests() {

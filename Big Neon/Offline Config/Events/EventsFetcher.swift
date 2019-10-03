@@ -45,11 +45,6 @@ class EventsFetcher {
         }
     }
 
-    func fetchLocalGuests() -> [RedeemedTicket] {
-        let guests: NSFetchRequest<RedeemedTicket> = RedeemedTicket.fetchRequest()
-        return try! self.dataStack.viewContext.fetch(guests)
-    }
-
     func syncCheckins(completion: @escaping (_ result: VoidResult) -> ()) {
         
         self.repository.fetchEvents { (eventsFetchedDict, error) in

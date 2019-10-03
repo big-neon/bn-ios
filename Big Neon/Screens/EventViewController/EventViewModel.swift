@@ -16,6 +16,7 @@ final class EventViewModel {
     var currentTotalGuests: Int = 0
     var currentPage: Int = 0
     let limit = 100
+    var guestCoreData: [GuestData] = []
     var ticketsFetched: [RedeemableTicket] = []
     var guestSearchResults: [RedeemableTicket] = []
 

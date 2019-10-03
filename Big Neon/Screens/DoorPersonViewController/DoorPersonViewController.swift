@@ -11,11 +11,7 @@ protocol DoorPersonViewDelegate: class {
 final class DoorPersonViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate, DoorPersonViewDelegate {
 
     var eventsFetcher: EventsFetcher
-    lazy var guestsFetcher: GuestsFetcher = {
-        let fetcher = GuestsFetcher()
-        return fetcher
-    }()
-    
+
     var headerLabel: UILabel = {
         let label = UILabel()
         label.text = "No Published Events"
@@ -141,17 +137,17 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     
     func showScanner(forTicketIndex ticketIndex: Int, section: Int) {
         
-        let scannerVC = ScannerViewController(fetcher: guestsFetcher)
-        scannerVC.modalPresentationStyle = .fullScreen
-        scannerVC.event = section == 1 ? self.doorPersonViemodel.todayEvents[ticketIndex] : self.doorPersonViemodel.upcomingEvents[ticketIndex]
-        let scannerNavVC = UINavigationController(rootViewController: scannerVC)
-        scannerNavVC.modalPresentationStyle = .fullScreen
-        self.present(scannerNavVC, animated: true, completion: nil)
+//        let scannerVC = ScannerViewController(fetcher: guestsFetcher)
+//        scannerVC.modalPresentationStyle = .fullScreen
+//        scannerVC.event = section == 1 ? self.doorPersonViemodel.todayEvents[ticketIndex] : self.doorPersonViemodel.upcomingEvents[ticketIndex]
+//        let scannerNavVC = UINavigationController(rootViewController: scannerVC)
+//        scannerNavVC.modalPresentationStyle = .fullScreen
+//        self.present(scannerNavVC, animated: true, completion: nil)
     }
     
     func showEvent(forTicketIndex ticketIndex: Int, section: Int) {
         let event = section == 1 ? self.doorPersonViemodel.todayEvents[ticketIndex] : self.doorPersonViemodel.upcomingEvents[ticketIndex]
-        let eventVC = EventViewController(event: event)
+        let eventVC = EventViewController(event: event, fetcher: guestFetcher)
         let eventNavVC = UINavigationController(rootViewController: eventVC)
         self.navigationController?.push(eventVC)
     }

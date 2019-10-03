@@ -74,7 +74,7 @@ final class GuestListViewController: BaseViewController, UITableViewDataSource, 
         }
     }
     
-    public var  guestsCoreData: [RedeemedTicket]? {
+    public var  guestsCoreData: [GuestData]? {
         didSet {
             guard let guests = self.guestsCoreData else {
                 return

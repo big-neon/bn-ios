@@ -13,9 +13,8 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
     var guestsDictionary: [String: [RedeemableTicket]] = [:]
     var filteredLocalSearchResults: [RedeemableTicket] = []
     var isFetchingNextPage = false
-    var guestsFetcher: GuestsFetcher?
+    var guestsFetcher: GuestsFetcher
     var scanButtonBottomAnchor: NSLayoutConstraint?
-    
     var isSearching: Bool = false
     public var  guests: [RedeemableTicket]?
     
@@ -34,6 +33,8 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
     
     lazy var scanTicketsButton: ScanTicketsButton = {
         let button = ScanTicketsButton()
+        button.isUserInteractionEnabled = true
+        button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showScanner)))
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -60,10 +61,14 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
         return .default
     }
     
-    init(event: EventsData) {
+    init(event: EventsData, fetcher: GuestsFetcher) {
+        guestsFetcher = fetcher
         super.init(nibName: nil, bundle: nil)
         self.eventViewModel.eventData = event
-        self.fetchGuests()
+        configureNavBar()
+        configureTableView()
+        configureHeaderView()
+//        self.fetchGuests()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -72,8 +77,33 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.white
+        //refresher.addTarget(self, action: #selector(reloadGuests), for: .valueChanged)
+        guestTableView.refreshControl = self.refresher
+        eventViewModel.guestCoreData = self.guestFetcher.fetchLocalGuests()
+        syncEventsData()
     }
     
+    @objc func syncEventsData() {
+        guard let event = self.eventViewModel.eventData, let eventID = event.id else {
+            return
+        }
+        
+        guestFetcher.syncGuests(forEventID: eventID) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    self.eventViewModel.guestCoreData = self.guestFetcher.fetchLocalGuests()
+                    self.guestTableView.reloadData()
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
+    
+    /*
+     
     func fetchGuests() {
         self.eventViewModel.fetchEventGuests(page: 0) { (fetched) in
             DispatchQueue.main.async {
@@ -92,12 +122,12 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
                 self.guestTableView.reloadData()
                 self.refresher.endRefreshing()
                 self.isTodayEvent()
-//                self.perform(#selector(self.isTodayEvent), with: self, afterDelay: 0.1)
                 return
             }
         })
     }
     
+    */
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         view.backgroundColor = UIColor.white
@@ -134,8 +164,6 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
     
     private func configureTableView() {
         
-        self.refresher.addTarget(self, action: #selector(reloadGuests), for: .valueChanged)
-        guestTableView.refreshControl = self.refresher
         view.addSubview(guestTableView)
         guestTableView.register(EventGuestsCell.self, forCellReuseIdentifier: EventGuestsCell.cellID)
         
@@ -181,6 +209,16 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
         guestVC.redeemableTicket = ticket
         guestVC.guestListIndex = selectedIndex
         self.presentPanModal(guestVC)
+    }
+    
+    @objc func showScanner() {
+        viewAnimationBounce(viewSelected: scanTicketsButton, bounceVelocity: 10.0, springBouncinessEffect: 15.0)
+        let scannerVC = ScannerViewController(fetcher: guestsFetcher)
+        scannerVC.modalPresentationStyle = .fullScreen
+        scannerVC.event = self.eventViewModel.eventData
+        let scannerNavVC = UINavigationController(rootViewController: scannerVC)
+        scannerNavVC.modalPresentationStyle = .fullScreen
+        self.present(scannerNavVC, animated: true, completion: nil)
     }
     
     

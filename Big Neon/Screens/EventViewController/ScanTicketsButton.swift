@@ -45,8 +45,6 @@ class ScanTicketsButton: UIView {
     private func configureView() {
         self.addSubview(scanStackView)
         
-//        scanStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
-//        scanStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
         scanStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         scanStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         scanStackView.heightAnchor.constraint(equalToConstant: 32.0).isActive = true
