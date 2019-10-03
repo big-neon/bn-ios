@@ -61,8 +61,8 @@ public class EventsApiRepository {
                 .response { (response) in
                     
                     if let err = response.error {
-                        let error = NSError(domain: dataErrorDomain, code: DataErrorCode.networkUnavailable.rawValue, userInfo: nil)
-                        completion(nil, error)
+                        completion(nil, err)
+                        return
                     }
                     
                     guard let data = response.data else {

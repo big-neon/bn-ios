@@ -62,8 +62,6 @@ class EventsFetcher {
                 return
             }
             
-            print(events)
-
             do {
                 try self.deleteAllData(EVENT_ENTITY_NAME)
                 try self.deleteAllData(VENUE_ENTITY_NAME)

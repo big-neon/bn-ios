@@ -72,7 +72,6 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.perform(#selector(isTodayEvent), with: self, afterDelay: 1.0)
     }
     
     func fetchGuests() {
@@ -81,6 +80,7 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
                 self.configureTableView()
                 self.configureHeaderView()
                 self.configureScanButton()
+                self.perform(#selector(self.isTodayEvent), with: self, afterDelay: 0.1)
             }
         }
     }
@@ -91,6 +91,8 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
                 guard let self = self else { return }
                 self.guestTableView.reloadData()
                 self.refresher.endRefreshing()
+                self.isTodayEvent()
+//                self.perform(#selector(self.isTodayEvent), with: self, afterDelay: 0.1)
                 return
             }
         })
@@ -167,10 +169,10 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
     }
     
     func showScanButton(isEventDate: Bool) {
-        UIView.animate(withDuration: 0.8) {
-            self.scanButtonBottomAnchor?.constant = isEventDate == true ? -LayoutSpec.Spacing.twenty : -200.0
+        UIView.animate(withDuration: 0.9, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.6, options: .curveEaseIn, animations: {
+            self.scanButtonBottomAnchor?.constant = isEventDate == true ? -LayoutSpec.Spacing.twenty : +200.0
             self.view.layoutIfNeeded()
-        }
+        }, completion: nil)
     }
     
     func showGuest(withTicket ticket: RedeemableTicket?, selectedIndex: IndexPath) {

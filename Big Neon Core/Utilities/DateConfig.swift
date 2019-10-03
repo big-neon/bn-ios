@@ -120,7 +120,8 @@ final public class DateConfig {
     }
     
     public class func dateIsInFutureDate(ofDate date: Date) -> Bool {
-        if let tomorrowsDate = Calendar.current.date(byAdding: Calendar.Component.hour, value: 24, to: Date()) {
+        let today = Date.init()
+        if let tomorrowsDate = Calendar.current.date(byAdding: Calendar.Component.day, value: 1, to: today) {
             return date >= tomorrowsDate
         }
         return false

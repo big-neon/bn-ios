@@ -41,13 +41,11 @@ extension DoorPersonViewController {
         
         //  Get Events Occuring Today
         self.doorPersonViemodel.todayEvents = self.doorPersonViemodel.eventCoreData.filter {
-                
             guard let firstEvent = $0.event_start,
                 let firstDate = DateConfig.dateFromUTCString(stringDate: firstEvent) else {
                 return false
             }
             return DateConfig.dateIsWithinTwentyFourHours(ofDate: firstDate)
-                
         }
         
         //  Get Future events
@@ -58,6 +56,7 @@ extension DoorPersonViewController {
             }
             return DateConfig.dateIsInFutureDate(ofDate: firstDate)
         }
+        
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {

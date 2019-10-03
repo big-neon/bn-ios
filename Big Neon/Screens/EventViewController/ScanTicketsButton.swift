@@ -19,7 +19,7 @@ class ScanTicketsButton: UIView {
         label.textColor = UIColor.white
         label.text = "Scan Tickets"
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.bold)
+        label.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
