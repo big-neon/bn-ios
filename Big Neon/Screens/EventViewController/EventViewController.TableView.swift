@@ -25,7 +25,7 @@ extension EventViewController {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Guests"
+        return self.eventViewModel.ticketsFetched.isEmpty ? "No Guests" : "Guests"
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

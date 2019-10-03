@@ -64,47 +64,47 @@ class EventView: UIView {
     }
     
     private func configureEventDate(event: EventsData) -> String {
-           let utcEventStart = event.event_start
-           
-           guard let timezone = event.venue else {
-               return "-"
-           }
-           
-           guard let eventDate = DateConfig.formatServerDate(date: utcEventStart!, timeZone: timezone.timezone!) else {
-               return "-"
-           }
-           return DateConfig.dateFormatShort(date: eventDate)
-       }
+        let utcEventStart = event.event_start
+       
+        guard let timezone = event.venue else {
+            return "-"
+        }
+       
+        guard let eventDate = DateConfig.formatServerDate(date: utcEventStart!, timeZone: timezone.timezone!) else {
+            return "-"
+        }
+        return DateConfig.dateFormatShort(date: eventDate)
+    }
 
     private func configureView() {
         self.addSubview(eventImageView)
         self.addSubview(eventNameLabel)
         self.addSubview(eventDetailsLabel)
         self.addSubview(eventDateLabel)
-        
+
         eventImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
         eventImageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
         eventImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
         eventImageView.heightAnchor.constraint(equalToConstant: 200.0).isActive = true
-        
+
         eventNameLabel.leftAnchor.constraint(equalTo: eventImageView.leftAnchor).isActive = true
-        eventNameLabel.rightAnchor.constraint(equalTo: eventImageView.rightAnchor, constant: -150).isActive = true
+        eventNameLabel.rightAnchor.constraint(equalTo: eventImageView.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
         eventNameLabel.topAnchor.constraint(equalTo: eventImageView.bottomAnchor, constant: LayoutSpec.Spacing.twelve).isActive = true
         eventNameLabel.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        
+
         eventDetailsLabel.leftAnchor.constraint(equalTo: eventNameLabel.leftAnchor).isActive = true
-        eventDetailsLabel.rightAnchor.constraint(equalTo: eventNameLabel.rightAnchor).isActive = true
+        eventDetailsLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -150).isActive = true
         eventDetailsLabel.topAnchor.constraint(equalTo: eventNameLabel.bottomAnchor, constant: 8).isActive = true
         eventDetailsLabel.heightAnchor.constraint(equalToConstant: LayoutSpec.Spacing.twentyFour).isActive = true
 
         eventDateLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
-        eventDateLabel.centerYAnchor.constraint(equalTo: eventNameLabel.centerYAnchor).isActive = true
+        eventDateLabel.centerYAnchor.constraint(equalTo: eventDetailsLabel.centerYAnchor).isActive = true
         eventDateLabel.heightAnchor.constraint(equalToConstant: 18.0).isActive = true
         eventDateLabel.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
     }
-    
+
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
 }

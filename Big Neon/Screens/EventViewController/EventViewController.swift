@@ -63,7 +63,6 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
     init(event: EventsData) {
         super.init(nibName: nil, bundle: nil)
         self.eventViewModel.eventData = event
-        self.setNavigationTitle(withTitle: event.name ?? "")
         self.fetchGuests()
     }
 
@@ -84,6 +83,17 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
                 self.configureScanButton()
             }
         }
+    }
+    
+    @objc func reloadGuests() {
+        self.eventViewModel.fetchEventGuests(page: eventViewModel.currentPage, completion: { [weak self] (completed) in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.guestTableView.reloadData()
+                self.refresher.endRefreshing()
+                return
+            }
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -122,6 +132,8 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
     
     private func configureTableView() {
         
+        self.refresher.addTarget(self, action: #selector(reloadGuests), for: .valueChanged)
+        guestTableView.refreshControl = self.refresher
         view.addSubview(guestTableView)
         guestTableView.register(EventGuestsCell.self, forCellReuseIdentifier: EventGuestsCell.cellID)
         
@@ -165,7 +177,6 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
         let guestVC = GuestViewController()
         guestVC.event = self.eventViewModel.eventData
         guestVC.redeemableTicket = ticket
-//        guestVC.guestListVC = self
         guestVC.guestListIndex = selectedIndex
         self.presentPanModal(guestVC)
     }

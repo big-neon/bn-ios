@@ -136,13 +136,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         return view
     }()
     
-//    lazy var manualUserCheckinView: ManualCheckinModeView = {
-//        let view =  ManualCheckinModeView()
-//        view.delegate = self
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        return view
-//    }()
-    
     lazy var scannedUserView: LastScannedUserView = {
         let view =  LastScannedUserView()
         view.delegate = self
