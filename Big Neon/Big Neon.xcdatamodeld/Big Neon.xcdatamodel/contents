@@ -35,6 +35,7 @@
         <relationship name="venue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Venue"/>
     </entity>
     <entity name="GuestData" representedClassName="GuestData" syncable="YES" codeGenerationType="class">
+        <attribute name="changes_since" optional="YES" attributeType="String"/>
         <attribute name="door_time" optional="YES" attributeType="String"/>
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="event_id" optional="YES" attributeType="String"/>
@@ -47,8 +48,9 @@
         <attribute name="order_item_id" optional="YES" attributeType="String"/>
         <attribute name="phone" optional="YES" attributeType="String"/>
         <attribute name="price_in_cents" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="redeem_date" optional="YES" attributeType="String"/>
-        <attribute name="redeem_key" optional="YES" attributeType="String"/>
+        <attribute name="redeemed_at" optional="YES" attributeType="String"/>
+        <attribute name="redeemed_by" optional="YES" attributeType="String"/>
+        <attribute name="refund_supported" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="status" optional="YES" attributeType="String"/>
         <attribute name="ticket_type" optional="YES" attributeType="String"/>
         <attribute name="user_id" optional="YES" attributeType="String"/>
@@ -99,9 +101,9 @@
     </entity>
     <elements>
         <element name="EventsData" positionX="-54" positionY="144" width="128" height="525"/>
+        <element name="GuestData" positionX="-81" positionY="144" width="128" height="358"/>
         <element name="RedeemableTicker" positionX="258.8125" positionY="-7.7734375" width="128" height="328"/>
         <element name="ScannedUser" positionX="-194.48046875" positionY="-8.1796875" width="128" height="45"/>
         <element name="Venue" positionX="-284.57421875" positionY="281.390625" width="128" height="315"/>
-        <element name="GuestData" positionX="-81" positionY="144" width="128" height="328"/>
     </elements>
 </model>

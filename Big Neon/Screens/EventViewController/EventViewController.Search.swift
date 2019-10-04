@@ -29,7 +29,7 @@ extension EventViewController {
         self.isSearching = true
         
         // Ping DB for information
-        self.eventViewModel.fetchGuests(withQuery: searchText, page: nil, isSearching: true) { [weak self] (_) in
+        self.eventViewModel.fetchSearchGuests(withQuery: searchText, page: nil, isSearching: true) { [weak self] (_) in
             DispatchQueue.main.async {
                 self?.guestTableView.reloadData()
             }

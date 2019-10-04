@@ -42,25 +42,40 @@ class GuestsFetcher {
 
     func syncGuests(forEventID eventID: String, completion: @escaping (_ result: VoidResult) -> ()) {
         
-        self.repository.fetchGuests(forEventID: eventID, limit: 100, page: 1, guestQuery: "") { (error, guestsFetched, serverGuests, totalGuests) in
-            if error != nil {
-                completion(.failure(error! as NSError))
-                return
-            }
+        BusinessService.shared.database.fetchGuests(forEventID: eventID, limit: 100, page: 1, guestQuery: nil) { (error, guestsFetched, serverGuests, totalGuests) in
+            DispatchQueue.main.async {
 
-            guard let guests = guestsFetched else {
-                return
-            }
+                if error != nil {
+                    completion(.failure(error! as NSError))
+                    return
+                }
+                
+                //  Core Data Checks
+                guard let guests = serverGuests else {
+                    return
+                }
 
-            do {
-                try self.deleteAllData(GUEST_ENTITY_NAME)
-            } catch let err {
-                completion(.failure(err as NSError))
-            }
+//                do {
+//                    try self?.deleteAllData(GUEST_ENTITY_NAME)
+//                } catch let err {
+//                    completion(.failure(err as NSError))
+//                }
+                
+                print(totalGuests)
+                print(guests.data)
+                print(guests.data.count)
 
-            self.dataStack.sync(guests, inEntityNamed: GUEST_ENTITY_NAME) { error in
+//                self?.dataStack.sync(guests.data, inEntityNamed: GUEST_ENTITY_NAME) { error in
+//                    completion(.success)
+//                }
+                
                 completion(.success)
+                return
             }
         }
+        
+//        self.repository.fetchGuests(forEventID: eventID, limit: 100, page: 1, guestQuery: "") { (error, guestsFetched, serverGuests, totalGuests) in
+//
+//        }
     }
 }

@@ -109,14 +109,6 @@ extension EventViewController {
                 fetchNextPage(withIndexPaths: indexPaths)
                 return
             }
-            
-            /*
-             Alphabetic List Removed Code
-             if lastSection >= guestSectionTitles.count - 1 && lastRow >= self.guestViewModel.currentTotalGuests - 20 {
-                 fetchNextPage(withIndexPaths: indexPaths)
-                 return
-             }
-             */
         }
     }
     
@@ -125,7 +117,7 @@ extension EventViewController {
             return
         }
         self.isFetchingNextPage = true
-        self.eventViewModel.fetchGuests(page: eventViewModel.currentPage, completion: { [unowned self] (_) in
+        self.eventViewModel.fetchNextEventGuests(page: eventViewModel.currentPage, completion: { [unowned self] (_) in
            DispatchQueue.main.async {
                self.isFetchingNextPage = false
                self.guests = self.eventViewModel.ticketsFetched

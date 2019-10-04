@@ -20,14 +20,14 @@ final class EventViewModel {
     var ticketsFetched: [RedeemableTicket] = []
     var guestSearchResults: [RedeemableTicket] = []
 
-    func fetchEventGuests(page: Int, completion: @escaping(Bool) -> Void) {
-        
+    func fetchNextEventGuests(page: Int, completion: @escaping(Bool) -> Void) {
+
         TokenService.shared.checkToken { (completed) in
             guard completed else {
                 completion(false)
                 return
             }
-        
+
             self.fetchGuests(page: page) { (completed) in
                 completion(completed)
                 return
@@ -36,21 +36,21 @@ final class EventViewModel {
     }
     
     func fetchGuests(page: Int, completion: @escaping(Bool) -> Void) {
-        
+
         guard let eventID = self.eventData!.id else {
             completion(false)
             return
         }
-        
+
         BusinessService.shared.database.fetchGuests(forEventID: eventID, limit: limit, page: page, guestQuery: nil) { [weak self] (error, guestsFetched, serverGuests, totalGuests) in
             DispatchQueue.main.async {
-                
+
                 //  Core Data Checks
                 guard let guests = serverGuests else {
                     completion(false)
                     return
                 }
-                
+
                 self?.totalGuests = totalGuests
                 self?.ticketsFetched += guests.data
                 self?.currentTotalGuests += guests.data.count
@@ -61,7 +61,7 @@ final class EventViewModel {
         }
     }
     
-    func fetchGuests(withQuery query: String?, page: Int?, isSearching: Bool, completion: @escaping(Bool) -> Void) {
+    func fetchSearchGuests(withQuery query: String?, page: Int?, isSearching: Bool, completion: @escaping(Bool) -> Void) {
         
         guard let eventID = self.eventData?.id else {
             completion(false)

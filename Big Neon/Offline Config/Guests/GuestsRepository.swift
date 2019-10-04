@@ -80,6 +80,11 @@ public class GuestsApiRepository {
                     let totalGuests = pagingDictionary!["total"] as! Int
                     let decoder = JSONDecoder()
                     let guests = try decoder.decode(Guests.self, from: data)
+                    
+                    print(result.count)
+                    print(totalGuests)
+                    print(pagingDictionary)
+                    
                     completion(nil, result, guests, totalGuests)
                     
                 } catch let error as NSError {
