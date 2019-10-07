@@ -13,7 +13,6 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
     var guestsDictionary: [String: [RedeemableTicket]] = [:]
     var filteredLocalSearchResults: [RedeemableTicket] = []
     var isFetchingNextPage = false
-    var guestsFetcher: GuestsFetcher
     var scanButtonBottomAnchor: NSLayoutConstraint?
     var isSearching: Bool = false
     public var  guests: [RedeemableTicket]?
@@ -61,8 +60,7 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
         return .default
     }
     
-    init(event: EventsData, fetcher: GuestsFetcher) {
-        guestsFetcher = fetcher
+    init(event: EventsData) {
         super.init(nibName: nil, bundle: nil)
         self.eventViewModel.eventData = event
         configureNavBar()
@@ -192,7 +190,7 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
     
     @objc func showScanner() {
         viewAnimationBounce(viewSelected: scanTicketsButton, bounceVelocity: 10.0, springBouncinessEffect: 15.0)
-        let scannerVC = ScannerViewController(fetcher: guestsFetcher)
+        let scannerVC = ScannerViewController()
         scannerVC.modalPresentationStyle = .fullScreen
         scannerVC.event = self.eventViewModel.eventData
         let scannerNavVC = UINavigationController(rootViewController: scannerVC)

@@ -24,7 +24,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     var lastScannedTicket: RedeemableTicket?
     var scannedTicketID: String?
     var event: EventsData?
-    var fetcher: GuestsFetcher
     var guestListVC: GuestListViewController?
     
     //  Layout
@@ -36,8 +35,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     var stopScanning: Bool?
     var isShowingScannedUser: Bool?
     var scannerViewModel : TicketScannerViewModel?
-    //  let blurEffect = UIBlurEffect(style: .dark)
-    //  var blurView: UIVisualEffectView?
     
     //  Last Scanned Ticked Time
     var lastScannedTicketTime: Date?
@@ -149,16 +146,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         view.layer.opacity = 0.0
         return view
     }()
-
-    init(fetcher: GuestsFetcher) {
-        self.fetcher = fetcher
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
@@ -293,7 +281,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
             return
         }
 
-        // Video preview Layer Init
+        // Video preview Layer 
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         videoPreviewLayer?.frame = view.layer.bounds

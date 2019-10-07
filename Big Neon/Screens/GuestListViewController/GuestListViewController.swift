@@ -25,7 +25,6 @@ final class GuestListViewController: BaseViewController, UITableViewDataSource, 
     var scannerViewModel: TicketScannerViewModel
     var guestViewModel = GuestsListViewModel()
     
-    var guestsFetcher: GuestsFetcher?
     var event: EventsData?
     
     var isSearching: Bool = false {

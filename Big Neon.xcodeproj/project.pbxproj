@@ -836,19 +836,11 @@
 			path = EventDetailViewController;
 			sourceTree = "<group>";
 		};
-		C6B1E78A234666C100723B02 /* Events */ = {
+		C6B6DEA0227ABE06003367D7 /* Offline Config */ = {
 			isa = PBXGroup;
 			children = (
 				C6B6DEA1227ABE3A003367D7 /* EventsFetcher.swift */,
 				C6A6FAA4226F396900601AC2 /* EventsApiRepository.swift */,
-			);
-			path = Events;
-			sourceTree = "<group>";
-		};
-		C6B6DEA0227ABE06003367D7 /* Offline Config */ = {
-			isa = PBXGroup;
-			children = (
-				C6B1E78A234666C100723B02 /* Events */,
 			);
 			path = "Offline Config";
 			sourceTree = "<group>";

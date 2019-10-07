@@ -147,8 +147,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     
     func showEvent(forTicketIndex ticketIndex: Int, section: Int) {
         let event = section == 1 ? self.doorPersonViemodel.todayEvents[ticketIndex] : self.doorPersonViemodel.upcomingEvents[ticketIndex]
-        let eventVC = EventViewController(event: event, fetcher: guestFetcher)
-        let eventNavVC = UINavigationController(rootViewController: eventVC)
+        let eventVC = EventViewController(event: event)
         self.navigationController?.push(eventVC)
     }
 

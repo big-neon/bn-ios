@@ -7,6 +7,8 @@ import Big_Neon_Core
 import CoreData
 import Sync
 
+let GUEST_ENTITY_NAME = "GuestData"
+
 final class EventViewModel {
     
     var eventData: EventsData?
@@ -90,8 +92,8 @@ final class EventViewModel {
                 }
              
                  self?.totalGuests = totalGuests
-                 self?.ticketsFetched += guests.data
-                 self?.currentTotalGuests += guests.data.count
+                 // self?.ticketsFetched += guests.data
+                 self?.currentTotalGuests += fetchedGuests.count
                  self?.currentPage += 1
                 
                 self?.dataStack.sync(fetchedGuests, inEntityNamed: GUEST_ENTITY_NAME) { error in

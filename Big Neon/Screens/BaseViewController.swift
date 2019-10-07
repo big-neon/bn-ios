@@ -22,11 +22,6 @@ class BaseViewController: UIViewController  {
         return fetcher
     }()
     
-    lazy var guestFetcher: GuestsFetcher = {
-        let fetcher = GuestsFetcher()
-        return fetcher
-    }()
-    
     let loadingView: UIActivityIndicatorView = {
         let loader = UIActivityIndicatorView()
         loader.style = UIActivityIndicatorView.Style.gray
