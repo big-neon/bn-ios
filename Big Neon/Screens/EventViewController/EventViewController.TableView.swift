@@ -42,43 +42,12 @@ extension EventViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let guestCell: EventGuestsCell = tableView.dequeueReusableCell(withIdentifier: EventGuestsCell.cellID, for: indexPath) as! EventGuestsCell
-        
-        var guestValues: GuestData?
-        
-//        if self.isSearching == true && !self.eventViewModel.guestSearchResults.isEmpty {
+        if self.isSearching == true && !self.eventViewModel.guestSearchResults.isEmpty {
 //            guestValues = self.eventViewModel.guestSearchResults[indexPath.row]
-//        } else {
-//            guestValues = self.eventViewModel.guestCoreData[indexPath.row]
-//        }
-        
-        guestValues = self.eventViewModel.guestCoreData[indexPath.row]
-        if guestValues == nil {
-            return guestCell
-        }
-        
-        if guestValues!.last_name == "" && guestValues!.first_name  == ""{
-            guestCell.guestNameLabel.text = "No Details Provided"
+            guestCell.guest = self.eventViewModel.guestCoreData[indexPath.row]
         } else {
-            guestCell.guestNameLabel.text = guestValues!.first_name! + " " + guestValues!.last_name!
+            guestCell.guest = self.eventViewModel.guestCoreData[indexPath.row]
         }
-        
-        
-        let price = Int(guestValues!.price_in_cents)
-        let ticketID = "#" + guestValues!.id!.suffix(8).uppercased()
-        guestCell.ticketTypeNameLabel.text = price.dollarString + " | " + guestValues!.ticket_type! + " | " + ticketID
-        
-        if guestValues!.status == TicketStatus.purchased.rawValue {
-            guestCell.ticketStateView.isHidden = !DateConfig.eventDateIsToday(eventStartDate: guestValues!.event_start!)
-            guestCell.ticketStateView.backgroundColor = UIColor.brandGreen
-            let buttonValue = DateConfig.eventDateIsToday(eventStartDate: guestValues!.event_start!) == true ? "PURCHASED" : "-"
-            guestCell.ticketStateView.setTitle(buttonValue, for: UIControl.State.normal)
-        } else {
-            guestCell.ticketStateView.isHidden = !DateConfig.eventDateIsToday(eventStartDate: guestValues!.event_start!) //== true ? false : UIColor.white
-            guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
-            let buttonValue = DateConfig.eventDateIsToday(eventStartDate: guestValues!.event_start!) == true ? "REDEEMED" : "-"
-            guestCell.ticketStateView.setTitle(buttonValue, for: UIControl.State.normal)
-        }
-        
         return guestCell
     }
     
@@ -122,7 +91,6 @@ extension EventViewController {
         self.eventViewModel.fetchNextEventGuests(page: eventViewModel.currentPage, completion: { [unowned self] (_) in
            DispatchQueue.main.async {
                self.isFetchingNextPage = false
-//               self.guests = self.eventViewModel.guestCoreData
                self.guestTableView.reloadData()
                return
            }

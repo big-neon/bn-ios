@@ -3,11 +3,43 @@
 import Foundation
 import UIKit
 import Big_Neon_UI
+import Big_Neon_Core
 import TransitionButton
 
 final class EventGuestsCell: SwipeTableViewCell {
     
     static let cellID = "EventGuestsCellID"
+    
+    var guest: GuestData? {
+        didSet {
+            guard let guestValues = self.guest else {
+                return
+            }
+            
+            if guestValues.last_name == "" && guestValues.first_name  == ""{
+                guestNameLabel.text = "No Details Provided"
+            } else {
+                guestNameLabel.text = guestValues.first_name! + " " + guestValues.last_name!
+            }
+            
+            
+            let price = Int(guestValues.price_in_cents)
+            let ticketID = "#" + guestValues.id!.suffix(8).uppercased()
+            ticketTypeNameLabel.text = price.dollarString + " | " + guestValues.ticket_type! + " | " + ticketID
+            
+            if guestValues.status == TicketStatus.purchased.rawValue {
+                ticketStateView.isHidden = !DateConfig.eventDateIsToday(eventStartDate: guestValues.event_start!)
+                ticketStateView.backgroundColor = UIColor.brandGreen
+                let buttonValue = DateConfig.eventDateIsToday(eventStartDate: guestValues.event_start!) == true ? "PURCHASED" : "-"
+                ticketStateView.setTitle(buttonValue, for: UIControl.State.normal)
+            } else {
+                ticketStateView.isHidden = !DateConfig.eventDateIsToday(eventStartDate: guestValues.event_start!) //== true ? false : UIColor.white
+                ticketStateView.backgroundColor = UIColor.brandBlack
+                let buttonValue = DateConfig.eventDateIsToday(eventStartDate: guestValues.event_start!) == true ? "REDEEMED" : "-"
+                ticketStateView.setTitle(buttonValue, for: UIControl.State.normal)
+            }
+        }
+    }
     
     var isLoadingCell: Bool = false {
         didSet {

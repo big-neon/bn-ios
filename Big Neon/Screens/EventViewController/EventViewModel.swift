@@ -19,13 +19,11 @@ final class EventViewModel {
     var currentPage: Int = 0
     let limit = 100
     var guestCoreData: [GuestData] = []
-//    var ticketsFetched: [RedeemableTicket] = []
     var guestSearchResults: [RedeemableTicket] = []
     
     let dataStack = DataStack(modelName: "Big Neon")
 
     func fetchNextEventGuests(page: Int, completion: @escaping(Bool) -> Void) {
-
         TokenService.shared.checkToken { (completed) in
             guard completed else {
                 completion(false)
