@@ -37,9 +37,33 @@ final class EventViewModel {
         }
     }
     
+    /*
+    Fetch Local Guests from Core Data
+    */
     func fetchLocalGuests() -> [GuestData] {
         let guests: NSFetchRequest<GuestData> = GuestData.fetchRequest()
         return try! self.dataStack.viewContext.fetch(guests)
+    }
+    
+    /*
+     Delete Core Data Guests
+     */
+    func deleteAllData(_ entity: String) {
+
+        let appDel =  UIApplication.shared.delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.persistentContainer.viewContext
+
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        fetchRequest.returnsObjectsAsFaults = false
+        do {
+            let results = try context.fetch(fetchRequest)
+            for object in results {
+                guard let objectData = object as? NSManagedObject else {continue}
+                context.delete(objectData)
+            }
+        } catch let error {
+            print("Error deteling all data in \(entity):", error)
+        }
     }
     
     func fetchGuests(page: Int, completion: @escaping(Bool) -> Void) {
@@ -53,20 +77,22 @@ final class EventViewModel {
             DispatchQueue.main.async {
 
                 //  Core Data Checks
-                guard let guests = serverGuests else {
-                    completion(false)
-                    return
-                }
-                
                 guard let fetchedGuests = guestsFetched else {
                     completion(false)
                     return
                 }
-
-//                self?.totalGuests = totalGuests
-//                self?.ticketsFetched += guests.data
-//                self?.currentTotalGuests += guests.data.count
-//                self?.currentPage += 1
+                
+                do {
+                    try self?.deleteAllData(GUEST_ENTITY_NAME)
+                } catch let err {
+                    print("Error while trying to delete guests: \(err)")
+                    completion(false)
+                }
+             
+                 self?.totalGuests = totalGuests
+                 self?.ticketsFetched += guests.data
+                 self?.currentTotalGuests += guests.data.count
+                 self?.currentPage += 1
                 
                 self?.dataStack.sync(fetchedGuests, inEntityNamed: GUEST_ENTITY_NAME) { error in
                     completion(true)

@@ -68,7 +68,6 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
         configureNavBar()
         configureTableView()
         configureHeaderView()
-        //  syncEventsData()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -78,60 +77,24 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        //refresher.addTarget(self, action: #selector(reloadGuests), for: .valueChanged)
-        //guestTableView.refreshControl = self.refresher
-//        eventViewModel.guestCoreData = self.guestFetcher.fetchLocalGuests()
-//        syncEventsData()
+        refresher.addTarget(self, action: #selector(reloadGuests), for: .valueChanged)
+        guestTableView.refreshControl = self.refresher
         fetchGuests()
         
     }
     
-    @objc func syncEventsData() {
-        guard let event = self.eventViewModel.eventData, let eventID = event.id else {
-            return
-        }
-        
-        guestFetcher.syncGuests(forEventID: eventID) { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success:
-                    self.eventViewModel.guestCoreData = self.guestFetcher.fetchLocalGuests()
-                    print(self.eventViewModel.guestCoreData.count)
-                    
-                    self.guestTableView.reloadData()
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        }
-    }
-    
-
     func fetchGuests() {
-        
         self.eventViewModel.fetchGuests(page: 0) { (fetched) in
             DispatchQueue.main.async {
-                
-//                print(self.eventViewModel.totalGuests)
-//                print(self.eventViewModel.ticketsFetched)
-//                print(self.eventViewModel.currentTotalGuests)
-//                print(self.eventViewModel.currentPage)
-                
                 self.eventViewModel.guestCoreData = self.eventViewModel.fetchLocalGuests()
-                print(self.eventViewModel.guestCoreData.count)
-                
-//                self.configureTableView()
-//                self.configureHeaderView()
-//                self.configureScanButton()
                 self.perform(#selector(self.isTodayEvent), with: self, afterDelay: 0.1)
                 self.guestTableView.reloadData()
             }
         }
     }
     
-    /*
-     
     @objc func reloadGuests() {
+        /*
         self.eventViewModel.fetchEventGuests(page: eventViewModel.currentPage, completion: { [weak self] (completed) in
             DispatchQueue.main.async {
                 guard let self = self else { return }
@@ -141,9 +104,8 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
                 return
             }
         })
+         */
     }
-    
-    */
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
