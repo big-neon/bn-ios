@@ -80,8 +80,10 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
         view.backgroundColor = UIColor.white
         //refresher.addTarget(self, action: #selector(reloadGuests), for: .valueChanged)
         //guestTableView.refreshControl = self.refresher
-        eventViewModel.guestCoreData = self.guestFetcher.fetchLocalGuests()
-        syncEventsData()
+//        eventViewModel.guestCoreData = self.guestFetcher.fetchLocalGuests()
+//        syncEventsData()
+        fetchGuests()
+        
     }
     
     @objc func syncEventsData() {
@@ -110,15 +112,19 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
         self.eventViewModel.fetchGuests(page: 0) { (fetched) in
             DispatchQueue.main.async {
                 
-                print(self.eventViewModel.totalGuests)
-                print(self.eventViewModel.ticketsFetched)
-                print(self.eventViewModel.currentTotalGuests)
-                print(self.eventViewModel.currentPage)
+//                print(self.eventViewModel.totalGuests)
+//                print(self.eventViewModel.ticketsFetched)
+//                print(self.eventViewModel.currentTotalGuests)
+//                print(self.eventViewModel.currentPage)
+                
+                self.eventViewModel.guestCoreData = self.eventViewModel.fetchLocalGuests()
+                print(self.eventViewModel.guestCoreData.count)
                 
 //                self.configureTableView()
 //                self.configureHeaderView()
 //                self.configureScanButton()
                 self.perform(#selector(self.isTodayEvent), with: self, afterDelay: 0.1)
+                self.guestTableView.reloadData()
             }
         }
     }

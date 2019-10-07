@@ -65,7 +65,7 @@ class GuestsFetcher {
                 print(guests.data)
                 print(guests.data.count)
 
-//                self?.dataStack.sync(guests.data, inEntityNamed: GUEST_ENTITY_NAME) { error in
+//                self.dataStack.sync(guests.data, inEntityNamed: GUEST_ENTITY_NAME) { error in
 //                    completion(.success)
 //                }
                 

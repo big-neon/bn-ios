@@ -25,7 +25,7 @@ extension EventViewController {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.eventViewModel.ticketsFetched.isEmpty ? "No Guests" : "Guests"
+        return self.eventViewModel.guestCoreData.isEmpty ? "No Guests" : "Guests"
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -37,46 +37,47 @@ extension EventViewController {
         if self.isSearching == true {
             return self.eventViewModel.guestSearchResults.count
         }
-        return self.eventViewModel.ticketsFetched.count
+        return self.eventViewModel.guestCoreData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let guestCell: EventGuestsCell = tableView.dequeueReusableCell(withIdentifier: EventGuestsCell.cellID, for: indexPath) as! EventGuestsCell
         
-        var guestValues: RedeemableTicket?
+        var guestValues: GuestData?
         
-        if self.isSearching == true && !self.eventViewModel.guestSearchResults.isEmpty {
-            guestValues = self.eventViewModel.guestSearchResults[indexPath.row]
-        } else {
-            guestValues = self.eventViewModel.ticketsFetched[indexPath.row]
-        }
+//        if self.isSearching == true && !self.eventViewModel.guestSearchResults.isEmpty {
+//            guestValues = self.eventViewModel.guestSearchResults[indexPath.row]
+//        } else {
+//            guestValues = self.eventViewModel.guestCoreData[indexPath.row]
+//        }
         
+        guestValues = self.eventViewModel.guestCoreData[indexPath.row]
         if guestValues == nil {
             return guestCell
         }
         
-        if guestValues!.lastName == "" && guestValues!.firstName  == ""{
+        if guestValues!.last_name == "" && guestValues!.first_name  == ""{
             guestCell.guestNameLabel.text = "No Details Provided"
         } else {
-            guestCell.guestNameLabel.text = guestValues!.firstName + " " + guestValues!.lastName
+            guestCell.guestNameLabel.text = guestValues!.first_name! + " " + guestValues!.last_name!
         }
         
         
-        let price = Int(guestValues!.priceInCents)
-        let ticketID = "#" + guestValues!.id.suffix(8).uppercased()
-        guestCell.ticketTypeNameLabel.text = price.dollarString + " | " + guestValues!.ticketType + " | " + ticketID
+        let price = Int(guestValues!.price_in_cents)
+        let ticketID = "#" + guestValues!.id!.suffix(8).uppercased()
+        guestCell.ticketTypeNameLabel.text = price.dollarString + " | " //  + guestValues!.ticketType + " | " + ticketID
         
-        if guestValues!.status == TicketStatus.purchased.rawValue {
-            guestCell.ticketStateView.isHidden = !DateConfig.eventDateIsToday(eventStartDate: guestValues!.eventStart)
-            guestCell.ticketStateView.backgroundColor = UIColor.brandGreen
-            let buttonValue = DateConfig.eventDateIsToday(eventStartDate: guestValues!.eventStart) == true ? "PURCHASED" : "-"
-            guestCell.ticketStateView.setTitle(buttonValue, for: UIControl.State.normal)
-        } else {
-            guestCell.ticketStateView.isHidden = !DateConfig.eventDateIsToday(eventStartDate: guestValues!.eventStart) //== true ? false : UIColor.white
-            guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
-            let buttonValue = DateConfig.eventDateIsToday(eventStartDate: guestValues!.eventStart) == true ? "REDEEMED" : "-"
-            guestCell.ticketStateView.setTitle(buttonValue, for: UIControl.State.normal)
-        }
+//        if guestValues!.status == TicketStatus.purchased.rawValue {
+//            guestCell.ticketStateView.isHidden = !DateConfig.eventDateIsToday(eventStartDate: guestValues!.eventStart)
+//            guestCell.ticketStateView.backgroundColor = UIColor.brandGreen
+//            let buttonValue = DateConfig.eventDateIsToday(eventStartDate: guestValues!.eventStart) == true ? "PURCHASED" : "-"
+//            guestCell.ticketStateView.setTitle(buttonValue, for: UIControl.State.normal)
+//        } else {
+//            guestCell.ticketStateView.isHidden = !DateConfig.eventDateIsToday(eventStartDate: guestValues!.eventStart) //== true ? false : UIColor.white
+//            guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
+//            let buttonValue = DateConfig.eventDateIsToday(eventStartDate: guestValues!.eventStart) == true ? "REDEEMED" : "-"
+//            guestCell.ticketStateView.setTitle(buttonValue, for: UIControl.State.normal)
+//        }
         
         return guestCell
     }

@@ -19,6 +19,8 @@ final class EventViewModel {
     var guestCoreData: [GuestData] = []
     var ticketsFetched: [RedeemableTicket] = []
     var guestSearchResults: [RedeemableTicket] = []
+    
+    let dataStack = DataStack(modelName: "Big Neon")
 
     func fetchNextEventGuests(page: Int, completion: @escaping(Bool) -> Void) {
 
@@ -33,6 +35,11 @@ final class EventViewModel {
                 return
             }
         }
+    }
+    
+    func fetchLocalGuests() -> [GuestData] {
+        let guests: NSFetchRequest<GuestData> = GuestData.fetchRequest()
+        return try! self.dataStack.viewContext.fetch(guests)
     }
     
     func fetchGuests(page: Int, completion: @escaping(Bool) -> Void) {
@@ -50,13 +57,23 @@ final class EventViewModel {
                     completion(false)
                     return
                 }
+                
+                guard let fetchedGuests = guestsFetched else {
+                    completion(false)
+                    return
+                }
 
-                self?.totalGuests = totalGuests
-                self?.ticketsFetched += guests.data
-                self?.currentTotalGuests += guests.data.count
-                self?.currentPage += 1
-                completion(true)
-                return
+//                self?.totalGuests = totalGuests
+//                self?.ticketsFetched += guests.data
+//                self?.currentTotalGuests += guests.data.count
+//                self?.currentPage += 1
+                
+                self?.dataStack.sync(fetchedGuests, inEntityNamed: GUEST_ENTITY_NAME) { error in
+                    completion(true)
+                    return
+                }
+                
+                
             }
         }
     }
