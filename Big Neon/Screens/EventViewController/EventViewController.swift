@@ -15,7 +15,7 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
     var isFetchingNextPage = false
     var scanButtonBottomAnchor: NSLayoutConstraint?
     var isSearching: Bool = false
-    public var  guests: [RedeemableTicket]?
+//    public var  guests: [RedeemableTicket]?
     
     lazy var guestTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: UITableView.Style.grouped)
@@ -66,6 +66,7 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
         configureNavBar()
         configureTableView()
         configureHeaderView()
+        configureScanButton()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -165,7 +166,7 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
             return
         }
         
-        if self.eventViewModel.ticketsFetched.isEmpty {
+        if self.eventViewModel.guestCoreData.isEmpty {
             return
         }
         
@@ -180,10 +181,10 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
         }, completion: nil)
     }
     
-    func showGuest(withTicket ticket: RedeemableTicket?, selectedIndex: IndexPath) {
+    func showGuest(withTicket guest: GuestData?, selectedIndex: IndexPath) {
         let guestVC = GuestViewController()
         guestVC.event = self.eventViewModel.eventData
-        guestVC.redeemableTicket = ticket
+        guestVC.guest = guest
         guestVC.guestListIndex = selectedIndex
         self.presentPanModal(guestVC)
     }

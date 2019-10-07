@@ -19,7 +19,7 @@ final class EventViewModel {
     var currentPage: Int = 0
     let limit = 100
     var guestCoreData: [GuestData] = []
-    var ticketsFetched: [RedeemableTicket] = []
+//    var ticketsFetched: [RedeemableTicket] = []
     var guestSearchResults: [RedeemableTicket] = []
     
     let dataStack = DataStack(modelName: "Big Neon")
@@ -68,6 +68,9 @@ final class EventViewModel {
         }
     }
     
+    /*
+     Fetch guests from data
+     */
     func fetchGuests(page: Int, completion: @escaping(Bool) -> Void) {
 
         guard let eventID = self.eventData!.id else {
@@ -106,6 +109,9 @@ final class EventViewModel {
         }
     }
     
+    /*
+     Searching for Guests
+     */
     func fetchSearchGuests(withQuery query: String?, page: Int?, isSearching: Bool, completion: @escaping(Bool) -> Void) {
         
         guard let eventID = self.eventData?.id else {
@@ -127,7 +133,7 @@ final class EventViewModel {
                 }
                 
                 self?.totalGuests = totalGuests
-                self?.ticketsFetched += guests.data
+//                self?.ticketsFetched += guests.data
                 self?.currentTotalGuests += guests.data.count
                 self?.currentPage += 1
                 completion(true)

@@ -254,11 +254,11 @@ final class GuestListViewController: BaseViewController, UITableViewDataSource, 
     }
     
     func showGuest(withTicket ticket: RedeemableTicket?, selectedIndex: IndexPath) {
-        let guestVC = GuestViewController()
-        guestVC.event = self.event
-        guestVC.redeemableTicket = ticket
-        guestVC.guestListVC = self
-        guestVC.guestListIndex = selectedIndex
-        self.presentPanModal(guestVC)
+//        let guestVC = GuestViewController()
+//        guestVC.event = self.event
+//        guestVC.redeemableTicket = ticket
+//        guestVC.guestListVC = self
+//        guestVC.guestListIndex = selectedIndex
+//        self.presentPanModal(guestVC)
     }
 }

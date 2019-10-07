@@ -13,8 +13,7 @@ extension ScannerViewController {
                 case .validTicketID?:
                     self?.stopScanning = false
                     if let ticket = self?.scannedTicket {
-//                        self?.showRedeemedTicket(forTicket: ticket)
-                        self?.showGuest(withTicket: ticket, scannerVC: self, selectedIndex: nil)
+                        //self?.showGuest(withTicket: ticket, scannerVC: self, selectedIndex: nil)
                     }
                     
                 case .wrongEvent?:
@@ -45,10 +44,12 @@ extension ScannerViewController {
         }
         self.stopScanning = true
         self.scannedTicketID = ticket.id
-        self.showGuest(withTicket: ticket, scannerVC: self, selectedIndex: nil)
+        //self.showGuest(withTicket: ticket, scannerVC: self, selectedIndex: nil)
     }
     
-    func showGuest(withTicket ticket: RedeemableTicket?, scannerVC: ScannerViewController?, selectedIndex: IndexPath?) {
+    func showGuest(withTicket ticket: GuestData?, scannerVC: ScannerViewController?, selectedIndex: IndexPath?) {
+       
+        /*
         let guestVC = GuestViewController()
         guestVC.event = self.event
         guestVC.redeemableTicket = ticket
@@ -56,5 +57,6 @@ extension ScannerViewController {
         guestVC.scannerVC = self
         guestVC.guestListIndex = selectedIndex
         self.presentPanModal(guestVC)
+         */
     }
 }
