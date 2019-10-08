@@ -8,14 +8,23 @@ import Big_Neon_Core
 import Big_Neon_UI
 
 
-final class EventViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, UITableViewDataSourcePrefetching {
+final class EventViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, UITableViewDataSourcePrefetching {
 
     var guestsDictionary: [String: [RedeemableTicket]] = [:]
     var filteredLocalSearchResults: [RedeemableTicket] = []
     var isFetchingNextPage = false
     var scanButtonBottomAnchor: NSLayoutConstraint?
     var isSearching: Bool = false
+    let eventViewModel = EventViewModel()
+    var eventTableHeaderView = EventViewMiniture()
 //    public var  guests: [RedeemableTicket]?
+    
+    lazy var refresher: UIRefreshControl = {
+        let refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(reloadGuests), for: .valueChanged)
+        refresher.tintColor = UIColor.brandGrey
+        return refresher
+    }()
     
     lazy var guestTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: UITableView.Style.grouped)
@@ -63,10 +72,6 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
     init(event: EventsData) {
         super.init(nibName: nil, bundle: nil)
         self.eventViewModel.eventData = event
-        configureNavBar()
-        configureTableView()
-        configureHeaderView()
-        configureScanButton()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -76,7 +81,10 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        refresher.addTarget(self, action: #selector(reloadGuests), for: .valueChanged)
+        configureNavBar()
+        configureTableView()
+        configureHeaderView()
+        configureScanButton()
         guestTableView.refreshControl = self.refresher
         fetchGuests()
         
@@ -102,21 +110,19 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        view.backgroundColor = UIColor.white
-        navigationController?.navigationBar.barStyle = .black
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        configureNavBar()
-    }
-    
     func configureNavBar() {
         navigationNoLineBar()
         navigationController?.navigationBar.barTintColor = UIColor.white
         navigationController?.navigationBar.tintColor = UIColor.brandPrimary
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_back"), style: UIBarButtonItem.Style.done, target: self, action: #selector(handleBack))
+        self.navigationItem.searchController = searchController
+        self.navigationItem.hidesSearchBarWhenScrolling = false
     }
-    
+
+    @objc func handleBack() {
+        self.navigationController?.popViewController(animated: true)
+    }
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.sizeHeaderToFit()
@@ -126,12 +132,15 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
         eventTableHeaderView.setNeedsLayout()
         eventTableHeaderView.layoutIfNeeded()
         var frame = eventTableHeaderView.frame
-        frame.size.height = CGFloat(300.0)
+        frame.size.height = CGFloat(144.0)
         eventTableHeaderView.frame = frame
     }
 
     private func configureHeaderView() {
-        eventTableHeaderView  = EventView.init(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 300.0))
+        eventTableHeaderView  = EventViewMiniture.init(frame: CGRect(x: 0.0,
+                                                                     y: 0.0,
+                                                                     width: view.frame.width,
+                                                                     height: 144.0))
         eventTableHeaderView.eventData = self.eventViewModel.eventData
         guestTableView.tableHeaderView = eventTableHeaderView
     }

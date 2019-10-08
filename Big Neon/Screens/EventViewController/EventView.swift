@@ -83,8 +83,8 @@ class EventView: UIView {
         self.addSubview(eventDateLabel)
 
         eventImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
-        eventImageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
-        eventImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: LayoutSpec.Spacing.sixteen).isActive = true
+//        eventImageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -LayoutSpec.Spacing.sixteen).isActive = true
+        eventImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         eventImageView.heightAnchor.constraint(equalToConstant: 200.0).isActive = true
 
         eventNameLabel.leftAnchor.constraint(equalTo: eventImageView.leftAnchor).isActive = true

@@ -55,6 +55,7 @@
 		C64124C621F266B100233797 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64124C521F266B100233797 /* LoginViewController.swift */; };
 		C64124CA21F26D1800233797 /* AuthTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64124C921F26D1800233797 /* AuthTextView.swift */; };
 		C6436CE722CE0CE000A20FEC /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C630A6F922CE04EE00B73985 /* AnalyticsService.swift */; };
+		C6445B60234CB4F500B6F467 /* EventViewMiniture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6445B5F234CB4F500B6F467 /* EventViewMiniture.swift */; };
 		C644BA2F21F7069D003C188B /* BasicError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C644BA2E21F7069D003C188B /* BasicError.swift */; };
 		C644BA3421F70C19003C188B /* DatabaseService.Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = C644BA3321F70C19003C188B /* DatabaseService.Users.swift */; };
 		C64B0ABB21D0DCC900386000 /* DoorPersonViewController.CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABA21D0DCC900386000 /* DoorPersonViewController.CollectionView.swift */; };
@@ -279,6 +280,7 @@
 		C63D86C522325C8B003CFAA7 /* RedeemKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemKey.swift; sourceTree = "<group>"; };
 		C64124C521F266B100233797 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C64124C921F26D1800233797 /* AuthTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextView.swift; sourceTree = "<group>"; };
+		C6445B5F234CB4F500B6F467 /* EventViewMiniture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewMiniture.swift; sourceTree = "<group>"; };
 		C644BA2E21F7069D003C188B /* BasicError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicError.swift; sourceTree = "<group>"; };
 		C644BA3321F70C19003C188B /* DatabaseService.Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Users.swift; sourceTree = "<group>"; };
 		C64B0ABA21D0DCC900386000 /* DoorPersonViewController.CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonViewController.CollectionView.swift; sourceTree = "<group>"; };
@@ -782,6 +784,7 @@
 			children = (
 				C6949429234358ED00BC7219 /* EventViewModel.swift */,
 				C69494272343522400BC7219 /* EventView.swift */,
+				C6445B5F234CB4F500B6F467 /* EventViewMiniture.swift */,
 				C6FBD5A52344CF840032A439 /* ScanTicketsButton.swift */,
 				C69494252343504E00BC7219 /* EventViewController.swift */,
 				C694942D2343607000BC7219 /* EventViewController.Search.swift */,
@@ -1525,6 +1528,7 @@
 				C69494262343504E00BC7219 /* EventViewController.swift in Sources */,
 				C665DFE521E87CB800DFB955 /* WelcomeViewController.swift in Sources */,
 				C6DB1F9C230D75F70019C014 /* ScanSeconds.Environment.swift in Sources */,
+				C6445B60234CB4F500B6F467 /* EventViewMiniture.swift in Sources */,
 				C69494282343522400BC7219 /* EventView.swift in Sources */,
 				C6C4E9B72302D2810040C258 /* SwipeCollectionViewCellDelegate.swift in Sources */,
 				C64124C621F266B100233797 /* LoginViewController.swift in Sources */,

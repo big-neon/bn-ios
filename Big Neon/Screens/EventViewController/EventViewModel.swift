@@ -19,6 +19,7 @@ final class EventViewModel {
     var currentPage: Int = 0
     let limit = 100
     var guestCoreData: [GuestData] = []
+    var guestCoreDataSearchResults: [GuestData] = []
     var guestSearchResults: [RedeemableTicket] = []
     
     let dataStack = DataStack(modelName: "Big Neon")

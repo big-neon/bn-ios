@@ -26,29 +26,34 @@ extension EventViewController {
             return
         }
         
+        //  Alert the View that I am doing a search
         self.isSearching = true
         
-        // Ping DB for information
+        /*
+         Online Search
         self.eventViewModel.fetchSearchGuests(withQuery: searchText, page: nil, isSearching: true) { [weak self] (_) in
             DispatchQueue.main.async {
                 self?.guestTableView.reloadData()
             }
         }
+        */
+        
         
         /*
-        self.filteredSearchResults = (self.guests!.filter({ (guestTicket: RedeemableTicket) -> Bool in
+         Offline Search
+        */
+        self.eventViewModel.guestCoreDataSearchResults = (self.eventViewModel.guestCoreData.filter({ (guestTicket: GuestData) -> Bool in
 
             guard let email = guestTicket.email else {
                 return false
             }
 
-            return guestTicket.firstName.lowercased().contains(searchText.lowercased()) || guestTicket.lastName.lowercased().contains(searchText.lowercased()) ||
-                guestTicket.id.suffix(8).lowercased().contains(searchText.lowercased()) ||
+            return guestTicket.first_name!.lowercased().contains(searchText.lowercased()) || guestTicket.last_name!.lowercased().contains(searchText.lowercased()) ||
+                guestTicket.id!.suffix(8).lowercased().contains(searchText.lowercased()) ||
                 email.lowercased().contains(searchText.lowercased())
         }))
 
         self.guestTableView.reloadData()
-        */
         
     }
     

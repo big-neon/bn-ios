@@ -4,10 +4,6 @@ import Foundation
 import UIKit
 import PINRemoteImage
 
-// MARK: lots of magic numbers... consider using layout/config class/enum
-// MARK: self is not needed
-// MARK: use abbreviation / syntax sugar
-// MARK: internal is default access level - not need for explicit definition
 
 public class DoorPersonCell: UICollectionViewCell {
 
@@ -16,26 +12,27 @@ public class DoorPersonCell: UICollectionViewCell {
 
     override public var isHighlighted: Bool {
         didSet {
-            //MARK: TODO: we have to make sure that this is happening on main thread
-            UIView.animate(withDuration: 0.2, animations: {
-                self.transform = self.isHighlighted ? CGAffineTransform(scaleX: 0.9, y: 0.9) : CGAffineTransform.identity
-                self.layoutIfNeeded()
-            }, completion: nil)
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.transform = self.isHighlighted ? CGAffineTransform(scaleX: 0.9, y: 0.9) : CGAffineTransform.identity
+                    self.layoutIfNeeded()
+                }, completion: nil)
+            }
         }
     }
 
     override public var isSelected: Bool {
         didSet {
-            //MARK: TODO:  we have to make sure that this is happening on main thread
-            UIView.animate(withDuration: 0.2, animations: {
-                self.transform = self.isSelected ? CGAffineTransform(scaleX: 0.9, y: 0.9) : CGAffineTransform.identity
-                self.layoutIfNeeded()
-            }, completion: nil)
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.transform = self.isSelected ? CGAffineTransform(scaleX: 0.9, y: 0.9) : CGAffineTransform.identity
+                    self.layoutIfNeeded()
+                }, completion: nil)
+            }
         }
     }
 
-    // lazy?
-    public let eventImageView: UIImageView = {
+    public lazy var eventImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.brandBackground
         imageView.contentMode = .scaleAspectFill
@@ -44,8 +41,7 @@ public class DoorPersonCell: UICollectionViewCell {
         return imageView
     }()
 
-    // lazy?
-    public let eventNameLabel: UILabel = {
+    public lazy var eventNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandBlack
         label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.bold)
@@ -53,8 +49,7 @@ public class DoorPersonCell: UICollectionViewCell {
         return label
     }()
 
-    // lazy?
-    public let eventDetailsLabel: UILabel = {
+    public lazy var eventDetailsLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandMediumGrey
         label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
@@ -62,8 +57,7 @@ public class DoorPersonCell: UICollectionViewCell {
         return label
     }()
     
-    // lazy?
-    public let eventDateLabel: UILabel = {
+    public lazy var eventDateLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandMediumGrey
         label.numberOfLines = 1
@@ -71,7 +65,6 @@ public class DoorPersonCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
     
     public let disclosureIndicatorView: UIImageView = {
         let imageView = UIImageView()

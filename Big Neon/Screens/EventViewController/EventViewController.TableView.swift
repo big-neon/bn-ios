@@ -35,7 +35,7 @@ extension EventViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if self.isSearching == true {
-            return self.eventViewModel.guestSearchResults.count
+            return self.eventViewModel.guestCoreDataSearchResults.count
         }
         return self.eventViewModel.guestCoreData.count
     }
@@ -43,8 +43,7 @@ extension EventViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let guestCell: EventGuestsCell = tableView.dequeueReusableCell(withIdentifier: EventGuestsCell.cellID, for: indexPath) as! EventGuestsCell
         if self.isSearching == true && !self.eventViewModel.guestSearchResults.isEmpty {
-//            guestValues = self.eventViewModel.guestSearchResults[indexPath.row]
-            guestCell.guest = self.eventViewModel.guestCoreData[indexPath.row]
+            guestCell.guest = self.eventViewModel.guestCoreDataSearchResults[indexPath.row]
         } else {
             guestCell.guest = self.eventViewModel.guestCoreData[indexPath.row]
         }
@@ -57,13 +56,12 @@ extension EventViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-//        var ticket: GuestData?
-//        if self.isSearching == true && !self.eventViewModel.guestSearchResults.isEmpty {
-//            ticket = self.eventViewModel.guestSearchResults[indexPath.row]
-//        } else {
-//            ticket = self.eventViewModel.guestCoreData[indexPath.row]
-//        }
-        let ticket = self.eventViewModel.guestCoreData[indexPath.row]
+        var ticket: GuestData?
+        if self.isSearching == true && !self.eventViewModel.guestCoreDataSearchResults.isEmpty {
+            ticket = self.eventViewModel.guestCoreDataSearchResults[indexPath.row]
+        } else {
+            ticket = self.eventViewModel.guestCoreData[indexPath.row]
+        }
         self.showGuest(withTicket: ticket, selectedIndex: indexPath)
     }
     

@@ -6,10 +6,7 @@ class BaseViewController: UIViewController  {
     let doorPersonViemodel: DoorPersonViewModel = DoorPersonViewModel()
     let eventDetailViewModel: ExploreDetailViewModel = ExploreDetailViewModel()
     let ticketsViewModel: TicketsViewModel = TicketsViewModel()
-    let eventViewModel = EventViewModel()
     let generator = UINotificationFeedbackGenerator()
-    
-    var eventTableHeaderView = EventView()
     
     lazy var errorFeedback: FeedbackSystem = {
         let feedback = FeedbackSystem()
