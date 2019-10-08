@@ -93,17 +93,13 @@ final class EventViewController: BaseViewController, UITableViewDataSource, UITa
     }
     
     @objc func reloadGuests() {
-        /*
-        self.eventViewModel.fetchEventGuests(page: eventViewModel.currentPage, completion: { [weak self] (completed) in
+        self.eventViewModel.fetchGuests(page: 0) { (fetched) in
             DispatchQueue.main.async {
-                guard let self = self else { return }
                 self.guestTableView.reloadData()
                 self.refresher.endRefreshing()
-                self.isTodayEvent()
-                return
+                self.guestTableView.reloadData()
             }
-        })
-         */
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

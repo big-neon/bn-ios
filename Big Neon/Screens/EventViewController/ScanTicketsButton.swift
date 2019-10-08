@@ -29,7 +29,7 @@ class ScanTicketsButton: UIView {
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.distribution = .fill
-        stackView.spacing = 8.0
+        stackView.spacing = 4.0
         stackView.backgroundColor = .clear
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
