@@ -24,6 +24,7 @@ use_frameworks!
         pod 'JWTDecode'
         pod 'DTGradientButton'
         pod 'SwiftKeychainWrapper'
+        pod 'PullUpController'
         pod 'Sync', :git => 'https://github.com/3lvis/Sync.git', :branch => 'issue-555' # '~> 5'
     end
     

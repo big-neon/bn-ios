@@ -36,6 +36,7 @@ PODS:
     - PINRemoteImage/Core
   - pop (1.0.12)
   - PresenterKit (5.1.0)
+  - PullUpController (0.7.0)
   - SwiftKeychainWrapper (3.4.0)
   - Sync (6.0.0)
   - TransitionButton (0.5.2)
@@ -54,26 +55,29 @@ DEPENDENCIES:
   - PINRemoteImage (= 3.0.0-beta.13)
   - pop
   - PresenterKit
+  - PullUpController
   - SwiftKeychainWrapper
   - Sync (from `https://github.com/3lvis/Sync.git`, branch `issue-555`)
   - TransitionButton
   - "UITextField+Shake"
 
 SPEC REPOS:
-  trunk:
+  https://cdn.cocoapods.org/:
+    - Fabric
+    - PINOperation
+  https://github.com/cocoapods/specs.git:
     - Alamofire
     - Answers
     - Crashlytics
     - DTGradientButton
-    - Fabric
     - FLAnimatedImage
     - JWTDecode
     - PhoneNumberKit
     - PINCache
-    - PINOperation
     - PINRemoteImage
     - pop
     - PresenterKit
+    - PullUpController
     - SwiftKeychainWrapper
     - TransitionButton
     - "UITextField+Shake"
@@ -108,11 +112,12 @@ SPEC CHECKSUMS:
   PINRemoteImage: d6d51c5d2adda55f1ce30c96e850b6c4ebd2856a
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   PresenterKit: ebb82bda6b161c720db9b5346cb593b9b00e0ed5
+  PullUpController: 5c8710cb686dca43d5850ae994debb7fdb824b75
   SwiftKeychainWrapper: 6fc49fbf7d4a6b0772917acb0e53a1639f6078d6
   Sync: 66933d0f37b3bfb78b0cda35ecf1bc4075029a36
   TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
-PODFILE CHECKSUM: f6d71b3af78ffcc5cb8bfb2f681e627a0896885d
+PODFILE CHECKSUM: 2333f7ac9a140acf09572745e275dab0c081768e
 
-COCOAPODS: 1.8.0.beta.2
+COCOAPODS: 1.7.5
