@@ -42,6 +42,7 @@ extension EventViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let guestCell: EventGuestsCell = tableView.dequeueReusableCell(withIdentifier: EventGuestsCell.cellID, for: indexPath) as! EventGuestsCell
+        guestCell.delegate = self
         if self.isSearching == true && !self.eventViewModel.guestSearchResults.isEmpty {
             guestCell.guest = self.eventViewModel.guestCoreDataSearchResults[indexPath.row]
         } else {

@@ -8,7 +8,7 @@ import Big_Neon_Core
 import Big_Neon_UI
 
 
-final class EventViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, UITableViewDataSourcePrefetching {
+final class EventViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, UITableViewDataSourcePrefetching, SwipeTableViewCellDelegate {
 
     var guestsDictionary: [String: [RedeemableTicket]] = [:]
     var filteredLocalSearchResults: [RedeemableTicket] = []
@@ -17,7 +17,9 @@ final class EventViewController: UIViewController, UITableViewDataSource, UITabl
     var isSearching: Bool = false
     let eventViewModel = EventViewModel()
     var eventTableHeaderView = EventViewMiniture()
-//    public var  guests: [RedeemableTicket]?
+    weak var delegate: ScannerViewDelegate?
+    
+    var presentedFromScanner: Bool = false
     
     lazy var refresher: UIRefreshControl = {
         let refresher = UIRefreshControl()
@@ -69,9 +71,10 @@ final class EventViewController: UIViewController, UITableViewDataSource, UITabl
         return .default
     }
     
-    init(event: EventsData) {
+    init(event: EventsData, presentedFromScannerVC: Bool) {
         super.init(nibName: nil, bundle: nil)
         self.eventViewModel.eventData = event
+        self.presentedFromScanner = presentedFromScannerVC
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -87,7 +90,6 @@ final class EventViewController: UIViewController, UITableViewDataSource, UITabl
         configureScanButton()
         guestTableView.refreshControl = self.refresher
         fetchGuests()
-        
     }
     
     func fetchGuests() {
@@ -114,13 +116,29 @@ final class EventViewController: UIViewController, UITableViewDataSource, UITabl
         navigationNoLineBar()
         navigationController?.navigationBar.barTintColor = UIColor.white
         navigationController?.navigationBar.tintColor = UIColor.brandPrimary
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_back"), style: UIBarButtonItem.Style.done, target: self, action: #selector(handleBack))
         self.navigationItem.searchController = searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
+        self.configureNavItems()
+    }
+    
+    @objc func configureNavItems() {
+        if presentedFromScanner == true {
+            if #available(iOS 13.0, *) {
+                self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(handleBack))
+            } else {
+                self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleBack))
+            }
+        } else {
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_back"), style: UIBarButtonItem.Style.done, target: self, action: #selector(handleBack))
+        }
     }
 
     @objc func handleBack() {
-        self.navigationController?.popViewController(animated: true)
+        if presentedFromScanner == true {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 
     override func viewDidLayoutSubviews() {
@@ -137,6 +155,10 @@ final class EventViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     private func configureHeaderView() {
+        if presentedFromScanner == true {
+            return
+        }
+        
         eventTableHeaderView  = EventViewMiniture.init(frame: CGRect(x: 0.0,
                                                                      y: 0.0,
                                                                      width: view.frame.width,
@@ -172,6 +194,10 @@ final class EventViewController: UIViewController, UITableViewDataSource, UITabl
         }
         
         if self.eventViewModel.guestCoreData.isEmpty {
+            return
+        }
+        
+        if presentedFromScanner == true {
             return
         }
         

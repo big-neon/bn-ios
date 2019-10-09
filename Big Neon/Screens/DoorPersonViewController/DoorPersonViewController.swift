@@ -147,7 +147,7 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     
     func showEvent(forTicketIndex ticketIndex: Int, section: Int) {
         let event = section == 1 ? self.doorPersonViemodel.todayEvents[ticketIndex] : self.doorPersonViemodel.upcomingEvents[ticketIndex]
-        let eventVC = EventViewController(event: event)
+        let eventVC = EventViewController(event: event, presentedFromScannerVC: false)
         self.navigationController?.push(eventVC)
     }
 

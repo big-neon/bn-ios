@@ -5,17 +5,45 @@ import UIKit
 import Big_Neon_Core
 import Big_Neon_UI
 import Sync
+import PullUpController
 
 protocol GuestListViewDelegate: class {
     func reloadGuests()
 }
 
-final class GuestListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, GuestListViewDelegate, UITableViewDataSourcePrefetching, SwipeTableViewCellDelegate {
+final class GuestListViewController: PullUpController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, GuestListViewDelegate, UITableViewDataSourcePrefetching, SwipeTableViewCellDelegate {
 
     weak var delegate: ScannerViewDelegate?
     var guestsDictionary: [String: [RedeemableTicket]] = [:]
-    //: Alphabetic List Removal     -   var guestSectionTitles = [String]()
+    //: Alphabetic List Removal
+    //: var guestSectionTitles = [String]()
     var filteredLocalSearchResults: [RedeemableTicket] = []
+    
+    
+    //:  Pull up Controller Configuration
+    enum InitialState {
+        case contracted
+        case expanded
+    }
+    
+    var initialState: InitialState = .contracted
+    
+    var initialPointOffset: CGFloat {
+        switch initialState {
+        case .contracted:
+            return 156.0
+        case .expanded:
+            return 700.0
+        }
+    }
+    
+    override var pullUpControllerPreferredSize: CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 610.0)
+    }
+    
+    override var pullUpControllerBounceOffset: CGFloat {
+        return 64
+    }
     
     var isShortFormEnabled = true
     var isFetchingNextPage = false
@@ -215,8 +243,8 @@ final class GuestListViewController: BaseViewController, UITableViewDataSource, 
 //        view.addSubview(headerView)
         view.addSubview(guestTableView)
         
-        self.refresher.addTarget(self, action: #selector(reloadGuests), for: .valueChanged)
-        guestTableView.refreshControl = self.refresher
+//        self.refresher.addTarget(self, action: #selector(reloadGuests), for: .valueChanged)
+//        guestTableView.refreshControl = self.refresher
         guestTableView.register(GuestTableViewCell.self, forCellReuseIdentifier: GuestTableViewCell.cellID)
         
 //        headerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -247,7 +275,7 @@ final class GuestListViewController: BaseViewController, UITableViewDataSource, 
                 guard let self = self else { return }
                 self.guests = self.scannerViewModel.ticketsFetched
                 self.guestTableView.reloadData()
-                self.refresher.endRefreshing()
+//                self.refresher.endRefreshing()
                 return
             }
         })
