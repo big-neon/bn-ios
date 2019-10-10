@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="19A573a" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="19A582a" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="EventsData" representedClassName="EventsData" syncable="YES" codeGenerationType="class">
         <attribute name="additional_info" optional="YES" attributeType="String"/>
         <attribute name="age_limit" optional="YES" attributeType="String"/>
@@ -57,7 +57,8 @@
         <attribute name="venue_id" optional="YES" attributeType="String"/>
         <attribute name="venue_name" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="RedeemableTicker" representedClassName="RedeemableTicker" syncable="YES" codeGenerationType="class">
+    <entity name="RedeemedTicket" representedClassName="RedeemedTicket" syncable="YES" codeGenerationType="class">
+        <attribute name="changes_since" optional="YES" attributeType="String"/>
         <attribute name="door_time" optional="YES" attributeType="String"/>
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="event_id" optional="YES" attributeType="String"/>
@@ -70,15 +71,15 @@
         <attribute name="order_item_id" optional="YES" attributeType="String"/>
         <attribute name="phone" optional="YES" attributeType="String"/>
         <attribute name="price_in_cents" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="redeem_date" optional="YES" attributeType="String"/>
-        <attribute name="redeem_key" optional="YES" attributeType="String"/>
+        <attribute name="redeemed_at" optional="YES" attributeType="String"/>
+        <attribute name="redeemed_by" optional="YES" attributeType="String"/>
+        <attribute name="refund_supported" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="status" optional="YES" attributeType="String"/>
         <attribute name="ticket_type" optional="YES" attributeType="String"/>
         <attribute name="user_id" optional="YES" attributeType="String"/>
         <attribute name="venue_id" optional="YES" attributeType="String"/>
         <attribute name="venue_name" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="ScannedUser" representedClassName="ScannedUser" syncable="YES" codeGenerationType="class"/>
     <entity name="Venue" representedClassName="Venue" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String"/>
         <attribute name="city" optional="YES" attributeType="String"/>
@@ -100,10 +101,9 @@
         <attribute name="updated_at" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="EventsData" positionX="-54" positionY="144" width="128" height="525"/>
+        <element name="EventsData" positionX="-54" positionY="144" width="128" height="28"/>
         <element name="GuestData" positionX="-81" positionY="144" width="128" height="358"/>
-        <element name="RedeemableTicker" positionX="258.8125" positionY="-7.7734375" width="128" height="328"/>
-        <element name="ScannedUser" positionX="-194.48046875" positionY="-8.1796875" width="128" height="45"/>
         <element name="Venue" positionX="-284.57421875" positionY="281.390625" width="128" height="315"/>
+        <element name="RedeemedTicket" positionX="-81" positionY="153" width="128" height="28"/>
     </elements>
 </model>
