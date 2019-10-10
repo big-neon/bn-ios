@@ -17,7 +17,7 @@ final class EventViewController: UIViewController, UITableViewDataSource, UITabl
     var isSearching: Bool = false
     let eventViewModel = EventViewModel()
     var eventTableHeaderView = EventViewMiniture()
-    weak var delegate: ScannerViewDelegate?
+    var scannerViewModel = TicketScannerViewModel()
     
     var presentedFromScanner: Bool = false
     
