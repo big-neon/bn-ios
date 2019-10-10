@@ -53,7 +53,7 @@ extension EventViewController: SwipeActionTransitioning {
     func checkinTicket(ticketID: String?, atIndex index: IndexPath, direction: Bool) {
         
         if let id = ticketID {
-            let guestCell: GuestTableViewCell = self.guestTableView.cellForRow(at: index) as! GuestTableViewCell
+            let guestCell: EventGuestsCell = self.guestTableView.cellForRow(at: index) as! EventGuestsCell
             guestCell.ticketStateView.startAnimation()
             self.delegate?.checkinAutomatically(withTicketID: id, fromGuestTableView: true, atIndexPath: index)
         }

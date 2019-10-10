@@ -8,15 +8,14 @@ extension ScannerViewController {
     
     func reloadGuestCells(atIndexPath indexPath: IndexPath?) {
         guard let indexPath = indexPath else { return }
-        let guestCell: GuestTableViewCell = self.guestListVC?.guestTableView.cellForRow(at: indexPath) as! GuestTableViewCell
+        let guestCell: EventGuestsCell = self.guestListVC?.guestTableView.cellForRow(at: indexPath) as! EventGuestsCell
         guestCell.ticketStateView.stopAnimation(animationStyle: .normal, revertAfterDelay: 0.0) {
             guestCell.ticketStateView.layer.cornerRadius = 3.0
             guestCell.ticketStateView.setTitle("REDEEMED", for: UIControl.State.normal)
             guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
         }
         
-//        let guestKey = self.guestListVC?.guestSectionTitles[indexPath.section]
-        let guestValues = self.guestListVC?.isSearching == true ? self.guestListVC?.guestViewModel.guestSearchResults : self.guestListVC?.guestViewModel.ticketsFetched    //  self.guestListVC?.guestsDictionary[guestKey!]
+        let guestValues = self.guestListVC?.isSearching == true ? self.guestListVC?.eventViewModel.guestCoreDataSearchResults : self.guestListVC?.eventViewModel.guestCoreData
         guestValues![indexPath.row].status = TicketStatus.Redeemed.rawValue
     }
     
@@ -28,10 +27,10 @@ extension ScannerViewController {
                 //  Checking from Guestlist
                 if fromGuestTableView == true {
                     if self?.guestListVC?.isSearching == true {
-                        self?.guestListVC?.guestViewModel.guestSearchResults.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
+                        self?.guestListVC?.eventViewModel.guestCoreDataSearchResults.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
                         self?.reloadGuestCells(atIndexPath: indexPath)
                     } else {
-                        self?.guestListVC?.guestViewModel.ticketsFetched.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
+                        self?.guestListVC?.eventViewModel.guestCoreData.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
                         self?.reloadGuestCells(atIndexPath: indexPath)
                     }
                     self?.generator.notificationOccurred(.success)
@@ -40,7 +39,6 @@ extension ScannerViewController {
             
                 if scanFeedback == .alreadyRedeemed {
                     if let ticket = ticket {
-//                        self?.showRedeemedTicket(forTicket: ticket)
                         self?.showScannedUser(feedback: .alreadyRedeemed, ticket: ticket)
                     }
                     
