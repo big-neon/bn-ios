@@ -17,8 +17,7 @@ final class EventViewController: UIViewController, UITableViewDataSource, UITabl
     var isSearching: Bool = false
     let eventViewModel = EventViewModel()
     var eventTableHeaderView = EventViewMiniture()
-    var scannerViewModel = TicketScannerViewModel()
-    
+    var checkinViewModel = CheckinService()
     var presentedFromScanner: Bool = false
     
     lazy var refresher: UIRefreshControl = {

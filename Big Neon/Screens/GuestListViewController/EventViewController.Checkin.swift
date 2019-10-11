@@ -27,7 +27,7 @@ extension EventViewController {
         
         
         //  if there is an internet connection
-        self.scannerViewModel.automaticallyCheckin(ticketID: ticketID, eventID: nil) { [weak self] (scanFeedback, errorString, ticket) in
+        self.checkinViewModel.automaticallyCheckin(ticketID: ticketID, eventID: nil) { [weak self] (scanFeedback, errorString, ticket) in
             DispatchQueue.main.async {
                 if self?.isSearching == true {
                     self?.eventViewModel.guestCoreDataSearchResults.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue

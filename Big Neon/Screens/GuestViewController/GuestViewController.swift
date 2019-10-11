@@ -28,7 +28,7 @@ class GuestViewController: BaseViewController {
     var event: EventsData?
     var guestListVC: EventViewController?
     var scannerVC: ScannerViewController?
-    var scannerViewModel = TicketScannerViewModel()
+    var scannerViewModel = CheckinService()
     var guestListIndex: IndexPath?
     var audioPlayer: AVAudioPlayer?
     weak var delegate: ScannerViewDelegate?

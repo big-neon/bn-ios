@@ -75,6 +75,8 @@
 		C66923BA22CF5FB000A162A6 /* Valid.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C66923B922CF5FAF00A162A6 /* Valid.m4a */; };
 		C66923BC22CF6C2300A162A6 /* Beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C66923BB22CF6C2300A162A6 /* Beep.mp3 */; };
 		C66923BE22CF6C6D00A162A6 /* Redeemed.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C66923BD22CF6C6C00A162A6 /* Redeemed.m4a */; };
+		C66A319823506D5E00DC1BEA /* CheckinService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66A319723506D5E00DC1BEA /* CheckinService.swift */; };
+		C66A319C23506F7300DC1BEA /* CheckinService.Checkin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66A319B23506F7300DC1BEA /* CheckinService.Checkin.swift */; };
 		C66C0BA521E337D40066CD0F /* splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C66C0BA421E337D40066CD0F /* splash.mp4 */; };
 		C66C0BA721E339CA0066CD0F /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C0BA621E339CA0066CD0F /* SplashViewController.swift */; };
 		C67299092338CAF400AC0C40 /* HomeSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67299082338CAF400AC0C40 /* HomeSectionCell.swift */; };
@@ -139,7 +141,7 @@
 		C6B88D8C21F1C94E006394F8 /* TicketPricing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D8621F1C94D006394F8 /* TicketPricing.swift */; };
 		C6B88D8E21F1C94E006394F8 /* TicketType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D8821F1C94D006394F8 /* TicketType.swift */; };
 		C6B88D8F21F1C94E006394F8 /* Organisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D8921F1C94E006394F8 /* Organisation.swift */; };
-		C6BCBE9E222D06C70026B858 /* ScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BCBE9D222D06C70026B858 /* ScannerViewModel.swift */; };
+		C6BCBE9E222D06C70026B858 /* CheckinService.Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BCBE9D222D06C70026B858 /* CheckinService.Scanner.swift */; };
 		C6C45D6A21F5CDCD00D2F602 /* PopAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C45D6921F5CDCD00D2F602 /* PopAnimations.swift */; };
 		C6C45D6C21F5CEC000D2F602 /* Feedbacksystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C45D6B21F5CEC000D2F602 /* Feedbacksystem.swift */; };
 		C6C49DA52209A77E0087AE16 /* DollarString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C49DA42209A77E0087AE16 /* DollarString.swift */; };
@@ -296,6 +298,8 @@
 		C66923B922CF5FAF00A162A6 /* Valid.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Valid.m4a; sourceTree = "<group>"; };
 		C66923BB22CF6C2300A162A6 /* Beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Beep.mp3; sourceTree = "<group>"; };
 		C66923BD22CF6C6C00A162A6 /* Redeemed.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Redeemed.m4a; sourceTree = "<group>"; };
+		C66A319723506D5E00DC1BEA /* CheckinService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinService.swift; sourceTree = "<group>"; };
+		C66A319B23506F7300DC1BEA /* CheckinService.Checkin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinService.Checkin.swift; sourceTree = "<group>"; };
 		C66C0BA421E337D40066CD0F /* splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.mp4; sourceTree = "<group>"; };
 		C66C0BA621E339CA0066CD0F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		C67299082338CAF400AC0C40 /* HomeSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionCell.swift; sourceTree = "<group>"; };
@@ -373,7 +377,7 @@
 		C6B88D8621F1C94D006394F8 /* TicketPricing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketPricing.swift; sourceTree = "<group>"; };
 		C6B88D8821F1C94D006394F8 /* TicketType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketType.swift; sourceTree = "<group>"; };
 		C6B88D8921F1C94E006394F8 /* Organisation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Organisation.swift; sourceTree = "<group>"; };
-		C6BCBE9D222D06C70026B858 /* ScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewModel.swift; sourceTree = "<group>"; };
+		C6BCBE9D222D06C70026B858 /* CheckinService.Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinService.Scanner.swift; sourceTree = "<group>"; };
 		C6BCBE9F222D38730026B858 /* TicketScanFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketScanFeedbackView.swift; sourceTree = "<group>"; };
 		C6C45D6921F5CDCD00D2F602 /* PopAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimations.swift; sourceTree = "<group>"; };
 		C6C45D6B21F5CEC000D2F602 /* Feedbacksystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedbacksystem.swift; sourceTree = "<group>"; };
@@ -601,7 +605,6 @@
 		C63D1A152220054700152E83 /* ScannerViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C6BCBE9D222D06C70026B858 /* ScannerViewModel.swift */,
 				C6E648522240D088000F2DFB /* ScannerViewController.swift */,
 				C665B6E6224B506900581E2E /* ScannerViewController.ScannerView.swift */,
 				C636674522935D4E00A356F9 /* ScannerViewController.AutoScan.swift */,
@@ -646,6 +649,7 @@
 		C64B0AB221D0DC3E00386000 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				C66A319623506D4700DC1BEA /* CheckinService */,
 				C6B2AC5D21E4DD3100F996AA /* BaseViewController.swift */,
 				C665DFE321E87CAC00DFB955 /* Authentication */,
 				C6AFB78C21DD655900670AC3 /* DoorPersonViewController */,
@@ -713,6 +717,16 @@
 				C64124C721F267FF00233797 /* LoginViewController */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		C66A319623506D4700DC1BEA /* CheckinService */ = {
+			isa = PBXGroup;
+			children = (
+				C66A319723506D5E00DC1BEA /* CheckinService.swift */,
+				C6BCBE9D222D06C70026B858 /* CheckinService.Scanner.swift */,
+				C66A319B23506F7300DC1BEA /* CheckinService.Checkin.swift */,
+			);
+			path = CheckinService;
 			sourceTree = "<group>";
 		};
 		C672990A2338CB9A00AC0C40 /* Layout */ = {
@@ -1510,6 +1524,7 @@
 				C6C4E9B72302D2810040C258 /* SwipeCollectionViewCellDelegate.swift in Sources */,
 				C64124C621F266B100233797 /* LoginViewController.swift in Sources */,
 				C6EC209C2200757E00BD10DD /* ProfileEditingPhoneNumberCell.swift in Sources */,
+				C66A319823506D5E00DC1BEA /* CheckinService.swift in Sources */,
 				C6C4E9A52302D2810040C258 /* SwipeExpansionStyle.swift in Sources */,
 				C623C07B2251E41F0020D0A8 /* TicketQRCodeView.swift in Sources */,
 				C6C4E9AA2302D2810040C258 /* SwipeCollectionViewCell.swift in Sources */,
@@ -1541,7 +1556,7 @@
 				C6C4E9B22302D2810040C258 /* SwipeActionTransitioning.swift in Sources */,
 				C64B0AC221D0DD5E00386000 /* TabBarController.swift in Sources */,
 				C623C0812251E42C0020D0A8 /* LastScannedUserView.swift in Sources */,
-				C6BCBE9E222D06C70026B858 /* ScannerViewModel.swift in Sources */,
+				C6BCBE9E222D06C70026B858 /* CheckinService.Scanner.swift in Sources */,
 				C623C0762251E3E30020D0A8 /* ProfileTableCell.swift in Sources */,
 				C67299092338CAF400AC0C40 /* HomeSectionCell.swift in Sources */,
 				C6AFB79121DD65D200670AC3 /* EventDetailViewController.TableView.swift in Sources */,
@@ -1557,6 +1572,7 @@
 				C698AB1621EF1FE00073F1FB /* CreateAccountViewModel.swift in Sources */,
 				C62BC78421CCC3F700830A5F /* AppDelegate.swift in Sources */,
 				C694942E2343607000BC7219 /* EventViewController.Search.swift in Sources */,
+				C66A319C23506F7300DC1BEA /* CheckinService.Checkin.swift in Sources */,
 				C623C0692251E38E0020D0A8 /* QuantitySelectionCell.swift in Sources */,
 				C64B0AC021D0DD1E00386000 /* Utils.swift in Sources */,
 				C628B15421F9E35700FCBDC9 /* SplashViewModel.swift in Sources */,

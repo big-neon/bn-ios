@@ -34,7 +34,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     var scannedUserBottomAnchor: NSLayoutConstraint?
     var stopScanning: Bool?
     var isShowingScannedUser: Bool?
-    var scannerViewModel : TicketScannerViewModel?
+    var scannerViewModel : CheckinService?
     
     //  Last Scanned Ticked Time
     var lastScannedTicketTime: Date?
@@ -64,22 +64,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
                               AVMetadataObject.ObjectType.interleaved2of5,
                               AVMetadataObject.ObjectType.qr]
     
-//    var guestCoreData: [GuestData]? {
-//        didSet {
-//            showGuestView.loadingView.stopAnimating()
-//            guard let guestsFetched = guestCoreData else {
-//                return
-//            }
-//            if !guestsFetched.isEmpty {
-//                showGuestView.isUserInteractionEnabled = true
-//                showGuestView.headerLabel.textColor = UIColor.brandPrimary
-//            } else {
-//                showGuestView.isUserInteractionEnabled = true
-//                showGuestView.headerLabel.textColor = UIColor.brandPrimary
-//            }
-//        }
-//    }
-    
     lazy var scannerModeView: ScannerModeView = {
         let view =  ScannerModeView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -106,7 +90,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     
     lazy var showGuestView: ShowGuestListView = {
         let view =  ShowGuestListView()
-        view.loadingView.startAnimating()
+        view.headerLabel.textColor = UIColor.brandPrimary
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showGuestList)))
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -154,7 +138,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     }
 
     private func configureViewModel() {
-        scannerViewModel = TicketScannerViewModel()
+        scannerViewModel = CheckinService()
         scannerViewModel?.scanVC = self
         scannerModeView.setAutoMode = scannerViewModel!.scannerMode()
     }
