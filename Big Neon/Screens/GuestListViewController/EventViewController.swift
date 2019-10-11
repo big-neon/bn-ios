@@ -215,6 +215,7 @@ final class EventViewController: UIViewController, UITableViewDataSource, UITabl
         let guestVC = GuestViewController()
         guestVC.event = self.eventViewModel.eventData
         guestVC.guest = guest
+        guestVC.guestListVC = self
         guestVC.guestListIndex = selectedIndex
         self.presentPanModal(guestVC)
     }

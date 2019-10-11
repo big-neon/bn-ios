@@ -28,7 +28,7 @@ class GuestViewController: BaseViewController {
     var event: EventsData?
     var guestListVC: EventViewController?
     var scannerVC: ScannerViewController?
-    var scannerViewModel = CheckinService()
+    var checkinViewModel = CheckinService()
     var guestListIndex: IndexPath?
     var audioPlayer: AVAudioPlayer?
     weak var delegate: ScannerViewDelegate?
@@ -278,7 +278,7 @@ class GuestViewController: BaseViewController {
         }
         
         let fromGuestListVC = guestListVC == nil ? false : true
-        self.scannerViewModel.automaticallyCheckin(ticketID: ticketID, eventID: self.event?.id) { [weak self] (scanFeedback, errorString, ticket) in
+        self.checkinViewModel.automaticallyCheckin(ticketID: ticketID, eventID: self.event?.id) { [weak self] (scanFeedback, errorString, ticket) in
             DispatchQueue.main.async {
                 
                 guard let self = self else { return }
