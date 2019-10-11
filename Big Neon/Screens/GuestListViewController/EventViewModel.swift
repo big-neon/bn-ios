@@ -8,6 +8,7 @@ import CoreData
 import Sync
 
 let GUEST_ENTITY_NAME = "GuestData"
+let SCANNED_GUEST_ENTITY_NAME = "RedeemedTicket"
 
 final class EventViewModel {
     

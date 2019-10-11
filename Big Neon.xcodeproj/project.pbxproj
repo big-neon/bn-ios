@@ -77,13 +77,13 @@
 		C66923BE22CF6C6D00A162A6 /* Redeemed.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C66923BD22CF6C6C00A162A6 /* Redeemed.m4a */; };
 		C66A319823506D5E00DC1BEA /* CheckinService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66A319723506D5E00DC1BEA /* CheckinService.swift */; };
 		C66A319C23506F7300DC1BEA /* CheckinService.Checkin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66A319B23506F7300DC1BEA /* CheckinService.Checkin.swift */; };
+		C66A319F23507CDE00DC1BEA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66A319E23507CDE00DC1BEA /* NetworkService.swift */; };
 		C66C0BA521E337D40066CD0F /* splash.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C66C0BA421E337D40066CD0F /* splash.mp4 */; };
 		C66C0BA721E339CA0066CD0F /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C0BA621E339CA0066CD0F /* SplashViewController.swift */; };
 		C67299092338CAF400AC0C40 /* HomeSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67299082338CAF400AC0C40 /* HomeSectionCell.swift */; };
 		C672990C2338CC1000AC0C40 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C672990B2338CC1000AC0C40 /* Layout.swift */; };
 		C678C17F2276FABD0069A2DF /* ObjectAddingUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C678C17E2276FABD0069A2DF /* ObjectAddingUtils.swift */; };
 		C67A960F234F5D5700A435AC /* EventViewController.Checkin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67A960E234F5D5700A435AC /* EventViewController.Checkin.swift */; };
-		C6825A6C225DF28B003470A5 /* Rechability.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6825A6B225DF28B003470A5 /* Rechability.swift */; };
 		C683232921FF07FE002342AE /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683232821FF07FE002342AE /* ProfileEditViewController.swift */; };
 		C683232B21FF28CB002342AE /* ProfileEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683232A21FF28CB002342AE /* ProfileEditViewModel.swift */; };
 		C683232D21FF2D71002342AE /* ProfileEditViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683232C21FF2D71002342AE /* ProfileEditViewController.TableView.swift */; };
@@ -300,13 +300,13 @@
 		C66923BD22CF6C6C00A162A6 /* Redeemed.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Redeemed.m4a; sourceTree = "<group>"; };
 		C66A319723506D5E00DC1BEA /* CheckinService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinService.swift; sourceTree = "<group>"; };
 		C66A319B23506F7300DC1BEA /* CheckinService.Checkin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinService.Checkin.swift; sourceTree = "<group>"; };
+		C66A319E23507CDE00DC1BEA /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		C66C0BA421E337D40066CD0F /* splash.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.mp4; sourceTree = "<group>"; };
 		C66C0BA621E339CA0066CD0F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		C67299082338CAF400AC0C40 /* HomeSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionCell.swift; sourceTree = "<group>"; };
 		C672990B2338CC1000AC0C40 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		C678C17E2276FABD0069A2DF /* ObjectAddingUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectAddingUtils.swift; sourceTree = "<group>"; };
 		C67A960E234F5D5700A435AC /* EventViewController.Checkin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.Checkin.swift; sourceTree = "<group>"; };
-		C6825A6B225DF28B003470A5 /* Rechability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rechability.swift; sourceTree = "<group>"; };
 		C683232821FF07FE002342AE /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		C683232A21FF28CB002342AE /* ProfileEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewModel.swift; sourceTree = "<group>"; };
 		C683232C21FF2D71002342AE /* ProfileEditViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.TableView.swift; sourceTree = "<group>"; };
@@ -729,6 +729,14 @@
 			path = CheckinService;
 			sourceTree = "<group>";
 		};
+		C66A319D23507C9D00DC1BEA /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				C66A319E23507CDE00DC1BEA /* NetworkService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
 		C672990A2338CB9A00AC0C40 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
@@ -997,7 +1005,6 @@
 			children = (
 				C6B88D6621F1C862006394F8 /* DateConfig.swift */,
 				C628B14F21F7B75800FCBDC9 /* Constants.swift */,
-				C6825A6B225DF28B003470A5 /* Rechability.swift */,
 				C678C17E2276FABD0069A2DF /* ObjectAddingUtils.swift */,
 			);
 			path = Utilities;
@@ -1006,6 +1013,7 @@
 		C6B88D6821F1C86B006394F8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C66A319D23507C9D00DC1BEA /* NetworkService */,
 				C64D488D232F85FB00615368 /* PushNotificationService */,
 				C6B88D6921F1C872006394F8 /* BusinessService */,
 				C6DB1F96230D63540019C014 /* TokenService */,
@@ -1619,6 +1627,7 @@
 				C63D86C622325C8B003CFAA7 /* RedeemKey.swift in Sources */,
 				C6B88D7F21F1C93A006394F8 /* Paging.swift in Sources */,
 				C6B88D8A21F1C94E006394F8 /* PerformingArtist.swift in Sources */,
+				C66A319F23507CDE00DC1BEA /* NetworkService.swift in Sources */,
 				C63D86C02231282F003CFAA7 /* DatabaseService.Scan.swift in Sources */,
 				C6DE2F7A225360BA00ECF7D7 /* EventGuests.swift in Sources */,
 				C60BDEBF229EC03F00E54456 /* API.swift in Sources */,
@@ -1632,7 +1641,6 @@
 				C6B88D7921F1C932006394F8 /* Tokens.swift in Sources */,
 				C628B15621FAD76000FCBDC9 /* User.swift in Sources */,
 				C6CEC8A9221ADBCE00F7329D /* TicketTypeStatus.swift in Sources */,
-				C6825A6C225DF28B003470A5 /* Rechability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

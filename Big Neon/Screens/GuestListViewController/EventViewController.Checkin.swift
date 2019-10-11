@@ -23,25 +23,39 @@ extension EventViewController {
     //  Checkin Guest
     func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath indexPath: IndexPath?) {
         
-        //  If no Internet connection, update offline and upload later.
-        
-        
-        //  if there is an internet connection
         self.checkinViewModel.automaticallyCheckin(ticketID: ticketID, eventID: nil) { [weak self] (scanFeedback, errorString, ticket) in
             DispatchQueue.main.async {
-                if self?.isSearching == true {
-                    self?.eventViewModel.guestCoreDataSearchResults.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
-                    self?.reloadGuestCells(atIndexPath: indexPath)
-                } else {
-                    self?.eventViewModel.guestCoreData.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
-                    self?.reloadGuestCells(atIndexPath: indexPath)
-                }
+                self?.updateGuestCell(ticketID: ticketID, atIndexPath: indexPath)
             }
         }
     }
     
-    func addScannedOfflineTickets() {
-//        let ticket = GuestData(entity: <#T##NSEntityDescription#>, insertInto: <#T##NSManagedObjectContext?#>)
+    func saveScannedOfflineTickets(ticket: GuestData?, ticketID: String, atIndexPath indexPath: IndexPath?) {
+        
+        guard let ticket = ticket else {
+            self.updateGuestCell(ticketID: ticketID, atIndexPath: indexPath)
+            return
+        }
+        
+        //  Save Ticket Offline
+        var checkedInGuests: [GuestData] = []
+        checkedInGuests.append(ticket)
+        self.eventViewModel.dataStack.sync(checkedInGuests, inEntityNamed: SCANNED_GUEST_ENTITY_NAME) { error in
+            self.updateGuestCell(ticketID: ticketID, atIndexPath: indexPath)
+            return
+        }
+        
     }
     
+    func updateGuestCell(ticketID: String, atIndexPath indexPath: IndexPath?) {
+        if self.isSearching == true {
+            self.eventViewModel.guestCoreDataSearchResults.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
+            self.reloadGuestCells(atIndexPath: indexPath)
+        } else {
+            self.eventViewModel.guestCoreData.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
+            self.reloadGuestCells(atIndexPath: indexPath)
+        }
+    }
+    
+    //  Upload Scanned Offline Guests
 }

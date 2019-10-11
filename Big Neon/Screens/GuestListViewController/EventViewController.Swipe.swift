@@ -51,11 +51,22 @@ extension EventViewController: SwipeActionTransitioning {
     }
     
     func checkinTicket(ticketID: String?, atIndex index: IndexPath, direction: Bool) {
+        var ticket: GuestData?
+        if self.isSearching == true && !self.eventViewModel.guestCoreDataSearchResults.isEmpty {
+            ticket = self.eventViewModel.guestCoreDataSearchResults[index.row]
+        } else {
+            ticket = self.eventViewModel.guestCoreData[index.row]
+        }
+        
         
         if let id = ticketID {
             let guestCell: EventGuestsCell = self.guestTableView.cellForRow(at: index) as! EventGuestsCell
             guestCell.ticketStateView.startAnimation()
-            self.checkinAutomatically(withTicketID: id, fromGuestTableView: true, atIndexPath: index)
+            if NetworkService.isConnectedToNetwork() == true {
+                self.checkinAutomatically(withTicketID: id, fromGuestTableView: true, atIndexPath: index)
+            } else {
+                self.saveScannedOfflineTickets(ticket: ticket, ticketID: id, atIndexPath: index)
+            }
         }
     }
     
