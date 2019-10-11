@@ -26,7 +26,7 @@ extension GuestViewController: PanModalPresentable {
 class GuestViewController: BaseViewController {
     
     var event: EventsData?
-    var guestListVC: GuestListViewController?
+    var guestListVC: EventViewController?
     var scannerVC: ScannerViewController?
     var scannerViewModel = TicketScannerViewModel()
     var guestListIndex: IndexPath?
@@ -271,16 +271,8 @@ class GuestViewController: BaseViewController {
         self.completeCheckin()
     }
     
-    func panModalWillDismiss() {
-        self.scannerVC?.isShowingScannedUser = false
-        self.scannerVC?.lastScannedTicketTime = nil
-        self.scannerVC?.scannerViewModel?.lastRedeemedTicket = nil
-    }
-    
-    //  Complete Checkin
     func completeCheckin() {
-        
-        /*
+    
         guard let ticketID = self.guest?.id else {
             return
         }
@@ -296,8 +288,8 @@ class GuestViewController: BaseViewController {
                     self.completeCheckinButton.layer.cornerRadius = 6.0
                     
                     //  Update the Redeemed Ticket
-                    self.redeemableTicket = ticket
-                    print(ticket?.status)
+                    //  self.guest = ticket
+                    self.guest?.status = ticket?.status
                     
                     //  Checking from Guestlist
                     if fromGuestListVC == true {
@@ -307,14 +299,18 @@ class GuestViewController: BaseViewController {
                         return
                     }
                     
-                    
                     self.dismissController()
                     self.scannerVC?.showScannedUser(feedback: scanFeedback, ticket: ticket)
                     
                 }
             }
         }
-        */
+    }
+    
+    func panModalWillDismiss() {
+        self.scannerVC?.isShowingScannedUser = false
+        self.scannerVC?.lastScannedTicketTime = nil
+        self.scannerVC?.scannerViewModel?.lastRedeemedTicket = nil
     }
     
     func playSuccessSound(forValidTicket valid: Bool) {
@@ -335,32 +331,23 @@ class GuestViewController: BaseViewController {
         }
         
         if self.guestListVC?.isSearching == true {
-            self.guestListVC?.guestViewModel.guestSearchResults.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
+            self.guestListVC?.eventViewModel.guestCoreDataSearchResults.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
             self.reloadGuestCells(atIndexPath: indexPath)
         } else {
-            self.guestListVC?.guestViewModel.ticketsFetched.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
+            self.guestListVC?.eventViewModel.guestCoreData.first(where: { $0.id == ticketID})?.status = TicketStatus.Redeemed.rawValue
             self.reloadGuestCells(atIndexPath: indexPath)
         }
     }
     
     func reloadGuestCells(atIndexPath indexPath: IndexPath?) {
         guard let indexPath = indexPath else { return }
-        let guestCell: GuestTableViewCell = self.guestListVC?.guestTableView.cellForRow(at: indexPath) as! GuestTableViewCell
+        let guestCell: EventGuestsCell = self.guestListVC?.guestTableView.cellForRow(at: indexPath) as! EventGuestsCell
         guestCell.ticketStateView.stopAnimation(animationStyle: .normal, revertAfterDelay: 0.0) {
             guestCell.ticketStateView.layer.cornerRadius = 3.0
             guestCell.ticketStateView.setTitle("REDEEMED", for: UIControl.State.normal)
             guestCell.ticketStateView.backgroundColor = UIColor.brandBlack
         }
-        
-        /*
-        let guestKey = self.guestListVC?.guestSectionTitles[indexPath.section]
-        let guestValues = self.guestListVC?.isSearching == true ? self.guestListVC?.guestViewModel.guestSearchResults :  self.guestListVC?.guestsDictionary[guestKey!]
-        guestValues![indexPath.row].status = TicketStatus.Redeemed.rawValue
-        
-        
-        //  Update the Current Ticket
-        self.redeemableTicket = guestValues![indexPath.row]
-         */
+
     }
     
     @objc func doNothing() {

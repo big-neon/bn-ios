@@ -64,41 +64,21 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
                               AVMetadataObject.ObjectType.interleaved2of5,
                               AVMetadataObject.ObjectType.qr]
     
-    var guestsCoreData: [GuestData]? {
-        didSet {
-            showGuestView.loadingView.stopAnimating()
-            
-            guard let guestsFetched = guestsCoreData else {
-                return
-            }
-            
-            if !guestsFetched.isEmpty {
-                showGuestView.isUserInteractionEnabled = true
-                showGuestView.headerLabel.textColor = UIColor.brandPrimary
-            } else {
-                showGuestView.isUserInteractionEnabled = true
-                showGuestView.headerLabel.textColor = UIColor.brandPrimary
-            }
-        }
-    }
-    
-    var guests: [RedeemableTicket]? {
-        didSet {
-            showGuestView.loadingView.stopAnimating()
-
-            guard let guestsFetched = guests else {
-                return
-            }
-//            self.showPullUpController()
-            if !guestsFetched.isEmpty {
-                showGuestView.isUserInteractionEnabled = true
-                showGuestView.headerLabel.textColor = UIColor.brandPrimary
-            } else {
-                showGuestView.isUserInteractionEnabled = true
-                showGuestView.headerLabel.textColor = UIColor.brandPrimary
-            }
-        }
-    }
+//    var guestCoreData: [GuestData]? {
+//        didSet {
+//            showGuestView.loadingView.stopAnimating()
+//            guard let guestsFetched = guestCoreData else {
+//                return
+//            }
+//            if !guestsFetched.isEmpty {
+//                showGuestView.isUserInteractionEnabled = true
+//                showGuestView.headerLabel.textColor = UIColor.brandPrimary
+//            } else {
+//                showGuestView.isUserInteractionEnabled = true
+//                showGuestView.headerLabel.textColor = UIColor.brandPrimary
+//            }
+//        }
+//    }
     
     lazy var scannerModeView: ScannerModeView = {
         let view =  ScannerModeView()
@@ -127,7 +107,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     lazy var showGuestView: ShowGuestListView = {
         let view =  ShowGuestListView()
         view.loadingView.startAnimating()
-        view.isUserInteractionEnabled = false
+        view.isUserInteractionEnabled = true
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showGuestList)))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -159,50 +139,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         configureAutoMode()
         configureScanner()
         configureHeader()
-        UIApplication.shared.isIdleTimerDisabled = true  //  Prevent the View from sleeping.
-        
-        //  Ticket Fetching
-        fetchGuests()
-        //  syncGuestsData()
-        
-    }
-    
-    func showPullUpController() {
-//        self.stopScanning = true
-//        guard let guests = self.guests else {
-//            return
-//        }
-//
-//        guard let event = self.event, let eventID = event.id, let eventTimeZone = event.venue?.timezone, let scannerViewModel = self.scannerViewModel else {
-//            return
-//        }
-//
-//        guestListVC = GuestListViewController(eventID: eventID,
-//                                              guestsFetched: guests,
-//                                              eventTimeZone: eventTimeZone,
-//                                              scannerVC: self,
-//                                              scannerVM: scannerViewModel)
-//        guard let guestListVC = guestListVC else {
-//            return
-//        }
-//
-//        guestListVC.delegate = self
-//        guestListVC.guests = guests
-//        guestListVC.event = self.event
-//        guestListVC.guestViewModel.totalGuests = scannerViewModel.totalGuests
-//        guestListVC.guestViewModel.currentTotalGuests = scannerViewModel.currentTotalGuests
-//        guestListVC.guestViewModel.currentPage = scannerViewModel.currentPage
-//        guestListVC.guestViewModel.ticketsFetched = guests
-//        guestListVC.totalGuests = scannerViewModel.totalGuests
-//        guestListVC.scanVC = self
-////        let navGuestVC = UINavigationController(rootViewController: guestListVC)
-////        navGuestVC.modalPresentationStyle = .fullScreen
-////        self.present(navGuestVC, animated: true, completion: nil)
-//
-//        addPullUpController(guestListVC,
-//                            initialStickyPointOffset: guestListVC.initialPointOffset,
-//                            animated: true)
-                    
+        UIApplication.shared.isIdleTimerDisabled = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -214,43 +151,6 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         if scannerViewModel?.setScannerModeFirstTime() == true {
             self.scannerModeView.setAutoMode = true
         }
-    }
-    
-    @objc func syncGuestsData() {
-        /*
-        guard let eventID = self.event?.id else {
-            return
-        }
-        
-        self.fetcher.syncGuestData(withEventID: eventID) { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success:
-                    self.scannerViewModel?.ticketsCoreData = self.fetcher.fetchLocalGuests()
-                    self.guestsCoreData = self.fetcher.fetchLocalGuests()
-                case .failure(let error):
-                    if let err = error {
-                        AnalyticsService.reportError(errorType: ErrorType.guestsFetch, error: err.localizedDescription)
-                    }
-                }
-            }
-        }
-        */
-    }
-
-    func fetchGuests() {
-        guard let eventID = self.event?.id else {
-            return
-        }
-
-        self.scannerViewModel?.fetchEventGuests(forEventID: eventID, page: 0, completion: { [weak self] (completed) in
-            DispatchQueue.main.async {
-                guard let self = self, completed else {
-                    return
-                }
-                self.guests = self.scannerViewModel?.ticketsFetched
-            }
-        })
     }
 
     private func configureViewModel() {
@@ -365,80 +265,10 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         }
         
         let eventVC = EventViewController(event: event, presentedFromScannerVC: true)
-//        self.navigationController?.push(eventVC)
-        
         let eventNavVC = UINavigationController(rootViewController: eventVC)
         eventNavVC.modalPresentationStyle = .fullScreen
         self.present(eventNavVC, animated: true, completion: nil)
-        
-//        guard let guests = self.guests else {
-//            return
-//        }
-//
-//        guard let event = self.event, let eventID = event.id, let eventTimeZone = event.venue?.timezone, let scannerViewModel = self.scannerViewModel else {
-//            return
-//        }
-//
-//        guestListVC = GuestListViewController(eventID: eventID,
-//                                              guestsFetched: guests,
-//                                              eventTimeZone: eventTimeZone,
-//                                              scannerVC: self,
-//                                              scannerVM: scannerViewModel)
-//        guard let guestListVC = guestListVC else { return }
-//        guestListVC.delegate = self
-//        guestListVC.guests = guests
-//        guestListVC.event = self.event
-//        guestListVC.guestViewModel.totalGuests = scannerViewModel.totalGuests
-//        guestListVC.guestViewModel.currentTotalGuests = scannerViewModel.currentTotalGuests
-//        guestListVC.guestViewModel.currentPage = scannerViewModel.currentPage
-//        guestListVC.guestViewModel.ticketsFetched = guests
-//        guestListVC.totalGuests = scannerViewModel.totalGuests
-//        guestListVC.scanVC = self
-//        let navGuestVC = UINavigationController(rootViewController: guestListVC)
-//        navGuestVC.modalPresentationStyle = .fullScreen
-//        self.present(navGuestVC, animated: true, completion: nil)
     }
-    
-    /*
-     
-     TO DO: Review if Still Needed
-     
-     
-    @objc func showGuestList() {
-        viewAnimationBounce(viewSelected: showGuestView,
-                            bounceVelocity: 10.0,
-                            springBouncinessEffect: 3.0)
-        self.stopScanning = true
-        
-        guard let guests = self.guestsCoreData else {
-            return
-        }
-        
-        guard let event = self.event, let eventID = event.id, let eventTimeZone = event.venue?.timezone else {
-            return
-        }
-        
-        guard let scannerViewModel = self.scannerViewModel else {
-            return
-        }
-        
-        guestListVC = GuestListViewController(eventID: eventID,
-                                              guestsFetched: guests,
-                                              eventTimeZone: eventTimeZone,
-                                              scannerVC: self,
-                                              scannerVM: scannerViewModel)
-        guestListVC!.delegate = self
-        guestListVC!.guestsCoreData = guests
-        guestListVC!.guestViewModel.totalGuests = scannerViewModel.totalGuests
-        guestListVC!.guestViewModel.currentTotalGuests = scannerViewModel.currentTotalGuests
-        guestListVC!.guestViewModel.currentPage = scannerViewModel.currentPage
-        guestListVC!.guestViewModel.ticketsFetched = guests
-        guestListVC!.totalGuests = scannerViewModel.totalGuests
-        guestListVC!.scanVC = self
-        let navGuestVC = GuestListNavigationController(rootViewController: guestListVC!)
-        self.presentPanModal(navGuestVC)
-    }
-    */
 }
 
 
