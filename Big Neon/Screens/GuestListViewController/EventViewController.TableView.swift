@@ -33,17 +33,13 @@ extension EventViewController {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if self.isSearching == true {
-            return self.eventViewModel.guestCoreDataSearchResults.count
-        }
-        return self.eventViewModel.guestCoreData.count
+        return self.isSearching == true ? self.eventViewModel.guestCoreDataSearchResults.count : self.eventViewModel.guestCoreData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let guestCell: EventGuestsCell = tableView.dequeueReusableCell(withIdentifier: EventGuestsCell.cellID, for: indexPath) as! EventGuestsCell
         guestCell.delegate = self
-        if self.isSearching == true && !self.eventViewModel.guestSearchResults.isEmpty {
+        if self.isSearching == true && !self.eventViewModel.guestCoreDataSearchResults.isEmpty {
             guestCell.guest = self.eventViewModel.guestCoreDataSearchResults[indexPath.row]
         } else {
             guestCell.guest = self.eventViewModel.guestCoreData[indexPath.row]

@@ -14,11 +14,17 @@ final class EventViewController: UIViewController, UITableViewDataSource, UITabl
     var filteredLocalSearchResults: [RedeemableTicket] = []
     var isFetchingNextPage = false
     var scanButtonBottomAnchor: NSLayoutConstraint?
-    var isSearching: Bool = false
     let eventViewModel = EventViewModel()
     var eventTableHeaderView = EventViewMiniture()
     var checkinViewModel = CheckinService()
     var presentedFromScanner: Bool = false
+    
+    var isSearching: Bool = false {
+        didSet {
+            self.guestTableView.tableHeaderView = self.isSearching == true ? nil : eventTableHeaderView
+            self.scanTicketsButton.isHidden = self.isSearching
+        }
+    }
     
     lazy var refresher: UIRefreshControl = {
         let refresher = UIRefreshControl()
