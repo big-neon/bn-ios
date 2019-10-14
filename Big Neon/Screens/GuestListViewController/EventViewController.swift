@@ -236,5 +236,4 @@ final class EventViewController: UIViewController, UITableViewDataSource, UITabl
         self.present(scannerNavVC, animated: true, completion: nil)
     }
     
-    
 }

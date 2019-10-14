@@ -50,8 +50,8 @@ extension DoorPersonViewController {
         
         //  Get Future events
         self.doorPersonViemodel.upcomingEvents = self.doorPersonViemodel.eventCoreData.filter {
-            guard let firstEvent = $0.event_start,
-                let firstDate = DateConfig.dateFromUTCString(stringDate: firstEvent) else {
+            guard let doorTimeEventEvent = $0.door_time,
+                let firstDate = DateConfig.dateFromUTCString(stringDate: doorTimeEventEvent) else {
                 return false
             }
             return DateConfig.dateIsInFutureDate(ofDate: firstDate)

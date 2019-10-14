@@ -16,7 +16,7 @@ public class EventsApiRepository {
     
     private init() {}
     public static let shared = EventsApiRepository()
-    private let APIURL = APIService.getCheckins()
+    private let GETCHECKINSAPIURL = APIService.getCheckins()
     
     private func configureAccessToken(completion: @escaping(Bool) -> Void) {
         
@@ -52,7 +52,10 @@ public class EventsApiRepository {
             }
             
             let accessToken =  TokenService.shared.fetchAcessToken()
-            AF.request(self.APIURL,
+            print(accessToken)
+            print(self.GETCHECKINSAPIURL)
+            
+            AF.request(self.GETCHECKINSAPIURL,
                        method: HTTPMethod.get,
                        parameters: nil,
                        encoding: JSONEncoding.default,
