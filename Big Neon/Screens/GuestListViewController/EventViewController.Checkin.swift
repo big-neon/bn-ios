@@ -39,57 +39,33 @@ extension EventViewController {
             return
         }
         
-        self.updateTicketStatusLocally(forTicketID: id)
+        self.updateTicketStatusAndSave(forTicketID: id)
         self.updateGuestCell(ticketID: ticketID, atIndexPath: indexPath)
     }
     
-    func saveCheckedInTicketLocally(forTicketID ticketID: String, ticket: GuestData?) {
-        
-        
-        
-        
-        
-        
-        
-        let appDelegate: AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
-        let managedContext = appDelegate.persistentContainer.viewContext
-
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "GuestData")
-        fetchRequest.predicate = NSPredicate(format: "id = %@", ticketID)
-
+    /*
+     - Update thhe scanned ticket locally and update the TableView
+     - Save the Scanned Ticket Redeemed Tickets where it will be uploaded later
+     */
+    func updateTicketStatusAndSave(forTicketID ticketID: String) {
         
         do {
-            let results = try managedContext.fetch(fetchRequest)
-            if results.count != 0 {
-                let redeemedStatus = TicketStatus.Redeemed.rawValue
-                let managedObject = results [0] as AnyObject
-                managedObject.setValue(redeemedStatus, forKey: "status")
-            }
-        } catch let err {
-            print(err)
-        }
-        
-        //  Save the Value to Core Data
-        do {
-           try managedContext.save()
-          } catch let err {
-           print("Failed saving the data: \(err)")
-        }
-    }
-    
-    func updateTicketStatusLocally(forTicketID ticketID: String) {
-        
-        do {
-            let event = try self.eventViewModel.dataStack.fetch(ticketID, inEntityNamed: GUEST_ENTITY_NAME) as! GuestData
-            event.status = TicketStatus.Redeemed.rawValue
-            let eventDict = convertManagedObjectToDictionary(managedObject: event)
-            try self.eventViewModel.dataStack.insertOrUpdate(eventDict, inEntityNamed: GUEST_ENTITY_NAME)
+            let ticket = try self.eventViewModel.dataStack.fetch(ticketID, inEntityNamed: GUEST_ENTITY_NAME) as! GuestData
+            ticket.status = TicketStatus.Redeemed.rawValue
+            let ticketDict = convertManagedObjectToDictionary(managedObject: ticket)
+            try self.eventViewModel.dataStack.insertOrUpdate(ticketDict, inEntityNamed: GUEST_ENTITY_NAME)
+            
+            //  Save Ticket to Redeemed Tickets
+            try self.eventViewModel.dataStack.insertOrUpdate(ticketDict, inEntityNamed: SCANNED_GUEST_ENTITY_NAME)
         } catch let err {
             print(err)
         }
         
     }
     
+    /*
+     Convert Managed Object Context to Dictionary
+    */
     func convertManagedObjectToDictionary(managedObject: NSManagedObject) -> [String : Any] {
         var dict: [String: Any] = [:]
         for attribute in managedObject.entity.attributesByName {
