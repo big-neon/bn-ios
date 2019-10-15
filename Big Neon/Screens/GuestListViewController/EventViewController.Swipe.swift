@@ -62,10 +62,12 @@ extension EventViewController: SwipeActionTransitioning {
         if let id = ticketID {
             let guestCell: EventGuestsCell = self.guestTableView.cellForRow(at: index) as! EventGuestsCell
             guestCell.ticketStateView.startAnimation()
-            if NetworkService.isConnectedToNetwork() == true {
-                self.checkinAutomatically(withTicketID: id, fromGuestTableView: true, atIndexPath: index)
-            } else {
-                self.saveScannedOfflineTickets(ticket: ticket, ticketID: id, atIndexPath: index)
+            NetworkManager.shared.startNetworkReachabilityObserver { (isReachable) in
+                if isReachable == true {
+                    self.checkinAutomatically(withTicketID: id, fromGuestTableView: true, atIndexPath: index)
+                } else {
+                    self.saveScannedOfflineTickets(ticket: ticket, ticketID: id, atIndexPath: index)
+                }
             }
         }
     }
