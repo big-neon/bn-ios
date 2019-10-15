@@ -33,7 +33,6 @@ extension EventViewController {
     
     func saveScannedOfflineTickets(ticket: GuestData?, ticketID: String, atIndexPath indexPath: IndexPath?) {
         
-        
         guard let ticket = ticket, let id = ticket.id else {
             self.updateGuestCell(ticketID: ticketID, atIndexPath: indexPath)
             return
@@ -41,10 +40,11 @@ extension EventViewController {
         
         self.updateTicketStatusAndSave(forTicketID: id)
         self.updateGuestCell(ticketID: ticketID, atIndexPath: indexPath)
+    
     }
     
     /*
-     - Update thhe scanned ticket locally and update the TableView
+     - Update the scanned ticket locally and update the TableView
      - Save the Scanned Ticket Redeemed Tickets where it will be uploaded later
      */
     func updateTicketStatusAndSave(forTicketID ticketID: String) {
@@ -54,13 +54,14 @@ extension EventViewController {
             ticket.status = TicketStatus.Redeemed.rawValue
             let ticketDict = convertManagedObjectToDictionary(managedObject: ticket)
             try self.eventViewModel.dataStack.insertOrUpdate(ticketDict, inEntityNamed: GUEST_ENTITY_NAME)
-            
-            //  Save Ticket to Redeemed Tickets
-            try self.eventViewModel.dataStack.insertOrUpdate(ticketDict, inEntityNamed: SCANNED_GUEST_ENTITY_NAME)
         } catch let err {
             print(err)
         }
         
+        let scannedTicketDict = ["event_id": self.eventViewModel.eventData?.id,
+                                 "id": ticketID] as [String : AnyObject]
+        print(scannedTicketDict)
+        self.eventViewModel.saveScannedTicketInCoreDataWith(array: [scannedTicketDict])
     }
     
     /*

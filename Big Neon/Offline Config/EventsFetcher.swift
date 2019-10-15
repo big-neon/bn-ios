@@ -30,7 +30,7 @@ class EventsFetcher {
     func deleteAllData(_ entity:String) {
 
         let appDel =  UIApplication.shared.delegate as! AppDelegate
-        let context:NSManagedObjectContext = appDel.persistentContainer.viewContext
+        let context:NSManagedObjectContext = CoreDataStack.sharedInstance.persistentContainer.viewContext
 
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
         fetchRequest.returnsObjectsAsFaults = false

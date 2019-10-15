@@ -15,8 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = ApplicationRouter.setupBaseRouting()
         Fabric.with([Crashlytics.self, Answers.self])
         registerForPushNotifications()
-//        NetworkManager.shared.reachabilityManager?.startListening()
+        CoreDataStack.sharedInstance.applicationDocumentsDirectory()
         return true
+    }
+    
+    func applicationDocumentsDirectory() {
+        if let url = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).last {
+            print(url.absoluteString)
+        }
     }
     
     func registerForPushNotifications() {
@@ -52,9 +58,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        self.saveContext()
+        CoreDataStack.sharedInstance.saveContext()
     }
 
+    /*
     // MARK: - Core Data stack
     lazy var persistentContainer: NSPersistentContainer = {
         /*
@@ -102,6 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    */
 
 }
 

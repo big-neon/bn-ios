@@ -95,6 +95,26 @@ final class EventViewController: UIViewController, UITableViewDataSource, UITabl
         configureScanButton()
         guestTableView.refreshControl = self.refresher
         fetchGuests()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        syncScannedTickets()
+    }
+    
+    func syncScannedTickets() {
+        NetworkManager.shared.startNetworkReachabilityObserver { (isReachable) in
+            if isReachable == true {
+                //  Checkin Saved Tickets and Delete if successful.
+                self.eventViewModel.fetchScannedLocalGuests { (fetched) in
+                    DispatchQueue.main.async {
+                      print(fetched)
+                    }
+                }
+            }
+            
+        }
     }
     
     func fetchGuests() {

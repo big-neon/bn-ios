@@ -57,6 +57,7 @@
 		C6445B60234CB4F500B6F467 /* EventViewMiniture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6445B5F234CB4F500B6F467 /* EventViewMiniture.swift */; };
 		C644BA2F21F7069D003C188B /* BasicError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C644BA2E21F7069D003C188B /* BasicError.swift */; };
 		C644BA3421F70C19003C188B /* DatabaseService.Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = C644BA3321F70C19003C188B /* DatabaseService.Users.swift */; };
+		C6488541235656E600525AF7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6488540235656E600525AF7 /* CoreDataStack.swift */; };
 		C64B0ABB21D0DCC900386000 /* DoorPersonViewController.CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABA21D0DCC900386000 /* DoorPersonViewController.CollectionView.swift */; };
 		C64B0ABD21D0DCDB00386000 /* DoorPersonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABC21D0DCDB00386000 /* DoorPersonViewModel.swift */; };
 		C64B0AC021D0DD1E00386000 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B0ABF21D0DD1E00386000 /* Utils.swift */; };
@@ -280,6 +281,7 @@
 		C6445B5F234CB4F500B6F467 /* EventViewMiniture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewMiniture.swift; sourceTree = "<group>"; };
 		C644BA2E21F7069D003C188B /* BasicError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicError.swift; sourceTree = "<group>"; };
 		C644BA3321F70C19003C188B /* DatabaseService.Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.Users.swift; sourceTree = "<group>"; };
+		C6488540235656E600525AF7 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		C64B0ABA21D0DCC900386000 /* DoorPersonViewController.CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonViewController.CollectionView.swift; sourceTree = "<group>"; };
 		C64B0ABC21D0DCDB00386000 /* DoorPersonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonViewModel.swift; sourceTree = "<group>"; };
 		C64B0ABF21D0DD1E00386000 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -581,6 +583,7 @@
 				C6B88D5821F1C33E006394F8 /* View */,
 				C6B88D2D21F1BBE8006394F8 /* Cells */,
 				C6B6DEA0227ABE06003367D7 /* Offline Config */,
+				C648853F2356563000525AF7 /* CoreDataStack */,
 				C64B0AB221D0DC3E00386000 /* Screens */,
 			);
 			path = "Big Neon";
@@ -636,6 +639,14 @@
 				C644BA2E21F7069D003C188B /* BasicError.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		C648853F2356563000525AF7 /* CoreDataStack */ = {
+			isa = PBXGroup;
+			children = (
+				C6488540235656E600525AF7 /* CoreDataStack.swift */,
+			);
+			path = CoreDataStack;
 			sourceTree = "<group>";
 		};
 		C64B0AB021D0DBAE00386000 /* TabBar */ = {
@@ -1588,6 +1599,7 @@
 				C6C4E9AF2302D2810040C258 /* SwipeFeedback.swift in Sources */,
 				C66C0BA721E339CA0066CD0F /* SplashViewController.swift in Sources */,
 				C623C0682251E36B0020D0A8 /* TicketTypeCell.swift in Sources */,
+				C6488541235656E600525AF7 /* CoreDataStack.swift in Sources */,
 				C6D2C96D23422B350025E6D5 /* BrandShadowView.swift in Sources */,
 				C6C4E9B52302D2810040C258 /* SwipeActionsView.swift in Sources */,
 				C6937106228F6DF3004EBC12 /* ShowGuestListView.swift in Sources */,

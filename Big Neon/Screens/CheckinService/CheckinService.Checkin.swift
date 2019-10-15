@@ -18,7 +18,7 @@ extension CheckinService {
                 completion(.issueFound)
                 return
             }
-        
+         
             BusinessService.shared.database.redeemTicket(forTicketID: ticket.id, eventID: eventID, redeemKey: ticket.redeemKey) { [weak self] (scanFeedback, ticket) in
                 DispatchQueue.main.async {
                     self?.redeemedTicket = ticket
@@ -26,7 +26,6 @@ extension CheckinService {
                 }
             }
         }
-        
     }
     
     func automaticallyCheckin(ticketID: String, eventID: String?, completion: @escaping(ScanFeedback?, String?, RedeemableTicket?) -> Void) {
