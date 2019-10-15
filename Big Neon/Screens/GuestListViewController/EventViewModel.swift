@@ -147,7 +147,8 @@ final class EventViewModel {
                         print("Scan Feedback: \(scanFeedBack), \(errorString), \(redeemedTicket)")
                     }
                     
-                    //  Delete the Ticket Value Here
+                    //  Delete the Ticket Value Here from Core Data
+                    
                 }
             }
         } catch let error {
