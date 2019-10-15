@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = ApplicationRouter.setupBaseRouting()
         Fabric.with([Crashlytics.self, Answers.self])
         registerForPushNotifications()
-        print("Documents Directory: ", FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last ?? "Not Found!")
+//        NetworkManager.shared.reachabilityManager?.startListening()
         return true
     }
     
