@@ -21,7 +21,7 @@ extension ScannerViewController {
     
     func checkinAutomatically(withTicketID ticketID: String, fromGuestTableView: Bool, atIndexPath indexPath: IndexPath?) {
         self.stopScanning = true
-        self.scannerViewModel?.automaticallyCheckin(ticketID: ticketID, eventID: nil) { [weak self] (scanFeedback, errorString, ticket) in
+        self.scannerViewModel.automaticallyCheckin(ticketID: ticketID, eventID: nil) { [weak self] (scanFeedback, errorString, ticket) in
             DispatchQueue.main.async {
                 
                 //  Checking from Guestlist
@@ -41,7 +41,6 @@ extension ScannerViewController {
                     if let ticket = ticket {
                         self?.showScannedUser(feedback: .alreadyRedeemed, ticket: ticket)
                     }
-                    
                     return
                 }
                 
@@ -67,7 +66,7 @@ extension ScannerViewController {
             scannedUserView.ticketTypeLabel.text = "-"
         } else {
             playSuccessSound(forValidTicket: true)
-            scannerViewModel?.redeemedTicket = ticket
+            scannerViewModel.redeemedTicket = ticket
             scannedUserView.redeemableTicket = ticket
             scannedUserView.scanFeedback = feedFound
         }
@@ -81,6 +80,39 @@ extension ScannerViewController {
 //        generator.notificationOccurred(.success)
         
     }
+    
+    
+    func showOfflineScannedUser(feedback: ScanFeedback?, ticket: GuestData?) {
+            
+            var feedFound = feedback
+            scannedUserView.isFetchingData = false
+        
+            if ticket?.event_name != self.event?.name {
+                self.playSuccessSound(forValidTicket: false)
+                self.scannedTicketID = ticket?.id
+                scannedUserView.userNameLabel.text = ticket?.event_name
+                scannedUserView.ticketTypeLabel.text = "-"
+                self.displayedScannedUser = true
+                scannedUserView.scanFeedback = .wrongEvent
+                scannerModeView.layer.opacity = 1.0
+                scannedUserBottomAnchor?.constant = -90.0
+                manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+            } else {
+                playSuccessSound(forValidTicket: true)
+                scannedUserView.scanFeedback = ScanFeedback(rawValue: (ticket?.status!)!)
+                if let status = ticket?.status {
+                    if status == "Redeemed" {
+                        scannedUserView.scanFeedback = .alreadyRedeemed
+                    }
+                }
+                scannedUserView.guestData = ticket
+                self.displayedScannedUser = true
+                scannerModeView.layer.opacity = 1.0
+                scannedUserBottomAnchor?.constant = -90.0
+                manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+            }
+            
+        }
     
     func playSuccessSound(forValidTicket valid: Bool) {
         let sound = valid == true ? "Valid" : "Redeemed"

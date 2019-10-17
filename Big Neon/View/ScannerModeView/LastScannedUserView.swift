@@ -20,6 +20,18 @@ public class LastScannedUserView: BrandShadowView {
         }
     }
     
+    var guestData: GuestData? {
+        didSet {
+            guard let ticket = self.guestData else {
+                return
+            }
+            
+            self.userNameLabel.text = ticket.first_name!
+            self.ticketTypeLabel.text = ticket.ticket_type!
+            
+        }
+    }
+    
     public var scanFeedback: ScanFeedback? {
         didSet {
             guard let feedback = self.scanFeedback else {

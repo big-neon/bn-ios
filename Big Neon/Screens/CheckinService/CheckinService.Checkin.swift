@@ -90,7 +90,7 @@ extension CheckinService {
             BusinessService.shared.database.redeemTicket(forTicketID: ticket.id, eventID: eventID, redeemKey: ticket.redeemKey) { [weak self] (scanFeedback, ticket) in
                 DispatchQueue.main.async {
                     self?.redeemedTicket = ticket
-                    completion(scanFeedback, ticket!)
+                    completion(scanFeedback, ticket)
                 }
             }
         }

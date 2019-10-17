@@ -34,7 +34,8 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     var scannedUserBottomAnchor: NSLayoutConstraint?
     var stopScanning: Bool?
     var isShowingScannedUser: Bool?
-    var scannerViewModel : CheckinService?
+    var scannerViewModel = CheckinService()
+    let eventViewModel = EventViewModel()
     
     //  Last Scanned Ticked Time
     var lastScannedTicketTime: Date?
@@ -132,15 +133,14 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     }
     
     func configureAutoMode() {
-        if scannerViewModel?.setScannerModeFirstTime() == true {
+        if scannerViewModel.setScannerModeFirstTime() == true {
             self.scannerModeView.setAutoMode = true
         }
     }
 
     private func configureViewModel() {
-        scannerViewModel = CheckinService()
-        scannerViewModel?.scanVC = self
-        scannerModeView.setAutoMode = scannerViewModel!.scannerMode()
+        scannerViewModel.scanVC = self
+        scannerModeView.setAutoMode = scannerViewModel.scannerMode()
     }
 
     private func configureHeader() {

@@ -33,9 +33,9 @@ class GuestViewController: BaseViewController {
     var audioPlayer: AVAudioPlayer?
     weak var delegate: ScannerViewDelegate?
     
-    var guest: GuestData? {
+    var guestData: GuestData? {
         didSet {
-            guard let guest = self.guest else {
+            guard let guest = self.guestData else {
                 return
             }
             
@@ -78,6 +78,66 @@ class GuestViewController: BaseViewController {
                 ticketTypeLabel.text = price.dollarString + " | " + guest.ticket_type! + " | " + ticketID
                 
                 guard let timezone = event?.venue, let redeemDate = guest.redeemed_at else {
+                    return
+                }
+
+                guard let redeemedDate = DateConfig.formatServerDate(date: redeemDate, timeZone: timezone.timezone!) else {
+                    return
+                }
+
+                redeemedTimeAgoLabel.text = "Redeemed: " + redeemedDate.getElapsed()
+                redeemedTimeLabel.text = DateConfig.fullDateFormat(date: redeemedDate)
+            }
+            
+            self.enableCheckinButton()
+        }
+    }
+    
+    var guest: RedeemableTicket? {
+        didSet {
+            guard let guest = self.guest else {
+                return
+            }
+            
+            self.userNameLabel.text = guest.firstName + " " + guest.lastName
+            self.ticketTypeLabel.text = guest.eventName
+            let price = Int(guest.priceInCents)
+            let ticketID = "#" + guest.id.suffix(8).uppercased()
+            ticketTypeLabel.text = price.dollarString + " | " + guest.ticketType + " | " + ticketID
+            if let phone = guest.phone {
+                ticketEmailPhoneLabel.text = guest.email ?? "" + " " + phone
+            } else {
+                ticketEmailPhoneLabel.text = guest.email ?? ""
+            }
+            
+            
+            
+            if guest.status == TicketStatus.purchased.rawValue {
+                ticketTagView.backgroundColor = UIColor.brandGreen
+                ticketTagView.tagLabel.text = "PURCHASED"
+                completeCheckinButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
+                completeCheckinButton.backgroundColor = .brandPrimary
+                completeCheckinButton.setTitle("Complete Check-in", for: UIControl.State.normal)
+                completeCheckinButton.addTarget(self, action: #selector(handleCompleteCheckin), for: UIControl.Event.touchUpInside)
+                
+            } else {
+                
+                //  Ticket Redeemed
+                ticketTagView.tagLabel.text = "REDEEMED"
+                ticketTagView.backgroundColor = UIColor.brandBlack
+                completeCheckinButton.backgroundColor = .brandBackground
+                completeCheckinButton.setTitleColor(UIColor.brandLightGrey, for: UIControl.State.normal)
+                completeCheckinButton.setTitle("Redeemed", for: UIControl.State.normal)
+                completeCheckinButton.isUserInteractionEnabled = false
+
+                if let redemeedBy = guest.redeemedBy {
+                    redeemedByLabel.text = "By: " + redemeedBy
+                    completeCheckinButton.isHidden = true
+                }
+                
+                ticketTypeLabel.text = price.dollarString + " | " + guest.ticketType + " | " + ticketID
+                
+                guard let timezone = event?.venue, let redeemDate = guest.redeemedAt else {
                     return
                 }
 
@@ -188,8 +248,17 @@ class GuestViewController: BaseViewController {
     
     func enableCheckinButton() {
         
-        if let ticket = self.guest {
+        if let ticket = self.guestData {
             if DateConfig.eventDateIsToday(eventStartDate: ticket.event_start!) == true {
+                return
+            }
+            
+            completeCheckinButton.setTitleColor(UIColor.brandLightGrey, for: UIControl.State.normal)
+            completeCheckinButton.backgroundColor = UIColor.brandBackground
+            completeCheckinButton.setTitle("Not Event Date", for: UIControl.State.normal)
+            completeCheckinButton.isUserInteractionEnabled = false
+        } else if let ticket = self.guest {
+            if DateConfig.eventDateIsToday(eventStartDate: ticket.eventStart) == true {
                 return
             }
             
@@ -289,7 +358,7 @@ class GuestViewController: BaseViewController {
                     
                     //  Update the Redeemed Ticket
                     //  self.guest = ticket
-                    self.guest?.status = ticket?.status
+                    self.guest?.status = ticket!.status
                     
                     //  Checking from Guestlist
                     if fromGuestListVC == true {
@@ -310,7 +379,7 @@ class GuestViewController: BaseViewController {
     func panModalWillDismiss() {
         self.scannerVC?.isShowingScannedUser = false
         self.scannerVC?.lastScannedTicketTime = nil
-        self.scannerVC?.scannerViewModel?.lastRedeemedTicket = nil
+        self.scannerVC?.scannerViewModel.lastRedeemedTicket = nil
     }
     
     func playSuccessSound(forValidTicket valid: Bool) {
