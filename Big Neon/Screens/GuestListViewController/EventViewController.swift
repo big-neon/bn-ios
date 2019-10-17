@@ -15,6 +15,7 @@ final class EventViewController: UIViewController, UITableViewDataSource, UITabl
     var isFetchingNextPage = false
     var scanButtonBottomAnchor: NSLayoutConstraint?
     let eventViewModel = EventViewModel()
+    let checkinService = CheckinService()
     var eventTableHeaderView = EventViewMiniture()
     var checkinViewModel = CheckinService()
     var presentedFromScanner: Bool = false
@@ -107,7 +108,7 @@ final class EventViewController: UIViewController, UITableViewDataSource, UITabl
         NetworkManager.shared.startNetworkReachabilityObserver { (isReachable) in
             if isReachable == true {
                 //  Checkin Saved Tickets and Delete if successful.
-                self.eventViewModel.fetchScannedLocalGuests { (fetched) in
+                self.checkinService.fetchScannedAndUploadLocalGuests { (fetched) in
                     DispatchQueue.main.async {
                       print(fetched)
                     }

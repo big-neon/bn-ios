@@ -2,6 +2,8 @@
 
 import Foundation
 import Big_Neon_Core
+import CoreData
+import Sync
 
 class CheckinService {
     

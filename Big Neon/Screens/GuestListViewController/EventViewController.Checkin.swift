@@ -60,8 +60,7 @@ extension EventViewController {
         
         let scannedTicketDict = ["event_id": self.eventViewModel.eventData?.id,
                                  "id": ticketID] as [String : AnyObject]
-        print(scannedTicketDict)
-        self.eventViewModel.saveScannedTicketInCoreDataWith(array: [scannedTicketDict])
+        self.checkinService.saveScannedTicketInCoreDataWith(array: [scannedTicketDict])
     }
     
     /*
