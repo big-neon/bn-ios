@@ -64,7 +64,14 @@ extension DoorPersonViewController {
     }
     
     @objc func reloadEvents() {
+        
+        
+        print("Print Fetching Data")
+        
         fetcher.syncCheckins { result in
+            
+            print(result)
+            
             DispatchQueue.main.async {
                 switch result {
                 case .success:

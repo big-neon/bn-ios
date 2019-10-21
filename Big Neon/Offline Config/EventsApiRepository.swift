@@ -52,9 +52,6 @@ public class EventsApiRepository {
             }
             
             let accessToken =  TokenService.shared.fetchAcessToken()
-            print(accessToken)
-            print(self.GETCHECKINSAPIURL)
-            
             AF.request(self.GETCHECKINSAPIURL,
                        method: HTTPMethod.get,
                        parameters: nil,

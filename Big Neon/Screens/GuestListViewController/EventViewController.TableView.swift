@@ -82,6 +82,7 @@ extension EventViewController {
         guard !isFetchingNextPage else {
             return
         }
+        
         self.isFetchingNextPage = true
         self.eventViewModel.fetchNextEventGuests(page: eventViewModel.currentPage, completion: { [unowned self] (_) in
            DispatchQueue.main.async {

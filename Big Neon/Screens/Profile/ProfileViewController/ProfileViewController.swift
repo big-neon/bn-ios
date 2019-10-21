@@ -133,6 +133,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         let profileEditVC = ProfileEditViewController()
         profileEditVC.profleEditViewModel.user = self.profileViewModel.user
         let profileEditNavVC = UINavigationController(rootViewController: profileEditVC)
+        profileEditNavVC.modalPresentationStyle = .fullScreen
         self.present(profileEditNavVC, animated: true, completion: nil)
     }
 }

@@ -60,7 +60,9 @@ class EventsFetcher {
             do {
                 try self.deleteAllData(EVENT_ENTITY_NAME)
                 try self.deleteAllData(VENUE_ENTITY_NAME)
-            } catch {
+            } catch let err {
+                completion(.failure(err as NSError))
+                return
             }
 
             var venues: [[String: Any]] = []
@@ -69,8 +71,11 @@ class EventsFetcher {
             }
 
             self.dataStack.sync(venues, inEntityNamed: VENUE_ENTITY_NAME) { error in
+                print(error)
             }
+            
             self.dataStack.sync(events, inEntityNamed: EVENT_ENTITY_NAME) { error in
+                print(error)
                 completion(.success)
             }
         }
