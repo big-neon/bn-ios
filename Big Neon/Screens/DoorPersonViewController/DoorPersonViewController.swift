@@ -80,7 +80,6 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         view.backgroundColor = UIColor.white
         configureCollectionView()
         doorPersonViemodel.eventCoreData = fetcher.fetchLocalEvents()
-        self.orderEventsByDate()
         syncEventsData()
     }
     

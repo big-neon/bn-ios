@@ -26,8 +26,6 @@ extension DoorPersonViewController {
         /*
          Ordering the Date by least to greatests
          */
-        
-        /*
         self.doorPersonViemodel.eventCoreData.sort(by: {
             guard let firstEvent = $0.event_start,
                 let firstDate = DateConfig.dateFromUTCString(stringDate: firstEvent),
@@ -35,9 +33,9 @@ extension DoorPersonViewController {
                 let endDate = DateConfig.dateFromUTCString(stringDate: secondEvent) else {
                 return false
             }
-            return firstDate > endDate
+            return firstDate < endDate
         })
-        */
+   
         
         //  Get Events Occuring Today
         self.doorPersonViemodel.todayEvents = self.doorPersonViemodel.eventCoreData.filter {
@@ -45,6 +43,7 @@ extension DoorPersonViewController {
                 let firstDate = DateConfig.dateFromUTCString(stringDate: firstEvent) else {
                 return false
             }
+            
             return DateConfig.dateIsWithinTwentyFourHours(ofDate: firstDate)
         }
         
@@ -65,12 +64,7 @@ extension DoorPersonViewController {
     
     @objc func reloadEvents() {
         
-        
-        print("Print Fetching Data")
-        
         fetcher.syncCheckins { result in
-            
-            print(result)
             
             DispatchQueue.main.async {
                 switch result {

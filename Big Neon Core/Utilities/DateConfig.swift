@@ -110,9 +110,12 @@ final public class DateConfig {
     }
     
     public class func  dateIsWithinTwentyFourHours(ofDate date: Date) -> Bool {
-        let interval = Calendar.current.dateComponents([.hour], from: date, to: Date())
-        if let hours = interval.hour {
-            if hours < 24 {
+        print(date)
+        print(Date())
+        
+        let interval = Calendar.current.dateComponents([.hour, .day, .month], from: date, to: Date())
+        if let hours = interval.hour, let day = interval.day {
+            if hours < 24 && day == 1 {
                 return true
             }
         }

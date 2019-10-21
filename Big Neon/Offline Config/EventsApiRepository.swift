@@ -16,7 +16,7 @@ public class EventsApiRepository {
     
     private init() {}
     public static let shared = EventsApiRepository()
-    private let GETCHECKINSAPIURL = APIService.getCheckins()
+    private let GETCHECKINSAPIURL = APIService.getAllEvents()
     
     private func configureAccessToken(completion: @escaping(Bool) -> Void) {
         

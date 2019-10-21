@@ -15,11 +15,14 @@ extension DoorPersonViewController {
         case 0:
             return 1
         case 1:
+            print(self.doorPersonViemodel.eventCoreData.count)
+            print(self.doorPersonViemodel.todayEvents.count)
             return self.doorPersonViemodel.todayEvents.count == 0 ? 0 : self.doorPersonViemodel.todayEvents.count
         case 2:
             return 1
         default:
-            return  self.doorPersonViemodel.upcomingEvents.count
+            print(self.doorPersonViemodel.upcomingEvents.count)
+            return self.doorPersonViemodel.upcomingEvents.count
             
         }
     }
