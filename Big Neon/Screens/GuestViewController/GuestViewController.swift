@@ -93,6 +93,8 @@ class GuestViewController: BaseViewController {
         }
     }
     
+    
+    /*
     var guest: RedeemableTicket? {
         didSet {
             guard let guest = self.guest else {
@@ -152,23 +154,25 @@ class GuestViewController: BaseViewController {
             self.enableCheckinButton()
         }
     }
-       
-   public lazy var userImageView: UIImageView = {
+     */
+    
+   
+    public lazy var userImageView: UIImageView = {
        let imageView = UIImageView()
        imageView.image = UIImage(named: "empty_profile")
        imageView.contentMode = .scaleAspectFill
        imageView.clipsToBounds = true
        imageView.translatesAutoresizingMaskIntoConstraints = false
        return imageView
-   }()
+    }()
    
-   lazy var userNameLabel: UILabel = {
+    lazy var userNameLabel: UILabel = {
        let label = UILabel()
        label.textAlignment = .center
        label.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.bold)
        label.translatesAutoresizingMaskIntoConstraints = false
        return label
-   }()
+    }()
     
     lazy var ticketEmailPhoneLabel: UILabel = {
         let label = UILabel()
@@ -179,21 +183,21 @@ class GuestViewController: BaseViewController {
         return label
     }()
    
-   lazy var ticketTypeLabel: UILabel = {
+    lazy var ticketTypeLabel: UILabel = {
        let label = UILabel()
        label.textAlignment = .center
        label.textColor = UIColor.brandGrey
        label.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium)
        label.translatesAutoresizingMaskIntoConstraints = false
        return label
-   }()
+    }()
    
-   lazy var ticketTagView: CheckinTagView = {
+    lazy var ticketTagView: CheckinTagView = {
        let view = CheckinTagView()
        view.backgroundColor = UIColor.brandBackground
        view.translatesAutoresizingMaskIntoConstraints = false
        return view
-   }()
+    }()
     
     lazy var lineView: UIView = {
         let view = UIView()
@@ -257,7 +261,9 @@ class GuestViewController: BaseViewController {
             completeCheckinButton.backgroundColor = UIColor.brandBackground
             completeCheckinButton.setTitle("Not Event Date", for: UIControl.State.normal)
             completeCheckinButton.isUserInteractionEnabled = false
-        } else if let ticket = self.guest {
+        }
+        /*
+        else if let ticket = self.guest {
             if DateConfig.eventDateIsToday(eventStartDate: ticket.eventStart) == true {
                 return
             }
@@ -267,6 +273,7 @@ class GuestViewController: BaseViewController {
             completeCheckinButton.setTitle("Not Event Date", for: UIControl.State.normal)
             completeCheckinButton.isUserInteractionEnabled = false
         }
+        */
     }
     
     private func configureView() {
@@ -336,18 +343,16 @@ class GuestViewController: BaseViewController {
     }
     
     @objc func handleCompleteCheckin() {
-        self.completeCheckinButton.startAnimation()
-        self.completeCheckin()
-    }
     
-    func completeCheckin() {
-    
-        guard let ticketID = self.guest?.id else {
+        
+        guard let ticketID = self.guestData?.id, let eventID = self.event?.id else {
             return
         }
         
         let fromGuestListVC = guestListVC == nil ? false : true
-        self.checkinViewModel.automaticallyCheckin(ticketID: ticketID, eventID: self.event?.id) { [weak self] (scanFeedback, errorString, ticket) in
+        
+        self.completeCheckinButton.startAnimation()
+        self.checkinViewModel.automaticallyCheckin(ticketID: ticketID, eventID: eventID) { [weak self] (scanFeedback, errorString, ticket) in
             DispatchQueue.main.async {
                 
                 guard let self = self else { return }
@@ -358,13 +363,14 @@ class GuestViewController: BaseViewController {
                     
                     //  Update the Redeemed Ticket
                     //  self.guest = ticket
-                    self.guest?.status = ticket!.status
+                    self.guestData?.status = ticket!.status
                     
                     //  Checking from Guestlist
                     if fromGuestListVC == true {
                         self.reloadGuestList(ticketID: ticketID)
                         self.playSuccessSound(forValidTicket: true)
                         self.generator.notificationOccurred(.success)
+                        self.dismissController()
                         return
                     }
                     

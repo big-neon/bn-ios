@@ -79,10 +79,26 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         configureNavBar()
         view.backgroundColor = UIColor.white
         configureCollectionView()
-        doorPersonViemodel.eventCoreData = fetcher.fetchLocalEvents()
-        self.doorPersonViemodel.fetchUser { (_) in
-            DispatchQueue.main.async {
-                self.syncEventsData()
+        self.fetchEvents()
+    }
+    
+    
+    func fetchEvents() {
+        
+        NetworkManager.shared.startNetworkReachabilityObserver { (isReachable) in
+            if isReachable == true {
+                self.doorPersonViemodel.fetchUser { (_) in
+                    DispatchQueue.main.async {
+                        guard let orgID = self.doorPersonViemodel.userOrg?.organizationScopes?.first?.key else {
+                            return
+                        }
+                        self.syncEventsData(withOrgID: orgID)
+                        self.exploreCollectionView.reloadData()
+                    }
+                }
+            } else {
+                self.doorPersonViemodel.eventCoreData = self.fetcher.fetchLocalEvents()
+                self.syncEventsData(withOrgID: nil)
                 self.exploreCollectionView.reloadData()
             }
         }

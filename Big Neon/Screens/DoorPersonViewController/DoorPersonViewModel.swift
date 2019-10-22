@@ -41,6 +41,7 @@ final class DoorPersonViewModel {
                     completion(false)
                     return
                 }
+                
                 self.user = user
                 self.userOrg = userOrg
                 completion(true)

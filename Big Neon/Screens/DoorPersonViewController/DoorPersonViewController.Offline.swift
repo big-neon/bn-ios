@@ -6,10 +6,14 @@ import Big_Neon_Core
 
 extension DoorPersonViewController {
     
-    @objc func syncEventsData() {
-        guard let orgID = self.doorPersonViemodel.userOrg?.organizationScopes?.first?.key else {
+    @objc func syncEventsData(withOrgID orgID: String?) {
+        guard let orgID = orgID  else {
+            self.doorPersonViemodel.eventCoreData = self.fetcher.fetchLocalEvents()
+            self.orderEventsByDate()
+            self.exploreCollectionView.reloadData()
             return
         }
+        
         
         fetcher.syncCheckins(orgID: orgID) { result in
             DispatchQueue.main.async {

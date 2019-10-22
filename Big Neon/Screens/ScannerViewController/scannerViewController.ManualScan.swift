@@ -59,7 +59,7 @@ extension ScannerViewController {
        
         let guestVC = GuestViewController()
         guestVC.event = self.event
-        guestVC.guest = ticket
+//        guestVC.guest = ticket
         guestVC.delegate = self
         guestVC.scannerVC = self
         guestVC.guestListIndex = selectedIndex

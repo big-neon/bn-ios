@@ -12,35 +12,29 @@ final class EventGuestsCell: SwipeTableViewCell {
     
     var guest: GuestData? {
         didSet {
-            guard let guestValues = self.guest else {
+            guard let guestValues = self.guest, let guestID = guestValues.id, let firstName = guestValues.first_name, let lastName = guestValues.last_name, let ticketType = guestValues.ticket_type, let eventStart = guestValues.event_start else {
                 return
             }
             
-            if guestValues.last_name == "" && guestValues.first_name  == ""{
+            if firstName == "" && lastName  == ""{
                 guestNameLabel.text = "No Details Provided"
             } else {
-                if let firstName = guestValues.first_name, let lastName = guestValues.last_name {
-                    guestNameLabel.text = firstName + " " + lastName
-                } else {
-                    guestNameLabel.text = ""
-                }
-                
+                guestNameLabel.text = firstName + " " + lastName
             }
             
-            
             let price = Int(guestValues.price_in_cents)
-            let ticketID = "#" + guestValues.id!.suffix(8).uppercased()
-            ticketTypeNameLabel.text = price.dollarString + " | " + guestValues.ticket_type! + " | " + ticketID
+            let ticketID = "#" + guestID.suffix(8).uppercased()
+            ticketTypeNameLabel.text = price.dollarString + " | " + ticketType + " | " + ticketID
             
             if guestValues.status == TicketStatus.purchased.rawValue {
-                ticketStateView.isHidden = !DateConfig.eventDateIsToday(eventStartDate: guestValues.event_start!)
+                ticketStateView.isHidden = !DateConfig.eventDateIsToday(eventStartDate: eventStart)
                 ticketStateView.backgroundColor = UIColor.brandGreen
-                let buttonValue = DateConfig.eventDateIsToday(eventStartDate: guestValues.event_start!) == true ? "PURCHASED" : "-"
+                let buttonValue = DateConfig.eventDateIsToday(eventStartDate: eventStart) == true ? "PURCHASED" : "-"
                 ticketStateView.setTitle(buttonValue, for: UIControl.State.normal)
             } else {
-                ticketStateView.isHidden = !DateConfig.eventDateIsToday(eventStartDate: guestValues.event_start!) //== true ? false : UIColor.white
+                ticketStateView.isHidden = !DateConfig.eventDateIsToday(eventStartDate: eventStart) //== true ? false : UIColor.white
                 ticketStateView.backgroundColor = UIColor.brandBlack
-                let buttonValue = DateConfig.eventDateIsToday(eventStartDate: guestValues.event_start!) == true ? "REDEEMED" : "-"
+                let buttonValue = DateConfig.eventDateIsToday(eventStartDate: eventStart) == true ? "REDEEMED" : "-"
                 ticketStateView.setTitle(buttonValue, for: UIControl.State.normal)
             }
         }
