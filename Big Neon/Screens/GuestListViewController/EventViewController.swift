@@ -118,23 +118,41 @@ final class EventViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func fetchGuests() {
-        self.eventViewModel.fetchGuests(page: 0) { (fetched) in
-            DispatchQueue.main.async {
+        NetworkManager.shared.startNetworkReachabilityObserver { (isReachable) in
+            if isReachable == true {
+                self.eventViewModel.fetchGuests(page: 0) { (fetched) in
+                    DispatchQueue.main.async {
+                        self.eventViewModel.guestCoreData = self.eventViewModel.fetchLocalGuests()
+                        self.perform(#selector(self.isTodayEvent), with: self, afterDelay: 0.1)
+                        self.guestTableView.reloadData()
+                    }
+                }
+            } else {
                 self.eventViewModel.guestCoreData = self.eventViewModel.fetchLocalGuests()
-                self.perform(#selector(self.isTodayEvent), with: self, afterDelay: 0.1)
-                self.guestTableView.reloadData()
-            }
-        }
-    }
-    
-    @objc func reloadGuests() {
-        self.eventViewModel.fetchGuests(page: 0) { (fetched) in
-            DispatchQueue.main.async {
-                self.guestTableView.reloadData()
                 self.refresher.endRefreshing()
                 self.guestTableView.reloadData()
             }
         }
+        
+    }
+    
+    @objc func reloadGuests() {
+        NetworkManager.shared.startNetworkReachabilityObserver { (isReachable) in
+            if isReachable == true {
+                self.eventViewModel.fetchGuests(page: 0) { (fetched) in
+                    DispatchQueue.main.async {
+                        self.eventViewModel.guestCoreData = self.eventViewModel.fetchLocalGuests()
+                        self.refresher.endRefreshing()
+                        self.guestTableView.reloadData()
+                    }
+                }
+            } else {
+                self.eventViewModel.guestCoreData = self.eventViewModel.fetchLocalGuests()
+                self.refresher.endRefreshing()
+                self.guestTableView.reloadData()
+            }
+        }
+        
     }
     
     func configureNavBar() {

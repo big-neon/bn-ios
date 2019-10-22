@@ -75,28 +75,43 @@ extension DoorPersonViewController {
     
     @objc func reloadEvents() {
         
-        guard let orgID = self.doorPersonViemodel.userOrg?.organizationScopes?.first?.key else {
-            return
-        }
-        
-        fetcher.syncCheckins(orgID: orgID) { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success:
-                    self.loadingView.stopAnimating()
-                    self.refresher.endRefreshing()
-                    self.doorPersonViemodel.eventCoreData = self.fetcher.fetchLocalEvents()
-                    self.orderEventsByDate()
-                    self.exploreCollectionView.reloadData()
-                case .failure(let error):
-                    self.loadingView.stopAnimating()
-                    self.refresher.endRefreshing()
-                    if let err = error {
-                        self.showFeedback(message: err.localizedDescription)
+        NetworkManager.shared.startNetworkReachabilityObserver { (isReachable) in
+            if isReachable == true {
+                self.doorPersonViemodel.fetchUser { (_) in
+                    DispatchQueue.main.async {
+                        guard let orgID = self.doorPersonViemodel.userOrg?.organizationScopes?.first?.key else {
+                            return
+                        }
+                        
+                        self.fetcher.syncCheckins(orgID: orgID) { result in
+                            DispatchQueue.main.async {
+                                switch result {
+                                case .success:
+                                    self.loadingView.stopAnimating()
+                                    self.refresher.endRefreshing()
+                                    self.doorPersonViemodel.eventCoreData = self.fetcher.fetchLocalEvents()
+                                    self.orderEventsByDate()
+                                    self.exploreCollectionView.reloadData()
+                                case .failure(let error):
+                                    self.loadingView.stopAnimating()
+                                    self.refresher.endRefreshing()
+                                    if let err = error {
+                                        self.showFeedback(message: err.localizedDescription)
+                                    }
+                                    self.exploreCollectionView.reloadData()
+                                }
+                            }
+                        }
                     }
-                    self.exploreCollectionView.reloadData()
                 }
+            } else {
+                self.doorPersonViemodel.eventCoreData = self.fetcher.fetchLocalEvents()
+                self.syncEventsData(withOrgID: nil)
+                self.loadingView.stopAnimating()
+                self.refresher.endRefreshing()
+                self.exploreCollectionView.reloadData()
             }
         }
+        
     }
 }

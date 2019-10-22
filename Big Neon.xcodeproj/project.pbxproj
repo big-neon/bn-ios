@@ -90,6 +90,7 @@
 		C683232D21FF2D71002342AE /* ProfileEditViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683232C21FF2D71002342AE /* ProfileEditViewController.TableView.swift */; };
 		C683232F21FF31F5002342AE /* ProfileEditingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683232E21FF31F5002342AE /* ProfileEditingTableViewCell.swift */; };
 		C683233121FF34DF002342AE /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683233021FF34DF002342AE /* LogoutCell.swift */; };
+		C683DAFD235F23CB0064647E /* GuestViewController.Checkin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683DAFC235F23CB0064647E /* GuestViewController.Checkin.swift */; };
 		C68A9FD722D3414E006535B8 /* DoorPersonViewController.Offline.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A9FD622D3414E006535B8 /* DoorPersonViewController.Offline.swift */; };
 		C68C8D0A23321C8100FF15D6 /* BigNeonStudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68C8D0923321C8100FF15D6 /* BigNeonStudioTests.swift */; };
 		C6937106228F6DF3004EBC12 /* ShowGuestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6937105228F6DF3004EBC12 /* ShowGuestListView.swift */; };
@@ -315,6 +316,7 @@
 		C683232C21FF2D71002342AE /* ProfileEditViewController.TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.TableView.swift; sourceTree = "<group>"; };
 		C683232E21FF31F5002342AE /* ProfileEditingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditingTableViewCell.swift; sourceTree = "<group>"; };
 		C683233021FF34DF002342AE /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
+		C683DAFC235F23CB0064647E /* GuestViewController.Checkin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestViewController.Checkin.swift; sourceTree = "<group>"; };
 		C68A422222304D9F002789E6 /* CheckinTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinTagView.swift; sourceTree = "<group>"; };
 		C68A9FD622D3414E006535B8 /* DoorPersonViewController.Offline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorPersonViewController.Offline.swift; sourceTree = "<group>"; };
 		C68C8D0723321C8100FF15D6 /* BigNeonStudioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BigNeonStudioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1147,6 +1149,7 @@
 			isa = PBXGroup;
 			children = (
 				C6DBF0AC2305739800911392 /* GuestViewController.swift */,
+				C683DAFC235F23CB0064647E /* GuestViewController.Checkin.swift */,
 			);
 			path = GuestViewController;
 			sourceTree = "<group>";
@@ -1563,6 +1566,7 @@
 				C6C4E9A92302D2810040C258 /* Extensions.swift in Sources */,
 				C6E648532240D088000F2DFB /* ScannerViewController.swift in Sources */,
 				C6C4E9A42302D2810040C258 /* SwipeCollectionViewCell+Accessibility.swift in Sources */,
+				C683DAFD235F23CB0064647E /* GuestViewController.Checkin.swift in Sources */,
 				C61853C822144869005D6250 /* CheckoutView.swift in Sources */,
 				C6C4E9BA2302D2810040C258 /* SwipeActionButton.swift in Sources */,
 				C694DFB9235843F400BB11FD /* CheckinService.Offline.swift in Sources */,

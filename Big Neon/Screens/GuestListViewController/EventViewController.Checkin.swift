@@ -40,7 +40,6 @@ extension EventViewController {
         
         self.updateTicketStatusAndSave(forTicketID: id)
         self.updateGuestCell(ticketID: ticketID, atIndexPath: indexPath)
-    
     }
     
     /*

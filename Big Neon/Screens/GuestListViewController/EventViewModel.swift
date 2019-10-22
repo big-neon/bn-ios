@@ -76,7 +76,7 @@ final class EventViewModel {
             completion(false)
             return
         }
-
+        
         BusinessService.shared.database.fetchGuests(forEventID: eventID, limit: limit, page: page, guestQuery: nil) { [weak self] (error, guestsFetched, serverGuests, totalGuests) in
             DispatchQueue.main.async {
 
