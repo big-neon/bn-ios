@@ -80,7 +80,12 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         view.backgroundColor = UIColor.white
         configureCollectionView()
         doorPersonViemodel.eventCoreData = fetcher.fetchLocalEvents()
-        syncEventsData()
+        self.doorPersonViemodel.fetchUser { (_) in
+            DispatchQueue.main.async {
+                self.syncEventsData()
+                self.exploreCollectionView.reloadData()
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

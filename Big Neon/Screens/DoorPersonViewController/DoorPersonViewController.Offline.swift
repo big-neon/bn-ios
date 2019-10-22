@@ -7,7 +7,9 @@ import Big_Neon_Core
 extension DoorPersonViewController {
     
     @objc func syncEventsData() {
-        fetcher.syncCheckins { result in
+        let orgID = self.doorPersonViemodel.userOrg?.organizationScopes?.first?.key
+        
+        fetcher.syncCheckins(orgID: orgID!) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success:
@@ -19,6 +21,7 @@ extension DoorPersonViewController {
                 }
             }
         }
+        
     }
     
     func orderEventsByDate() {
@@ -64,7 +67,10 @@ extension DoorPersonViewController {
     
     @objc func reloadEvents() {
         
-        fetcher.syncCheckins { result in
+        let orgID = self.doorPersonViemodel.userOrg?.organizationScopes?.first?.key
+        print(orgID!)
+        
+        fetcher.syncCheckins(orgID: orgID!) { result in
             
             DispatchQueue.main.async {
                 switch result {

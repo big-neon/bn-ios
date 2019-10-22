@@ -12,6 +12,7 @@ final class DoorPersonViewModel {
     var todayEvents: [EventsData] = []
     var upcomingEvents: [EventsData] = []
     var user: User?
+    var userOrg: UserOrg?
     
     func fetchEvents(completion: @escaping(Bool) -> Void) {
         self.events = nil
@@ -35,15 +36,15 @@ final class DoorPersonViewModel {
                 return
             }
             
-             BusinessService.shared.database.fetchUser() { (error, userFound) in
-                 guard let user = userFound else {
-                     completion(false)
-                     return
-                 }
-                 
-                 self.user = user
-                 completion(true)
-                 return
+             BusinessService.shared.database.fetchUser() { (error, userFound, userOrg) in
+                guard let user = userFound else {
+                    completion(false)
+                    return
+                }
+                self.user = user
+                self.userOrg = userOrg
+                completion(true)
+                return
              }
         }
         

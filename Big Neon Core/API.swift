@@ -53,9 +53,9 @@ public class APIService {
         return self.baseURL() + "/events/\(eventID)/guests\(queryString)"
     }
     
-    /**
-        URL: "/tickets/{ticketID}/redeem
-        */
+    /*
+     URL: "/tickets/{ticketID}/redeem
+    */
     class func getRedeemableTicket(ticketID: String) -> String {
         return self.baseURL() + "/tickets/\(ticketID)/redeem"
     }
@@ -70,9 +70,9 @@ public class APIService {
         return self.baseURL() + "/events/\(eventID!)"
     }
     
-    /**
-        - Retrieves all the Checkin Events
-        */
+    /*
+     Retrieves all the Checkin Events
+    */
     public class func getCheckins() -> String {
         return self.baseURL() + "/events/checkins"
     }
@@ -82,6 +82,13 @@ public class APIService {
      */
     public class func getAllEvents() -> String {
         return self.baseURL() + "/events?"//past_or_upcoming=upcoming"
+    }
+    
+    /*
+     Fetch Events from a specific organisation
+     */
+    public class func fetchAllEvents(orgID: String) -> String {
+        return self.baseURL() + "/organizations/\(orgID)/events"//"?past_or_upcoming=upcoming"
     }
     
     /**

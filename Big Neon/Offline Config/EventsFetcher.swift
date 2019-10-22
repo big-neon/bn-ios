@@ -45,9 +45,9 @@ class EventsFetcher {
         }
     }
 
-    func syncCheckins(completion: @escaping (_ result: VoidResult) -> ()) {
+    func syncCheckins(orgID: String, completion: @escaping (_ result: VoidResult) -> ()) {
         
-        self.repository.fetchEvents { (eventsFetchedDict, error) in
+        self.repository.fetchEvents(orgID: orgID) { (eventsFetchedDict, error) in
             if error != nil {
                 completion(.failure(error! as NSError))
                 return

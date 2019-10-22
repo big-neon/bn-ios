@@ -43,12 +43,13 @@ final class ProfileViewModel {
     
     private func fetchUser(completion: @escaping(Bool) -> Void) {
         
-        BusinessService.shared.database.fetchUser() { (error, userFound) in
+        BusinessService.shared.database.fetchUser() { (error, userFound, userOrg) in
             guard let user = userFound else {
                 completion(false)
                 return
             }
             
+            print(userOrg)
             self.user = user
             completion(true)
             return

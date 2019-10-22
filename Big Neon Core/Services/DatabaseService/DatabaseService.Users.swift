@@ -139,7 +139,7 @@ extension DatabaseService {
     }
     */
     
-    public func fetchUser(completion: @escaping(Error?, User?) -> Void) {
+    public func fetchUser(completion: @escaping(Error?, User?, UserOrg?) -> Void) {
         
         let APIURL = APIService.updateUser()
         let accessToken = TokenService.shared.fetchAcessToken()!
@@ -153,13 +153,13 @@ extension DatabaseService {
             .response { (response) in
             
                 if let err = response.error {
-                    completion(err, nil)
+                    completion(err, nil, nil)
                     return
                 }
                 
                 guard let data = response.data else {
                     print("Invalid tag information received from the service")
-                    completion(nil, nil)
+                    completion(nil, nil, nil)
                     return
                 }
                 
@@ -167,11 +167,11 @@ extension DatabaseService {
                     let decoder = JSONDecoder()
                     let userOrg = try decoder.decode(UserOrg.self, from: data)
                     let user = userOrg.user
-                    completion(nil, user)
+                    completion(nil, user, userOrg)
                     return
                 } catch let error as NSError {
                     print(error.localizedDescription)
-                    completion(error, nil)
+                    completion(error, nil, nil)
                 }
         }
         
