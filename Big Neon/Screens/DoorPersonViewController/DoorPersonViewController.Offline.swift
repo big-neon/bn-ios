@@ -7,9 +7,11 @@ import Big_Neon_Core
 extension DoorPersonViewController {
     
     @objc func syncEventsData() {
-        let orgID = self.doorPersonViemodel.userOrg?.organizationScopes?.first?.key
+        guard let orgID = self.doorPersonViemodel.userOrg?.organizationScopes?.first?.key else {
+            return
+        }
         
-        fetcher.syncCheckins(orgID: orgID!) { result in
+        fetcher.syncCheckins(orgID: orgID) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success:
@@ -40,7 +42,9 @@ extension DoorPersonViewController {
         })
    
         
-        //  Get Events Occuring Today
+        /*
+         Get Events Occuring Today
+         */
         self.doorPersonViemodel.todayEvents = self.doorPersonViemodel.eventCoreData.filter {
             guard let firstEvent = $0.event_start,
                 let firstDate = DateConfig.dateFromUTCString(stringDate: firstEvent) else {
@@ -67,11 +71,11 @@ extension DoorPersonViewController {
     
     @objc func reloadEvents() {
         
-        let orgID = self.doorPersonViemodel.userOrg?.organizationScopes?.first?.key
-        print(orgID!)
+        guard let orgID = self.doorPersonViemodel.userOrg?.organizationScopes?.first?.key else {
+            return
+        }
         
-        fetcher.syncCheckins(orgID: orgID!) { result in
-            
+        fetcher.syncCheckins(orgID: orgID) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success:

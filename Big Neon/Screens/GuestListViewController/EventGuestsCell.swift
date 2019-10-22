@@ -19,7 +19,12 @@ final class EventGuestsCell: SwipeTableViewCell {
             if guestValues.last_name == "" && guestValues.first_name  == ""{
                 guestNameLabel.text = "No Details Provided"
             } else {
-                guestNameLabel.text = guestValues.first_name! + " " + guestValues.last_name!
+                if let firstName = guestValues.first_name, let lastName = guestValues.last_name {
+                    guestNameLabel.text = firstName + " " + lastName
+                } else {
+                    guestNameLabel.text = ""
+                }
+                
             }
             
             

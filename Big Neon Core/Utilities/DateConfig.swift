@@ -110,16 +110,9 @@ final public class DateConfig {
     }
     
     public class func  dateIsWithinTwentyFourHours(ofDate date: Date) -> Bool {
-        print(date)
-        print(Date())
-        
-        let interval = Calendar.current.dateComponents([.hour, .day, .month], from: date, to: Date())
-        if let hours = interval.hour, let day = interval.day {
-            if hours < 24 && day == 1 {
-                return true
-            }
-        }
-        return false
+        let timeDifferenceSeconds = abs(date.timeIntervalSince(Date()))
+        let timeDifferenceHours = timeDifferenceSeconds/3600
+        return timeDifferenceHours <= 24 ? true : false
     }
     
     public class func dateIsInFutureDate(ofDate date: Date) -> Bool {
@@ -129,7 +122,6 @@ final public class DateConfig {
         }
         return false
     }
-   
 }
 
 final internal class DayTimeHelper {
