@@ -236,17 +236,17 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         scannedUserView.isFetchingData = true
         displayedScannedUser = true
         
-        //  Show the Scanned User Loading View
-        UIView.animate(withDuration: 0.7, delay: 0.0, options: .curveEaseOut, animations: {
-            self.scannerModeView.layer.opacity = 1.0
-            self.scannedUserBottomAnchor?.constant = -90.0
-            self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+        //  Hide View Guest button
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseOut, animations: {
+            self.viewGuestListBottomAnchor?.constant = UIScreen.main.bounds.height + 250.0
             self.view.layoutIfNeeded()
         }, completion: nil)
         
-        //  Hide View Guest button
-        UIView.animate(withDuration: 0.4, delay: 0.7, options: .curveEaseOut, animations: {
-            self.viewGuestListBottomAnchor?.constant = UIScreen.main.bounds.height + 250.0
+        //  Show the Scanned User Loading View
+        UIView.animate(withDuration: 0.2, delay: 0.2, options: .curveEaseOut, animations: {
+            self.scannerModeView.layer.opacity = 1.0
+            self.scannedUserBottomAnchor?.constant = -90.0
+            self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
             self.view.layoutIfNeeded()
         }, completion: nil)
         
@@ -296,6 +296,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         self.displayedScannedUser = false
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
             self.scannedUserBottomAnchor?.constant = 250.0
+            self.viewGuestListBottomAnchor?.constant = -18.0
             self.view.layoutIfNeeded()
         }, completion: nil)
     }

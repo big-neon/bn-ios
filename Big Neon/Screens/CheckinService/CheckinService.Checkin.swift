@@ -31,7 +31,7 @@ extension CheckinService {
     func automaticallyCheckin(ticketID: String, eventID: String?, completion: @escaping(ScanFeedback?, String?, RedeemableTicket?) -> Void) {
         BusinessService.shared.database.getRedeemTicket(forTicketID: ticketID) { (scanFeedback, errorString, redeemTicket) in
             DispatchQueue.main.async {
-                
+            
                 self.scanVC?.scannedTicket = redeemTicket
                 if scanFeedback == .validTicketID {
                     guard let ticket = redeemTicket else {
@@ -53,7 +53,7 @@ extension CheckinService {
                     
                     let eventID = self.scanVC?.event?.id ?? eventID
                     
-                    self.completeAutoCheckin(eventID: eventID!, ticket: ticket, completion: { (scanFeedback, ticket) in
+                    self.completeAutoCheckin(eventID: eventID!, ticket: ticket, completion: { (scanFeedback, checkedInTicket) in
                         AnalyticsService.reportError(errorType: ErrorType.scanning, error: errorString ?? "")
                         completion(scanFeedback, errorString, ticket)
                         return

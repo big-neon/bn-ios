@@ -37,19 +37,24 @@ extension ScannerViewController {
                     return
                 }
             
-                if scanFeedback == .alreadyRedeemed {
-                    if let ticket = ticket {
-                        self?.showScannedUser(feedback: .alreadyRedeemed, ticket: ticket)
-                    }
-                    return
-                }
+//                if let feedback = scanFeedback {
+//                    if feedback == .alreadyRedeemed {
+//                        print(feedback)
+//                        if let ticket = ticket {
+//                            self?.showScannedUser(feedback: .alreadyRedeemed, ticket: ticket)
+//                        }
+//                    }
+//                    return
+//                }
                 
-                UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
-                    self?.showScannedUser(feedback: scanFeedback, ticket: ticket)
-                    self?.view.layoutIfNeeded()
-                }, completion: { (completed) in
-                    self?.stopScanning = false
-                })
+                self?.showScannedUser(feedback: scanFeedback, ticket: ticket)
+                self?.stopScanning = false
+//                UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
+//                    self?.showScannedUser(feedback: scanFeedback, ticket: ticket)
+//                    self?.view.layoutIfNeeded()
+//                }, completion: { (completed) in
+//                    self?.stopScanning = false
+//                })
             }
         }
     }
@@ -58,6 +63,7 @@ extension ScannerViewController {
         
         var feedFound = feedback
         scannedUserView.isFetchingData = false
+    
         if ticket?.eventName != self.event?.name {
             self.playSuccessSound(forValidTicket: false)
             self.scannedTicketID = ticket?.id

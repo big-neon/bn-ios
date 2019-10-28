@@ -26,17 +26,9 @@ extension GuestViewController {
      */
     func handleCompleteOnlineCheckin() {
     
-        
-//        guard let ticketID = self.guestData?.id, let eventID = self.event?.id else {
-//            return
-//        }
-        
         guard let ticketID = self.guest?.id, let eventID = self.event?.id else {
             return
         }
-        
-        print(ticketID)
-        print(eventID)
         
         let fromGuestListVC = guestListVC == nil ? false : true
         
@@ -63,8 +55,8 @@ extension GuestViewController {
                         return
                     }
                     
-                    self.dismissController()
                     self.scannerVC?.showScannedUser(feedback: scanFeedback, ticket: ticket)
+                    self.dismissController()
                     
                 }
             }
