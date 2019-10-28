@@ -63,15 +63,10 @@ extension GuestViewController {
         }
     }
     
-    
     /*
      Complete Offline Checkin
     */
     func saveScannedOfflineTickets() {
-        
-        
-        
-        
         
         let fromGuestListVC = guestListVC == nil ? false : true
         guard let ticketID = self.guestData?.id, let eventID = self.event?.id else {
@@ -85,6 +80,8 @@ extension GuestViewController {
         //  Dismiss View
         self.playSuccessSound(forValidTicket: true)
         self.generator.notificationOccurred(.success)
+        self.scannerVC?.showScannedUser()
+        self.scannerVC?.showOfflineScannedUser(feedback: ScanFeedback.valid, ticket: self.guestData)
         self.dismissController()
         
         if fromGuestListVC == true {

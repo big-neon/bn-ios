@@ -49,6 +49,7 @@ extension ScannerViewController {
     func showOfflineGuest(withTicket ticket: GuestData?, scannerVC: ScannerViewController?, selectedIndex: IndexPath?) {
         let guestVC = GuestViewController()
         guestVC.event = self.eventViewModel.eventData
+        guestVC.event = self.event
         guestVC.guestData = ticket
         guestVC.guestListIndex = selectedIndex
         self.presentPanModal(guestVC)

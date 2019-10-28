@@ -222,8 +222,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         view.addSubview(scannedUserView)
         scannedUserView.isUserInteractionEnabled = true
         scannedUserView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showRedeemedTicket)))
-        
-        
+    
         if self.isiPhoneSE() == true {
             scannedUserView.layer.cornerRadius = 0.0
             scannedUserView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
