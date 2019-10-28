@@ -15,7 +15,6 @@ extension GuestViewController {
             if isReachable == true {
                 self.handleCompleteOnlineCheckin()
             } else {
-                //  Do Offline Checking
                 self.saveScannedOfflineTickets()
             }
         }
@@ -69,6 +68,10 @@ extension GuestViewController {
      Complete Offline Checkin
     */
     func saveScannedOfflineTickets() {
+        
+        
+        
+        
         
         let fromGuestListVC = guestListVC == nil ? false : true
         guard let ticketID = self.guestData?.id, let eventID = self.event?.id else {

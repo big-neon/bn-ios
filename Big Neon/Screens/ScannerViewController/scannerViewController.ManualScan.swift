@@ -18,7 +18,8 @@ extension ScannerViewController {
                 case .wrongEvent?:
                     self?.checkinAutomatically(withTicketID: ticketID, fromGuestTableView: false, atIndexPath: nil)
                 default:
-                      print("Ticket Not Found")    // To be modified to handle different types of errors
+                    print("Ticket Not Found")
+                    // To be modified to handle different types of errors
                     //  self?.manualCheckinFeedback(scanFeedback: scanFeedback) 
                 }
             }
@@ -43,7 +44,6 @@ extension ScannerViewController {
         }
         self.stopScanning = true
         self.scannedTicketID = ticket.id
-        //self.showGuest(withTicket: ticket, scannerVC: self, selectedIndex: nil)
     }
     
     func showOfflineGuest(withTicket ticket: GuestData?, scannerVC: ScannerViewController?, selectedIndex: IndexPath?) {

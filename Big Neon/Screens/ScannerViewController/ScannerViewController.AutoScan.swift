@@ -82,17 +82,13 @@ extension ScannerViewController {
         scannedUserView.scanFeedback = feedFound
         self.displayedScannedUser = true
         scannerModeView.layer.opacity = 1.0
-        
-//        scannedUserBottomAnchor?.constant = -90.0
         manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
-//        generator.notificationOccurred(.success)
         
     }
     
     
     func showOfflineScannedUser(feedback: ScanFeedback?, ticket: GuestData?) {
-            
-        var feedFound = feedback
+        
         scannedUserView.isFetchingData = false
     
         if ticket?.event_name != self.event?.name {

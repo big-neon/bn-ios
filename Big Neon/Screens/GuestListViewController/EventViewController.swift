@@ -95,7 +95,6 @@ final class EventViewController: UIViewController, UITableViewDataSource, UITabl
         configureScanButton()
         guestTableView.refreshControl = self.refresher
         fetchGuests()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -129,6 +128,7 @@ final class EventViewController: UIViewController, UITableViewDataSource, UITabl
                 }
             } else {
                 self.eventViewModel.guestCoreData = self.eventViewModel.fetchLocalGuests()
+                self.perform(#selector(self.isTodayEvent), with: self, afterDelay: 0.1)
                 self.refresher.endRefreshing()
                 self.guestTableView.reloadData()
             }
