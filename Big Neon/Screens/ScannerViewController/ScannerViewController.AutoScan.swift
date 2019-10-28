@@ -36,27 +36,9 @@ extension ScannerViewController {
                     self?.generator.notificationOccurred(.success)
                     return
                 }
-                /*
-                if let feedback = scanFeedback {
-                    if feedback == .alreadyRedeemed {
-                        print(feedback)
-                        if let ticket = ticket {
-                            self?.showScannedUser(feedback: .alreadyRedeemed, ticket: ticket)
-                        }
-                    }
-                    return
-                }
-                */
+                
                 self?.showScannedUser(feedback: scanFeedback, ticket: ticket)
                 self?.stopScanning = false
-                /*
-                UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
-                    self?.showScannedUser(feedback: scanFeedback, ticket: ticket)
-                    self?.view.layoutIfNeeded()
-                }, completion: { (completed) in
-                    self?.stopScanning = false
-                })
-                */
             }
         }
     }
@@ -87,10 +69,10 @@ extension ScannerViewController {
     }
     
     
+    
     func showOfflineScannedUser(feedback: ScanFeedback?, ticket: GuestData?) {
         
         scannedUserView.isFetchingData = false
-    
         if ticket?.event_name != self.event?.name {
             self.playSuccessSound(forValidTicket: false)
             self.scannedTicketID = ticket?.id
@@ -103,12 +85,7 @@ extension ScannerViewController {
             manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
         } else {
             playSuccessSound(forValidTicket: true)
-            scannedUserView.scanFeedback = ScanFeedback(rawValue: (ticket?.status!)!)
-            if let status = ticket?.status {
-                if status == "Redeemed" {
-                    scannedUserView.scanFeedback = .alreadyRedeemed
-                }
-            }
+            scannedUserView.scanFeedback = feedback
             scannedUserView.guestData = ticket
             self.displayedScannedUser = true
             scannerModeView.layer.opacity = 1.0

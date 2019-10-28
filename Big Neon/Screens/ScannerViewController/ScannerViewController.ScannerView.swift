@@ -115,12 +115,20 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             } else {
                 
                 if scannerMode == true {
+                    self.hideShowGuestButton()
                     self.checkinAutomaticallyOffline(forTicketID: ticketID)
                 } else {
                     self.checkinManuallyOffline(forTicketID: ticketID)
                 }
             }
         }
+    }
+    
+    func hideShowGuestButton() {
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseOut, animations: {
+            self.viewGuestListBottomAnchor?.constant = UIScreen.main.bounds.height + 250.0
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
     
     /*
@@ -151,7 +159,6 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         let scannedTicketDict = ["event_id": self.event?.id,
                                  "id": ticketID] as [String : AnyObject]
         self.scannerViewModel.saveScannedTicketInCoreDataWith(array: [scannedTicketDict])
-        
         
         //  Present the Scanned User
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {

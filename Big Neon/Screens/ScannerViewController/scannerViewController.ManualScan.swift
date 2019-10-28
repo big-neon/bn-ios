@@ -51,6 +51,7 @@ extension ScannerViewController {
         guestVC.event = self.eventViewModel.eventData
         guestVC.event = self.event
         guestVC.guestData = ticket
+        guestVC.scannerVC = self
         guestVC.guestListIndex = selectedIndex
         self.presentPanModal(guestVC)
     }

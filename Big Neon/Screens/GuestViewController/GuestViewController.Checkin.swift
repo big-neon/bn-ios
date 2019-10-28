@@ -70,7 +70,6 @@ extension GuestViewController {
         
         let fromGuestListVC = guestListVC == nil ? false : true
         guard let ticketID = self.guestData?.id, let eventID = self.event?.id else {
-            //  self.updateGuestCell(ticketID: ticketID, atIndexPath: indexPath)
             return
         }
         
@@ -80,14 +79,25 @@ extension GuestViewController {
         //  Dismiss View
         self.playSuccessSound(forValidTicket: true)
         self.generator.notificationOccurred(.success)
-        self.scannerVC?.showScannedUser()
-        self.scannerVC?.showOfflineScannedUser(feedback: ScanFeedback.valid, ticket: self.guestData)
-        self.dismissController()
+        
+        //  Hide Show Guest Button View
+        self.scannerVC?.hideShowGuestButton()
+        
+        //  Show the Scanned User
+        UIView.animate(withDuration: 0.5) {
+            
+        }
         
         if fromGuestListVC == true {
             self.reloadGuestList(ticketID: ticketID)
-            return
         }
+        self.dismissController()
+        
+        UIView.animate(withDuration: 0.5, delay: 0.8, options: UIView.AnimationOptions.curveEaseIn, animations: {
+            self.scannerVC?.showOfflineScannedUser(feedback: ScanFeedback.valid, ticket: self.guestData)
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
     }
     
     /*
