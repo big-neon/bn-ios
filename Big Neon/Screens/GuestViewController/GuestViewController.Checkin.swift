@@ -55,9 +55,10 @@ extension GuestViewController {
                         return
                     }
                     
+                    self.scannerVC?.showScannedUser()
                     self.scannerVC?.showScannedUser(feedback: scanFeedback, ticket: ticket)
                     self.dismissController()
-                    
+            
                 }
             }
         }

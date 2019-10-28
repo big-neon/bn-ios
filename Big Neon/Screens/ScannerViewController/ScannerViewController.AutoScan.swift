@@ -36,25 +36,27 @@ extension ScannerViewController {
                     self?.generator.notificationOccurred(.success)
                     return
                 }
-            
-//                if let feedback = scanFeedback {
-//                    if feedback == .alreadyRedeemed {
-//                        print(feedback)
-//                        if let ticket = ticket {
-//                            self?.showScannedUser(feedback: .alreadyRedeemed, ticket: ticket)
-//                        }
-//                    }
-//                    return
-//                }
-                
+                /*
+                if let feedback = scanFeedback {
+                    if feedback == .alreadyRedeemed {
+                        print(feedback)
+                        if let ticket = ticket {
+                            self?.showScannedUser(feedback: .alreadyRedeemed, ticket: ticket)
+                        }
+                    }
+                    return
+                }
+                */
                 self?.showScannedUser(feedback: scanFeedback, ticket: ticket)
                 self?.stopScanning = false
-//                UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
-//                    self?.showScannedUser(feedback: scanFeedback, ticket: ticket)
-//                    self?.view.layoutIfNeeded()
-//                }, completion: { (completed) in
-//                    self?.stopScanning = false
-//                })
+                /*
+                UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
+                    self?.showScannedUser(feedback: scanFeedback, ticket: ticket)
+                    self?.view.layoutIfNeeded()
+                }, completion: { (completed) in
+                    self?.stopScanning = false
+                })
+                */
             }
         }
     }

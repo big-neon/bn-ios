@@ -61,10 +61,12 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
                 let lastScannedTime = self.lastScannedTicketTime  {
                 
                 let timeDelaySeconds = BundleInfo.fetchScanSeconds()
-//                if metaDataString == scannedMetaString || Date() < Date.init(timeInterval: TimeInterval(timeDelaySeconds), since: lastScannedTime) {
-//                    self.checkingTicket(ticketID: ticketID, scannerMode: self.scannerViewModel?.scannerMode())
-//                    return
-//                }
+                /*
+                if metaDataString == scannedMetaString || Date() < Date.init(timeInterval: TimeInterval(timeDelaySeconds), since: lastScannedTime) {
+                    self.checkingTicket(ticketID: ticketID, scannerMode: self.scannerViewModel?.scannerMode())
+                    return
+                }
+                */
                 
                 if let lastScannedTimer = self.lastScannedTicketTimer {
                     if metaDataString == scannedMetaString && lastScannedTimer.isValid {
@@ -82,10 +84,12 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             self.scannerViewModel.scannedMetaString = metaDataString
             
             //  Check if a Scanned User
-//            if self.isShowingScannedUser == true {
-//                print("Scanner is still showing a user")
-//                return
-//            }
+            /*
+            if self.isShowingScannedUser == true {
+                print("Scanner is still showing a user")
+                return
+            }
+            */
             
             self.hideScannedUser()
             self.stopScanning = true
@@ -190,32 +194,6 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         }
         
         self.showOfflineGuest(withTicket: ticketData, scannerVC: self, selectedIndex: nil)
-        
-        /*
-        //  Save the Scanned Ticket Offlinr
-        let scannedTicketDict = ["event_id": self.event?.id,
-                                 "id": ticketID] as [String : AnyObject]
-        self.scannerViewModel.saveScannedTicketInCoreDataWith(array: [scannedTicketDict])
-        
-        
-        //  Present the Scanned User
-        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
-            self.showOfflineScannedUser(feedback: ScanFeedback(rawValue: ticketData!.status!), ticket: ticketData)
-            self.view.layoutIfNeeded()
-        }, completion: { (completed) in
-            self.stopScanning = false
-            
-            
-        //  Update the Local Storage Guests
-        do {
-            ticketData!.status = TicketStatus.Redeemed.rawValue
-            let ticketDict = self.convertManagedObjectToDictionary(managedObject: ticketData!)
-            try self.eventViewModel.dataStack.insertOrUpdate(ticketDict, inEntityNamed: GUEST_ENTITY_NAME)
-        } catch let err {
-            print(err)
-        }
-        })
-        */
     }
     
     /*
