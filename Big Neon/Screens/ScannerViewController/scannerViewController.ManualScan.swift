@@ -15,7 +15,6 @@ extension ScannerViewController {
                     if let ticket = self?.scannedTicket {
                         self?.showOnlineGuest(withTicket: ticket, scannerVC: self, selectedIndex: nil)
                     }
-                    
                 case .wrongEvent?:
                     self?.checkinAutomatically(withTicketID: ticketID, fromGuestTableView: false, atIndexPath: nil)
                 default:
@@ -59,7 +58,7 @@ extension ScannerViewController {
        
         let guestVC = GuestViewController()
         guestVC.event = self.event
-//        guestVC.guest = ticket
+        guestVC.guest = ticket
         guestVC.delegate = self
         guestVC.scannerVC = self
         guestVC.guestListIndex = selectedIndex

@@ -155,7 +155,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
             
-            //  Stopre Scanning
+            //  Stop Scanning
             self.stopScanning = false
             
             //  Update the Local Storage Guests
@@ -236,15 +236,20 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         scannedUserView.isFetchingData = true
         displayedScannedUser = true
         
-        UIView.animate(withDuration: 0.7, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+        //  Show the Scanned User Loading View
+        UIView.animate(withDuration: 0.7, delay: 0.0, options: .curveEaseOut, animations: {
             self.scannerModeView.layer.opacity = 1.0
             self.scannedUserBottomAnchor?.constant = -90.0
             self.manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
             self.view.layoutIfNeeded()
-        }, completion: { (completed) in
-            self.generator.notificationOccurred(.success)
-        })
-         
+        }, completion: nil)
+        
+        //  Hide View Guest button
+        UIView.animate(withDuration: 0.4, delay: 0.7, options: .curveEaseOut, animations: {
+            self.viewGuestListBottomAnchor?.constant = UIScreen.main.bounds.height + 250.0
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
     }
     
     func dismissScannedUserView() {

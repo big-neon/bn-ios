@@ -84,35 +84,35 @@ extension ScannerViewController {
     
     func showOfflineScannedUser(feedback: ScanFeedback?, ticket: GuestData?) {
             
-            var feedFound = feedback
-            scannedUserView.isFetchingData = false
-        
-            if ticket?.event_name != self.event?.name {
-                self.playSuccessSound(forValidTicket: false)
-                self.scannedTicketID = ticket?.id
-                scannedUserView.userNameLabel.text = ticket?.event_name
-                scannedUserView.ticketTypeLabel.text = "-"
-                self.displayedScannedUser = true
-                scannedUserView.scanFeedback = .wrongEvent
-                scannerModeView.layer.opacity = 1.0
-                scannedUserBottomAnchor?.constant = -90.0
-                manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
-            } else {
-                playSuccessSound(forValidTicket: true)
-                scannedUserView.scanFeedback = ScanFeedback(rawValue: (ticket?.status!)!)
-                if let status = ticket?.status {
-                    if status == "Redeemed" {
-                        scannedUserView.scanFeedback = .alreadyRedeemed
-                    }
+        var feedFound = feedback
+        scannedUserView.isFetchingData = false
+    
+        if ticket?.event_name != self.event?.name {
+            self.playSuccessSound(forValidTicket: false)
+            self.scannedTicketID = ticket?.id
+            scannedUserView.userNameLabel.text = ticket?.event_name
+            scannedUserView.ticketTypeLabel.text = "-"
+            self.displayedScannedUser = true
+            scannedUserView.scanFeedback = .wrongEvent
+            scannerModeView.layer.opacity = 1.0
+            scannedUserBottomAnchor?.constant = -90.0
+            manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
+        } else {
+            playSuccessSound(forValidTicket: true)
+            scannedUserView.scanFeedback = ScanFeedback(rawValue: (ticket?.status!)!)
+            if let status = ticket?.status {
+                if status == "Redeemed" {
+                    scannedUserView.scanFeedback = .alreadyRedeemed
                 }
-                scannedUserView.guestData = ticket
-                self.displayedScannedUser = true
-                scannerModeView.layer.opacity = 1.0
-                scannedUserBottomAnchor?.constant = -90.0
-                manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
             }
-            
+            scannedUserView.guestData = ticket
+            self.displayedScannedUser = true
+            scannerModeView.layer.opacity = 1.0
+            scannedUserBottomAnchor?.constant = -90.0
+            manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
         }
+        
+    }
     
     func playSuccessSound(forValidTicket valid: Bool) {
         let sound = valid == true ? "Valid" : "Redeemed"
@@ -122,7 +122,6 @@ extension ScannerViewController {
             audioPlayer?.prepareToPlay()
             audioPlayer?.play()
         }
-        
     }
     
 }

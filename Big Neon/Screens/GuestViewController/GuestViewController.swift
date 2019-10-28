@@ -95,7 +95,6 @@ class GuestViewController: BaseViewController {
     }
     
     
-    /*
     var guest: RedeemableTicket? {
         didSet {
             guard let guest = self.guest else {
@@ -121,7 +120,7 @@ class GuestViewController: BaseViewController {
                 completeCheckinButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
                 completeCheckinButton.backgroundColor = .brandPrimary
                 completeCheckinButton.setTitle("Complete Check-in", for: UIControl.State.normal)
-                completeCheckinButton.addTarget(self, action: #selector(handleCompleteCheckin), for: UIControl.Event.touchUpInside)
+                completeCheckinButton.addTarget(self, action: #selector(handleCheckin), for: UIControl.Event.touchUpInside)
                 
             } else {
                 
@@ -155,7 +154,6 @@ class GuestViewController: BaseViewController {
             self.enableCheckinButton()
         }
     }
-     */
     
    
     public lazy var userImageView: UIImageView = {

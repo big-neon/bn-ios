@@ -29,9 +29,9 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     //  Layout
     let generator = UINotificationFeedbackGenerator()
     var audioPlayer: AVAudioPlayer?
-    var guestListTopAnchor: NSLayoutConstraint?
     var manualCheckingTopAnchor: NSLayoutConstraint?
     var scannedUserBottomAnchor: NSLayoutConstraint?
+    var viewGuestListBottomAnchor: NSLayoutConstraint?
     var stopScanning: Bool?
     var isShowingScannedUser: Bool?
     var scannerViewModel = CheckinService()
@@ -163,7 +163,8 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
         closeButton.widthAnchor.constraint(equalToConstant: 48.0).isActive = true
         closeButton.heightAnchor.constraint(equalToConstant: 48.0).isActive = true
         
-        showGuestView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18).isActive = true
+        viewGuestListBottomAnchor = showGuestView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18)
+        viewGuestListBottomAnchor?.isActive = true
         showGuestView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         showGuestView.widthAnchor.constraint(equalToConstant: 180.0).isActive = true
         showGuestView.heightAnchor.constraint(equalToConstant: 40.0).isActive = true

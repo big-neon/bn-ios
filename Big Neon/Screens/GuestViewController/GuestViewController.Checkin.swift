@@ -27,9 +27,16 @@ extension GuestViewController {
     func handleCompleteOnlineCheckin() {
     
         
-        guard let ticketID = self.guestData?.id, let eventID = self.event?.id else {
+//        guard let ticketID = self.guestData?.id, let eventID = self.event?.id else {
+//            return
+//        }
+        
+        guard let ticketID = self.guest?.id, let eventID = self.event?.id else {
             return
         }
+        
+        print(ticketID)
+        print(eventID)
         
         let fromGuestListVC = guestListVC == nil ? false : true
         
@@ -45,7 +52,7 @@ extension GuestViewController {
                     
                     //  Update the Redeemed Ticket
                     //  self.guest = ticket
-                    self.guestData?.status = ticket!.status
+                    self.guest?.status = ticket!.status
                     
                     //  Checking from Guestlist
                     if fromGuestListVC == true {
