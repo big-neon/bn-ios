@@ -93,6 +93,7 @@
 		C683DAFD235F23CB0064647E /* GuestViewController.Checkin.swift in Sources */ = {isa = PBXBuildFile; fileRef = C683DAFC235F23CB0064647E /* GuestViewController.Checkin.swift */; };
 		C68A9FD722D3414E006535B8 /* DoorPersonViewController.Offline.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A9FD622D3414E006535B8 /* DoorPersonViewController.Offline.swift */; };
 		C68C8D0A23321C8100FF15D6 /* BigNeonStudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68C8D0923321C8100FF15D6 /* BigNeonStudioTests.swift */; };
+		C68E4DE1236C184B004C42B0 /* NetworkFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68E4DE0236C184B004C42B0 /* NetworkFeedback.swift */; };
 		C6937106228F6DF3004EBC12 /* ShowGuestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6937105228F6DF3004EBC12 /* ShowGuestListView.swift */; };
 		C69494262343504E00BC7219 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69494252343504E00BC7219 /* EventViewController.swift */; };
 		C69494282343522400BC7219 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69494272343522400BC7219 /* EventView.swift */; };
@@ -146,7 +147,7 @@
 		C6B88D8F21F1C94E006394F8 /* Organisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B88D8921F1C94E006394F8 /* Organisation.swift */; };
 		C6BCBE9E222D06C70026B858 /* CheckinService.Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BCBE9D222D06C70026B858 /* CheckinService.Scanner.swift */; };
 		C6C45D6A21F5CDCD00D2F602 /* PopAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C45D6921F5CDCD00D2F602 /* PopAnimations.swift */; };
-		C6C45D6C21F5CEC000D2F602 /* Feedbacksystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C45D6B21F5CEC000D2F602 /* Feedbacksystem.swift */; };
+		C6C45D6C21F5CEC000D2F602 /* BottomFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C45D6B21F5CEC000D2F602 /* BottomFeedback.swift */; };
 		C6C49DA52209A77E0087AE16 /* DollarString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C49DA42209A77E0087AE16 /* DollarString.swift */; };
 		C6C4E9A42302D2810040C258 /* SwipeCollectionViewCell+Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C4E98C2302D2800040C258 /* SwipeCollectionViewCell+Accessibility.swift */; };
 		C6C4E9A52302D2810040C258 /* SwipeExpansionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C4E98D2302D2800040C258 /* SwipeExpansionStyle.swift */; };
@@ -322,6 +323,7 @@
 		C68C8D0723321C8100FF15D6 /* BigNeonStudioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BigNeonStudioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C68C8D0923321C8100FF15D6 /* BigNeonStudioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigNeonStudioTests.swift; sourceTree = "<group>"; };
 		C68C8D0B23321C8100FF15D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C68E4DE0236C184B004C42B0 /* NetworkFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkFeedback.swift; sourceTree = "<group>"; };
 		C6937105228F6DF3004EBC12 /* ShowGuestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowGuestListView.swift; sourceTree = "<group>"; };
 		C69494252343504E00BC7219 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		C69494272343522400BC7219 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
@@ -386,7 +388,7 @@
 		C6BCBE9D222D06C70026B858 /* CheckinService.Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinService.Scanner.swift; sourceTree = "<group>"; };
 		C6BCBE9F222D38730026B858 /* TicketScanFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketScanFeedbackView.swift; sourceTree = "<group>"; };
 		C6C45D6921F5CDCD00D2F602 /* PopAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimations.swift; sourceTree = "<group>"; };
-		C6C45D6B21F5CEC000D2F602 /* Feedbacksystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedbacksystem.swift; sourceTree = "<group>"; };
+		C6C45D6B21F5CEC000D2F602 /* BottomFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomFeedback.swift; sourceTree = "<group>"; };
 		C6C49DA42209A77E0087AE16 /* DollarString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarString.swift; sourceTree = "<group>"; };
 		C6C4E98C2302D2800040C258 /* SwipeCollectionViewCell+Accessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwipeCollectionViewCell+Accessibility.swift"; sourceTree = "<group>"; };
 		C6C4E98D2302D2800040C258 /* SwipeExpansionStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeExpansionStyle.swift; sourceTree = "<group>"; };
@@ -980,7 +982,8 @@
 				C6B88D5C21F1C359006394F8 /* RoundedCorner.swift */,
 				C6B88D5B21F1C359006394F8 /* ValidEmailAddress.swift */,
 				C6C45D6921F5CDCD00D2F602 /* PopAnimations.swift */,
-				C6C45D6B21F5CEC000D2F602 /* Feedbacksystem.swift */,
+				C6C45D6B21F5CEC000D2F602 /* BottomFeedback.swift */,
+				C68E4DE0236C184B004C42B0 /* NetworkFeedback.swift */,
 				C6C49DA42209A77E0087AE16 /* DollarString.swift */,
 				C61853BB2212F6FA005D6250 /* ThreeQuaterPresenter.swift */,
 				C66923B722CF436100A162A6 /* ScreenSize.swift */,
@@ -1675,7 +1678,7 @@
 				C6B88D6021F1C359006394F8 /* RoundedCorner.swift in Sources */,
 				C6B88D4F21F1C323006394F8 /* GradientBrandButton.swift in Sources */,
 				C6B88D5F21F1C359006394F8 /* ValidEmailAddress.swift in Sources */,
-				C6C45D6C21F5CEC000D2F602 /* Feedbacksystem.swift in Sources */,
+				C6C45D6C21F5CEC000D2F602 /* BottomFeedback.swift in Sources */,
 				C6B88D3821F1BC8D006394F8 /* Colours.swift in Sources */,
 				C6B88D5021F1C323006394F8 /* EventPriceView.swift in Sources */,
 				C6B88D5221F1C323006394F8 /* InterestedButtonView.swift in Sources */,
@@ -1684,6 +1687,7 @@
 				C6D2C96C23422A590025E6D5 /* BrandShadowView.swift in Sources */,
 				C64124CA21F26D1800233797 /* AuthTextView.swift in Sources */,
 				C6EC209E220075D100BD10DD /* PhoneNumberTextField.swift in Sources */,
+				C68E4DE1236C184B004C42B0 /* NetworkFeedback.swift in Sources */,
 				C6C49DA52209A77E0087AE16 /* DollarString.swift in Sources */,
 				C6B88D5421F1C323006394F8 /* BrandTextField.swift in Sources */,
 				C66923B822CF436100A162A6 /* ScreenSize.swift in Sources */,

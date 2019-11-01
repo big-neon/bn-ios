@@ -42,6 +42,7 @@ final class ScannerViewController: UIViewController, ScannerViewDelegate {
     
     //  Scanned Time
     var lastScannedTicketTimer: Timer?
+    
     var displayedScannedUser: Bool = false {
         didSet {
             if displayedScannedUser == true {

@@ -13,6 +13,10 @@ class BaseViewController: UIViewController  {
         return feedback
     }()
     
+    lazy var networkFeedback: NetworkFeedback = {
+        let feedback = NetworkFeedback()
+        return feedback
+    }()
     
     lazy var fetcher: EventsFetcher = {
         let fetcher = EventsFetcher()
