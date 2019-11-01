@@ -49,7 +49,6 @@ extension ScannerViewController {
         scannedUserView.isFetchingData = false
     
         if ticket?.eventName != self.event?.name {
-            self.playSuccessSound(forValidTicket: false)
             self.scannedTicketID = ticket?.id
             feedFound = .wrongEvent
             scannedUserView.userNameLabel.text = ticket?.eventName
@@ -61,8 +60,9 @@ extension ScannerViewController {
             scannedUserView.scanFeedback = feedFound
         }
         
+        print(feedFound)
         scannedUserView.scanFeedback = feedFound
-        self.displayedScannedUser = true
+        displayedScannedUser = true
         scannerModeView.layer.opacity = 1.0
         manualCheckingTopAnchor?.constant = UIScreen.main.bounds.height + 250.0
         

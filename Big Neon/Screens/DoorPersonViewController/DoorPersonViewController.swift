@@ -79,12 +79,10 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         configureNavBar()
         view.backgroundColor = UIColor.white
         configureCollectionView()
-        self.fetchEvents()
+        fetchEvents()
     }
     
-    
     func fetchEvents() {
-        
         NetworkManager.shared.startNetworkReachabilityObserver { (isReachable) in
             if isReachable == true {
                 self.doorPersonViemodel.fetchUser { (_) in
@@ -106,7 +104,18 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.configureNavBar()
+        configureNavBar()
+        listenForNetworkFeedback()
+    }
+    
+    func listenForNetworkFeedback() {
+        NetworkManager.shared.startNetworkReachabilityObserver { (isReachable) in
+            if isReachable == false {
+                if let window = UIApplication.shared.keyWindow {
+                    self.networkFeedback.showFeedback(currentView: window)
+                }
+            }
+        }
     }
 
     private func configureNavBar() {
