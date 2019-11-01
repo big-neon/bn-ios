@@ -1,11 +1,12 @@
 
 
+
 import Foundation
 import Big_Neon_UI
 import Big_Neon_Core
 import UIKit
 
-extension GuestListViewController {
+extension EventViewController {
     
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = self.searchController.searchBar
@@ -25,30 +26,34 @@ extension GuestListViewController {
             return
         }
         
+        //  Alert the View that I am doing a search
         self.isSearching = true
         
-        // Ping DB for information
-        self.guestViewModel.fetchGuests(withQuery: searchText, page: nil, isSearching: true) { [weak self] (_) in
+        /*
+         Online Search
+        self.eventViewModel.fetchSearchGuests(withQuery: searchText, page: nil, isSearching: true) { [weak self] (_) in
             DispatchQueue.main.async {
-                self?.headerView.searchResults = self?.guestViewModel.guestSearchResults.count
                 self?.guestTableView.reloadData()
             }
         }
+        */
+        
         
         /*
-        self.filteredSearchResults = (self.guests!.filter({ (guestTicket: RedeemableTicket) -> Bool in
+         Offline Search
+        */
+        self.eventViewModel.guestCoreDataSearchResults = (self.eventViewModel.guestCoreData.filter({ (guestTicket: GuestData) -> Bool in
 
             guard let email = guestTicket.email else {
                 return false
             }
 
-            return guestTicket.firstName.lowercased().contains(searchText.lowercased()) || guestTicket.lastName.lowercased().contains(searchText.lowercased()) ||
-                guestTicket.id.suffix(8).lowercased().contains(searchText.lowercased()) ||
+            return guestTicket.first_name!.lowercased().contains(searchText.lowercased()) || guestTicket.last_name!.lowercased().contains(searchText.lowercased()) ||
+                guestTicket.id!.suffix(8).lowercased().contains(searchText.lowercased()) ||
                 email.lowercased().contains(searchText.lowercased())
         }))
 
         self.guestTableView.reloadData()
-        */
         
     }
     

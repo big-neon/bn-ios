@@ -30,7 +30,7 @@ class EventsFetcher {
     func deleteAllData(_ entity:String) {
 
         let appDel =  UIApplication.shared.delegate as! AppDelegate
-        let context:NSManagedObjectContext = appDel.persistentContainer.viewContext
+        let context:NSManagedObjectContext = CoreDataStack.sharedInstance.persistentContainer.viewContext
 
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
         fetchRequest.returnsObjectsAsFaults = false
@@ -45,14 +45,9 @@ class EventsFetcher {
         }
     }
 
-    func fetchLocalGuests() -> [RedeemedTicket] {
-        let guests: NSFetchRequest<RedeemedTicket> = RedeemedTicket.fetchRequest()
-        return try! self.dataStack.viewContext.fetch(guests)
-    }
-
-    func syncCheckins(completion: @escaping (_ result: VoidResult) -> ()) {
+    func syncCheckins(orgID: String, completion: @escaping (_ result: VoidResult) -> ()) {
         
-        self.repository.fetchEvents { (eventsFetchedDict, error) in
+        self.repository.fetchEvents(orgID: orgID) { (eventsFetchedDict, error) in
             if error != nil {
                 completion(.failure(error! as NSError))
                 return
@@ -62,12 +57,12 @@ class EventsFetcher {
                 return
             }
             
-            print(events)
-
             do {
                 try self.deleteAllData(EVENT_ENTITY_NAME)
                 try self.deleteAllData(VENUE_ENTITY_NAME)
-            } catch {
+            } catch let err {
+                completion(.failure(err as NSError))
+                return
             }
 
             var venues: [[String: Any]] = []
@@ -76,8 +71,11 @@ class EventsFetcher {
             }
 
             self.dataStack.sync(venues, inEntityNamed: VENUE_ENTITY_NAME) { error in
+                print(error)
             }
+            
             self.dataStack.sync(events, inEntityNamed: EVENT_ENTITY_NAME) { error in
+                print(error)
                 completion(.success)
             }
         }

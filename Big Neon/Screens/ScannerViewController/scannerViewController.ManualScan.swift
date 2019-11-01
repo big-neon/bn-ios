@@ -7,20 +7,19 @@ import AVFoundation
 extension ScannerViewController {
     
     func checkinManually(withTicketID ticketID: String) {
-        self.scannerViewModel?.getRedeemTicket(ticketID: ticketID) { [weak self] (scanFeedback, errorString) in
+        self.scannerViewModel.getRedeemTicket(ticketID: ticketID) { [weak self] (scanFeedback, errorString) in
             DispatchQueue.main.async {
                 switch scanFeedback {
                 case .validTicketID?:
                     self?.stopScanning = false
                     if let ticket = self?.scannedTicket {
-//                        self?.showRedeemedTicket(forTicket: ticket)
-                        self?.showGuest(withTicket: ticket, scannerVC: self, selectedIndex: nil)
+                        self?.showOnlineGuest(withTicket: ticket, scannerVC: self, selectedIndex: nil)
                     }
-                    
                 case .wrongEvent?:
                     self?.checkinAutomatically(withTicketID: ticketID, fromGuestTableView: false, atIndexPath: nil)
                 default:
-                      print("Ticket Not Found")    // To be modified to handle different types of errors
+                    print("Ticket Not Found")
+                    // To be modified to handle different types of errors
                     //  self?.manualCheckinFeedback(scanFeedback: scanFeedback) 
                 }
             }
@@ -40,18 +39,28 @@ extension ScannerViewController {
     
     @objc func showRedeemedTicket() {
         
-        guard let ticket = self.scannerViewModel?.redeemedTicket else {
+        guard let ticket = self.scannerViewModel.redeemedTicket else {
             return
         }
         self.stopScanning = true
         self.scannedTicketID = ticket.id
-        self.showGuest(withTicket: ticket, scannerVC: self, selectedIndex: nil)
     }
     
-    func showGuest(withTicket ticket: RedeemableTicket?, scannerVC: ScannerViewController?, selectedIndex: IndexPath?) {
+    func showOfflineGuest(withTicket ticket: GuestData?, scannerVC: ScannerViewController?, selectedIndex: IndexPath?) {
+        let guestVC = GuestViewController()
+        guestVC.event = self.eventViewModel.eventData
+        guestVC.event = self.event
+        guestVC.guestData = ticket
+        guestVC.scannerVC = self
+        guestVC.guestListIndex = selectedIndex
+        self.presentPanModal(guestVC)
+    }
+    
+    func showOnlineGuest(withTicket ticket: RedeemableTicket?, scannerVC: ScannerViewController?, selectedIndex: IndexPath?) {
+       
         let guestVC = GuestViewController()
         guestVC.event = self.event
-        guestVC.redeemableTicket = ticket
+        guestVC.guest = ticket
         guestVC.delegate = self
         guestVC.scannerVC = self
         guestVC.guestListIndex = selectedIndex

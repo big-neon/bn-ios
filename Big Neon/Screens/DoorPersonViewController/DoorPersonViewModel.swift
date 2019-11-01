@@ -12,6 +12,7 @@ final class DoorPersonViewModel {
     var todayEvents: [EventsData] = []
     var upcomingEvents: [EventsData] = []
     var user: User?
+    var userOrg: UserOrg?
     
     func fetchEvents(completion: @escaping(Bool) -> Void) {
         self.events = nil
@@ -27,50 +28,6 @@ final class DoorPersonViewModel {
         }
     }
     
-    func configureAccessToken(completion: @escaping(Bool) -> Void) {
-        
-        TokenService.shared.checkToken { (completed) in
-            guard completed else {
-                completion(completed)
-                return
-            }
-            /*
-            self.fetchCheckins(completion: { (completed) in
-                completion(completed)
-                return
-            })
-            */
-        }
-    }
-    
-    /*
-    func fetchCheckins(completion: @escaping(Bool) -> Void) {
-        self.events = nil
-
-        TokenService.shared.checkToken { (completed) in
-            guard completed else {
-                completion(completed)
-                return
-            }
-
-             BusinessService.shared.database.fetchCheckins { [weak self] (error, events) in
-                   guard let self = self, error != nil , let events = events else {
-                       AnalyticsService.reportError(errorType: ErrorType.eventFetching, error: error?.localizedDescription ?? "")
-                       completion(false)
-                       return
-                   }
-
-                   self.events = events
-                   self.fetchUser(completion: { (_) in
-                       completion(true)
-                       return
-                   })
-               }
-        }
-
-    }
-     */
-    
     func fetchUser(completion: @escaping(Bool) -> Void) {
         
         TokenService.shared.checkToken { (completed) in
@@ -79,15 +36,16 @@ final class DoorPersonViewModel {
                 return
             }
             
-             BusinessService.shared.database.fetchUser() { (error, userFound) in
-                 guard let user = userFound else {
-                     completion(false)
-                     return
-                 }
-                 
-                 self.user = user
-                 completion(true)
-                 return
+             BusinessService.shared.database.fetchUser() { (error, userFound, userOrg) in
+                guard let user = userFound else {
+                    completion(false)
+                    return
+                }
+                
+                self.user = user
+                self.userOrg = userOrg
+                completion(true)
+                return
              }
         }
         

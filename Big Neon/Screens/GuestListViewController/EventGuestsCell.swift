@@ -1,12 +1,44 @@
 
+
 import Foundation
 import UIKit
 import Big_Neon_UI
+import Big_Neon_Core
 import TransitionButton
 
-final class GuestTableViewCell: SwipeTableViewCell {
+final class EventGuestsCell: SwipeTableViewCell {
     
-    static let cellID = "GuestTableViewCellID"
+    static let cellID = "EventGuestsCellID"
+    
+    var guest: GuestData? {
+        didSet {
+            guard let guestValues = self.guest, let guestID = guestValues.id, let firstName = guestValues.first_name, let lastName = guestValues.last_name, let ticketType = guestValues.ticket_type, let eventStart = guestValues.event_start else {
+                return
+            }
+            
+            if firstName == "" && lastName  == ""{
+                guestNameLabel.text = "No Details Provided"
+            } else {
+                guestNameLabel.text = firstName + " " + lastName
+            }
+            
+            let price = Int(guestValues.price_in_cents)
+            let ticketID = "#" + guestID.suffix(8).uppercased()
+            ticketTypeNameLabel.text = price.dollarString + " | " + ticketType + " | " + ticketID
+            
+            if guestValues.status == TicketStatus.purchased.rawValue {
+                ticketStateView.isHidden = !DateConfig.eventDateIsToday(eventStartDate: eventStart)
+                ticketStateView.backgroundColor = UIColor.brandGreen
+                let buttonValue = DateConfig.eventDateIsToday(eventStartDate: eventStart) == true ? "PURCHASED" : "-"
+                ticketStateView.setTitle(buttonValue, for: UIControl.State.normal)
+            } else {
+                ticketStateView.isHidden = !DateConfig.eventDateIsToday(eventStartDate: eventStart) //== true ? false : UIColor.white
+                ticketStateView.backgroundColor = UIColor.brandBlack
+                let buttonValue = DateConfig.eventDateIsToday(eventStartDate: eventStart) == true ? "REDEEMED" : "-"
+                ticketStateView.setTitle(buttonValue, for: UIControl.State.normal)
+            }
+        }
+    }
     
     var isLoadingCell: Bool = false {
         didSet {
@@ -35,7 +67,7 @@ final class GuestTableViewCell: SwipeTableViewCell {
     lazy var guestNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandBlack
-        label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.bold)
+        label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -43,7 +75,7 @@ final class GuestTableViewCell: SwipeTableViewCell {
     lazy var ticketTypeNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.brandGrey
-        label.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.medium)
+        label.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -76,10 +108,10 @@ final class GuestTableViewCell: SwipeTableViewCell {
         loadingView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         loadingView.widthAnchor.constraint(equalToConstant: 30).isActive = true
         
-        ticketStateView.topAnchor.constraint(equalTo: self.topAnchor, constant: 12).isActive = true
+        ticketStateView.topAnchor.constraint(equalTo: self.topAnchor, constant: LayoutSpec.Spacing.twentyFour).isActive = true
         ticketStateView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        ticketStateView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
-        ticketStateView.widthAnchor.constraint(equalToConstant: 88.0).isActive = true
+        ticketStateView.heightAnchor.constraint(equalToConstant: 24.0).isActive = true
+        ticketStateView.widthAnchor.constraint(equalToConstant: 80.0).isActive = true
     
         guestNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
         guestNameLabel.centerYAnchor.constraint(equalTo: ticketStateView.centerYAnchor).isActive = true
@@ -87,7 +119,7 @@ final class GuestTableViewCell: SwipeTableViewCell {
         guestNameLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         
         ticketTypeNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
-        ticketTypeNameLabel.topAnchor.constraint(equalTo: guestNameLabel.bottomAnchor, constant: 12).isActive = true
+        ticketTypeNameLabel.topAnchor.constraint(equalTo: guestNameLabel.bottomAnchor, constant: 8).isActive = true
         ticketTypeNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -30).isActive = true
         ticketTypeNameLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
     }

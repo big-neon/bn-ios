@@ -19,7 +19,7 @@ extension DoorPersonViewController {
         case 2:
             return 1
         default:
-            return  self.doorPersonViemodel.upcomingEvents.count
+            return self.doorPersonViemodel.upcomingEvents.count
             
         }
     }
@@ -32,11 +32,14 @@ extension DoorPersonViewController {
             sectionLabelCell.delegate = self
             sectionLabelCell.detailLabel.text = self.doorPersonViemodel.todayEvents.isEmpty == true ? "" : "Today's Events"
             sectionLabelCell.sectionHeaderLabel.text = "My Events"
+            /*
             self.doorPersonViemodel.fetchUser { [weak self] (_) in
                 DispatchQueue.main.async {
                     sectionLabelCell.user = self?.doorPersonViemodel.user
                 }
             }
+            */
+            sectionLabelCell.user = self.doorPersonViemodel.user
             return sectionLabelCell
         case 1:
             let eventCell: DoorPersonCell = collectionView.dequeueReusableCell(withReuseIdentifier: DoorPersonCell.cellID, for: indexPath) as! DoorPersonCell
@@ -114,7 +117,9 @@ extension DoorPersonViewController {
         if indexPath.section == 0 || indexPath.section == 2 {
             return
         }
-        self.showScanner(forTicketIndex: indexPath.item, section: indexPath.section)
+//        self.showScanner(forTicketIndex: indexPath.item, section: indexPath.section)
+        self.showEvent(forTicketIndex: indexPath.item, section: indexPath.section)
+         
     }
 
 }

@@ -16,7 +16,7 @@ public class EventsApiRepository {
     
     private init() {}
     public static let shared = EventsApiRepository()
-    private let APIURL = APIService.getCheckins()
+    private let GETCHECKINSAPIURL = APIService.getAllEvents()
     
     private func configureAccessToken(completion: @escaping(Bool) -> Void) {
         
@@ -43,7 +43,7 @@ public class EventsApiRepository {
         }
     }
     
-    public func fetchEvents(completion: @escaping (_ fetchedEventsDict: [[String: Any]]?, _ error: Error?) -> ()) {
+    public func fetchEvents(orgID: String, completion: @escaping (_ fetchedEventsDict: [[String: Any]]?, _ error: Error?) -> ()) {
         
         self.configureAccessToken { (completed) in
             if completed == false {
@@ -52,7 +52,8 @@ public class EventsApiRepository {
             }
             
             let accessToken =  TokenService.shared.fetchAcessToken()
-            AF.request(self.APIURL,
+            let fetchEventsURL = APIService.fetchAllEvents(orgID: orgID)
+            AF.request(fetchEventsURL,
                        method: HTTPMethod.get,
                        parameters: nil,
                        encoding: JSONEncoding.default,
@@ -61,8 +62,9 @@ public class EventsApiRepository {
                 .response { (response) in
                     
                     if let err = response.error {
-                        let error = NSError(domain: dataErrorDomain, code: DataErrorCode.networkUnavailable.rawValue, userInfo: nil)
-                        completion(nil, error)
+                        print(err)
+                        completion(nil, err)
+                        return
                     }
                     
                     guard let data = response.data else {

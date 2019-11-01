@@ -11,11 +11,7 @@ protocol DoorPersonViewDelegate: class {
 final class DoorPersonViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UISearchResultsUpdating, UISearchBarDelegate, DoorPersonViewDelegate {
 
     var eventsFetcher: EventsFetcher
-    lazy var guestsFetcher: GuestsFetcher = {
-        let fetcher = GuestsFetcher()
-        return fetcher
-    }()
-    
+
     var headerLabel: UILabel = {
         let label = UILabel()
         label.text = "No Published Events"
@@ -82,15 +78,30 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         self.refresher.addTarget(self, action: #selector(reloadEvents), for: .valueChanged)
         configureNavBar()
         view.backgroundColor = UIColor.white
-        configureSearch()
         configureCollectionView()
-        doorPersonViemodel.eventCoreData = fetcher.fetchLocalEvents()
-        self.orderEventsByDate()
-        syncEventsData()
+        self.fetchEvents()
     }
-
-    private func configureSearch() {
-        //TODO: self.navigationItem.searchController = searchController
+    
+    
+    func fetchEvents() {
+        
+        NetworkManager.shared.startNetworkReachabilityObserver { (isReachable) in
+            if isReachable == true {
+                self.doorPersonViemodel.fetchUser { (_) in
+                    DispatchQueue.main.async {
+                        guard let orgID = self.doorPersonViemodel.userOrg?.organizationScopes?.first?.key else {
+                            return
+                        }
+                        self.syncEventsData(withOrgID: orgID)
+                        self.exploreCollectionView.reloadData()
+                    }
+                }
+            } else {
+                self.doorPersonViemodel.eventCoreData = self.fetcher.fetchLocalEvents()
+                self.syncEventsData(withOrgID: nil)
+                self.exploreCollectionView.reloadData()
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -144,14 +155,21 @@ final class DoorPersonViewController: BaseViewController, UICollectionViewDelega
         self.navigationController?.push(ProfileViewController())
     }
     
-    internal func showScanner(forTicketIndex ticketIndex: Int, section: Int) {
-        
+    func showScanner(forTicketIndex ticketIndex: Int, section: Int) {
+        /*
         let scannerVC = ScannerViewController(fetcher: guestsFetcher)
         scannerVC.modalPresentationStyle = .fullScreen
         scannerVC.event = section == 1 ? self.doorPersonViemodel.todayEvents[ticketIndex] : self.doorPersonViemodel.upcomingEvents[ticketIndex]
         let scannerNavVC = UINavigationController(rootViewController: scannerVC)
         scannerNavVC.modalPresentationStyle = .fullScreen
         self.present(scannerNavVC, animated: true, completion: nil)
+        */
+    }
+    
+    func showEvent(forTicketIndex ticketIndex: Int, section: Int) {
+        let event = section == 1 ? self.doorPersonViemodel.todayEvents[ticketIndex] : self.doorPersonViemodel.upcomingEvents[ticketIndex]
+        let eventVC = EventViewController(event: event, presentedFromScannerVC: false)
+        self.navigationController?.push(eventVC)
     }
 
 }
