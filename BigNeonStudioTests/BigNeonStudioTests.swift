@@ -120,5 +120,9 @@ class BigNeonStudioTests: XCTestCase {
             }
         }
     }
+    
+    func testOfflineCheckin() {
+        
+    }
 
 }
