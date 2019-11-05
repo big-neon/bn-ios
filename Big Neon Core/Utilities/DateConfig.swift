@@ -26,8 +26,9 @@ final public class DateConfig {
         }
         
         let interval = Calendar.current.dateComponents([.hour], from: startDate, to: Date())
-        if let hours = interval.hour {
-            if hours < 24 {
+        
+        if let hour = interval.hour {
+            if abs(hour) < 24 {
                 return true
             }
         }
