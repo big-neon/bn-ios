@@ -1,11 +1,18 @@
 
 import XCTest
+import CoreData
+import Sync
 import Big_Neon_Core
 import Big_Neon_Studio
+
+let GUEST_ENTITY_NAME = "GuestData"
+let SCANNED_TICKET_ENTITY_NAME = "ScannedTicketData"
+
 
 class BigNeonStudioTests: XCTestCase {
     
     private let repository = EventsApiRepository.shared
+    let dataStack = DataStack(modelName: "Big Neon")
 
     func testAuthentication() {
         let email = "superuser@test.com" // Environment().configuration(PlistKey.testAuthEmail)
@@ -123,7 +130,7 @@ class BigNeonStudioTests: XCTestCase {
     
     func testOfflineCheckin() {
         
-        let eventID = "39fb32a6-82f5-4d59-a901-0c8ac09734ad"    // Environment().configuration(PlistKey.testEventID)
+        let eventID = "39fb32a6-82f5-4d59-a901-0c8ac09734ad"
         let limit = 50
         let page = 1
         let query = ""
@@ -166,8 +173,57 @@ class BigNeonStudioTests: XCTestCase {
         }
     }
     
-    func completeOfflineCheckin() {
+    /*
+     Complete Offline Checking
+     */
+    func completeOfflineCheckin(forTicketID ticketID: String, eventID: String, completion: @escaping(ScanFeedback) -> Void) {
         
+        do {
+            let ticket = try self.dataStack.fetch(ticketID, inEntityNamed: GUEST_ENTITY_NAME) as! GuestData
+            ticket.status = TicketStatus.Redeemed.rawValue
+            let ticketDict = convertManagedObjectToDictionary(managedObject: ticket)
+            try self.dataStack.insertOrUpdate(ticketDict, inEntityNamed: GUEST_ENTITY_NAME)
+        } catch let err {
+            print(err)
+        }
+        
+        let scannedTicketDict = ["event_id": eventID,
+                                 "id": ticketID] as [String : AnyObject]
+        self.saveScannedTicketInCoreDataWith(array: [scannedTicketDict])
+    }
+    
+    
+    /*
+     Offline Scanning Helper Functions
+     */
+    func convertManagedObjectToDictionary(managedObject: NSManagedObject) -> [String : Any] {
+        var dict: [String: Any] = [:]
+        for attribute in managedObject.entity.attributesByName {
+            if let value = managedObject.value(forKey: attribute.key) {
+                dict[attribute.key] = value
+            }
+        }
+        return dict
+    }
+    
+    func saveScannedTicketInCoreDataWith(array: [[String: AnyObject]]) {
+        _ = array.map{self.createScannedTicketFrom(dictionary: $0)}
+        do {
+            try CoreDataStack.sharedInstance.persistentContainer.viewContext.save()
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    func createScannedTicketFrom(dictionary: [String: AnyObject]) -> NSManagedObject? {
+        
+        let context = CoreDataStack.sharedInstance.persistentContainer.viewContext
+        if let scannedTicketEntity = NSEntityDescription.insertNewObject(forEntityName: SCANNED_TICKET_ENTITY_NAME, into: context) as? ScannedTicketData {
+            scannedTicketEntity.id = dictionary["id"] as? String
+            scannedTicketEntity.event_id = dictionary["event_id"] as? String
+            return scannedTicketEntity
+        }
+        return nil
     }
 
 }

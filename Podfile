@@ -44,6 +44,11 @@ use_frameworks!
       pod 'UITextField+Shake'
       pod 'PhoneNumberKit', '~> 2.1'
     end
+    
+    target 'BigNeonStudioTests' do
+      inherit! :search_paths
+      pod 'Sync', :git => 'https://github.com/3lvis/Sync.git', :branch => 'issue-555' # '~> 5'
+    end
   end
 
 
