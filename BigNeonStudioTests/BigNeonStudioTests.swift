@@ -2,6 +2,7 @@
 import XCTest
 import CoreData
 import Sync
+import Big_Neon_Studio
 import Big_Neon_Core
 import Big_Neon_Studio
 
@@ -128,6 +129,9 @@ class BigNeonStudioTests: XCTestCase {
         }
     }
     
+    /*
+     Unit Test for Offline Checkin
+     */
     func testOfflineCheckin() {
         
         let eventID = "39fb32a6-82f5-4d59-a901-0c8ac09734ad"

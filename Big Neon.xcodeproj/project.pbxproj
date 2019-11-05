@@ -108,6 +108,7 @@
 		C698F6032238F76400977259 /* ScanFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698F6022238F76400977259 /* ScanFeedback.swift */; };
 		C69D7781234E04D50011F038 /* EventViewController.Swipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69D7780234E04D50011F038 /* EventViewController.Swipe.swift */; };
 		C6A6FAA6226F3A6200601AC2 /* EventsApiRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A6FAA4226F396900601AC2 /* EventsApiRepository.swift */; };
+		C6AD604423717CB600AB7EE8 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6488540235656E600525AF7 /* CoreDataStack.swift */; };
 		C6AFB78B21DD579600670AC3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB78A21DD579600670AC3 /* ProfileViewModel.swift */; };
 		C6AFB78F21DD658800670AC3 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB78E21DD658800670AC3 /* EventDetailViewController.swift */; };
 		C6AFB79121DD65D200670AC3 /* EventDetailViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB79021DD65D200670AC3 /* EventDetailViewController.TableView.swift */; };
@@ -1487,7 +1488,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		C60602592254D6D000C5C066 /* Fabric Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1505,7 +1507,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		C62C824F22C4AED400D30E07 /* Fabric Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1674,6 +1677,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C68C8D0A23321C8100FF15D6 /* BigNeonStudioTests.swift in Sources */,
+				C6AD604423717CB600AB7EE8 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
