@@ -232,7 +232,7 @@ final class EventViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     @objc func isTodayEvent() {
-        guard let event = self.eventViewModel.eventData, let eventDate = event.event_start else {
+        guard let event = self.eventViewModel.eventData, let eventStart = event.event_start else {
             return
         }
         
@@ -244,7 +244,7 @@ final class EventViewController: UIViewController, UITableViewDataSource, UITabl
             return
         }
         
-        let isEventDate = DateConfig.eventDateIsToday(eventStartDate: eventDate)
+        let isEventDate = DateConfig.eventDateIsToday(eventStartDate: eventStart)
         self.showScanButton(isEventDate: isEventDate)
     }
     

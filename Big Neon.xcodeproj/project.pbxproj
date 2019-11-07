@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5A2E1B7E405ED17780F3538D /* Pods_Big_Neon_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DB0A1BBBBCC7D4543416D7 /* Pods_Big_Neon_Core.framework */; };
 		85607064B4BF6AE12559F374 /* Pods_Big_Neon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F63D047B71F4AED64CDD07F2 /* Pods_Big_Neon.framework */; };
+		BC960979EA67F4967BC3DFD8 /* Pods_BigNeonStudioTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB65D3BBA0D702EBCDDA734 /* Pods_BigNeonStudioTests.framework */; };
 		C60BDEBE229EC03F00E54456 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60BDEB9229EB4B600E54456 /* Environment.swift */; };
 		C60BDEBF229EC03F00E54456 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D37B3421F1CD8200C616D0 /* API.swift */; };
 		C61853B72212F1DB005D6250 /* DoorPersonViewController.Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61853B62212F1DB005D6250 /* DoorPersonViewController.Search.swift */; };
@@ -107,6 +108,7 @@
 		C698F6032238F76400977259 /* ScanFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698F6022238F76400977259 /* ScanFeedback.swift */; };
 		C69D7781234E04D50011F038 /* EventViewController.Swipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69D7780234E04D50011F038 /* EventViewController.Swipe.swift */; };
 		C6A6FAA6226F3A6200601AC2 /* EventsApiRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A6FAA4226F396900601AC2 /* EventsApiRepository.swift */; };
+		C6AD604423717CB600AB7EE8 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6488540235656E600525AF7 /* CoreDataStack.swift */; };
 		C6AFB78B21DD579600670AC3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB78A21DD579600670AC3 /* ProfileViewModel.swift */; };
 		C6AFB78F21DD658800670AC3 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB78E21DD658800670AC3 /* EventDetailViewController.swift */; };
 		C6AFB79121DD65D200670AC3 /* EventDetailViewController.TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AFB79021DD65D200670AC3 /* EventDetailViewController.TableView.swift */; };
@@ -237,13 +239,16 @@
 		229F5A7DF557F2879265042F /* Pods-Big Neon UI.release (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon UI.release (production).xcconfig"; path = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.release (production).xcconfig"; sourceTree = "<group>"; };
 		243DFA80E9D9A698FA4711AB /* Pods-Big Neon UI.release (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon UI.release (development).xcconfig"; path = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.release (development).xcconfig"; sourceTree = "<group>"; };
 		28DB0A1BBBBCC7D4543416D7 /* Pods_Big_Neon_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big_Neon_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E754FB98B774C0B171793E6 /* Pods-BigNeonStudioTests.debug (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigNeonStudioTests.debug (development).xcconfig"; path = "Target Support Files/Pods-BigNeonStudioTests/Pods-BigNeonStudioTests.debug (development).xcconfig"; sourceTree = "<group>"; };
 		4AFE221B9E0C5454313D5274 /* Pods-Big Neon UI.debug (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon UI.debug (development).xcconfig"; path = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.debug (development).xcconfig"; sourceTree = "<group>"; };
 		5227793D2C68545A2802C714 /* Pods-Big Neon Core.release (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon Core.release (production).xcconfig"; path = "Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.release (production).xcconfig"; sourceTree = "<group>"; };
 		62D1690695C9C42CDA541DCD /* Pods-Big Neon Core.debug (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon Core.debug (development).xcconfig"; path = "Target Support Files/Pods-Big Neon Core/Pods-Big Neon Core.debug (development).xcconfig"; sourceTree = "<group>"; };
 		742EA7C612273116DBA59132 /* Pods-Big Neon.debug (beta).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug (beta).xcconfig"; path = "Target Support Files/Pods-Big Neon/Pods-Big Neon.debug (beta).xcconfig"; sourceTree = "<group>"; };
+		796E762351FEFD0CB55867CC /* Pods-BigNeonStudioTests.release (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigNeonStudioTests.release (development).xcconfig"; path = "Target Support Files/Pods-BigNeonStudioTests/Pods-BigNeonStudioTests.release (development).xcconfig"; sourceTree = "<group>"; };
 		846D79338ED0F7680B5B5BBA /* Pods-Big Neon.release (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.release (development).xcconfig"; path = "Target Support Files/Pods-Big Neon/Pods-Big Neon.release (development).xcconfig"; sourceTree = "<group>"; };
 		A51533E2EC2C7F26DF71EF1B /* Pods_Big_Neon_UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big_Neon_UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5796C55A67C1200B3EE5B1 /* Pods-Big Neon UI.debug (beta).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon UI.debug (beta).xcconfig"; path = "Target Support Files/Pods-Big Neon UI/Pods-Big Neon UI.debug (beta).xcconfig"; sourceTree = "<group>"; };
+		B5044FF1E65CDB39670825F0 /* Pods-BigNeonStudioTests.release (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigNeonStudioTests.release (production).xcconfig"; path = "Target Support Files/Pods-BigNeonStudioTests/Pods-BigNeonStudioTests.release (production).xcconfig"; sourceTree = "<group>"; };
 		C603E49C221581B20079ED73 /* EventCheckoutDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCheckoutDetailCell.swift; sourceTree = "<group>"; };
 		C603E49E221583940079ED73 /* CheckoutTotalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutTotalCell.swift; sourceTree = "<group>"; };
 		C603E4A0221586040079ED73 /* SubTotalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTotalCell.swift; sourceTree = "<group>"; };
@@ -431,6 +436,8 @@
 		C6EC20A022007F5100BD10DD /* ProfileViewContorller.ImageUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewContorller.ImageUpload.swift; sourceTree = "<group>"; };
 		C6FBD5A32344CD150032A439 /* EventGuestsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventGuestsCell.swift; sourceTree = "<group>"; };
 		C6FBD5A52344CF840032A439 /* ScanTicketsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanTicketsButton.swift; sourceTree = "<group>"; };
+		DDB65D3BBA0D702EBCDDA734 /* Pods_BigNeonStudioTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BigNeonStudioTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFC3B7B70E884300E3A964B7 /* Pods-BigNeonStudioTests.debug (beta).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BigNeonStudioTests.debug (beta).xcconfig"; path = "Target Support Files/Pods-BigNeonStudioTests/Pods-BigNeonStudioTests.debug (beta).xcconfig"; sourceTree = "<group>"; };
 		F2103222D117085B513E9485 /* Pods-Big Neon.debug (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big Neon.debug (development).xcconfig"; path = "Target Support Files/Pods-Big Neon/Pods-Big Neon.debug (development).xcconfig"; sourceTree = "<group>"; };
 		F63D047B71F4AED64CDD07F2 /* Pods_Big_Neon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big_Neon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -450,6 +457,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC960979EA67F4967BC3DFD8 /* Pods_BigNeonStudioTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,6 +486,7 @@
 				F63D047B71F4AED64CDD07F2 /* Pods_Big_Neon.framework */,
 				28DB0A1BBBBCC7D4543416D7 /* Pods_Big_Neon_Core.framework */,
 				A51533E2EC2C7F26DF71EF1B /* Pods_Big_Neon_UI.framework */,
+				DDB65D3BBA0D702EBCDDA734 /* Pods_BigNeonStudioTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -497,6 +506,10 @@
 				AD5796C55A67C1200B3EE5B1 /* Pods-Big Neon UI.debug (beta).xcconfig */,
 				243DFA80E9D9A698FA4711AB /* Pods-Big Neon UI.release (development).xcconfig */,
 				229F5A7DF557F2879265042F /* Pods-Big Neon UI.release (production).xcconfig */,
+				3E754FB98B774C0B171793E6 /* Pods-BigNeonStudioTests.debug (development).xcconfig */,
+				DFC3B7B70E884300E3A964B7 /* Pods-BigNeonStudioTests.debug (beta).xcconfig */,
+				796E762351FEFD0CB55867CC /* Pods-BigNeonStudioTests.release (development).xcconfig */,
+				B5044FF1E65CDB39670825F0 /* Pods-BigNeonStudioTests.release (production).xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1217,9 +1230,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C68C8D0E23321C8100FF15D6 /* Build configuration list for PBXNativeTarget "BigNeonStudioTests" */;
 			buildPhases = (
+				34A0E687AFE9E811E9F938D4 /* [CP] Check Pods Manifest.lock */,
 				C68C8D0323321C8100FF15D6 /* Sources */,
 				C68C8D0423321C8100FF15D6 /* Frameworks */,
 				C68C8D0523321C8100FF15D6 /* Resources */,
+				3F23AE6DFB870DA4D8563F64 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1357,6 +1372,45 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		34A0E687AFE9E811E9F938D4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BigNeonStudioTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F23AE6DFB870DA4D8563F64 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BigNeonStudioTests/Pods-BigNeonStudioTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BigNeonStudioTests/Pods-BigNeonStudioTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BigNeonStudioTests/Pods-BigNeonStudioTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		49F22E6C4587029413DB89EC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1623,6 +1677,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C68C8D0A23321C8100FF15D6 /* BigNeonStudioTests.swift in Sources */,
+				C6AD604423717CB600AB7EE8 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2219,6 +2274,7 @@
 		};
 		C68C8D0F23321C8100FF15D6 /* Debug (Development) */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E754FB98B774C0B171793E6 /* Pods-BigNeonStudioTests.debug (development).xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2293,6 +2349,7 @@
 		};
 		C68C8D1023321C8100FF15D6 /* Debug (Beta) */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFC3B7B70E884300E3A964B7 /* Pods-BigNeonStudioTests.debug (beta).xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2367,6 +2424,7 @@
 		};
 		C68C8D1123321C8100FF15D6 /* Release (Development) */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 796E762351FEFD0CB55867CC /* Pods-BigNeonStudioTests.release (development).xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2435,6 +2493,7 @@
 		};
 		C68C8D1223321C8100FF15D6 /* Release (Production) */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5044FF1E65CDB39670825F0 /* Pods-BigNeonStudioTests.release (production).xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";

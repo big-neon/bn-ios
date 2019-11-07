@@ -25,7 +25,7 @@ extension GuestViewController {
      */
     func handleCompleteOnlineCheckin() {
     
-        guard let ticketID = self.guest?.id, let eventID = self.event?.id else {
+        guard let ticketID = self.guestData?.id, let eventID = self.event?.id else {
             return
         }
         
